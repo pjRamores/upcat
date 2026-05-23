@@ -10,7 +10,7 @@ IMPORTANT CONSTRAINTS
 - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
 - Use clear, unambiguous wording; one best answer only.
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
-- Difficulty mix: 25% easy, 50% medium, 25% hard.
+- Difficulty mix: 25% easy, 50% medium, 20% hard, 5% very hard.
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
 - Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
 - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
@@ -20,7 +20,8 @@ EXAM BLUEPRINT (EDITABLE DEFAULT)
 Create a “Full-Length” 60-item and 75-minute mock exam
 
 SCOPE + OBJECTIVES (YOU MUST COVER ALL)
-Objectives to include (cover broadly and repeatedly):Algebra
+Objectives to include (cover broadly and repeatedly):
+Algebra
 * Simplify and evaluate algebraic expressions.
 * Solve linear, quadratic, logarithmic, radical, and rational equations.
 * Apply laws of exponents and factoring techniques.
@@ -83,4 +84,5 @@ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check numbering consistency and that the answer key matches the questions.
 
 OUTPUT IN PDF
-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Return the final as a PDF-ready document (no extra commentary outside the document).
+If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
