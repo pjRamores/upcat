@@ -9,7 +9,7 @@ IMPORTANT CONSTRAINTS
 - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
 - Use clear, unambiguous wording; one best answer only.
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
-- Difficulty mix: 25% easy, 50% medium, 25% hard.
+- Difficulty mix: 20% easy, 40% medium, 30% hard, 10% very hard.
 - Should contain 50% English and 50% Filipino.
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
 - Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
@@ -19,6 +19,15 @@ Create a “Full-Length” 100-item and 80-minute mock exam (use 4-6 passages of
 
 SCOPE + OBJECTIVES (YOU MUST COVER ALL)
 Objectives to include (ensure each appears in multiple items across passages):- Main idea / central claim- Supporting details and evidence- Inference and implied meaning- Tone, purpose, and author’s attitude- Logic/argument structure (claims, reasons, assumptions)- Meaning of words/phrases in context- Synthesis/comparison (especially for paired passages)- Interpreting a short informational element when embedded (e.g., a small table/graph described in text)- Appropriate Title of Selection
+- Main idea / central claim
+- Supporting details and evidence
+- Inference and implied meaning
+- Tone, purpose, and author’s attitude
+- Logic/argument structure (claims, reasons, assumptions)
+- Meaning of words/phrases in context
+- Synthesis/comparison (especially for paired passages)
+- Interpreting a short informational element when embedded (e.g., a small table/graph described in text)
+- Appropriate Title of Selection
 - Author's Point of View
 - Drawing Conclusions
 - Essays, Articles, Speeches
@@ -69,4 +78,5 @@ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check numbering consistency and that the answer key matches the questions.
 
 OUTPUT IN PDF
-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Return the final as a PDF-ready document (no extra commentary outside the document).
+Suppose your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
