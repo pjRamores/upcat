@@ -74,7 +74,7 @@ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check that distractors are plausible and not obviously wrong.
 - Check that each subtest meets the requested item count and difficulty distribution.
 - Check that objective coverage is complete; if not, revise questions until it is.
-- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.
+- Check that the letters corresponding to the correct answers are shuffled and evenly distributed among the A–D options (25% A, 25% B, 25% C, and 25% D correct answers).
 - Check numbering consistency and that the answer key matches the questions.
 
 OUTPUT IN PDF
