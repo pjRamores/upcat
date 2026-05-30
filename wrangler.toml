@@ -1,0 +1,110 @@
+# -------------------------------------------------------------------------
+# Cloudflare Pages + Workers configuration
+# Primary deployment target for the UPCAT Simulator
+#
+# Cloudflare Pages serves the static frontend (Vite build output)
+# Cloudflare Workers handle API requests with zero cold-start latency
+# -------------------------------------------------------------------------
+
+name = "upcat-simulator"
+type = "javascript"
+account_id = "YOUR_ACCOUNT_ID_HERE"
+workers_dev = false
+route = ""
+zone_id = "YOUR_ZONE_ID_HERE"
+main = "api/dist/index.js"
+compatibility_date = "2024-12-16"
+compatibility_flags = ["nodejs_compat"]
+
+# --- Cloudflare Pages Configuration ------------------------------------------------
+# This config is primarily for local development with wrangler
+# Production Pages deployment uses the Cloudflare Dashboard or
+# the GitHub integration (recommended for CI/CD)
+[env.production]
+name = "upcat-simulator-prod"
+account_id = "YOUR_ACCOUNT_ID_HERE"
+workers_dev = false
+zone_id = "YOUR_ZONE_ID_HERE"
+routes = [
+  { pattern = "upcat-simulator.example.com/*", zone_name = "example.com" }
+]
+
+[env.staging]
+name = "upcat-simulator-staging"
+account_id = "YOUR_ACCOUNT_ID_HERE"
+workers_dev = true
+routes = [
+  { pattern = "staging.upcat-simulator.example.com/*", zone_name = "example.com" }
+]
+
+# --- Triggers (Cron Jobs) ------------------------------------------------
+# Cloudflare Cron Triggers for scheduled tasks
+# (Equivalent to Vercel's crons configuration)
+[[triggers.crons]]
+cron = "0.*.*.*.*"
+
+[[triggers.crons]]
+cron = "0.*/6.*.*.*"
+
+[[triggers.crons]]
+cron = "0.3.*.*.*"
+
+[[triggers.crons]]
+cron = "0.4.*.*.1"
+
+[[triggers.crons]]
+cron = "0.19.*.*.*"
+
+[[triggers.crons]]
+cron = "*/15.*.*.*.*"
+
+[[triggers.crons]]
+cron = "0.0.*.*.*"
+
+# --- Environment Secrets (loaded from CF Dashboard or CLI) ----------------
+# Run: `wrangler secret put VARIABLE_NAME`
+# These are NOT version-controlled and are managed per-environment
+[env.production.vars]
+NODE_ENV = "production"
+MONGODB_DB_NAME = "upcat_simulator"
+JWT_EXPIRY = "7d"
+
+[env.staging.vars]
+NODE_ENV = "staging"
+MONGODB_DB_NAME = "upcat_simulator_staging"
+JWT_EXPIRY = "7d"
+
+# --- KV Namespace Bindings ------------------------------------------------
+# For caching and session storage (optional, can use MongoDB instead)
+[[kv_namespaces]]
+binding = "CACHE"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "YOUR_PREVIEW_KV_NAMESPACE_ID"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "YOUR_SESSIONS_KV_NAMESPACE_ID"
+preview_id = "YOUR_PREVIEW_SESSIONS_KV_NAMESPACE_ID"
+
+# --- D1 Database Binding (optional, for future use) ----------------
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "upcat_simulator"
+# database_id = "YOUR_D1_ID"
+
+# --- Build Configuration ------------------------------------------------
+[build]
+command = "npm ci && npm run build --workspace=api && npm run build --workspace=client"
+cwd = "./"
+watch_paths = ["api/**/*.ts", "client/src/**"]
+
+# Output directory for Pages deployment
+[build.upload]
+format = "modules"
+dir = "client/dist"
+```javascript
+main = "api/dist/index.js"
+
+# — Custom Routes (for SPA fallback) —
+# All unmatched routes should serve index.html for client-side routing
+# This is configured in _routes.json for Pages
