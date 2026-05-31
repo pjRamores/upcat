@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "publishedAt": "2026-05-27T15:12:39.698Z",
+  "publishedBy": "admin@upcatsimulator.com",
+  "meta": {
+    "adsEnabled": true,
+    "config": {
+      "enabled": true,
+      "publisherId": "",
+      "requireConsent": true,
+      "premiumExempt": true,
+      "testMode": true,
+      "lazyLoad": true,
+      "slots": {
+        "mock_exam_sidebar": {
+          "slot": ""
+        },
+        "review_answers_sidebar": {
+          "slot": ""
+        },
+        "practice_sidebar": {
+          "slot": ""
+        },
+        "enabled": true
+      }
+    },
+    "review_answers": {
+      "slot": ""
+    },
+    "enabled": true
+  }
+}
