@@ -1,7 +1,5 @@
-script
 /* eslint-env serviceworker */
 /* global self, caches, clients */
-
 /**
  * UPCAT Simulator - service worker.
  *
@@ -24,6 +22,12 @@ const API_CACHE = `api-${VERSION}`;
 const API_TTL_MS = 24 * 60 * 60 * 1000;
 
 const APP_SHELL = [
+    "/",
+    "/index.html",
+    "/manifest.webmanifest",
+    "/icons/icon-192.png",
+    "/icons/icon-512.png",
+];
   // GET endpoints safe to cache offline. Anything not listed bypasses the cache.
 const CACHEABLE_API_PATTERNS = [
   //^\/api\/announcements\b/
