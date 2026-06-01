@@ -1,8 +1,8 @@
 import {lazy, Suspense} from "react";
 import {createBrowserRouter, isRouteErrorResponse, Navigate, useRouteError,} from "react-router-dom";
-import {Layout} from "@/components/Layout";
-import {ProtectedRoute} from "@/components/ProtectedRoute";
-import {FullPageLoader} from "@/components/FullPageLoader";
+import Layout from "@/components/Layout";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import FullPageLoader from "@/components/FullPageLoader";
 import {useAuthStore} from "@/stores/authStore";
 
 /* _____________________________________________________________________________________
@@ -101,6 +101,7 @@ const AdminIdentityDisputesPage = lazy(
 );
 const AdminDataRequestsPage = lazy(() => import("@/pages/admin/AdminDataRequestsPage"));
 
+const AdminAdsSettingsPage = lazy(() => import("@/pages/admin/AdminSettingsPage"));
 const AdminSeoPage = lazy(() => import("@/pages/admin/AdminSeoPage"));
 const AdminBlogPage = lazy(() => import("@/pages/admin/AdminBlogPage"));
 const AdminBlogEditPage = lazy(() => import("@/pages/admin/AdminBlogEditPage"));
@@ -138,299 +139,120 @@ function RoleAwareNotFound(): React.ReactElement {
     const role = useAuthStore((s) => s.role());
 
     if (isAuthenticated && role === "admin") {
-        return <Navigate to="/admin">replace/>;
-            }
+        return <Navigate to="/admin" replace/>;
+    }
 
-            return lazyRoute(NotFoundPage);
-            }
+    return lazyRoute(NotFoundPage);
+}
 
-            function AppRouteError(): React.ReactElement {
-                const error = useRouteError();
-                const message =
-                error instanceof Error
-                ? error.message
-                : isRouteErrorResponse(error)
+function AppRouteError(): React.ReactElement {
+    const error = useRouteError();
+    const message =
+        error instanceof Error
+            ? error.message
+            : isRouteErrorResponse(error)
                 ? `${error.status} ${error.statusText}`
                 : "Something went wrong while loading this page.";
 
-                const isChunkLoadFailure =
-                typeof message === "string" &&
-                message.toLowerCase().includes("failed to fetch dynamically imported module");
+    const isChunkLoadFailure =
+        typeof message === "string" &&
+        message.toLowerCase().includes("failed to fetch dynamically imported module");
 
-                return (
-                <div>
-                className="mx-auto flex min-h-[60vh] w-full max-w-2xl flex-col items-center justify-center px-4 py-12 text-center">
-                <h1 className="text-2xl font-bold text-slate-900">Page failed to load</h1>
-                <p className="mt-3 text-sm text-slate-600">
-            {isChunkLoadFailure}
-            ? "A new app version was detected while this page was loading."
-            : "We hit an unexpected error while rendering this route."
-        </p>
-        <p className="mt-2 max-w-xl rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-50">
-            {message}
-        </p>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-            <button
-                type="button"
-                className="rounded-md bg-maroon-600 px-4 py-2 text-sm font-semibold text-white hover:bg-maroon-700"
-                onClick={() => window.location.reload()}
-            >
-                Reload page
-            </button>
-            <button
-                type="button"
-                className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                onClick={() => window.location.assign("/practice")}
-            >
-                Back to practice
-            </button>
+    return (
+        <div>
+            className="mx-auto flex min-h-[60vh] w-full max-w-2xl flex-col items-center justify-center px-4 py-12
+            text-center">
+            <h1 className="text-2xl font-bold text-slate-900">Page failed to load</h1>
+            <p className="mt-3 text-sm text-slate-600">
+                {isChunkLoadFailure}
+                ? "A new app version was detected while this page was loading."
+                : "We hit an unexpected error while rendering this route."
+            </p>
+            <p className="mt-2 max-w-xl rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-50">
+                {message}
+            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+                <button
+                    type="button"
+                    className="rounded-md bg-maroon-600 px-4 py-2 text-sm font-semibold text-white hover:bg-maroon-700"
+                    onClick={() => window.location.reload()}
+                >
+                    Reload page
+                </button>
+                <button
+                    type="button"
+                    className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                    onClick={() => window.location.assign("/practice")}
+                >
+                    Back to practice
+                </button>
+            </div>
         </div>
-    </div>
-    </div>
-    )
-        ;
-    }
+    );
+}
 
-    export const router = createBrowserRouter([
-        // Admin tree (own layout, no Navbar) --
-        {
-            element: <ProtectedRoute requiredRole="admin"/>,
-            errorElement: <AppRouteError/>,
-            children: [
-                {
-                    path: "/admin",
-                    element: lazyRoute(AdminLayout),
-                    children: [
-                        {
-                            index: true, element: lazyRoute(AdminDashboardPage),
-                            path: "analytics", element: lazyRoute(AdminAnalyticsPage),
-                            path: "questions", element: lazyRoute(AdminQuestionsPage),
-                            path: "questions/new", element: lazyRoute(AdminQuestionEditPage),
-                            path: "questions/:id", element: lazyRoute(AdminQuestionEditPage),
-                            path: "questions/workflow", element: lazyRoute(AdminQuestionWorkflowPage),
-                        }
-                    ]
-                }
-            ]
-        }
-    ]);
+export const router = createBrowserRouter([
+    // Admin tree (own layout, no Navbar) --
     {
-        path: "questions/import-export", element
-    :
-        lazyRoute(AdminQuestionImportExportPage)
-    }
-,
-    path: "question-sets", element
-:
-    lazyRoute(AdminQuestionSetsPage)
-}
-
-,
-path: "questions/media", element
-:
-lazyRoute(AdminQuestionMediaLibraryPage)
-},
-path: "passages", element
-:
-lazyRoute(AdminPassagesPage)
-},
-path: "passages/new", element
-:
-lazyRoute(AdminPassageEditPage)
-},
-path: "passages/:id", element
-:
-lazyRoute(AdminPassageEditPage)
-},
-path: "content-flags", element
-:
-lazyRoute(AdminContentFlagsPage)
-},
-path: "users", element
-:
-lazyRoute(AdminUsersPage)
-},
-path: "users/new", element
-:
-lazyRoute(AdminUserNewPage)
-},
-path: "users/:id", element
-:
-lazyRoute(AdminUserDetailPage)
-},
-path: "exams", element
-:
-lazyRoute(AdminExamsPage)
-},
-path: "exams/:id", element
-:
-lazyRoute(AdminExamDetailPage)
-},
-path: "practice-sessions", element
-:
-lazyRoute(AdminPracticeSessionsPage)
-},
-path: "announcements", element
-:
-lazyRoute(AdminAnnouncementsPage)
-},
-path: "settings", element
-:
-lazyRoute(AdminSettingsPage)
-},
-path: "auth-providers", element
-:
-lazyRoute(AdminAuthProvidersPage)
-},
-path: "audit-log", element
-:
-lazyRoute(AdminAuditLogPage)
-},
-path: "gamification", element
-:
-lazyRoute(AdminGamificationPage)
-},
-path: "security", element
-:
-lazyRoute(AdminSecurityPage)
-},
-path: "monitoring", element
-:
-lazyRoute(AdminMonitoringPage)
-},
-path: "support", element
-:
-lazyRoute(AdminSupportDashboardPage)
-},
-path: "support/tickets", element
-:
-lazyRoute(AdminSupportTicketsPage)
-},
-{
-    path: "support/tickets/:ticketNumber",
-        element
-:
-    lazyRoute(AdminSupportTicketDetailPage),
-}
-,
-{
-    path: "support/merge", element
-:
-    lazyRoute(AdminMergeWizardPage)
-}
-,
-{
-    path: "support/identity-disputes",
-        element
-:
-    lazyRoute(AdminIdentityDisputesPage),
-}
-,
-{
-    path: "data-requests", element
-:
-    lazyRoute(AdminDataRequestsPage)
-}
-,
-{
-    path: "ads", element
-:
-    lazyRoute(AdminAdsSettingsPage)
-}
-,
-{
-    path: "payment/config", element
-:
-    lazyRoute(AdminPaymentConfigPage)
-}
-,
-{
-    path: "payment/submissions", element
-:
-    lazyRoute(AdminPaymentSubmissionsPage)
-}
-,
-{
-    path: "features", element
-:
-    lazyRoute(AdminFeaturesPage)
-}
-,
-{
-    path: "promo-codes", element
-:
-    lazyRoute(AdminPromoCodesPage)
-}
-,
-{
-    path: "study-plans/templates", element
-:
-    lazyRoute(AdminStudyPlanTemplatesPage)
-}
-,
-{
-    path: "study-plans/lessons", element
-:
-    lazyRoute(AdminStudyPlanLessonsPage)
-}
-,
-{
-    path: "study-plans/analytics", element
-:
-    lazyRoute(AdminStudyPlanAnalyticsPage)
-}
-,
-{
-    path: "help/articles", element
-:
-    lazyRoute(AdminHelpArticlesPage)
-}
-,
-{
-    path: "help/contextual", element
-:
-    lazyRoute(AdminHelpContextualPage)
-}
-,
-{
-    path: "help/onboarding", element
-:
-    lazyRoute(AdminHelpOnboardingPage)
-}
-,
-{
-    path: "help/analytics", element
-:
-    lazyRoute(AdminHelpAnalyticsPage)
-}
-,
-{
-    path: "seo", element
-:
-    lazyRoute(AdminSeoPage)
-}
-,
-{
-    path: "blog", element
-:
-    lazyRoute(AdminBlogPage)
-}
-,
-{
-    path: "blog/new", element
-:
-    lazyRoute(AdminBlogEditPage)
-}
-,
-{
-    path: "blog/:id", element
-:
-    lazyRoute(AdminBlogEditPage)
-}
-,
-},
-},
-},
+        element: <ProtectedRoute requiredRole="admin"/>,
+        errorElement: <AppRouteError/>,
+        children: [
+            {
+                path: "/admin",
+                element: lazyRoute(AdminLayout),
+                children: [
+                    {index: true, element: lazyRoute(AdminDashboardPage)},
+                    {path: "analytics", element: lazyRoute(AdminAnalyticsPage)},
+                    {path: "questions", element: lazyRoute(AdminQuestionsPage)},
+                    {path: "questions/new", element: lazyRoute(AdminQuestionEditPage)},
+                    {path: "questions/:id", element: lazyRoute(AdminQuestionEditPage)},
+                    {path: "questions/workflow", element: lazyRoute(AdminQuestionWorkflowPage)},
+                    {path: "questions/import-export", element: lazyRoute(AdminQuestionImportExportPage)},
+                    {path: "question-sets", element: lazyRoute(AdminQuestionSetsPage)},
+                    {path: "questions/media", element: lazyRoute(AdminQuestionMediaLibraryPage)},
+                    {path: "passages", element: lazyRoute(AdminPassagesPage)},
+                    {path: "passages/new", element: lazyRoute(AdminPassageEditPage)},
+                    {path: "passages/:id", element: lazyRoute(AdminPassageEditPage)},
+                    {path: "content-flags", element: lazyRoute(AdminContentFlagsPage)},
+                    {path: "users", element: lazyRoute(AdminUsersPage)},
+                    {path: "users/new", element: lazyRoute(AdminUserNewPage)},
+                    {path: "users/:id", element: lazyRoute(AdminUserDetailPage)},
+                    {path: "exams", element: lazyRoute(AdminExamsPage)},
+                    {path: "exams/:id", element: lazyRoute(AdminExamDetailPage)},
+                    {path: "practice-sessions", element: lazyRoute(AdminPracticeSessionsPage)},
+                    {path: "announcements", element: lazyRoute(AdminAnnouncementsPage)},
+                    {path: "settings", element: lazyRoute(AdminSettingsPage)},
+                    {path: "auth-providers", element: lazyRoute(AdminAuthProvidersPage)},
+                    {path: "audit-log", element: lazyRoute(AdminAuditLogPage)},
+                    {path: "gamification", element: lazyRoute(AdminGamificationPage)},
+                    {path: "security", element: lazyRoute(AdminSecurityPage)},
+                    {path: "monitoring", element: lazyRoute(AdminMonitoringPage)},
+                    {path: "support", element: lazyRoute(AdminSupportDashboardPage)},
+                    {path: "support/tickets", element: lazyRoute(AdminSupportTicketsPage)},
+                    {path: "support/tickets/:ticketNumber", element: lazyRoute(AdminSupportTicketDetailPage)},
+                    {path: "support/merge", element: lazyRoute(AdminMergeWizardPage)},
+                    {path: "support/identity-disputes", element: lazyRoute(AdminIdentityDisputesPage)},
+                    {path: "data-requests", element: lazyRoute(AdminDataRequestsPage)},
+                    {path: "ads", element: lazyRoute(AdminAdsSettingsPage)},
+                    {path: "payment/config", element: lazyRoute(AdminPaymentConfigPage)},
+                    {path: "payment/submissions", element: lazyRoute(AdminPaymentSubmissionsPage)},
+                    {path: "features", element: lazyRoute(AdminFeaturesPage)},
+                    {path: "promo-codes", element: lazyRoute(AdminPromoCodesPage)},
+                    {path: "study-plans/templates", element: lazyRoute(AdminStudyPlanTemplatesPage)},
+                    {path: "study-plans/lessons", element: lazyRoute(AdminStudyPlanLessonsPage)},
+                    {path: "study-plans/analytics", element: lazyRoute(AdminStudyPlanAnalyticsPage)},
+                    {path: "help/articles", element: lazyRoute(AdminHelpArticlesPage)},
+                    {path: "help/contextual", element: lazyRoute(AdminHelpContextualPage)},
+                    {path: "help/onboarding", element: lazyRoute(AdminHelpOnboardingPage)},
+                    {path: "help/analytics", element: lazyRoute(AdminHelpAnalyticsPage)},
+                    {path: "seo", element: lazyRoute(AdminSeoPage)},
+                    {path: "blog", element: lazyRoute(AdminBlogPage)},
+                    {path: "blog/new", element: lazyRoute(AdminBlogEditPage)},
+                    {path: "blog/:id", element: lazyRoute(AdminBlogEditPage)},
+                ],
+            },
+        ],
+    },
 // — Reviewee / public tree (Navbar + Footer Layout) —
 {
     element: <Layout/>
