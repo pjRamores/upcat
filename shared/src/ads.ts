@@ -47,7 +47,7 @@ export const AD_SLOT_IDS = [
   "subject_in_content",
   "blog_in_content",
 ] as const;
-export type AdSlotId = (typeof AD_SLOT_IDS) [number];
+export type AdSlotId = (typeof AD_SLOT_IDS)[number];
 
 export type AdSlotFormat = "auto" | "rectangle" | "horizontal" | "vertical" | "fluid";
 
@@ -88,7 +88,7 @@ export interface AdsSettings {
 
 /** Where a video interstitial may be triggered from. Stable strings used by the client and server analytics. */
 export const VIDEO_AD_TRIGGERS = ["start_practice", "review_answers"] as const;
-export type VideoAdTrigger = (typeof VIDEO_AD_TRIGGERS) [number];
+export type VideoAdTrigger = (typeof VIDEO_AD_TRIGGERS)[number];
 
 export interface VideoAdTriggerSettings {
   /** Seconds the user must watch before a Skip button appears. */
@@ -98,21 +98,21 @@ export interface VideoAdTriggerSettings {
   /** Show at most one interstitial per N trigger events. 1 = every time. */
   frequencyCap?: number;
 }
-// Direct URL to an MP4/WebM clip. Empty string disables video. */
+//** Direct URL to an MP4/WebM clip. Empty string disables video. */
 videoUrl: string;
-// Optional poster image shown before playback. */
+//** Optional poster image shown before playback. */
 posterUrl?: string;
-// Optional click-through URL for the "Learn more" button. */
+//** Optional click-through URL for the "Learn more" button. */
 clickThroughUrl?: string;
-// Seconds the user must watch before a Skip button appears. */
+//** Seconds the user must watch before a Skip button appears. */
 skipAfterSeconds: number;
-// Minimum gap, in seconds, between two interstitials shown to one viewer. */
+//** Minimum gap, in seconds, between two interstitials shown to one viewer. */
 minIntervalSeconds: number;
-// Show at most one interstitial per N session-finish events. 1 = every time. */
+//** Show at most one interstitial per N session-finish events. 1 = every time. */
 frequencyCap: number;
-// Triggers this campaign is allowed to fire on. */
+//** Triggers this campaign is allowed to fire on. */
 allowedTriggers: VideoAdTrigger[];
-// Optional trigger-specific overrides for skip, interval, and cap. */
+//** Optional trigger-specific overrides for skip, interval, and cap. */
 triggerSettings?: Partial<Record<VideoAdTrigger, VideoAdTriggerSettings>>;
 }
 

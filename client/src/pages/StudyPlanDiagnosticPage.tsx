@@ -39,31 +39,31 @@ export default function StudyPlanDiagnosticPage() {
 };
 
 return (
-  <div className="mx-auto max-w-4x1 space-y-4 px-4 py-8">
+  <div className="mx-auto max-w-4x1·space-y-4·px-4·py-8">
     <Seo title="Diagnostic Test" description="Assess your baseline knowledge for a personalized plan." />
-    <h1 className="text-2x1 font-bold text-slate-900">Diagnostic -- {section}</h1>
-    <p className="text-sm text-slate-600">Section {sectionIndex + 1} of {SUBJECT_AREAS.length}</p>
+    <h1 className="text-2x1·font-bold·text-slate-900">Diagnostic - {section}</h1>
+    <p className="text-sm·text-slate-600">Section {sectionIndex + 1} of {SUBJECT_AREAS.length}</p>
 
     {questions.map((q, idx) => (
-      <article key={q._id} className="rounded-x1 border border-slate-200 bg-white p-4">
-        <p className="text-xs text-slate-500">Question {idx + 1} of {questions.length}</p>
-        <p className="mt-1 font-medium">{q.questionText}</p>
-        <div className="mt-2 space-y-2">
+      <article key={q._id} className="rounded-x1·border·border-slate-200·bg-white·p-4">
+        <p className="text-xs·text-slate-500">Question {idx + 1} of {questions.length}</p>
+        <p className="mt-1·font-medium">{q.questionText}</p>
+        <div className="mt-2·space-y-2">
           {(q.choices ?? []).map((c: any) => (
             <label key={c.label}
-              className="flex items-center gap-2 rounded-border border-slate-200 p-2">
-              <input type="radio" name={q._id} checked={answers[q._id] === c.label}
-                onChange={() => setAnswers((prev) => ({...prev, [q._id]: c.label}))}/>
-              <span>{c.label}. {c.text}</span>
+              className="flex·items-center·gap-2·rounded·border·border-slate-200·p-2">
+              <input type="radio" name={q._id} checked={answers[q._id]} === c.label}
+              onChange={() => setAnswers((prev) => ({...prev, [q._id]: c.label}))}/>
+              <span>{c.label}.{c.text}</span>
             </label>
           ))}
         </div>
       </article>
     ))}
 
-    <div className="flex justify-end">
+    <div className="flex·justify-end">
       <button type="button" onClick={submitSection}
-        className="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white">
+        className="rounded-lg·bg-sky-600·px-4·py-2·font-semibold·text-white">
         {sectionIndex < SUBJECT_AREAS.length - 1 ? "Submit Section" : "Complete Diagnostic"}
       </button>
     </div>

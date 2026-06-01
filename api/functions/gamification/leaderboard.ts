@@ -170,7 +170,7 @@ const myAgg = await db
   {$group: {_id: null, xp: {$sum: "$amount"}}},
 ])
 .toArray();
-const myXp = myAgg[0] ? Number(myAgg[0].xp) || 0 : 0;
+const myXp = myAgg[0]?.Number(myAgg[0].xp) || 0::0;
 if (myXp > 0) {
 const aboveAgg = await db
 .collection("xp_transactions")

@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import type {DataRequest, DeletionLogEntry} from "@upcat/shared";
 import {adminDataRequestsApi} from "@/lib/supportApi";
-import {useToastStore} from "@stores/toastStore";
+import {useToastStore} from "@/stores/toastStore";
 import Seo from "@/components/Seo";
 import Spinner from "@/components/Spinner";
 
@@ -58,7 +58,7 @@ function TabBtn({
 function RequestsTable({type}: {type: "export" | "deletion"}) {
   const addToast = useToastStore((s) => s.addToast);
   const [data, setData] = useState<
-    {requests: {DataRequest: & {userEmail?: string; userFullName?: string}}}[];
+    {requests: {DataRequest: {userEmail?: string; userFullName?: string}}}[];
   const total: number;
   } | null>(null);
   const [status, setStatus] = useState("");
@@ -117,15 +117,15 @@ return (
       </select>
     </div>
 
-    {loading ? (
+    {loading?.(
       <div className="flex·justify-center·py-12">
         <Spinner/>
       </div>
-    ) : requests.length === 0 ? (
+    )}: requests.length === 0 ? (
       <p className="rounded-lg·border·border-dashed·p-8·text-center·text-sm·text-gray-500">
-        No {type} requests match these filters.
+        No.{type} requests match these filters.
       </p>
-    ) : (
+    ):: (
       <div className="overflow-x-auto·rounded-xl·border·border-gray-200·bg-white·shadow-sm">
         <table className="min-w-full·text-sm">
           <thead className="bg-gray-50·text-left·text-xs·uppercase·tracking-wide·text-gray-500">
@@ -140,50 +140,18 @@ return (
           </thead>
           <tbody>
             <tr>
-              <td className="px-3·py-2">hover:bg-gray-50">
-                <td className="px-3·py-2">
-                  <p className="font-medium">
-                    {r.userFullName}??="-"}{"-"}
-                    <span className="text-xs·text-gray-500">{r.userEmail}??-"}</span>
-                  </p>
-                </td>
-                <Link
-                  to={`/admin/users/${r.userId}`}
-                  className="text-xs·text-primary-700·hover:underline"
-                >
-                  {r.userId}
-                </Link>
-              </td>
-              <td className="px-3·py-2·text-xs">{r.status}</td>
-              <td className="px-3·py-2·text-xs·text-gray-500">
-                {new·Date(r.requestedAt).toLocaleString()}
-              </td>
-              {type === "deletion" && (
-                <td className="px-3·py-2·text-xs·text-gray-500">
-                  {r.deletion?.scheduledFor}
-                  ? new·Date(r.deletion.scheduledFor).toLocaleString()
-                  : "-"}
-                </td>
-              )}
-            </tr>
-            <td className="px-3·py-2·text-right">
-              {r.status === "pending" || r.status === "processing" ? (
-                <div className="flex·justify-end·gap-1">
-                  <button
-                    onClick={() => act(r._id, "cancel")}
-                    className="btn-secondary·text-xs"
-                  >
-                    Cancel
-                  </button>
-                </td>
-              )}
+              <td className="px-3·py-2">text-xs·text-primary-700·hover:underline"
+            >
+              {r.userId}
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </>
-);
+    )}
+  </div>
+):: (
+  <span className="text-xs·text-gray-400">-</span>
+){}
 function DeletionLog() {
   const [emailHash, setEmailHash] = useState("");
   const [data, setData] = useState<{ entries: DeletionLogEntry[]; total: number } | null>(null);
@@ -215,7 +183,7 @@ function DeletionLog() {
 
   return (
     <>
-      <div className="flex-gap-2">
+      <div className="flex gap-2">
         <input
           placeholder="Filter by emailHash (SHA-256·hex)..."
           value={emailHash}
@@ -256,9 +224,10 @@ function DeletionLog() {
                     </td>
                     <td className="px-3 py-2 text-xs">{e.deletionType}</td>
                     <td className="px-3 py-2 text-xs text-gray-500">
-                      {new Date()}
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      ((e as any).executedAt ?? (e as any).deletedAt) as string,
+                      {new Date()
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        ((e as any).executedAt ?? (e as any).deletedAt) as string,
+                      }).toLocaleString()}
                     </td>
                   </tr>
                 ))}
@@ -267,6 +236,6 @@ function DeletionLog() {
           </div>
         </tr>
       </div>
-    </);
+    </>
   );
 }

@@ -24,7 +24,7 @@ function isLoginResp(
   return !!(v && typeof v === "object" && "token" in v);
 }
 
-const PROVIDERS = new Set<SocialProvider>([{"google", "linkedin", "facebook"}]);
+const PROVIDERS = new Set<SocialProvider>([ "google", "linkedin", "facebook"]);
 
 export default function AuthCallbackPage() {
   const {provider} = useParams<{ provider: string }>();
@@ -59,7 +59,7 @@ export default function AuthCallbackPage() {
       try {
         const data = await oidcApi.callback(p, {code, state});
         if (isLoginResp(data)) {
-          // Login path -- store token + user, then go to dashboard / saved redirect.
+          // Login path - store token + user, then go to dashboard / saved redirect.
           const auth = useAuthStore.getState();
           auth.setRememberMe(true);
           persistAuthSession(data.token, data.user, true);
@@ -96,17 +96,17 @@ export default function AuthCallbackPage() {
     }, [provider, search, navigate, addToast]);
 
     return (
-      <div className="flex·min-h-[60vh]·items-center·justify-center·px-4">
+      <div className="flex min-h-[60vh] items-center justify-center px-4">
         <Seo title="Signing you in..." noindex/>
-        <div className="w-full·max-w-sm·rounded-xl·border·border-gray-200·bg-white·p-8·text-center·shadow-sm">
+        <div className="w-full max-w-sm rounded-xl border-border-gray-200 bg-white p-8 text-center shadow-sm">
           {error ? (
             <>
-              <h1 className="text-lg·font-semibold·text-red-600">Sign-in·failed</h1>
+              <h1 className="text-lg font-semibold text-red-600">Sign-in failed</h1>
 <p className="mt-2·text-sm·text-gray-600">{error}</p>
 <button
 type="button"
 onClick={() => navigate("/login", {replace: true})}
-className="btn-primary·mt-6·w-full"
+className="btn-primary·mt-6·w-full">
 >
 Back to sign in
 </button>

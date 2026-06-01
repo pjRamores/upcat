@@ -102,12 +102,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         movedExamSessions = r.modifiedCount;
       }
     }
-  }
 }
 // 3) Contact messages — always transferred for traceability.
 const cmr = await db
-.collection("contact_messages")
-.updateMany({userId: secondaryId}, {$set: {userId: primaryId, mergedAt: now}});
+  .collection("contact_messages")
+  .updateMany({userId: secondaryId}, {$set: {userId: primaryId, mergedAt: now}});
 const movedContactMessages = cmr.modifiedCount;
 
 // 4) Soft-delete secondary user (audit-friendly).

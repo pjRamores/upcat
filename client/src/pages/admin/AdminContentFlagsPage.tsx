@@ -23,7 +23,7 @@ const REASON_LABEL: Record<string, string> = Object.fromEntries(FLAG_REASONS.map
 
 export default function AdminContentFlagsPage() {
   const addToast = useToastStore((s) => s.addToast);
-  const [status, setStatus] = useState("<open">| "resolved">| "dismissed">| "">("open");
+  const [status, setStatus] = useState("open" || "resolved" || "dismissed" || "")("open");
   const [page, setPage] = useState(1);
   const [data, setData] = useState<{ items: FlagRow[]; total: number; totalPages: number } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -47,7 +47,7 @@ export default function AdminContentFlagsPage() {
       refresh(); /* eslint-disable-line */
     }, [status, page]);
 
-    const updateFlag = async (id: string, nextStatus: "resolved">| "dismissed") => {
+    const updateFlag = async (id: string, nextStatus: "resolved" || "dismissed") => {
       try {
         await adminApi.updateFlag(id, {status: nextStatus, resolutionNote: resolutionNote.trim() || undefined});
         addToast("success", `Flag ${nextStatus}.`);
@@ -68,7 +68,7 @@ export default function AdminContentFlagsPage() {
           <div className="min-w-0">
             <p className="line-clamp-2 font-medium text-slate-800">{r.question?.preview ?? "-"}</p>
             <p className="text-xs text-slate-500">
-              {r.question?.subjectArea} {r.question?.difficulty} (DIFFICULTY_LABELS[r.question.difficulty as Difficulty] ?? r.question.difficulty) : "-"}
+              {r.question?.subjectArea} {r.question?.difficulty ? (DIFFICULTY_LABELS[r.question.difficulty as Difficulty] ?? r.question.difficulty) : "-"}
             </p>
           </div>
         ),
@@ -98,7 +98,7 @@ export default function AdminContentFlagsPage() {
         key: "status",
         header: "Status",
         render: (r) => (
-          <Badge variant={r.status === "open"? "warning": r.status === "resolved"? "success": "neutral"}>{r.status}</Badge>
+          <Badge variant={r.status === "open" ? "warning": r.status === "resolved" ? "success": "neutral"}>{r.status}</Badge>
         ),
       },
     ],
@@ -111,18 +111,18 @@ export default function AdminContentFlagsPage() {
   render: (r) => (
     <button type="button" onClick={() => {
       setActive(r);
-      setResolutionNote(r.resolutionNote??."");
+      setResolutionNote(r.resolutionNote??"");
     }} className="rounded-md border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50">Review</button>
   ),
-},
-];
+  },
+};
 ```
 
 ```typescript
 return (
   <div className="space-y-4">
     <div className="flex-flex-wrap-gap-2">
-      {[{"open", "resolved", "dismissed", ""}] as const}.map((s) => (
+      {[{"open", "resolved", "dismissed", ""}].as const).map((s) => (
         <button key={s} type="button" onClick={() => {
           setStatus(s);
           setPage(1);
@@ -169,7 +169,7 @@ return (
   <div className="space-y-3 text-sm">
     <p className="text-xs text-slate-500">{REASON_LABEL[active.reason]} • {active.user?.email?? "anon"} • {new Date(active.createdAt).toLocaleString()}</p>
     <div className="rounded-md border border-slate-200 bg-slate-50 p-3">
-      <MathText>{active.question?.preview??."}</MathText>
+      <MathText>{active.question?.preview??"}</MathText>
       <p className="mt-1 text-xs text-slate-500">Correct: <span className="font-mono font-semibold">{active.question?.correctAnswer}</span></p>
     </div>
     {active.comment && <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-amber-900">{active.comment}</div>}

@@ -57,7 +57,7 @@ export async function signTokenWithSession(input: CreateSessionInput): Promise<{
       city: input.city ?? null,
       revoked: false,
       revokedAt: null,
-    }).as never);
+    }).as never;
   } catch {
     /* session bookkeeping is non-fatal */
   }
@@ -111,7 +111,7 @@ return r.modifiedCount;
 export function extractJti(authHeader: string | undefined): string | null {
   if (!authHeader?.startsWith("Bearer")) return null;
   try {
-    const decoded = jwt.verify(authHeader.slice(7), JWT_SECRET) as JwtPayload && { jti?: string };
+    const decoded = jwt.verify(authHeader.slice(7), JWT_SECRET) as JwtPayload & { jti?: string };
     return decoded.jti ?? null;
   } catch {
     return null;

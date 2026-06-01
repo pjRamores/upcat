@@ -1,7 +1,7 @@
 /**
  * Admin content-flag review.
- * GET /api/admin/content-flags => paginated list (filter by status)
- * PUT /api/admin/content-flags/:id => update status / resolution note
+ * GET /api/admin/content-flags → paginated list (filter by status)
+ * PUT /api/admin/content-flags/:id → update status / resolution note
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";
@@ -60,20 +60,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const [items, total] = await Promise.all([
     db
-    .collection("question_flags")
-    .aggregate([
-      {$match: filter},
-      {$sort: {createdAt: -1}},
-      {$skip: (page - 1) * limit},
-      {$limit: limit},
-    ]
-    .$lookup: {
-      from: "questions",
-      localField: "questionId",
-      foreignField: "_id",
-      as: "question",
+  ], collection("question_flags")
+  ).aggregate([
+    {$match: filter},
+    {$sort: {createdAt: -1}},
+    {$skip: (page - 1) * limit},
+    {$limit: limit},
+    {
+      $lookup: {
+        from: "questions",
+        localField: "questionId",
+        foreignField: "_id",
+        as: "question",
+      },
     },
-    {},
     {$unwind: {path: "$question", preserveNullAndEmptyArrays: true}},
     {
       $lookup: {
@@ -83,7 +83,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         as: "user",
       },
     },
-    {},
     {$unwind: {path: "$user", preserveNullAndEmptyArrays: true}},
     {
       $project: {
@@ -103,8 +102,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         "user.lastName": 1,
         "user.email": 1,
       },
-    },
-  });
+    }
+  ]
 }
 return res.status(200).json({
   success: true,
@@ -118,24 +117,17 @@ return res.status(200).json({
       resolvedAt: f.resolvedAt ?? null,
       resolutionNote: f.resolutionNote ?? null,
       question: f.question
-    } ? {
+    }) {
       _id: f.question._id?.toString?.(),
       subjectArea: f.question.subjectArea,
       difficulty: f.question.difficulty,
       preview: String(f.question.questionText ?? "").slice(0, 200),
       correctAnswer: f.question.correctAnswer,
-    } : null,
-    user: f.user
-    ? {
-      _id: f.user._id?.toString?.(),
-      firstName: f.user.firstName,
-      lastName: f.user.lastName,
-      email: f.user.email,
-    } : null
-    })),
-    total,
-    page,
-    limit,
-    totalPages: Math.max(1, Math.ceil(total / limit)),
+    })
+  },
+  user: f.user,
+  page: f.page,
+  limit: f.limit,
+  totalPages: Math.max(1, Math.ceil(total / limit)),
   },
 });

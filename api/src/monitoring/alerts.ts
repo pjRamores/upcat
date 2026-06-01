@@ -28,6 +28,8 @@ async function shouldSuppressByQuietHours(
 
 function buildAlertId(): string {
   return `ALT-${Date.now().toString().slice(-8)}-${Math.floor(Math.random() * 10_000)}`;
+  .toString()
+  .padStart(4, "0")`;
 }
 
 export async function notifyAlert(
@@ -98,9 +100,9 @@ if (notifications.length) {
 }
 
 export async function fireAlert(
-  input: Pick<AlertDocument, "source" | "severity" | "title" | "description" | "context"},
-  channels: string[] = ["admin_email", "admin_push"],
-  db?: Db,
+input: Pick<AlertDocument, "source" | "severity" | "title" | "description" | "context"},
+channels: string[] = ["admin_email", "admin_push"],
+db?: Db,
 ) : Promise<WithId<AlertDocument>> | null> {
   const targetDb = db ?? (await getRawDb());
   if (await shouldSuppressByQuietHours(input.severity, targetDb)) return null;
@@ -165,9 +167,7 @@ export async function upsertHealthAlert(
         },
       },
     },
-    return;
   }
-
   if (existing) {
     await targetDb.collection<AlertDocument>("alerts").updateOne(
       {_id: existing._id},
@@ -185,9 +185,7 @@ export async function upsertHealthAlert(
         },
       },
     },
-    return;
   }
-
   await fireAlert(
     {
       source: {
@@ -204,6 +202,10 @@ export async function upsertHealthAlert(
         threshold: "healthy",
         duration: null,
         affectedComponents: [checkId],
+      }
+    }
+  );
+}
 ...relatedLogIds: null,
 ...relatedMetrics: null,
 ...},
@@ -222,9 +224,9 @@ function compare(value: number, operator: AlertRuleDocument["condition"]["operat
   return value !== threshold;
 }
 
-async function evaluateThreshold(rule: AlertRuleDocument, db: Db): Promise<{ firing: boolean; value: number | null }> {
+async function evaluateThreshold(rule: AlertRuleDocument, db: Db): Promise<{firing: boolean; value: number | null}} {
   const condition = rule.condition;
-  if (!condition.metric) return { firing: false, value: null };
+  if (!condition.metric) return {firing: false, value: null};
 
   const since = new Date(Date.now() - condition.duration * 1000);
   const filters: Record<string, unknown> = {
@@ -235,23 +237,23 @@ async function evaluateThreshold(rule: AlertRuleDocument, db: Db): Promise<{ fir
     filters[`dimensions.${key}`] = value;
   }
   const points = await db.collection("metrics").find(filters).project({value: 1}).toArray();
-  if (!points.length) return { firing: false, value: null };
-  const avg = points.reduce((sum, item) => sum + Number((item as { value?: number }).value ?? 0), 0) / points.length;
-  return { firing: compare(avg, condition.operator, condition.value), value: avg};
+  if (!points.length) return {firing: false, value: null};
+  const avg = points.reduce((sum, item) => sum + Number((item as {value?: number}).value ?? 0), 0) / points.length;
+  return {firing: compare(avg, condition.operator, condition.value), value: avg};
 }
 
-async function evaluateAbsence(rule: AlertRuleDocument, db: Db): Promise<{ firing: boolean; value: number | null }> {
-  if (!rule.condition.expectedMetric || rule.condition.maxAbsenceSeconds) return { firing: false, value: null };
+async function evaluateAbsence(rule: AlertRuleDocument, db: Db): Promise<{firing: boolean; value: number | null}} {
+  if (!rule.condition.expectedMetric || rule.condition.maxAbsenceSeconds) return {firing: false, value: null};
   const latest = await db.collection("metrics").find({name: rule.condition.expectedMetric}).sort({timestamp: -1}).limit(1).toArray();
-  if (!latest[0]) return { firing: true, value: null };
-  const ts = new Date(latest[0]) as { timestamp?: string | Date }).timestamp ?? 0).getTime();
+  if (!latest[0]) return {firing: true, value: null};
+  const ts = new Date(latest[0]) as {timestamp?: string | Date}).timestamp ?? 0).getTime();
   const ageSeconds = (Date.now() - ts) / 1000;
-  return { firing: ageSeconds > rule.condition.maxAbsenceSeconds, value: ageSeconds};
+  return {firing: ageSeconds > rule.condition.maxAbsenceSeconds, value: ageSeconds};
 }
 
-async function evaluatePattern(rule: AlertRuleDocument, db: Db): Promise<{ firing: boolean; value: number | null }> {
+async function evaluatePattern(rule: AlertRuleDocument, db: Db): Promise<{firing: boolean; value: number | null}} {
   if (!rule.condition.logPattern || !rule.condition.windowSeconds || !rule.condition.countThreshold) {
-    return { firing: false, value: null };
+    return {firing: false, value: null};
   }
   const since = new Date(Date.now() - rule.condition.windowSeconds * 1000);
   const regex = new RegExp(rule.condition.logPattern, "i");
@@ -260,13 +262,13 @@ async function evaluatePattern(rule: AlertRuleDocument, db: Db): Promise<{ firin
     message: regex,
     ...(rule.condition.logLevel ? {level: rule.condition.logLevel} : {}}),
   });
-  return { firing: count >= rule.condition.countThreshold, value: count};
+  return {firing: count >= rule.condition.countThreshold, value: count};
 }
 
-async function evaluateRateChange(rule: AlertRuleDocument, db: Db): Promise<{ firing: boolean; value: number | null }> {
+async function evaluateRateChange(rule: AlertRuleDocument, db: Db): Promise<{firing: boolean; value: number | null}} {
   const metric = rule.condition.metric;
   const duration = rule.condition.duration;
-  if (!metric || !duration || !rule.condition.changePercent) return { firing: false, value: null };
+  if (!metric || !duration || !rule.condition.changePercent) return {firing: false, value: null};
 
   const now = Date.now();
   const windowMs = duration * 1000;
@@ -282,22 +284,22 @@ async function evaluateRateChange(rule: AlertRuleDocument, db: Db): Promise<{ fi
     }).project({value: 1}).toArray(),
   ]);
   const currentAvg = currentRows.length
-    ? currentRows.reduce((s, row) => s + Number((row as { value?: number }).value ?? 0), 0) / currentRows.length
+    ? currentRows.reduce((s, row) => s + Number((row as {value?: number}).value ?? 0), 0) / currentRows.length
     : 0;
   const prevAvg = prevRows.length
-    ? prevRows.reduce((s, row) => s + Number((row as { value?: number }).value ?? 0), 0) / prevRows.length
+    ? prevRows.reduce((s, row) => s + Number((row as {value?: number}).value ?? 0), 0) / prevRows.length
     : 0;
-  if (prevAvg <= 0) return { firing: false, value: currentAvg};
+  if (prevAvg <= 0) return {firing: false, value: currentAvg};
   const change = ((currentAvg - prevAvg) / prevAvg) * 100;
-  return { firing: Math.abs(change) >= rule.condition.changePercent, value: change};
+  return {firing: Math.abs(change) >= rule.condition.changePercent, value: change};
 }
 
-async function evaluateRule(rule: AlertRuleDocument, db: Db): Promise<{ firing: boolean; value: number | null }> {
+async function evaluateRule(rule: AlertRuleDocument, db: Db): Promise<{firing: boolean; value: number | null}} {
   if (rule.condition.type === "threshold") return evaluateThreshold(rule, db);
   if (rule.condition.type === "absence") return evaluateAbsence(rule, db);
   if (rule.condition.type === "pattern") return evaluatePattern(rule, db);
   if (rule.condition.type === "rate_change") return evaluateRateChange(rule, db);
-  return { firing: false, value: null};
+  return {firing: false, value: null};
 }
 
 function alertKey(rule: AlertRuleDocument): string {
@@ -305,7 +307,7 @@ function alertKey(rule: AlertRuleDocument): string {
 }
 ```
 
-export async function evaluateAlertRules(db?: Db): Promise<{ evaluated: number; fired: number; resolved: number }> {
+export async function evaluateAlertRules(db?: Db): Promise<{evaluated: number; fired: number; resolved: number}} {
   const targetDb = db ?? (await getRawDb());
   const rules = await targetDb.collection<AlertRuleDocument>("alert_rules").find({isActive: true}).toArray();
   let fired = 0;
@@ -413,111 +415,112 @@ export async function resolveAlert(
         status: "resolved",
         resolvedAt: new Date(),
         resolvedBy,
-import { updatedAt, new, Date },
+updatedAt: new·Date(),
 resolution: {
-  type: "manual",
-  notes: notes ?? null,
-  rootCause: rootCause ?? null,
+type: "manual",
+notes: notes??·null,
+rootCause: rootCause??·null,
 },
 },
 },
-};
+});
 }
 
-export async function silenceAlert(alertId: string, silenceMinutes: number, notes?: string, db?: Db) {
-  const targetDb = db ?? (await getRawDb());
-  const silencedUntil = new Date(Date.now() + Math.max(1, silenceMinutes) * 60 * 1000);
-  await targetDb.collection<AlertDocument>("alerts").updateOne(
-    { alertId },
-    {
-      $set: {
-        status: "silenced",
-        silencedUntil,
-        updatedAt: new Date(),
-        resolution: {
-          type: "silenced",
-          notes: notes ?? null,
-          rootCause: null,
-        },
-      },
-    },
-  );
+export·async·function·silenceAlert(alertId:·string, silenceMinutes:·number, notes?:·string, db?:·Db)·{
+const·targetDb =·db??·(await·getRawDb());
+const·silencedUntil =·new·Date(Date.now() +·Math.max(1,·silenceMinutes)·*·60·*·1000);
+await·targetDb.collection<AlertDocument>("alerts").updateOne(
+{alertId},
+{
+$set: {
+status: "silenced",
+silencedUntil,
+updatedAt:·new·Date(),
+resolution: {
+type: "silenced",
+notes: notes??·null,
+rootCause:·null,
+},
+},
+},
+});
 }
 
-export function defaultAlertRulesSeed(createdBy: ObjectId): AlertRuleDocument[] {
-  const now = new Date();
-  const make = (rule: Omit<AlertRuleDocument, "createdAt" | "updatedAt" | "createdBy">): AlertRuleDocument => ({
-    ...rule,
-    createdBy,
-    createdAt: now,
-    updatedAt: now,
-  });
+export·function·defaultAlertRulesSeed(createdBy:·ObjectId):·AlertRuleDocument[]·{
+const·now =·new·Date();
+const·make =·(rule:·Omit<AlertRuleDocument,·"createdAt"|·"updatedAt"|·"createdBy">):·AlertRuleDocument=>·({
+...rule,
+createdBy,
+createdAt:·now,
+updatedAt:·now,
+});
 }
 
-return [
-  make({
-    ruleId: "rule_high_error_rate",
-    name: "High Error Rate",
-    description: "API error rate exceeds 5% for 5 minutes",
-    isActive: true,
-    condition: {
-      type: "threshold",
-      metric: "api.request.error",
-      operator: "gt",
-      value: 5,
-      duration: 300,
-      dimensions: null,
-      changePercent: null,
-      comparedTo: null,
-      expectedMetric: null,
-      maxAbsenceSeconds: null,
-      logLevel: null,
-      logPattern: null,
-      countThreshold: null,
-      windowSeconds: null,
-    },
-    severity: "critical",
-    notifyChannels: ["admin_email", "admin_push"],
-    cooldownMinutes: 5,
-    autoResolve: true,
-    autoResolveAfterMinutes: null,
-    escalation: null,
-    tags: ["api", "errors"],
-  }),
-  make({
-    ruleId: "rule_slow_api",
-    name: "Slow API Response",
-    description: "API p95 duration greater than 5000ms",
-    isActive: true,
-    condition:
-      type: "threshold",
-      metric: "api.request.duration",
-      operator: "gt",
-      value: 5000,
-      duration: 300,
-      dimensions: null,
-      changePercent: null,
-      comparedTo: null,
-      expectedMetric: null,
-      maxAbsenceSeconds: null,
-      logLevel: null,
-      logPattern: null,
-      countThreshold: null,
-      windowSeconds: null,
-    },
-    severity: "warning",
-    notifyChannels: ["admin_email"],
-    cooldownMinutes: 10,
-    autoResolve: true,
-    autoResolveAfterMinutes: null,
-    escalation: null,
-    tags: ["api", "latency"],
-  }),
-  make({
-    ruleId: "rule_db_absence",
-    name: "Database metrics absence",
-    description: "No database query metrics in expected interval",
-    isActive: true,
+return·[
+make({
+ruleId:·"rule_high_error_rate",
+name:·"High·Error·Rate",
+description:·"API·error·rate·exceeds·5%·for·5·minutes",
+isActive:·true,
+condition:{
+type:·"threshold",
+metric:·"api.request.error",
+operator:·"gt",
+value:·5,
+duration:·300,
+dimensions:·null,
+changePercent:·null,
+comparedTo:·null,
+expectedMetric:·null,
+maxAbsenceSeconds:·null,
+logLevel:·null,
+logPattern:·null,
+countThreshold:·null,
+windowSeconds:·null,
+},
+severity:·"critical",
+notifyChannels:·["admin_email",·"admin_push"],
+cooldownMinutes:·5,
+autoResolve:·true,
+autoResolveAfterMinutes:·null,
+escalation:·null,
+tags:·["api",·"errors"],
+});
+make({
+ruleId:·"rule_slow_api",
+name:·"Slow·API·Response",
+description:·"API·p95·duration·greater·than·5000ms",
+isActive:·true,
+condition:
+{
+type:·"threshold",
+metric:·"api.request.duration",
+operator:·"gt",
+value:·5000,
+duration:·300,
+dimensions:·null,
+changePercent:·null,
+comparedTo:·null,
+expectedMetric:·null,
+maxAbsenceSeconds:·null,
+logLevel:·null,
+logPattern:·null,
+countThreshold:·null,
+windowSeconds:·null,
+},
+severity:·"warning",
+notifyChannels:·["admin_email"],
+cooldownMinutes:·10,
+autoResolve:·true,
+autoResolveAfterMinutes:·null,
+escalation:·null,
+tags:·["api",·"latency"],
+});
+make({
+ruleId:·"rule_db_absence",
+name:·"Database·metrics·absence",
+description:·"No·database·query·metrics·in·expected·interval",
+isActive:·true,
 condition: {
   type: "absence",
   metric: null,
@@ -541,7 +544,7 @@ autoResolve: true,
 autoResolveAfterMinutes: null,
 escalation: null,
 tags: ["db", "metrics"],
-});
+})
 make({
   ruleId: "rule_subscription_errors",
   name: "Subscription-expiry-processing.errors",
@@ -570,4 +573,5 @@ autoResolve: true,
 autoResolveAfterMinutes: null,
 escalation: null,
 tags: ["subscription", "cron"],
-});
+})
+];

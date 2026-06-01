@@ -17,7 +17,7 @@ import {adminSupportApi} from "@/lib/supportApi";
 import {useToastStore} from "@/stores/toastStore";
 import Seo from "@/components/Seo";
 
-interface AdminUserLite extends Pick<User, "_id">|{"email"}|{"firstName"}|{"lastName"}|{"role"} {
+interface AdminUserLite extends Pick<User, "_id">| "email"| "firstName"| "lastName"| "role"> {
   createdAt?: string;
 }
 
@@ -118,11 +118,11 @@ export default function AdminMergeWizardPage() {
             ? "bg-emerald-100 text-emerald-800"
             : "bg-gray-100 text-gray-600"
         }`
-      )
+      }
     >
-    {i + 1}.{label}
-  </li>
-)
+      {i + 1}.{label}
+    </li>
+  )}
 </ol>
 
 {step === 1 && (
@@ -165,12 +165,12 @@ export default function AdminMergeWizardPage() {
           disabled={!secondaryQuery}
           className="btn-primary">
         >
-        Look up
-      </button>
-    </div>
-  </Card>
+          Look up
+        </button>
+      </div>
+    </Card>
   </>
-)
+)}}
 
 {step === 3 && primary && secondary && (
   <>
@@ -306,6 +306,9 @@ function UserSummary({
       ? "border-red-200 bg-red-50"
       : "border-emerald-200 bg-emerald-50"
       }`
+    )
+  );
+}
 <p className="text-xs·font-semibold·uppercase·tracking-wide·text-gray-500">
   {label}
 </p>

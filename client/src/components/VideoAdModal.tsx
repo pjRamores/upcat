@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {createPortal} from "react-dom";
 import type {VideoAdSettings, VideoAdTrigger} from "@upcat/shared";
-import {reportVideoImpression, resolveVideoTriggerSettings,} from "@hooks/useVideoInterstitial";
+import {reportVideoImpression, resolveVideoTriggerSettings,} from "@/hooks/useVideoInterstitial";
 
 interface VideoAdModalProps {
   open: boolean;
@@ -32,7 +32,7 @@ export default function VideoAdModal({
   testMode,
   onClose,
   ): VideoAdModalProps {
-    const videoRef = useRef<HTMLVideoElement>().null();
+    const videoRef = useRef<HTMLVideoElement> || null;
     const triggerSettings = resolveVideoTriggerSettings(config, trigger);
     const [watched, setWatched] = useState(0);
     const [canSkip, setCanSkip] = useState(false);
@@ -161,10 +161,11 @@ className="rounded·bg-primary-600·px-4·py-2·text-sm·font-medium·text-white
 Learn·more →
 </button>
 )</div>
-)</div>
+)
+
+</div>
 </div>,
 document.body,
-...
 );
 }
 

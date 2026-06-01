@@ -4,15 +4,16 @@ import {createPortal} from "react-dom";
 import {useAuthStore} from "@/stores/authStore";
 
 /* -------------------------------------------------------------------------
- * Top navigation bar
- * - Sticky, white/blur backdrop, subtle bottom border
- * - Active-link underline indicator
- * - Authenticated: avatar circle + dropdown menu (Dashboard / Stats /
- * - Settings / Logout)
- * - Unauthenticated: ghost Login + filled Sign Up
- * - Mobile: hamburger button opens a slide-in drawer from the right
- * - "Features" link appears only on the landing page
- * ------------------------------------------------------------------------- */
+
+* Top navigation bar
+* - Sticky, white/blur backdrop, subtle bottom border
+* - Active-link underline indicator
+* - Authenticated: avatar circle + dropdown menu (Dashboard / Stats /
+* - Settings / Logout)
+* - Unauthenticated: ghost Login + filled Sign Up
+* - Mobile: hamburger button opens a slide-in drawer from the right
+* - "Features" link appears only on the landing page
+* ------------------------------------------------------------------------- */
 
 export default function Navbar() {
   const {isAuthenticated, logout, user, isLoading, fetchMe} = useAuthStore();
@@ -31,17 +32,11 @@ export default function Navbar() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (isAuthenticated && !user && !isLoading) {
-      void fetchMe();
-    }
-  }, [fetchMe, isAuthenticated, isLoading, user]);
-
-  const handleLogout = () => {
     setMenuOpen(false);
     setDrawerOpen(false);
     logout();
     navigate("/");
-  };
+  });
 
   const goToFeatures = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -182,57 +177,58 @@ return (
       <div
         role="menu"
         className="animate-fade-in absolute right-0 mt-2 w-60 origin-top-right overflow-hidden rounded-x1 border border-gray-200 bg-white shadow-x1"
-        aria-hidden
-      >
-        <div className="border-b border-gray-100 px-4 py-3">
-          <p className="text-sm font-semibold text-gray-900">
-            {user?.firstName} {user?.lastName}
-          </p>
-          <p className="truncate text-xs text-gray-500">{user?.email}</p>
-        </div>
-        <div className="py-1">
-          {!isAdmin && (
-            <>
-              <MenuLink to="/dashboard" icon="☰">
-                Dashboard
-              </MenuLink>
-              <MenuLink to="/profile" icon="☰">
-                Profile & XP
-              </MenuLink>
-              <MenuLink to="/leaderboard" icon="☰">
-                Leaderboard
-              </MenuLink>
-              <MenuLink to="/practice" icon="☰">
-                Review
-              </MenuLink>
-              <MenuLink to="/practice/stats" icon="☰">
-                Review Stats
-              </MenuLink>
-              <MenuLink to="/stats" icon="☰">
-                My Statistics
-              </MenuLink>
-              <MenuLink to="/settings" icon="☰">
-                Settings
-              </MenuLink>
-              <MenuLink to="/help" icon="☰">
-                Help Center
-              </MenuLink>
-            </>
-          )}
-          {isAdmin && (
-            <Link
-              to="/admin"
+        >
+          <div className="border-b border-gray-100 px-4 py-3">
+            <p className="text-sm font-semibold text-gray-900">
+              {user?.firstName} {user?.lastName}
+            </p>
+            <p className="truncate text-xs text-gray-500">{user?.email}</p>
+          </div>
+          <div className="py-1">
+            {!isAdmin && (
+              <>
+                <MenuLink to="/dashboard" icon="☰">
+                  Dashboard
+                </MenuLink>
+                <MenuLink to="/profile" icon="☰">
+                  Profile & XP
+                </MenuLink>
+                <MenuLink to="/leaderboard" icon="☰">
+                  Leaderboard
+                </MenuLink>
+                <MenuLink to="/practice" icon="☰">
+                  Review
+                </MenuLink>
+                <MenuLink to="/practice/stats" icon="☰">
+                  Review Stats
+                </MenuLink>
+                <MenuLink to="/stats" icon="☰">
+                  My Statistics
+                </MenuLink>
+                <MenuLink to="/settings" icon="☰">
+                  Settings
+                </MenuLink>
+                <MenuLink to="/help" icon="☰">
+                  Help Center
+                </MenuLink>
+              </>
+            )}
+            {isAdmin && (
+              <Link
+                to="/admin"
+                role="menuitem"
+                className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50"
+                >
+                  "focus:bg-primary-50 focus:outline-none"
+                >
+                  <span aria-hidden>❤</span> Admin Panel
+                </Link>
+            )}
+          </div>
+          <div className="border-t border-gray-100 py-1">
+            <button
+              type="button"
               role="menuitem"
-              className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50"
-              aria-hidden>
-                <span aria-hidden>❤</span> Admin Panel
-              </Link>
-          )}
-        </div>
-        <div className="border-t border-gray-100 py-1">
-          <button
-            type="button"
-            role="menuitem"
 onClick={onLogout}
 className="flex·w-full·items-center·gap-3·px-4·py-2·text-left·text-sm·text-primary-600·hover:bg-primary-50·focus:bg-primary-50·focus:outline-none"
 >
@@ -249,7 +245,7 @@ function MenuLink({
   to,
   icon,
   children,
-}): {
+}: {
   to: string;
   icon: string;
   children: React.ReactNode;
@@ -265,7 +261,7 @@ function MenuLink({
     );
 }
 
-/* --- Mobile slide-in drawer ----------------------------------------------------------- */
+/* --- Mobile slide-in drawer --------------------------------------------------- */
 
 function MobileDrawer({
   open,
@@ -277,7 +273,7 @@ function MobileDrawer({
   isLanding,
   onFeaturesClick,
   onLogout,
-}): {
+}: {
   open: boolean;
   onClose: () => void;
   isAuthenticated: boolean;
@@ -329,14 +325,13 @@ function MobileDrawer({
           type="button"
           onClick={onClose}
           aria-label="Close·menu"
-          className="inline-flex·h-10·w-10·items-center·justify-center·rounded-lg·text-gray-500·hover:bg-gray-100·focus:outline-none·focus:ring-2·"+
-          "focus:ring-primary-500"
-        >
-          <svg viewBox="0·0·24·24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5·w-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6·18·18·6M6·6112·12"/>
-          </svg>
+          className="inline-flex·h-10·w-10·items-center·justify-center·rounded-lg·text-gray-500·hover:bg-gray-100·focus:outline-none·focus:ring-2·"
+          focus:ring-primary-500>
         </button>
-      </div>
+        <svg viewBox="0·0·24·24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5·w-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6·18·18·6M6·6112·12"/>
+        </svg>
+      </button>
     </div>
   );
 }
@@ -485,7 +480,7 @@ function DrawerLink({
 );
 }
 
-/* —— Branding·icon —— */
+/*——Branding·icon——*/
 function CapIcon({className = "h-6·w-6"}: {className?: string}) {
   return (
     <svg

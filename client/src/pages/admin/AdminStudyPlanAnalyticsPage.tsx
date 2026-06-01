@@ -14,9 +14,9 @@ export default function AdminStudyPlanAnalyticsPage() {
       {!analytics ? <p className="text-sm text-slate-500">Loading analytics...</p> : null}
       {analytics && (
         <div className="grid gap-4 sm:grid-cols-3">
-          <Tile label="Active Plans" value={analytics.totalActivePlans ?? 0}/>
-          <Tile label="Completed Plans" value={analytics.totalCompletedPlans ?? 0}/>
-          <Tile label="Completion Rate" value={`${analytics.averageCompletionRate ?? 0}%`}/>
+          <Tile label="Active Plans" value={analytics.totalActivePlans ?? 0}}/>
+          <Tile label="Completed Plans" value={analytics.totalCompletedPlans ?? 0}}/>
+          <Tile label="Completion Rate" value={`${analytics.averageCompletionRate ?? 0}%`}}/>
         </div>
       )}
     </div>

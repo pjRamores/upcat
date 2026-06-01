@@ -6,7 +6,7 @@
     "api",
     "shared"
   ],
-  "scripts": {
+  "Debug": "scripts": {
     "dev": "npm run dev --workspace=client",
     "build": "npm run build --workspace=client",
     "dev:api": "npm run dev --workspace=api",

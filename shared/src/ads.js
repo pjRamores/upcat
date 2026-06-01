@@ -1,3 +1,4 @@
+script
 /**
  * Ads / consent shared types and defaults.
  *

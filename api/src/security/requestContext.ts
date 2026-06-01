@@ -58,7 +58,7 @@ export function endpointKey(method: string, url: string): string {
 export function matchEndpointKey(
   key: string,
   configured: Readonly<Record<string, unknown>>,
-): string | null {
+) : string | null {
   if (key.in_configured) return key;
   // Try progressively-shorter prefixes ("POST /api/exam/abc/answer" → "POST /api/exam/answer" already covered;
   // fall back to "POST /api/exam" if no exact match).

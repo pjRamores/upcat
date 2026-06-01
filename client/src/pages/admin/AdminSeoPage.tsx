@@ -27,17 +27,17 @@ export default function AdminSeoPage() {
               ? "border-primary-600 text-primary-700"
               : "border-transparent text-slate-500 hover:text-slate-700"
             }`}
-          />
-        )}
-        {t}
-      </button>
-    </nav>
+          >
+            {t}
+          </button>
+        ))}
+      </nav>
 
-    {tab === "overrides" && <OverridesPanel/>}
-    {tab === "redirects" && <RedirectsPanel/>}
-    {tab === "sitemap" && <SitemapPanel/>}
-  </div>
-);
+      {tab === "overrides" && <OverridesPanel/>}
+      {tab === "redirects" && <RedirectsPanel/>}
+      {tab === "sitemap" && <SitemapPanel/>}
+    </div>
+  );
 }
 
 /* --- Overrides --- */
@@ -46,7 +46,7 @@ export default function AdminSeoPage() {
 function OverridesPanel() {
   const addToast = useToastStore((s) => s.addToast);
   const [rows, setRows] = useState<SeoOverridePageRow[] | null>(null);
-  const [editing, setEditing] = useState<SeoOverridePageRow | null>(null);
+  const [editing, setEditing] = useState<SeoOverridePageRow[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [publishing, setPublishing] = useState(false);
   const [lastPublished, setLastPublished] = useState<string | null>(null);
@@ -105,7 +105,7 @@ function OverridesPanel() {
       addToast("error", "Admin session expired. Please sign in again.");
       return;
     }
-  }
+  };
 }
 }
 addToast("error", "Failed to publish SEO overrides.");
@@ -144,7 +144,7 @@ className="rounded bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover
 <p className="mt-2 text-xs text-amber-700">
 <strong>Next step:</strong> Save the downloaded JSON to{"."
 <code className="rounded bg-white px-1 py-0.5">client/public/data/seo-overrides.json</code>
-}, then rebuild and redeploy.
+, then rebuild and redeploy.
 </p>
 </section>
 
@@ -201,10 +201,13 @@ Reset
 )}}
 </td>
 </tr>
-))}
 </tbody>
 </table>
 </div>
+```
+
+{editing && (
+<OverrideEditor
 row={editing}
 onClose={()=>setEditing(null)}
 onSaved={async()=>{
@@ -212,16 +215,16 @@ onSaved={async()=>{
   await load();
 }}
 />
-)</div>
-);
 }
+```
 
+```typescript
 function OverrideEditor({
   row,
-  onClose: () => void,
-  onSaved: () => void
+  onClose={()=>void}
+  onSaved={()=>void}
 }) {
-  const addToast = useToastStore((s) => s.addToast);
+  const addToast = useToastStore((s)=>s.addToast);
   const initial = row.override??({{} as Partial<SeoOverride>});
   const [title, setTitle] = useState(initial.title??(""));
   const [description, setDescription] = useState(initial.description??(""));
@@ -230,18 +233,18 @@ function OverrideEditor({
   const [noIndex, setNoIndex] = useState(Boolean(initial.noIndex));
   const [saving, setSaving] = useState(false);
 
-  const save = async() => {
+  const save = async()=>{
     setSaving(true);
     try {
       await adminApi.upsertSeoOverride({
         path: row.path,
-        title: title.trim() || null,
-        description: description.trim() || null,
+        title: title.trim()||null,
+        description: description.trim()||null,
         keywords: keywords
       }, split(","))
-      map((k) => k.trim())
+      map((k)=>k.trim())
       .filter(Boolean),
-      ogImage: ogImage.trim() || null,
+      ogImage: ogImage.trim()||null,
       noIndex,
     });
     addToast("success", "Override saved.");
@@ -253,57 +256,57 @@ function OverrideEditor({
       setSaving(false);
     }
   };
+}
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
-      <div className="w-full max-w-2x1 space-y-4 rounded-xl bg-white p-6 shadow-xl">
-        <div>
-          <h3 className="text-lg font-bold">SEO override</h3>
-          <p className="font-mono text-xs text-slate-500">{row.path}</p>
-        </div>
-        <div className="rounded-md border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600">
-          <p>
-            <strong>Default title:</strong> {row.defaults.title}
-          </p>
-          <p className="mt-1">
-            <strong>Default description:</strong> {row.defaults.description}
-          </p>
-        </div>
-        <Field label="Title (leave blank to inherit default)">
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            maxLength={200}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-          />
-        </Field>
-        <Field label="Description">
-          <textarea
-            rows={3}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            maxLength={500}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-          />
-        </Field>
-        <Field label="Keywords (comma-separated)">
-          <input
-            type="text"
-            value={keywords}
-            onChange={(e) => setKeywords(e.target.value)}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-          />
-        </Field>
-        <Field label="Open Graph image URL">
-          <input
-            type="url"
-            value={ogImage}
-            onChange={(e) => setOgImage(e.target.value)}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-          />
-        </Field>
-        <label className="flex items-center gap-2 text-sm">
+return (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+    <div>
+      <h3 className="text-lg font-bold">SEO override</h3>
+      <p className="font-mono text-xs text-slate-500">{row.path}</p>
+    </div>
+    <div className="rounded-md border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600">
+      <p>
+        <strong>Default title:</strong> {row.defaults.title}
+      </p>
+      <p className="mt-1">
+        <strong>Default description:</strong> {row.defaults.description}
+      </p>
+    </div>
+    <Field label="Title (leave blank to inherit default)">
+      <input
+        type="text"
+        value={title}
+        onChange={(e)=>setTitle(e.target.value)}
+        maxLength={200}
+        className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+      />
+    </Field>
+    <Field label="Description">
+      <textarea
+        rows={3}
+        value={description}
+        onChange={(e)=>setDescription(e.target.value)}
+        maxLength={500}
+        className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+      />
+    </Field>
+    <Field label="Keywords (comma-separated)">
+      <input
+        type="text"
+        value={keywords}
+        onChange={(e)=>setKeywords(e.target.value)}
+        className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+      />
+    </Field>
+    <Field label="Open Graph image URL">
+      <input
+        type="url"
+        value={ogImage}
+        onChange={(e)=>setOgImage(e.target.value)}
+        className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+      />
+    </Field>
+    <label className="flex items-center gap-2 text-sm">
 <input type="checkbox" checked={noIndex} onChange={(e) => setNoIndex(e.target.checked)} />
 <span>Hide from search engines (noindex) and from sitemap</span>
 </label>
@@ -475,24 +478,24 @@ className="rounded-md·bg-primary-600·px-4·py-1.5·text-sm·font-semibold·tex
 <tbody>
 {items.length === 0 && (
 <tr>
-<td·colSpan={5}·className="px-3·py-6·text-center·text-sm·text-slate-500"}
+<td·colSpan={5}·className="px-3·py-6·text-center·text-sm·text-slate-500">
 No·redirects·yet.
 </td>
 </tr>
 )}}
 {items.map((r) => (
-<tr·key={r._id}·className="border-t·border-slate-100"}
+<tr·key={r._id}·className="border-t·border-slate-100">
 <td·className="px-3·py-2·font-mono·text-xs">{r.source}</td>
 <td·className="px-3·py-2·font-mono·text-xs">{r.destination}</td>
 <td·className="px-3·py-2">{r.type}</td>
-<td·className="px-3·py-2"}
+<td·className="px-3·py-2">
 {r.isActive ? (
 <span
-className="rounded·bg-emerald-100·px-2·py-0.5·text-xs·font-semibold·text-emerald-800"}
+className="rounded·bg-emerald-100·px-2·py-0.5·text-xs·font-semibold·text-emerald-800">
 on
 </span>
 ) : (
-<span·className="rounded·bg-slate-200·px-2·py-0.5·text-xs·text-slate-600"}
+<span·className="rounded·bg-slate-200·px-2·py-0.5·text-xs·text-slate-600">
 off
 </span>
 )}}
@@ -512,9 +515,11 @@ isActive: r.isActive,
 className="rounded-md·border·border-slate-300·px-2·py-1·text-xs·font-medium·hover:bg-slate-50"
 >
 Edit
+/* --- Sitemap status --------------------------------------------------- */
+
 function SitemapPanel() {
   const addToast = useToastStore((s) => s.addToast);
-  const [status, setStatus] = useState<SitemapStatus|null>(null);
+  const [status, setStatus] = useState<SitemapStatus|null>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -565,7 +570,7 @@ function SitemapPanel() {
     return (
       <div className="rounded-md border border-slate-200 p-3">
         <dt className="text-xs font-medium text-slate-500">{label}</dt>
-        <dd className="mt-1 text-sm font-semibold text-slate-800">{value}</dd>
+        <dd className="mt-1 text-sm font-sembold text-slate-800">{value}</dd>
       </div>
     );
   }

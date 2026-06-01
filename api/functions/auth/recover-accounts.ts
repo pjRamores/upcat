@@ -31,16 +31,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   json({ success: false, error: "Recovery token is invalid or expired." });
 }
 
-const { action, newPassword, confirmNewPassword } = (req.body ?? {}).as {
+const { action, newPassword, confirmNewPassword } = (req.body ?? { }) as {
   action?: "reset_password" | "set_password";
   newPassword?: string;
   confirmNewPassword?: string;
 };
-
 if (action !== "reset_password" && action !== "set_password") {
   return res.status(400).json({ success: false, error: "Invalid action." });
 }
-
 if (!newPassword || !confirmNewPassword || newPassword !== confirmNewPassword) {
   return res
   status(400)

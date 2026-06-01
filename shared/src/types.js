@@ -1,3 +1,4 @@
+script
 export const DEFAULT_PUSH_PREFERENCES = {
   daily_reminder: true,
   streak_alert: true,

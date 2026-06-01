@@ -72,19 +72,20 @@ return (
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={(event) => {
-                if (event.key === "Enter") && query.trim()){
-                  navigate(`/help/search?q=${encodeURIComponent(query.trim())}`);
+                if (event.key === "Enter" && query.trim()) {
+                  navigate('/help/search?q=${encodeURIComponent(query.trim())}');
                 }
               }}
             }
             placeholder="Search for help..."
-            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2">
+            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 "+
               "focus:ring-indigo-100"
             />
             <button
               type="button"
-              onClick={() => navigate(`/help/search?q=${encodeURIComponent(query.trim())}`)}
-              className="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700">
+              onClick={() => navigate('/help/search?q=${encodeURIComponent(query.trim())}')}
+              className="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
+            >
               Search
             </button>
           </div>
@@ -107,12 +108,12 @@ return (
 }
 <section className="mt-8">
   <h2 className="text-xl font-semibold text-slate-900">Categories</h2>
-  <div className="mt-4 grid-gap-3 sm:grid-cols-2 lg:grid-cols-4">
+  <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
     {categories.map((category) => (
       <Link
         key={category.category}
         to={`/help/category/${category.category}`}
-        className="rounded-xl border-border-slate-200 bg-white p-4 shadow-sm transition-hover:-translate-y-0.5 hover:shadow"
+        className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-hover:-translate-y-0.5 hover:shadow"
       >
         <p className="text-2xl">{category.icon}</p>
         <p className="mt-2 font-semibold text-slate-900">{category.name}</p>
@@ -122,13 +123,13 @@ return (
   </div>
 </section>
 
-<section className="mt-8 grid-gap-6 md:grid-cols-2">
+<section className="mt-8 grid gap-6 md:grid-cols-2">
   <div>
     <h3 className="text-lg font-semibold text-slate-900">Popular Articles</h3>
     <div className="mt-3 space-y-2">
       {popular.map((article) => (
         <Link key={article.slug} to={`/help/article/${article.slug}`}
-        className="block rounded-lg border-border-slate-200 bg-white px-4 py-3 hover:bg-slate-50">
+        className="block rounded-lg border border-slate-200 bg-white px-4 py-3 hover:bg-slate-50">
           <p className="text-sm font-medium text-slate-900">{article.title}</p>
           {article.subtitle && <p className="text-xs text-slate-600">{article.subtitle}</p>}
         </Link>
@@ -141,13 +142,13 @@ return (
     <div className="mt-3 space-y-2">
       {quickLinks.map((link) => (
         <Link key={link.slug} to={`/help/article/${link.slug}`}
-        className="block rounded-lg border-border-slate-200 bg-white px-4 py-3 text-sm font-medium text-indigo-700 hover:bg-indigo-50">
+        className="block rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-indigo-700 hover:bg-indigo-50">
           {link.title}
         </Link>
       ))}
     </div>
 
-    <div className="mt-4 rounded-xl border-border-slate-200 bg-white p-4">
+    <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
       <p className="text-sm font-medium text-slate-900">Need a refresher?</p>
       <p className="mt-1 text-xs text-slate-600">Replay onboarding tours from Settings → Help & Guidance.</p>
     </div>

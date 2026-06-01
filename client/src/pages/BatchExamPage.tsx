@@ -204,6 +204,7 @@ useEffect(() => {
   // effect fires before the state update from loadBatchRuntime takes effect.
   if (hydratedFromPersistedRuntimeRef.current) return;
   if (subjectBatches.length === 0 || Object.keys(spentByBatch).length > 0) return;
+}
 const derivedSpent = deriveSpentByBatchFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds);
 if (Object.keys(derivedSpent).length === 0) return;
 
@@ -416,22 +417,22 @@ const timeoutSubjectLabel = timeoutSubject
 
 return (
 <div className="mx-auto max-w-7xl px-4 py-8">
-<Seo title={`Mock Exam ${currentSubjectName}`} noindex/>
+<Seo title={`Mock Exam · ${currentSubjectName}`} noindex/>
 
 {submitBlocking && (
-<div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
-<div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4 shadow-xl">
-<Spinner className="h-5 w-5"/>
-<span className="text-sm font-semibold text-slate-800">Submitting exam...</span>
+<div className="fixed·inset-0·z-[80]·flex·items-center·justify-center·bg-slate-900/45·p-4·backdrop-blur-sm">
+<div className="flex·items-center·gap-3·rounded-xl·bg-white·px-5·py-4·shadow-xl">
+<Spinner className="h-5·w-5"/>
+<span className="text-sm·font-semibold·text-slate-800">Submitting exam...</span>
 </div>
 </div>
 )}
 
 {showTimeoutDialog && (
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-<div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-<h2 className="text-lg font-semibold text-slate-900">Time is up</h2>
-<p className="mt-2 text-sm text-slate-600">
+<div className="fixed·inset-0·z-50·flex·items-center·justify-center·bg-black/40·p-4">
+<div className="w-full·max-w-md·rounded-xl·bg-white·p-6·shadow-xl">
+<h2 className="text-lg·font-semibold·text-slate-900">Time is up</h2>
+<p className="mt-2·text-sm·text-slate-600">
 {timeoutTargetBatch !== null
 ? `The allotted time for ${timeoutSubjectLabel} has ended.`
 : "The allotted time for this subject has ended."}
@@ -446,7 +447,7 @@ void doSubmit();
 moveToNextSubject();
 }}
 }}}
-className="mt-5 w-full rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700"
+className="mt-5·w-full·rounded-md·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700"
 >
 OK
 </button>
@@ -455,22 +456,22 @@ OK
 )}
 
 {confirmProceed && nextBatch && (
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-<div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-<h2 className="text-lg font-semibold text-slate-900">
+<div className="fixed·inset-0·z-50·flex·items-center·justify-center·bg-black/40·p-4">
+<div className="w-full·max-w-md·rounded-xl·bg-white·p-6·shadow-xl">
+<h2 className="text-lg·font-semibold·text-slate-900">
 Proceed to {SUBJECT_META[nextBatch.subject]?.label}?
 </h2>
-<p className="mt-2 text-sm text-slate-600">
+<p className="mt-2·text-sm·text-slate-600">
 You are about to move on to the next subject. Once you proceed, you{"."
 <strong>cannot go back</strong> to{"."}
 <strong>{currentSubjectName}</strong>. The timer will reset to the
 allotted time for {SUBJECT_META[nextBatch.subject]?.label}.
 </p>
-<div className="mt-5 flex gap-3">
+<div className="mt-5·flex·gap-3">
 <button
 type="button"
 onClick={() => setConfirmProceed(false)}
-className="flex-1 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+className="flex-1·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50"
 >
 Stay here
 </button>
@@ -479,8 +480,8 @@ type="button"
 onClick={() => {
 setConfirmProceed(false);
 moveToNextSubject();
-}}
-className="flex-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-primary-700"
+}}}
+className="flex-1·rounded-md·bg-primary-600·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-primary-700"
 >
 Proceed
 </button>
@@ -489,18 +490,18 @@ Proceed
 )}
 
 {confirmSubmit && (
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-<div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-<h2 className="text-lg font-semibold text-slate-900">Submit exam now?</h2>
-<p className="mt-2 text-sm text-slate-600">
+<div className="fixed·inset-0·z-50·flex·items-center·justify-center·bg-black/40·p-4">
+<div className="w-full·max-w-md·rounded-xl·bg-white·p-6·shadow-xl">
+<h2 className="text-lg·font-semibold·text-slate-900">Submit exam now?</h2>
+<p className="mt-2·text-sm·text-slate-600">
 You can submit even if some questions or subjects are unfinished.
 </p>
-<div className="mt-5 flex gap-3">
+<div className="mt-5·flex·gap-3">
 <button
 type="button"
 onClick={() => setConfirmSubmit(false)}
 disabled={submitting || submitBlocking}
-className="flex-1 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+className="flex-1·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50"
 >
 Cancel
 </button>
@@ -610,93 +611,94 @@ title={flagged ? `Question ${positionInBatch + 1} - marked for review` : `Questi
 <span>
 className="absolute·right-1·top-1·flex·h-3.5·w-3.5·items-center·justify-center·rounded-full·bg-amber-400"}
 </span>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0·0·24·24·fill="white"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
 className="h-2.5·w-2.5">
 <path
-  d="M17.593·3.322c1.1.128·1.907·1.077·1.907·2.185V21L12·17.25·4.5·21V5.507c0-1.108.806-2.057·1.907-2.185a48.507·48.507·0·0·1·11.186·0Z"/>
+d="M17.593·3.322c1.1.128·1.907·1.077·1.907·2.185V21L12·17.25·4.5·21V5.507c0-1.108.806-2.057·1.907-2.185a48.507·48.507·0·0·1·11.186·0Z"/>
 </svg>
 </span>
-```
+</div>
+}}}
+</div>
+</div>
 
-```html
 <div className="mt-3·flex·flex-wrap·gap-x-3·gap-y-1·text-[11px]·text-slate-500">
-  <span className="flex·items-center·gap-1"><span
-    className="inline-block·h-3·w-3·rounded-sm·bg-primary-600"/>Current</span>
-  <span className="flex·items-center·gap-1"><span
-    className="inline-block·h-3·w-3·rounded-sm·bg-emerald-100·ring-1·ring-emerald-300"/>Answered</span>
-  <span className="flex·items-center·gap-1"><span
-    className="inline-block·h-3·w-3·rounded-sm·bg-sky-100·ring-1·ring-sky-300"/>Visited</span>
-  <span className="flex·items-center·gap-1"><span
-    className="inline-block·h-3·w-3·rounded-sm·bg-slate-100·ring-1·ring-slate-300"/>Not·visited</span>
-  <span className="flex·items-center·gap-1"><span
-    className="inline-block·h-3·w-3·rounded-full·bg-amber-400"/>For·review</span>
+<span className="flex·items-center·gap-1"><span
+className="inline-block·h-3·w-3·rounded-sm·bg-primary-600"/>Current</span>
+<span className="flex·items-center·gap-1"><span
+className="inline-block·h-3·w-3·rounded-sm·bg-emerald-100·ring-1·ring-emerald-300"/>Answered</span>
+<span className="flex·items-center·gap-1"><span
+className="inline-block·h-3·w-3·rounded-sm·bg-sky-100·ring-1·ring-sky-300"/>Visited</span>
+<span className="flex·items-center·gap-1"><span
+className="inline-block·h-3·w-3·rounded-sm·bg-slate-100·ring-1·ring-slate-300"/>Not·visited</span>
+<span className="flex·items-center·gap-1"><span
+className="inline-block·h-3·w-3·rounded-full·bg-amber-400"/>For·review</span>
 </div>
 
 <div className="mt-4·space-y-2">
-  <div className="grid·grid-cols-2·gap-2">
-    <button
-      type="button"
-      onClick={goPrevInSubject}
-      disabled={!canGoPrevInSubject||isPaused}
-      className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
-      disabled:cursor-not-allowed·disabled:opacity-50"
-    >
-      Previous
-    </button>
-    <button
-      type="button"
-      onClick={goNextInSubject}
-      disabled={!canGoNextInSubject||isPaused}
-      className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
-      disabled:cursor-not-allowed·disabled:opacity-50"
-    >
-      Next
-    </button>
-  </div>
+<div className="grid·grid-cols-2·gap-2">
+<button
+type="button"
+onClick={goPrevInSubject}
+disabled={!canGoPrevInSubject||isPaused}
+className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
+disabled:cursor-not-allowed·disabled:opacity-50"
+>
+Previous
+</button>
+<button
+type="button"
+onClick={goNextInSubject}
+disabled={!canGoNextInSubject||isPaused}
+className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
+disabled:cursor-not-allowed·disabled:opacity-50"
+>
+Next
+</button>
+</div>
 
-  {!isPaused ? (
-    <button
-      type="button"
-      onClick={() => void.handlePause()}
-      disabled={pauseInFlight}
-      className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
-      disabled:cursor-not-allowed·disabled:opacity-50"
-    >
-      Pause
-    </button>
-  ) : (
-    <button
-      type="button"
-      onClick={() => void.handleResume()}
-      disabled={pauseInFlight}
-      className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
-      disabled:cursor-not-allowed·disabled:opacity-50"
-    >
-      Resume
-    </button>
-  )}
+{!isPaused?(
+<button
+type="button"
+onClick={() => void·handlePause()}
+disabled={pauseInFlight}
+className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
+disabled:cursor-not-allowed·disabled:opacity-50"
+>
+Pause
+</button>
+) : (
+<button
+type="button"
+onClick={() => void·handleResume()}
+disabled={pauseInFlight}
+className="w-full·rounded-md·border·border-slate-300·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50·+
+disabled:cursor-not-allowed·disabled:opacity-50"
+>
+Resume
+</button>
+) }
 
-  <button
-    type="button"
-    onClick={() => setConfirmProceed(true)}
-    disabled={isPaused}
-    className="w-full·rounded-md·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:cursor-not-allowed·+
-      disabled:opacity-50"
-    >
-      Proceed to {SUBJECT_META[nextBatch?.subject??.currentBatch.subject]?.label}
-    </button>
-  )}
+<button
+type="button"
+onClick={() => setConfirmProceed(true)}
+disabled={isPaused}
+className="w-full·rounded-md·bg-primary-600·px-4·py-2·text-sm·font-medium·text-white·hover:bg-primary-700·disabled:cursor-not-allowed·+
+disabled:opacity-50"
+>
+Proceed to {SUBJECT_META[nextBatch?.subject??·currentBatch.subject]?.label}
+</button>
+)
 
-  <button
-    type="button"
-    onClick={() => setConfirmSubmit(true)}
-    disabled={submitting||submitBlocking||isPaused}
-    className="w-full·rounded-md·bg-emerald-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-emerald-700·disabled:cursor-not-allowed·+
-      disabled:opacity-50"
-    >
-      {submitting||submitBlocking?."Submitting..."::"Submit·Now"}
-    </button>
-  </div>
+<button
+type="button"
+onClick={() => setConfirmSubmit(true)}
+disabled={submitting||submitBlocking||isPaused}
+className="w-full·rounded-md·bg-emerald-600·px-4·py-2·text-sm·font-medium·text-white·hover:bg-emerald-700·disabled:cursor-not-allowed·+
+disabled:opacity-50"
+>
+{submitting||submitBlocking?·"Submitting..."::"Submit·Now"}
+</button>
 </div>
 <p>Overall exam time: {Math.max(0, Math.round(timeLimit))}·min</p>
 <p>Started: {startedAt ? "Yes" : "No"}</p>
@@ -725,9 +727,9 @@ function·QuestionCard({
   onSelectAnswer:·(letter:·AnswerLetter) =>·void;
   onToggleFlag:() =>·void;
   reviewDisabled:·boolean;
-}) {
+}){
   const·choices = question.choices ?? [];
-  return (
+  return(
     <div>
       <div·className="mb-2·flex·items-start·justify-between">
         <p·className="text-xs·font-medium·uppercase·tracking-wide·text-slate-500">
@@ -743,14 +745,14 @@ function·QuestionCard({
           }`}
         >
           {state.flagged ? (
-            <svg·xmlns="http://www.w3.org/2000/svg"·viewBox="0·0·24·24"·fill="currentColor"
-            ·className="h-5·w-5">
+            <svg·xmlns="http://www.w3.org/2000/svg" viewBox="0·0·24·24" fill="currentColor"
+            className="h-5·w-5">
               <path
                 d="M17.593·3.322c1.1.128·1.907·1.077·1.907·2.185V21L12·17.25·4.5·21V5.507c0-1.108.806-2.057·1.907-2.185a48.507·48.507·0·0·1·11.186·0z"/>
             </svg>
           ) : (
-            <svg·xmlns="http://www.w3.org/2000/svg"·fill="none"·viewBox="0·0·24·24"·strokeWidth={1.5}
-            ·stroke="currentColor"·className="h-5·w-5">
+            <svg·xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0·0·24·24" strokeWidth={1.5}
+            stroke="currentColor" className="h-5·w-5">
               <path·strokeLinecap="round"·strokeLinejoin="round"
                 d="M17.593·3.322c1.1.128·1.907·1.077·1.907·2.185V21L12·17.25·4.5·21V5.507c0-1.108.806-2.057·1.907-2.185a48.507·48.507·0·0·1·11.186·0z"/>
             </svg>
@@ -760,47 +762,39 @@ function·QuestionCard({
       <p·className="mb-4·whitespace-pre-wrap·text-base·font-medium·text-slate-900">
         <MathText>{question.questionText}</MathText>
       </p>
-
-      {question.passage ? (
-        <details·className="mb-4·rounded-md·border·border-slate-200·bg-slate-50·p-3·text-sm">
-          <summary·className="cursor-pointer·font-medium·text-slate-700">
-            Passage:{question.passage.title}
-          </summary>
-          <p·className="mt-2·whitespace-pre-wrap·text-slate-700">{question.passage.content}</p>
-        </details>
-      ) : null}
-
-      <div·className="space-y-2">
-        {[["A", "B", "C", "D"]·as·const)·map((label) => {
-          const·found = choices.find((c) => c.label === label);
-          const·text = found?.text?? "";
-          const·selected = state.answer === label;
-          return (
-            <button
-              key={label}
-              type="button"
-              onClick={() => onSelectAnswer(label)}
-              className={`block w-full rounded-md border px-4 py-2 text-left text-sm transition ${
-                selected
-                ? "border-primary-500 bg-primary-50 ring-2 ring-primary-200"
-                : "border-slate-200 bg-white hover;border-slate-300"
-              }`}
-            >
-              <span·className="mr-2·inline-block·w-5·font-semibold">{selected ? "X" : label}</span>
-              <MathText>{text}</MathText>
-            </button>
-          );
-        })}
-      </div>
     </div>
-  );
-}
-```
 
-```typescript
-function·formatSeconds(totalSeconds:number):string {
-  const·safe = Math.max(0, totalSeconds);
-  const·mins = Math.floor(safe / 60);
-  const·secs = safe % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
+    {question.passage ? (
+      <details·className="mb-4·rounded-md·border·border-slate-200·bg-slate-50·p-3·text-sm">
+        <summary·className="cursor-pointer·font-medium·text-slate-700">
+          Passage:{question.passage.title}
+        </summary>
+        <p·className="mt-2·whitespace-pre-wrap·text-slate-700">{question.passage.content}</p>
+      </summary>
+    ) : null}
+
+    <div·className="space-y-2">
+      {[["A", "B", "C", "D"] as·const).map((label) => {
+        const·found = choices.find((c) => c.label === label);
+        const·text = found?.text?? "";
+        const·selected = state.answer === label;
+        return (
+          <button
+            key={label}
+            type="button"
+            onClick={() => onSelectAnswer(label)}
+            className={`block w-full rounded-md border px-4 py-2 text-left text-sm transition ${
+              selected
+              ? "border-primary-500 bg-primary-50 ring-2 ring-primary-200"
+              : "border-slate-200 bg-white hover;border-slate-300"
+            }`}
+          >
+            <span·className="mr-2·inline-block·w-5·font-semibold">{selected ? "X" : label}</span>
+            <MathText>{text}</MathText>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+);
 }

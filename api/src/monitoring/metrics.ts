@@ -86,7 +86,7 @@ export class MetricsCollector {
     this.timer.unref?.();
   }
 
-  counter(name: string, value = 1, dimensions: MetricInput["dimensions"] = {}) {
+  counter(name: string, value: number = 1, dimensions: MetricInput["dimensions"] = {}) {
     this.buffer.push({name, type: "counter", value, dimensions, timestamp: new Date()});
   }
 

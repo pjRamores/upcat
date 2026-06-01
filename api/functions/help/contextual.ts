@@ -22,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const newUserDays = Number.parseInt(process.env.ONBOARDING_NEW_USER_DAYS || "7", 10) || 7;
-    const isNewUser = userIsNew(user as unknown).as({createdAt?: string | Date | null}, newUserDays);
+    const isNewUser = userIsNew(user as unknown as {createdAt?: string | Date | null}, newUserDays);
 
     const rows = await db
       .collection("contextual_help")
@@ -63,10 +63,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({success: false, error: "Missing contextual help id"});
     }
 
-    await db.collection("users").updateOne({
-      _id: user._id},
+    await db.collection("users").updateOne(
+      {_id: user._id},
       {$addToSet: { "help.dismissedHelp": id} },
-    });
+    );
 
     return res.status(200).json({success: true, data: {dismissed: true}});
   }

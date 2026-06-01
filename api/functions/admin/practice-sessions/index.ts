@@ -92,18 +92,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           {$sort: {startedAt: -1}},
           {$skip: {page: -1}} * limit,
           {$limit: limit},
+          {
+            $lookup: {
+              from: "users",
+              localField: "userId",
+              foreignField: "_id",
+              as: "user",
+            },
+          },
+          {$unwind: {path: "$user", preserveNullAndEmptyArrays: true}},
         ]
-      )
-      .$lookup({
-        from: "users",
-        localField: "userId",
-        foreignField: "_id",
-        as: "user",
-      },
-    ],
-    {$unwind: {path: "$user", preserveNullAndEmptyArrays: true}},
-  ]
-}
+    ]);
 $project: {
   mode: 1,
   subjectArea: 1,
@@ -144,7 +143,7 @@ return res.status(200).json({
       _id: s.user._id?.toString?.() ?? null,
       firstName: s.user.firstName,
       lastName: s.user.lastName,
-      email: s.user.email,
+      email: s.user.email
     } : null
     })),
     total,

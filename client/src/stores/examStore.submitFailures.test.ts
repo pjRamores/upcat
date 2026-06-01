@@ -8,8 +8,8 @@ vi.mock("@/lib/api", () => ({
   default: {
     get: vi.fn(),
     post: vi.fn(),
-  })),
-});
+  },
+}));
 
 vi.mock("@/lib/syncQueue", () => ({
   enqueueAnswer: vi.fn(),

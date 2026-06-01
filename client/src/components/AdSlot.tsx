@@ -103,9 +103,8 @@ return (
       className="adsbygoogle"
       style={wrapperStyle}
       data-ad-client={config.publisherId}
-      data-ad-slot={slot! slot}
+      data-ad-slot={slot!.slot}
 data-ad-format={resolvedFormat}
 data-full-width-responsive={resolvedResponsive?:"true":::"false"}
 {...(slot!.layout ?: {"data-ad-layout": slot!.layout}::{})}
 </div>
-);

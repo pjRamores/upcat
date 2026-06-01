@@ -22,7 +22,7 @@ import {getClientSecret, getProviderConfig} from "../../src/oidc/settings.js";
 import {isSupportedProvider, PROVIDER_ENDPOINTS} from "../../src/oidc/providers.js";
 import {consumeOAuthState} from "../../src/oidc/state.js";
 import {exchangeCode, type IdTokenClaims, normalizeProfile, verifyIdToken} from "../../src/oidc/exchange.js";
-import {findIdentityByProvider, upsertIdentity} from "../../src/oidc/identities.js";
+import {findIdentityByProvider, upsertIdentity,} from "../../src/oidc/identities.js";
 import {clientIp, rateLimit} from "../../src/oidc/rateLimit.js";
 
 interface UserDoc {
@@ -37,7 +37,7 @@ interface UserDoc {
   createdAt?: Date;
   updatedAt?: Date;
   passwordHash?: string;
-  auth?: {hasPassword?: boolean; passwordHash?: string | null; tokenInvalidatedAt?: Date | null};
+  auth?: { hasPassword?: boolean; passwordHash?: string | null; tokenInvalidatedAt?: Date | null };
 }
 
 function userToDto(u: UserDoc, hasPassword: boolean): Record<string, unknown> {
@@ -95,7 +95,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const db = await getDb();
 
-  // // Validate state (atomic claim) ------------------------
+  // Validate state (atomic claim) ------------------------
   const stateDoc = await consumeOAuthState(db, state, provider);
   if (!stateDoc) {
     return res
@@ -140,7 +140,7 @@ if (PROVIDER_ENDPOINTS[provider].oidc) {
   if (!tokens.id_token) {
     return res
     .status(400)
-    .json({success: false, error: `[${provider}] missing id_token in response.`});
+    .json({success: false, error: `[${provider}] id_token validation failed.`});
   }
   try {
     idClaims = await verifyIdToken({
@@ -153,6 +153,7 @@ if (PROVIDER_ENDPOINTS[provider].oidc) {
     return res
     .status(400)
     .json({success: false, error: `[${provider}] id_token validation failed.`});
+  }
   void err;
 }
 }
@@ -276,7 +277,7 @@ if (!user) {
         updatedAt: now,
         auth: {hasPassword: false, passwordHash: null, tokenInvalidatedAt: null},
     } as UserDoc);
-    user = await users.findOne({_id: insert.insertId});
+    user = await users.findOne({_id: insert.insertedId});
     createdNew = true;
 }
 
@@ -289,12 +290,12 @@ await upsertIdentity({db, userId: user._id, profile, tokens, isNewLink: !linkedE
 
 // 5. Update login bookkeeping.
 const now = new Date();
-await users.updateOne(
-    {_id: user._id},
-    {
-        $set: {lastLoginAt: now, updatedAt: now},
-        $inc: {loginCount: 1},
-    },
+await users.updateOne({
+    _id: user._id},
+{
+    $set: {lastLoginAt: now, updatedAt: now},
+    $inc: {loginCount: 1},
+},
 );
 
 await logActivity(db, {

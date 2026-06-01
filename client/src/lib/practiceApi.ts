@@ -75,7 +75,7 @@ unwrap({
   page: number;
   limit: number;
   totalPages: number;
-  total: number
+  total: number;
 })>(
 apiClient.get(API_ROUTES_V12.PRACTICE.CARDS, {
   params: opts,
@@ -88,7 +88,7 @@ unwrap({
   cardsExisted: number;
   totalGenerated: number
 })>(
-apiClient.post(API_ROUTES_V12.PRACTICE.BOOTSTRAP, {count}),
+apiClient.post(API_ROUTES_V12.PRACTICE.BOOTSTRAP, { count }),
 );
 }
 

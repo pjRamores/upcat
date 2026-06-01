@@ -30,7 +30,7 @@ export default function AdminPassageEditPage() {
     let cancelled = false;
     (async () => {
       try {
-        const {passage, questions} = await adminApi.getPassage(id());
+        const {passage, questions} = await adminApi.getPassage(id);
         if (cancelled) return;
         setForm({
           title: passage.title,
@@ -38,10 +38,10 @@ export default function AdminPassageEditPage() {
           source: passage.source ?? "",
           subjectArea: passage.subjectArea,
         });
-        setLinked(questions??[]);
+        setLinked(questions ?? []);
       } catch (e) {
         const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
-        addToast("error", msg?? "Could not load passage.");
+        addToast("error", msg ?? "Could not load passage.");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -66,7 +66,7 @@ export default function AdminPassageEditPage() {
       navigate("/admin/passages");
     } catch (e) {
       const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
-      addToast("error", msg?? "Save failed.");
+      addToast("error", msg ?? "Save failed.");
     } finally {
       setSaving(false);
     }
@@ -89,7 +89,7 @@ export default function AdminPassageEditPage() {
           <Field label="Subject">
             <select value={form.subjectArea}
               onChange={(e) => setForm({...form, subjectArea: e.target.value as SubjectArea})}
-              className="w-full rounded-md border-border-slate-300 px-2 py-1.5 text-sm">
+            className="w-full rounded-md border-border-slate-300 px-2 py-1.5 text-sm">
               {SUBJECT_AREAS.map((s) => <option key={s}>{s}</option>)}
             </select>
           </Field>

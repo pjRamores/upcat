@@ -1,8 +1,10 @@
 /**
  * Cron: streak-warnings
- * Schedule: 19:00 UTC·daily·(`0·19·*•••`).
+ * Schedule: 19:00 UTC·daily·(`0·19·*·*·`).
  *
- * Sends a "your streak is about to break!" push to users with an active streak (current > 0) who haven't logged study activity today. Honours preferences streak alert.
+ * Sends a "your streak is about to break!" push to users with an active
+ * streak (current > 0) who haven't logged study activity today. Honours
+ * `preferences.streak_alert`.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import type {ObjectId} from "mongodb";
@@ -17,7 +19,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const todayUtc = new Date().toISOString().slice(0, 10);
 
   // Users with a live streak (>0) and not-yet-active today.
-  const atRiskUsers = (await db.collection("users"))
+  const atRiskUsers = (await db
+    .collection("users")
     .find({
       isActive: {$ne: false},
       "gamification.streak.current": {$gt: 0},
@@ -52,7 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       userId: ObjectId;
       endpoint: string;
       keys: {p256dh: string; auth: string};
-    })>;
+    });
 
   const results = await Promise.all(
     subs.map((s) => {

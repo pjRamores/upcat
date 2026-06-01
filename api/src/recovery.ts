@@ -55,7 +55,7 @@ export async function hashRecoveryCodes(plain: string[]): Promise<RecoveryCodeEn
     plain.map(async (code) => ({
       code: await bcrypt.hash(normalizeCode(code), 10),
       usedAt: null,
-    })))
+    })),
   );
 }
 

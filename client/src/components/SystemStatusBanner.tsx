@@ -33,6 +33,7 @@ export default function SystemStatusBanner() {
         {maintenance?.bannerMessage || "Maintenance is in progress."}
         {maintenance?.currentWindow?.scheduledEnd}
         ? `Estimated end: ${formatTime(maintenance.currentWindow.scheduledEnd)}.`
+        : ""
       </div>
     );
   }

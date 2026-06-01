@@ -9,7 +9,7 @@ interface ModalProps {
   title?: ReactNode;
   description?: ReactNode;
   children: ReactNode;
-  /** Optional footer area — typically holds action buttons. */
+  /** Optional footer area -- typically holds action buttons. */
   footer?: ReactNode;
   /** Maximum width preset. Defaults to "md". */
   size?: ModalSize;
@@ -29,9 +29,10 @@ const SIZE_CLASS: Record<ModalSize, string> = {
   lg: "max-w-lg",
 };
 
-const FOCUSABLE_SELECTOR = `
-  'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, '+
-  '|'[tabindex]:not([tabindex="-1"]), [contenteditable]';
+const FOCUSABLE_SELECTOR =
+  'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, ' +
+  '[tabindex]:not([tabindex="-1"]), [contenteditable]';
+
 /**
  * Accessible, reusable modal:
  * - Mounted via React portal
@@ -55,7 +56,7 @@ export default function Modal({
   hideCloseButton = false,
 }): ModalProps {
   const panelRef = useRef<HTMLDivElement>(null);
-  const previouslyFocused = useRef<HTMLElement>|null>(null);
+  const previouslyFocused = useRef<HTMLElement> | null>(null);
 
   // Body scroll lock while open.
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function Modal({
   // Focus management.
   useEffect(() => {
     if (!isOpen) return;
-    previouslyFocused.current = document.activeElement as HTMLElement|null;
+    previouslyFocused.current = document.activeElement as HTMLElement | null;
 
     // Defer focus to allow animation start.
     const focusFirst = () => {
@@ -92,15 +93,16 @@ export default function Modal({
     if (!isOpen) return;
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && closeOnEsc) {
+      if (e.key === "Escape") && closeOnEsc) {
         e.stopPropagation();
         onClose();
         return;
       }
+    }
 
-      if (e.key !== "Tab") return;
-      const panel = panelRef.current;
-      if (!panel) return;
+    if (e.key !== "Tab") return;
+    const panel = panelRef.current;
+    if (!panel) return;
 const focusable = Array.from(
   panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
 ).filter((el) => !el.hasAttribute("disabled"));
@@ -111,7 +113,7 @@ if (focusable.length === 0) {
 }
 const first = focusable[0]!;
 const last = focusable[focusable.length - 1]!;
-const active = document.activeElement as HTMLElement || null;
+const active = document.activeElement as HTMLElement | null;
 
 if (e.shiftKey && active === first) {
   e.preventDefault();
@@ -146,49 +148,47 @@ return createPortal(
     <div
       ref={panelRef}
       tabIndex={-1}
-      className=[
+      className={[
         "relative·w-full·overflow-hidden·rounded-2x1·bg-white·shadow-2x1·ring-1·ring-black/5·animate-scale-in",
         SIZE_CLASS[size],
         ].join("·")
       >
-      {(title || !hideCloseButton) && (
-        <div className="flex·items-start·justify-between·gap-4·border-b·border-gray-100·px-6·py-4">
-          <div className="min-w-0">
-            {title && (
-              <h2 className="text-lg·font-semibold·text-gray-900">{title}</h2>
-            )}
-            {description && (
-              <p className="mt-1·text-sm·text-gray-600">{description}</p>
+        {(title || !hideCloseButton) && (
+          <div className="flex·items-start·justify-between·gap-4·border-b·border-gray-100·px-6·py-4">
+            <div className="min-w-0">
+              {title && (
+                <h2 className="text-lg·font-semibold·text-gray-900">{title}</h2>
+              )}
+              {description && (
+                <p className="mt-1·text-sm·text-gray-600">{description}</p>
+              )}
+            </div>
+            {!hideCloseButton && (
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close·dialog"
+                className="-m-1·inline-flex·h-8·w-8·shrink-0·items-center·justify-center·rounded-lg·text-gray-400·hover:bg-gray-100·hover:text-gray-700·"
+                "focus:outline-none·focus:ring-2·focus:ring-primary-500"
+              >
+                <svg viewBox="0·0·24·24" fill="none" stroke="currentColor" strokeWidth={2}
+                className="h-5·w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6·18·18·6M6·6l12·12"/>
+                </svg>
+              </button>
             )}
           </div>
-          {!hideCloseButton && (
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close·dialog"
-              className="-m-1·inline-flex·h-8·w-8·shrink-0·items-center·justify-center·rounded-lg·text-gray-400·hover:bg-gray-100·hover:text-gray-700·"
-              focus:outline-none·focus:ring-2·focus:ring-primary-500"
-            >
-              <svg viewBox="0·0·24·24" fill="none" stroke="currentColor" strokeWidth={2}
-              className="h-5·w-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6·18·18·6M6·6l12·12"/>
-              </svg>
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  )}
-  <div className="px-6·py-5·text-sm·text-gray-700">{children}</div>
+        )}
+        <div className="px-6·py-5·text-sm·text-gray-700">{children}</div>
 
-  {footer && (
-    <div
-      className="flex·flex-col-reverse·gap-2·border-t·border-gray-100·bg-gray-50·px-6·py-4·sm:flex-row·sm:justify-end">
-      {footer}
-    </div>
-  )}
-  </div>
-</div>,
-document.body,
-);
+        {footer && (
+          <div
+            className="flex·flex-col-reverse·gap-2·border-t·border-gray-100·bg-gray-50·px-6·py-4·sm:flex-row·sm:justify-end">
+            {footer}
+          </div>
+        )}
+      </div>
+    </div>,
+    document.body,
+  );
 }

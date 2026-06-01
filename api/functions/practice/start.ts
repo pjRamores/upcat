@@ -102,6 +102,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const paymentConfig = await getPaymentConfig(db);
   const questionLimitFeature = paymentConfig.featureGating.features.find(
     (f) => f.id === "practice_question_count",
+  );
 );
 const sub = normalizeSubscription(user as unknown as Record<string, unknown>);
 const tier = isPremiumActive(sub) ? "premium" : "free";
@@ -133,7 +134,7 @@ weakSubjects,
 message:
 mode === "review"
 ? "Nothing is due right now. Come back later or try Mixed mode to introduce new cards."
-? "No cards available. Complete an exam first to populate your practice deck.",
+: "No cards available. Complete an exam first to populate your practice deck.",
 },
 });
 }
@@ -154,6 +155,7 @@ questionDocs
 .filter((p): p.is.ObjectId => p instanceof ObjectId),
 ],
 ];
+
 const passages = passageIds.length
 ? await db
 .collection("passages")
@@ -206,6 +208,7 @@ type: q.type,
 questionText: q.questionText,
 }
 };
+script
 choices: (q.choices ??[]) as QuestionChoice[],
 passage: passage
 ? {

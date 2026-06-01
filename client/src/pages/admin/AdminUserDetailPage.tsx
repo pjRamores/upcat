@@ -68,10 +68,6 @@ export default function AdminUserDetailPage() {
     }
   };
   useEffect(() => {
-    refresh(); /* eslint-disable-line */
-  }, [id]);
-
-  useEffect(() => {
     if (!user) return;
     const tier = user.subscription?.tier === "premium" ? "premium" : "free";
     setSubscriptionTier(tier);
@@ -111,7 +107,7 @@ setConfirm(null);
 refresh();
 catch(e) {
 const msg = (e as { response?: { data?: { error?: string } } }).response?.data?.error;
-addToast("error", msg?? "Action failed.");
+addToast("error", msg??"Action failed.");
 setConfirm(null);
 }
 };
@@ -144,7 +140,7 @@ addToast("success", "Subscription updated.");
 await refresh();
 catch(e) {
 const msg = (e as { response?: { data?: { error?: string } } }).response?.data?.error;
-addToast("error", msg?? "Subscription update failed.");
+addToast("error", msg??"Subscription update failed.");
 } finally {
 setSavingSubscription(false);
 }
@@ -159,10 +155,8 @@ return (
 <p className="text-sm text-slate-500">{user.email}</p>
 <div className="mt-2 flex flex-wrap gap-2">
 <Badge variant={user.role === "admin" ? "violet" : "neutral"}>{user.role}</Badge>
-<Badge
-variant={user.isActive ? "success" : "danger}}>{user.isActive ? "Active" : "Deactivated"}</Badge>
-<Badge
-variant={user.isVerified ? "success" : "warning}}>{user.isVerified ? "Verified" : "Unverified"}</Badge>
+<Badge variant={user.isActive ? "success" : "danger}}>{user.isActive ? "Active" : "Deactivated"}</Badge>
+<Badge variant={user.isVerified ? "success" : "warning}}>{user.isVerified ? "Verified" : "Unverified"}</Badge>
 </div>
 </div>
 <div className="flex flex-wrap gap-2">
@@ -206,32 +200,32 @@ role: fd.get("role") as UserRole,
 notes: String(fd.get("notes") ?? ""),
 });
 }
-}
+}}>
 >
 <div className="grid·grid-cols-2·gap-3">
-  <Field label="First·name"><input name="firstName" defaultValue={user.firstName}
-                    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"/></Field>
-  <Field label="Last·name"><input name="lastName" defaultValue={user.lastName}
-                    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"/></Field>
-  <Field label="Role">
-    <select name="role" defaultValue={user.role} disabled={isSelf}
-                    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm disabled:bg-slate-100">
-      <option value="reviewee">Reviewee</option>
-      <option value="admin">Admin</option>
+  <Field·label="First·name"><input·name="firstName"·defaultValue={user.firstName}
+    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"/></Field>
+  <Field·label="Last·name"><input·name="lastName"·defaultValue={user.lastName}
+    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"/></Field>
+  <Field·label="Role">
+    <select·name="role"·defaultValue={user.role}·disabled={isSelf}
+    className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm·disabled:bg-slate-100">
+      <option·value="reviewee">Reviewee</option>
+      <option·value="admin">Admin</option>
     </select>
     {isSelf && <p className="mt-1·text-xs·text-amber-700">You cannot change your own role.</p>}
   </Field>
-  <Field label="Joined">
-    <input disabled value={new·Date(user.createdAt).toLocaleString()}
-                    className="w-full·rounded-md·border·border-slate-200·bg-slate-50·px-2·py-1.5·text-sm"/></Field>
+  <Field·label="Joined">
+    <input·disabled·value={new·Date(user.createdAt).toLocaleString()}
+    className="w-full·rounded-md·border·border-slate-200·bg-slate-50·px-2·py-1.5·text-sm"/></Field>
   </div>
-  <Field label="Internal·notes">
-    <textarea name="notes" defaultValue={user.notes} ??=""} rows={3}
-                    className="w-full·rounded-md·border·border-slate-300·px-3·py-2·text-sm"/></Field>
+  <Field·label="Internal·notes">
+    <textarea·name="notes"·defaultValue={user.notes??"}·rows={3}
+    className="w-full·rounded-md·border·border-slate-300·px-3·py-2·text-sm"/></Field>
   </div>
   <div className="flex·justify-end">
-    <button type="submit" disabled={saving}
-                    className="rounded-md·bg-primary-600·px-4·py-1.5·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50">
+    <button·type="submit"·disabled={saving}
+    className="rounded-md·bg-primary-600·px-4·py-1.5·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50">
       {saving ? "Saving..." : "Save changes"}
     </button>
   </div>
@@ -239,10 +233,10 @@ notes: String(fd.get("notes") ?? ""),
 
 <aside className="space-y-3·rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
   <h3 className="text-sm·font-bold·text-slate-700">Stats</h3>
-  <p className="text-sm">Total·exams: <strong>{user.stats?.totalExams}??·0}</strong></p>
+  <p className="text-sm">Total·exams: <strong>{user.stats?.totalExams??·0}</strong></p>
   <p className="text-sm">Average
-    score: <strong>{user.stats?.averageScore?.toFixed(1)}??-"}</strong></p>
-  <p className="text-sm">Best·score: <strong>{user.stats?.bestScore?.toFixed(1)}??-"}</strong></p>
+    score: <strong>{user.stats?.averageScore?.toFixed(1)·??="-"}%</strong></p>
+  <p className="text-sm">Best·score: <strong>{user.stats?.bestScore?.toFixed(1)·??="-"}%</strong></p>
   <hr className="border-slate-200"/>
   <p className="text-xs·text-slate-500">Last
     login: {user.lastLoginAt?.new·Date(user.lastLoginAt).toLocaleString() : "Never"}</p>
@@ -258,31 +252,31 @@ notes: String(fd.get("notes") ?? ""),
     )}
   </div>
   <div className="grid·grid-cols-1·gap-3·sm:grid-cols-3">
-    <Field label="Status">
+    <Field·label="Status">
       <select
         value={subscriptionTier}
         onChange={(e) => {
-          const nextTier = e.target.value as "free" || "premium";
+          const nextTier = e.target.value·as·"free"||"premium";
           setSubscriptionTier(nextTier);
           if (nextTier === "premium" && !subscriptionExpiryDate) {
             setSubscriptionExpiryDate(defaultExpiryDateInput());
           }
         }}
-        disabled={!canEditSubscription || savingSubscription}
+        disabled={!canEditSubscription||savingSubscription}
         className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm·disabled:bg-slate-100"
       >
-        <option value="free">Free</option>
-        <option value="premium">Premium</option>
+        <option·value="free">Free</option>
+        <option·value="premium">Premium</option>
       </select>
     </Field>
     {subscriptionTier === "premium" && (
-      <Field label="Expiry·date">
+      <Field·label="Expiry·date">
         <input
           type="date"
           value={subscriptionExpiryDate}
           onChange={(e) => setSubscriptionExpiryDate(e.target.value)}
           min={todayDateInput()}
-          disabled={!canEditSubscription || savingSubscription}
+          disabled={!canEditSubscription||savingSubscription}
           className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm·disabled:bg-slate-100"
         />
       </field>
@@ -291,7 +285,7 @@ notes: String(fd.get("notes") ?? ""),
       <button
         type="button"
         onClick={saveSubscription}
-        disabled={!canEditSubscription || savingSubscription}
+        disabled={!canEditSubscription||savingSubscription}
         className="w-full·rounded-md·bg-primary-600·px-4·py-1.5·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50"
       >
         {savingSubscription ? "Updating..." : "Update·subscription"}
@@ -302,44 +296,42 @@ notes: String(fd.get("notes") ?? ""),
 
 <section className="rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
   <h3 className="mb-3·text-sm·font-bold·text-slate-700">Recent·exams</h3>
-  {(!user.examHistory || user.examHistory.length === 0) ? (
+  {!user.examHistory||user.examHistory.length === 0}? (
     <p className="text-sm·text-slate-400">No·exams.</p>
   ) : (
     <ul className="divide-y·divide-slate-100·text-sm">
       {user.examHistory.map((ex) => (
-        <li key={ex._id} className="flex·items-center·justify-between·py-2">
+        <li·key={ex._id}·className="flex·items-center·justify-between·py-2">
           <span className="min-w-0">
-button.type="button" onClick={() => navigate('/admin/exams/${ex._id}')}
-className="font-medium·text-slate-800·hover:text-primary-700">
-new Date(ex.startedAt).toLocaleString()
-</button>
-<span className="ml-2·text-xs·text-slate-500">{ex.status}</span>
-<span
-className="block·truncate·text-xs·text-slate-500">Question set: {ex.setName?.trim() || "-"}</span>
+<button type="button" onClick={() => navigate('/admin/exams/${ex._id}')}>
+  className="font-medium text-slate-800 hover:text-primary-700">
+    {new Date(ex.startedAt).toLocaleString()}
+  </button>
+  <span className="ml-2 text-xs text-slate-500">{ex.status}</span>
+  <span className="block-truncate text-xs text-slate-500">Question set: {ex.setName?.trim() || "-"}</span>
 </span>
-<span
-className="text-sm·font-semibold">{ex.percentage!=·null?·${ex.percentage.toFixed(1)}%::"-"}</span>
+<span className="text-sm font-semibold">{ex.percentage != null ? `${ex.percentage.toFixed(1)}%` : "-"}</span>
 </li>
 </ul>
 )</section>
 
 <ConfirmDialog
-isOpen={confirm!==·null}
+isOpen={confirm !== null}
 title={
-confirm ===="deactivate"?.?"Deactivate·user?":
-confirm ===="reactivate"?.?"Reactivate·user?":
-confirm ===="reset"?.?"Send·password·reset?":
-"Manually·verify·email?"
+  confirm === "deactivate" ? "Deactivate user?" :
+  confirm === "reactivate" ? "Reactivate user?" :
+  confirm === "reset" ? "Send password reset?" :
+  "Manually verify email?"
 }
 message={
-confirm ===="deactivate"?.?"All·active·sessions·will·be·invalidated·and·the·user·will·be·unable·to·log·in.":
-confirm ===="reactivate"?.?"The·user·will·regain·access·immediately.":
-confirm ===="reset"?.?"A·reset·link·will·be·emailed·to·the·user.":
-"This·bypasses·the·email·confirmation·step."
+  confirm === "deactivate" ? "All active sessions will be invalidated and the user will be unable to log in." :
+  confirm === "reactivate" ? "The user will regain access immediately." :
+  confirm === "reset" ? "A reset link will be emailed to the user." :
+  "This bypasses the email confirmation step."
 }
-confirmText={confirm ===="deactivate"?.?"DEACTIVATE"::undefined}
-confirmLabel={confirm ===="deactivate"?.?"Deactivate"::"Confirm"}
-variant={confirm ===="deactivate"?.?"danger"::"primary"}
+confirmText={confirm === "deactivate" ? "DEACTIVATE" : undefined}
+confirmLabel={confirm === "deactivate" ? "Deactivate" : "Confirm"}
+variant={confirm === "deactivate" ? "danger" : "primary"}
 onClose={() => setConfirm(null)}
 onConfirm={runAction}
 />
@@ -348,47 +340,45 @@ onConfirm={runAction}
 }
 
 function todayDateInput(): string {
-const now = new Date();
-const yyyy = now.getFullYear();
-const mm = String(now.getMonth() + 1).padStart(2, "0");
-const dd = String(now.getDate()).padStart(2, "0");
-return `${yyyy}-${mm}-${dd}`;
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 function defaultExpiryDateInput(): string {
-const d = new Date();
-d.setDate(d.getDate() + 30);
-const yyyy = d.getFullYear();
-const mm = String(d.getMonth() + 1).padStart(2, "0");
-const dd = String(d.getDate()).padStart(2, "0");
-return `${yyyy}-${mm}-${dd}`;
+  const d = new Date();
+  d.setDate(d.getDate() + 30);
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 function toDateInputValue(isoLike: string | null | undefined): string | null {
-if (!isoLike) return null;
-const d = new Date(isoLike);
-if (Number.isNaN(d.getTime())) return null;
-const yyyy = d.getFullYear();
-const mm = String(d.getMonth() + 1).padStart(2, "0");
-const dd = String(d.getDate()).padStart(2, "0");
-return `${yyyy}-${mm}-${dd}`;
+  if (!isoLike) return null;
+  const d = new Date(isoLike);
+  if (Number.isNaN(d.getTime())) return null;
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 function daysUntilExpiry(dateInput: string): number {
-if (!dateInput) return NaN;
-const target = new Date(`${dateInput}T23:59:59.999`);
-const ms = target.getTime()--Date.now();
-if (!Number.isFinite(ms)) || ms <= 0) return NaN;
-return Math.ceil(ms / 86_400_000);
+  if (!dateInput) return NaN;
+  const target = new Date(`${dateInput}T23:59:59.999`);
+  const ms = target.getTime() - Date.now();
+  if (!Number.isFinite(ms)) || ms <= 0) return NaN;
+  return Math.ceil(ms / 86_400_000);
 }
-```
 
-```typescript
 function Field({label, children}: {label: string; children: React.ReactNode}) {
-return (
-<label className="block">
-<span className="mb-1·block·text-xs·font-medium·text-slate-600">{label}</span>
-{children}
-</label>
-);
+  return (
+    <label className="block">
+      <span className="mb-1 block text-xs font-medium text-slate-600">{label}</span>
+      {children}
+    </label>
+  );
 }

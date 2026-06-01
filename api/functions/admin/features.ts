@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     for (const user of users) {
-      const usage = (user.subscription?.usage ?? {}).asRecord<string, {count?: number}};
+      const usage = (user.subscription?.usage ?? {}).asRecord<string, {count?: number}}();
       for (const [key, value] of Object.entries(usage)) {
         const stat = usageStats.get(key);
         if (!stat) continue;
@@ -126,23 +126,21 @@ if (!featureId) return res.status(400).json({success: false, error: "featureId i
 const target = config.featureGating.features.find((f) => f.id === featureId);
 if (!target) return res.status(404).json({success: false, error: "Feature not found"});
 
-const nextFeatures = config.featureGating.features.map((feature) => {
+const nextFeatures = config.featureGating.features.map((feature) =>
   feature.id === featureId
-    ? {
-      ...feature,
-      accessLevel: body.accessLevel ?? feature.accessLevel,
-      limits: body.limits
-      ...? {
-        free: body.limits.free ?? feature.limits?.free ?? null,
-        premium: body.limits.premium ?? feature.limits?.premium ?? null,
-      }
-      : feature.limits,
-      limitPeriod: body.limitPeriod ?? feature.limitPeriod,
+  ? {
+    ...feature,
+    accessLevel: body.accessLevel ?? feature.accessLevel,
+    limits: body.limits
+    ...? {
+      free: body.limits.free ?? feature.limits?.free ?? null,
+      premium: body.limits.premium ?? feature.limits?.premium ?? null,
     }
-    : feature,
-    );
-}
-
+    : feature.limits,
+    limitPeriod: body.limitPeriod ?? feature.limitPeriod,
+  }
+  : feature,
+  );
 const saved = await savePaymentConfig(db, {featureGating: {features: nextFeatures}}, admin._id);
 const updated = saved.featureGating.features.find((f) => f.id === featureId);
 return res.status(200).json({success: true, data: updated});

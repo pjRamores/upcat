@@ -2,7 +2,7 @@ import {describe, expect, it} from "vitest";
 import {renderMarkdown} from "./markdown";
 
 describe("renderMarkdown", () => {
-  it("renders-markdown-tables", () => {
+  it("renders markdown tables", () => {
     const markdown = [
       "|·Feature·|·Practice·Test·|·Mock·Exam·|",
       "|---|---|---|",
@@ -20,7 +20,7 @@ describe("renderMarkdown", () => {
     expect(html).toContain("</table>");
   });
 
-  it("renders-markdown-images-with-lazy-loading", () => {
+  it("renders markdown images with lazy loading", () => {
     const html = renderMarkdown(
       "![Mock·Exam·Dashboard](/help-assets/screenshots/dashboard-annotated.png)",
     );
@@ -31,17 +31,17 @@ describe("renderMarkdown", () => {
     expect(html).toContain('loading="lazy"');
   });
 
-  it("renders-callout-markers-used-in-seeded-help-articles", () => {
+  it("renders callout markers used in seeded help articles", () => {
     const markdown = [
       ">[!tip]",
-      ">Focus-on-weak-areas-first.",
+      ">Focus on weak areas first.",
     ].join("\n");
 
     const html = renderMarkdown(markdown);
 
     expect(html).toContain("<blockquote>");
     expect(html).toContain("<strong>TIP:</strong>");
-    expect(html).toContain("Focus-on-weak-areas-first.");
+    expect(html).toContain("Focus on weak areas first.");
     expect(html).toContain("</blockquote>");
   });
 });

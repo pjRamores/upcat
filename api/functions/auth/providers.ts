@@ -1,7 +1,7 @@
 /**
  * GET/api/auth/providers
  *
- * Public endpoint — returns the enabled state and clientId of each social
+ * Public endpoint - returns the enabled state and clientId of each social
  * provider so the login/register pages can decide which buttons to render.
  * NEVER returns the client secret or any token material.
  */

@@ -95,13 +95,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       actorId: admin._id,
       actorRole: "admin",
       action: "user.password_reset_initiated",
+    });
+  }
+}
 targetType: "user",
 targetId: oid,
 });
 return res.status(200).json({success: true, data: {sent: true}});
-```
+}
 
-```json
 if (action === "verify-email") {
 await users.updateOne(
 {_id: oid},
@@ -109,6 +111,7 @@ await users.updateOne(
 $set: {isVerified: true, verifiedAt: new Date(), updatedAt: new Date()},
 $unset: {verificationToken: "", verificationTokenExpiry: ""},
 },
+);
 await logActivity(db, {
 actorId: admin._id,
 actorRole: "admin",
@@ -123,3 +126,4 @@ return res.status(400).json({
 success: false,
 error: "Unknown action. Expected: deactivate | reactivate | reset-password | verify-email",
 });
+}

@@ -81,13 +81,13 @@ export default function NewTicketForm({defaultType, onCreated}: Props) {
           onChange={(e) => setDescription(e.target.value)}
           className="input-field mt-1"
         />
-        <span className="mt-1 block text-xs text-gray-500">
-          {description.length}/5000 characters · Min 20.
-        </span>
       </label>
-      <button type="submit" disabled={busy} className="btn-primary w-full">
-        {busy ? "Submitting..." : "Open ticket"}
-      </button>
-    </form>
-  );
-}
+      <span className="mt-1 block text-xs text-gray-500">
+        {description.length}/5000 characters · Min 20.
+      </span>
+    </label>
+    <button type="submit" disabled={busy} className="btn-primary w-full">
+      {busy ? "Submitting..." : "Open ticket"}
+    </button>
+  </form>
+);

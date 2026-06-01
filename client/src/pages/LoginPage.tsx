@@ -22,74 +22,75 @@ export default function LoginPage() {
     apiClient.get("/status")
     .then((res) => {
       const ok = Boolean(res?.data?.success ?? res?.data?.data?.ok);
-      const maintenanceEnabled = Boolean(res?.data?.maintenance?.isEnabled ?? res?.data?.data?.maintenance?.isEnabled);
-    });
-    if (!ok || maintenanceEnabled) {
+      const maintenanceEnabled = Boolean(res?.data?.maintenance?.isEnabled ?? res?.data?.data?.maintenance?.isEnabled,
+      );
+      if (!ok || maintenanceEnabled) {
+        if (!cancelled) navigateTo("/maintenance");
+      } else {
+        if (!cancelled) setCheckingStatus(false);
+      }
+    })
+    .catch(() => {
       if (!cancelled) navigateTo("/maintenance");
-    } else {
-      if (!cancelled) setCheckingStatus(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  const {login, isLoading} = useAuthStore();
+  const addToast = useToastStore((s) => s.addToast);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
+  const [redirecting, setRedirecting] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    // Tell auth store which storage to use
+    useAuthStore.getState().setRememberMe(rememberMe);
+
+    await login({email, password});
+
+    const state = useAuthStore.getState();
+    if (state.isAuthenticated) {
+      const role = state.user?.role ?? "reviewee";
+      const target = role === "admin"
+        ? (from.startsWith("/admin") ? from : "/admin")
+        : (from.startsWith("/admin") ? "/dashboard" : from);
+      // Cache onboarding data from login response if available
+      const userId = state.user?._id;
+      const loginResponse = state.lastLoginResponse;
+      if (userId && loginResponse?.onboarding) {
+        setCachedOnboardingCheck(userId, target, loginResponse.onboarding);
+      }
+      setRedirecting(true);
+      navigateTo(target);
+      return;
     }
-  })
-  .catch(() => {
-    if (!cancelled) navigateTo("/maintenance");
-  });
-  return () => {
-    cancelled = true;
+
+    if (state.error) {
+      addToast("error", state.error);
+    }
   };
-}, []);
-const {login, isLoading} = useAuthStore();
-const addToast = useToastStore((s) => s.addToast);
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [showPassword, setShowPassword] = useState(false);
-const [rememberMe, setRememberMe] = useState(true);
-const [redirecting, setRedirecting] = useState(false);
-
-const handleSubmit = async (e: FormEvent) => {
-  e.preventDefault();
-
-  // Tell auth store which storage to use
-  useAuthStore.getState().setRememberMe(rememberMe);
-
-  await login({email, password});
-
-  const state = useAuthStore.getState();
-  if (state.isAuthenticated) {
-    const role = state.user?.role ?? "reviewee";
-    const target = role === "admin"
-      ? (from.startsWith("/admin") ? from : "/admin")
-      : (from.startsWith("/admin") ? "/dashboard" : from);
-    // Cache onboarding data from login response if available
-    const userId = state.user?._id;
-    const loginResponse = state.lastLoginResponse;
-    if (userId && loginResponse?.onboarding) {
-      setCachedOnboardingCheck(userId, target, loginResponse.onboarding);
-    }
-    setRedirecting(true);
-    navigateTo(target);
-    return;
-  }
-
-  if (state.error) {
-    addToast("error", state.error);
-  }
-};
-
-if (checkingStatus) {
-  return (
-    <div className="flex·min-h-[calc(100vh-120px)]·items-center·justify-center·px-4·py-12">
-      <Seo title="Login | UPCAT Simulator"
-        description="Log in to your UPCAT Simulator account to continue practicing for the UP College Admission Test."
+  if (checkingStatus) {
+    return (
+      <div className="flex·min-h-[calc(100vh-120px)]·items-center·justify-center·px-4·py-12">
+        <Seo title="Login | UPCAT Simulator"
+          description="Log in to your UPCAT Simulator account to continue practicing for the UP College Admission Test."
         bare/>
-      <div className="flex·flex-col·items-center">
-        <Spinner className="h-8·w-8·mb-4"/>
-        <span className="text-gray-500">Checking platform status...</span>
+        <div className="flex·flex-col·items-center">
+          <Spinner className="h-8·w-8·mb-4"/>
+          <span className="text-gray-500">Checking platform status...</span>
+        </div>
       </div>
-    </div>
-  );
-}
-return (
+    );
+  }
+
+  return (
     <div className="flex·min-h-[calc(100vh-120px)]·items-center·justify-center·px-4·py-12">
       <Seo
         title="Login | UPCAT Simulator"
@@ -165,7 +166,7 @@ return (
   <span className="font-medium">Keep·me·signed·in</span>
 </label>
 <p className="ml-7·text-xs·leading-relaxed·text-gray-500">
-  Stays·logged·in·on·this·device. Turn·off·on·shared·or·public·computers.
+Stays·logged·in·on·this·device.·Turn·off·on·shared·or·public·computers.
 </p>
 
 {/*·Forgot·password·link·*/}

@@ -90,10 +90,10 @@ export default function HelpArticlePage() {
     }
 
     return {
-      div: className="mx-auto max-w-7x1 gap-8 px-4 py-10 lg:grid-cols-[1fr,260px]">
+      div: className="mx-auto grid max-w-7x1 gap-8 px-4 py-10 lg:grid-cols-[1fr,260px]">
         Seo.title={`${article.title} - Help Center`} .description={article.subtitle??article.title}/
 
-        article>
+        article
         <nav className="text-xs text-slate-500">
           <Link to="/help" className="hover:text-indigo-700">Help</Link>
           <span></span>
@@ -102,7 +102,7 @@ export default function HelpArticlePage() {
           <span></span>
           <span>{article.title}</span>
         </nav>
-      </article>
+      }
     }
 }
 <h1 className="mt-3·text-3x1·font-bold·text-slate-900">{article.title}</h1>
@@ -148,7 +148,7 @@ export default function HelpArticlePage() {
         <Link key={item.slug} to={`/help/article/${item.slug}`}>
           <className="rounded-lg·border·border-slate-200·bg-white·p-3·hover:bg-slate-50">
             <p className="text-sm·font-medium·text-slate-900">{item.title}</p>
-            {item.subtitle && <p className="text-xs·text-slate-600">{item.subtitle}</p>}
+            {item.subtitle &&<p className="text-xs·text-slate-600">{item.subtitle}</p>}
           </Link>
         ))}
       </div>
@@ -186,8 +186,7 @@ export default function HelpArticlePage() {
 <div className="mt-6·flex·flex-wrap·gap-4·text-sm">
   <Link to="/help" className="font-medium·text-indigo-700·hover:underline">Back·to·Help·Center</Link>
   {isAdmin && <Link to="/admin/help/articles" className="text-slate-700·hover:underline">Edit·this</Link>
-  article</Link>
-</div>
+  }</div>
 </article>
 
 <aside className="hidden·lg:block">

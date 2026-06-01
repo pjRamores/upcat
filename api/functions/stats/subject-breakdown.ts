@@ -104,5 +104,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   });
 }
-return res.status(200).json({success: true, data: result});
-}
+({success: true, data: result})

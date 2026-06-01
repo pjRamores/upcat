@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 
   const flaggedQuestionIds = Array.isArray(req.body?.flaggedQuestionIds)
     ? (req.body?.flaggedQuestionIds as unknown[])
-    : filter((id): id.is_string => typeof id === "string" && ObjectId.isValid(id))
+    : filter((id): id is string => typeof id === "string" && ObjectId.isValid(id))
     : [];
   const flaggedSet = new Set(flaggedQuestionIds);
 
@@ -220,9 +220,9 @@ const incorrectEntries = scoredEntries
   ? {questionId: new ObjectId(entry.questionId), subjectArea: meta.subjectArea}
   : null;
 })
-.filter((x): x.is({ questionId: ObjectId; subjectArea: SubjectArea }) => x !== null);
+.filter((x): x is {questionId: ObjectId; subjectArea: SubjectArea}) => x !== null;
 if (incorrectEntries.length > 0) {
-  const { created } = await addCardsForQuestions(db, userOid, incorrectEntries, "exam_incorrect");
+  const {created} = await addCardsForQuestions(db, userOid, incorrectEntries, "exam_incorrect");
   practiceCardsAdded += created;
 }
 catch (err) {

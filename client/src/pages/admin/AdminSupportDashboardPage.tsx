@@ -78,9 +78,9 @@ export default function AdminSupportDashboardPage() {
             {Object.entries(data.byType).map(([t, n]) => (
               <li key={t} className="flex justify-between">
                 <span>
-                  {SUPPORT_TICKET_TYPE_META[t as keyof typeof SUPPORT_TICKET_TYPE_META].?.icon}{"."}
-                  {SUPPORT_TICKET_TYPE_META[t as keyof typeof SUPPORT_TICKET_TYPE_META]}
-                  ?.label ?? t}
+                  {SUPPORT_TICKET_TYPE_META[t].as.keyof(typeof SUPPORT_TICKET_TYPE_META)?.icon}{"."}
+                  {SUPPORT_TICKET_TYPE_META[t].as.keyof(typeof SUPPORT_TICKET_TYPE_META)}
+                  ?.label??t}
                 </span>
               </span>
               <span className="font-mono text-gray-700">{n}</span>
@@ -101,7 +101,7 @@ export default function AdminSupportDashboardPage() {
                 <span>
                   {rounded-full px-2 py-0.5 text-xs font-semibold bg-${meta?.color}-50 text-${meta?.color}-700}
                 >
-                  {meta?.label ?? p}
+                  {meta?.label??p}
                 </span>
               </li>
         ))}
@@ -119,88 +119,90 @@ export default function AdminSupportDashboardPage() {
 
 {/* 30-day trend (simple table) */}
 <Panel title="Last·30·days--opened·vs·resolved">
-  <div className="overflow-x-auto">
-    <table className="min-w-full·text-xs">
-      <thead>
-        <tr className="text-left·text-gray-500">
-          <th className="py-1·pr-3">Date</th>
-          <th className="py-1·pr-3">Opened</th>
-          <th className="py-1">Resolved</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.resolutionTrend.map((d) => (
-          <tr key={d.date} className="border-t·border-gray-100">
-            <td className="py-1·pr-3·font-mono·text-gray-700">{d.date}</td>
-            <td className="py-1·pr-3·text-primary-700">{d.opened}</td>
-            <td className="py-1·text-emerald-700">{d.resolved}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+<div className="overflow-x-auto">
+<table className="min-w-full·text-xs">
+<thead>
+<tr className="text-left·text-gray-500">
+<th className="py-1·pr-3">Date</th>
+<th className="py-1·pr-3">Opened</th>
+<th className="py-1">Resolved</th>
+</tr>
+</thead>
+<tbody>
+{data.resolutionTrend.map((d) => (
+<tr key={d.date} className="border-t·border-gray-100">
+<td className="py-1·pr-3·font-mono·text-gray-700">{d.date}</td>
+<td className="py-1·pr-3·text-primary-700">{d.opened}</td>
+<td className="py-1·text-emerald-700">{d.resolved}</td>
+</tr>
+))}
+</tbody>
+</table>
+</div>
 </Panel>
 
 {/* Recent feed */}
 <Panel title="Recent·activity">
-  <ul className="divide-y·divide-gray-100">
-    {data.recent.map((t) => {
-      const status = SUPPORT_TICKET_STATUS_META[t.status];
-      return (
-        <li key={t._id}>
-          <Link
-            to={`/admin/support/tickets/${t.ticketNumber}`}
-            className="flex·items-start·justify-between·gap-3·px-1·py-2·hover:bg-gray-50"
-          >
-            <div className="min-w-0">
-              <p className="text-sm·font-medium·text-gray-900">
-                <span className="font-mono·text-xs·text-gray-500">
-                  {t.ticketNumber}
-                </span>{"."}
-                {t.subject}
-              </p>
-              <p className="mt-0.5·text-xs·text-gray-500">
-                {SUPPORT_TICKET_TYPE_META[t.type]?.label}·{"·"}
-                {new·Date(t.createdAt).toLocaleString()}
-              </p>
-            </div>
-            <span
-              className={`shrink-0 rounded-full px-2 py-0.5·text-xs·font-semibold·bg-${status.color}-50·text-${status.color}-700`}
-            >
-              {status.label}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </Panel>
-  </div>
+<ul className="divide-y·divide-gray-100">
+{data.recent.map((t) => {
+const status = SUPPORT_TICKET_STATUS_META[t.status];
+return (
+<li key={t._id}>
+<Link
+to={`/admin/support/tickets/${t.ticketNumber}`}
+className="flex·items-start·justify-between·gap-3·px-1·py-2·hover:bg-gray-50"
+>
+<div className="min-w-0">
+<p className="text-sm·font-medium·text-gray-900">
+<span className="font-mono·text-xs·text-gray-500">
+{t.ticketNumber}
+</span>{"."}
+{t.subject}
+</p>
+<p className="mt-0.5·text-xs·text-gray-500">
+{SUPPORT_TICKET_TYPE_META[t.type]?.label}·{"·"}
+{new·Date(t.createdAt).toLocaleString()}
+</p>
+</div>
+<span
+className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold bg-${status.color}-50 text-${status.color}-700`}
+>
+{status.label}
+</span>
+</Link>
+</li>
+);
+}}}
+</ul>
+</Panel>
+</div>
 );
 }
 
 function Kpi({
-  label,
-  value,
-  accent,
-}) : {
-  label: string;
-  value: number | string;
-  accent: string;
+label,
+value,
+accent,
+}): {
+label: string;
+value: number | string;
+accent: string;
 }) {
-  return (
-    <div className={`rounded-xl·border·border-${accent}-200·bg-${accent}-50·p-4·shadow-sm`}>
-      <p className={`text-xs·font-semibold·uppercase·tracking-wide·text-${accent}-700`}>
-        {label}
-      </p>
-      <p className="mt-1·text-2x1·font-bold·text-gray-900">{value}</p>
-    </div>
-  );
+return (
+<div className={`rounded-xl border border-${accent}-200 bg-${accent}-50 p-4·shadow-sm`}>
+<p className={`text-xs·font-semibold uppercase tracking-wide text-${accent}-700`}>
+{label}
+</p>
+<p className="mt-1·text-2x1·font-bold·text-gray-900">{value}</p>
+</div>
+);
 }
 
 function Panel({title, children}: {title: string; children: React.ReactNode}) {
-  return (
-    <section className="rounded-xl·border·border-gray-200·bg-white·p-4·shadow-sm">
-      <h2 className="mb-2·text-sm·font-semibold·text-gray-700">{title}</h2>
-      {children}
-    </section>
-  );
+return (
+<section className="rounded-xl·border·border-gray-200·bg-white·p-4·shadow-sm">
+<h2 className="mb-2·text-sm·font-semibold·text-gray-700">{title}</h2>
+{children}
+</section>
+);
 }

@@ -110,8 +110,8 @@ heroImage: form.heroImage.trim() || null,
 authorName: form.authorName.trim() || "Editor",
 tags: form.tags
 split(",")
-map((t) => t.trim())
-filter(Boolean),
+.map((t) => t.trim())
+.filter(Boolean),
 status,
 };
 setSaving(true);
@@ -119,7 +119,7 @@ try {
 if (isNew) {
 const created = await adminApi.createBlogPost(payload);
 addToast("success", status === "published" ? "Post published." : "Draft saved.");
-navigate(`/admin/blog/${created._id}`, {replace: true});
+navigate("/admin/blog/${created._id}", {replace: true});
 } else {
 const updated = await adminApi.updateBlogPost(id!, payload);
 setOriginal(updated);
@@ -127,8 +127,8 @@ setForm((f) => ({...f, status: updated.status}));
 addToast("success", "Post saved.");
 }
 catch(e) {
-const msg = (e as { response?: { data?: { error?: string } } }).response?.data?.error;
-addToast("error", msg ?? "Save failed.");
+const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
+addToast("error", msg?? "Save failed.");
 finally {
 setSaving(false);
 }
@@ -142,7 +142,7 @@ return (
 ← Back to posts
 </Link>
 {original?.status === "published" && (
-<a href={`/blog/${original.slug}`}>
+<a href={`/blog/${original.slug}`}
 target="_blank"
 rel="noreferrer"
 className="text-sm text-primary-600 underline"
@@ -209,7 +209,7 @@ dangerouslySetInnerHTML={{__html: previewHtml}}
 rows={20}
 value={form.body}
 onChange={(e) => update("body", e.target.value)}
-className="w-full·rounded-md·border·border-slate-300·px-3·py-2·font-mono·text-sm"
+className="w-full rounded-md border border-slate-300 px-3 py-2 font-mono text-sm"
 />
 })
 </Section>
@@ -221,43 +221,43 @@ className="w-full·rounded-md·border·border-slate-300·px-3·py-2·font-mono·
 <select
 value={form.status}
 onChange={(e) => update("status", e.target.value as BlogStatus)}
-className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
 >
 <option value="draft">Draft</option>
 <option value="published">Published</option>
 </select>
 </Field>
-<Field label="Author·name">
+<Field label="Author name">
 <input
 type="text"
 value={form.authorName}
 onChange={(e) => update("authorName", e.target.value)}
-className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
 />
 {form.heroImage && (
 <img
 src={form.heroImage}
 alt=""
-className="mt-2·max-h-32·w-full·rounded-md·border·border-slate-200·object-cover"
-/>
-)}
+className="mt-2 max-h-32 w-full rounded-md border border-slate-200 object-cover"
+)
+})
 </Field>
-<Field label="Tags·(comma-separated)">
+<Field label="Tags (comma-separated)">
 <input
 type="text"
 value={form.tags}
 onChange={(e) => update("tags", e.target.value)}
-className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
 />
 </Field>
 {original && (
-<p className="text-xs·text-slate-500">
-Created·{new·Date(original.createdAt).toLocaleDateString()}·last·edit{"·"}
-{new·Date(original.updatedAt).toLocaleString()}
+<p className="text-xs text-slate-500">
+Created {new Date(original.createdAt).toLocaleDateString()} last edit{"}
+{new Date(original.updatedAt).toLocaleString()}
 {original.publishedAt && (
-<>·published·{new·Date(original.publishedAt).toLocaleDateString()}</>
-)}
-</p>
+<> published {new Date(original.publishedAt).toLocaleDateString()}</>
+))
+}</p>
 )}
 </Section>
 
@@ -266,21 +266,20 @@ Created·{new·Date(original.createdAt).toLocaleDateString()}·last·edit{"·"}
 type="button"
 onClick={() => save()}
 disabled={saving}
-className="w-full·rounded-md·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50"
+className="w-full rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:opacity-50"
 >
-{saving?·"Saving..."::"Save"}
+{saving ? "Saving..." : "Save"}
 </button>
 {form.status === "draft" && (
 <button
 type="button"
 onClick={() => save("published")}
 disabled={saving}
-className="w-full·rounded-md·bg-emerald-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-emerald-700·disabled:opacity-50"
+className="w-full rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
 >
 Save & publish
 </button>
 )}
-</div>
 </div>
 </div>
 </div>
@@ -289,7 +288,7 @@ Save & publish
 
 function Section({children}: {children: React.ReactNode}) {
 return (
-<section className="space-y-3·rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
+<section className="space-y-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
 {children}
 </section>
 );
@@ -298,7 +297,7 @@ return (
 function Field({label, children}: {label: string; children: React.ReactNode}) {
 return (
 <label className="block">
-<span className="mb-1·block·text-xs·font-medium·text-slate-600">{label}</span>
+<span className="mb-1 block text-xs font-medium text-slate-600">{label}</span>
 {children}
 </label>
 );

@@ -42,8 +42,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const def = (await db)
       .collection("weekly_challenges_catalog")
       .findOne({id: block.weeklyChallenge.challengeId}) as
-      | (WeeklyChallengeDef && {_id: {toHexString(): string}}) |
-      null;
+      | (WeeklyChallengeDef & {_id: {toHexString(): string}}) {}
+      | null;
     if (def) {
       const expiresAt = new Date(block.weeklyChallenge.expiresAt);
       weeklyChallenge = {

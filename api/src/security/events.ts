@@ -25,7 +25,7 @@ export interface LogEventInput {
   action?: Partial<SecurityEventAction>;
 }
 
-export async function logSecurityEvent(input: LogEventInput): Promise<ObjectId> | null {
+export async function logSecurityEvent(input: LogEventInput): Promise<ObjectId> {
   try {
     const db = await getDb();
     return await insertEvent(db, input);

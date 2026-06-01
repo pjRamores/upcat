@@ -5,10 +5,10 @@ import {ProtectedRoute} from "@/components/ProtectedRoute";
 import {FullPageLoader} from "@/components/FullPageLoader";
 import {useAuthStore} from "@/stores/authStore";
 
-/* --------------------------------------------------------------------------
- * Routes -- every page is code-split so the initial JS payload only
+/* _____________________________________________________________________________________
+ * Routes - every page is code-split so the initial JS payload only
  * loads the landing page (or whichever route the user first hits).
- * -------------------------------------------------------------------------- */
+ * _____________________________________________________________________________________ */
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
@@ -158,39 +158,40 @@ function AppRouteError(): React.ReactElement {
     message.toLowerCase().includes("failed to fetch dynamically imported module");
 
   return (
-    <div
+    <div>
       className="mx-auto flex min-h-[60vh] w-full max-w-2xl flex-col items-center justify-center px-4 py-12 text-center">
-      <h1 className="text-2xl font-bold text-slate-900">Page failed to load</h1>
-      <p className="mt-3 text-sm text-slate-600">
-        {isChunkLoadFailure}
-        ? "A new app version was detected while this page was loading."
-        : "We hit an unexpected error while rendering this route."
-      </p>
-      <p className="mt-2 max-w-xl rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-500">
-        {message}
-      </p>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <button
-          type="button"
-          className="rounded-md bg-maroon-600 px-4 py-2 text-sm font-semibold text-white hover:bg-maroon-700"
-          onClick={() => window.location.reload()}
-        >
-          Reload page
-        </button>
-        <button
-          type="button"
-          className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-          onClick={() => window.location.assign("/practice")}
-        >
-          Back to practice
-        </button>
+        <h1 className="text-2xl font-bold text-slate-900">Page failed to load</h1>
+        <p className="mt-3 text-sm text-slate-600">
+          {isChunkLoadFailure}
+          ? "A new app version was detected while this page was loading."
+          : "We hit an unexpected error while rendering this route."
+        </p>
+        <p className="mt-2 max-w-xl rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-50">
+          {message}
+        </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+          <button
+            type="button"
+            className="rounded-md bg-maroon-600 px-4 py-2 text-sm font-semibold text-white hover:bg-maroon-700"
+            onClick={() => window.location.reload()}
+          >
+            Reload page
+          </button>
+          <button
+            type="button"
+            className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            onClick={() => window.location.assign("/practice")}
+          >
+            Back to practice
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 export const router = createBrowserRouter([
-  // // Admin tree (own layout, no Navbar // Footer)
+  // Admin tree (own layout, no Navbar) --
   {
     element: <ProtectedRoute requiredRole="admin"/>,
     errorElement: <AppRouteError/>,
@@ -199,40 +200,48 @@ export const router = createBrowserRouter([
         path: "/admin",
         element: lazyRoute(AdminLayout),
         children: [
-          {index: true, element: lazyRoute(AdminDashboardPage)},
-          {path: "analytics", element: lazyRoute(AdminAnalyticsPage)},
-          {path: "questions", element: lazyRoute(AdminQuestionsPage)},
-          {path: "questions/new", element: lazyRoute(AdminQuestionEditPage)},
-          {path: "questions/:id", element: lazyRoute(AdminQuestionEditPage)},
-          {path: "questions/workflow", element: lazyRoute(AdminQuestionWorkflowPage)},
-{path: "/dashboard", element: lazyRoute(DashboardPage)},
-{path: "/mock-exam", element: lazyRoute(StudyPlanAnalyticsPage)},
-{path: "/exam/:sessionId", element: lazyRoute(BatchExamPage)},
-{path: "/results/:sessionId", element: lazyRoute(ResultsPage)},
-{path: "/review/:sessionId", element: lazyRoute(ReviewPage)},
-{path: "/stats", element: lazyRoute(StatsPage)},
-{path: "/profile", element: lazyRoute(ProfilePage)},
-{path: "/leaderboard", element: lazyRoute(LeaderboardPage)},
-{path: "/practice", element: lazyRoute(PracticePage)},
-{path: "/practice-test/configure", element: lazyRoute(PracticePage)},
-{path: "/practice/stats", element: lazyRoute(PracticeStatsPage)},
-{path: "/practice/:sessionId", element: lazyRoute(PracticeSessionPage)},
-{path: "/study-plan", element: lazyRoute(StudyPlanHubPage)},
-{path: "/study-plan/setup", element: lazyRoute(StudyPlanSetupPage)},
-{path: "/study-plan/diagnostic/:id", element: lazyRoute(StudyPlanDiagnosticPage)},
-{path: "/study-plan/session/:sessionId", element: lazyRoute(StudyPlanSessionPage)},
-{path: "/study-plan/assessment/:id", element: lazyRoute(StudyPlanAssessmentPage)},
-{path: "/study-plan/calendar", element: lazyRoute(StudyPlanCalendarPage)},
-{path: "/study-plan/analytics", element: lazyRoute(StudyPlanAnalyticsPage)},
-{path: "/study-plan/settings", element: lazyRoute(StudyPlanSettingsPage)},
-{path: "/settings", element: lazyRoute(SettingsPage)},
-{path: "/settings/payments", element: lazyRoute(AccountPaymentsPage)},
-{path: "/payment/:planId", element: lazyRoute(PaymentPage)},
-{path: "/support", element: lazyRoute(SupportTicketsPage)},
+          {
+            index: true, element: lazyRoute(AdminDashboardPage),
+            path: "analytics", element: lazyRoute(AdminAnalyticsPage),
+            path: "questions", element: lazyRoute(AdminQuestionsPage),
+            path: "questions/new", element: lazyRoute(AdminQuestionEditPage),
+            path: "questions/:id", element: lazyRoute(AdminQuestionEditPage),
+            path: "questions/workflow", element: lazyRoute(AdminQuestionWorkflowPage),
+          }
+        ]
+      }
+    ]
+  }
+]);
+{
+  path: "/dashboard", element: lazyRoute(DashboardPage)},
+  path: "/mock-exam", element: lazyRoute(StudyPlanAnalyticsPage)},
+  path: "/exam/:sessionId", element: lazyRoute(BatchExamPage)},
+  path: "/results/:sessionId", element: lazyRoute(ResultsPage)},
+  path: "/review/:sessionId", element: lazyRoute(ReviewPage)},
+  path: "/stats", element: lazyRoute(StatsPage)},
+  path: "/profile", element: lazyRoute(ProfilePage)},
+  path: "/leaderboard", element: lazyRoute(LeaderboardPage)},
+  path: "/practice", element: lazyRoute(PracticePage)},
+  path: "/practice-test/configure", element: lazyRoute(PracticePage)},
+  path: "/practice/stats", element: lazyRoute(PracticeStatsPage)},
+  path: "/practice/:sessionId", element: lazyRoute(PracticeSessionPage)},
+  path: "/study-plan", element: lazyRoute(StudyPlanHubPage)},
+  path: "/study-plan/setup", element: lazyRoute(StudyPlanSetupPage)},
+  path: "/study-plan/diagnostic/:id", element: lazyRoute(StudyPlanDiagnosticPage)},
+  path: "/study-plan/session/:sessionId", element: lazyRoute(StudyPlanSessionPage)},
+  path: "/study-plan/assessment/:id", element: lazyRoute(StudyPlanAssessmentPage)},
+  path: "/study-plan/calendar", element: lazyRoute(StudyPlanCalendarPage)},
+  path: "/study-plan/analytics", element: lazyRoute(StudyPlanAnalyticsPage)},
+  path: "/study-plan/settings", element: lazyRoute(StudyPlanSettingsPage)},
+  path: "/settings", element: lazyRoute(SettingsPage)},
+  path: "/settings/payments", element: lazyRoute(AccountPaymentsPage)},
+  path: "/payment/:planId", element: lazyRoute(PaymentPage)},
+  path: "/support", element: lazyRoute(SupportTicketsPage)},
 {
   path: "/support/:ticketNumber",
   element: lazyRoute(SupportTicketDetailPage),
 },
 },
 },
-};
+}

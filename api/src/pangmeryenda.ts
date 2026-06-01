@@ -107,18 +107,24 @@ export class PangMeryendaService {
     };
   }
 }
+amount: data.amount,
+};
+```
+
+```typescript
 async refundPayment(transactionId: string, reason: string): Promise<boolean> {
-  const body = JSON.stringify({reason});
-  const response = await fetch(
-    `${this.config.apiBaseUrl.replace(/\/$/, "")}/v1/payments/${encodeURIComponent(transactionId)}/refund`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-PangMeryenda-Key": this.config.apiKey,
-      "X-PangMeryenda-Signature": this.signPayload(body),
-    },
-    body,
+const body = JSON.stringify({reason});
+const response = await fetch(
+  `${this.config.apiBaseUrl.replace(/\/$/, "")}/v1/payments/${encodeURIComponent(transactionId)}/refund`,
+{
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-PangMeryenda-Key": this.config.apiKey,
+    "X-PangMeryenda-Signature": this.signPayload(body),
   },
-  return response.ok;
+  body,
+},
+);
+return response.ok;
 }

@@ -79,22 +79,18 @@ export async function sendPushTo(
     const statusCode = e?.statusCode ?? 0;
     if (statusCode === 404 || statusCode === 410) {
       // Gone — prune immediately.
-      await db.collection("push_subscriptions")
-        .collection("push_subscriptions")
-        .deleteOne({_id: sub._id});
-      return {endpoint: sub.endpoint, ok: false, statusCode, pruned: true};
+      await db.collection("push_subscriptions").updateOne(
+        {_id: sub._id},
+        {$inc: {failureCount: 1}},
+      );
+      return {
+        endpoint: sub.endpoint,
+        ok: false,
+        statusCode,
+        pruned: false,
+        error: e?.body ?? (err instanceof Error ? err.message : String(err)),
+      };
     }
-    await db.collection("push_subscriptions").updateOne(
-      {_id: sub._id},
-      {$inc: {failureCount: 1}},
-    );
-    return {
-      endpoint: sub.endpoint,
-      ok: false,
-      statusCode,
-      pruned: false,
-      error: e?.body ?? (err instanceof Error ? err.message : String(err)),
-    };
   }
 }
 

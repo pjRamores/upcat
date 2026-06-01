@@ -22,11 +22,11 @@ export async function getAdsSettings(db: Db): Promise<AdsSettings> {
   const envPublisher = getAdsensePublisherId() ?? "";
   const stored = settings.ads;
   const merged: AdsSettings = {
-    ...DEFAULT_ADS_SETTINGS,
-    ...(stored ?? {}),
-    publisherId: (stored?.publisherId?.trim() || envPublisher).trim(),
-    slots: {...(stored?.slots ?? {})},
-    video: {...DEFAULT_VIDEO_AD_SETTINGS, ...(stored?.video ?? {})},
+    ......DEFAULT_ADS_SETTINGS,
+    .........(stored ?? {}),
+    ...publisherId: (stored?.publisherId?.trim() || envPublisher).trim(),
+    ...slots: {...(stored?.slots ?? {})},
+    ...video: {...DEFAULT_VIDEO_AD_SETTINGS, ...(stored?.video ?? {})},
   };
   return merged;
 }

@@ -1,12 +1,12 @@
 import {type Db, type Document, ObjectId, type WithId} from "mongodb";
 
 import type {
-  ... FeatureAccessResult,
-  ... FeatureLimitPeriod,
-  ... PaymentSource,
-  ... PremiumPlan,
-  ... SubscriptionTier,
-  ... UserSubscription,
+  FeatureAccessResult,
+  FeatureLimitPeriod,
+  PaymentSource,
+  PremiumPlan,
+  SubscriptionTier,
+  UserSubscription,
 } from "@upcat/shared";
 import {getPaymentConfig} from "./paymentConfig.js";
 
@@ -115,15 +115,16 @@ const updated: UserSubscription = {
     cancelledAt: null,
     cancellationReason: null,
   });
+}
 
 await db.collection("users").updateOne(
   {_id: input.userId},
-  {
-    $set: {
-      subscription: updated,
-      premium: true,
-      updatedAt: now,
-    },
+{
+  $set: {
+    subscription: updated,
+    premium: true,
+    updatedAt: now,
+  },
   },
 );
 
@@ -150,7 +151,7 @@ export async function downgradeUser(
   if (history.length > 0) {
     history[history.length - 1] = {
       ...history[history.length - 1]!
-      , cancelledAt: now.toISOString(),
+      cancelledAt: now.toISOString(),
       cancellationReason: reason,
       endDate: targetEnd,
     };
@@ -158,27 +159,28 @@ export async function downgradeUser(
 
   const downgraded: UserSubscription = {
     tier: immediate ? "free" : current.tier,
-    premium: {
-      ...current.premium,
-      endDate: targetEnd,
-      autoRenew: false,
-      history,
-    },
-    usage: current.usage,
-  };
-
-  await db.collection("users").updateOne(
-    {_id: userId},
-    {
-      $set: {
-        subscription: downgraded,
-        premium: immediate ? false : true,
-        updatedAt: now,
+    premium:
+      {
+        ...current.premium,
+        endDate: targetEnd,
+        autoRenew: false,
+        history,
       },
-    },
-  );
+      usage: current.usage,
+    };
 
-  return downgraded;
+    await db.collection("users").updateOne(
+      {_id: userId},
+      {
+        $set: {
+          subscription: downgraded,
+          premium: immediate ? false : true,
+          updatedAt: now,
+        },
+      },
+    );
+
+    return downgraded;
 }
 
 export async function extendPremium(

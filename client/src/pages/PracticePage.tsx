@@ -1,5 +1,5 @@
 /**
- * Phase 13 — Practice landing page (mode selector + due-card overview).
+ * Phase 13 - Practice landing page (mode selector + due-card overview).
  *
  * Lets the user pick a practice mode and start a session. Shows the
  * "X due today" badge and a recent-sessions strip for context.
@@ -9,11 +9,11 @@ import {Link, useNavigate} from "react-router-dom";
 import {
   API_ROUTES,
   PRACTICE_MODES,
-  typePracticeMode,
-  typePracticeStatsResponse,
+  type: PracticeMode,
+  type: PracticeStatsResponse,
   SUBJECT_AREAS,
   SUBJECT_META,
-  typeSubjectArea,
+  type: SubjectArea,
 } from "@upcat/shared";
 import {PRACTICE_MODE_DESCRIPTIONS, PRACTICE_MODE_LABELS, practiceApi,} from "@lib/practiceApi";
 import {useToastStore} from "@stores/toastStore";
@@ -62,7 +62,7 @@ export default function PracticePage() {
           // Silent fallback
           setIsNewUser(false);
         }
-        catch {
+        } catch {
           addToast("error", "Failed to load practice stats.");
         } finally {
           if (!cancelled) setLoading(false);
@@ -220,7 +220,7 @@ return (
 <div>
 <h1 className="text-3xl·font-bold·text-slate-900">Spaced·Repetition·Practice</h1>
 <p className="mt-1·text-sm·text-slate-600">
-Review questions you've missed before — at the optimal moment, before you forget.
+Review questions you've missed before -- at the optimal moment, before you forget.
 </p>
 </div>
 <Link
@@ -232,106 +232,105 @@ View deck stats →
 </header>
 
 {/* — Overview tiles —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+</p>
+</div>
+
 <div className="rounded-2x1·border·border-slate-200·bg-slate-50/70·p-4">
-  <div className="text-sm·font-semibold·text-slate-900">How this mode behaves</div>
-  <p className="mt-2·text-xs·leading-5·text-slate-600">{modeSummary}</p>
-  <div className="mt-4·space-y-2·text-xs·text-slate-600">
-    <div className="rounded-x1·bg-white·px-3·py-2·shadow-sm·ring-1·ring-slate-200/80">
-      Max questions is the total cap for the whole session.
-    </div>
-    <div className="rounded-x1·bg-white·px-3·py-2·shadow-sm·ring-1·ring-slate-200/80">
-      New cards only fill leftover space after due cards are selected.
-    </div>
-  </div>
+<div className="text-sm·font-semibold·text-slate-900">How this mode behaves</div>
+<p className="mt-2·text-xs·leading-5·text-slate-600">{modeSummary}</p>
+<div className="mt-4·space-y-2·text-xs·text-slate-600">
+<div className="rounded-x1·bg-white·px-3·py-2·shadow-sm·ring-1·ring-slate-200/80">
+Max questions is the total cap for the whole session.
+</div>
+<div className="rounded-x1·bg-white·px-3·py-2·shadow-sm·ring-1·ring-slate-200/80">
+New cards only fill leftover space after due cards are selected.
+</div>
 </div>
 </div>
 
 <div className="mt-4·grid·grid-cols-1·gap-4·sm:grid-cols-2">data-help="pt_question_count">
-  <NumberField
-    label="Max questions"
-    value={maxQuestions}
-    onChange={setMaxQuestions}
-    min={5}
-    max={50}
-    description="Sets the total session size. Due cards are chosen first, then any allowed new cards fill the remaining slots."
-    hint={`Recommended daily range: 15-30. Current mode can return up to ${maxQuestions} cards.`}
-  />
-  <NumberField
-    label="New cards limit"
-    value={newCardsLimit}
-    onChange={setNewCardsLimit}
-    min={0}
-    max={20}
-    disabled={!newCardsEnabled}
-    description="Caps how many brand-new cards can be introduced after due cards are selected."
-    hint={
-      newCardsEnabled
-      ? "Use 0-3 for lighter review days and 5-10 when you want to expand the deck faster."
-      : "This mode ignores new card introductions. Review only uses due cards, while Random samples existing cards directly."
-    }
-  />
+<NumberField
+label="Max questions"
+value={maxQuestions}
+onChange={setMaxQuestions}
+min={5}
+max={50}
+description="Sets the total session size. Due cards are chosen first, then any allowed new cards fill the remaining slots."
+hint={`Recommended daily range: 15-30. Current mode can return up to ${maxQuestions} cards.`}
+/>
+<NumberField
+label="New cards limit"
+value={newCardsLimit}
+onChange={setNewCardsLimit}
+min={0}
+max={20}
+disabled={!newCardsEnabled}
+description="Caps how many brand-new cards can be introduced after due cards are selected."
+hint={
+newCardsEnabled
+? "Use 0-3 for lighter review days and 5-10 when you want to expand the deck faster."
+: "This mode ignores new card introductions. Review only uses due cards, while Random samples existing cards directly."
+}
+/>
 </div>
 
 <div className="mt-4·rounded-2x1·border·border-sky-200·bg-sky-50/80·p-4·text-sm·text-sky-950">
-  <div className="font-semibold">Session sizing help</div>
-  <div className="mt-2·grid·gap-3·sm:grid-cols-2">
-    <p className="leading-6·text-sky-900/90">
-      <strong>Max questions</strong> is the hard ceiling for the session. If you set 20, the session will never exceed 20 cards.
-    </p>
-    <p className="leading-6·text-sky-900/90">
-      <strong>New cards limit</strong> is not extra on top. It only controls how many unused cards may be introduced inside that same total cap.
-    </p>
-  </div>
+<div className="font-semibold">Session sizing help</div>
+<div className="mt-2·grid·gap-3·sm:grid-cols-2">
+<p className="leading-6·text-sky-900/90">
+<strong>Max questions</strong> is the hard ceiling for the session. If you set 20, the session will never exceed 20 cards.
+</p>
+<p className="leading-6·text-sky-900/90">
+<strong>New cards limit</strong> is not extra on top. It only controls how many unused cards may be introduced inside that same total cap.
+</p>
+</div>
 </div>
 
 <div className="mt-4·rounded-2x1·border·border-emerald-200·bg-emerald-50/70·p-4">
-  data-help="pt_random_cards">
-  <div className="flex·flex-col·gap-3·sm:flex-row·sm:items-end·sm:justify-between">
-    <div className="flex-1">
-      <div className="text-sm·font-semibold·text-emerald-900">Generate random cards</div>
-      <p className="mt-1·text-xs·leading-5·text-emerald-800/90">
-        Add fresh cards to your deck anytime. This is always available so you can grow your deck without leaving this page.
-      </p>
-    </div>
-    <div className="flex·items-center·gap-2">
-      <input
-        type="number"
-        min={1}
-        max={50}
-        value={randomCardsCount}
-        onChange={(e) => setRandomCardsCount(Math.max(1, Math.min(50, Number(e.target.value) || 1)))}
-        className="w-20·rounded-md·border·border-emerald-300·bg-white·px-2·py-2·text-center·text-sm·text-slate-900·focus:border-emerald-500·+"
-        "focus:outline-none"
-      />
-      <button
-        type="button"
-        onClick={handleGenerateRandomCards}
-        disabled={generatingRandomCards}
-        className="rounded-md·bg-emerald-600·px-4·py-2·text-sm·font-semibold·text-white·shadow-sm·hover:bg-emerald-700·disabled:cursor-not-allowed·+"
-        disabled:bg-emerald-300>
-      >
-        {generatingRandomCards ? "Add..." : "Add·random·cards"}
-      </button>
-    </div>
-  </div>
-
-  <div className="mt-6·flex·items-center·justify-between">data-help="pt_presets">
-    <p className="text-xs·text-slate-500">
-      {mode === "review"
-        ? `${dueToday} card${dueToday === 1 ? "" : "s"} due right now.`
-        : `Pulling from ${totalDeck} card${totalDeck === 1 ? "" : "s"} in your deck.`}
-    </p>
-    <button
-      type="button"
-      onClick={handleStart}
-      disabled={!canStart||starting}
-      className="rounded-md·bg-maroon-600·px-6·py-2.5·text-sm·font-semibold·text-white·shadow-sm·hover:bg-maroon-700·disabled:cursor-not-allowed·+"
-      disabled:bg-slate-300>
-    >
-      {starting ? "Starting..." : "Start·practice"}
-    </button>
-  </div>
+data-help="pt_random_cards">
+<div className="flex·flex-col·gap-3·sm:flex-row·sm:items-end·sm:justify-between">
+<div className="flex-1">
+<div className="text-sm·font-semibold·text-emerald-900">Generate random cards</div>
+<p className="mt-1·text-xs·leading-5·text-emerald-800/90">
+Add fresh cards to your deck anytime. This is always available so you can grow your deck without leaving this page.
+</p>
 </div>
+<div className="flex·items-center·gap-2">
+<input
+type="number"
+min={1}
+max={50}
+value={randomCardsCount}
+onChange={(e) => setRandomCardsCount(Math.max(1, Math.min(50, Number(e.target.value) || 1)))}
+className="w-20·rounded-md·border·border-emerald-300·bg-white·px-2·py-2·text-center·text-sm·text-slate-900·focus:border-emerald-500·+"
+focus:outline-none"
+/>
+<button
+type="button"
+onClick={handleGenerateRandomCards}
+disabled={generatingRandomCards}
+className="rounded-md·bg-emerald-600·px-4·py-2·text-sm·font-semibold·text-white·shadow-sm·hover:bg-emerald-700·disabled:cursor-not-allowed·+"
+disabled:bg-emerald-300"
+>
+{generatingRandomCards ? "Add...": "Add random cards"}
+</button>
+</div>
+</div>
+
+<div className="mt-6·flex·items-center·justify-between">data-help="pt_presets">
+<p className="text-xs·text-slate-500">
+{mode === "review"
+? `${dueToday} card${dueToday === 1 ? "" : "s"} due right now.`
+: `Pulling from ${totalDeck} card${totalDeck === 1 ? "" : "s"} in your deck.`}
+</p>
+<button
+type="button"
+onClick={handleStart}
+disabled={!canStart||starting}
+className="rounded-md·bg-maroon-600·px-6·py-2.5·text-sm·font-semibold·text-white·shadow-sm·hover:bg-maroon-700·disabled:cursor-not-allowed·+"
+disabled:bg-slate-300"
+>
+{starting ? "Starting...": "Start practice"}
 //* --- Recent sessions ----------------------------------- */
 {stats && stats.recentSessions.length > 0 && (
   <section className="mt-8">
@@ -378,7 +377,7 @@ function Tile({
   label,
   value,
   accent,
-}: {
+}): {
   label: string;
   value: number | string;
   accent: string;
@@ -406,7 +405,7 @@ function NumberField({
   description,
   hint,
   disabled = false,
-}: {
+}): {
   label: string;
   value: number;
   onChange: (n: number) => void;
@@ -425,10 +424,10 @@ function NumberField({
       ? "border-slate-200 bg-slate-50 text-slate-400"
       : "border-slate-200 bg-white shadow-sm"
     </div>
-  )
+  );
 }
 <span
-  className="rounded-full·bg-slate-100·px-2.5·py-1·text-[11px]·font-semibold·uppercase·tracking-wide·text-slate-600">
+  className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px]·font-semibold·uppercase·tracking-wide·text-slate-600">
   {min}-{max}
 </span>
 </div>
@@ -441,36 +440,35 @@ function NumberField({
     className="inline-flex·h-10·w-10·items-center·justify-center·rounded-xl·border·border-slate-300·bg-white·text-lg·font-semibold·text-slate-700·+
       "shadow-sm·transition·hover:border-maroon-300·hover:text-maroon-700·disabled:cursor-not-allowed·disabled:border-slate-200·disabled:bg-slate-100·+
       "disabled:text-slate-300"
-  >
-  -
-  </button>
-  <label className="flex-1">
-    <span className="sr-only">{label}</span>
-    <input
-      type="number"
-      value={value}
-      min={min}
-      max={max}
-      disabled={disabled}
-      onChange={(e) => {
-        const n = parseInt(e.target.value, 10);
-        if (Number.isFinite(n)) onChange(Math.max(min, Math.min(max, n)));
-      }}
-    }
-    className="w-full·rounded-xl·border·border-slate-300·bg-white·px-4·py-3·text-center·text-lg·font-semibold·text-slate-900·shadow-sm·+
+    >
+    -
+    </button>
+    <label className="flex-1">
+      <span className="sr-only">{label}</span>
+      <input
+        type="number"
+        value={value}
+        min={min}
+        max={max}
+        disabled={disabled}
+        onChange={(e) => {
+          const n = parseInt(e.target.value, 10);
+          if (Number.isFinite(n)) onChange(Math.max(min, Math.min(max, n)));
+        }}
+        className="w-full·rounded-xl·border·border-slate-300·bg-white·px-4·py-3·text-center·text-lg·font-semibold·text-slate-900·shadow-sm·+
       "focus:border-maroon-500·focus:ring-maroon-500·disabled:cursor-not-allowed·disabled:border-slate-200·disabled:bg-slate-100·disabled:text-slate-400"
     />
-  </label>
-  <button
-    type="button"
-    onClick={increment}
-    disabled={disabled||value >= max}
-    className="inline-flex·h-10·w-10·items-center·justify-center·rounded-xl·border·border-slate-300·bg-white·text-lg·font-semibold·text-slate-700·+
+    </label>
+    <button
+      type="button"
+      onClick={increment}
+      disabled={disabled||value >= max}
+      className="inline-flex·h-10·w-10·items-center·justify-center·rounded-xl·border·border-slate-300·bg-white·text-lg·font-semibold·text-slate-700·+
       "shadow-sm·transition·hover:border-maroon-300·hover:text-maroon-700·disabled:cursor-not-allowed·disabled:border-slate-200·disabled:bg-slate-100·+
       "disabled:text-slate-300"
-  >
-  +
-  </button>
+    >
+    +
+    </button>
   </div>
 
   <p className={`mt-3 text-xs leading-5 ${disabled ? "text-slate-400" : "text-slate-500"}`}>

@@ -159,3 +159,4 @@ return res.status(200).json({
     msUntilExpiry: Math.max(0, new Date(existing.expiresAt).getTime() - Date.now()),
   },
 });
+}

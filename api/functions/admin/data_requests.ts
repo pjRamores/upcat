@@ -65,22 +65,22 @@ async function list(req: VercelRequest, res: VercelResponse) {
         type: d.type,
         status: d.status,
         export: d.export
-      } ? {
+      }? {
         format: d.export.format,
         fileSizeBytes: d.export.fileSizeBytes,
         generatedAt: d.export.generatedAt?.toISOString?.() ?? null,
         expiresAt: d.export.expiresAt?.toISOString?.() ?? null,
-      } }
+      }
       : null,
       deletion: d.deletion
-    } ? {
+    }? {
       scope: d.deletion.scope,
       retainAnonymizedStats: d.deletion.retainAnonymizedStats,
       scheduledFor: d.deletion.scheduledFor?.toISOString?.() ?? null,
       confirmedAt: d.deletion.confirmedAt?.toISOString?.() ?? null,
       executedAt: d.deletion.executedAt?.toISOString?.() ?? null,
       cancelledAt: d.deletion.cancelledAt?.toISOString?.() ?? null,
-    } }
+      }
       : null,
       requestedAt: d.requestedAt?.toISOString?.() ?? null,
       updatedAt: d.updatedAt?.toISOString?.() ?? null,
@@ -103,8 +103,8 @@ async function update(
   }
 }
 const {action, notes} = (req.body??{}).as({
-  action?: "cancel" | "expedite",
-  notes?: string
+  action?: "cancel" | "expedite";
+  notes?: string;
 });
 const db = await getDb();
 const doc = await db
@@ -134,8 +134,8 @@ if (action === "cancel") {
   );
   await db
     .collection("users")
-    .updateOne({
-      _id: doc.userId},
+    .updateOne(
+      {_id: doc.userId},
       {$unset: {"dataRequests.pendingDeletionId": ""}},
     );
   const owner = await db.collection("users").findOne({_id: doc.userId});
@@ -177,8 +177,8 @@ if (action === "expedite") {
       dataRequestId: doc._id,
       executedBy: admin._id,
     });
-    await db.collection("data_requests").updateOne({
-      _id: doc._id},
+    await db.collection("data_requests").updateOne(
+      {_id: doc._id},
       {
         $set: {
           status: "completed",
@@ -196,6 +196,4 @@ if (action === "expedite") {
       .status(200)
       .json({success: true, data: {expedited: true, result}});
   }
-
-  return res.status(400).json({success: false, error: "Unknown action."});
 }

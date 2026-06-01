@@ -19,10 +19,10 @@ export default function AccountPaymentsPage() {
   const [loading, setLoading] = useState(true);
   const [subscription, setSubscription] = useState({
     tier: "free" | "premium",
-    endDate: string | null,
-    daysRemaining: number | null,
-    isLifetime: boolean,
-    planName: string | null,
+    endDate: string | null;
+    daysRemaining: number | null;
+    isLifetime: boolean;
+    planName: string | null;
     source: string | null;
   }) | null>(null);
   const [submissions, setSubmissions] = useState<SubmissionItem[]>(([]);
@@ -63,43 +63,47 @@ export default function AccountPaymentsPage() {
   );
 }
 
-{subscription && {
-  <section className="rounded-xl·border·border-gray-200·bg-white·p-6·shadow-sm">
-    <h2 className="mb-3·text-base·font-semibold·text-gray-900">Current subscription</h2>
-    <dl className="grid·grid-cols-1·gap-3·text-sm·sm:grid-cols-2">
-      <div>
-        <dt className="text-xs·uppercase·tracking-wide·text-gray-500">Tier</dt>
-        <dd className="mt-1·font-semibold·text-gray-900">{subscription.tier.toUpperCase()}</dd>
-      </div>
-      <div>
-        <dt className="text-xs·uppercase·tracking-wide·text-gray-500">Plan</dt>
-        <dd className="mt-1·text-gray-900">
-          {subscription.isLifetime
-            ? "Lifetime"
-            : subscription.endDate
-            ? new Date(subscription.endDate).toLocaleString()
-            : "N/A"}
+return (
+  <div className="mx-auto·max-w-4x1·space-y-6·px-4·py-10">
+    <Seo title="Subscription & Payments" description="Manage your premium subscription and payment history."
+    noindex/>
+    <div>
+      <dt className="text-xs·uppercase·tracking-wide·text-gray-900">Subscription & payments</dt>
+      <p className="mt-1·text-sm·text-gray-500">Track your subscription status and manual payment</p>
+      <submissions.</p>
+    </div>
+  </div>
+
+  {subscription && (
+    <section className="rounded-xl·border·border-gray-200·bg-white·p-6·shadow-sm">
+      <h2 className="mb-3·text-base·font-semibold·text-gray-900">Current subscription</h2>
+      <dl className="grid·grid-cols-1·gap-3·text-sm·sm:grid-cols-2">
+        <div>
+          <dt className="text-xs·uppercase·tracking-wide·text-gray-500">Tier</dt>
+          <dd className="mt-1·font-semibold·text-gray-900">{subscription.tier.toUpperCase()}</dd>
+        </div>
+        <div>
+          <dt className="text-xs·uppercase·tracking-wide·text-gray-500">Plan</dt>
+          <dd className="mt-1·text-gray-900">
+            {subscription.isLifetime
+              ? "Lifetime"
+              : subscription.endDate
+              ? new Date(subscription.endDate).toLocaleString()
+              : "N/A"}
+          </dd>
         </div>
       </div>
-      <div>
-        <dt className="text-xs·uppercase·tracking-wide·text-gray-500">Valid until</dt>
-        <dd className="mt-1·text-gray-900">
-          {subscription.isLifetime
-            ? "Lifetime"
-            : subscription.endDate
-            ? new Date(subscription.endDate).toLocaleString()
-            : "N/A"}
-        </div>
-      </div>
-    </dl>
-    <div className="mt-4·flex·flex-wrap·gap-2">
-      <Link to="/pricing">
-        <className="rounded-md·bg-primary-600·px-3·py-2·text-xs·font-semibold·text-white·hover:bg-primary-700">
-          View plans
-        </Link>
-      </div>
-    </dl>
-    {subscription.tier === "premium" && {
+    </div>
+  </div>
+
+  <div className="mt-4·flex·flex-wrap·gap-2">
+    <Link to="/pricing">
+      <className="rounded-md·bg-primary-600·px-3·py-2·text-xs·font-semibold·text-white·hover:bg-primary-700">
+        View plans
+      </Link>
+    </div>
+
+    {subscription.tier === "premium" && (
       <button
         type="button"
         className="rounded-md·border·border-red-200·px-3·py-2·text-xs·font-semibold·text-red-700·hover:bg-red-50"
@@ -111,10 +115,6 @@ onClick={async () => {
 Cancel auto-renew
 </button>
 )}
-
-</div>
-</section>
-)
 
 <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
 <h2 className="mb-3 text-base font-semibold text-gray-900">Manual payment submissions</h2>
@@ -136,19 +136,19 @@ Cancel auto-renew
 <tbody>
 {submissions.map((s) => (
 <tr>
-  key={s.submissionNumber}
-  className={`border-b border-gray-100 ${highlightSubmission === s.submissionNumber ? "bg-emerald-50" : ""}`}
+key={s.submissionNumber}
+className={`border-b border-gray-100 ${highlightSubmission === s.submissionNumber ? "bg-emerald-50" : ""}`}
 >
-  <td className="px-2 py-2 font-medium text-gray-900">{s.submissionNumber}</td>
-  <td className="px-2 py-2 text-gray-700">{s.planName}</td>
-  <td className="px-2 py-2 text-gray-700">P{s.amount}</td>
-  <td className="px-2 py-2 text-gray-700">{s.channel}</td>
-  <td className="px-2 py-2">
-    <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700">
-      {s.status}
-    </span>
-  </td>
-  <td className="px-2 py-2 text-gray-700">{new Date(s.createdAt).toLocaleString()}</td>
+<td className="px-2 py-2 font-medium text-gray-900">{s.submissionNumber}</td>
+<td className="px-2 py-2 text-gray-700">{s.planName}</td>
+<td className="px-2 py-2 text-gray-700">P{s.amount}</td>
+<td className="px-2 py-2 text-gray-700">{s.channel}</td>
+<td className="px-2 py-2">
+<span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700">
+{s.status}
+</span>
+</td>
+<td className="px-2 py-2 text-gray-700">{new Date(s.createdAt).toLocaleString()}</td>
 </tr>
 ))}
 </tbody>

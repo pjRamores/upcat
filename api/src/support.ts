@@ -69,13 +69,13 @@ export async function nextTicketNumber(db: Db): Promise<string> {
   );
   const doc = await col.findOne<{ value?: number }>({
     _id: "support_ticket" as unknown as ObjectId,
-  }));
+  });
   const value = doc?.value ?? 1;
   return `SUP-${String(value).padStart(6, "0")}`;
 }
 
 export function emptyVerification(
-  method: SupportTicketVerificationDocMethod = "email_otp",
+  method: SupportTicketVerificationDocMethod => "email_otp",
 ): SupportTicketDoc["verification"] {
   return {
     method,
@@ -149,8 +149,8 @@ export function toSupportTicketDTO(
     verification,
     resolution,
     messages,
-    assignedTo: doc.assignTo?.toString() ?? null,
-    assignedToName: opts.assignToName ?? null,
+    assignedTo: doc.assignedTo?.toString() ?? null,
+    assignedToName: opts.assignedToName ?? null,
     createdAt: doc.createdAt.toISOString(),
     updatedAt: doc.updatedAt.toISOString(),
   };

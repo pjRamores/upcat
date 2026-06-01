@@ -9,8 +9,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const db = await getDb();
-  const categoryRaw = String(req.query.category ?? "").trim();
-  const search = String(req.query.search ?? "").trim();
+  const categoryRaw = String(req.query.category ?? "");
+  const search = String(req.query.search ?? "");
   const page = Math.max(1, toInt(req.query.page, 1));
   const limit = Math.min(50, Math.max(1, toInt(req.query.limit, 20)));
   const skip = (page - 1) * limit;
@@ -53,7 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   ]);
 
   const items = itemsRaw.map((row) => {
-    const body = String((row as {content?: {body?: string}}).content?.body ?? "")
+    const body = String((row as {content?: {body?: string}}).content?.body?? "");
     const words = stripMarkdown(body).split(/\s+/).filter(Boolean).length;
     const estimatedReadingMinutes = Math.max(1, Math.ceil(words / 220));
     return {

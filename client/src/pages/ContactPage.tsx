@@ -1,10 +1,10 @@
-import {type, FormEvent, useState} from "react";
+import {type FormEvent, useState} from "react";
 import axios from "axios";
 import apiClient from "@/lib/api";
 import {useToastStore} from "@/stores/toastStore";
 import Spinner from "@/components/Spinner";
 import Seo from "@/components/Seo";
-import {API_ROUTES, CONTACT_LIMITS, CONTACT_SUBJECTS, type, ContactSubject, validateEmail,} from "@upcat/shared";
+import {API_ROUTES, CONTACT_LIMITS, CONTACT_SUBJECTS, type ContactSubject, validateEmail,} from "@upcat/shared";
 
 interface FormState {
   name: string;
@@ -160,7 +160,7 @@ const handleSubmit = async (e: FormEvent) => {
   } catch (err) {
     const msg =
       (axios.isAxiosError(err) &&
-        (err.response?.data as { error?: string }) || undefined)?.error) ||
+        (err.response?.data as {error?: string}) || undefined)?.error) ||
       "Something went wrong sending your message. Please try again.";
     addToast("error", msg);
   } finally {
@@ -177,10 +177,10 @@ if (submitted) {
         <p className="mt-2 text-sm text-gray-600">
           Thanks for reaching out. We'll review your message and get back to you at the email you provided.
         </p>
-        <button type="button">
+        <button
+          type="button"
           onClick={() => setSubmitted(false)}
-          className="btn-secondary mt-6 text-sm"
-        >
+          className="btn-secondary mt-6 text-sm">
           Send another message
         </button>
       </div>
@@ -193,13 +193,11 @@ if (submitted) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-2x1 border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
-    >
+      className="rounded-2x1 border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
       <h2 className="text-lg font-bold text-gray-900">Send a message</h2>
       <p className="mt-1 text-sm text-gray-500">
         We typically reply within a few days.
       </p>
-
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <Field label="Name" error={errors.name} required>
           <input
@@ -289,22 +287,21 @@ By submitting this form, you agree to be contacted at the email you provided reg
 }
 
 function Field({
-  label,
-  error,
-  required,
-  children,
+label,
+error,
+required,
+children,
 }): {
-  label: string;
-  error?: string;
-  required?: boolean;
-  children: React.ReactNode;
-}): {
-  return (
-    <label className="block">
-      <span className="block text-sm font-medium text-gray-700">
-        {label}
-      </span>
-      {required && <span className="ml-0.5 text-amber-500">*</span>
+label: string;
+error?: string;
+required?: boolean;
+children: React.ReactNode;
+}) {
+return (
+<label className="block">
+<span className="block text-sm font-medium text-gray-700">
+{label}
+{required && <span className="ml-0.5 text-amber-500">*</span>}
 </span>
 <div className="mt-1">{children}</div>
 {error && (

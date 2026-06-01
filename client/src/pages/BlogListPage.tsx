@@ -23,7 +23,6 @@ export default function BlogListPage() {
   const search = params.get("search") ?? "";
   const tag = params.get("tag") ?? "";
   const data = setData();
-  const loading = setLoading();
   const error = setError();
   const query = setQuery();
 
@@ -110,9 +109,9 @@ Clear
 })
 </form>
 
-{tag && (
+{tag&&(
 <p className="mb-4·text-sm·text-slate-600">
-Filtering·by·tag: <span className="rounded·bg-slate-200·px-2·py-0.5·text-slate-900">{tag}</span>
+Filtering·by·tag:<span className="rounded·bg-slate-200·px-2·py-0.5·text-slate-900">{tag}</span>
 </p>
 })
 
@@ -121,17 +120,18 @@ Filtering·by·tag: <span className="rounded·bg-slate-200·px-2·py-0.5·text-s
 
 {!loading&&!error&&data&&(
 <>
-{data.posts.length === 0?(
+{data.posts.length===0?(
 <p className="rounded·border·border-dashed·border-slate-300·p-8·text-center·text-slate-500">
 No·posts·found.
 </p>
 )::(
 <ul className="grid·gap-6·sm:grid-cols-2">
-{data.posts.map((post) => (
-<li key={post._id}>
+{data.posts.map((post)=>(
+<li key={post._id}
 className="rounded-lg·border·border-slate-200·bg-white·p-5·shadow-sm">
 {post.heroImage&&(
-<img src={post.heroImage}
+<img
+src={post.heroImage}
 alt=""
 loading="lazy"
 className="mb-4·h-40·w-full·rounded·object-cover"
@@ -144,7 +144,7 @@ className="mb-4·h-40·w-full·rounded·object-cover"
 </h2>
 <p className="mt-2·text-sm·text-slate-600·line-clamp-3">{post.summary}</p>
 <p className="mt-3·text-xs·text-slate-500">
-By {post.authorName}
+By{post.authorName}
 {post.publishedAt&&(
 <>
 {"..."}
@@ -161,10 +161,10 @@ By {post.authorName}
 
 {totalPages>1&&(
 <nav className="mt-8·flex·justify-center·gap-2·text-sm·aria-label="Pagination">
-{Array.from({length:totalPages},(_,i) => i+1).map((p)=>{
-const next = new URLSearchParams(params);
-if (p === 1) next.delete("page");
-else next.set("page", String(p));
+{Array.from({length:totalPages},(_,i)=>i+1).map((p)=>{
+const next=new URLSearchParams(params);
+if(p===1)next.delete("page");
+else next.set("page",String(p));
 return(
 <Link
 key={p}
@@ -172,7 +172,7 @@ to={`/blog?${next.toString()}`}
 className={`rounded·px-3·py-1 ${
 p === page ? "bg-blue-600 text-white" : "border border-slate-300 text-slate-700"
 }`}
-aria-current={p === page ? "page" : undefined}
+aria-current={p===page?:"page":undefined}
 >
 {p}
 </Link>

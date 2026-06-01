@@ -41,12 +41,7 @@ export default function AdminMonitoringPage() {
   function DashboardTab() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [range, setRange] = useState<["1h" | "6h" | "24h" | "7d"]>(1h);
-    const [data, setData] = useState<Record<string, unknown>>(null);
-
-    async function load() {
-      setLoading(true);
-      setError(null);
+    const [range, setRange] = useState<["1h", "6h", "24h", "7d"] as const).map((r) => (
       try {
         const result = await adminApi.monitoringDashboard(range);
         setData(result);
@@ -55,7 +50,7 @@ export default function AdminMonitoringPage() {
       } finally {
         setLoading(false);
       }
-    }
+    )
 
     useEffect(() => {
       void load();
@@ -74,12 +69,15 @@ export default function AdminMonitoringPage() {
               onClick={() => setRange(r)}
               className={rounded-full border px-3 py-1.5 text-xs font-medium ${
                 range === r
-                ? "border-primary-600 bg-primary-600 text-white"
-                : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-              }
-            }
-          )}
+              } ? "border-primary-600 bg-primary-600 text-white"
+              : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+              } }
+          )
+        >
+          {r}
         </button>
+      ))}
+      <button
         type="button"
         onClick={() => void adminApi.monitoringEvaluateRules().then(load)}
         className="rounded·border·border-slate-300·px-3·py-1.5·text-xs"
@@ -99,109 +97,6 @@ export default function AdminMonitoringPage() {
     {error ? <p className="text-sm·text-red-600">{error}</p> : null}
   );
 }
-{data}: (
-<div className="grid-grid-cols-2·gap-3·md:grid-cols-4">
-<Kpi label="Health" value={String(overview.health??"unknown")}/>
-<Kpi label="Open·alerts" value={Number(overview.openAlerts??·0)}/>
-<Kpi label="Requests" value={Number(overview.requests??·0)}/>
-<Kpi label="Errors" value={Number(overview.errors??·0)}/>
-<Kpi label="Error·rate" value={`${Number(overview.errorRatePercent??·0)}%`}/>
-<Kpi label="P95·latency" value={`${Number(overview.p95LatencyMs??·0)}ms`}/>
-<Kpi label="Degraded·checks" value={Number(overview.checksDegraded??·0)}/>
-<Kpi label="Unhealthy·checks" value={Number(overview.checksUnhealthy??·0)}/>
-</div>
-)::null>
-</div>
-);
-}
-
-function LogsTab() {
-const [logs, setLogs] = useState<Array<Record<string, unknown>>>([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState<string|·null>(null);
-const [level, setLevel] = useState("");
-
-async function load() {
-setLoading(true);
-setError(null);
-try {
-const result = await adminApi.monitoringLogs({level:·level||·undefined, limit:·50, page:·1});
-setLogs(result.items);
-} catch (e) {
-setError((e as Error).message);
-} finally {
-setLoading(false);
-}
-}
-
-useEffect(() => {
-void load();
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [level]);
-
-return (
-<div className="space-y-3">
-<div className="flex·items-center·gap-2">
-<select
-value={level}
-onChange={(e) => setLevel(e.target.value)}
-className="rounded·border·border-slate-300·px-2·py-1·text-sm"
->
-<option value="">All·levels</option>
-<option value="debug">debug</option>
-<option value="info">info</option>
-<option value="warn">warn</option>
-<option value="error">error</option>
-<option value="fatal">fatal</option>
-</select>
-</div>
-{loading?<p className="text-sm·text-gray-500">Loading...</p>::null}
-{error?<p className="text-sm·text-red-600">{error}</p>::null}
-<div className="overflow-x-auto·rounded·border·border-slate-200">
-<table className="w-full·text-sm">
-<thead className="bg-slate-50·text-left·text-xs·uppercase·text-slate-500">
-<tr>
-<th className="px-2·py-2">Timestamp</th>
-<th className="px-2·py-2">Level</th>
-<th className="px-2·py-2">Service</th>
-<th className="px-2·py-2">Message</th>
-</tr>
-</thead>
-<tbody>
-<tbody>
-<tbody>
-<td className="px-2·py-2">String(log.timestamp??·")</td>
-<td className="px-2·py-2">String(log.level??·")</td>
-<td className="px-2·py-2">String((log.context·as·Record<string, unknown>|·undefined)?.service??·")</td>
-<td className="px-2·py-2">String(log.message??·")</td>
-</tbody>
-</tbody>
-</table>
-</div>
-</div>
-);
-}
-
-function AlertsTab() {
-const [alerts, setAlerts] = useState<Array<Record<string, unknown>>>([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState<string|·null>(null);
-
-async function load() {
-setLoading(true);
-setError(null);
-try {
-const result = await adminApi.monitoringAlerts({page:·1, limit:·50});
-setAlerts(result.items);
-} catch (e) {
-setError((e as Error).message);
-} finally {
-setLoading(false);
-}
-}
-
-useEffect(() => {
-void load();
 }, []);
 
 return (
@@ -220,11 +115,11 @@ return (
           </tr>
         </thead>
         <tbody>
-          <tr key={idx}>
+          <tr>
             <td className="px-2 py-2">{String(alert.title ?? "")}</td>
             <td className="px-2 py-2">{String(alert.severity ?? "")}</td>
             <td className="px-2 py-2">{String(alert.status ?? "")}</td>
-            <td className="px-2 py-2 text-xs text-slate-500">{String(alert.firedAt ?? "")}</td>
+            <td className="px-2 py-2">{String(alert.firedAt ?? "")}</td>
             <td className="px-2 py-2 text-right">
               <div className="flex justify-end gap-1">
                 <button

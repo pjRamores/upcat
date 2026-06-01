@@ -1,7 +1,7 @@
 /**
- * Admin — Emergency lockdown enable/disable.
- * POST /api/admin/security/emergency/lockdown ····· {confirmCode: "LOCKDOWN", password}
- * POST /api/admin/security/emergency/unlock ····· {password}
+ * Admin - Emergency lockdown enable/disable.
+ * POST /api/admin/security/emergency/lockdown ··· {confirmCode: "LOCKDOWN", password}
+ * POST /api/admin/security/emergency/unlock ··· {password}
  *
  * When lockdown is on, `withSecurity` rejects every non-admin request with
  * 503. Admins remain able to manage the system.

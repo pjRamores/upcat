@@ -1,20 +1,20 @@
-/* eslint-.env serviceworker */
+script
+/* eslint-env serviceworker */
 /* global self, caches, clients */
 
 /**
  * UPCAT Simulator - service worker.
  *
  * Strategies:
- * ```shell
- * App.shell (HTML/JS/CSS/icons): cache-first with stale-while-revalidate
- * update on success. The app.shell is cached on install + on first.nav.
- * Same-origin GET /api/* (read-only): network-first with cache-fallback,
- * scoped to a small allow-list (questions, stats) so private/mutable
- * responses are never cached. Cached entries are evicted with a 24h TTL.
- * Anything else: passthrough to the network.
+ * * App·shell (HTML/JS/CSS/icons): cache-first with stale-while-revalidate
+ * * update·on·success·The·app·shell is·cached·on·install+·on·first·nav.
+ * * Same-origin·GET /api/* (read-only): network-first with cache·fallback,
+ * * scoped·to·a·small·allow-list (questions, stats)·so·private/mutable
+ * * responses·are·never·cached. Cached·entries·are·evicted·with·a·24h·TTL.
+ * * Anything·else: passthrough·to·the·network.
  *
- * Also handles `push` events, rendering a notification from the JSON payload,
- * and `notificationclick` to focus or open the in-app URL.
+ * Also·handles `push`·events, rendering·a·notification·from·the·JSON·payload,
+ * and `notificationclick`·to·focus·or·open·the·in-app·URL.
  */
 
 const VERSION = "v1.0.0";
@@ -39,7 +39,7 @@ const CACHEABLE_API_PATTERNS = [
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(SHELL_CACHE).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()),
-  );
+  });
 });
 
 self.addEventListener("activate", (event) => {
@@ -51,7 +51,7 @@ self.addEventListener("activate", (event) => {
         .map((k) => caches.delete(k)),
       ),
     }).then(() => self.clients.claim()),
-  );
+  });
 });
 
 self.addEventListener("fetch", (event) => {
@@ -69,13 +69,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Navigation requests -> serve cached shell, then refresh in the background.
+  // Navigation requests → serve cached shell, then refresh in the background.
   if (request.mode === "navigate") {
     event.respondWith(navigationHandler(request));
     return;
   }
 
-  // Static assets (JS/CSS/images) -> cache-first with revalidate.
+  // Static assets (JS/CSS/images) → cache-first with revalidate.
   event.respondWith(cacheFirst(request, RUNTIME_CACHE));
 });
 
@@ -99,6 +99,7 @@ async function navigationHandler(request) {
     );
   }
 }
+script
 async function cacheFirst(request, cacheName) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(request);
@@ -154,8 +155,7 @@ async function networkFirstWithTtl(request) {
   }
 }
 
-// --- Push handler ---
-
+// Push handler
 self.addEventListener("push", (event) => {
   if (!event.data) return;
   let payload;
@@ -201,6 +201,7 @@ self.addEventListener("notificationclick", (event) => {
     })
   );
 });
+script
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();

@@ -1,10 +1,10 @@
 /**
- * /recover-account — public account recovery flow.
+ * /recover-account -- public account recovery flow.
  *
  * Three pathways (tabbed):
- * 1. Recovery code — user pastes one of the 10 one-time codes.
- * 2. Security questions — three pre-set Q&A challenges.
- * 3. Contact support — opens a guest support ticket.
+ * 1. Recovery code -- user pastes one of the 10 one-time codes.
+ * 2. Security questions -- three pre-set Q&A challenges.
+ * 3. Contact support -- opens a guest support ticket.
  *
  * On success (1 or 2) we receive a short-lived `recoveryToken` and
  * navigate to `/recover-account/reset?token=...` to set a new password.
@@ -25,7 +25,7 @@ export default function RecoverAccountPage() {
     <div className="mx-auto max-w-xl px-4 py-12">
       <Seo title="Recover your account" noindex/>
       <header className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Recover your account</h1>
+        <h1 className="text-2x1 font-bold text-gray-900">Recover your account</h1>
         <p className="mt-1 text-sm text-gray-500">
           Pick a recovery method below to regain access to your account.
         </p>
@@ -102,7 +102,7 @@ function RecoveryCodeForm() {
     } catch (err) {
       const msg =
         (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-"Could not verify that recovery code.";
+"Could not verify that recovery code."
 addToast("error", msg);
 finally {
 setBusy(false);
@@ -169,7 +169,7 @@ setAnswers(new Array(r.questions.length).fill(""));
 catch (err) {
 const msg =
 (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-"Could not look up your questions.";
+"Could not look up your questions."
 addToast("error", msg);
 } finally {
 setBusy(false);
@@ -189,7 +189,7 @@ navigate(`/recover-account/reset?token=${encodeURIComponent(recoveryToken)}`);
 catch (err) {
 const msg =
 (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-"Answers did not match.";
+"Answers did not match."
 addToast("error", msg);
 } finally {
 setBusy(false);
@@ -227,7 +227,7 @@ return (
 <span·className="font-medium·text-gray-700">{q}</span>
 <input
 required
-value={answers[i]·??·"}
+value={answers[i]·??·"}}
 onChange={(e) =>
 setAnswers((prev) => {
 const·next = [...prev];
@@ -246,7 +246,7 @@ className="input-field·mt-1"
 );
 }
 
-/*——Contact·support——*/
+/*——Contact support——*/
 function SupportRedirect() {
 return (
 <div·className="space-y-3·text-sm·text-gray-600">

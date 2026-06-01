@@ -149,7 +149,7 @@ ruleId: string;
 name: string;
 description: string;
 isActive: boolean;
-condition:
+condition: {
 type: "threshold" | "anomaly" | "absence" | "rate_change" | "pattern";
 metric: string | null;
 operator: "gt" | "gte" | "lt" | "lte" | "eq" | "ne";
@@ -170,7 +170,7 @@ notifyChannels: string[];
 cooldownMinutes: number;
 autoResolve: boolean;
 autoResolveAfterMinutes: number | null;
-escalation:
+escalation: {
 enabled: boolean;
 escalateAfterMinutes: number;
 escalateTo: string[];

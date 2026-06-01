@@ -19,7 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const admin = await requireAdmin(req, res);
   if (!admin) return;
 
-  const body = (req.body ?? {}).asPartial<PushBroadcastPayload>;
+  const body = (req.body ?? {}).as Partial<PushBroadcastPayload>;
   if (!body.title || typeof body.title !== "string") {
     return res.status(400).json({success: false, error: "title is required"});
   }
@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .collection("users")
       .find({role: body.role, isActive: {$ne: false}})
       .project({_id: 1})
-      .toArray()).asArray<{_id: ObjectId}};
+      .toArray()).as Array<{_id: ObjectId}};
     userFilter = {userId: {$in: users.map((u) => u._id)}};
   }
 
@@ -47,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     .collection("push_subscriptions")
     .find({...userFilter, [`preferences.${type}`]: true})
     .project({endpoint: 1, keys: 1})
-    .toArray()).asUnknown as Array<
+    .toArray()).as unknown as Array<
       {_id: ObjectId};
     endpoint: string;
     keys: {p256dh: string; auth: string};
@@ -60,7 +60,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         body: message,
         type,
         url,
-      }),
+      })),
     );
   );
 

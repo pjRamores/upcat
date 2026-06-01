@@ -1,9 +1,9 @@
 /**
- * Security questions endpoints — split by ?action= query param.
+ * Security questions endpoints -- split by action= query param.
  *
- * POST /api/auth/security-questions/set — auth required
- * GET /api/auth/security-questions/lookup — public (returns the 3 questions)
- * POST /api/auth/security-questions/verify — public (returns recovery JWT)
+ * POST /api/auth/security-questions/set -- auth required
+ * GET /api/auth/security-questions/lookup -- public (returns the 3 questions)
+ * POST /api/auth/security-questions/verify -- public (returns recovery JWT)
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {getDb} from "../../src/db.js";
@@ -36,12 +36,14 @@ async function set(req: VercelRequest, res: VercelResponse) {
   const {questions} = (req.body ?? {}) as {
     questions?: {question: string; answer: string}[];
   };
+
   if (!Array.isArray(questions)) || questions.length !== SECURITY_QUESTIONS_REQUIRED) {
     return res.status(400).json({
       success: false,
       error: `Exactly ${SECURITY_QUESTIONS_REQUIRED} questions are required.`,
     });
   }
+
   for (const q of questions) {
     if (!q || typeof q.question !== "string") || typeof q.answer !== "string") {
       return res
@@ -59,48 +61,44 @@ async function set(req: VercelRequest, res: VercelResponse) {
         .status(400)
         .json({success: false, error: "Answers must be at least 2 characters."});
     }
-    const seenQs = new Set(questions.map((q) => q.question));
-    if (seenQs.size !== questions.length) {
-      return res
-        .status(400)
-        .json({success: false, error: "All three questions must be different."});
-    }
-
-    const hashed = await hashSecurityAnswers(questions);
-    const db = await getDb();
-    await db.collection("users").updateOne(
-      {_id: user._id},
-      {
-        $set: {
-          "security.securityQuestions": hashed,
-        },
-      },
-    );
-    await logActivity(db, {
-      actorId: user._id,
-      actorRole: user.role ?? "reviewee",
-      action: "auth.security_questions_set",
-      targetType: "user",
-      targetId: user._id,
-    });
-    return res.status(200).json({success: true, data: {ok: true}});
   }
 
-  async function lookup(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== "GET") {
-      return res.status(405).json({success: false, error: "Method not allowed"});
-    }
-    const email = ((req.query.email ?? "") as string).toLowerCase().trim();
-    if (!email) {
-      return res.status(400).json({success: false, error: "email is required."});
-    }
-    const limit = rateLimit({
-      bucket: "sec_q_lookup",
-      key: `${clientIp(req)}${email}`,
-      limit: 10,
-      windowMs: 60 * 60_000,
-    });
-    if (!limit.allowed) {
+  const hashed = await hashSecurityAnswers(questions);
+  const db = await getDb();
+  await db.collection("users").updateOne(
+    {_id: user._id},
+    {
+      $set: {
+        "security.securityQuestions": hashed,
+      },
+    },
+  );
+
+  await logActivity(db, {
+    actorId: user._id,
+    actorRole: user.role ?? "reviewee",
+    action: "auth.security_questions_set",
+    targetType: "user",
+    targetId: user._id,
+  });
+  return res.status(200).json({success: true, data: {ok: true}});
+}
+
+async function lookup(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "GET") {
+    return res.status(405).json({success: false, error: "Method not allowed"});
+  }
+  const email = ((req.query.email ?? "") as string).toLowerCase().trim();
+  if (!email) {
+    return res.status(400).json({success: false, error: "email is required."});
+  }
+  const limit = rateLimit({
+    bucket: "sec_q_lookup",
+    key: `${clientIp(req)}${email}`,
+    limit: 10,
+    windowMs: 60 * 60_000,
+  });
+  if (!limit.allowed) {
 res.setHeader("Retry-After", String(limit.retryAfterSec));
 return res.status(429).json({success: false, error: "Too many lookups."});
 }
@@ -122,7 +120,8 @@ answers?: {questionIndex: number; answer: string}[];
 });
 if (!email || !Array.isArray(answers) || answers.length !== SECURITY_QUESTIONS_REQUIRED) {
 return res.status(400)
-.json({success: false, error: "Email and all three answers are required."});
+}
+json({success: false, error: "Email and all three answers are required."});
 }
 const lookup = email.toLowerCase().trim();
 const limit = rateLimit({
@@ -134,7 +133,8 @@ windowMs: 60 * 60_000,
 if (!limit.allowed) {
 res.setHeader("Retry-After", String(limit.retryAfterSec));
 return res.status(429)
-.json({success: false, error: "Too many attempts. Try again later."});
+}
+json({success: false, error: "Too many attempts. Try again later."});
 }
 const db = await getDb();
 const user = await db.collection("users").findOne({email: lookup});
@@ -144,7 +144,8 @@ return res.status(401).json({success: false, error: "Verification failed."});
 const stored = (user.security?.securityQuestions??[]) as StoredSecurityQuestion[];
 if (stored.length !== SECURITY_QUESTIONS_REQUIRED) {
 return res.status(400)
-.json({success: false, error: "No security questions on file."});
+}
+json({success: false, error: "No security questions on file."});
 }
 const ok = await verifySecurityAnswers(stored, answers);
 if (!ok) {

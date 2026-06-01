@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": "1",
   "publishedAt": "2026-05-27T15:12:39.698Z",
   "publishedBy": "admin@upcatsimulator.com",
   "meta": {
@@ -10,23 +10,40 @@
       "requireConsent": true,
       "premiumExempt": true,
       "testMode": true,
-      "lazyLoad": true,
-      "slots": {
-        "mock_exam_sidebar": {
-          "slot": ""
-        },
-        "review_answers_sidebar": {
-          "slot": ""
-        },
-        "practice_sidebar": {
-          "slot": ""
-        },
-        "enabled": true
+      "lazyLoad": true
+    },
+    "review_answers_sidebar": {
+      "slot": "",
+      "enabled": true
+    },
+    "practice_sidebar": {
+      "slot": "",
+      "enabled": true
+    }
+  },
+  "video": {
+    "enabled": true,
+    "videoUrl": "",
+    "posterUrl": "",
+    "clickThroughUrl": "",
+    "skipAfterSeconds": 5,
+    "minIntervalSeconds": 0,
+    "frequencyCap": 0,
+    "allowedTriggers": [
+      "start_practice",
+      "review_answers"
+    ],
+    "triggerSettings": {
+      "start_practice": {
+        "skipAfterSeconds": 5,
+        "minIntervalSeconds": 0,
+        "frequencyCap": 1
+      },
+      "review_answers": {
+        "skipAfterSeconds": 10,
+        "minIntervalSeconds": 0,
+        "frequencyCap": 1
       }
-    },
-    "review_answers": {
-      "slot": ""
-    },
-    "enabled": true
+    }
   }
 }

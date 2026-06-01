@@ -115,30 +115,31 @@ for (const [fingerprint, rowsForFingerprint] of validFingerprintToRow) {
       row.duplicateQuestionId = duplicateDoc._id;
       continue;
     }
-    const nearDuplicate = await questions
-      .find(
-        {
-          subjectArea: row.payload.subjectArea,
-          subtopic: row.payload.subtopic,
-          isDeleted: {$ne: true},
-        },
-        {projection: {_id: 1, dedupFingerprint: 1, questionText: 1}},
-      )
-    .limit(25)
-    .toArray();
+  }
 
-    for (const candidate of nearDuplicate) {
-      const tier = inferDuplicateTier({
-        existingFingerprint: String(candidate.dedupFingerprint ?? ""),
-        candidateFingerprint: fingerprint,
-        existingQuestionText: String(candidate.questionText ?? ""),
-        candidateQuestionText: String(row.payload.questionText ?? ""),
-      });
-      if (tier === "near") {
-        row.status = "duplicate_near";
-        row.duplicateQuestionId = candidate._id;
-        break;
-      }
+  const nearDuplicate = await questions
+    .find(
+      {
+        subjectArea: row.payload.subjectArea,
+        subtopic: row.payload.subtopic,
+        isDeleted: {$ne: true},
+      },
+      {projection: {_id: 1, dedupFingerprint: 1, questionText: 1}},
+    )
+  .limit(25)
+  .toArray();
+
+  for (const candidate of nearDuplicate) {
+    const tier = inferDuplicateTier({
+      existingFingerprint: String(candidate.dedupFingerprint ?? ""),
+      candidateFingerprint: fingerprint,
+      existingQuestionText: String(candidate.questionText ?? ""),
+      candidateQuestionText: String(row.payload.questionText ?? ""),
+    });
+    if (tier === "near") {
+      row.status = "duplicate_near";
+      row.duplicateQuestionId = candidate._id;
+      break;
     }
   }
 }
@@ -182,7 +183,7 @@ await logActivity(db, {
 return res.status(200).json({
   success: true,
   data: {
-    batchId: insert.insertedId.toString(),
+    batchId: insert.insertId.toString(),
     totalRows: batchRows.length,
     validRows,
     duplicateRows,
@@ -289,6 +290,8 @@ editedBy: adminId,
 editedAt: now,
 note: "Bulk import replace_exact",
 });
+}
+
 await questions.updateOne({
 _id: existing._id},
 {
@@ -481,7 +484,6 @@ const choices: {text: string}[] = [];
 for (const k of ["choiceA", "choiceB", "choiceC", "choiceD"]) {
 if (raw[k] !== undefined) choices.push({text: String(raw[k] ?? "")});
 }
-
 const tags = typeof raw.tags === "string"
 ? raw.tags
 .split(/[;,]/)

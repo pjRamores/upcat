@@ -13,7 +13,7 @@ export default function AdminAuditLogPage() {
   const [action, setAction] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [data, setData] = useState<{ items: ActivityLogEntry[] }>total: number; totalPages: number } | null>(null);
+  const [data, setData] = useState<{ items: ActivityLogEntry }>total: number; totalPages: number } | null>(null);
   const [loading, setLoading] = useState(true);
 
   const refresh = async () => {

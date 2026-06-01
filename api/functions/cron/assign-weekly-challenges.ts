@@ -13,7 +13,7 @@ import {requireCronAuth} from "../../src/cronAuth.js";
 import {getDb} from "../../src/db.js";
 import type {WeeklyChallengeDef} from "@upcat/shared";
 
-function pickWeighted<T extends {weight?: number}>(items: T[]): T | null {
+function pickWeighted<T extends {weight?: number}}(items: T[]): T | null {
   if (items.length === 0) return null;
   const total = items.reduce((s, c) => s + (c.weight || 1), 0);
   let r = Math.random() * total;

@@ -22,11 +22,11 @@ import {
  */
 export default function AdminAdsSettingsPage() {
   const addToast = useToastStore((s) => s.addToast);
-  const [settings, setSettings] = useState<PlatformSettings>({null>(null));
+  const [settings, setSettings] = useState<PlatformSettings>({null}(null));
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
-  const [lastPublished, setLastPublished] = useState<string>({null>(null));
+  const [lastPublished, setLastPublished] = useState<string>({null}(null));
 
   useEffect(() => {
     (async () => {
@@ -171,7 +171,7 @@ const publishStaticAdsConfig = async () => {
             type="text"
             value={ads.publisherId}
             onChange={(e) => updateAds({publisherId: e.target.value.trim()})}
-            placeholder="ca-pub-XXXXXXXXXXXXXXXXX"
+            placeholder="ca-pub-XXXXXXXXXXXXXX"
             className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm font-mono"
           />
         </Field>
@@ -198,87 +198,95 @@ onChange={(v) => updateAds({lazyLoad: v})}
 </Section>
 
 <Section title="Display·slots">
-  <p className="text-xs·text-slate-600">
-    Map·each·canonical·slot·id·to·its·AdSense·slot·code·(the·value·of
-    <code·className="ml-1·rounded·bg-slate-100·px-1">data-ad-slot</code>).·Enable·a·slot
-    to·render·it.·In·test·mode,·enabled·slots·show·placeholders·even·without·a·slot·code.
-  </p>
-  <div·className="space-y-3">
-    {AD_SLOT_IDS.map((id) => {
-      const conf = ads.slots[id] ?? {slot: ""}, enabled: false};
-      return (
-        <div
-          key={id}
-          className="grid·grid-cols-1·gap-2·rounded-md·border·border-slate-200·p-3·md:grid-cols-4"
-        >
-          <div·className="text-sm·font-medium·text-slate-700">{id}</div>
-          <Field·label="Enabled">
-            <label·className="flex·h-full·items-center·gap-2·text-sm·text-slate-700">
-              <input
-                type="checkbox"
-                checked={conf.enabled ?? Boolean(conf.slot)}
-                onChange={(e) => updateSlot(id, "enabled", e.target.checked)}
-              />
-              <span>Render·this·slot</span>
-            </label>
-          </Field>
-          <Field·label="Slot·code">
-            <input
-              type="text"
-              value={conf.slot}
-              onChange={(e) => updateSlot(id, "format", e.target.value)}
-              className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
-            >
-              <option·value="auto">auto</option>
-              <option·value="rectangle">rectangle</option>
-              <option·value="horizontal">horizontal</option>
-              <option·value="vertical">vertical</option>
-              <option·value="fluid">fluid</option>
-            </select>
-          </Field>
-        </div>
-      });
-    </div>
-  </Section>
+<p className="text-xs·text-slate-600">
+Map·each·canonical·slot·id·to·its·AdSense·slot·code·(the·value·of
+<code·className="ml-1·rounded·bg-slate-100·px-1">data-ad-slot</code>).·Enable·a·slot
+to·render·it.·In·test·mode,·enabled·slots·show·placeholders·even·without·a·slot·code.
+</p>
+<div className="space-y-3">
+{AD_SLOT_IDS.map((id) => {
+const conf = ads.slots[id] ?? {slot: "", enabled: false};
+return (
+<div
+key={id}
+className="grid·grid-cols-1·gap-2·rounded-md·border·border-slate-200·p-3·md:grid-cols-4"
+>
+<div className="text-sm·font-medium·text-slate-700">{id}</div>
+<Field·label="Enabled">
+<label className="flex·h-full·items-center·gap-2·text-sm·text-slate-700">
+<input
+type="checkbox"
+checked={conf.enabled??·Boolean(conf.slot)}
+onChange={(e) => updateSlot(id, "enabled", e.target.checked)}
+/>
+<span>Render·this·slot</span>
+</label>
+</Field>
+<Field·label="Slot·code">
+<input
+type="text"
+value={conf.slot}
+onChange={(e) => updateSlot(id, "format", e.target.value)}
+className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+/>
+<option·value="auto">auto</option>
+<option·value="rectangle">rectangle</option>
+<option·value="horizontal">horizontal</option>
+<option·value="vertical">vertical</option>
+<option·value="fluid">fluid</option>
+</select>
+</Field>
+</div>
+});
+</div>
+</Section>
 
 <Section title="Video·interstitials">
-  <Toggle
-    label="Video·interstitials·enabled"
-    checked={ads.video.enabled}
-    onChange={(v) => updateVideo({enabled: v})}
-  />
-  <Field·label="Video·URL·(MP4/WebM)">
-    <input
-      type="url"
-      value={ads.video.videoUrl}
-      onChange={(e) => updateVideo({videoUrl: e.target.value})}
-      className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
-    />
-  </Field>
-  <Field·label="Poster·URL·(optional)">
-    <input
-      type="url"
-      value={ads.video.posterUrl??"}
-      onChange={(e) => updateVideo({posterUrl: e.target.value})}
-      className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
-    />
-  </Field>
-  <div·className="grid·grid-cols-3·gap-3">
-    <Field·label="Skip·after·(s)">
-      <input
-        type="number"
-        min={0}
-        value={ads.video.skipAfterSeconds}
-        onChange={(e) => updateVideo({skipAfterSeconds: Number(e.target.value)})}
-        className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
-      />
-    </Field>
-    <Field·label="Min·interval·(s)">
-      <input
-        type="number"
-        min={0}
-        value={ads.video.minIntervalSeconds}
-        onChange={(e) => updateVideo({minIntervalSeconds: Number(e.target.value)})}
+<Toggle
+label="Video·interstitials·enabled"
+checked={ads.video.enabled}
+onChange={(v) => updateVideo({enabled: v})}
+/>
+<Field·label="Video·URL·(MP4/WebM)">
+<input
+type="url"
+value={ads.video.videoUrl}
+onChange={(e) => updateVideo({videoUrl: e.target.value})}
+className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+/>
+</Field>
+<Field·label="Poster·URL·(optional)">
+<input
+type="url"
+value={ads.video.posterUrl??."""
+onChange={(e) => updateVideo({posterUrl: e.target.value})}
+className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+/>
+</Field>
+<Field·label="Click-through·URL·(optional)">
+<input
+type="url"
+value={ads.video.clickThroughUrl??."""
+onChange={(e) => updateVideo({clickThroughUrl: e.target.value})}
+className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+/>
+</Field>
+<div className="grid·grid-cols-3·gap-3">
+<Field·label="Skip·after·(s)">
+<input
+type="number"
+min={0}
+value={ads.video.skipAfterSeconds}
+onChange={(e) => updateVideo({skipAfterSeconds: Number(e.target.value)})}
+className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+/>
+</Field>
+<Field·label="Min·interval·(s)">
+<input
+type="number"
+min={0}
+value={ads.video.minIntervalSeconds}
+onChange={(e) => updateVideo({minIntervalSeconds: Number(e.target.value)})}
 className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
 />
 
@@ -303,6 +311,7 @@ type="checkbox"
 checked={ads.video.allowedTriggers.includes(t)}
 onChange={() => toggleTrigger(t)}
 />
+
 <span>{t}</span>
 </label>
 ))}
@@ -321,24 +330,27 @@ value={effectiveSkip}
 onChange={(e) => updateTriggerSetting(t, "skipAfterSeconds", Number(e.target.value))}
 className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
 />
+
 </Field>
 <Field·label="Min·interval·(s)">
 <input
 type="number"
-min={0}
+min={1}
 value={effectiveInterval}
 onChange={(e) => updateTriggerSetting(t, "minIntervalSeconds", Number(e.target.value))}
 className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
 />
+
 </Field>
 <Field·label="Frequency·cap·(1·in·N)">
 <input
 type="number"
-min={1}
+min={0}
 value={effectiveCap}
 onChange={(e) => updateTriggerSetting(t, "frequencyCap", Number(e.target.value))}
 className="w-full·rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
 />
+
 </Field>
 </div>
 }))
@@ -377,16 +389,16 @@ disabled={publishing}
 onClick={() => void.publishStaticAdsConfig()}
 className="rounded·bg-amber-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-amber-700·disabled:opacity-50"
 {
-  publishing:?·"Publishing...":::"Publish·Now"}
+  publishing:?·"Publishing..."::"Publish·Now"}
 </button>
 </div>
 <p className="mt-2·text-xs·text-amber-700">
-  Next·step:save·the·downloaded·JSON·to·client/public/data/ads-config.json, then·rebuild·and
-  redeploy.
+Next step: save the downloaded JSON to client/public/data/ads-config.json, then rebuild and redeploy.
 </p>
 </section>
 </div>
 );
+}
 
 function·Section({title,·children}:{·title:·string;·children:·React.ReactNode·}){
   return(
@@ -413,7 +425,7 @@ function·Toggle({
 }:{
   label:·string;
   checked:·boolean;
-  onChange:(v:·boolean)=>·void;
+  onChange:·(v:·boolean)=>·void;
 }){
   return(
     <label·className="flex·items-center·justify-between·gap-3·rounded-md·border·border-slate-200·px-3·py-2·text-sm">

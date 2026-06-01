@@ -6,7 +6,7 @@ import {sendVerificationEmail} from "../../src/email.js";
 import {logActivity} from "../../src/activityLog.js";
 import {getPlatformSettings} from "../../src/platformSettings.js";
 import {defaultSubscription} from "../../src/subscription.js";
-import {validateEmail, validatePassword, VERIFICATION_TOKEN_EXPIRY_HOURS,} from "@upcat/shared";
+import {validateEmail, validatePassword, VERIFICATION_TOKEN_EXPIRY_HOURS} from "@upcat/shared";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -119,3 +119,4 @@ return res.status(201).json({
     : "Registration successful. You can now sign in.",
   },
 });
+}

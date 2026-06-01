@@ -4,7 +4,7 @@ interface Props {
   label: string;
   value: ReactNode;
   hint?: string;
-  trend?: { direction: "up" | "down" | "flat" ; label: string };
+  trend?: { direction: "up" | "down" | "flat"; label: string };
   icon?: ReactNode;
   accent?: "violet" | "indigo" | "emerald" | "amber" | "rose";
 }

@@ -47,7 +47,7 @@ export default function AdminSupportTicketDetailPage() {
       return (
         <div className="p-8 text-center">
           <h1 className="text-xl font-bold">Ticket not found</h1>
-          <Link to="/admin/support/tickets">className="btn-primary mt-4 inline-block">
+          <Link to="/admin/support/tickets" className="btn-primary mt-4 inline-block">
             Back to tickets
           </Link>
         </div>
@@ -114,7 +114,7 @@ addToast("success", "Account unlocked.");
 } catch (err) {
 const msg =
 (err as {response?: {data?: {error?: string}}}).response?.data?.error ||
-"Could not unlock account.";
+"Could not unlock account."
 addToast("error", msg);
 }
 };
@@ -129,7 +129,7 @@ return (
 to="/admin/support/tickets"
 className="mb-3 inline-block text-sm text-primary-700 hover:underline"
 >
-← All tickets
+<All tickets
 </Link>
 
 <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -151,9 +151,9 @@ className={`rounded-full px-2 py-0.5 text-xs font-semibold bg-${status.color}-50
 </span>
 </div>
 <p className="mt-1 text-xs text-gray-500">
-{type?.icon}{type?.label}··from{"."
+{type?.icon}{type?.label} ... from{"."
 }
-<strong>{ticket.requesterEmail}</strong>··opened{"."
+<strong>{ticket.requesterEmail}</strong> ... opened{"."
 }
 {new Date(ticket.createdAt).toLocaleString()}
 </p>
@@ -174,7 +174,7 @@ required
 rows={3}
 maxLength={5000}
 placeholder={
-internal?:"Internal note (only visible to admins)..."::"Reply to user..."
+internal ? "Internal note (only visible to admins)..." : "Reply to user..."
 }
 value={reply}
 onChange={(e) => setReply(e.target.value)}
@@ -192,7 +192,7 @@ onChange={(e) => setInternal(e.target.checked)}
 Internal note
 </label>
 <button type="submit" disabled={busy} className="btn-primary">
-{busy?:"Sending..."::internal?:"Add note"::"Send reply"}
+{busy ? "Sending..." : internal ? "Add note" : "Send reply"}
 </button>
 </div>
 </form>
@@ -218,7 +218,7 @@ className="input-field w-full text-sm"
 <select
 value={ticket.priority}
 onChange={(e) => updatePriority(e.target.value as SupportTicketPriority)}
-className="input-field w-full text-sm"
+className="input-field·w-full·text-sm"
 >
 {SUPPORT_TICKET_PRIORITIES.map((p) => (
 <option key={p} value={p}>
@@ -229,18 +229,20 @@ className="input-field w-full text-sm"
 </SidePanel>
 
 <SidePanel title="Verification">
-<p className="text-xs text-gray-600">
+<p className="text-xs·text-gray-600">
 Method: <strong>{ticket.verification.method}</strong>
 <br/>
 Status: <strong>{ticket.verification.status}</strong>
 {ticket.verification.verifiedAt && (
 <br/>
+<br/>
 Verified {new Date(ticket.verification.verifiedAt).toLocaleString()}
 </br/>
-)}</p>
+)})
+</p>
 <button
 onClick={() => setVerifyOpen(true)}
-className="btn-secondary mt-2 w-full text-xs"
+className="btn-secondary·mt-2·w-full·text-xs"
 >
 Update verification
 </button>
@@ -250,24 +252,26 @@ Update verification
 <SidePanel title="Account actions">
 <Link
 to={`/admin/users/${ticket.userId}`}
-className="block text-xs text-primary-700 hover:underline"
+className="block·text-xs·text-primary-700·hover:underline"
 >
 View user profile →
 </Link>
 <button
 onClick={unlockAccount}
-className="btn-secondary mt-2 w-full text-xs"
+className="btn-secondary·mt-2·w-full·text-xs"
 >
 Unlock account
 </button>
 {ticket.type === "account_merge" && (
 <Link
 to={`/admin/support/merge?primary=${ticket.userId}&ticket=${ticket.ticketNumber}`}
-className="btn-secondary mt-2 block w-full text-center text-xs"
+className="btn-secondary·mt-2·block·w-full·text-center·text-xs"
 >
 Open merge wizard
 </Link>
-)}</p>
+)})
+</SidePanel>
+)})
 </aside>
 </div>
 
@@ -292,8 +296,8 @@ title: string;
 children: React.ReactNode;
 }) {
 return (
-<section className="rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
-<h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+<section className="rounded-xl·border·border-gray-200·bg-white·p-3·shadow-sm">
+<h3 className="mb-2·text-xs·font-semibold·uppercase·tracking-wide·text-gray-500">
 {title}
 </h3>
 {children}
@@ -304,118 +308,118 @@ return (
 function AdminMessage({m}: {m: SupportTicketMessage}) {
 if (m.sender === "system") {
 return (
-<div className="rounded-md bg-slate-100 px-3 py-2 text-center text-xs italic text-slate-600">
+<div className="rounded-md·bg-slate-100·px-3·py-2·text-center·text-xs·italic·text-slate-600">
 {m.content}
 </div>
 );
+}
+);
+}
 const isAdmin = m.sender === "admin";
 return (
-  <div className={`flex ${isAdmin ? "justify-end" : "justify-start"}`}>
-    <div>
-      className={`max-w-[80%] rounded-2x1 px-4 py-2 text-sm shadow-sm ${m.isInternal}
-        ? "bg-amber-100 text-amber-900"
-        : isAdmin
-        ? "bg-primary-600 text-white"
-        : "bg-white text-gray-900"
-      }`}
-    >
-      <p className="mb-1 text-xs font-semibold opacity-75">
-        {m.senderName}
-        {m.isInternal && "internal"}
-      </p>
-      <p className="whitespace-pre-wrap break-words">{m.content}</p>
-      <p>
-        className={`mt-1 text-[10px] ${isAdmin && !m.isInternal ? "text-primary-100" : "text-gray-400"
-        }`}
-      >
-        {new Date(m.createdAt).toLocaleString()}
-      </p>
-    </div>
-  </div>
+<div className={`flex ${isAdmin ? "justify-end" : "justify-start"}`}>
+<div className={`max-w-[80%] rounded-2x1 px-4 py-2 text-sm shadow-sm ${m.isInternal
+? "bg-amber-100 text-amber-900"
+: isAdmin
+? "bg-primary-600 text-white"
+: "bg-white text-gray-900"
+}`}
+>
+<p className="mb-1 text-xs font-semibold opacity-75">
+{m.senderName}
+{m.isInternal && "internal"}
+</p>
+<p className="whitespace-pre-wrap break-words">{m.content}</p>
+<p
+className={`mt-1 text-[10px] ${isAdmin && !m.isInternal ? "text-primary-100" : "text-gray-400"
+}`}
+>
+{new Date(m.createdAt).toLocaleString()}
+</p>
+</div>
+</div>
 );
 }
 
 function VerifyIdentityModal({
-  open,
-  onClose: () => void,
-  onSaved: () => Promise<void>,
-  ticketNumber: string
+open,
+onClose: () => void;
+onSaved: () => Promise<void>;
+ticketNumber: string;
 }) {
-  const addToast = useToastStore((s) => s.addToast);
-  const [method, setMethod] = useState("email_otp");
-  const [statusVal, setStatusVal] = useState("verified" || "failed")("verified");
-  const [notes, setNotes] = useState("");
-  const [busy, setBusy] = useState(false);
+const addToast = useToastStore((s) => s.addToast);
+const [method, setMethod] = useState("email_otp");
+const [statusVal, setStatusVal] = useState("verified" || "failed")("verified");
+const [notes, setNotes] = useState("");
+const [busy, setBusy] = useState(false);
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setBusy(true);
-    try {
-      await adminSupportApi.verifyIdentity(ticketNumber, {
-        method,
-        status: statusVal,
-        notes: notes.trim() || undefined,
-      });
-      addToast("success", "Verification updated.");
-      await onSaved();
-    } catch (err) {
-      const msg =
-        (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-        "Could not update verification."
-      addToast("error", msg);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  return (
-    <Modal isOpen={open} onClose={onClose} title="Update verification" size="md">
-      <form onSubmit={submit} className="space-y-3 text-sm">
-        <label className="block">
-          <span className="font-medium text-gray-700">Method</span>
-          <select
-            value={method}
-            onChange={(e) => setMethod(e.target.value)}
-            className="input-field mt-1"
-          >
-            <option value="email_otp">Email OTP</option>
-            <option value="security_questions">Security questions</option>
-            <option value="document_upload">Document upload</option>
-            <option value="admin_override">Admin override</option>
-          </select>
-        </label>
-        <label className="block">
-          <span className="font-medium text-gray-700">Outcome</span>
-          <select
-            value={statusVal}
-            onChange={(e) => setStatusVal(e.target.value as "verified" || "failed")}
-            className="input-field mt-1"
-          >
-            <option value="verified">Verified</option>
-            <option value="failed">Failed</option>
-          </select>
-        </label>
-        <label className="block">
-          <span className="font-medium text-gray-700">Notes (optional)</span>
-          <textarea
-            rows={3}
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            className="input-field mt-1"
-          />
-        </label>
-      </form>
-    </div>
-  );
+const submit = async (e: React.FormEvent) => {
+e.preventDefault();
+setBusy(true);
+try {
+await adminSupportApi.verifyIdentity(ticketNumber, {
+method,
+status: statusVal,
+notes: notes.trim() || undefined,
+});
+addToast("success", "Verification updated.");
+await onSaved();
+} catch (err) {
+const msg =
+(err as { response?: { data?: { error?: string } } }).response?.data?.error ||
+"Could not update verification."
+addToast("error", msg);
+} finally {
+setBusy(false);
 }
+};
+
+return (
+Modal isOpen={open} onClose={onClose} title="Update verification" size="md">
+<form onSubmit={submit} className="space-y-3 text-sm">
+<label className="block">
+<span className="font-medium text-gray-700">Method</span>
+<select
+value={method}
+onChange={(e) => setMethod(e.target.value)}
+className="input-field mt-1"
+>
+<option value="email_otp">Email OTP</option>
+<option value="security_questions">Security questions</option>
+<option value="document_upload">Document upload</option>
+<option value="admin_override">Admin override</option>
+</select>
+</label>
+<label className="block">
+<span className="font-medium text-gray-700">Outcome</span>
+<select
+value={statusVal}
+onChange={(e) => setStatusVal(e.target.value as "verified" || "failed")}
+className="input-field mt-1"
+>
+<option value="verified">Verified</option>
+<option value="failed">Failed</option>
+</select>
+</label>
+<label className="block">
+<span className="font-medium text-gray-700">Notes (optional)</span>
+<textarea
+rows={3}
+value={notes}
+onChange={(e) => setNotes(e.target.value)}
+className="input-field mt-1"
+>
+</textarea>
+</ol>
 </label>
 <div className="flex·justify-end·gap-2·pt-2">
-  <button type="button" onClick={onClose} className="btn-secondary·text-xs">
-    Cancel
-  </button>
-  <button type="submit" disabled={busy} className="btn-primary·text-xs">
-    {busy ? "Saving..." : "Save·verification"}
-  </button>
+<button type="button" onClick={onClose} className="btn-secondary·text-xs">
+Cancel
+</button>
+<button type="submit" disabled={busy} className="btn-primary·text-xs">
+{busy} ? "Saving..." : "Save·verification"
+</button>
 </div>
 </form>
 </Modal>
+);

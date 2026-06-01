@@ -31,7 +31,7 @@ export default function StudyPlanSetupPage() {
   useEffect(() => {
     void studyPlanApi.getTemplates().then((rows) => {
       setTemplates(rows.map((r) => ({id: r.id, name: r.name, targetDuration: r.targetDuration})));
-      setTemplateId(rows[0]?.id??null);
+      setTemplateId(rows[0].id??null);
     }).catch(() => setTemplates([]));
   }, []);
 
@@ -104,21 +104,12 @@ return (
         ))}
       </div>
     )}
-  </div>
-  {diagnosticMethod === "self_assessment" && (
-    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-      {SUBJECT_AREAS.map((subject) => (
-        <label key={subject} className="text-sm">
-          <div className="font-medium">{subject}</div>
-        </label>
-      ))}
-    </div>
-  )}
+  </section>
 value={selfAssessment[subject]}
 onChange={(e) => setSelfAssessment((prev) => ({
 ...prev,
 [subject]: e.target.value as any
-}))}
+})))
 >
 <option value="beginner">Beginner</option>
 <option value="intermediate">Intermediate</option>
@@ -130,22 +121,22 @@ onChange={(e) => setSelfAssessment((prev) => ({
 })
 </section>
 
-<section className="rounded-xl·border·border-slate-200·bg-white·p-5">
-<h2 className="text-lg·font-semibold">Step·2: Schedule Preferences</h2>
-<div className="mt-3·grid·gap-3·sm:grid-cols-2">
+<section className="rounded-xl border border-slate-200 bg-white p-5">
+<h2 className="text-lg font-semibold">Step 2: Schedule Preferences</h2>
+<div className="mt-3 grid gap-3 sm:grid-cols-2">
 <label className="text-sm">
-Target·exam·date
+Target exam date
 <input
 type="date"
-className="mt-1·w-full·rounded·border·border-slate-300·px-2·py-1"
+className="mt-1 w-full rounded border border-slate-300 px-2 py-1"
 onChange={(e) => {
 const value = e.target.value ? new Date(`${e.target.value}T00:00:00.000Z`).toISOString() : null;
 setParameters((prev) => ({...prev, targetExamDate: value}));
 }}
->
+}</input>
 </label>
 <label className="text-sm">
-Hours·per·day·({parameters.availableHoursPerDay.toFixed(1)})h
+Hours per day ({parameters.availableHoursPerDay.toFixed(1)})h
 <input
 type="range"
 min={0.5}
@@ -156,13 +147,13 @@ onChange={(e) => setParameters((prev) => ({
 ...prev,
 availableHoursPerDay: Number(e.target.value)
 }))}
-<label className="mt-2·w-full"
+className="mt-2 w-full"
 />
 </label>
 </div>
 <div className="mt-4">
-<p className="text-sm·font-medium">Study·days</p>
-<div className="mt-2·flex·flex-wrap·gap-2">
+<p className="text-sm font-medium">Study days</p>
+<div className="mt-2 flex flex-wrap gap-2">
 {[1, 2, 3, 4, 5, 6, 7].map((day) => (
 <button
 key={day}
@@ -177,11 +168,11 @@ className={`rounded-lg border px-3 py-1 text-sm ${parameters.studyDaysPerWeek.in
 </div>
 </section>
 
-<section className="rounded-xl·border·border-slate-200·bg-white·p-5">
-<h2 className="text-lg·font-semibold">Step·3: Study·Preferences</h2>
-<div className="mt-3·grid·gap-3·sm:grid-cols-3">
+<section className="rounded-xl border border-slate-200 bg-white p-5">
+<h2 className="text-lg font-semibold">Step 3: Study Preferences</h2>
+<div className="mt-3 grid gap-3 sm:grid-cols-3">
 <select
-className="rounded·border·border-slate-300·px-2·py-2·text-sm"
+className="rounded-border border-slate-300 px-2 py-2 text-sm"
 value={parameters.learningStyle}
 onChange={(e) => setParameters((prev) => ({...prev, learningStyle: e.target.value as any}))}
 >
@@ -191,7 +182,7 @@ onChange={(e) => setParameters((prev) => ({...prev, learningStyle: e.target.valu
 <option value="practice">Practice-heavy</option>
 </select>
 <select
-className="rounded·border·border-slate-300·px-2·py-2·text-sm"
+className="rounded-border border-slate-300 px-2 py-2 text-sm"
 value={parameters.difficultyPreference}
 onChange={(e) => setParameters((prev) => ({
 ...prev,
@@ -203,8 +194,8 @@ difficultyPreference: e.target.value as any
 <option value="aggressive">Aggressive</option>
 </select>
 <select
-className="rounded·border·border-slate-300·px-2·py-2·text-sm"
-value={templateId??"}}
+className="rounded-border border-slate-300 px-2 py-2 text-sm"
+value={templateId??"}
 onChange={(e) => setTemplateId(e.target.value)}
 >
 {templates.map((t) => (
@@ -214,7 +205,7 @@ onChange={(e) => setTemplateId(e.target.value)}
 </div>
 </section>
 
-<div className="flex·justify-end">
+<div className="flex justify-end">
 <button
 type="button"
 disabled={submitting}

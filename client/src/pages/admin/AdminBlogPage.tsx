@@ -9,7 +9,7 @@ export default function AdminBlogPage() {
   const addToast = useToastStore((s) => s.addToast);
   const [items, setItems] = useState<BlogPostSummary[]> | null>(null);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState<BlogStatus>|{"any"}("any");
+  const [filter, setFilter] = useState<BlogStatus> | "any">("any");
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(12);
@@ -22,7 +22,7 @@ export default function AdminBlogPage() {
       setTotal(res.total);
       setPageSize(res.pageSize);
     } catch (e) {
-      const msg = (e as {response?: {data?: {error?: string}}}).response?.data?.error;
+      const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
       addToast("error", msg ?? "Could not load blog posts.");
     } finally {
       setLoading(false);
@@ -40,7 +40,7 @@ export default function AdminBlogPage() {
       addToast("success", "Post deleted.");
       await load();
     } catch (e) {
-      const msg = (e as {response?: {data?: {error?: string}}}).response?.data?.error;
+      const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
       addToast("error", msg ?? "Delete failed.");
     }
   };
@@ -56,9 +56,8 @@ export default function AdminBlogPage() {
             value={filter}
             onChange={(e) => {
               setPage(1);
-              setFilter(e.target.value as BlogStatus|{"any"});
+              setFilter(e.target.value as BlogStatus) | "any");
             }}
-          }
           className="rounded-md border border-slate-300 px-2 py-1 text-sm"
         >
           <option value="any">All</option>
@@ -77,36 +76,37 @@ export default function AdminBlogPage() {
     {loading ? (
       <Spinner/>
     ) : (
-      <div className="overflow-x-auto rounded-x1 border border-slate-200 bg-white">
-        <table className="min-w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase text-slate-600">
-            <tr>
-              <th className="px-3 py-2">Title</th>
-              <th className="px-3 py-2">Slug</th>
-              <th className="px-3 py-2">Status</th>
-              <th className="px-3 py-2">Updated</th>
-              <th className="px-3 py-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {(items ?? []).length === 0 && (
+        <div className="overflow-x-auto rounded-x1 border border-slate-200 bg-white">
+          <table className="min-w-full text-sm">
+            <thead className="bg-slate-50 text-left text-xs uppercase text-slate-600">
               <tr>
-                <td>colSpan={5} className="px-3 py-6 text-center text-sm text-slate-500">
-                  No posts.
-                </td>
+                <th className="px-3 py-2">Title</th>
+                <th className="px-3 py-2">Slug</th>
+                <th className="px-3 py-2">Status</th>
+                <th className="px-3 py-2">Updated</th>
+                <th className="px-3 py-2"></th>
               </tr>
-            </tbody>
-          </tr>
-        )}
-        {(items ?? []).map((p) => {
-          const isPublished = Boolean(p.publishedAt);
-          return (
-            <tr key={p._id} className="border-t border-slate-100">
-              <td className="px-3 py-2 font-medium text-slate-800">{p.title}</td>
-              <td className="px-3 py-2 font-mono text-xs text-slate-500">{p.slug}</td>
+            </thead>
+            <tbody>
+              {(items ?? []).length === 0 && (
+                <tr>
+                  <td colspan={5} className="px-3 py-6 text-center text-sm text-slate-500">
+                    No posts.
+                  </td>
+                </tr>
+              </tbody>
             </tr>
-          )
-        })}
+          )}
+          {(items ?? []).map((p) => {
+            const isPublished = Boolean(p.publishedAt);
+            return (
+              <tr key={p._id} className="border-t border-slate-100">
+                <td className="px-3 py-2 font-medium text-slate-800">{p.title}</td>
+                <td className="px-3 py-2 font-mono text-xs text-slate-500">{p.slug}</td>
+              </tr>
+            </tr>
+          )}
+        )}
       </tbody>
     </table>
   );

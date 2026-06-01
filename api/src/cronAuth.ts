@@ -1,8 +1,8 @@
 /**
  * Authentication helper for scheduled functions.
  *
- * Cron endpoints are not user-facing — they accept the shared secret either
- * via the `Authorization`Bearer...` header (Vercel Cron sends this) or via
+ * Cron endpoints are not user-facing—they accept the shared secret either
+ * via the `Authorization`Bearer...`header` (Vercel-Cron sends this) or via
  * the `?secret=` query param (for manual triggering).
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";

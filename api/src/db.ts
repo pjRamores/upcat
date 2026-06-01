@@ -1,6 +1,6 @@
-import { type } from "mongodb";
-import { getRequestLogger, trackDbQuery } from "./monitoring/context.js";
-import { metricsCollector } from "./monitoring/metrics.js";
+import {type Db, MongoClient} from "mongodb";
+import {getRequestLogger, trackDbQuery} from "./monitoring/context.js";
+import {metricsCollector} from "./monitoring/metrics.js";
 
 /**
  * MongoDB connection utility for serverless functions.
@@ -79,15 +79,10 @@ function makeMonitoredDb(db: Db): Db {
                       collection: name,
                       operation: String(collProp),
                     });
+                    throw error;
                   });
-                  getRequestLogger().error("Database query failed", error as Error, {
-                      collection: name,
-                      operation: String(collProp),
-                    });
-                  throw error;
-                });
-              }
-              return result;
+                }
+                return result;
             } catch (error) {
               metricsCollector.counter("db.query.error", 1, {
                 collection: name,
@@ -100,10 +95,9 @@ function makeMonitoredDb(db: Db): Db {
               });
               throw error;
             }
-          });
-        }
-      });
-    }
+        });
+      }
+    });
   });
 }
 as Db["collection"];

@@ -23,11 +23,11 @@ export default function AdminQuestionsPage() {
 
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [subjectArea, setSubjectArea] = useState("" || SubjectArea>("");
-  const [difficulty, setDifficulty] = useState("" || Difficulty>("");
+  const [subjectArea, setSubjectArea] = useState("">SubjectArea>("");
+  const [difficulty, setDifficulty] = useState("">Difficulty>("");
   const [hasFlaggedReports, setHasFlaggedReports] = useState(false);
   const [includeDeleted, setIncludeDeleted] = useState(false);
-  const [publicationStatus, setPublicationStatus] = useState("" || QuestionPublicationStatus>("");
+  const [publicationStatus, setPublicationStatus] = useState("">QuestionPublicationStatus>("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("asc" || "desc")("desc");
 
@@ -35,7 +35,7 @@ export default function AdminQuestionsPage() {
     items: AdminQuestionListEntry[];
     total: number;
     totalPages: number
-  }).| null>(null);
+  }).|null>(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [confirmBulk, setConfirmBulk] = useState(false);
@@ -69,7 +69,7 @@ export default function AdminQuestionsPage() {
       if (requestId === latestRefreshRequestId.current) {
         setData(result);
       }
-      catch (e) {
+      catch(e) {
         if (requestId === latestRefreshRequestId.current) {
           const msg = (e as {response?: {data?: {error?: string}}}).response?.data?.error;
           addToast("error", msg ?? "Could not load questions.");
@@ -186,7 +186,7 @@ Delete
 
 return (
 <div className="space-y-4">
-{/* Set selector row */}
+{/* Set selector row */
 <div className="flex·flex-wrap·items-center·gap-2">
 <select
 required
@@ -196,7 +196,7 @@ setSelectedSetId(e.target.value);
 setPage(1);
 }}
 }
-<ClassName="rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
+ClassName="rounded-md·border·border-slate-300·px-2·py-1.5·text-sm"
 >
 {setOptions.length === 0 ? (
 <option value="">No·sets·available</option>
@@ -279,7 +279,7 @@ Media·Library
 className="rounded-md·border·border-primary-300·px-3·py-1.5·text-xs·font-medium·text-primary-700·hover:bg-primary-50">
 Delete·{selected.size}
 </button>
-)}
+)}}
 <Link to="/admin/questions/new"
 className="rounded-md·bg-primary-600·px-3·py-1.5·text-xs·font-semibold·text-white·hover:bg-primary-700">
 +·New·Question

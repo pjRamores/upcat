@@ -56,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
     if (sub.premium.endDate && new Date(sub.premium.endDate).getTime() > now) active += 1;
     else expired += 1;
-    const history = Array.isArray(sub.premium.history) ? sub.premium.history : [];
+    const history = Array.isArray(sub.premium.history)? sub.premium.history: [];
     if (history.some((h: {cancelledAt?: string | null }) => h.cancelledAt)) cancelled += 1;
   }
 

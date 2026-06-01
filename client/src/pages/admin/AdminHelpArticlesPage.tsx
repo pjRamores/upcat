@@ -75,8 +75,7 @@ async function publishStaticContent() {
 
       setLastPublished(new Date().toISOString());
       addToast("success", `Help content published! ${data.contentSize} bytes exported. Save to client/public/data/help-content.json`);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       if (isAxiosError(error) && error.response?.status === 401) {
         addToast("error", "Admin session expired. Please sign in again to publish static help content.");
@@ -103,7 +102,7 @@ async function publishStaticContent() {
       </header>
 
       <section className="rounded-xl border-border-slate-200 bg-white p-4 shadow-sm">
-<h2 className="text-sm font-semibold text-slate-900">{isCreate ? "Create Article" : `Edit Article: ${editingSlug}`}</h2>
+<h2 className="text-sm font-semibold text-slate-900">{isCreate ? "Create Article" : "Edit Article: ${editingSlug}"></h2>
 <div className="mt-3·grid·gap-3·md:grid-cols-2">
   <input className="rounded·border·border-slate-300·px-3·py-2·text-sm" placeholder="Slug"
           value={String(form.slug ?? "")}
@@ -123,7 +122,7 @@ async function publishStaticContent() {
     <option value="payment">payment</option>
     <option value="troubleshooting">troubleshooting</option>
   </select>
-  <select className="rounded·border·border-slate-300·px-3·py-2·text-sm"
+  <input className="rounded·border·border-slate-300·px-3·py-2·text-sm"
           value={String(form.status ?? "draft")}
           onChange={(e) => setForm((prev) => ({...prev, status: e.target.value}))}>
     <option value="draft">draft</option>
@@ -132,7 +131,7 @@ async function publishStaticContent() {
   </select>
   <input className="rounded·border·border-slate-300·px-3·py-2·text-sm" type="number"
           value={Number(form.order ?? 100)}
-          onChange={(e) => setForm((prev) => ({...prev, order: Number(e.target.value)})})/>
+          onChange={(e) => setForm((prev) => ({...prev, order: Number(e.target.value)}}))/>
 </div>
 
 <div className="mt-3·grid·gap-3·lg:grid-cols-2">
@@ -204,7 +203,6 @@ async function publishStaticContent() {
       Cancel Edit
     )}
   </div>
-</div>
 </button>
 )}
 {String(form.slug || "").trim() && (

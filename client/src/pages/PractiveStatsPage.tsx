@@ -1,5 +1,5 @@
 /**
- * Phase 13 — Practice deck statistics page.
+ * Phase 13 - Practice deck statistics page.
  *
  * Shows: status totals (new/learning/review/mastered), retention %, due-today
  * / due-this-week, subject breakdown table, 7-day upcoming forecast, and a
@@ -9,10 +9,10 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {type} from "react-cardListEntry";
 type PracticeCardStatus, type PracticeStatsResponse} from "@upcat/shared";
-import {PRACTICE_MODE_LABELS, practiceApi} from "@/lib/practiceApi";
-import {useToastStore} from "@/stores/toastStore";
-import Spinner from "@/components/Spinner";
-import Seo from "@/components/Seo";
+import {PRACTICE_MODE_LABELS, practiceApi} from "@lib/practiceApi";
+import {useToastStore} from "@stores/toastStore";
+import Spinner from "@components/Spinner";
+import Seo from "@components/Seo";
 
 const STATUS_OPTIONS: Array<{value: PracticeCardStatus | ""}; label: string}> = [
   {value: ""}, label: "All statuses"},
@@ -33,7 +33,7 @@ export default function PracticeStatsPage() {
   const addToast = useToastStore((s) => s.addToast);
   const [stats, setStats] = useState<PracticeStatsResponse | null>(null);
   const [loading, setLoading] = useState(true);
-  const [cards, setCards] = useState<PracticeCardListEntry[]>([]);
+  const [cards, setCards] = useState<PracticeCardListEntry[]>(([]));
   const [cardsLoading, setCardsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -94,7 +94,7 @@ export default function PracticeStatsPage() {
     const maxUpcoming = Math.max(1, ...stats.upcoming.map((u) => u.count));
 
     return (
-      <div className="mx-auto max-w-5xl px-4 py-8">
+      <div className="mx-auto max-w-5x1 px-4 py-8">
         <Seo title="Practice Stats" UPCAT Simulator noindex/>
         <header className="mb-6 flex items-end justify-between">
           <div>
@@ -156,7 +156,7 @@ Next
 }
 ```
 
-```typescript
+```javascript
 function Tile({
   label,
   value,
@@ -165,7 +165,7 @@ function Tile({
   label: string;
   value: number | string;
   accent?: string;
-}): {
+} {
   return (
     <div className="rounded-x1 border border-slate-200 bg-white p-4 shadow-sm">
       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">

@@ -103,103 +103,105 @@ if (req.method === "GET" && url.endsWith("/stats")) {
 }
 const totalRevenueAll = allApproved.reduce((sum, item) => sum + Number(item.amount || 0), 0);
 const totalRevenueToday = allApproved
-.filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startToday.getTime())
-.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  .filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startToday.getTime())
+  .reduce((sum, item) => sum + Number(item.amount || 0), 0);
 const totalRevenueWeek = allApproved
-.filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startWeek.getTime())
-.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  .filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startWeek.getTime())
+  .reduce((sum, item) => sum + Number(item.amount || 0), 0);
 const startMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 const totalRevenueMonth = allApproved
-.filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startMonth.getTime())
-.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  .filter((item) => item.review?.reviewedAt && new Date(item.review.reviewedAt).getTime() >= startMonth.getTime())
+  .reduce((sum, item) => sum + Number(item.amount || 0), 0);
 
 const byChannelMap = new Map<string, { channelId: string; name: string; count: number; totalAmount: number }>();
 for (const item of allApproved) {
-    const key = String(item.channel || "unknown");
-    const existing = byChannelMap.get(key) || {
-        channelId: key,
-        name: String(item.channelName || key),
-        count: 0,
-        totalAmount: 0,
-    };
-    existing.count += 1;
-    existing.totalAmount += Number(item.amount || 0);
-    byChannelMap.set(key, existing);
+  const key = String(item.channel || "unknown");
+  const existing = byChannelMap.get(key) || {
+    channelId: key,
+    name: String(item.channelName || key),
+    count: 0,
+    totalAmount: 0,
+  };
+  existing.count += 1;
+  existing.totalAmount += Number(item.amount || 0);
+  byChannelMap.set(key, existing);
 }
 
 const durations = allApproved
-.filter((i) => i.review?.reviewedAt)
-.map((i) => {
+  .filter((i) => i.review?.reviewedAt)
+  .map((i) => {
     const created = new Date(i.createdAt).getTime();
     const reviewed = new Date(i.review.reviewedAt).getTime();
     return (reviewed - created) / 3_600_000;
-})
-.filter((h) => Number.isFinite(h) && h >= 0);
+  })
+  .filter((h) => Number.isFinite(h) && h >= 0);
 const averageProcessingTime = durations.length
-? durations.reduce((a, b) => a + b, 0) / durations.length
-: 0;
+  ? durations.reduce((a, b) => a + b, 0) / durations.length
+  : 0;
 
 return res.status(200).json({
-success: true,
-data: {
+  success: true,
+  data: {
     pending,
     approvedToday,
     approvedThisWeek,
     rejectedThisWeek,
     totalRevenue: {
-        today: totalRevenueToday,
-        thisWeek: totalRevenueWeek,
-        thisMonth: totalRevenueMonth,
-        allTime: totalRevenueAll,
+      today: totalRevenueToday,
+      thisWeek: totalRevenueWeek,
+      thisMonth: totalRevenueMonth,
+      allTime: totalRevenueAll,
     },
     byChannel: Array.from(byChannelMap.values()),
     averageProcessingTime,
-    },
+  },
 });
 }
 
 if (req.method === "GET" && submissionNumber) {
-    const submission = await db.collection("payment_submissions").findOne({submissionNumber});
-    if (!submission) {
-        return res.status(404).json({success: false, error: "Submission not found"});
-    }
+  const submission = await db.collection("payment_submissions").findOne({submissionNumber});
+  if (!submission) {
+    return res.status(404).json({success: false, error: "Submission not found"});
+  }
 
-    const user = await db.collection("users").findOne({_id: submission.userId});
-    const previous = await db.collection("payment_submissions")
-        .find({userId: submission.userId})
-        .sort({createdAt: -1})
-        .limit(5)
-        .toArray();
+  const user = await db.collection("users").findOne({_id: submission.userId});
+  const previous = await db
+    .collection("payment_submissions")
+    .find({userId: submission.userId})
+    .sort({createdAt: -1})
+    .limit(5)
+    .toArray();
 
-    const signedUrl = submission.screenshot?.url
-        ? await signedScreenshotUrl(submission.screenshot.url, 3600)
-        : null;
+  const signedUrl = submission.screenshot?.url
+    ? await signedScreenshotUrl(submission.screenshot.url, 3600)
+    : null;
 
-    return res.status(200).json({
-success: true,
-data: {
-    ...submission,
-    _id: submission._id.toString(),
-    user: user
+  return res.status(200).json({
+    success: true,
+    data: {
+      ...submission,
+      _id: submission._id.toString(),
+      user: user
+    },
     ...? {
-        _id: user._id.toString(),
-        name: `${user.firstName || ""} ${user.lastName || ""}`.trim(),
-        email: user.email,
-        tier: user.subscription?.tier || (user.premium ? "premium" : "free"),
-    }
-    ...: null,
+      _id: user._id.toString(),
+      name: `${user.firstName || ""} ${user.lastName || ""}`.trim(),
+      email: user.email,
+      tier: user.subscription?.tier || (user.premium ? "premium" : "free"),
+    },
+    ...null,
     screenshot: {
-        ...(submission.screenshot || {}),
-        signedUrl,
+      ...(submission.screenshot || {}),
+      signedUrl,
     },
     previousSubmissions: previous.map((p) => ({
-        submissionNumber: p.submissionNumber,
-        status: p.status,
-        amount: p.amount,
-        createdAt: p.createdAt,
+      submissionNumber: p.submissionNumber,
+      status: p.status,
+      amount: p.amount,
+      createdAt: p.createdAt,
     })),
     },
-    });
+  });
 }
 ```
 

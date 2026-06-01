@@ -31,7 +31,7 @@ interface FormState {
   type: "multiple_choice" | "passage_based";
   passageId: string | null;
   questionText: string;
-  choices: { label: "A" | "B" | "C" | "D"; text: string }[];
+  choices: { label: "A" | "B" | "C" | "D" ; text: string }[];
   correctAnswer: "A" | "B" | "C" | "D";
   rationale: string;
   tags: string;
@@ -134,12 +134,12 @@ return () => {
 
 const save = async () => {
   setSaving(true);
-  const body: Partial<Question> & {passageId?: string||null} = {
+  const body: Partial<Question> & { passageId?: string | null } = {
     subjectArea: form.subjectArea,
     subtopic: form.subtopic,
     difficulty: form.difficulty,
     type: form.type,
-    passageId: form.type === "passage_based" ? (form.passageId||null) : null,
+    passageId: form.type === "passage_based" ? (form.passageId || null) : null,
     questionText: form.questionText,
     choices: form.choices,
     correctAnswer: form.correctAnswer,
@@ -229,18 +229,20 @@ return (
         <Field label="Subject">
           <select value={form.subjectArea}
             onChange={(e) => setForm({...form, subjectArea: e.target.value as SubjectArea})}
-          className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
-            {SUBJECT_AREAS.map((s) => <option key={s}>{s}</option>)}
-          </select>
+            className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
+            {SUBJECT_AREAS.map((s) => <option key={s}}{s}</option>)}
+        </select>
         </Field>
         <Field label="Difficulty">
           <select value={form.difficulty}
             onChange={(e) => setForm({...form, difficulty: e.target.value as Difficulty})}
-          className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
+            className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
             {DIFFICULTIES.map((d) => (
               <option key={d} value={d} title={DIFFICULTY_DESCRIPTIONS[d]}}
-            ))}
-          </select>
+              {DIFFICULTY_LABELS[d]}
+            </option>
+          ))}
+        </select>
         </Field>
         <Field label="Publish status">
           <input
@@ -249,42 +251,43 @@ return (
           readOnly
           className="w-full rounded-md border border-slate-200 bg-slate-50 px-2 py-1.5 text-sm text-slate-700"
         />
-      </Field>
-      <Field label="Subtopic">
-        <input type="text" value={form.subtopic}
-          onChange={(e) => setForm({...form, subtopic: e.target.value})}
-          className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"/>
+        </Field>
+        <Field label="Subtopic">
+          <input type="text" value={form.subtopic}
+            onChange={(e) => setForm({...form, subtopic: e.target.value})}
+            className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"/>
+        </Field>
+      </div>
+
+      {form.type === "passage_based" && (
+        <Field label="Passage">
+          <select
+            value={form.passageId ?? ""}
+            onChange={(e) => setForm({...form, passageId: e.target.value || null})}
+            className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+            disabled={passagesLoading}
+          >
+            <option value="">{passagesLoading ? "Loading passages..." : "—None—"}</option>
+            {passages.map((p) => (
+              <option key={p._id} value={p._id}>
+                {p.title} ({p.subjectArea})
+              </option>
+            ))}
+            {form.passageId && !passages.some((p) => p._id === form.passageId) && (
+              <option value={form.passageId}>{form.passageId}</option>
+            ))}
+          </select>
+        </Field>
+      )}
+      <Field label="Question text (Markdown + KaTeX supported)">
+        <FormattedTextarea
+          value={form.questionText}
+          onChange={(questionText) => setForm({...form, questionText})}
+          rows={4}
+          required
+        />
       </Field>
     </div>
-
-    {form.type === "passage_based" && (
-      <Field label="Passage">
-        <select
-          value={form.passageId ?? ""}
-          onChange={(e) => setForm({...form, passageId: e.target.value || null})}
-          className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
-          disabled={passagesLoading}
-        >
-          <option value="">{passagesLoading ? "Loading passages..." : "—None—"}</option>
-          {passages.map((p) => (
-            <option key={p._id} value={p._id}>
-              {p.title} ({p.subjectArea})
-            </option>
-          ))}
-          {form.passageId && !passages.some((p) => p._id === form.passageId) && (
-            <option value={form.passageId}>{form.passageId}</option>
-          ))}
-        </select>
-      </Field>
-    )}
-    <Field label="Question text (Markdown + KaTeX supported)">
-      <FormattedTextarea
-        value={form.questionText}
-        onChange={(questionText) => setForm({...form, questionText})}
-        rows={4}
-        required
-      />
-    </Field>
 
     <div className="space-y-2">
       {form.choices.map((c, i) => (
@@ -298,12 +301,13 @@ return (
               next[i] = {...c, text: e.target.value};
               setForm({...form, choices: next});
             }}
-          }}
+          }
           className="flex-1 rounded-md border border-slate-300 px-2 py-1.5 text-sm"
         />
       )}
     </div>
-  )
+  </div>
+</div>
 <label className="inline-flex items-center gap-1 text-xs text-slate-600">
   <input type="radio" name="correct" checked={form.correctAnswer === c.label}
     onChange={() => setForm({...form, correctAnswer: c.label})}/>
@@ -343,10 +347,10 @@ return (
 </Field>
 
 <div className="flex·flex-wrap·items-center justify-between·gap-2·pt-3">
-  <Link to="/admin/questions">ClassName="text-sm·text-slate-600·hover:underline">← Back</Link>
+  <Link to="/admin/questions">ClassName="text-sm·text-slate-600·hover:underline">Back</Link>
   <div className="flex·gap-2">
     <button type="button" onClick={() => setPreview((v) => !v)}
-      className="rounded-md·border·border-slate-200 px-3 py-1.5 text-sm">
+      className="rounded-md border border-slate-200 px-3 py-1.5 text-sm">
       {preview ? "Hide·preview" : "Preview"}
     </button>
     {!isNew && (
@@ -354,7 +358,7 @@ return (
         type="button"
         onClick={publishNow}
         disabled={publishing || archiving || form.publicationStatus === "published"}
-        className="rounded-md·border·border-emerald-300 px-3 py-1.5 text-sm·font-semibold·text-emerald-700·hover:bg-emerald-50·disabled:opacity-50"
+        className="rounded-md border border-emerald-300 px-3 py-1.5 text-sm·font-semibold·text-emerald-700·hover:bg-emerald-50·disabled:opacity-50"
       >
         {publishing ? "Publishing..." : form.publicationStatus === "published" ? "Published" : "Publish·now"}
       </button>
@@ -364,13 +368,13 @@ return (
         type="button"
         onClick={archiveNow}
         disabled={publishing || archiving || form.publicationStatus === "archived"}
-        className="rounded-md·border·border-slate-300 px-3 py-1.5 text-sm·font-semibold·text-slate-700·hover:bg-slate-50·disabled:opacity-50"
+        className="rounded-md border border-slate-300 px-3 py-1.5 text-sm·font-semibold·text-slate-700·hover:bg-slate-50·disabled:opacity-50"
       >
         {archiving ? "Archiving..." : form.publicationStatus === "archived" ? "Archived" : "Archive"}
       </button>
     )}
     <button type="submit" disabled={saving}
-      className="rounded-md·bg-primary-600 px-4 py-1.5 text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50">
+      className="rounded-md bg-primary-600 px-4 py-1.5 text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-50">
       {saving ? "Saving..." : isNew ? "Create" : "Save·changes"}
     </button>
   </div>
@@ -393,14 +397,13 @@ return (
     ))}
   </ul>
   {form.rationale && (
-    <div className="rounded-md·bg-primary-50·p-3·text-sm·text-primary-900">
+    <div className="rounded-md bg-primary-50·p-3·text-sm·text-primary-900">
       <strong className="block">Rationale</strong>
       <MathText>{form.rationale}</MathText>
     </div>
   )}
 </aside>
-))
-}
+})
 published: "Published",
 archived: "Archived",
 };

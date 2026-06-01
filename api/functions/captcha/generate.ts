@@ -21,7 +21,7 @@ export default withSecurity({ endpoint: "POST /api/captcha/generate" }) (async (
   }
   const body = (req.body ?? {}).as { type?: string; elevated?: boolean };
   const type =
-    typeof body.type === "string" && (CAPTCHA_TYPES as readonly<string[]).includes(body.type)
+    typeof body.type === "string" && (CAPTCHA_TYPES as readonly<string[]]).includes(body.type)
     ? (body.type as CaptchaType)
     : undefined;
   // Soft-blocked / elevated risk IPs get harder PoW automatically.

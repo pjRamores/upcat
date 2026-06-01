@@ -2,7 +2,7 @@
  * /admin/support/identity-disputes -- list of identity-disputes + inline-decide.
  */
 import {useEffect, useState} from "react";
-import {type IdentityDispute, type IdentityDisputeAction} from "@upcat/shared";
+import {type IdentityDispute, type IdentityDisputeAction,} from "@upcat/shared";
 import {adminDisputesApi} from "@/lib/supportApi";
 import {useToastStore} from "@/stores/toastStore";
 import Modal from "@/components/Modal";
@@ -110,20 +110,23 @@ export default function AdminIdentityDisputesPage() {
 )
 
 <DisputeDecideModal
-  dispute={selected}
-  onClose={() => setSelected(null)}
-  onSaved={async () => {
-    setSelected(null);
-    await load();
-  }}
-  />
-</div>
-)
+dispute={selected}
+onClose={() => setSelected(null)}
+onSaved={async () => {
+  setSelected(null);
+  await load();
+}}
+}</div>
+);
 
 function DisputeDecideModal({
   dispute,
   onClose,
   onSaved,
+}): {
+  dispute: IdentityDispute | null;
+  onClose: () => void;
+  onSaved: () => Promise<void>;
 }) {
   const addToast = useToastStore((s) => s.addToast);
   const [action, setAction] = useState<IdentityDisputeAction>("reject_claim");
@@ -236,7 +239,7 @@ function DisputeDecideModal({
     Cancel
   </button>
   <button·type="submit"·disabled={busy}·className="btn-primary·text-xs">
-    {busy ? "Saving..." : "Submit·decision"}
+    {busy? "Saving...": "Submit·decision"}
   </button>
 </div>
 </form>

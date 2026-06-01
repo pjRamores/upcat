@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-/* -------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------*
  * Theme tokens
  * Extend Tailwind v4 with semantic color tokens, font stack, and
  * custom keyframes. Tailwind v4 reads CSS-first config from @theme.
- * ------------------------------------------------------------------------- */
+ *-------------------------------------------------------------------------------------------------------*/
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe·UI",
   Roboto, "Helvetica·Neue", Arial, sans-serif;
@@ -59,8 +59,8 @@
   --color-danger-700: #946b09;
 }
 
-/* --- Legacy CSS variables (used by .btn-* below) --- */
-@root {
+/*--- Legacy CSS variables (used by .btn-* below) -----------------------------------*/
+:root {
   --color-primary: #8b2049; /* maroon-700 */
   --color-primary-dark: #751d3f; /* maroon-800 */
   --color-primary-light: #a62e5a; /* maroon-600 */
@@ -68,20 +68,20 @@
   --color-accent: #d4a017; /* gold */
 }
 
-/* --- Base resets --- */
-body {
+/*--- Base resets ---------------------------------------------------------------*/
+:body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 /* Visible focus styles for all interactive elements. */
-focus-visible {
+:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-primary);
   border-radius: 4px;
 }
 
 /* Skip-to-content link is invisible until focused. */
-skip-link {
+:skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
@@ -93,12 +93,12 @@ skip-link {
   z-index: 100;
 }
 
-skip-link:focus {
+:skip-link:focus {
   left: 12px;
   top: 12px;
 }
 
-/* --- Animations --- */
+/*--- Animations ---------------------------------------------------------------*/
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -157,7 +157,7 @@ transform:translateX(0);
 @keyframes·slideOutRight{
 from{
 opacity:1;
-transform:translateX(0);
+transform:translateX(24px);
 }
 to{
 opacity:0;
@@ -207,111 +207,108 @@ transform:scaleX(1);
 to{
 transform:scaleX(0);
 }
-...}
-}
-
-.animate-fade-in {
-  ...animation: fadeIn 0.35s ease-out both;
-}
-
-.animate-slide-up {
-  ...animation: slideUp 0.35s ease-out both;
-}
-
-.animate-slide-right {
-  ...animation: slideRight 0.35s ease-out both;
-}
-
-.animate-slide-down {
-  ...animation: slideDown 0.3s ease-out both;
-}
-
-.animate-scale-in {
-  ...animation: scaleIn 0.18s ease-out both;
-}
-
-.animate-spin {
-  ...animation: spin 0.7s linear infinite;
-}
-
-.animate-toast-in {
-  ...animation: slideInRight 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-}
-
-.animate-toast-out {
-  ...animation: slideOutRight 0.2s ease-in both;
-}
-
-.animate-drawer-in {
-  ...animation: slideInFromRight 0.28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-}
-
-/* --- Scroll-reveal (used by LandingPage) --- */
-
-[data-reveal] {
-  ...opacity: 0;
-  ...transform: translateY(24px);
-  ...transition: opacity 0.7s ease-out,
-  ...transform 0.7s ease-out;
-}
-
-[data-reveal].reveal-in {
-  ...opacity: 1;
-  ...transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal],
-  ...animate-fade-in,
-  ...animate-slide-up,
-  ...animate-slide-right,
-  ...animate-slide-down,
-  ...animate-scale-in,
-  ...animate-toast-in,
-  ...animate-toast-out,
-  ...animate-drawer-in {
-    ...animation: none !important;
-    ...transition: none !important;
-    ...opacity: 1 !important;
-    ...transform: none !important;
+{
+  .animate-fade-in {
+    animation: fadeIn 0.35s ease-out both;
   }
-}
 
-/* --- Custom utility classes --- */
+  .animate-slide-up {
+    animation: slideUp 0.35s ease-out both;
+  }
 
-.btn-primary {
-  ...@apply inline-flex items-center justify-center rounded-lg bg-[var(--color-primary)]
-  ...px-5 py-2.5 text-sm font-semibold text-white shadow-sm
-  ...hover:bg-[var(--color-primary-dark)] hover:scale-[1.02]
-  ...focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
-  ...active:scale-[0.98]
-  ...transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
-}
+  .animate-slide-right {
+    animation: slideRight 0.35s ease-out both;
+  }
 
-.btn-secondary {
-  ...@apply inline-flex items-center justify-center rounded-lg border border-gray-300
-  ...bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm
-  ...hover:bg-gray-50 hover:scale-[1.02]
-  ...focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
-  ...active:scale-[0.98]
-  ...transition-all duration-150;
-}
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out both;
+  }
 
-.input-field {
-  ...@apply block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5
-  ...text-sm text-gray-900 placeholder-gray-400
-  ...focus:border-[var(--color-primary)] focus:outline-none focus:ring-1
-  ...focus:ring-[var(--color-primary)] transition-all duration-150;
-}
+  .animate-scale-in {
+    animation: scaleIn 0.18s ease-out both;
+  }
 
-.input {
-  ...@apply block rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm
-  ...text-gray-900 focus:border-[var(--color-primary)] focus:outline-none
-  ...focus:ring-1 focus:ring-[var(--color-primary)];
-}
+  .animate-spin {
+    animation: spin 0.7s linear infinite;
+  }
 
-.input-error {
-  ...@apply border-amber-400 focus:border-amber-500 focus:ring-amber-500;
+  .animate-toast-in {
+    animation: slideInRight 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+
+  .animate-toast-out {
+    animation: slideOutRight 0.2s ease-in both;
+  }
+
+  .animate-drawer-in {
+    animation: slideInFromRight 0.28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+
+  /* --- Scroll-reveal (used by LandingPage) -------------------------------------------------- */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out,
+    transform: 0.7s ease-out;
+  }
+
+  [data-reveal].reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-slide-right,
+    .animate-slide-down,
+    .animate-scale-in,
+    .animate-toast-in,
+    .animate-toast-out,
+    .animate-drawer-in {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /* --- Custom utility classes --------------------------------------------------------- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-[var(--color-primary)]
+    px-5 py-2.5 text-sm font-semibold text-white shadow-sm
+    hover:bg-[var(--color-primary-dark)] hover:scale-[1.02]
+    focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
+    active:scale-[0.98]
+    transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-gray-300
+    bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm
+    hover:bg-gray-50 hover:scale-[1.02]
+    focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
+    active:scale-[0.98]
+    transition-all duration-150;
+  }
+
+  .input-field {
+    @apply block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5
+    text-sm text-gray-900 placeholder-gray-400
+    focus:border-[var(--color-primary)] focus:outline-none focus:ring-1
+    focus:ring-[var(--color-primary)] transition-all duration-150;
+  }
+
+  .input {
+    @apply block rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm
+    text-gray-900 focus:border-[var(--color-primary)] focus:outline-none
+    focus:ring-1 focus:ring-[var(--color-primary)];
+  }
+
+  .input-error {
+    @apply border-amber-400 focus:border-amber-500 focus:ring-amber-500;
+  }
 }
 .card {
   @apply rounded-xl border border-gray-200 bg-white p-6 shadow-sm;
@@ -321,8 +318,7 @@ transform:scaleX(0);
   @apply rounded-xl bg-white p-8 shadow-lg border border-gray-100;
 }
 
-/*--- Skeleton shimmer ---------------------------------------------------*/
-
+/*——Skeleton shimmer——*/
 .skeleton {
   background: linear-gradient(
     90deg,
@@ -335,8 +331,7 @@ transform:scaleX(0);
   border-radius: 0.5rem;
 }
 
-/*--- Legal / policy document body ---------------------------------------------------*/
-
+/*——Legal/policy/document body——*/
 .legal-prose ul {
   list-style: disc;
   padding-left: 1.5rem;
@@ -349,16 +344,15 @@ transform:scaleX(0);
   margin-bottom: 0.25rem;
   font-size: 15px;
   line-height: 1.7;
-  color: #374151; /* gray-700 */
+  color: #374151; /*gray-700*/
 }
 
 .legal-prose strong {
-  color: #111827; /* gray-900 */
+  color: #111827; /*gray-900*/
   font-weight: 600;
 }
 
-/*--- Baseline markdown prose styles (help/blog content) -------------------*/
-
+/*——Baseline markdown prose styles (help/blog content)——*/
 .prose h1,
 .prose h2,
 .prose h3 {
@@ -412,7 +406,7 @@ transform:scaleX(0);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.prose.blockquote {
+.prose·blockquote·{
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-left: 4px solid #cbd5e1;
@@ -421,7 +415,7 @@ transform:scaleX(0);
   color: #334155;
 }
 
-.prose.pre {
+.prose·pre·{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   overflow-x: auto;
@@ -431,7 +425,7 @@ transform:scaleX(0);
   color: #e2e8f0;
 }
 
-.prose.code {
+.prose·code·{
   border-radius: 0.25rem;
   background: #e2e8f0;
   padding: 0.125rem 0.3rem;
@@ -439,20 +433,20 @@ transform:scaleX(0);
   font-size: 0.875em;
 }
 
-.prose.pre.code {
+.prose·pre·code·{
   background: transparent;
   padding: 0;
   color: inherit;
 }
 
-.prose.img {
+.prose·img·{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   max-width: 100%;
   border-radius: 0.5rem;
 }
 
-.prose.table {
+.prose·table·{
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
@@ -462,20 +456,20 @@ transform:scaleX(0);
   border: 1px solid #e2e8f0;
 }
 
-.prose.th,
-.prose td {
+.prose·th,
+.prose·td·{
   border: 1px solid #e2e8f0;
   padding: 0.5rem 0.625rem;
   text-align: left;
 }
 
-.prose.th {
+.prose·th·{
   background: #f8fafc;
   color: #0f172a;
   font-weight: 600;
 }
 
-.prose hr {
+.prose·hr·{
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;

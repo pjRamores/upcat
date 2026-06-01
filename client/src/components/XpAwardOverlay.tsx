@@ -1,5 +1,5 @@
 /**
- * Phase 12 — XP award overlay.
+ * Phase 12 - XP award overlay.
  *
  * Animated count-up notification that surfaces after the API returns a
  * Gamification Reward (typically from exam submit / practice complete /
@@ -79,24 +79,24 @@ export default function XpAwardOverlay({
             X
           </button>
         </div>
-
-        <ul className="mt-3 space-y-1 text-xs opacity-90">
-          {reward.xp.map((r, i) => (
-            <XpBreakdownRow key={i} reward={r} />
-          ))}
-        </ul>
-
-        {levelUp && (
-          <div className="mt-4 rounded-lg bg-amber-300/95 px-4 py-3 text-center text-amber-900 shadow-inner">
-            <div className="text-xs font-semibold uppercase tracking-wide">
-              Level up!
-            </div>
-            <div className="text-xl font-bold">
-              Level {levelUp.newLevel} {levelUp.newTitle}
-            </div>
-          </div>
-        )}
       </div>
+
+      <ul className="mt-3 space-y-1 text-xs opacity-90">
+        {reward.xp.map((r, i) => (
+          <XpBreakdownRow key={i} reward={r} />
+        ))}
+      </ul>
+
+      {levelUp && (
+        <div className="mt-4 rounded-lg bg-amber-300/95 px-4 py-3 text-center text-amber-900 shadow-inner">
+          <div className="text-xs font-semibold uppercase tracking-wide">
+            Level up!
+          </div>
+          <div className="text-xl font-bold">
+            Level {levelUp.newLevel} {levelUp.newTitle}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

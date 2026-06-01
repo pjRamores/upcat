@@ -397,7 +397,8 @@ await users.createIndex(
 {name:"subscription_expiry_lookup", sparse:true},
 );
 
-//--- Study Plan domain ----------------------------------------------------------
+//--- Study Plan domain --------------------------------------------------------
+
 const studyPlans = db.collection("study_plans");
 await studyPlans.createIndex({userId:1, status:1}, {name:"study_user_status"});
 await studyPlans.createIndex(
@@ -436,7 +437,8 @@ await diagnosticTests.createIndex(
 {name:"diagnostic_user_status"},
 );
 
-//--- Monitoring domain ----------------------------------------------------------
+//--- Monitoring domain --------------------------------------------------------
+
 const logs = db.collection("application_logs");
 await logs.createIndex({timestamp:{-1}, {name:"logs_recent"}});
 await logs.createIndex({level:1, timestamp:{-1}, {name:"logs_level_recent"}});
@@ -465,7 +467,7 @@ const healthChecks = db.collection("health_checks");
 await healthChecks.createIndex({checkId:1}, {unique:true, name:"health_checks_id_unique"});
 await healthChecks.createIndex({currentStatus:1, updatedAt:{-1}, {name:"health_checks_status_recent"});
 const monitoringConfig = db.collection("monitoring_config");
-await monitoringConfig.createIndex({_id:1}, {unique: true}, name: "monitoring_config_singleton");
+await monitoringConfig.createIndex({_id:1}, {unique: true}, name: "monitoring_config_singleton"));
 
 console.log("MongoDB indexes created successfully.");
 process.exit(0);

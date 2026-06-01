@@ -52,9 +52,9 @@ export declare const API_ROUTES: {
     readonly RECOVERY_CODES_STATUS: "/auth/recovery-codes/status";
     readonly RECOVERY_CODES_VERIFY: "/auth/recovery-codes/verify";
     readonly RECOVER_ACCOUNT: "/auth/recover-account";
-    readonly SECURITY QUESTIONS_SET: "/auth/security-questions/set";
-    readonly SECURITY QUESTIONS_LOOKUP: "/auth/security-questions/lookup";
-    readonly SECURITY QUESTIONS_VERIFY: "/auth/security-questions/verify";
+    readonly SECURITY_QUESTIONS_SET: "/auth/security-questions/set";
+    readonly SECURITY_QUESTIONS_LOOKUP: "/auth/security-questions/lookup";
+    readonly SECURITY_QUESTIONS_VERIFY: "/auth/security-questions/verify";
   };
   readonly ACCOUNT: "/account";
   readonly ACCOUNT_DATA_EXPORT: "/account/data-export";
@@ -211,347 +211,346 @@ readonly·Mathematics: {
 readonly·questions:·30;
 readonly·timeLimit:·54;
 };
-readonly·Science:{
+readonly·Science:·{
 readonly·questions:·25;
 readonly·timeLimit:·45;
 };
-readonly·"Reading·Comprehension":{
+readonly·"Reading·Comprehension":·{
 readonly·questions:·20;
 readonly·timeLimit:·36;
 };
 };
-readonly·difficultyMix:{
+readonly·difficultyMix:·{
 readonly·easy:·25;
 readonly·medium:·40;
 readonly·hard:·25;
 readonly·very_hard:·10;
 };
-readonly·registration:{
+readonly·registration:·{
 readonly·isOpen:·true;
 readonly·requireEmailVerification:·true;
 };
-readonly·leaderboard:{
+readonly·leaderboard:·{
 readonly·isEnabled:·true;
 readonly·showFullName:·false;
 };
-readonly·maintenance:{
+readonly·maintenance:·{
 readonly·isEnabled:·false;
-readonly·message:"";
+readonly·message:·"";
 };
-readonly·contact:{
-readonly·developerEmail:"";
+readonly·contact:·{
+readonly·developerEmail:·"";
 readonly·maxMessagesPerHour:·3;
 };
 };
 
 export declare const DEFAULT_FEATURE_GATING: readonly·[{
-readonly·id:{"mock_exam_access"},
-readonly·name:{"Mock·Exam·Access"},
-readonly·description:{"Start·full·mock·exams."},
-readonly·category:{"exams"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:true,
-readonly·limits:{
-readonly·free:·2,
+readonly·id:·"mock_exam_access";
+readonly·name:·"Mock·Exam·Access";
+readonly·description:·"Start·full·mock·exams.";
+readonly·category:·"exams";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·true;
+readonly·limits:·{
+readonly·free:·2;
 readonly·premium:·null;
 };
-readonly·limitPeriod:{"monthly"},
-},{
-readonly·id:{"practice_test_access"},
-readonly·name:{"Practice·Test·Access"},
-readonly·description:{"Start·practice·sessions."},
-readonly·category:{"exams"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:true,
-readonly·limits:{
-readonly·free:·5,
+readonly·limitPeriod:·"monthly";
+},·{
+readonly·id:·"practice_test_access";
+readonly·name:·"Practice·Test·Access";
+readonly·description:·"Start·practice·sessions.";
+readonly·category:·"exams";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·true;
+readonly·limits:·{
+readonly·free:·5;
 readonly·premium:·null;
 };
-readonly·limitPeriod:{"daily"},
-},{
-readonly·id:{"practice_question_count"},
-readonly·name:{"Max·Questions·per·Practice"},
-readonly·description:{"Maximum·number·of·questions·per·practice·session."},
-readonly·category:{"exams"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:true,
-readonly·limits:{
-readonly·free:·50,
+readonly·limitPeriod:·"daily";
+},·{
+readonly·id:·"practice_question_count";
+readonly·name:·"Max·Questions·per·Practice";
+readonly·description:·"Maximum·number·of·questions·per·practice·session.";
+readonly·category:·"exams";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·true;
+readonly·limits:·{
+readonly·free:·50;
 readonly·premium:·200;
 };
-readonly·limitPeriod:{"total"},
-},{
-readonly·id:{"immediate_feedback"},
-readonly·name:{"Immediate·Feedback·Mode"},
-readonly·description:{"See·correctness·immediately."},
-readonly·category:{"practice"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:false,
-readonly·limits:null,
-readonly·limitPeriod:null;
-},{
-readonly·id:{"detailed_rationale"},
-readonly·name:{"Detailed·Answer·Rationale"},
-readonly·description:{"Read·detailed·explanation·for·answers."},
-readonly·category:{"content"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:true,
-readonly·limits:{
-readonly·free:·5,
+readonly·limitPeriod:·"total";
+},·{
+readonly·id:·"immediate_feedback";
+readonly·name:·"Immediate·Feedback·Mode";
+readonly·description:·"See·correctness·immediately.";
+readonly·category:·"practice";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·false;
+readonly·limits:·null;
+readonly·limitPeriod:·null;
+},·{
+readonly·id:·"detailed_rationale";
+readonly·name:·"Detailed·Answer·Rationale";
+readonly·description:·"Read·detailed·explanation·for·answers.";
+readonly·category:·"content";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·true;
+readonly·limits:·{
+readonly·free:·5;
 readonly·premium:·null;
 };
-readonly·limitPeriod:{"daily"},
-},{
-readonly·id:{"subject_filter"},
-readonly·name:{"Subject/Topic·Filtering"},
-readonly·description:{"Choose·specific·subjects·and·topics."},
-readonly·category:{"practice"},
-readonly·accessLevel:{"all"},
-readonly·hasLimit:false,
-readonly·limits:null,
-readonly·limitPeriod:null;
-},{
-readonly·id:{"difficulty_filter"}
-... readonly·name: "Difficulty·Configuration";
-... readonly·description: "Customize·question·difficulty.";
-... readonly·category: "practice";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `true`;
-... readonly·limits: {
-... readonly·free: 1;
-... readonly·premium: 3;
-... };
-... readonly·limitPeriod: "total";
+readonly·limitPeriod:·"daily";
+},·{
+readonly·id:·"subject_filter";
+readonly·name:·"Subject/Topic·Filtering";
+readonly·description:·"Choose·specific·subjects·and·topics.";
+readonly·category:·"practice";
+readonly·accessLevel:·"all";
+readonly·hasLimit:·false;
+readonly·limits:·null;
+readonly·limitPeriod:·null;
+},·{
+readonly·id:·"difficulty_filter";
+{
+  readonly·name: "Difficulty·Configuration";
+  readonly·description: "Customize·question·difficulty.";
+  readonly·category: "practice";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: true;
+  readonly·limits: {
+    readonly·free: 1;
+    readonly·premium: 3;
+  };
+  readonly·limitPeriod: "total";
 }, {
-... readonly·id: "stats_basic";
-... readonly·name: "Basic·Statistics";
-... readonly·description: "Core·progress·metrics.";
-... readonly·category: "analytics";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `false`;
-... readonly·limits: `null`;
-... readonly·limitPeriod: `null`;
+  readonly·id: "stats_basic";
+  readonly·name: "Basic·Statistics";
+  readonly·description: "Core·progress·metrics.";
+  readonly·category: "analytics";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: false;
+  readonly·limits: null;
+  readonly·limitPeriod: null;
 }, {
-... readonly·id: "stats_advanced";
-... readonly·name: "Advanced·Analytics·&·Insights";
-... readonly·description: "Deep·performance·analytics.";
-... readonly·category: "analytics";
-... readonly·accessLevel: "premium";
-... readonly·hasLimit: `false`;
-... readonly·limits: `null`;
-... readonly·limitPeriod: `null`;
+  readonly·id: "stats_advanced";
+  readonly·name: "Advanced·Analytics·&·Insights";
+  readonly·description: "Deep·performance·analytics.";
+  readonly·category: "analytics";
+  readonly·accessLevel: "premium";
+  readonly·hasLimit: false;
+  readonly·limits: null;
+  readonly·limitPeriod: null;
 }, {
-... readonly·id: "stats_subject_drilldown";
-... readonly·name: "Subject·Drilldown·Analytics";
-... readonly·description: "Detailed·per-subject·analytics.";
-... readonly·category: "analytics";
-... readonly·accessLevel: "premium";
-... readonly·hasLimit: `false`;
-... readonly·limits: `null`;
-... readonly·limitPeriod: `null`;
+  readonly·id: "stats_subject_drilldown";
+  readonly·name: "Subject·Drilldown·Analytics";
+  readonly·description: "Detailed·per-subject·analytics.";
+  readonly·category: "analytics";
+  readonly·accessLevel: "premium";
+  readonly·hasLimit: false;
+  readonly·limits: null;
+  readonly·limitPeriod: null;
 }, {
-... readonly·id: "weak_area_recommendations";
-... readonly·name: "Weak·Area·Recommendations";
-... readonly·description: "Personalized·weak·area·recommendations.";
-... readonly·category: "analytics";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `true`;
-... readonly·limits: {
-... readonly·free: 5;
-... readonly·premium: `null`;
-... };
-... readonly·limitPeriod: "weekly";
+  readonly·id: "weak_area_recommendations";
+  readonly·name: "Weak·Area·Recommendations";
+  readonly·description: "Personalized·weak·area·recommendations.";
+  readonly·category: "analytics";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: true;
+  readonly·limits: {
+    readonly·free: 5;
+    readonly·premium: null;
+  };
+  readonly·limitPeriod: "weekly";
 }, {
-... readonly·id: "leaderboard_access";
-... readonly·name: "Leaderboard·Access";
-... readonly·description: "View·and·compare·rank·with·peers.";
-... readonly·category: "social";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `true`;
-... readonly·limits: {
-... readonly·free: 1;
-... readonly·premium: 3;
-... };
-... readonly·limitPeriod: "total";
+  readonly·id: "leaderboard_access";
+  readonly·name: "Leaderboard·Access";
+  readonly·description: "View·and·compare·rank·with·peers.";
+  readonly·category: "social";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: true;
+  readonly·limits: {
+    readonly·free: 1;
+    readonly·premium: 3;
+  };
+  readonly·limitPeriod: "total";
 }, {
-... readonly·id: "spaced_repetition";
-... readonly·name: "Spaced·Repetition·Practice";
-... readonly·description: "Adaptive·spaced·repetition·cards.";
-... readonly·category: "practice";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `true`;
-... readonly·limits: {
-... readonly·free: 10;
-... readonly·premium: `null`;
-... };
-... readonly·limitPeriod: "daily";
+  readonly·id: "spaced_repetition";
+  readonly·name: "Spaced·Repetition·Practice";
+  readonly·description: "Adaptive·spaced·repetition·cards.";
+  readonly·category: "practice";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: true;
+  readonly·limits: {
+    readonly·free: 10;
+    readonly·premium: null;
+  };
+  readonly·limitPeriod: "daily";
 }, {
-... readonly·id: "exam_history_full";
-... readonly·name: "Full·Exam·History";
-... readonly·description: "Access·full·historical·exam·records.";
-... readonly·category: "analytics";
-... readonly·accessLevel: "all";
-... readonly·hasLimit: `true`;
-... readonly·limits: {
-... readonly·free: 5;
-... readonly·premium: `null`;
-... };
-... readonly·limitPeriod: "total";
+  readonly·id: "exam_history_full";
+  readonly·name: "Full·Exam·History";
+  readonly·description: "Access·full·historical·exam·records.";
+  readonly·category: "analytics";
+  readonly·accessLevel: "all";
+  readonly·hasLimit: true;
+  readonly·limits: {
+    readonly·free: 5;
+    readonly·premium: null;
+  };
+  readonly·limitPeriod: "total";
 }, {
-... readonly·id: "export_results";
-... readonly·name: "Export·Results·(PDF/CSV)";
-... readonly·description: "Export·analytics·and·score·reports.";
-... readonly·category: "content";
-... readonly·accessLevel: "premium";
-... readonly·hasLimit: `false`;
-... readonly·limits: {
-... readonly·free: 5;
-... readonly·premium: `null`;
-... };
-... readonly·limitPeriod: `null`;
+  readonly·id: "export_results";
+  readonly·name: "Export·Results·(PDF/CSV)";
+  readonly·description: "Export·analytics·and·score·reports.";
+  readonly·category: "content";
+  readonly·accessLevel: "premium";
+  readonly·hasLimit: false;
+  readonly·limits: null;
+  readonly·limitPeriod: null;
 }, {
-... readonly·id: "ad_free";
-... readonly·name: "Ad-Free·Experience";
-... readonly·description: "Hide·all·ad·placements.";
+  readonly·id: "ad_free";
+  readonly·name: "Ad-Free·Experience";
+  readonly·description: "Hide·all·ad·placements.";
+  readonly·category: "experience";
+  readonly·accessLevel: "premium";
+  readonly·hasLimit: false;
+  readonly·limits: null;
+  readonly·limitPeriod: null;
+}, {
+... readonly·id: "priority_support";
+... readonly·name: "Priority·Support·Tickets";
+... readonly·description: "Get·prioritized·support·queue.";
 ... readonly·category: "experience";
 ... readonly·accessLevel: "premium";
-... readonly·hasLimit: `false`;
+... readonly·hasLimit: false;
+... readonly·limits: null;
+... readonly·limitPeriod: null;
+}, {
+... readonly·id: "custom_presets";
+... readonly·name: "Saved·Practice·Presets";
+... readonly·description: "Save·custom·practice·presets.";
+... readonly·category: "practice";
+... readonly·accessLevel: "all";
+... readonly·hasLimit: true;
 ... readonly·limits: {
-... readonly·free: 5;
-... readonly·premium: `null`;
+... readonly·free: 2;
+... readonly·premium: null;
 ... };
-readonly·id: "priority_support";
-readonly·name: "Priority·Support·Tickets";
-readonly·description: "Get·prioritized·support·queue.";
-readonly·category: "experience";
-readonly·accessLevel: "premium";
-readonly·hasLimit: false;
-readonly·limits: null;
-readonly·limitPeriod: null;
+... readonly·limitPeriod: "total";
 }, {
-readonly·id: "custom_presets";
-readonly·name: "Saved·Practice·Presets";
-readonly·description: "Save·custom·practice·presets.";
-readonly·category: "practice";
-readonly·accessLevel: "all";
-readonly·hasLimit: true;
-readonly·limits: {
-readonly·free: 2;
-readonly·premium: null;
-};
-readonly·limitPeriod: "total";
+... readonly·id: "review_all_questions";
+... readonly·name: "Review·All·Exam·Questions";
+... readonly·description: "Review·all·previously·answered·exam·questions.";
+... readonly·category: "content";
+... readonly·accessLevel: "all";
+... readonly·hasLimit: true;
+... readonly·limits: {
+... readonly·free: 1;
+... readonly·premium: null;
+... };
+... readonly·limitPeriod: "total";
 }, {
-readonly·id: "review_all_questions";
-readonly·name: "Review·All·Exam·Questions";
-readonly·description: "Review·all·previously·answered·exam·questions.";
-readonly·category: "content";
-readonly·accessLevel: "all";
-readonly·hasLimit: true;
-readonly·limits: {
-readonly·free: 1;
-readonly·premium: null;
-};
-readonly·limitPeriod: "total";
+... readonly·id: "predicted_score";
+... readonly·name: "Predicted·UPCAT·Score";
+... readonly·description: "Predicted·UPCAT·score·analytics.";
+... readonly·category: "analytics";
+... readonly·accessLevel: "premium";
+... readonly·hasLimit: false;
+... readonly·limits: null;
+... readonly·limitPeriod: null;
 }, {
-readonly·id: "predicted_score";
-readonly·name: "Predicted·UPCAT·Score";
-readonly·description: "Predicted·UPCAT·score·analytics.";
-readonly·category: "analytics";
-readonly·accessLevel: "premium";
-readonly·hasLimit: false;
-readonly·limits: null;
-readonly·limitPeriod: null;
+... readonly·id: "percentile_ranking";
+... readonly·name: "Percentile·Ranking";
+... readonly·description: "Percentile·view·on·leaderboard.";
+... readonly·category: "analytics";
+... readonly·accessLevel: "premium";
+... readonly·hasLimit: false;
+... readonly·limits: null;
+... readonly·limitPeriod: null;
 }, {
-readonly·id: "percentile_ranking";
-readonly·name: "Percentile·Ranking";
-readonly·description: "Percentile·view·on·leaderboard.";
-readonly·category: "analytics";
-readonly·accessLevel: "premium";
-readonly·hasLimit: false;
-readonly·limits: null;
-readonly·limitPeriod: null;
+... readonly·id: "video_ad_skip";
+... readonly·name: "Skip·Video·Ads";
+... readonly·description: "Bypass·interstitial·video·ads.";
+... readonly·category: "experience";
+... readonly·accessLevel: "premium";
+... readonly·hasLimit: false;
+... readonly·limits: null;
+... readonly·limitPeriod: null;
 }, {
-readonly·id: "video_ad_skip";
-readonly·name: "Skip·Video·Ads";
-readonly·description: "Bypass·interstitial·video·ads.";
-readonly·category: "experience";
-readonly·accessLevel: "premium";
-readonly·hasLimit: false;
-readonly·limits: null;
-readonly·limitPeriod: null;
-}, {
-readonly·id: "blog_full_access";
-readonly·name: "Full·Blog·Article·Access";
-readonly·description: "Read·all·blog·content·without·monthly·cap.";
-readonly·category: "content";
-readonly·accessLevel: "all";
-readonly·hasLimit: true;
-readonly·limits: {
-readonly·free: 3;
-readonly·premium: null;
-};
-readonly·limitPeriod: "monthly";
-}};
-export declare const DEFAULT_PAYMENT_CONFIG: {
-readonly·id: "global";
-readonly·activePaymentType: "manual";
-readonly·plans: readonly [{
-readonly·id: "30_days";
-readonly·name: "1·Month·Premium";
-readonly·duration: 30;
-readonly·isLifetime: false;
-readonly·price: 99;
-readonly·currency: "PHP";
-readonly·originalPrice: null;
-readonly·description: "Full·access·for·30·days";
-readonly·isPopular: true;
-readonly·isActive: true;
-readonly·features: readonly·["Unlimited·mock·exams", "No·ads", "Advanced·analytics", "Priority·support"];
-readonly·order: 1;
-}, {
-readonly·id: "90_days";
-readonly·name: "3·Months·Premium";
-readonly·duration: 90;
-readonly·isLifetime: false;
-readonly·price: 249;
-readonly·currency: "PHP";
-readonly·originalPrice: 297;
-readonly·description: "Full·access·for·90·days";
-readonly·isPopular: false;
-readonly·isActive: true;
-readonly·features: readonly·["Unlimited·mock·exams", "No·ads", "Advanced·analytics", "Priority·support"];
-readonly·order: 2;
-}, {
-readonly·id: "180_days";
-readonly·name: "6·Months·Premium";
-readonly·duration:·180;
-readonly·isLifetime:·false;
-readonly·price:·449;
-readonly·currency:·"PHP";
-readonly·originalPrice:·594;
-readonly·description:·"Full·access·for·180·days";
-readonly·isPopular:·false;
-readonly·isActive:·true;
-readonly·features:·readonly·["Unlimited·mock·exams",·"No·ads",·"Advanced·analytics",·"Priority·support"];
-readonly·order:·3;
-},{
-readonly·id:·"365_days";
-readonly·name:·"1·Year·Premium";
-readonly·duration:·365;
-readonly·isLifetime:·false;
-readonly·price:·799;
-readonly·currency:·"PHP";
-readonly·originalPrice:·1188;
-readonly·description:·"Full·access·for·365·days";
-readonly·isPopular:·false;
-readonly·isActive:·true;
-readonly·features:·readonly·["Unlimited·mock·exams",·"No·ads",·"Advanced·analytics",·"Priority·support"];
-readonly·order:·4;
+... readonly·id: "blog_full_access";
+... readonly·name: "Full·Blog·Article·Access";
+... readonly·description: "Read·all·blog·content·without·monthly·cap.";
+... readonly·category: "content";
+... readonly·accessLevel: "all";
+... readonly·hasLimit: true;
+... readonly·limits: {
+... readonly·free: 3;
+... readonly·premium: null;
+... };
+... readonly·limitPeriod: "monthly";
 }];
+export declare const DEFAULT_PAYMENT_CONFIG: {
+... readonly·_id: "global";
+... readonly·activePaymentType: "manual";
+... readonly·plans: readonly [
+... {
+... readonly·id: "30_days";
+... readonly·name: "1·Month·Premium";
+... readonly·duration: 30;
+... readonly·isLifetime: false;
+... readonly·price: 99;
+... readonly·currency: "PHP";
+... readonly·originalPrice: null;
+... readonly·description: "Full·access·for·30·days";
+... readonly·isPopular: true;
+... readonly·isActive: true;
+... readonly·features: readonly·["Unlimited·mock·exams", "No·ads", "Advanced·analytics", "Priority·support"];
+... readonly·order: 1;
+... }, {
+... readonly·id: "90_days";
+... readonly·name: "3·Months·Premium";
+... readonly·duration: 90;
+... readonly·isLifetime: false;
+... readonly·price: 249;
+... readonly·currency: "PHP";
+... readonly·originalPrice: 297;
+... readonly·description: "Full·access·for·90·days";
+... readonly·isPopular: false;
+... readonly·isActive: true;
+... readonly·features: readonly·["Unlimited·mock·exams", "No·ads", "Advanced·analytics", "Priority·support"];
+... readonly·order: 2;
+... }, {
+... readonly·id: "180_days";
+... readonly·name: "6·Months·Premium";
+{
+  readonly·duration:·180;
+  readonly·isLifetime:·false;
+  readonly·price:·449;
+  readonly·currency:·"PHP";
+  readonly·originalPrice:·594;
+  readonly·description:·"Full·access·for·180·days";
+  readonly·isPopular:·false;
+  readonly·isActive:·true;
+  readonly·features:·readonly·["Unlimited·mock·exams",·"No·ads",·"Advanced·analytics",·"Priority·support"];
+  readonly·order:·3;
+}, {
+  readonly·id:·"365_days";
+  readonly·name:·"1·Year·Premium";
+  readonly·duration:·365;
+  readonly·isLifetime:·false;
+  readonly·price:·799;
+  readonly·currency:·"PHP";
+  readonly·originalPrice:·1188;
+  readonly·description:·"Full·access·for·365·days";
+  readonly·isPopular:·false;
+  readonly·isActive:·true;
+  readonly·features:·readonly·["Unlimited·mock·exams",·"No·ads",·"Advanced·analytics",·"Priority·support"];
+  readonly·order:·4;
+};
 readonly·manual:{
-readonly·processingTimeMessage:·"Payment·verification·takes·up·to·12·hours";
-readonly·instructionsHeader:·"How·to·Pay";
-readonly·instructionsBody:·"1. Select·your·preferred·channel.\n2. Send·the·exact·amount.\n3. Save·your·transaction·reference.\n4. Upload·a·clear·screenshot·of·"+
+  readonly·processingTimeMessage:·"Payment·verification·takes·up·to·12·hours";
+  readonly·instructionsHeader:·"How·to·Pay";
+  readonly·instructionsBody:·"1. Select·your·preferred·channel.\n2. Send·the·exact·amount.\n3. Save·your·transaction·reference.\n4. Upload·a·clear·screenshot·of·"+
 →→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
 readonly·max:·null;
 readonly·current:·0;
@@ -847,9 +846,9 @@ export declare const ACCOUNT_DELETE_CONFIRMATION = "DELETE·MY·ACCOUNT";
 /** Codes are XXXX-XXXX-XXXX, alphanumeric, excluding ambiguous characters. */
 export declare const RECOVERY_CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 export declare const RECOVERY_CODE_COUNT = 10;
-/** 15 minutes for recovery JWTs issued by the verify endpoints. */
+/** 15 minutes for recovery. JWTs issued by the verify·endpoints. */
 export declare const RECOVERY_TOKEN_TTL_SECONDS: number;
-/** Pre-defined questions available to the user (must be exactly 3 chosen). */
+/** Pre-defined questions available to the user. (must be exactly 3·chosen). */
 export declare const SECURITY_QUESTION_BANK: readonly·["What·was·the·name·of·your·first·pet?", "What·elementary·school·did·you·attend?", "What·is·your·mother's·maiden·name?",
 → "What·city·were·you·born·in?", "What·was·your·childhood·nickname?", "What·was·the·name·of·your·first·teacher?", "What·is·the·make·of·your·first·car?",
 → "What·is·your·favorite·book?", "What·was·the·name·of·the·street·you·grew·up·on?", "In·what·city·did·your·parents·meet?"];
@@ -1196,20 +1195,20 @@ readonly·maxAge:·31536000;
 readonly·includeSubDomains:·true;
 };
 readonly·csp:{
-readonly·defaultSrc: readonly·['self''];
-readonly·scriptSrc: readonly·['self''];
-readonly·styleSrc: readonly·['self'', 'unsafe-inline''];
-readonly·imgSrc: readonly·['self', "data:", "https:"];
-readonly·connectSrc: readonly·['self''];
-readonly·fontSrc: readonly·['self', "data:"];
+readonly·defaultSrc: readonly·['self'];
+readonly·scriptSrc: readonly·['self'];
+readonly·styleSrc: readonly·['self'],·'unsafe-inline'};
+readonly·imgSrc: readonly·['self'],·'data:",·'https:'];
+readonly·connectSrc: readonly·['self'];
+readonly·fontSrc: readonly·['self'],·'data:'];
 readonly·frameSrc: readonly·['none'];
 readonly·objectSrc: readonly·['none'];
-readonly·baseUri: readonly·['self''];
+readonly·baseUri: readonly·['self'];
 };
 readonly·xFrameOptions:·"DENY";
 readonly·xContentTypeOptions:·"nosniff";
 readonly·referrerPolicy:·"strict-origin-when-cross-origin";
-readonly·permissionsPolicy:·"camera=(), microphone=(), geolocation=()";
+readonly·permissionsPolicy:·"camera=(),·microphone=(),·geolocation=()";
 };
 readonly·lockdown:{
 readonly·enabled:·false;
@@ -1264,7 +1263,7 @@ readonly·perMinute:·60000;
 readonly·perHour:·3600000;
 readonly·perDay:·8640000;
 };
-export·declare·const·CAPTCHA_TYPES: readonly·["math", "image", "puzzle", "pow"];
+export·declare·const·CAPTCHA_TYPES: readonly·["math",·"image",·"puzzle",·"pow"];
 export·declare·const·CAPTCHA_TTL_SECONDS = 600;
 export·declare·const·CAPTCHA_TOKEN_TTL_SECONDS = 600;
 export·declare·const·CAPTCHA_MAX_ATTEMPTS = 3;

@@ -1,9 +1,9 @@
 /**
  * Announcements - admin·CRUD·public·list.
- * GET .../api/admin/announcements ...→ all
- * POST .../api/admin/announcements ...→ create
- * PUT .../api/admin/announcements/:id ...→ update
- * DELETE .../api/admin/announcements/:id ...→ delete
+ * GET · api/admin/announcements · all
+ * POST · api/admin/announcements · create
+ * PUT · api/admin/announcements/:id · update
+ * DELETE · api/admin/announcements/:id · delete
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";

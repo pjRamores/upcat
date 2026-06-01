@@ -48,7 +48,7 @@ export interface PageSeoConfig {
   breadcrumbs?: Array<{ name: string; path: string }>;
 }
 
-/* --- Page registry -------------------------------------------------- */
+/* ---- Page registry -------------------------------------------------- */
 
 const SITE_SUFFIX = "| UPCAT Simulator";
 
@@ -275,44 +275,43 @@ breadcrumbs: [
     description: "Your UPCAT review dashboard.",
     indexable: false,
     },
-  "/stats": {
-    path: "/stats",
-    title: "My Statistics" + SITE_SUFFIX,
-    bareTitle: true,
-    description: "Track your UPCAT review progress and subject-area accuracy.",
-    indexable: false,
+    "/stats": {
+      path: "/stats",
+      title: "My Statistics" + SITE_SUFFIX,
+      bareTitle: true,
+      description: "Track your UPCAT review progress and subject-area accuracy.",
+      indexable: false,
     },
-  "/profile": {
-    path: "/profile",
-    title: "My Profile" + SITE_SUFFIX,
-    bareTitle: true,
-    description: "Manage your UPCAT Simulator profile.",
-    indexable: false,
+    "/profile": {
+      path: "/profile",
+      title: "My Profile" + SITE_SUFFIX,
+      bareTitle: true,
+      description: "Manage your UPCAT Simulator profile.",
+      indexable: false,
     },
-  "/settings": {
-    path: "/settings",
-    title: "Settings" + SITE_SUFFIX,
-    bareTitle: true,
-    description: "Account settings.",
-    indexable: false,
+    "/settings": {
+      path: "/settings",
+      title: "Settings" + SITE_SUFFIX,
+      bareTitle: true,
+      description: "Account settings.",
+      indexable: false,
     },
-  "/practice/stats": {
-    path: "/practice/stats",
-    title: "Practice Statistics" + SITE_SUFFIX,
-    bareTitle: true,
-    description: "Track your UPCAT practice progress.",
-    indexable: false,
+    "/practice/stats": {
+      path: "/practice/stats",
+      title: "Practice Statistics" + SITE_SUFFIX,
+      bareTitle: true,
+      description: "Track your UPCAT practice progress.",
+      indexable: false,
     },
-  "/exam/:sessionId": {
-    path: "/exam/:sessionId",
-    title: "Exam in Progress" + SITE_SUFFIX,
-    bareTitle: true,
-    description: "Active UPCAT mock exam session.",
-    indexable: false,
+    "/exam/:sessionId": {
+      path: "/exam/:sessionId",
+      title: "Exam in Progress" + SITE_SUFFIX,
+      bareTitle: true,
+      description: "Active UPCAT mock exam session.",
+      indexable: false,
     },
-  },
-  "/results/:sessionId": {
-    path: "/results/:sessionId",
+    "/results/:sessionId": {
+      path: "/results/:sessionId",
 title: "Exam·Results" + SITE_SUFFIX,
 bareTitle: true,
 description: "Your·UPCAT·mock-exam·results.",

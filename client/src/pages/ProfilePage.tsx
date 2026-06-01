@@ -104,107 +104,107 @@ export default function ProfilePage() {
               label="Achievements"
               value={`${unlockedCount}/${achievements.length}`}
 <div className="mt-6">
-<div className="mb-1 flex justify-between text-xs opacity-90">
+<div className="mb-1·flex·justify-between·text-xs·opacity-90">
 <span>
-{{profile.level.xp -- profile.level.xpForCurrent).toLocaleString()}}/{"."}
-{{profile.level.xpForNext -- profile.level.xpForCurrent).toLocaleString()}} XP
+{(profile.level.xp - profile.level.xpForCurrent).toLocaleString()}/{"·"}
+{(profile.level.xpForNext - profile.level.xpForCurrent).toLocaleString()·XP
 </span>
 <span>
-{profile.level.xpToNextLevel.toLocaleString()}} XP to next level
+{profile.level.xpToNextLevel.toLocaleString()·XP·to·next·level
 </span>
 </div>
-<div className="h-3 overflow-hidden rounded-full bg-white/20">
+<div className="h-3·overflow-hidden·rounded-full·bg-white/20">
 <div
-className="h-full rounded-full bg-amber-300 transition-all"
+className="h-full·rounded-full·bg-amber-300·transition-all"
 style={{width: `${profile.level.progressPct}%`}}
 />
 </div>
 </div>
 </section>
 
-{/* Streak + Weekly Challenge */}
-<section className="mt-6 grid gap-4 md:grid-cols-2" data-help="gm_streak_mult">
-<div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-<h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+{/*·Streak·+·Weekly·Challenge·*/}
+<section className="mt-6·grid·gap-4·md:grid-cols-2·data-help="gm_streak_mult">
+<div className="rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
+<h2 className="text-sm·font-semibold·uppercase·tracking-wide·text-slate-500">
 Streak
 </h2>
-<div className="mt-2 text-3xl font-bold text-orange-600">
-@{profile.streak.current} days
+<div className="mt-2·text-3xl·font-bold·text-orange-600">
+@{profile.streak.current}·days
 </div>
-<div className="mt-1 text-sm text-slate-600">
-Longest: {profile.streak.longest} days • Multiplier ×
+<div className="mt-1·text-sm·text-slate-600">
+Longest: {profile.streak.longest}·days ·Multiplier·×
 {profile.streak.multiplier.toFixed(2)}
 </div>
-{profile.streak.hoursUntilExpiry !== null && (
-<div className="mt-3 text-xs text-slate-500">
-Keep it up — {profile.streak.hoursUntilExpiry} hours until midnight
+{profile.streak.hoursUntilExpiry!==·null&&(
+<div className="mt-3·text-xs·text-slate-500">
+Keep it up — {profile.streak.hoursUntilExpiry}·hours·until·midnight
 UTC.
 </div>
-)}}
+)}
 </div>
 
-<div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-<h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-Weekly Challenge
+<div className="rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
+<h2 className="text-sm·font-semibold·uppercase·tracking-wide·text-slate-500">
+Weekly·Challenge
 </h2>
-{weekly ? (
+{weekly?·(
 <>
-<div className="mt-2 text-lg font-semibold text-slate-900">
+<div className="mt-2·text-lg·font-semibold·text-slate-900">
 {weekly.challenge.title}
 </div>
-<p className="text-sm text-slate-600">
+<p className="text-sm·text-slate-600">
 {weekly.challenge.description}
 </p>
-<div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+<div className="mt-3·h-2·overflow-hidden·rounded-full·bg-slate-100">
 <div
 className={
 weekly.completed
-? "h-full bg-emerald-500"
-: "h-full bg-indigo-500"
+?·"h-full·bg-emerald-500"
+:·"h-full·bg-indigo-500"
 }
 style={{width: `${weekly.progressPct}%`}}
 />
 </div>
-<div className="mt-2 flex justify-between text-xs text-slate-500">
+<div className="mt-2·flex·justify-between·text-xs·text-slate-500">
 <span>
-{weekly.progress} / {weekly.target}
+{weekly.progress}·/{weekly.target}
 </span>
 <span>
 {weekly.completed
-? `Completed • +${weekly.challenge.xpReward} XP`
-: `Reward: +${weekly.challenge.xpReward} XP`}
+?·`Completed·+${weekly.challenge.xpReward}·XP`
+:·`Reward:+${weekly.challenge.xpReward}·XP`}
 </span>
 </div>
 </div>
 </div>
 </section>
 
-{/* Recent XP */}
-<section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-<div className="flex items-center justify-between">
-<h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-Recent XP
+{/*·Recent·XP·*/}
+<section className="mt-6·rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
+<div className="flex·items-center·justify-between">
+<h2 className="text-sm·font-semibold·uppercase·tracking-wide·text-slate-500">
+Recent·XP
 </h2>
 <Link
 to="/leaderboard"
-className="text-sm font-medium text-indigo-600 hover:underline"
+className="text-sm·font-medium·text-indigo-600·hover:underline"
 >
-View leaderboard →
+View·leaderboard→
 </Link>
 </div>
-{profile.recentXp.length === 0 ? (
-<p className="mt-2 text-sm text-slate-500">
-Complete an exam or practice session to earn XP.
+{profile.recentXp.length===·0?·(
+<p className="mt-2·text-sm·text-slate-500">
+Complete·an·exam·or·practice·session·to·earn·XP.
 </p>
-) : (
-<ul className="mt-3 divide-y divide-slate-100">
+)·(
+<ul className="mt-3·divide-y·divide-slate-100">
 {profile.recentXp.map((tx) => (
-  <li key={tx._id} className="flex·justify-between·py-2·text-sm">
-    <span className="text-slate-700">{tx.description}</span>
-    <span className="font-mono·font-semibold·text-emerald-600">
-      +{tx.amount}
-    </span>
-  </li>
+<li key={tx._id} className="flex·justify-between·py-2·text-sm">
+<span className="text-slate-700">{tx.description}</span>
+<span className="font-mono·font-semibold·text-emerald-600">
++{tx.amount}
+</span>
+</li>
 ))}
 </ul>
 })
@@ -212,96 +212,95 @@ Complete an exam or practice session to earn XP.
 
 {/* Achievements */}
 <section className="mt-6">data-help="gm_hidden_badge">
-  <div className="flex·flex-wrap·items-center·justify-between·gap-3">
-    <h2 className="text-xl·font-bold·text-slate-900">Achievements</h2>
-    <div className="text-sm·text-slate-500">
-      {profile.achievementsSummary.points.toLocaleString()}·points·{"·"}
-      {unlockedCount}·of·{achievements.length}·unlocked
-    </div>
-  </div>
+<div className="flex·flex-wrap·items-center·justify-between·gap-3">
+<h2 className="text-xl·font-bold·text-slate-900">Achievements</h2>
+<div className="text-sm·text-slate-500">
+{profile.achievementsSummary.points.toLocaleString()}·points·{"·"}
+{unlockedCount}·of·{achievements.length}·unlocked
+</div>
+</div>
 
-  <div className="mt-3·flex·flex-wrap·gap-2">data-help="gm_weekly_challenge">
-    <CategoryChip
-      label="All"
-      active={activeCategory === "all"}
-      onClick={() => setActiveCategory("all")}
-    />
-    {ACHIEVEMENT_CATEGORIES.map((c) => (
-      <CategoryChip
-        key={c}
-        label={ACHIEVEMENT_CATEGORY_META[c].label}
-        active={activeCategory === c}
-        onClick={() => setActiveCategory(c)}
-      />
-    ))}
-  </div>
+<div className="mt-3·flex·flex-wrap·gap-2">data-help="gm_weekly_challenge">
+<CategoryChip>
+label="All"
+active={activeCategory === "all"}
+onClick={() => setActiveCategory("all")}
+/>
+{ACHIEVEMENT_CATEGORIES.map((c) => (
+<CategoryChip>
+key={c}
+label={ACHIEVEMENT_CATEGORY_META[c].label}
+active={activeCategory === c}
+onClick={() => setActiveCategory(c)}
+/>
+))}
+</div>
 
-  <div className="mt-4·grid·gap-3·sm:grid-cols-2·lg:grid-cols-3">
-    {visible.map((a) => (
-      <AchievementCard key={a.id} achievement={a}/>
-    ))}
-  </div>
+<div className="mt-4·grid·gap-3·sm:grid-cols-2·lg:grid-cols-3">
+visible.map((a) => (
+<AchievementCard key={a.id} achievement={a}/>
+))}
+</div>
 </section>
 </div>
 );
 }
 
 function StatPill({label, value}: {label: string; value: string}) {
-  return (
-    <div className="rounded-lg·bg-white/15·px-3·py-2·text-center·backdrop-blur">
-      <div className="text-xs·uppercase·tracking-wide·opacity-80">{label}</div>
-      <div className="text-lg·font-bold">{value}</div>
-    </div>
-  );
+return (
+<div className="rounded-lg·bg-white/15·px-3·py-2·text-center·backdrop-blur">
+<div className="text-xs·uppercase·tracking-wide·opacity-80">{label}</div>
+<div className="text-lg·font-bold">{value}</div>
+);
 }
 
 function CategoryChip({
-  label,
-  active,
-  onClick,
+label,
+active,
+onClick,
 }): {
-  label: string;
-  active: boolean;
-  onClick(): void;
+label: string;
+active: boolean;
+onClick: () => void;
 }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`rounded-full border px-3 py-1 text-sm transition ${
-        active
-        ? "border-indigo-600 bg-indigo-600 text-white"
-        : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
-      }`
-    >
-      {label}
-    </button>
-  );
+return (
+<button
+type="button"
+onClick={onClick}
+className={`rounded-full border px-3 py-1 text-sm transition ${
+active
+? "border-indigo-600 bg-indigo-600 text-white"
+? "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+}`}
+>
+{label}
+</button>
+);
 }
 
 function AchievementCard({achievement}: {achievement: UserAchievement}) {
-  const styles = RARITY_STYLES[achievement.rarity];
-  return (
-    <div
-      className={`relative rounded-xl border p-4 transition ${
-        achievement.unlocked
-        ? `${styles.border}·${styles.bg}`
-        : "border-slate-200 bg-slate-50 opacity-75"
-      }`
-    >
-      <div className="flex·items-start·gap-3">
-        <div
-          className={`flex h-12 w-12 shrink-0 items-center·justify-center rounded-lg text-xl ${
-            achievement.unlocked
-            ? `${styles.iconBg}·${styles.iconText}`
-            : "bg-slate-200 text-slate-400"
-          }`
-        >
-          {achievement.unlocked ? "★" : "☑"}
-        </div>
-        <div className="min-w-0·flex-1">
-          <div className="flex·items-center·gap-2">
-            <h3 className="truncate·font-semibold·text-slate-900">
+const styles = RARITY_STYLES[achievement.rarity];
+return (
+<div
+className={`relative rounded-xl border p-4 transition ${
+achievement.unlocked
+? `${styles.border}`:${styles.bg}`}
+: "border-slate-200 bg-slate-50 opacity-75"
+}`}
+>
+<div className="flex·items-start·gap-3">
+<div
+className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-xl ${
+achievement.unlocked
+? `${styles.iconBg}`:${styles.iconText}`}
+: "bg-slate-200 text-slate-400"
+}`}
+>
+{achievement.unlocked? "*": "⚠"}
+</div>
+<div className="min-w-0·flex-1">
+<div className="flex·items-center·gap-2">
+<h3 className="truncate·font-semibold·text-slate-900">
 {achievement.title}
 </h3>
 <span
@@ -310,36 +309,44 @@ function AchievementCard({achievement}: {achievement: UserAchievement}) {
 {ACHIEVEMENT_RARITY_META[achievement.rarity].label}
 </span>
 </div>
-<p className="mt-1·text-xs·text-slate-600">{achievement.description}</p>
+<p className="mt-1 text-xs text-slate-600">{achievement.description}</p>
 {!achievement.unlocked && achievement.target > 1 && (
 <div className="mt-2">
-<div className="h-1.5·overflow-hidden·rounded-full·bg-slate-200">
+<div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
 <div
-  className="h-full·bg-indigo-500"
+  className="h-full bg-indigo-500"
   style={{width: `${achievement.progressPct}%`}}
 }
 {achievement.unlocked && achievement.unlockedAt && (
-<div className="mt-2·text-[10px]·text-slate-500">
+<div className="mt-2 text-[10px] text-slate-500">
 Unlocked {new Date(achievement.unlockedAt).toLocaleDateString()}·
 +{achievement.xpReward}·XP
+}
+)</div>
 </div>
 )}
-</div>
-</div>
+
+{achievement.unlocked && achievement.unlockedAt && (
+<div className="mt-2 text-[10px] text-slate-500">
+Unlocked {new Date(achievement.unlockedAt).toLocaleDateString()}·
++{achievement.xpReward}·XP
+}
+)</div>
+)</div>
 );
 }
 
 // Tailwind needs literal class names at scan time; map rarity → static classes.
 const RARITY_STYLES: Record<
   UserAchievement["rarity"],
-{
-  border: string;
-  bg: string;
-  iconBg: string;
-  iconText: string;
-  badgeBg: string;
-  badgeText: string;
-}
+  {
+    border: string;
+    bg: string;
+    iconBg: string;
+    iconText: string;
+    badgeBg: string;
+    badgeText: string;
+  }
 > = {
   common: {
     border: "border-slate-300",

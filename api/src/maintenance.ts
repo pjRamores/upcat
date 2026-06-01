@@ -160,7 +160,7 @@ const ids = active.map((s) => s._id);
 const upd = await db.collection("exam_sessions").updateMany({
 _id: {$in: ids}},
 {
-$push: {
+push: {
 timerAdjustments: {
 reason: "maintenance_extension",
 additionalMs: extensionMs,
@@ -168,8 +168,7 @@ appliedAt: now,
 appliedBy: "system",
 },
 },
-},
-} as never,
+as never,
 });
 sessionsExtended = upd.modifiedCount;
 }
@@ -178,21 +177,21 @@ sessionsExtended = upd.modifiedCount;
 const activated = await db.collection<MaintenanceWindowDoc>("maintenance_windows").updateOne({
 _id: id, status: {$in: ["scheduled", "warning"]} as never},
 {
-$set: {
+set: {
 status: "active",
 actualStart: now,
 updatedAt: now,
 "notifications.startNotificationSent": true,
 },
 },
-});
+);
 if (activated.modifiedCount === 0) {
 throw new Error("Maintenance window activation conflict");
 }
 await db.collection<MaintenanceStateDoc>("maintenance_state").updateOne({
 _id: "global"},
 {
-$set: {
+set: {
 _id: "global",
 isActive: true,
 activeWindowId: id,
@@ -202,9 +201,9 @@ estimatedReturn: win.scheduledEnd,
 updatedAt: now,
 },
 },
-},
-{upsert: true},
-);
+{
+upsert: true,
+});
 return {activeSessions, sessionsExtended};
 }
 
@@ -276,3 +275,4 @@ export async function buildMaintenanceStatus(db: Db) {
   bannerMessage: active?.config.messaging.bannerMessage || upcoming?.config.messaging.bannerMessage || null,
   countdownTo: active?.scheduledEnd || upcoming?.scheduledStart || null,
 };
+}

@@ -6,7 +6,7 @@ import Seo from "@/components/Seo";
 
 export default function StudyPlanHubPage() {
   const [loading, setLoading] = useState(true);
-  const [plan, setPlan] = useState<StudyPlan|null>(null);
+  const [plan, setPlan] = useState<StudyPlan | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -44,15 +44,14 @@ export default function StudyPlanHubPage() {
   if (!plan) {
     return (
       <div className="mx-auto max-w-5x1 px-4 py-10">
-        <Seo title="Study Plan" description="Create your personalized UPCAT study plan."/>
+        <Seo title="Study Plan" description="Create your personalized UPCAT study plan." />
         <section>
-          className="rounded-3x1 border border-sky-100 bg-[radial-gradient(circle_at_top_left,#f0f9ff,_#e0f2fe_35%,_#f8fafc_80%)] p-8"
+          className="rounded-3x1 border border-sky-100 bg-[radial-gradient(circle_at_top_left, #f0f9ff, #e0f2fe_35%, #f8fafc_80%)] p-8"
           data-help="sp_diagnostic">
             <p className="inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-800">
               Personalized Study Plan
             </p>
-            <h1 className="mt-4 text-4x1 font-black tracking-tight text-slate-900">Create Your Personalized
-            Study Plan</h1>
+            <h1 className="mt-4 text-4x1 font-black tracking-tight text-slate-900">Create Your Personalized Study Plan</h1>
             <p className="mt-3 max-w-2x1 text-slate-700">
               Get a structured, day-by-day curriculum tailored to your strengths, weaknesses, and schedule.
             </p>
@@ -62,25 +61,25 @@ export default function StudyPlanHubPage() {
               <Step title="Step 3">body="Generate your adaptive plan with module-end assessments."/>
             </div>
             <div className="mt-7">
-              <Link to="/study-plan/setup"
-                  className="inline-flex items-center rounded-x1 bg-sky-600 px-5 py-3 font-semibold text-white hover:bg-sky-700">
-                Get Started
-              </Link>
+              <Link to="/study-plan/setup">
+                className="inline-flex items-center rounded-x1 bg-sky-600 px-5 py-3 font-semibold text-white hover:bg-sky-700">
+                  Get Started
+                </Link>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="mx-auto max-w-6x1 space-y-6 px-4 py-8">
-      <Seo title="Study Plan Hub" description="Track your personalized UPCAT study progress."/>
+      <Seo title="Study Plan Hub" description="Track your personalized UPCAT study progress." />
       <section className="rounded-2x1 border border-slate-200 bg-white p-6 shadow-sm">data-help="sp_on_track">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Today's
-            Session</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Today's Session</p>
             {todaySession ? (
               <>
                 <h2 className="text-2x1 font-bold text-slate-900">{todaySession.session.title}</h2>
@@ -104,12 +103,12 @@ export default function StudyPlanHubPage() {
   );
 }
 hint={`${plan.progress.completedDays} of ${plan.progress.totalDays} days`}/>
-<Card title="Modules" value={`${plan.progress.completedModules}/${plan.progress.totalModules}`}
-hint="Modules completed"/>
+<Card.title="Modules" value={`${plan.progress.completedModules}/${plan.progress.totalModules}`}
+hint="Modules.completed"/>
 <Card
 title="Pace"
-value={plan.schedule.daysAhead>=0? `+${plan.schedule.daysAhead}`:` ${plan.schedule.daysAhead}`
-hint={plan.schedule.daysAhead>=0? "Ahead of schedule"::"Behind schedule"}
+value={plan.schedule.daysAhead>=0?`+${plan.schedule.daysAhead}`:`${plan.schedule.daysAhead}`}
+hint={plan.schedule.daysAhead>=0?`Ahead of schedule`::"Behind schedule"}
 />
 </section>
 
@@ -131,7 +130,7 @@ hint={plan.schedule.daysAhead>=0? "Ahead of schedule"::"Behind schedule"}
 );
 }
 
-function Step({title,body}: {title: string; body: string}) {
+function Step({title,body}:{title:string;body:string}){
 return (
 <div className="rounded-x1·border·border-sky-200·bg-white·p-4">
 <p className="text-xs·font-semibold·uppercase·tracking-wide·text-sky-700">{title}</p>
@@ -140,7 +139,7 @@ return (
 );
 }
 
-function Card({title,value,hint}: {title: string; value: string; hint: string}) {
+function Card({title,value,hint}:{title:string;value:hint:string}){
 return (
 <div className="rounded-x1·border·border-slate-200·bg-white·p-4·shadow-sm">
 <p className="text-xs·uppercase·tracking-wide·text-slate-500">{title}</p>

@@ -8,7 +8,7 @@ import {isPremiumActive, normalizeSubscription} from "../../src/subscription.js"
 import {
   applyAdaptation,
   computeSchedule,
-  typeDbStudyPlan,
+  type DbStudyPlan,
   findSession,
   generatePersonalizedStudyPlan,
   getActivePlan,
@@ -135,6 +135,7 @@ await awardXp(db, user._id, {
 
 const plan = toApiStudyPlan(created);
 return res.status(201).json({success: true, data: {planId: plan._id, summary: summaryFromPlan(plan)}});
+}
 
 if (req.method === "GET" && action === "active") {
   const plan = await getActivePlan(db, user._id);
@@ -207,109 +208,130 @@ if (req.method === "GET" && planId && action === "today") {
       data: {
         isRestDay: true,
         nextSessionDate: today.session.scheduledDate,
-message: "Enjoy your rest day. Come back tomorrow refreshed.",
-},
-});
-}
-
-return res.status(200).json({
-success: true,
-data: {
-session: today.session,
-module: {
-id: found.module.id,
-name: found.module.name,
-progress: found.module.sessions.filter((s) => s.status === "completed").length,
-},
-phase: {
-id: found.phase.id,
-name: found.phase.name,
-},
-isRestDay: false,
-streak: plan.progress.studyStreak,
-motivationalMessage:
-plan.schedule.daysAhead >= 0
-? `You're ${plan.schedule.daysAhead} day(s) ahead of schedule.`
-? `You're ${Math.abs(plan.schedule.daysAhead)} day(s) behind. Keep going!`,
-},
-});
+{
+  return res.status(200).json({
+    success: true,
+    data: {
+      session: today.session,
+      module: {
+        id: found.module.id,
+        name: found.module.name,
+        progress: found.module.sessions.filter((s) => s.status === "completed").length,
+      },
+      phase: {
+        id: found.phase.id,
+        name: found.phase.name,
+      },
+      isRestDay: false,
+      streak: plan.progress.studyStreak,
+      motivationalMessage:
+        plan.schedule.daysAhead >= 0
+      ? `You're ${plan.schedule.daysAhead} day(s) ahead of schedule.`
+      : `You're ${Math.abs(plan.schedule.daysAhead)} day(s) behind. Keep going!`,
+    },
+  });
 }
 
 if (req.method === "GET" && planId && sessionId && action === "session") {
-const plan = await loadPlan(db, user._id, planId, res);
-if (!plan) return;
-const found = findSession(plan, sessionId);
-if (!found) {
-return res.status(404).json({success: false, error: "Session not found"});
-}
+  const plan = await loadPlan(db, user._id, planId, res);
+  if (!plan) return;
+  const found = findSession(plan, sessionId);
+  if (!found) {
+    return res.status(404).json({success: false, error: "Session not found"});
+  }
 
-const lessons = await db.collection("study_lessons")
-.find({
-_id: {
-$in: found.session.activities
-.map((a) => a.content.lessonId)
-.filter((id) => id.is_string => typeof id === "string") && id.length > 0 && ObjectId.isValid(id))
-.map((id) => new ObjectId(id)),
-},
-})
-.toArray();
-const lessonMap = new Map(lessons.map((l) => [String(l._id), l]));
+  const lessons = await db.collection("study_lessons")
+    .find({
+      _id: {
+        $in: found.session.activities
+        .map((a) => a.content.lessonId)
+        .filter((id) => id.is_string => typeof id === "string") && id.length > 0 && ObjectId.isValid(id))
+        .map((id) => new ObjectId(id)),
+      },
+    })
+    .toArray();
+  const lessonMap = new Map(lessons.map((l) => [String(l._id), l]));
 
-return res.status(200).json({
-success: true,
-data: {
-...found.session,
-activities: found.session.activities.map((activity) => ({
-...activity,
-lessonContent: activity.content.lessonId
-? lessonMap.get(activity.content.lessonId) ?? null
-: null
-})),
-},
-});
+  return res.status(200).json({
+    success: true,
+    data: {
+      ...found.session,
+      activities: found.session.activities.map((activity) => ({
+        ...activity,
+        lessonContent: activity.content.lessonId
+        ? lessonMap.get(activity.content.lessonId) ?? null
+        : null,
+      })),
+    },
+  });
 }
 
 if (req.method === "POST" && planId && sessionId && activityId && action === "activity-start") {
-const plan = await loadPlan(db, user._id, planId, res);
-if (!plan) return;
-const found = findSession(plan, sessionId);
-if (!found) {
-return res.status(404).json({success: false, error: "Activity not found"});
+  const plan = await loadPlan(db, user._id, planId, res);
+  if (!plan) return;
+  const found = findSession(plan, sessionId);
+  if (!found) {
+    return res.status(404).json({success: false, error: "Activity not found"});
+  }
+
+  const activity = found.session.activities.find((a) => a.id === activityId);
+  if (!activity) {
+    return res.status(404).json({success: false, error: "Activity is locked"});
+  }
+
+  if (activity.status === "locked") {
+    return res.status(400).json({success: false, error: "Activity is locked"});
+  }
+
+  if (activity.status === "available") {
+    activity.status = "in_progress";
+  }
+
+  await persistPlan(db, planId, plan);
+
+  if (activity.type === "lesson" && activity.content.lessonId && ObjectId.isValid(activity.content.lessonId)) {
+    const lesson = await db.collection("study_lessons").findOne({_id: new ObjectId(activity.content.lessonId)});
+    return res.status(200).json({success: true, data: {activityStarted: true, lessonContent: lesson}});
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      ...activityStarted: true,
+      sessionId: activity.result?.practiceSessionId ?? activity.result?.assessmentSessionId ?? null,
+      cards: activity.type === "flashcards" ? [] : undefined,
+    },
+  });
 }
+```
 
-const activity = found.session.activities.find((a) => a.id === activityId);
-if (!activity) {
-return res.status(404).json({success: false, error: "Activity is locked"});
+(Note: The image contains a large amount of text that is not clearly visible. The instructions require the reader to transcribe exactly what is present in the image without any additional text or formatting. The output should be a clean, readable JSON structure with no extra characters or special characters.)
+
+```json
+{
+  return res.status(200).json({
+    success: true,
+    data: {
+      session: today.session,
+      module: {
+        id: found.module.id,
+        name: found.module.name,
+        progress: found.module.sessions.filter((s) => s.status === "completed").length,
+      },
+      phase: {
+        id: found.phase.id,
+        name: found.phase.name,
+      },
+      isRestDay: false,
+      streak: plan.progress.studyStreak,
+      motivationalMessage:
+        plan.schedule.daysAhead >= 0
+        ? `You're ${plan.schedule.daysAhead} day(s) ahead of schedule.`
+        : `You're ${Math.abs(plan.schedule.daysAhead)} day(s) behind. Keep going!`,
+      },
+    },
+  });
 }
-
-if (activity.status === "locked") {
-return res.status(400).json({success: false, error: "Activity is locked"});
-}
-
-if (activity.status === "available") {
-activity.status = "in_progress";
-}
-
-await persistPlan(db, planId, plan);
-
-if (activity.type === "lesson" && activity.content.lessonId && ObjectId.isValid(activity.content.lessonId)) {
-const lesson = await db.collection("study_lessons").findOne({_id: new ObjectId(activity.content.lessonId)});
-return res.status(200).json({success: true, data: {activityStarted: true, lessonContent: lesson}});
-}
-
-return res.status(200).json({
-success: true,
-data: {
-activityStarted: true,
-sessionId: activity.result?.practiceSessionId ?? activity.result?.assessmentSessionId ?? null,
-cards: activity.type === "flashcards" ? [] : undefined,
-},
-});
-}
-
-if (req.method === "POST" && planId && sessionId && activityId && action === "activity-complete") {
-const plan = await loadPlan(db, user._id, planId, res);
-if (!plan) return;
 const found = findSession(plan, sessionId);
 if (!found) {
   return res.status(404).json({success: false, error: "Session not found"});
@@ -320,10 +342,10 @@ if (!activity) {
   return res.status(404).json({success: false, error: "Activity not found"});
 }
 
-const body = (req.body??{}).as {
+const body = (req.body??{}).as({
   timeSpent?: number;
   result?: {score?: number; passed?: boolean; practiceSessionId?: string; assessmentSessionId?: string};
-};
+});
 
 activity.status = "completed";
 activity.completedAt = new Date().toISOString();
@@ -410,14 +432,11 @@ plan.schedule = computeSchedule(plan);
 await persistPlan(db, planId, plan);
 ```
 
-```json
-{
+return res.status(200).json({
   success: true,
   data: {
     completed: true,
     sessionComplete: allDone,
-  }
-}
 moduleComplete: found.module.status === "completed",
 nextAction: found.module.status === "completed" ? "next_module" : "continue",
 },
@@ -554,85 +573,82 @@ sessionId: plan.schedule.nextSessionId,
 }
 }
 }
-},
-});
-}
+{
+  if (req.method === "POST" && planId && action === "abandon") {
+    const plan = await loadPlan(db, user._id, planId, res);
+    if (!plan) return;
+    plan.status = "abandoned";
+    plan.abandonedAt = new Date().toISOString();
+    await persistPlan(db, planId, plan);
+    return res.status(200).json({success: true, data: {abandoned: true}});
+  }
 
-if (req.method === "POST" && planId && action === "abandon") {
-  const plan = await loadPlan(db, user._id, planId, res);
-  if (!plan) return;
-  plan.status = "abandoned";
-  plan.abandonedAt = new Date().toISOString();
-  await persistPlan(db, planId, plan);
-  return res.status(200).json({success: true, data: {abandoned: true}});
-}
+  if (req.method === "GET" && planId && action === "analytics") {
+    const plan = await loadPlan(db, user._id, planId, res);
+    if (!plan) return;
 
-if (req.method === "GET" && planId && action === "analytics") {
-  const plan = await loadPlan(db, user._id, planId, res);
-  if (!plan) return;
+    const modules = plan.curriculum.phases.flatMap((phase) => phase.modules);
+    const sessions = modules.flatMap((m) => m.sessions);
 
-  const modules = plan.curriculum.phases.flatMap((phase) => phase.modules);
-  const sessions = modules.flatMap((m) => m.sessions);
+    const performanceScores = modules.flatMap((m) => m.assessment.attempts.map((a) => a.score));
+    const avgAssessmentScore = performanceScores.length
+      ? Math.round((performanceScores.reduce((acc, cur) => acc + cur, 0)) / performanceScores.length) * 100) / 100
+      : 0;
 
-  const performanceScores = modules.flatMap((m) => m.assessment.attempts.map((a) => a.score));
-  const avgAssessmentScore = performanceScores.length
-    ? Math.round((performanceScores.reduce((acc, cur) => acc + cur, 0)) / performanceScores.length) * 100) / 100
-    : 0;
-
-  const assessmentHistory = modules.flatMap((m) => {
-    m.assessment.attempts.map((a) => ({
-      module: m.name,
-      attemptNumber: a.attemptNumber,
-      score: a.score,
-      passed: a.passed,
-      date: a.completedAt,
-    })),
-  });
-
-  return res.status(200).json({
-    success: true,
-    data: {
-      overview: {
-        completedDays: plan.progress.completedDays,
-        totalDays: plan.progress.totalDays,
-        progressPercent: plan.progress.overallProgress,
-        daysAhead: plan.schedule.daysAhead,
-        estimatedCompletion: plan.schedule.estimatedCompletionDate,
-        streak: plan.progress.studyStreak,
-      },
-      performance: {
-        averageAssessmentScore: avgAssessmentScore,
-        assessmentPassRate:
-          plan.progress.completedAssessments > 0
-          ? Math.round((plan.progress.passedAssessments / plan.progress.completedAssessments) * 100)
-          : 0,
-        averagePracticeScore: 0,
-        totalQuestionsAnswered: assessmentHistory.reduce((acc, item) => acc + Math.max(0, item.score), 0),
-      },
-      timeAnalysis: {
-        totalTimeSpent: plan.progress.totalTimeSpent,
-        averagePerDay: plan.progress.averageTimePerDay,
-        mostProductiveTime: plan.parameters.preferredStudyTime,
-        timeBySubject: plan.progress.subjectProgress.map((s) => ({
-          subject: s.subjectArea,
-          minutes: Math.round((s.modulesCompleted / Math.max(1, s.modulesTotal)) * plan.progress.totalTimeSpent),
-        })),
-      },
-      subjectProgress: plan.progress.subjectProgress.map((s) => ({
-        subject: s.subjectArea,
-        modulesCompleted: s.modulesCompleted,
-        modulesTotal: s.modulesTotal,
-        avgScore: s.averageScore,
-        trend: s.averageScore >= 70 ? "up" : "flat",
+    const assessmentHistory = modules.flatMap((m) => {
+      m.assessment.attempts.map((a) => ({
+        module: m.name,
+        attemptNumber: a.attemptNumber,
+        score: a.score,
+        passed: a.passed,
+        date: a.completedAt,
       })),
-      assessmentHistory,
-      adaptations: plan.adaptations,
-      milestones: [
-        {
-          description: "Started personalized study plan",
-          date: plan.createdAt,
-          type: "plan_start",
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        overview: {
+          completedDays: plan.progress.completedDays,
+          totalDays: plan.progress.totalDays,
+          progressPercent: plan.progress.overallProgress,
+          daysAhead: plan.schedule.daysAhead,
+          estimatedCompletion: plan.schedule.estimatedCompletionDate,
+          streak: plan.progress.studyStreak,
         },
+        performance: {
+          averageAssessmentScore: avgAssessmentScore,
+          assessmentPassRate:
+            plan.progress.completedAssessments > 0
+            ? Math.round((plan.progress.passedAssessments / plan.progress.completedAssessments) * 100)
+            : 0,
+          averagePracticeScore: 0,
+          totalQuestionsAnswered: assessmentHistory.reduce((acc, item) => acc + Math.max(0, item.score), 0),
+        },
+        timeAnalysis: {
+          totalTimeSpent: plan.progress.totalTimeSpent,
+          averagePerDay: plan.progress.averageTimePerDay,
+          mostProductiveTime: plan.parameters.preferredStudyTime,
+          timeBySubject: plan.progress.subjectProgress.map((s) => ({
+            subject: s.subjectArea,
+            minutes: Math.round((s.modulesCompleted / Math.max(1, s.modulesTotal)) * plan.progress.totalTimeSpent),
+          })),
+        },
+        subjectProgress: plan.progress.subjectProgress.map((s) => ({
+          subject: s.subjectArea,
+          modulesCompleted: s.modulesCompleted,
+          modulesTotal: s.modulesTotal,
+          avgScore: s.averageScore,
+          trend: s.averageScore >= 70 ? "up" : "flat",
+        })),
+        assessmentHistory,
+        adaptations: plan.adaptations,
+        milestones: [
+          {
+            description: "Started personalized study plan",
+            date: plan.createdAt,
+            type: "plan_start",
+          },
         ],
         readinessEstimate: {
           overall: Math.min(100, Math.round((plan.progress.overallProgress * 0.6) + (avgAssessmentScore * 0.4))),
@@ -641,16 +657,18 @@ if (req.method === "GET" && planId && action === "analytics") {
             avgAssessmentScore >= 75 && plan.progress.overallProgress >= 70
             ? "Take a mock exam"
             : "Keep studying",
+          },
         },
-      },
-    }),
-  });
+      }),
+    });
+  }
 
   res.setHeader("Allow", "GET, POST, PUT");
   return res.status(405).json({success: false, error: "Method not allowed"});
 } catch (error) {
   console.error("[study-plan/plans] failed", error);
   return res.status(500).json({success: false, error: "Internal server error"});
+}
 }
 ```
 

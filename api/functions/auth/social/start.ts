@@ -112,6 +112,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     for (const [k, v] of Object.entries(endpoints.extraAuthParams)) params.set(k, v);
   }
 }
+script
 const authorizationUrl = `${endpoints.authorizationEndpoint}?${params.toString()}`;
 
 await logActivity(db, {
@@ -124,3 +125,4 @@ await logActivity(db, {
 });
 
 return res.status(200).json({success: true, data: {authorizationUrl, state}});
+}

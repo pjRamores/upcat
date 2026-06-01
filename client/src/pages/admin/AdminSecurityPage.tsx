@@ -35,7 +35,8 @@ export default function AdminSecurityPage() {
                 : "border-b-2 border-transparent px-4 py-2 text-sm text-gray-600 hover:text-gray-900"
               }
             )
-          </nav>
+          </button>
+        </nav>
         </div>
         {tab === "dashboard" && <DashboardTab/>}
         {tab === "events" && <EventsTab/>}
@@ -95,13 +96,153 @@ export default function AdminSecurityPage() {
             </ul>
             <div className="text-xs text-gray-500">
               {String((e as {source?: {ip?: string}}).source?.ip?? "")} · {"·"}
+              {new Date(String((e as {timestamp?: string}).timestamp)).toLocaleString()}
             </div>
-            {new Date(String((e as {timestamp?: string}).timestamp)).toLocaleString()}
-          </div>
-        </div>
+          </li>
+        </ul>
       </ul>
     </Card>
     <Card.title="Top threats (by score)">
+<ul className="divide-y-divide-gray-200·text-sm">
+  {data.topThreats.slice(0, 10).map((t, i) => (
+    <li key={i} className="flex·justify-between·py-1.5">
+      <span className="font-mono">{String((t·as{·_id?:·string}).·_id)}</span>
+      <span className="text-xs·text-gray-500">
+        score{String((t·as{·threatScore?:·number}).·threatScore???"})·{"·"}
+        {String((t·as{·reputation?:·string}).·reputation???"})}
+      </span>
+    </li>
+  ))}
+</ul>
+</Card>
+</div>
+<Card.title="Geo·distribution">
+  <ul className="grid·grid-cols-2·gap-1·text-sm·md:grid-cols-5">
+    {data.geoDistribution.map((g) => (
+      <li key={g._id} className="flex·justify-between·rounded·bg-gray-50·px-2·py-1">
+        <span>{g._id||"unknown"}</span>
+        <span className="font-medium">{g.count}</span>
+      </li>
+    ))}
+  </ul>
+</Card>
+</div>
+);
+}
+
+function statusTone(s: string): "ok" | "warn" | "danger" {
+  if (s === "under_attack") return "danger";
+  if (s === "elevated") return "warn";
+  return "ok";
+}
+
+// --- Events ---
+
+function EventsTab() {
+  const [filters, setFilters] = useState({type: "", severity: "", ip: "", reviewed: ""});
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState({
+    items: Array<Record<string, unknown>>;
+    total: number;
+    totalPages: number;
+  }).|null>(null);
+  const [error, setError] = useState<string|null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    adminSecurityApi
+      .listEvents({...filters, page, limit: 25})
+      .then((d) => !cancelled && setData(d))
+      .catch((e) => !cancelled && setError((e·as·Error).message));
+    return () => {
+      cancelled = true;
+    };
+  }, [filters, page]);
+
+  return (
+    <div className="space-y-4">
+      <div className="flex·flex-wrap·gap-2">
+        {["type", "severity", "ip"]·as·const}.map((f) => (
+          <input
+            key={f}
+            value={filters[f]}
+            onChange={(e) => {
+              setFilters({...filters, [f]: e.target.value});
+              setPage(1);
+            }}
+            placeholder={f}
+            className="rounded·border·border-gray-300·px-2·py-1·text-sm"
+            />
+        ))}
+        <select
+          value={filters.reviewed}
+          onChange={(e) => setFilters({...filters, reviewed: e.target.value})}
+          className="rounded·border·border-gray-300·px-2·py-1·text-sm"
+        >
+          <option value="">All</option>
+          <option value="false">Unreviewed</option>
+          <option value="true">Reviewed</option>
+        </select>
+      </div>
+      {error && <p className="text-sm·text-red-600">{error}</p>}
+      {!data ? (
+        <p className="text-sm·text-gray-500">Loading...</p>
+      ) : (
+        <>
+          <table className="w-full·text-sm">
+            <thead className="bg-gray-50·text-left·text-xs·uppercase·text-gray-600">
+              <tr>
+                <th className="px-2·py-1">Time</th>
+                <th className="px-2·py-1">Type</th>
+                <th className="px-2·py-1">Severity</th>
+                <th className="px-2·py-1">IP</th>
+                <th className="px-2·py-1">Reviewed</th>
+                <th className="px-2·py-1"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tbody>
+                <tbody>
+                  <tbody>
+                    <tbody>
+                      <tbody>
+                        <tbody>
+                          <tbody>
+                            <tbody>
+                              <tbody>
+                                <tbody>
+                                  <tbody>
+                                    <tbody>
+                                      <tbody>
+                                          <tbody>
+                                            <tbody>
+                                              <tbody>
+                                            </tbody>
+                                          </tbody>
+                                      </tbody>
+                                    </tbody>
+                                  </tbody>
+                              </tbody>
+                            </tbody>
+                        </tbody>
+                      </tbody>
+                    </tbody>
+                  </tbody>
+                </tbody>
+              </tbody>
+            </tbody>
+          </table>
+        </tbody>
+      </table>
+    </table>
+  </ul>
+</Card>
+</div>
+</div>
+}
+```
+
+This code snippet is a TypeScript function that processes a string of text and returns a status indicator based on the content of the string. It uses a `useState` function to maintain the state of the filter set, and a `listEvents` function to update the filter set based on the received data. The function checks if the string contains any of the specified keywords and returns a boolean indicating whether the string meets the criteria.
 function EventRow({ev, onChange}: {ev: Record<string, unknown}; onChange: () => void}) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -156,15 +297,14 @@ function EventRow({ev, onChange}: {ev: Record<string, unknown}; onChange: () => 
                       onClick={() => review("block_ip")}
                       className="rounded-border border-red-300 px-3 py-1 text-xs text-red-700"
                     >
-                  Block IP
-                  </button>
-                )}
-              </div>
-            )}
-          </td>
-        </tr>
-      )}
-    </>
+                    Block IP
+                    </button>
+                  )}
+            </div>
+          )}
+        </td>
+      </tr>
+    )}
   );
 }
 
@@ -228,36 +368,25 @@ return (
             <th className="px-2 py-1"/>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
-          {data.items.map((row, i) => {
-            const ip = String(row._id);
-            const activity = (row.activity as {totalRequests?: number }) | undefined) ?? {};
-            return (
-              <tr key={i}>
-                <td className="px-2 py-1 font-mono text-xs">{ip}</td>
-                <td className="px-2 py-1">{String(row.reputation)}</td>
-                <td className="px-2 py-1">{String(row.threatScore)}</td>
-                <td className="px-2 py-1">{String(row.country?? "")}</td>
-                <td className="px-2 py-1">{activity.totalRequests?? 0}</td>
-                <td className="px-2 py-1 text-right">
-                  <button
-                    type="button"
-                    onClick={() => block(ip)}
-                    className="mr-2 text-xs text-red-600"
-                  >
-                    Block
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => unblock(ip)}
-                    className="text-xs text-gray-600"
-                  >
-                    Unblock
-                  </button>
-                </td>
-              </tr>
-            )};
-          })}
+        <tbody>
+          <tbody>
+            <tr key={i}>
+              <td className="px-2 py-1 font-mono text-xs">{ip}</td>
+              <td className="px-2 py-1">{String(row.reputation)}</td>
+              <td className="px-2 py-1">{String(row.threatScore)}</td>
+              <td className="px-2 py-1">{String(row.country??."})}</td>
+              <td className="px-2 py-1">{activity.totalRequests??.0}</td>
+              <td className="px-2 py-1 text-right">
+                <button
+                  type="button"
+                  onClick={() => block(ip)}
+                  className="mr-2 text-xs text-red-600"
+                >
+                  Block
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </tbody>
       </table>
       <Pagination page={page} total={data.totalPages} onChange={setPage}/>
@@ -395,12 +524,11 @@ className="ml-auto rounded-border border-gray-300 px-2 py-1 text-sm"
 <th className="px-2 py-1">Severity</th>
 <th className="px-2 py-1">Reason</th>
 <th className="px-2 py-1">Active</th>
-<th className="px-2 py-1"></tr>
+<th className="px-2 py-1"></th>
+</tr>
 </thead>
 <tbody>
-<tbody className="divide-y divide-gray-200">
-{data.items.map((b, i) => (
-<tr key={i}>
+<tbody>
 <td className="px-2 py-1">{String(b.type)}</td>
 <td className="px-2 py-1 font-mono text-xs">{String(b.value)}</td>
 <td className="px-2 py-1">{String(b.severity)}</td>
@@ -540,7 +668,7 @@ function LockdownControl() {
   }
 
   return (
-    <div>
+    <div
       className={
         enabled
         ? "rounded·border·border-red-300·bg-red-50·p-3"
@@ -604,21 +732,20 @@ function ReportsTab() {
             {p}
           </button>
         ))}
-        <div>
-          {!data ? (
-            <p className="text-sm·text-gray-500">Loading...</p>
-          ) : (
-            <div className="grid·grid-cols-2·gap-3·md·grid-cols-4">
-              <Kpi label="Total·events" value={data.totalEvents}/>
-              <Kpi label="New·blocks" value={data.newBlocks}/>
-              <Kpi
-                label="Critical"
-                value={data.bySeverity.find((s) => s._id === "critical")?.count ?? 0}
-                tone="danger"
-              />
-            </div>
-          )}
         </div>
+        {!data ? (
+          <p className="text-sm·text-gray-500">Loading...</p>
+        ) : (
+          <div className="grid·grid-cols-2·gap-3·md·grid-cols-4">
+            <Kpi label="Total·events" value={data.totalEvents}/>
+            <Kpi label="New·blocks" value={data.newBlocks}/>
+            <Kpi
+              label="Critical"
+              value={data.bySeverity.find((s) => s._id === "critical")?.count ?? 0}
+              tone="danger"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
@@ -656,10 +783,10 @@ function ReportsTab() {
 function BarList({
   rows,
   mono = false,
-}): {
+}) : {
   rows: Array<{_id: string; count: number}};
   mono?: boolean;
-}): {
+}) {
   const max = useMemo(() => Math.max(1, ...rows.map((r) => r.count)), [rows]);
   return (
     <ul className="space-y-1·text-sm">
@@ -677,54 +804,50 @@ function BarList({
           <span className="w-12·text-right·text-xs">{r.count}</span>
         </li>
       ))}
-    </ul>
-  );
-}
+      </ul>
+    );
+  }
 
-// Shared bits
+  // Shared bits
 
-function Kpi({
-  label,
-  value,
-  tone = "ok",
-}): {
-  label: string;
-  value: string | number;
-  tone?: "ok" | "warn" | "danger";
-}): {
-  const cls =
-    tone === "danger"
-    ? "bg-red-50·border-red-200·text-red-700"
-    : tone === "warn"
-    ? "bg-amber-50·border-amber-200·text-amber-700"
-    : "bg-white·border-gray-200·text-gray-800";
-  return (
-    <div className={`rounded border p-3 ${cls}`}>
-      <div className="text-xs·uppercase·tracking-wide·opacity-70">{label}</div>
-      <div className="mt-1·text-xl·font-semibold">{value}</div>
-    </div>
-  );
-}
+  function Kpi({
+    label,
+    value,
+    tone = "ok",
+    }) : {
+    label: string;
+    value: string | number;
+    tone?: "ok" | "warn" | "danger";
+    }) {
+      const cls =
+        tone === "danger"
+        ? "bg-red-50·border-red-200·text-red-700"
+        : tone === "warn"
+        ? "bg-amber-50·border-amber-200·text-amber-700"
+        : "bg-white·border-gray-200·text-gray-800";
+      return (
+        <div className={`rounded border p-3 ${cls}`}>
+          <div className="text-xs·uppercase·tracking-wide·opacity-70">{label}</div>
+          <div className="mt-1·text-xl·font-semibold">{value}</div>
+        </div>
+      );
+    }
 
-function Card({title, children}: {title: string; children: React.ReactNode}) {
-  return (
-    <div className="rounded·border·border-gray-200·bg-white·p-3">
-      <h3 className="mb-2·text-sm·font-semibold·text-gray-700">{title}</h3>
-      {children}
-    </div>
-  );
-}
+    function Card({title, children}: {title: string; children: React.ReactNode}) {
+      return (
+        <div className="rounded·border·border-gray-200·bg-white·p-3">
+          <h3 className="mb-2·text-sm·font-semibold·text-gray-700">{title}</h3>
+          {children}
+        </div>
+      );
+    }
 
-function Pagination({
-  page,
-  total,
-  onChange,
-}): {
-  page: number;
-  total: number;
-  onChange: (n: number) => void;
-}): {
-  if (total <= 1) return null;
+    function Pagination({
+      page,
+      total,
+      onChange,
+    }) {
+      if (total <= 1) return null;
 return (
   <div className="flex-items-center gap-2 text-sm">
     <button

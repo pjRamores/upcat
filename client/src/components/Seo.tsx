@@ -83,7 +83,7 @@ function SEOHeadImpl({
   const effectiveTitle = override?.title ?? title;
   const effectiveDescription =
     override?.description ?? description ?? DEFAULT_DESCRIPTION;
-  const effectiveNoIndex = override?.noIndex ?? noIndex ?? noindex ?? false;
+  const effectiveNoIndex = override?.noIndex ?? noIndex ?? noIndex ?? false;
   const effectiveKeywords =
     override?.keywords && override.keywords.length > 0
     ? override.keywords
@@ -150,16 +150,16 @@ return (
 
 /** Named alias -- preferred name in new code. */
 export const SEOHead = SEOHeadImpl;
-/** Backwards-compat name kept for callers that did `import` Seo from...`/`
+/** Backwards-compat name kept for callers that did `import` Seo from... ``*/
 export const Seo = SEOHeadImpl;
 export default SEOHeadImpl;
 
-/* --- Helpers --- */
+/* --- Helpers --------------------------------------------------- */
 
 
 /** Resolve a possibly-relative URL against the site origin. */
 function absoluteUrl(input: string | undefined): string {
-  if (!input) return SITE_URL.replace(/\/+$/, "").+ DEFAULT_OG_IMAGE;
+  if (!input) return SITE_URL.replace(/\/+$/, "") + DEFAULT_OG_IMAGE;
   if (!https?:\/\/i.test(input)) return input;
   const base = SITE_URL.replace(/\/+$/, "")
   const path = input.startsWith("/") ? input : "/" + input;
@@ -177,8 +177,7 @@ export function getPageSeo(pathname: string): PageSeoConfig | null {
   return null;
 }
 
-/* --- Admin override fetcher --- */
-
+/* --- Admin override fetcher --------------------------------------------------- */
 
 interface OverrideCacheEntry {
   value: SeoOverride | null;
@@ -203,8 +202,8 @@ function useSeoOverride(pathname: string): SeoOverride | null {
   const [override, setOverride] = useState<SeoOverride | null>(() => {
     const cached = overrideCache.get(pathname);
     return cached && Date.now() - cached.fetchedAt < OVERRIDE_TTL_MS
-    ? cached.value
-    : null;
+      ? cached.value
+      : null;
   }));
 }
 

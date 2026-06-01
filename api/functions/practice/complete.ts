@@ -101,6 +101,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     correctAnswers: totalCorrect,
   });
 }
+
+const rewards: RewardContext[] = [
 {reason: "practice_completed", baseAmount: XP_REWARDS.PRACTICE_COMPLETED},
 ];
 if (totalCorrect > 0) {

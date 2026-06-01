@@ -62,7 +62,7 @@ export async function requireSessionAccess(
     (typeof (req as any).params?.sessionId === "string" && (req as any).params.sessionId) ||
     (typeof req.query.sessionId === "string" && req.query.sessionId) ||
     (typeof (req.body as Record<string, unknown>) || undefined)?.sessionId === "string"
-    ? ((req.body as Record<string, unknown>)).sessionId as string)
+    ? ((req.body as Record<string, unknown>)?.sessionId as string)
     : undefined;
 
   if (!sessionId || !ObjectId.isValid(sessionId)) {
@@ -117,7 +117,6 @@ const randomized = shuffle(
 const labels: Array<A> | "B" | "C" | "D" = [...ANSWER_LABELS];
 
 let remappedCorrectAnswer: "A" | "B" | "C" | "D" = effectiveOriginalCorrect;
-
 const remappedChoices = randomized.map((choice, index) => {
   const nextLabel = labels[index] ?? "A";
   if (choice.originalLabel === effectiveOriginalCorrect) {

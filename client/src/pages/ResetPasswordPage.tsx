@@ -117,7 +117,7 @@ placeholder="********"
 <button
 type="button"
 onClick={() => setShowPassword(!showPassword)}
-className="absolute·right-3·top-1/2·translate-y-1/2·text-gray-400·hover:text-gray-600"
+className="absolute·right-3·top-1/2·-translate-y-1/2·text-gray-400·hover:text-gray-600"
 tabIndex={-1}
 >
 {showPassword?(
@@ -128,15 +128,7 @@ tabIndex={-1}
       "5c5·0·9.27·3.11·11·7.5a11.72·11.72·0·01-4.168·4.477M6.343·6.343L3·3m3.343·3.34312.829·2.829M17.657·17.657L21·"+
       "21m-3.343-3.3431-2.829-2.829M9.878·9.878a3·3·0·004.243·4.243"/>
   </svg>
-) : (
-  <svg className="h-4·w-4" fill="none" viewBox="0·0·24·24" stroke="currentColor"
-  strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round"
-      d="M15·12a3·3·0·11-6·0·3·3·0·016·0z"/>
-    <path strokeLinecap="round" strokeLinejoin="round"
-      d="M2.458·12C3.732·7.943·7.523·5·12·5c4.478·0·8.268·2.943·9.542·7-1.274·4.057-5.064·7-9.542·7-4.477·0-8.268-2.943-9.542-7z"/>
-  </svg>
-) }
+)})
 </button>
 </div>
 {errors.password && <p className="mt-1·text-xs·text-amber-500">{errors.password}</p>}
@@ -162,13 +154,13 @@ tabIndex={-1}
 
 {/* Submit */}
 <button type="submit" disabled={isLoading} className="btn-primary·w-full">
-  {isLoading ? (
+  {isLoading?(
     <span className="flex·items-center·gap-2">
-      <Spinner className="h-4·w-4·text-white">Resetting...
+      <Spinner className="h-4·w-4·text-white">Resetting...</span>
     </span>
-    ) : (
-      "Reset Password"
-    )}
+  ) : (
+    "Reset Password"
+  )}
   </button>
 </form>
 

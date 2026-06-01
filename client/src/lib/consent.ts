@@ -32,7 +32,7 @@ export function readConsent(): ConsentRecord {
     return {
       state: parsed.state,
       version: CONSENT_VERSION,
-      decidedAt: typeof parsed.decidedAt === "string" ? parsed.decidedAt : null,
+      decidedAt: type of parsed.decidedAt === "string" ? parsed.decidedAt : null,
     };
   } catch {
     return {...DEFAULT_CONSENT};

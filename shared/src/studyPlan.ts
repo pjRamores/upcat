@@ -1,30 +1,30 @@
 import type {Difficulty, SubjectArea} from "./types.js";
 
 export type StudyPlanStatus =
-  | "generating"
-  | "active"
-  | "paused"
-  | "completed"
-  | "abandoned";
+  ... | "generating"
+  ... | "active"
+  ... | "paused"
+  ... | "completed"
+  ... | "abandoned";
 
 export type StudyPreferredTime = "morning" | "afternoon" | "evening" | "flexible";
 export type StudyLearningStyle = "visual" | "reading" | "practice" | "mixed";
 export type StudyDifficultyPreference = "gradual" | "balanced" | "aggressive";
 export type StudyDiagnosticSource =
-  | "diagnostic_test"
-  | "historical_data"
-  | "self_assessment"
-  | "none";
+  ... | "diagnostic_test"
+  ... | "historical_data"
+  ... | "self_assessment"
+  ... | "none";
 
 export type StudyLevel = "beginner" | "intermediate" | "advanced";
 
 export type StudyActivityType =
-  | "lesson"
-  | "review"
-  | "practice"
-  | "flashcards"
-  | "video_placeholder"
-  | "assessment";
+  ... | "lesson"
+  ... | "review"
+  ... | "practice"
+  ... | "flashcards"
+  ... | "video_placeholder"
+  ... | "assessment";
 
 export type StudyLockableStatus = "locked" | "available" | "in_progress" | "completed" | "skipped";
 
@@ -192,20 +192,23 @@ export interface StudyPlanProgress {
   passedAssessments: number;
   overallProgress: number;
   studyStreak:
-  current: number;
-  longest: number;
-  lastStudyDate: string;
-};
-totalTimeSpent: number;
-averageTimePerDay: number;
-averageAssessmentScore: number;
-subjectProgress:
-subjectArea: SubjectArea;
-modulesCompleted: number;
-modulesTotal: number;
-averageScore: number;
-currentLevel: StudyLevel;
-}[];
+  {
+    current: number;
+    longest: number;
+    lastStudyDate: string;
+  };
+  totalTimeSpent: number;
+  averageTimePerDay: number;
+  averageAssessmentScore: number;
+  subjectProgress:
+  {
+    subjectArea: SubjectArea;
+    modulesCompleted: number;
+    modulesTotal: number;
+    averageScore: number;
+    currentLevel: StudyLevel;
+  }[];
+}
 export type StudyPlanAdaptationType =
   | "pace_adjustment"
   | "content_addition"
@@ -269,6 +272,10 @@ export interface StudyLesson {
       title: string | null;
       content: string;
       formula: string | null;
+    example: {
+      problem: string;
+      solution: string;
+      explanation: string;
     } | null;
   } | null;
 };

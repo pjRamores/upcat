@@ -1,10 +1,10 @@
-# -------------------------------------------------------------------------
+# ------------------------------------------------------------
 # Cloudflare Pages + Workers configuration
 # Primary deployment target for the UPCAT Simulator
 #
 # Cloudflare Pages serves the static frontend (Vite build output)
 # Cloudflare Workers handle API requests with zero cold-start latency
-# -------------------------------------------------------------------------
+# ------------------------------------------------------------
 
 name = "upcat-simulator"
 type = "javascript"
@@ -41,7 +41,7 @@ routes = [
 # Cloudflare Cron Triggers for scheduled tasks
 # (Equivalent to Vercel's crons configuration)
 [[triggers.crons]]
-cron = "0.*.*.*.*"
+cron = "0.*.*.*"
 
 [[triggers.crons]]
 cron = "0.*/6.*.*.*"
@@ -102,9 +102,10 @@ watch_paths = ["api/**/*.ts", "client/src/**"]
 [build.upload]
 format = "modules"
 dir = "client/dist"
-```javascript
+script
 main = "api/dist/index.js"
+```
 
-# — Custom Routes (for SPA fallback) —
+# Custom Routes (for SPA fallback) ----------------
 # All unmatched routes should serve index.html for client-side routing
 # This is configured in _routes.json for Pages

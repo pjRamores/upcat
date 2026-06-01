@@ -44,9 +44,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
 
       const payload = (req.body ?? {}).as({
-        event?: string,
-        transactionId?: string,
-        status?: string,
+        event?: string;
+        transactionId?: string;
+        status?: string;
       });
       const txId = String(payload.transactionId || "");
       if (!txId) return res.status(200).json({received: true});
@@ -101,8 +101,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           "subscriptionGranted.endDate": sub.premium?.endDate ? new Date(sub.premium.endDate) : null,
           updatedAt: new Date(),
         },
-      },
-    });
+      });
+    }
   }
 }
 const user = await db.collection("users").findOne({_id: tx.userId});
@@ -190,9 +190,9 @@ if (req.method === "POST" && !transactionId) {
     currency: "PHP",
     description: `UPCAT Simulator - ${plan.name}`,
     metadata: {userId: user._id.toHexString(), planId: plan.id},
-    successUrl: `${process.env.APP_URL || "http://localhost:5173}/api/payment/pangmeryenda/success`,
-    failureUrl: `${process.env.APP_URL || "http://localhost:5173}/api/payment/pangmeryenda/failed`,
-    cancelUrl: `${process.env.APP_URL || "http://localhost:5173}/api/payment/pangmeryenda/cancelled`,
+    successUrl: `${process.env.APP_URL || "http://localhost:5173"}/api/payment/pangmeryenda/success`,
+    failureUrl: `${process.env.APP_URL || "http://localhost:5173"}/api/payment/pangmeryenda/failed`,
+    cancelUrl: `${process.env.APP_URL || "http://localhost:5173"}/api/payment/pangmeryenda/cancelled`,
   });
 
   await db.collection("pangmeryenda_transactions").insertOne({

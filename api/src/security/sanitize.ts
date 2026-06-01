@@ -1,5 +1,5 @@
 /**
- * Phase 15 — Input sanitization.
+ * Phase 15 - Input sanitization.
  *
  * Defense-in-depth checks applied to every request body/query before the
  * handler sees it. Catches:

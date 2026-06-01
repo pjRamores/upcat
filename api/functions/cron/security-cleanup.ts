@@ -1,6 +1,6 @@
 /**
  * Cron: deactivate expired blocked entities + clean stale sessions.
- * Schedule: every 15 minutes (`*\/15.*.*.*`)
+ * Schedule: every 15 minutes (`*/15.*.*.*`)
  *
  * - blocked_entities: rows whose `expiresAt` < now` and `isActive` true
  * - are flipped to `isActive` false. Cache is invalidated.

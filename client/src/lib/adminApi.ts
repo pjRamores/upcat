@@ -24,15 +24,15 @@ import type {
 } from "@upcat/shared";
 import {API_ROUTES} from "@upcat/shared";
 
-/** Unwrap `{·data: T·}` envelope used by the API. */
-async function unwrap<T>(promise: Promise<{·data: {·data: T·}}>): Promise<T> {
-  const {data} = await promise;
+/** Unwrap `{ data: T }` envelope used by the API. */
+async function unwrap<T>(promise: Promise<{ data: { data: T } }>): Promise<T> {
+  const { data } = await promise;
   return data.data;
 }
 
-/** Unwrap raw JSON body (no envelope) — used by blog admin endpoints. */
-async function unwrapRaw<T>(promise: Promise<{·data: T·}>): Promise<T> {
-  const {data} = await promise;
+/** Unwrap raw JSON body (no envelope) used by blog admin endpoints. */
+async function unwrapRaw<T>(promise: Promise<{ data: T }>): Promise<T> {
+  const { data } = await promise;
   return data;
 }
 
@@ -79,7 +79,7 @@ export interface AdminQuestionSet {
   questionCount?: number;
   totalQuestions: number;
   totalTimeLimit: number;
-  distribution: Record<string, {·questions: number;·timeLimit: number}};
+  distribution: Record<string, { questions: number; timeLimit: number }>;
   difficultyMix: {
     easy: number;
     medium: number;
@@ -96,16 +96,16 @@ export const adminApi = {
   // Dashboard Analytics
   dashboardSummary: () => unwrap<AdminDashboardSummary>(apiClient.get(API_ROUTES.ADMIN.DASHBOARD)),
   dashboardActivity: (limit = 100) =>
-    unwrap<{·items: ActivityLogEntry[]}>(apiClient.get(`/admin/dashboard/activity?limit=${limit}`))
+    unwrap<{ items: ActivityLogEntry[] }>(apiClient.get(`/admin/dashboard/activity?limit=${limit}`))
     .then((d) => d.items),
   analytics: (period: "week" | "month" | "year" | "all" = "month") =>
     unwrap<Record<string, unknown>>(apiClient.get(`${API_ROUTES.ADMIN.ANALYTICS}?period=${period}`)),
-    auditLog: (params: Record<string, string | number | undefined) => {} =>
-      unwrap<PaginatedResult<ActivityLogEntry>>(
-        apiClient.get(API_ROUTES.ADMIN.AUDIT_LOG, {params}),
-      );
+    auditLog: (params: Record<string, string | number | undefined>) => {}
+    unwrap<PaginatedResult<ActivityLogEntry>>(
+      apiClient.get(API_ROUTES.ADMIN.AUDIT_LOG, {params}),
+    );
 };
-// --- Questions ----------------------------------------------------------
+// — Questions —
 
 listQuestions: (params: Record<string, string> | number | boolean | undefined) => {})
 const sanitized = {...params};
@@ -126,11 +126,11 @@ unwrap({
 createQuestion: (body: Partial<Question> && { passageId?: string | null }) =>
 unwrapQuestion(apiClient.post(API_ROUTES.ADMIN.QUESTIONS, body)),
 updateQuestion: (id: string, body: Partial<Question>) =>
-unwrap({ updated: boolean })(apiClient.put(API_ROUTES.ADMIN.QUESTION(id), body)),
+unwrap{ updated: boolean }>(apiClient.put(API_ROUTES.ADMIN.QUESTION(id), body)),
 deleteQuestion: (id: string) =>
-unwrap({ deleted: boolean })(apiClient.delete(API_ROUTES.ADMIN.QUESTION(id))),
+unwrap{ deleted: boolean }>(apiClient.delete(API_ROUTES.ADMIN.QUESTION(id))),
 bulkDeleteQuestions: (ids: string[]) =>
-unwrap({ deleted: number })(apiClient.post(API_ROUTES.ADMIN.QUESTIONS_BULK_DELETE, {ids})),
+unwrap{ deleted: number }>(apiClient.post(API_ROUTES.ADMIN.QUESTIONS_BULK_DELETE, {ids})),
 importQuestions: (format: "json" | "csv", data: string | Record<string, unknown>[] | {
   passages: Record<string, unknown>[];
   questions: Record<string, unknown>[]}
@@ -150,11 +150,15 @@ confirmQuestionImport: (
   batchId: string,
   mode: "skip_duplicates" | "insert_all" | "replace_exact",
   setId: string,
-) => unwrap({ inserted: number; updated: number; skipped: number; mode: string })(apiClient.post(API_ROUTES.ADMIN.QUESTIONS_IMPORT_CONFIRM, {batchId, mode, setId})),
+) => unwrap{ inserted: number; updated: number; skipped: number; mode: string }>(
+  apiClient.post(API_ROUTES.ADMIN.QUESTIONS_IMPORT_CONFIRM, {batchId, mode, setId}),
+),
 getQuestionImportBatch: (id: string) =>
 unwrapQuestionImportBatch(apiClient.get(API_ROUTES.ADMIN.QUESTIONS_IMPORT_BATCH(id))),
 undoQuestionImportBatch: (id: string) =>
-unwrap{ revertedInserts: number; revertedUpdates: number }(apiClient.post(API_ROUTES.ADMIN.QUESTIONS_IMPORT_BATCH_UNDO(id))),
+unwrap{ revertedInserts: number; revertedUpdates: number }>(
+  apiClient.post(API_ROUTES.ADMIN.QUESTIONS_IMPORT_BATCH_UNDO(id)),
+),
 exportQuestions: async (
   params: {
     format?: "json" | "csv";
@@ -205,7 +209,7 @@ if (params.type) query.set("type", params.type);
 return query.toString()? `${base}?${query.toString()}`: base;
 },
 transitionQuestionWorkflow: (id: string, status: QuestionPublicationStatus, note?: string) =>
-unwrap<{ questionId: string } from: QuestionPublicationStatus; to: QuestionPublicationStatus; version: number}>
+unwrap<{ questionId: string } from: QuestionPublicationStatus; to: QuestionPublicationStatus; version: number }>(
 apiClient.post(API_ROUTES.ADMIN.QUESTION_WORKFLOW(id), {status, note}),
 getQuestionVersions: (id: string) =>
 unwrap{
@@ -217,29 +221,36 @@ items: Array<
   editedAt: string;
   note: string
 }>
+){
 apiClient.get(API_ROUTES.ADMIN.QUESTION_VERSIONS(id)),
-listQuestionMediaAssets: (params: Record<string, string | number | boolean | undefined> = {}) =>
+},
+listQuestionMediaAssets: (params: Record<string, string | number | boolean | undefined) => {} =>
 unwrap<PaginatedResult<QuestionMediaAsset>>(
 apiClient.get(API_ROUTES.ADMIN.QUESTION_MEDIA_ASSETS, {params}),
+),
 uploadQuestionMediaAsset: (body: {
 filename: string;
 mimeType: string;
 base64Data: string;
 kind: "image" | "audio" | "video" | "other";
 altText?: string;
-caption?: string
-}) => unwrap<QuestionMediaAsset & {deduped?: boolean}>(
+caption?: string;
+}) => unwrap<QuestionMediaAsset & {deduped?: boolean }}(
 apiClient.post(API_ROUTES.ADMIN.QUESTION_MEDIA_ASSETS, body),
+),
 deleteQuestionMediaAsset: (id: string) =>
 unwrap<{ deleted: boolean }>(apiClient.delete(API_ROUTES.ADMIN.QUESTION_MEDIA_ASSET(id))),
 
 // — Passages —
-listPassages: (params: Record<string, string | number | undefined> = {}) =>
+
+listPassages: (params: Record<string, string | number | undefined) => {} =>
 unwrap<PaginatedResult<Passage & {questionCount: number}>>(
 apiClient.get(API_ROUTES.ADMIN.PASSAGES, {params}),
+),
 getPassage: (id: string) =>
 unwrap<{ passage: Passage; questions: Question[] }>(
 apiClient.get(API_ROUTES.ADMIN.PASSAGE(id)),
+),
 createPassage: (body: PartialPassage) =>
 unwrap<Passage>(apiClient.post(API_ROUTES.ADMIN.PASSAGES, body)),
 updatePassage: (id: string, body: PartialPassage) =>
@@ -248,9 +259,11 @@ deletePassage: (id: string) =>
 unwrap<{ deleted: boolean }>(apiClient.delete(API_ROUTES.ADMIN.PASSAGE(id))),
 
 // — Users —
-listUsers: (params: Record<string, string | number | undefined> = {}) =>
+
+listUsers: (params: Record<string, string | number | undefined) => {} =>
 unwrap<PaginatedResult<AdminUserListEntry>>(
 apiClient.get(API_ROUTES.ADMIN.USERS, {params}),
+),
 getUser: (id: string) =>
 unwrap<Record<string, unknown>>(apiClient.get(API_ROUTES.ADMIN.USER(id))),
 updateUser: (id: string, body: Record<string, unknown>) =>
@@ -260,6 +273,7 @@ unwrap<Record<string, unknown>>(apiClient.post(API_ROUTES.ADMIN.USER_CREATE, bod
 deactivateUser: (id: string, reason?: string) =>
 unwrap<{ ok: boolean }>(
 apiClient.post(API_ROUTES.ADMIN.USER_DEACTIVATE(id), {reason}),
+),
 reactivateUser: (id: string) =>
 unwrap<{ ok: boolean }>(apiClient.post(API_ROUTES.ADMIN.USER_REACTIVATE(id))),
 resetUserPassword: (id: string) =>
@@ -272,24 +286,29 @@ body: { periodDays?: number; planId?: string; reason?: string } = {},
 ) =>
 unwrap<{ upgraded: boolean; subscription: { tier: "free" | "premium"; endDate: string | null } }>(
 apiClient.post(API_ROUTES.ADMIN.USER_UPGRADE(id), body),
+),
 setUserFree: (
 id: string,
 body: { immediate?: boolean; reason?: string } = {},
 ) =>
 unwrap<{ downgraded: boolean; subscription: Record<string, unknown> }>(
 apiClient.post(API_ROUTES.ADMIN.USER_DOWNGRADE(id), body),
+),
 extendUserPremium: (
 id: string,
 body: { days: number; reason?: string },
 ) =>
 unwrap<{ extended: boolean; newEndDate: string | null }>(
 apiClient.post(API_ROUTES.ADMIN.USER_EXTEND(id), body),
+),
 exportUsersUrl: () => `${import.meta.env.VITE_API_URL || "/api"}${API_ROUTES.ADMIN.USERS_EXPORT}`,
 
 // — Exams —
-listExams: (params: Record<string, string | number | undefined> = {}) =>
+
+listExams: (params: Record<string, string | number | undefined) => {} =>
 unwrap<PaginatedResult<Record<string, unknown>>>(
 apiClient.get(API_ROUTES.ADMIN.EXAMS, {params}),
+),
 getExam: (id: string) =>
 unwrap<Record<string, unknown>>(apiClient.get(API_ROUTES.ADMIN.EXAM(id))),
 deleteExam: (id: string) =>
@@ -392,7 +411,6 @@ listHelpArticles: (params: Record<string, string | number | undefined) => {} =>
 unwrap{ items: Array<Record<string, unknown>>; total: number; page: number; limit: number }>(
 apiClient.get(API_ROUTES.ADMIN.HELP_ARTICLES, {params}),
 ),
-
 createHelpArticle: (body: Record<string, unknown>) =>
 unwrap{ created: boolean; slug: string }(apiClient.post(API_ROUTES.ADMIN.HELP_ARTICLES, body)),
 updateHelpArticle: (slug: string, body: Record<string, unknown>) =>
@@ -424,7 +442,7 @@ helpAnalytics: () => unwrap(Record<string, unknown>>(apiClient.get(API_ROUTES.AD
 
 // — Monitoring —
 monitoringDashboard: (range: "1h" | "6h" | "24h" | "7d" = "1h") =>
-unwrap(Record<string, unknown>)(apiClient.get(`/admin/monitoring/dashboard?range=${range}`)),
+unwrap(Record<string, unknown>>(apiClient.get(`/admin/monitoring/dashboard?range=${range}`))),
 monitoringLogs: (params: Record<string, string | number | undefined> = {}) =>
 unwrap({
 items: Array<Record<string, unknown>>;
@@ -452,20 +470,21 @@ unwrap({ success: boolean })(apiClient.put(`/admin/monitoring/alerts/${id}/resol
 monitoringSilenceAlert: (id: string, silenceMinutes = 30, notes?: string) =>
 unwrap({ success: boolean })(
 apiClient.put(`/admin/monitoring/alerts/${id}/silence`), {silenceMinutes, notes}),
+),
 monitoringTestAlert: () =>
-unwrap(Record<string, unknown>)(apiClient.post("/admin/monitoring/test-alert")),
+unwrap(Record<string, unknown>>(apiClient.post("/admin/monitoring/test-alert"))),
 monitoringAlertRules: () =>
-unwrap(Array<Record<string, unknown>>(apiClient.get("/admin/monitoring/alert-rules")),
+unwrap(Array<Record<string, unknown>>(apiClient.get("/admin/monitoring/alert-rules"))),
 monitoringSeedAlertRules: () =>
-unwrap({ seeded: number })(apiClient.post("/admin/monitoring/alert-rules/seed-defaults")),
+unwrap({ seeded: number })(apiClient.post("/admin/monitoring/alert-rules/seed-defaults"))),
 monitoringHealthChecks: () =>
-unwrap(Array<Record<string, unknown>>(apiClient.get("/admin/monitoring/health-checks")),
+unwrap(Array<Record<string, unknown>>(apiClient.get("/admin/monitoring/health-checks"))),
 monitoringRunAllHealthChecks: () =>
-unwrap(Record<string, unknown>)(apiClient.post("/admin/monitoring/health-checks/run-all")),
+unwrap(Record<string, unknown>>(apiClient.post("/admin/monitoring/health-checks/run-all"))),
 monitoringRunHealthCheck: (checkId: string) =>
-unwrap(Record<string, unknown>)(apiClient.post("/admin/monitoring/health-checks/${checkId}/run")),
+unwrap(Record<string, unknown>>(apiClient.post("/admin/monitoring/health-checks/${checkId}/run"))),
 monitoringConfig: () =>
-unwrap(Record<string, unknown>)(apiClient.get("/admin/monitoring/config")),
+unwrap(Record<string, unknown>>(apiClient.get("/admin/monitoring/config"))),
 monitoringSaveConfig: (patch: Record<string, unknown>) =>
 unwrap(Record<string, unknown>)(apiClient.put("/admin/monitoring/config", patch)),
 monitoringReport: (range: "1h" | "6h" | "24h" | "7d" = "24h") =>

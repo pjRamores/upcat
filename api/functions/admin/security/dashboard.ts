@@ -90,7 +90,7 @@ export default withSecurity({endpoint: "GET/api/admin/security/dashboard"})(asyn
         $group: {
           _id: "$country",
           requestCount: {$sum: "$activity.totalRequests"},
-          blockedCount: {$sum: {$cond: [{$eq: ["$reputation", "blocked"]}, 1, 0]}},
+          blockedCount: {$sum: {$cond: [{$eq: ["reputation", "blocked"]}, 1, 0]}},
         },
       },
       {$sort: {requestCount: -1}},

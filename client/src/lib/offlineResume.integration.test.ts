@@ -78,7 +78,7 @@ describe("offline to online resume integration", () => {
 
     expect(apiClient.post).toHaveBeenCalledWith(
       "/sync/answers",
-      expect.objectContaining({sessionId: "sess-int"})
+      expect.objectContaining({sessionId: "sess-int"}),
     );
     expect(syncQueue.getSessionQueue("sess-int")).toHaveLength(0);
   });

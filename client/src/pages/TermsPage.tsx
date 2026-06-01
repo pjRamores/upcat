@@ -25,7 +25,7 @@ const SECTIONS = [
 
 export default function TermsPage() {
   return (
-    <div className="mx-auto max-w-3x1 px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <Seo
         title="Terms and Conditions | UPCAT Simulator"
         description="Read the terms and conditions for using UPCAT Simulator, our UPCAT practice platform."
@@ -107,7 +107,8 @@ Privacy Policy
 for more details on how your data is handled.
 </p>
 <p>
-<strong>The Service is not the actual UPCAT examination</strong>{"."}
+<strong>The Service is not the actual UPCAT examination
+</strong>{"."}
 and does not in any way replicate or reproduce official UPCAT content. All questions, passages, and materials provided through the Service are original works or items inspired by public-domain educational resources.
 </p>
 <p>
@@ -232,14 +233,14 @@ these Terms or the Service, please reach out via the{"·"}
 to="/contact"
 className="font-medium·text-primary-600·underline-offset-2·hover:underline"
 >
-Contact·page
+Contact page
 </Link>
 </p>
 </Section>
 </article>
 
 <p className="mt-12·text-center·text-xs·text-gray-400">
-End·of·Terms and Conditions
+End of Terms and Conditions
 </p>
 </div>
 );
@@ -249,14 +250,14 @@ function Section({
 id,
 title,
 children:
-}): {
+}: {
 id: string;
 title: string;
 children: React.ReactNode;
-} {
+}) {
 return (
-<section id={id} aria-labelledby={`${id}-h`} className="scroll-mt-24">
-<h2 id={`${id}-h`}
+<section id={id} aria-labelledby={${id}-h}` className="scroll-mt-24">
+<h2 id={${id}-h}>
 className="text-x1·font-bold·tracking-tight·text-gray-900"
 >
 {title}

@@ -13,9 +13,9 @@ export default function AdminHelpAnalyticsPage() {
       .catch(() => addToast("error", "Failed to load help analytics."));
   }, []);
 
-  const mostViewed = (data?.mostViewedArticles as Array<Record<string, unknown>>) || undefined) ?? [];
-  const leastHelpful = (data?.leastHelpfulArticles as Array<Record<string, unknown>>) || undefined) ?? [];
-  const noResults = (data?.searchTermsWithNoResults as Array<Record<string, unknown>>) || undefined) ?? [];
+  const mostViewed = (data?.mostViewedArticles as Array<Record<string, unknown>>)?.undefined) ?? [];
+  const leastHelpful = (data?.leastHelpfulArticles as Array<Record<string, unknown>>)?.undefined) ?? [];
+  const noResults = (data?.searchTermsWithNoResults as Array<Record<string, unknown>>)?.undefined) ?? [];
 
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function AdminHelpAnalyticsPage() {
           <ul className="space-y-1 text-sm">
             {mostViewed.map((row) => (
               <li key={String(row.slug)}>{String(row.title)}</span>
-              className="text-slate-500">{{Number(row.viewCount ?? 0)} views}}</span></li>
+              className="text-slate-500">{{Number(row.viewCount ?? 0)}·views}}</span></li>
             ))}
           </ul>
         </Panel>
@@ -38,7 +38,7 @@ export default function AdminHelpAnalyticsPage() {
           <ul className="space-y-1 text-sm">
             {leastHelpful.map((row) => (
               <li key={String(row.slug)}>{String(row.title)}</span>
-              className="text-slate-500">{{Math.round(Number(row.helpfulRate ?? 0) * 100)} helpful}}</span>
+              className="text-slate-500">{{Math.round(Number(row.helpfulRate ?? 0) * 100)}·helpful}}</span>
             ))}
           </ul>
         </Panel>
@@ -47,7 +47,7 @@ export default function AdminHelpAnalyticsPage() {
           <ul className="space-y-1 text-sm">
             {noResults.map((row) => (
               <li key={String(row.term)}>{String(row.term)}</span>
-              className="text-slate-500">{{Number(row.count ?? 0)} }}</span></li>
+              className="text-slate-500">{{Number(row.count ?? 0)}}}</span></li>
             ))}
           </ul>
         </Panel>

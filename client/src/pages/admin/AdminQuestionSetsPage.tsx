@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import DataTable, {type, DataTableColumn, Pagination} from "@/components/admin/DataTable";
+import DataTable, {type} DataTableColumn, Pagination} from "@/components/admin/DataTable";
 import Badge from "@/components/admin/Badge";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import Modal from "@/components/Modal";
-import {adminApi, type, AdminQuestionSet} from "@/lib/adminApi";
+import {adminApi, type} AdminQuestionSet} from "@/lib/adminApi";
 import {useToastStore} from "@stores/toastStore";
 import {SUBJECT_AREAS} from "@upcat/shared";
 
@@ -70,7 +70,7 @@ export default function AdminQuestionSetsPage() {
   const addToast = useToastStore((s) => s.addToast);
 
   const [page, setPage] = useState(1);
-  const [data, setData] = useState({items: AdminQuestionSet[]}, total: number; totalPages: number} | null>(null);
+  const [data, setData] = useState({items: AdminQuestionSet[]}, total: number; totalPages: number}) | null>(null);
   const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("<asc> | <desc>>("desc"));
@@ -220,12 +220,12 @@ prev.distribution[subject]??{questions:0, timeLimit:0}},
 
 const totalPublishedItems = SUBJECT_AREAS.reduce(
 (sum, subject) => sum + (form.distribution[subject]?.questions??0),
-0
+0,
 );
 
 const totalTimeLimit = SUBJECT_AREAS.reduce(
 (sum, subject) => sum + (form.distribution[subject]?.timeLimit??0),
-0
+0,
 );
 
 const columns: DataTableColumn<AdminQuestionSet>[] = [
@@ -249,7 +249,7 @@ render: (r) => (
 <p><span className="font-semibold">{r.totalQuestions}</span> configured</p>
 <typeof r.questionCount === "number" && (
 <p className="text-slate-500">{r.questionCount} in bank</p>
-)
+))
 </div>
 ),
 },
@@ -444,7 +444,7 @@ onClick={handleSave}
 disabled={saving}
 className="rounded-md·bg-primary-600·px-4·py-1.5·text-xs·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-60"
 >
-{saving·?·"Saving..."::mode === "create"·?·"Create·Set"::·"Save·Changes"}
+{saving·?"Saving..."::mode === "create"·?"Create·Set"::"Save·Changes"}
 </button>
 </div>
 </div>

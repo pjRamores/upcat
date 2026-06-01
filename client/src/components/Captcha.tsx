@@ -42,67 +42,67 @@ export default function Captcha({
   onSolved,
   onStateChange,
   className,
-  ): CaptchaProps {
-    const [challenge, setChallenge] = useState<CaptchaChallengePayload | null>(null);
-    const [state, setState] = useState<
-      "idle" | "loading" | "ready" | "verifying" | "solved" | "failed"
-    >("idle");
-    const [error, setError] = useState<string | null>(null);
-    const startedAt = useRef<number>(0);
+}: CaptchaProps) {
+  const [challenge, setChallenge] = useState<CaptchaChallengePayload | null>(null);
+  const [state, setState] = useState<
+    "idle" | "loading" | "ready" | "verifying" | "solved" | "failed"
+  >("idle");
+  const [error, setError] = useState<string | null>(null);
+  const startedAt = useRef<number>(0);
 
-    const updateState = useCallback(
-      (s: typeof state) => {
-        setState(s);
-        onStateChange?.(s);
-      },
-      [onStateChange],
+  const updateState = useCallback(
+    (s: typeof state) => {
+      setState(s);
+      onStateChange?.(s);
+    },
+    [onStateChange],
     );
+  );
 
-    const load = useCallback(async () => {
-      updateState("loading");
+  const load = useCallback(async () => {
+    updateState("loading");
+    setError(null);
+    try {
+      const c = await captchaApi.generate(type, elevated);
+      setChallenge(c);
+      startedAt.current = Date.now();
+      updateState("ready");
+    } catch {
+      setError("Could not load CAPTCHA. Try again.");
+      updateState("failed");
+    }
+  }, [type, elevated, updateState]);
+
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  const verify = useCallback(
+    async (answer: unknown) => {
+      if (!challenge) return;
+      updateState("verifying");
       setError(null);
+      const elapsed = Date.now() - startedAt.current;
       try {
-        const c = await captchaApi.generate(type, elevated);
-        setChallenge(c);
-        startedAt.current = Date.now();
-        updateState("ready");
-      } catch {
-        setError("Could not load CAPTCHA. Try again.");
-        updateState("failed");
-      }
-    }, [type, elevated, updateState]);
-
-    useEffect(() => {
-      void load();
-    }, [load]);
-
-    const verify = useCallback(
-      async (answer: unknown) => {
-        if (!challenge) return;
-        updateState("verifying");
-        setError(null);
-        const elapsed = Date.now() - startedAt.current;
-        try {
-          const result = await captchaApi.verify(challenge.captchaId, answer, elapsed);
-          if (result.valid && result.token) {
-            armCaptchaToken(result.token);
-            onSolved(result.token);
-            updateState("solved");
-          } else {
-            setError("Incorrect answer. Try a new challenge.");
-            updateState("failed");
-            await load();
-          }
-        } catch {
-          setError("Verification failed. Try a new challenge.");
+        const result = await captchaApi.verify(challenge.captchaId, answer, elapsed);
+        if (result.valid && result.token) {
+          armCaptchaToken(result.token);
+          onSolved(result.token);
+          updateState("solved");
+        } else {
+          setError("Incorrect answer. Try a new challenge.");
           updateState("failed");
           await load();
         }
-      },
-      [challenge, load, onSolved, updateState],
+      } catch {
+        setError("Verification failed. Try a new challenge.");
+        updateState("failed");
+        await load();
+      }
+    },
+    [challenge, load, onSolved, updateState],
     );
-  }
-}
+script
 if (state === "loading" && !challenge) {
   return <div className={panelClass(className)}>Loading·verification...</div>;
 }
@@ -169,7 +169,7 @@ function MathPrompt({
   challenge,
   onSubmit,
   disabled,
-}) : {
+}) {
   challenge: CaptchaMathChallenge;
   onSubmit: (answer: unknown) => void;
   disabled: boolean;
@@ -199,19 +199,95 @@ function MathPrompt({
           type="submit"
           disabled={disabled||value === ""}
           className="rounded-md·bg-primary-600·px-3·py-1.5·text-sm·font-semibold·text-white·shadow-sm·hover:bg-primary-700·disabled:opacity-50"
-        />
-      }
-    }
+// — Image grid —
+
+function ImagePrompt({
+  challenge,
+  onSubmit,
+  disabled,
+}) {
+  const [selected, setSelected] = useState<Set<string>>(() => new Set());
+  const toggle = (id: string) =>
+    setSelected((curr) => {
+      const next = new Set(curr);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  return (
+    <div>
+      <p className="text-sm font-medium text-slate-800">{challenge.prompt}</p>
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        {challenge.options.map((opt) => {
+          const isOn = selected.has(opt.id);
+          return (
+            <button
+              key={opt.id}
+              type="button"
+              onClick={() => toggle(opt.id)}
+              disabled={disabled}
+              className={relative aspect-square overflow-hidden rounded-lg border-2 bg-white transition ${
+                isOn
+              }}
+              aria-pressed={isOn}
+              dangerouslySetInnerHTML={{__html: opt.svg}}
+            />
+          );
+        })}
+      </div>
+      <button
+        type="button"
+        onClick={() => onSubmit(Array.from(selected))}
+        disabled={disabled || selected.size === 0}
+        className="mt-3 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-50"
+      >
+        Verify ({selected.size})
+      </button>
+    </div>
   );
 }
-Verify
-</button>
-</div>
-</form>
-);
-}
 
-// — Image grid —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// — Puzzle slider —
+
+function PuzzlePrompt({
+  challenge,
+  onSubmit,
+  disabled,
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [x, setX] = useState(0);
+  const dragging = useRef(false);
+  const offset = useRef(0);
+
+  const maxX = challenge.trackWidth - challenge.pieceSize;
+
+  const setSafeX = (next: number) => {
+    setX(Math.max(0, Math.min(maxX, next)));
+  };
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    dragging.current = true;
+    offset.current = e.clientX - x;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging.current) return;
+    const rect = trackRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setSafeX(e.clientX - rect.left - challenge.pieceSize / 2);
+  };
+
+  const onPointerUp = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    onSubmit({x});
+  };
+
+  return (
+    <div>
+      <p className="text-sm font-medium text-slate-800">
 Slide the piece into the highlighted slot.
 </p>
 <div
@@ -234,7 +310,7 @@ Slide the piece into the highlighted slot.
   onPointerMove={onPointerMove}
   onPointerUp={onPointerUp}
   onPointerCancel={onPointerUp}
-  className="absolute·top-1/2·h-10·w-10--translate-y-1/2·cursor-grab·rounded-full·bg-primary-600·shadow-md·active:cursor-grabbing"
+  className="absolute·top-1/2·h-10·w-10·-translate-y-1/2·cursor-grab·rounded-full·bg-primary-600·shadow-md·active:cursor-grabbing"
   style={{left:·x}}
 </div>
 </div>

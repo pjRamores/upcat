@@ -19,8 +19,7 @@ export default function BootstrapDeckDialog({
   isOpen,
   onClose,
   onSuccess,
-}): BootstrapDeckDialogProps {
-
+  ): BootstrapDeckDialogProps {
   const addToast = useToastStore((s) => s.addToast);
   const [count, setCount] = useState(5);
   const [loading, setLoading] = useState(false);
@@ -115,18 +114,18 @@ onClick={handleGenerate}
 disabled={loading}
 className="flex-1 flex-items-center justify-center gap-2 rounded-md bg-maroon-600 px-4 py-2 text-sm font-medium text-white"
 >{
-  loading?: (
-    <>
-      <Spinner className="text-white"/>
-      <span>Generating...</span>
-    </>
-  )::(
-    <>
-      <span></span>
-      <span>Generate Cards</span>
-    </>
-  )}
-</button>
+loading?(
+  <>
+    <Spinner className="text-white"/>
+    <span>Generating...</span>
+  </>
+)::(
+  <>
+    <span></span>
+    <span>Generate Cards</span>
+  </>
+)
+}</button>
 </div>
 </div>
 </div>

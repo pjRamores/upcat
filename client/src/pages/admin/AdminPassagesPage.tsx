@@ -15,8 +15,8 @@ export default function AdminPassagesPage() {
   const {setOptions, selectedSetId, setSelectedSetId} = useSetFilter();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [subjectArea, setSubjectArea] = useState("<" || SubjectArea>("");
-  const [data, setData] = useState({ items: Row[]; total: number; totalPages: number } || null>(null);
+  const [subjectArea, setSubjectArea] = useState("<" | SubjectArea>("");
+  const [data, setData] = useState({ items: Row[]; total: number; totalPages: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [confirmRow, setConfirmRow] = useState<string | null>(null);
 
@@ -87,8 +87,8 @@ export default function AdminPassagesPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
+      <div className="flex-flex-wrap items-center justify-between gap-3">
+        <div className="flex-flex-wrap gap-2">
           <input type="search" value={search} onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && refresh()} placeholder="Search title..."
             className="rounded-md border border-slate-300 px-3 py-1.5 text-sm"/>
@@ -123,7 +123,7 @@ export default function AdminPassagesPage() {
 </select>
 </div>
 <Link to="/admin/passages/new"
-className="rounded-md·bg-primary-600·px-3·py-1.5·text-xs·font-semibold·text-white·hover:bg-primary-700">
+className="rounded-md·bg-primary-600·px-3·py-1.5·text-xs·font-semibold·text-white·hover:bg-primary-700">+
 New Passage</Link>
 </div>
 
@@ -139,17 +139,18 @@ confirmLabel="Delete"
 variant="danger"
 onClose={() => setConfirmRow(null)}
 onConfirm={async() => {
-if (!confirmRow)·return;
+if (!confirmRow) return;
 try {
-await·adminApi.deletePassage(confirmRow);
+await adminApi.deletePassage(confirmRow);
 addToast("success", "Passage·deleted.");
 setConfirmRow(null);
 refresh();
-}·catch·(e)·{
-const·msg = (e·as)·{response?:{·data?:{·error?:·string·}}·}).response?.data?.error;
-addToast("error", msg??·"Delete·failed.");
+catch(e) {
+const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
+addToast("error", msg?? "Delete·failed.");
 setConfirmRow(null);
 }
 }}
+/>
 </div>
 );

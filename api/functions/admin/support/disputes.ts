@@ -1,10 +1,10 @@
 /**
- * Identity dispute endpoints — admin only.
+ * Identity dispute endpoints -- admin only.
  *
- * GET /api/admin/support/identity-disputes — list
- * GET /api/admin/support/identity-disputes/:id — fetch
- * POST /api/admin/support/identity-disputes — create
- * PUT /api/admin/support/identity-disputes/:id — decide + execute
+ * GET /api/admin/support/identity-disputes -- list
+ * GET /api/admin/support/identity-disputes/:id -- fetch
+ * POST /api/admin/support/identity-disputes -- create
+ * PUT /api/admin/support/identity-disputes/:id -- decide + execute
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";
@@ -127,17 +127,21 @@ async function create(
     return res.status(400).json({success: false, error: "Missing or invalid fields."});
   }
   const db = await getDb();
-  const ticket = await db.collection("support_tickets")
+  const ticket = await db
+    .collection("support_tickets")
     .findOne({_id: new ObjectId(body.supportTicketId)});
   if (!ticket) {
-    return res.status(404)
-      .json({success: false, error: "Linked support ticket not found."});
+    return res
+    .status(404)
+    .json({success: false, error: "Linked support ticket not found."});
   }
-  const owner = await db.collection("users")
+  const owner = await db
+    .collection("users")
     .findOne({_id: new ObjectId(body.currentOwnerUserId)});
   if (!owner) {
-    return res.status(404)
-      .json({success: false, error: "Current owner not found."});
+    return res
+    .status(404)
+    .json({success: false, error: "Current owner not found."});
   }
   const now = new Date();
   const doc: Omit<IdentityDisputeDoc, "_id"> = {
@@ -156,7 +160,8 @@ async function create(
     createdAt: now,
     updatedAt: now,
   };
-  const r = await db.collection<IdentityDisputeDoc>("identity_disputes")
+  const r = await db
+    .collection<IdentityDisputeDoc>("identity_disputes")
     .insertOne(doc as IdentityDisputeDoc);
 
   await logActivity(db, {
@@ -183,8 +188,9 @@ async function create(
       ownerOrClaimant: "claimant",
     }).catch(() => undefined),
   ]);
-  return res.status(201)
-    .json({success: true, data: {id: r.insertedId.toString()}});
+  return res
+  .status(201)
+  .json({success: true, data: {id: r.insertedId.toString()}});
 }
 
 async function decide(
@@ -272,7 +278,8 @@ updatedAt: now,
 "adminDecision.action": action,
 },
 },
-);
+});
+
 await logActivity(db, {
 actorId: admin._id,
 actorRole: "admin",
@@ -303,7 +310,7 @@ sendDisputeResolvedEmail(owner.email, {ticketNumber, outcome}).catch(
 }
 if (dispute.claimantEmail) {
 sendDisputeResolvedEmail(dispute.claimantEmail, {ticketNumber, outcome}).catch(
-() => undefined,
+  () => undefined,
 );
 return res.status(200).json({success: true, data: {resolved: true}});
 }

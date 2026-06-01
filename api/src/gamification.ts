@@ -1,19 +1,24 @@
 /**
  * Phase 12 — Gamification engine.
  *
- * Single source of truth for XP awarding, level recomputation, daily-streak maintenance, and weekly-challenge progress tracking. Every mutation of a user's gamification block flows through helpers in this module so the User record, the xp_transactions collection, and the achievements pipeline stay consistent.
+ * Single source of truth for XP awarding, level recomputation, daily-streak
+ * maintenance, and weekly-challenge progress tracking. Every mutation of a
+ * user's gamification block flows through helpers in this module so the User
+ * record, the xp_transactions collection, and the achievements pipeline stay
+ * consistent.
  *
- * Achievement evaluation lives in achievements.ts to keep this file focused on the numeric/state mechanics.
+ * Achievement evaluation lives in achievements.ts to keep this file focused
+ * on the numeric/state mechanics.
  */
 import {type Db, type Document, ObjectId, type WithId} from "mongodb";
 import type {
-  GamificationReward,
-  LevelInfo,
-  StreakInfo,
-  UserGamificationBlock,
-  XpAwardResult,
-  XpReason,
-  XpTransaction
+  ... GamificationReward,
+  ... LevelInfo,
+  ... StreakInfo,
+  ... UserGamificationBlock,
+  ... XpAwardResult,
+  ... XpReason,
+  ... XpTransaction,
 } from "@upcat/shared";
 import {levelFromXp, streakMultiplier, titleForLevel,} from "@upcat/shared";
 import {evaluateAchievements} from "./achievements.js";
@@ -59,34 +64,34 @@ export function ensureGamification(
   if (existing && typeof existing.xp === "number") {
     const defaults = defaultGamificationBlock();
     const block: UserGamificationBlock = {
-      ...defaults,
-      ...existing,
+      ... defaults,
+      ... existing,
       streak: {
-        ...defaults.streak,
-        ...(existing.streak ?? {}),
+        ... defaults.streak,
+        ... (existing.streak ?? {}),
       },
       achievements: {
-        ...defaults.achievements,
-        ...(existing.achievements ?? {}),
-        unlocked: Array.isArray(existing.achievements?.unlocked)
-        ? existing.achievements.unlocked
-        : defaults.achievements.unlocked,
-        progress:
+        ... defaults.achievements,
+        ... (existing.achievements ?? {}),
+        ... unlocked: Array.isArray(existing.achievements?.unlocked)
+        ... ? existing.achievements.unlocked
+        ... : defaults.achievements.unlocked,
+        ... progress:
           existing.achievements?.progress && typeof existing.achievements.progress === "object"
-          ? existing.achievements.progress
-          : defaults.achievements.progress,
-        pendingNotification: Array.isArray(existing.achievements?.pendingNotification)
-        ? existing.achievements.pendingNotification
-        : defaults.achievements.pendingNotification,
+          ... ? existing.achievements.progress
+          ... : defaults.achievements.progress,
+        ... pendingNotification: Array.isArray(existing.achievements?.pendingNotification)
+        ... ? existing.achievements.pendingNotification
+        ... : defaults.achievements.pendingNotification,
       },
       stats: {
-        ...defaults.stats,
-        ...(existing.stats ?? {}),
+        ... defaults.stats,
+        ... (existing.stats ?? {}),
       },
       weeklyChallenge:
         existing.weeklyChallenge === undefined
         ? defaults.weeklyChallenge
-        : existing.weeklyChallenge,
+        ... : existing.weeklyChallenge,
       },
       user.gamification = block;
       return block;
@@ -210,11 +215,11 @@ return "Achievement_unlocked";
 case "weekly_challenge":
 return "Weekly_challenge_completed";
 case "admin_grant":
-return "Adjustment-by-admin";
+return "Adjustment_by_admin";
 }
 
 // Streaks --------------------------------------------------------------------------
-/** UTC YYYY-MM-DD. Stored as a string so day boundaries are stable. */
+/** UTC:YYYY-MM-DD. Stored as a string so day boundaries are stable. */
 function utcDate(d: Date => new Date()): string {
 return d.toISOString().slice(0, 10);
 }
@@ -316,10 +321,10 @@ totalStudyMinutes?: number;
 }
 
 export async function bumpStats(
-db: Db,
-userId: ObjectId,
-delta: StatsDelta,
-): Promise<void> {
+  db: Db,
+  userId: ObjectId,
+  delta: StatsDelta,
+) : Promise<void> {
   const inc: Record<string, number> = {};
   for (const [k, v] of Object.entries(delta)) {
     if (typeof v === "number" && v !== 0) {
@@ -336,7 +341,7 @@ delta: StatsDelta,
   );
 }
 
-// --- Composite reward orchestration ---
+// Composite reward orchestration
 
 export interface RewardContext {
   reason: XpReason;
@@ -351,11 +356,12 @@ export interface RewardContext {
  * award N stacked XP rewards, run achievement evaluation, and return a
  * GamificationReward payload suitable for the response.
  */
+
 export async function applyRewards(
-db: Db,
-userId: ObjectId,
-rewards: RewardContext[],
-): Promise<GamificationReward> {
+  db: Db,
+  userId: ObjectId,
+  rewards: RewardContext[],
+) : Promise<GamificationReward> {
   const xp: XpAwardResult[] = [];
   for (const r of rewards) {
     if (r.baseAmount > 0) {
@@ -392,7 +398,7 @@ rewards: RewardContext[],
     }
 }
 
-// --- Read helpers ---
+// Read helpers
 
 export function levelInfoFromBlock(block: UserGamificationBlock): LevelInfo {
   const lvl = levelFromXp(block.xp);

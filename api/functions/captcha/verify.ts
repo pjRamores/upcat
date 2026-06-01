@@ -31,7 +31,7 @@ export default withSecurity({ endpoint: "POST /api/captcha/verify" }) (async {
     return;
   }
 
-  const result = await verifyCaptcha(body.captchaId, body.answer, {
+  const result = await verifyCaptcha(body.captchaId, body answer, {
     elapsedMs: typeof body.elapsedMs === "number" ? body.elapsedMs : undefined,
   });
 

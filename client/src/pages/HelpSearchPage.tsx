@@ -56,7 +56,7 @@ export default function HelpSearchPage() {
             {result.title}
           </Link>
           <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">{result.category}</p>
-          <p className="mt-2 text-sm text-slate-700">dangerouslySetInnerHTML({__html: result.excerpt})/>
+          <p className="mt-2 text-sm text-slate-700">dangerouslySetInnerHTML({__html: result.excerpt})}</p>
           <Link to={`/help/article/${result.slug}`}
             className="mt-2 inline-block text-sm font-medium text-primary-700 hover:underline">
             Read more →

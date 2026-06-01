@@ -109,10 +109,10 @@ $set: {updatedAt: new Date().toISOString()},
 }
 
 export async function redeemPromoCode(
-  db: Db,
-  userId: ObjectId,
-  codeRaw: string,
-) : Promise<{
+db: Db,
+userId: ObjectId,
+codeRaw: string,
+): Promise<{
   redeemed: boolean;
   result: {tier: "free" | "premium"; endDate: string | null} | null;
   reason?: string
@@ -144,10 +144,6 @@ export async function redeemPromoCode(
       isLifetime: false,
       id: `${plan.id}_promo_${promo._id.toString()}$
     };
-  }
-
-  if (promo.code === "LIFETIME") {
-    plan = {...plan, isLifetime: true, duration: 0, id: `${plan.id}_lifetime_${promo._id.toString()}`};
   }
 
   const updatedSub = await grantPremium(db, {

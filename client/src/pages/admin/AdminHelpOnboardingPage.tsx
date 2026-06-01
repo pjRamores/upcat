@@ -63,29 +63,28 @@ export default function AdminHelpOnboardingPage() {
               addToast("error", "Failed to save onboarding flow JSON.");
             }
           }}
-        </select>
-        Save Flow
-      </button>
-      <a href="/dashboard?adminPreview=1" target="_blank" rel="noreferrer"
-        className="rounded-border border-slate-300 px-4 py-2 text-sm">
-        Run Tour
-      </a>
-    </div>
-  </section>
+        </button>
+        <a href="/dashboard?adminPreview=1" target="_blank" rel="noreferrer"
+          className="rounded-border border-slate-300 px-4 py-2 text-sm">
+          Run Tour
+        </a>
+      </div>
+    </section>
 
-  <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-    <h2 className="text-sm font-sembold text-slate-900">Flow Stats Snapshot</h2>
-    <ul className="mt-3 space-y-2 text-sm text-slate-700">
-      {rows.map((row) => {
-        const steps = Array.isArray(row.steps) ? row.steps.length : 0;
-        return (
-          <li key={String(row._id)} className="rounded-border border-slate-200 px-3 py-2">
-            <strong>{String(row._id)}</strong>
-            Trigger: {String(row.triggerCondition?? "manual")} . Steps: {steps}
-          </li>
-        );
-      })}
-    </ul>
-  </section>
-</div>
+    <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <h2 className="text-sm font-sembold text-slate-900">Flow Stats Snapshot</h2>
+      <ul className="mt-3 space-y-2 text-sm text-slate-700">
+        {rows.map((row) => {
+          const steps = Array.isArray(row.steps) ? row.steps.length : 0;
+          return (
+            <li key={String(row._id)} className="rounded-border border-slate-200 px-3 py-2">
+              <strong>{String(row._id)}</strong>
+              Trigger: {String(row.triggerCondition?? "manual")} · Steps: {steps}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  </div>
 );
+}

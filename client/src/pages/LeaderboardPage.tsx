@@ -79,7 +79,7 @@ export default function LeaderboardPage() {
         </div>
       ) : (
         <>
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-x1 border border-slate-200 bg-white shadow-sm">
             {data.entries.length === 0 ? (
               <div className="p-8 text-center text-sm text-slate-500">
                 No entries yet — be the first to earn XP this period!
@@ -104,16 +104,9 @@ export default function LeaderboardPage() {
                 </tbody>
               </table>
         </div>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tbody className="divide-y divide-slate-100 text-sm">
-      {data.entries.map((e) => (
-        <LeaderboardRow key={e.userId} entry={e} />
-      ))}
-    </tbody>
-  </table>
+      </div>
+    </table>
+  );
 {data.currentUser &&
 !data.entries.some((e) => e.isCurrentUser) &&
 <div className="mt-4·rounded-xl·border·border-indigo-200·bg-indigo-50·p-4">
@@ -143,7 +136,6 @@ Updated {new Date(data.generatedAt).toLocaleString()}
 </>
 }
 </div>
-}
 );
 }
 

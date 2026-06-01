@@ -141,62 +141,59 @@ export default function AdminSupportTicketsPage() {
       </tr>
     </thead>
     <tbody>
-      <data.items.map((t) => {
-        const s = SUPPORT_TICKET_STATUS_META[t.status];
-        const p = SUPPORT_TICKET_PRIORITY_META[t.priority];
-        return (
-          <tr key={t._id} className="border-t border-gray-100 hover:bg-gray-50">
-            <td className="px-3 py-2 font-mono text-xs">
-              <Link
-                to={`/admin/support/tickets/${t.ticketNumber}`}
-                className="text-primary-700 hover:underline"
-              >
-                {t.ticketNumber}
-              </Link>
-            </td>
-            <td className="max-w-[20rem] truncate px-3 py-2">{t.subject}</td>
-            <td className="px-3 py-2 text-xs">
-              {SUPPORT_TICKET_TYPE_META[t.type]?.label}
-            </td>
-            <td className="px-3 py-2">
-              <span
-                className={`rounded-full px-2 py-0.5 text-xs font-semibold bg-${s.color}-50 text-${s.color}-700`}
-              >
-                {s.label}
-              </span>
-            </td>
-            <td className="px-3 py-2">
-              <span
-                className={`rounded-full px-2 py-0.5 text-xs font-semibold bg-${p.color}-50 text-${p.color}-700`}
-              >
-                {p.label}
-              </span>
-            </td>
-            <td className="px-3 py-2 text-xs">{t.requesterEmail}</td>
-            <td className="px-3 py-2 text-xs text-gray-500">
-              {new Date(t.updatedAt).toLocaleDateString()}
-            </td>
-            </tr>
-          );
-        )}
-      </tbody>
-    </table>
-  </div>
-})
+      <tr key={t._id} className="border-t border-gray-100 hover:bg-gray-50">
+        <td className="px-3 py-2 font-mono text-xs">
+          <Link
+            to={`/admin/support/tickets/${t.ticketNumber}`}
+            className="text-primary-700 hover:underline"
+          >
+            {t.ticketNumber}
+          </Link>
+        </td>
+        <td className="max-w-[20rem] truncate px-3 py-2">{t.subject}</td>
+        <td className="px-3 py-2 text-xs">
+          {SUPPORT_TICKET_TYPE_META[t.type]?.label}
+        </td>
+        <td className="px-3 py-2">
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-semibold bg-${s.color}-50 text-${s.color}-700`}
+          >
+            {s.label}
+          </span>
+        </td>
+        <td className="px-3 py-2">
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-semibold bg-${p.color}-50 text-${p.color}-700`}
+          >
+            {p.label}
+          </span>
+        </td>
+        <td className="px-3 py-2 text-xs">{t.requesterEmail}</td>
+        <td className="px-3 py-2 text-xs text-gray-500">
+          {new Date(t.updatedAt).toLocaleDateString()}
+        </td>
+      </tr>
+    </tbody>
+  );
+}})
+</tbody>
+</table>
+</div>
+)
 
 {/* Pagination */}
 {data && data.total > data.limit && (
-  <div className="flex items-center justify-between text-xs text-gray-600">
-    <span>
-      Page {page} of {totalPages} • {data.total}
-    </span>
-    <div className="flex gap-1">
-      <button
-        disabled={page <= 1}
-        onClick={() => setPage((p) => Math.max(1, p - 1))}
-        className="rounded-border border-gray-300 bg-white px-2 py-1 disabled:opacity-40"
-      >
-        <Prev
+<div className="flex items-center justify-between text-xs text-gray-600">
+  <span>
+    Page {page} of {totalPages} • {data.total} total
+  </span>
+  <div className="flex gap-1">
+    <button
+      disabled={page <= 1}
+      onClick={() => setPage((p) => Math.max(1, p - 1))}
+      className="rounded-border border-gray-300 bg-white px-2 py-1 disabled:opacity-40"
+    >
+      <Prev
         </button>
       <button
         disabled={page >= totalPages}
@@ -208,3 +205,6 @@ export default function AdminSupportTicketsPage() {
     </div>
   </div>
 )
+</div>
+);
+}

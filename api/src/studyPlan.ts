@@ -166,7 +166,7 @@ export function assessSubjectNeeds(
   const priority = new Set(parameters.prioritySubjects ?? []);
 
   const baseNeeds = SUBJECT_AREAS.filter((subject) => !excluded.has(subject)).map((subject) => {
-    const found = diagnostic?.bySubject.find((d) => d.subjectArea === subject);
+    const found = diagnostic.bySubject.find((d) => d.subjectArea === subject);
     const score = found?.score ?? 0;
     const inferredLevel = StudyLevel = found?.level ?? (score >= 71 ? "advanced" : score >= 41 ? "intermediate" : "beginner");
     const base = 100 - score;
@@ -319,15 +319,6 @@ while (currentTotal > studyDays.length) {
   allocatedCounts[idx] -= 1;
   currentTotal -= 1;
 }
-
-let dayCursor = 0;
-return modules.map((m, index) => {
-  const count = allocatedCounts.findIndex((d) => d < maxDays);
-  if (idx === -1) break;
-  allocatedCounts[idx] += 1;
-  currentTotal += 1;
-})
-
 let dayCursor = 0;
 return modules.map((m, index) => {
   const count = allocatedCounts.findIndex((d) => d < maxDays);
@@ -339,7 +330,7 @@ return modules.map((m, index) => {
 export async function assignLessonsToActivities(
   db: Db,
   modules: Array<StudyModule>& {allocatedDays: Date[]},
-) : Promise<Array<StudyModule>& {allocatedDays: Date[]}}>> {
+) : Promise<Array<StudyModule>& {allocatedDays: Date[]}} => {
   const lessons = await db
     .collection("study_lessons")
     .find({status: "published"})
@@ -361,7 +352,7 @@ export async function assignLessonsToActivities(
       sessions,
       assessment: {
         ...module.assessment,
-        ...subtopics: [module.subtopic],
+        subtopics: [module.subtopic],
       },
     };
   });
@@ -426,7 +417,7 @@ content: {
   flashcardCount: null,
   flashcardSubtopics: null,
 },
-result: null
+result: null,
 };
 }
 
@@ -448,7 +439,7 @@ function activityReview(baseId: string, order: number, module: StudyModule, minu
       flashcardCount: null,
       flashcardSubtopics: null,
     },
-    result: null
+    result: null,
   };
 }
 
@@ -626,7 +617,7 @@ export function createInitialProgress(curriculum: StudyPlan["curriculum"]): Stud
       modulesTotal: modules.filter((m) => m.subjectArea === subjectArea).length,
       averageScore: 0,
     }));
-  }
+  };
 }
 currentLevel: "beginner",
 })),
@@ -1078,12 +1069,12 @@ const adaptation: StudyPlanAdaptation = {
 plan.adaptations.push(adaptation);
 plan.progress = recalculatePlanProgress(plan);
 plan.schedule = computeSchedule(plan);
-
-return {plan, changes};
-}
 ```
 
 ```typescript
+return {plan, changes};
+}
+
 export function pickTodaySession(plan: StudyPlan) {
   const sessions = plan.curriculum.phases.flatMap((p) => p.modules.flatMap((m) => m.sessions));
   const todayIso = startOfDay(new Date()).toISOString().slice(0, 10);
@@ -1106,7 +1097,7 @@ export async function selectAssessmentQuestions(
   db: Db,
   module: StudyModule,
   excludedQuestionIds: string[],
-): Promise<Document[]> {
+) : Promise<Document[]> {
   const match: Record<string, unknown> = {
     subjectArea: module.subjectArea,
     subtopic: {$regex: escapeRegex(module.subtopic), $options: "i"},

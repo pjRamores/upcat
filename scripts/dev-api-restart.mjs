@@ -1,3 +1,4 @@
+script
 #!/usr/bin/env node
 /**
  * Kill any process listening on port 3001 and start the API dev server.
@@ -50,15 +51,15 @@ async function killPort3001() {
             spawnSync("kill", ["-9", pid], {stdio: "ignore"});
             console.log(`Killed process ${pid} on port ${PORT}`);
           }
-          server.close(resolve);
         });
-      }
-    });
-    server.listen(PORT, () => {
-      server.close(resolve);
+        server.close(resolve);
+      });
     });
   });
-}
+  server.listen(PORT, () => {
+    server.close(resolve);
+  });
+});
 
 async function waitForPortFree(timeoutMs = 5000) {
   const start = Date.now();

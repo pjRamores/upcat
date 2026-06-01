@@ -6,10 +6,10 @@
  * still·recorded·via·`/api/ads/video/impression`,·but·the·cap·is·enforced
  * here·to·avoid·blocking·the·result·UI·on·a·network·call.
  */
-import {DEFAULT_VIDEO_AD_LOCAL_STATE, VIDEO_AD_STORAGE_KEY, type VideoAdLocalState, } from "@upcat/shared";
+import {DEFAULT_VIDEO_AD_LOCAL_STATE,VIDEO_AD_STORAGE_KEY,type:VideoAdLocalState,} from "@upcat/shared";
 
-function safeStorage(): Storage | null {
-  try {
+function safeStorage():Storage|null{
+  try{
     if (typeof window === "undefined") return null;
     return window.localStorage;
   } catch {
@@ -17,31 +17,29 @@ function safeStorage(): Storage | null {
   }
 }
 
-export function readVideoAdState(): VideoAdLocalState {
+export function readVideoAdState():VideoAdLocalState{
   const store = safeStorage();
   if (!store) return {...DEFAULT_VIDEO_AD_LOCAL_STATE};
-  try {
+  try{
     const raw = store.getItem(VIDEO_AD_STORAGE_KEY);
     if (!raw) return {...DEFAULT_VIDEO_AD_LOCAL_STATE};
     const parsed = JSON.parse(raw) as Partial<VideoAdLocalState>;
     return {
       lastShownAt:
-        typeof parsed.lastShownAt === "string" ? parsed.lastShownAt : null,
+      typeof parsed.lastShownAt === "string" ? parsed.lastShownAt : null,
       triggersSinceShown:
-        typeof parsed.triggersSinceShown === "number" && parsed.triggersSinceShown >= 0
-      ? Math.floor(parsed.triggersSinceShown)
-      : 0,
+      typeof parsed.triggersSinceShown === "number" && parsed.triggersSinceShown >= 0
     };
   } catch {
     return {...DEFAULT_VIDEO_AD_LOCAL_STATE};
   }
 }
 
-export function writeVideoAdState(state: VideoAdLocalState): void {
+export function writeVideoAdState(state:VideoAdLocalState):void{
   const store = safeStorage();
   if (!store) return;
-  try {
-    store.setItem(VIDEO_AD_STORAGE_KEY, JSON.stringify(state));
+  try{
+    store.setItem(VIDEO_AD_STORAGE_KEY,JSON.stringify(state));
   } catch {
     // ignore
   }
@@ -49,10 +47,10 @@ export function writeVideoAdState(state: VideoAdLocalState): void {
 
 /** Returns true when (now -- lastShownAt) >= minIntervalSeconds. */
 export function isOutsideMinInterval(
-  state: VideoAdLocalState,
-  minIntervalSeconds: number,
+  state:VideoAdLocalState,
+  minIntervalSeconds:number,
   now = Date.now(),
-): boolean {
+):boolean{
   if (!state.lastShownAt) return true;
   const last = new Date(state.lastShownAt).getTime();
   if (Number.isNaN(last)) return true;

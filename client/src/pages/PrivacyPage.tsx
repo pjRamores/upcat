@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         </p>
       </header>
 
-      {/* --- Table of Contents --- */}
+      {/* Table of Contents ---------------------------------------------------------*/}
       <nav
         aria-label="Table of contents"
         className="mt-8·rounded-2x1·border·border-gray-200·bg-white·p-6"
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
         </ol>
       </nav>
 
-      {/* --- Body --- */}
+      {/* Body ---------------------------------------------------------------*/}
       <article className="legal-prose·mt-10·space-y-12·text-gray-800">
         <Section id="collect" title="1. Information·We·Collect">
           <p>
@@ -184,86 +184,44 @@ We do not sell your personal data to any third party. We share information only 
 </li>
 </ul>
 </Section>
-commitments.
-</li>
-<li>
-<strong>Legal compliance:</strong> we may disclose information
-if required by a valid legal process, such as a court order
-or subpoena issued under Philippine law.
-</li>
-</ul>
-</Section>
+{
+  "commitments": "",
+  "li": "<strong>Legal compliance:</strong> we may disclose information if required by a valid legal process, such as a court order or subpoena issued under Philippine law.</li>"
+  "ul": "<ul>"
+    "<Section id="rights">title="5. Your Rights">"
+    "<p>You have the following rights regarding your personal data:</p>"
+    "<ul>"
+      "<li><strong>Access:</strong> request a copy of the personal data we hold about you.</li>"
+      "<li><strong>Correction:</strong> ask us to correct inaccurate or outdated information.</li>"
+      "<li><strong>Deletion:</strong> request the deletion of your account and associated data. Some records may be retained as required by law or to prevent abuse.</li>"
+      "<li><strong>Data export:</strong> request a machine-readable export of your data.</li>"
+      "<li><strong>Opt out of optional emails:</strong> at any time, via an unsubscribe link in the email, through{"."}</link>"
+      "<Link to="/settings">className="font-medium text-primary-600 underline-offset-2 hover:underline">"
+      "your account settings</Link>"
+      "or by contacting us.</li>"
+    </ul>
+    "<p>To exercise any of these rights, please use the{"."}</Link>"
+    "<Link to="/contact">className="font-medium text-primary-600 underline-offset-2 hover:underline">"
+    "Contact page</Link>"
+  ".</p>
+  "</Section>
 
-<Section id="rights" title="5. Your Rights">
-<p>You have the following rights regarding your personal data:</p>
-<ul>
-<li>
-<strong>Access:</strong> request a copy of the personal data
-we hold about you.
-</li>
-<li>
-<strong>Correction:</strong> ask us to correct inaccurate or outdated information.
-</li>
-<li>
-<strong>Deletion:</strong> request the deletion of your account and associated data. Some records may be retained as required by law or to prevent abuse.
-</li>
-<li>
-<strong>Data export:</strong> request a machine-readable export of your data.
-</li>
-<li>
-<strong>Opt out of optional emails:</strong> at any time, via an unsubscribe link in the email, through{"."}
-<Link
-to="/settings"
-className="font-medium text-primary-600 underline-offset-2 hover:underline"
->
-your account settings
-</Link>
-, or by contacting us.
-</li>
-</ul>
-<p>
-To exercise any of these rights, please use the{"."}
-<Link
-to="/contact"
-className="font-medium text-primary-600 underline-offset-2 hover:underline"
->
-Contact page
-</Link>
-.
-</p>
-</Section>
+  <Section id="cookies">title="6. Cookies and Local Storage">"
+    "<p>The Service uses your browser&rsquo;s{"."}</strong> (or sessionStorage when you log in without &ldquo;Remember me&rdquo;) to persist your authentication token between visits. This token is required to keep you logged in and is sent only to the Service&rsquo;s API.</p>
+    "<p>When ads are enabled, we display advertising served by{"."}</strong> Google AdSense</strong>. Google and its partners may set their own cookies to measure and personalize ads. We do{"."}</strong> not</strong> sell your personal information. You can decline ad cookies via the consent banner at the bottom of the page; declining suppresses the AdSense script entirely. You can also opt out of personalized advertising directly at{"."}</a>
+    "<a href="https://adssettings.google.com">target="_blank"</a> rel="noopener noreferrer">className="font-medium text-primary-600 underline-offset-2 hover:underline">Google Ads Settings</a>"
+  ".</p>
+  "</Section>
 
-<Section id="cookies" title="6. Cookies and Local Storage">
-<p>The Service uses your browser&rsquo;s{"."}
-<strong>localStorage</strong> (or sessionStorage when you log in without &ldquo;Remember me&rdquo;) to persist your authentication token between visits. This token is required to keep you logged in and is sent only to the Service&rsquo;s API.
-</p>
-<p>
-When ads are enabled, we display advertising served by{"."}
-<strong>Google AdSense</strong>. Google and its partners may set their own cookies to measure and personalize ads. We do{"."}
-<strong>not</strong> sell your personal information. You can decline ad cookies via the consent banner at the bottom of the page; declining suppresses the AdSense script entirely. You can also opt out of personalized advertising directly at{"."}
-<a
-href="https://adssettings.google.com"
-target="_blank"
-rel="noopener noreferrer"
-className="font-medium text-primary-600 underline-offset-2 hover:underline"
->
-Google Ads Settings
-</a>
-.
-</p>
-</Section>
+  <Section id="children">title="7. Children's Privacy">"
+    "<p>The Service is intended for senior high school students and others preparing for the UPCAT, typically aged{"."}</strong> sixteen (16) years and older</strong>. We do not knowingly collect personal information from children under the age of 13. If you are a parent or guardian and believe that a child under 13 has provided us with personal information, please contact us so that we can promptly delete the data.</p>
+  ".</Section>
 
-<Section id="children" title="7. Children's Privacy">
-<p>The Service is intended for senior high school students and others preparing for the UPCAT, typically aged{"."}
-<strong>sixteen (16) years and older</strong>. We do not knowingly collect personal information from children under the age of 13. If you are a parent or guardian and believe that a child under 13 has provided us with personal information, please contact us so that we can promptly delete the data.
-</p>
-</Section>
-
-<Section id="changes" title="8. Changes to This Policy">
-<p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we do, we will update the &ldquo;Last updated&rdquo; date above and, when changes are material, provide additional notice through the Service or by email.
-</p>
-<p>
-We encourage you to review this Policy periodically.
+  <Section id="changes">title="8. Changes to This Policy">"
+    "<p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we do, we will update the &ldquo;Last updated&rdquo; date above and, when changes are material, provide additional notice through the Service or by email.</p>
+  ".</p>
+  <p>We encourage you to review this Policy periodically."
+}
 </p>
 </Section>
 

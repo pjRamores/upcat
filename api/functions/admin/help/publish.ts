@@ -85,7 +85,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }));
     // Calculate article metadata for each article
     const enrichedArticles = articles.map((article) => {
-      const body = String((article as {content?: {body?: string}}).content?.body ?? "");
+      const body = String((article.as({content?: {body?: string}})).content?.body ?? "");
       const plainText = stripMarkdown(body);
       const wordCount = plainText.split(/\s+/).filter(Boolean).length;
       const estimatedReadingMinutes = Math.max(1, Math.ceil(wordCount / 220));
@@ -129,4 +129,5 @@ return res.status(200).json({
     success: false,
     error: error instanceof Error ? error.message : "Failed to publish help content",
   });
+}
 }

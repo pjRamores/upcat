@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import DataTable, {type, DataTableColumn, Pagination} from "@/components/admin/DataTable";
+import DataTable, {type: DataTableColumn, Pagination} from "@/components/admin/DataTable";
 import Badge from "@/components/admin/Badge";
 import {adminApi} from "@/lib/adminApi";
 import {useToastStore} from "@/stores/toastStore";
@@ -63,13 +63,13 @@ export default function AdminExamsPage() {
     {
       key: "startedAt",
       header: "Started",
-      render: (r) => <span className="text-xs text-slate-400">deleted</span>
+      render: (r) => <span className="text-xs">{r.setName?.trim() || "-"}</span>
     },
     {
       key: "completedAt",
       header: "Completed",
       render: (r) => <span
-        className="text-xs">{r.completedAt ? new Date(r.startedAt).toLocaleString() : "-"}</span>
+        className="text-xs">{r.completedAt ? new Date(r.completedAt).toLocaleString() : "-"}</span>
     },
     {
       key: "percentage",
@@ -102,7 +102,7 @@ export default function AdminExamsPage() {
   );
 }
 } `}
-{s === "" ? "All" : s.replace("_", "")}
+{s === "" ? "All" : s.replace("_", ".")}
 </button>
 )})
 </div>
@@ -156,9 +156,9 @@ setPage(1);
 }
 className="rounded-md·border·border-slate-300·bg-white·px-2·py-1·text-xs"
 >
-[[10,15,25,50,100].map((n) => (
+[10,15,25,50,100].map((n) => (
 <option key={n} value={n}>{n}</option>
-))))
+))}
 </select>
 </div>
 <DataTable·columns={columns}·rows={data?.items??[]}·getRowId={(r) => r._id}·isLoading={loading}
@@ -166,3 +166,4 @@ onRowClick={(r) => navigate(`/admin/exams/${r._id}`)}/>
 <Pagination·page={page}·totalPages={data?.totalPages??1}·total={data?.total??0}·onPageChange={setPage}/>
 </div>
 );
+}

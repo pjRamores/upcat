@@ -4,7 +4,7 @@ import {
   getActiveStaticAnnouncements,
   hasUsableStaticAnnouncements,
   loadStaticAnnouncements,
-} from "@lib/staticAnnouncements";
+} from "@/lib/staticAnnouncements";
 
 const STYLES: Record<string, {bg: string; border: string; text: string; icon: string}} = {
   info: {bg: "bg-primary-50", border: "border-primary-200", text: "text-primary-800", icon: "☒"},
@@ -91,7 +91,7 @@ export default function AnnouncementBanner() {
             </button>
           </div>
         )}
-      })}
+      })
     </div>
   );
 }

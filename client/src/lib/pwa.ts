@@ -1,5 +1,5 @@
 /**
- * Phase 14 — PWA + Push helpers (browser-only).
+ * Phase 14 - PWA + Push helpers (browser-only).
  *
  * Responsibilities:
  * ... Register `/service-worker.js` at app startup, once per session.
@@ -96,7 +96,7 @@ function bufferToBase64Url(buf: ArrayBuffer | null): string {
 const bytes = new Uint8Array(buf);
 let str = "";
 for (let i = 0; i < bytes.length; i++) str += String.fromCharCode(bytes[i]!);
-return window.btoa(str).replace(/\/+g, "-").replace(/\/g, "_").replace(/=+$/, "");
+return window.btoa(str).replace(/\/+g, "-").replace(/\//g, "_").replace(/=+$/, "");
 
 export interface SubscribeResult {
   status: "ok" | "denied" | "unsupported" | "no-public-key" | "error";

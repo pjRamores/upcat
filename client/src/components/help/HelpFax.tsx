@@ -28,7 +28,7 @@ export default function HelpFab() {
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Array<{slug: string; title: string; excerpt: string}}>([]);
+  const [results, setResults] = useState<Array<{slug: string; title: string; excerpt: string}}>>([]);
 
   const defaultKeywords = useMemo(() => routeToKeywords(location.pathname), [location.pathname]);
   const replayFlowId = useMemo(() => routeToReplayFlowId(location.pathname), [location.pathname]);
@@ -38,7 +38,7 @@ export default function HelpFab() {
       await helpApi.onboardingFlow(replayFlowId, {page: location.pathname, manual: true});
       localStorage.setItem(
         "upcat.onboarding.state.v1",
-        JSON.stringify({flowId: replayFlowId, stepIndex: 0, completedSteps: []})
+        JSON.stringify({flowId: replayFlowId, stepIndex: 0, completedSteps: []}),
       );
       setOpen(false);
       window.location.href = `${location.pathname}${location.search}${location.hash}`;
@@ -83,10 +83,10 @@ export default function HelpFab() {
           onClick={() => setOpen((prev) => !prev)}
           className="fixed-bottom-5 right-5 z-[75] inline-flex items-center gap-2 rounded-full bg-primary-600 px-4 py-3 text-sm font-semibold text-white">
           <span class="logo">shadow-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400</span>
-          aria-label="Open quick help"
+          <aria-label="Open quick help"
         >
-          <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20">?</span>
-          <span className="hidden-sm inline">Help</span>
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20">?</span>
+          <span class="hidden-sm inline">Help</span>
         </button>
       </button>
 
@@ -97,7 +97,7 @@ export default function HelpFab() {
         </div>
 
         <section
-          className="absolute-bottom-0 right-0 w-full max-w-md rounded-t-2xl border border-slate-200 bg-white p-4 shadow-xl sm:bottom-4 sm:right-4 sm:rounded-2xl">
+          className="absolute-bottom-0 right-0 w-full max-w-md rounded-t-2xl border border-slate-200 bg-white p-4 shadow-xl sm:bottom-4 sm:rounded-2xl">
           <div className="mb-2 flex items-center justify-between gap-3">
             <h3 className="text-base font-semibold text-slate-900">What can I help with?</h3>
             <button type="button" onClick={() => setOpen(false)}>

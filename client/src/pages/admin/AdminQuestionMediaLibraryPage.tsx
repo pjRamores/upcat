@@ -81,14 +81,14 @@ export default function AdminQuestionMediaLibraryPage() {
 
     return (
       <div className="space-y-6">
-        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <section className="rounded-xl border-border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-lg font-semibold text-slate-900">Media Asset Library</h2>
             <select
               required
               value={selectedSetId}
               onChange={(e) => setSelectedSetId(e.target.value)}
-              className="rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+              className="rounded-md border-border-slate-300 px-2 py-1.5 text-sm"
             >
               {setOptions.length === 0 ? (
                 <option value="">No sets available</option>
@@ -101,8 +101,8 @@ export default function AdminQuestionMediaLibraryPage() {
           </div>
           <p className="mt-1 text-sm text-slate-600">Upload base64 assets and reference IDs in rich content blocks.</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 <div className="mt-4·grid·gap-3·md:grid-cols-2">
@@ -171,7 +171,7 @@ className="mt-3·rounded-md·bg-primary-600·px-3·py-1.5·text-sm·font-semibol
       <div className="text-xs·text-slate-500">{asset.mimeType}</div>
     </td>
     <td className="px-3·py-2">{asset.kind}</td>
-    <td className="px-3·py-2">{Math.round((asset.size / 1024) * 10) / 10}</td>
+    <td className="px-3·py-2">{Math.round((asset.size/1024)*10)/10}</td>
     <td className="px-3·py-2">text-right">
       <button type="button" onClick={()=>remove(asset._id)}
       className="rounded-md·border·border-primary-300·px-2·py-1·text-xs·text-primary-700·hover:bg-primary-50">Delete</button>

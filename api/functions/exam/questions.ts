@@ -64,12 +64,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       docs
       .map((d) => d.passageId)
       .filter((p): p.isObjectId => p.instanceOf(ObjectId),
-    ),
-  ];
-  const passages = passageIds.length
+        ),
+    ];
+    const passages = passageIds.length
     ? await db.collection("passages").find({_id: {$in: passageIds}}).toArray()
     : [];
-  const passageById = new Map(passages.map((p) => [p._id.toString(), p]));
+    const passageById = new Map(passages.map((p) => [p._id.toString(), p]));
 
   const questions: (ExamQuestion & {
     orderIndex: number;
@@ -108,25 +108,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     )
   );
 }
-? {
+{
   _id: (passage._id as ObjectId).toString(),
   title: passage.title,
   content: passage.content,
   source: passage.source,
   subjectArea: passage.subjectArea,
 }
-: null,
+null,
 };
 }
-
 .filter(Boolean) as (ExamQuestion & {
   orderIndex: number;
   userAnswer: string | null;
-})[];
+}) [];
+```
 
-// Preserve session order
-questions.sort((a, b) => a.orderIndex - b.orderIndex);
-
+```json
 return res.status(200).json({
   success: true,
   data: {
@@ -145,4 +143,3 @@ return res.status(200).json({
     },
   },
 })
-}

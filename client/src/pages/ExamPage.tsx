@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {type} AnswerLetter, useExamStore} from "@/stores/examStore";
+import {type AnswerLetter, useExamStore} from "@/stores/examStore";
 import {useToastStore} from "@/stores/toastStore";
 import MathText from "@/components/MathText";
 import Spinner from "@/components/Spinner";
@@ -13,103 +13,104 @@ const ANSWER_KEYS: AnswerLetter[] = ["A", "B", "C", "D"];
 export function formatOfflineBannerText(
 isOnline: boolean,
 pendingSyncCount: number,
-) : string | null {
-  if (isOnline) return null;
-  return `You are offline - answers are saved locally${pendingSyncCount} pending` : ""
+string: string | null {
+if (isOnline) return null;
+return `You are offline - answers are saved locally${pendingSyncCount} pending` : ""
 };
 
 export function derivePendingSyncCount(
 isOnline: boolean,
 dirtyCount: number,
 currentPending: number,
-) : number {
-  return isOnline ? currentPending : dirtyCount;
+number {
+return isOnline ? currentPending : dirtyCount;
 }
 
 export function computeRemainingSeconds(
 timeLimitMinutes: number,
 timerExtensionMs: number,
 elapsedSeconds: number,
-) : number {
-  return Math.max(
-    0,
-    timeLimitMinutes * 60 + Math.round(timerExtensionMs / 1000) - elapsedSeconds,
-  );
+number {
+return Math.max(
+0,
+timeLimitMinutes * 60 + Math.round(timerExtensionMs / 1000) - elapsedSeconds,
+);
 }
 
 export default function ExamPage() {
-  const {sessionId} = useParams<{sessionId: string}}();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const addToast = useToastStore((s) => s.addToast);
+const {sessionId} = useParams<{sessionId: string}}();
+const location = useLocation();
+const navigate = useNavigate();
+const addToast = useToastStore((s) => s.addToast);
 
-  const {
-    init, reset, totalQuestions, timeLimit, startedAt, states, currentIndex,
-    setCurrent, selectAnswer, toggleFlag, tick, submit,
-    loaded, loading, submitting, error, timerExtensionMs,
-    isPaused, pauseSession, resumeSession,
-  } = useExamStore();
+const {
+init, reset, totalQuestions, timeLimit, startedAt, states, currentIndex,
+setCurrent, selectAnswer, toggleFlag, tick, submit,
+loaded, loading, submitting, error, timerExtensionMs,
+isPaused, pauseSession, resumeSession,
+} = useExamStore();
 
-  const [confirmSubmit, setConfirmSubmit] = useState(false);
-  const [passageOpen, setPassageOpen] = useState(true);
-  const submitInFlight = useRef(false);
-  const pauseInFlight = useRef(false);
-  const [pausingVisual, setPausingVisual] = useState(false);
-  const warnedThirtySecondsRef = useRef(false);
-  const [isOnline, setIsOnline] = useState(() => getResilienceState().online);
-  const shouldAutoResume = useMemo(
-    () => new URLSearchParams(location.search).get("resume") === "1",
-    [location.search],
-  );
+const [confirmSubmit, setConfirmSubmit] = useState(false);
+const [passageOpen, setPassageOpen] = useState(true);
+const submitInFlight = useRef(false);
+const pauseInFlight = useRef(false);
+const [pausingVisual, setPausingVisual] = useState(false);
+const warnedThirtySecondsRef = useRef(false);
+const [isOnline, setIsOnline] = useState(() => getResilienceState().online);
+const shouldAutoResume = useMemo(
+() => new URLSearchParams(location.search).get("resume") === "1",
+[location.search],
+);
 
-  // — Initialise on mount —
-  useEffect(() => {
-    if (!sessionId) return;
-    void init(sessionId);
-    return () => {
-      // Don't reset on unmount — user may navigate to results next.
-    };
-  }, [sessionId, init]);
+// — Initialise on mount —
+useEffect(() => {
+if (!sessionId) return;
+void init(sessionId);
+return () => {
+// Don't reset on unmount — user may navigate to results next.
+};
+}, [sessionId, init]);
 
-  // — Per-second tick —
-  const elapsed = useElapsed(startedAt, isPaused);
-  const remaining = computeRemainingSeconds(timeLimit, timerExtensionMs, elapsed);
+// — Per-second tick —
+const elapsed = useElapsed(startedAt, isPaused);
+const remaining = computeRemainingSeconds(timeLimit, timerExtensionMs, elapsed);
 
-  useEffect(() => {
-    if (!startedAt || isPaused) return;
-    const id = window.setInterval(() => tick(1), 1000);
-    return () => window.clearInterval(id);
-  }, [startedAt, isPaused, tick]);
+useEffect(() => {
+if (!startedAt || isPaused) return;
+const id = window.setInterval(() => tick(1), 1000);
+return () => window.clearInterval(id);
+}, [startedAt, isPaused, tick]);
 
-  // — Offline/online lifecycle —
-  useEffect(() => {
-    return subscribeResilience((state) => {
-      setIsOnline(state.online);
-    });
-  }, []);
+// — Offline/online lifecycle —
+useEffect(() => {
+return subscribeResilience((state) => {
+setIsOnline(state.online);
+});
+}, []);
 
-  // — Time-up auto-submit —
-  const doSubmit = useCallback(async () => {
-    if (submitInFlight.current) return;
-    submitInFlight.current = true;
-    try {
-      await submit();
-      addToast("success", "Exam submitted!");
-      reset();
-      navigate(`/results/${sessionId}`, {replace: true});
-    } catch {
-      submitInFlight.current = false;
-      addToast("error", "Submission failed. Please try again.");
-    }
-  });
+// — Time-up auto-submit —
+const doSubmit = useCallback(async () => {
+if (submitInFlight.current) return;
+submitInFlight.current = true;
+try {
+await submit();
+addToast("success", "Exam submitted!");
+reset();
+navigate(`/results/${sessionId}`);
+{replace: true});
+} catch {
+submitInFlight.current = false;
+addToast("error", "Submission failed. Please try again.");
 }
+}, [submit, addToast, reset, navigate, sessionId]);
+
 useEffect(() => {
   if (!startedAt || timeLimit === 0 || isPaused) return;
   if (remaining === 0 && !submitInFlight.current) {
     addToast("info", "Time's up — submitting your exam.");
     void doSubmit();
   }
-  }, [remaining, startedAt, timeLimit, isPaused, addToast, doSubmit]);
+}, [remaining, startedAt, timeLimit, isPaused, addToast, doSubmit]);
 
 useEffect(() => {
   if (remaining > 30) {
@@ -120,7 +121,7 @@ useEffect(() => {
     warnedThirtySecondsRef.current = true;
     addToast("warning", "Only 30 seconds left!");
   }
-  }, [remaining, addToast]);
+}, [remaining, addToast]);
 
 const handlePause = useCallback(async () => {
   if (pauseInFlight.current) return false;
@@ -227,7 +228,7 @@ if (error) {
 return (
   <div className="flex min-h-screen flex-col bg-slate-50"><Seo title="Exam in Progress"
     description="Active UPCAT practice exam."
-    noindex/> {/* --- Top bar --------------------------------------------------- */}
+    noindex/> {/* Top bar --------------------------------------------------- */}
   <header className="sticky top-0 z-30 border-b border-gray-200 bg-white shadow-sm">
     {!isOnline && (
       <div className="bg-amber-500 px-4 py-1 text-center text-xs font-medium text-white">
@@ -298,7 +299,7 @@ return (
 
 {isPaused && (
   <div className="mx-auto mt-4 w-full max-w-7x1 px-4">
-    <div className="rounded-xl border-border-border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
+    <div className="rounded-xl border-border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
       Exam is paused. Timer is stopped until you resume.
     </div>
   </div>
@@ -464,7 +465,7 @@ type="button"
 onClick={() => onJump(i)}
 aria-label={`Question ${i + 1}`}
 aria-current={isCurrent ? "step" : undefined}
-className={`flex·h-8·w-8·items-center·justify-center rounded-md text-xs font-semibold transition ${cls} ${
+className={`flex·h-8·w-8·items-center·justify-center·rounded-md·text-xs·font-semibold·transition ${cls} ${
 isCurrent ? "ring-2·ring-primary-600·ring-offset-1" : "hover:opacity-80"
 }`}
 >
@@ -483,6 +484,8 @@ const items: { color: string; label: string }[] = [
 {color: "bg-blue-500", label: "Visited"},
 {color: "bg-green-500", label: "Answered"},
 {color: "bg-orange-500", label: "Flagged"},
+script
+];
 return (
   <div className="hidden·flex-wrap·gap-x-3·gap-y-1·text-[10px]·text-gray-500·lg:flex">
     {items.map((it) => (
@@ -525,22 +528,21 @@ function SubmitConfirmModal({
             >
               Keep working
             </button>
-            <button
-              type="button"
-              onClick={onConfirm}
-              disabled={submitting}
-              className="inline-flex·items-center·rounded-lg·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-60"
-            >
-              {submitting ? (
-                <>
-                  <Spinner className="h-4·w-4·text-white"/>
-                  <span className="ml-2">Submitting...</span>
-                </>
-              ) : (
-                "Yes, submit"
-              )}
-            </button>
-          </div>
+          </button>
+          <type="button"
+          onClick={onConfirm}
+          disabled={submitting}
+          className="inline-flex·items-center·rounded-lg·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:opacity-60"
+          >
+            {submitting ? (
+              <>
+                <Spinner className="h-4·w-4·text-white"/>
+                <span className="ml-2">Submitting...</span>
+              </>
+            ) : (
+              "Yes, submit"
+            )}
+          </button>
         </div>
       </div>
     </div>

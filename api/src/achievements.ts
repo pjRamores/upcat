@@ -189,6 +189,7 @@ $push: {
 "gamification.achievements.pendingNotification": {
 $each: newEvents.map((e) => e.achievementId),
 },
+},
 } as Document,
 },
 );
@@ -278,7 +279,9 @@ export async function bumpScoreThresholdCounters(
   await db.collection("users").updateOne({_id: userId}, {$inc: inc});
 }
 
-/** Seed (or update) the achievements_catalog with the shared default set. */
+/**
+ * Seed (or update) the achievements_catalog with the shared default set.
+ */
 export async function seedAchievementsCatalog(db: Db): Promise<
   upserted: number;
   total: number;

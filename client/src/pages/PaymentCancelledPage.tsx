@@ -10,7 +10,7 @@ export default function PaymentCancelledPage() {
           className="rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700">Back
         </Link>
         <Link to="/dashboard"
-          className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Maybe
+          className="rounded-md border-border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Maybe
         </Link>
       </div>
     </div>

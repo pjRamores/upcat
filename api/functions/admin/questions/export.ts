@@ -102,22 +102,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         safeCsv(q.type),
         safeCsv(q.passageId ? q.passageId.toString() : ""),
         safeCsv(q.questionText),
-safeCsv(choices[0]?.text??=""),
-safeCsv(choices[1]?.text??=""),
-safeCsv(choices[2]?.text??=""),
-safeCsv(choices[3]?.text??=""),
+safeCsv(choices[0].text??.""),
+safeCsv(choices[1].text??.""),
+safeCsv(choices[2].text??.""),
+safeCsv(choices[3].text??.""),
 safeCsv(q.correctAnswer),
 safeCsv(q.rationale),
-safeCsv(Array.isArray(q.tags)?.q.tags.join(";")::=""),
-safeCsv(q.publicationStatus??,"draft"),
+safeCsv(Array.isArray(q.tags)?q.tags.join(";"):""),
+safeCsv(q.publicationStatus??."draft"),
 safeCsv(String(q.version??1)),
-safeCsv(q.dedupFingerprint??=""),
-safeCsv(Array.isArray(q.contentBlocks)&&q.contentBlocks.length>0?:"true"::"false"),
-safeCsv(Array.isArray(q.mediaAssetIds)?.q.mediaAssetIds.map((id:{
-toString():string
-}) => id.toString()).join(";")::=""),
-safeCsv(q.createdAt?.new.Date(q.createdAt).toISOString()::=""),
-safeCsv(q.updatedAt?.new.Date(q.updatedAt).toISOString()::=""),
+safeCsv(q.dedupFingerprint??.""),
+safeCsv(Array.isArray(q.contentBlocks)&&q.contentBlocks.length>0? "true"::"false"),
+safeCsv(Array.isArray(q.mediaAssetIds)?q.mediaAssetIds.map((id: {
+toString(): string
+}) => id.toString()).join(";"):""),
+safeCsv(q.createdAt?new Date(q.createdAt).toISOString():""),
+safeCsv(q.updatedAt?new Date(q.updatedAt).toISOString():""),
 ];
 lines.push(row.join(","));
 }
@@ -134,12 +134,12 @@ const uniquePassageIds = [
 ...new Set(
 ...questions
 ....filter((q) => q.passageId)
-...map((q) => String(q.passageId)),
+....map((q) => String(q.passageId)),
 ],
 ].filter((id) => ObjectId.isValid(id));
 
 const passageDocs = uniquePassageIds.length>0
-?await db
+? await db
 .collection("passages")
 .find(
 {_id: {$in: uniquePassageIds.map((id) => new ObjectId(id))}, isDeleted: {$ne: true}},
@@ -168,7 +168,7 @@ questions: questions.map((q) => ({
 ..._id: q._id.toString(),
 passageId: q.passageId?.toString()??null,
 mediaAssetIds: Array.isArray(q.mediaAssetIds)
-...?q.mediaAssetIds.map((id: {toString():string}) => id.toString())
+...? q.mediaAssetIds.map((id: {toString(): string}) => id.toString())
 ...: [],
 })),
 },
@@ -180,6 +180,6 @@ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function safeCsv(value: unknown): string {
-const text = String(value??"").replace(/"/g, '"'');
+const text = String(value??."").replace(/"/g, '""');
 return "${text}";
 }

@@ -58,7 +58,7 @@ export interface SnapshotPayload {
   remainingMs?: number;
 }
 
-// --- Snapshot throttle tracker ---
+// Snapshot throttle tracker
 
 const lastSavedAt: Record<string, number> = {};
 
@@ -99,8 +99,6 @@ export async function saveSnapshotNow(
   lastSavedAt[sessionId] = 0; // reset throttle
   await saveSnapshot(sessionId, snapshot, sessionType);
 }
-
-// --- Status check ---
 /**
  * Check the server-side status of a session.
  * Returns null if the request fails (treat as unknown / use local data).
@@ -116,7 +114,7 @@ export async function checkServerStatus(
   }
 }
 
-// --- Recovery ----------------------------------------------------------
+// Recovery
 
 export interface RecoveredSession {
   mergedAnsweredQuestions: Array<{

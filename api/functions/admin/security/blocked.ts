@@ -1,8 +1,8 @@
 /**
- * Admin — Blocked entities · CRUD.
- * GET //api/admin/security/blocked · (list·all·rules)
- * POST //api/admin/security/blocked · (add·rule)
- * DELETE //api/admin/security/blocked/:id · (deactivate)
+ * Admin - Blocked entities - CRUD.
+ * GET /api/admin/security/blocked
+ * POST /api/admin/security/blocked
+ * DELETE /api/admin/security/blocked/:id
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";
@@ -20,7 +20,7 @@ const VALID_TYPES = new Set([
   "user_agent_pattern",
 ]);
 
-export default withSecurity({endpoint: "ADMIN //api/admin/security/blocked"}) (async (
+export default withSecurity({endpoint: "ADMIN /api/admin/security/blocked"})(async (
   req: VercelRequest,
   res: VercelResponse,
 ) => {

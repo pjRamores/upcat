@@ -90,7 +90,7 @@ function saveSessionActionQueue(q: SessionActionQueueStore): void {
       // localStorage.full -- trim oldest 20 entries and retry once
       const trimmed = q.slice(-Math.max(0, q.length - 20));
       try {
-        localStorage.setItem(SESSION_ACTION_QUEUE_KEY, JSON.stringify(trimmed));
+        localStorage.setItem(QUEUE_KEY, JSON.stringify(trimmed));
       } catch {
         /* accept data loss if storage quota exceeded */
       }
@@ -207,8 +207,8 @@ function cancelRetryTimer() {
 * Returns the number of answers accepted by the server (0 on failure).
 */
 export async function flushSessionQueue(
-  sessionId: string,
-  opts: { deviceId?: string } = {},
+sessionId: string,
+opts: { deviceId?: string } = {},
 ) : Promise<number> {
   const entries = getSessionQueue(sessionId);
   if (entries.length === 0) return 0;
@@ -221,7 +221,7 @@ export async function flushSessionQueue(
         answer: e.answer,
         timeSpent: e.timeSpent,
         answeredAt: e.answeredAt,
-      }))),
+      })),
       deviceId: opts.deviceId ?? localStorage.getItem("upcat.deviceId") ?? "web",
       syncedAt: new Date().toISOString(),
     });
@@ -306,7 +306,8 @@ export async function flushAllQueues(opts: { deviceId?: string } = {}): Promise<
         ...remaining.map((e) => e.retries),
         ...remainingActions.map((e) => e.retries),
       ];
-      const minRetries = allRetries.length > 0 ? Math.min(...allRetries) : 0;
+    }
+    const minRetries = allRetries.length > 0 ? Math.min(...allRetries) : 0;
 const delay = RETRY_DELAY_BASE_MS * Math.pow(2, Math.min(minRetries, 5));
 retryTimer = setTimeout(() => {
   void flushAllQueues(opts);

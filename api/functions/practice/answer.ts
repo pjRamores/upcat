@@ -2,7 +2,7 @@
  * POST/api/practice/[sessionId]/answer
  *
  * Grades the user's answer for a card in an in-progress practice session.
- * Mutates the session card's `userAnswer`/`isCorrect`/`timeSpent`, but
+ * Mutates the session card's `userAnswer` // `isCorrect` // `timeSpent`, but
  * does NOT yet advance SM-2 state (that happens on /rate). Returns the
  * correctAnswer + rationale so the UI can reveal them.
  */

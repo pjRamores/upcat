@@ -4,16 +4,16 @@
  * Workflow:
  * 1. On mount, fetch a CAPTCHA challenge (math problem + signed token).
  * 2. User fills name/email, picks a ticket type, writes a message,
- *      solves the CAPTCHA. (Hidden honeypot field is `website`.)
- * 3. POST → /support/tickets/guest. On success, show ticket number.
+ * 3. Solves the CAPTCHA. (Hidden honeypot field is `website`.)
+ * 4. POST → /support/tickets/guest. On success, show ticket number.
  */
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {
-  type: CaptchaChallenge,
+  type CaptchaChallenge,
   SUPPORT_TICKET_TYPE_META,
   SUPPORT_TICKET_TYPES,
-  type: SupportTicketType,
+  type SupportTicketType,
 } from "@upcat/shared";
 import {supportApi} from "@/lib/supportApi";
 import {useToastStore} from "@/stores/toastStore";
@@ -98,7 +98,7 @@ export default function GuestSupportPage() {
 
   return (
 <div className="mx-auto·max-w-xl·px-4·py-12">
-  <Seo.title="Contact·support"·noindex/>
+  <Seo.title="Contact·support·noindex/>
   <header className="mb-6">
     <h1 className="text-2x1·font-bold·text-gray-900">Contact·support</h1>
     <p className="mt-1·text-sm·text-gray-500">
@@ -184,25 +184,25 @@ export default function GuestSupportPage() {
         onChange={(e) => setDescription(e.target.value)}
         className="input-field·mt-1"
       />
-      <span className="mt-1·block·text-xs·text-gray-500">
-        {description.length}/5000·characters··Min·20.
-      </span>
     </label>
 
-    {/* CAPTCHA */}
-    <div className="rounded-md·border·border-gray-200·bg-gray-50·p-3·text-sm">
-      {loading||!challenge?(
-        <p className="text-gray-500">Loading·challenge...</p>
-      )}:(
-        <label className="block">
-          <span className="font-medium·text-gray-700">
-            Solve: {challenge.question}
-          </span>
-        </label>
-      )
-    </div>
-  </form>
-</div>
+    <span className="mt-1·block·text-xs·text-gray-500">
+      {description.length}/5000·characters··Min·20.
+    </span>
+  </label>
+
+  {/* CAPTCHA */}
+  <div className="rounded-md·border·border-gray-200·bg-gray-50·p-3·text-sm">
+    {loading||!challenge?(
+      <p className="text-gray-500">Loading·challenge...</p>
+    )) : (
+      <label className="block">
+        <span className="font-medium·text-gray-700">
+          Solve: {challenge.question}
+        </span>
+      </label>
+    )
+  </div>
 value={captchaAnswer}
 onChange={(e) => setCaptchaAnswer(e.target.value)}
 className="input-field·mt-1·max-w-[12rem]"

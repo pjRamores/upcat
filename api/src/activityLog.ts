@@ -1,6 +1,6 @@
 /**
  * Activity.log.helper. Persists structured records to the
- * activity_log.collection. All admin actions and important
+ * activity_log` collection. All admin actions and important
  * reviewee events flow through here so the dashboard can
  * render a chronological feed.
  */

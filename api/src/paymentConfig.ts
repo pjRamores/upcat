@@ -14,15 +14,15 @@ function nowIso(): string {
 
 export async function getPaymentConfig(db: Db): Promise<PaymentConfig> {
   const existing = await db
-    .collection<PaymentConfig> & {_id: string}>(("payment_config")
+    .collection<PaymentConfig> & {_id: string}>("payment_config")
     .findOne({_id: PAYMENT_CONFIG_ID});
-    if (existing) {
-      return existing as PaymentConfig;
-    }
-    const seeded = cloneDefaultConfig();
-    seeded.updatedAt = nowIso();
-    await db.collection("payment_config").insertOne(seeded as never);
-    return seeded;
+  if (existing) {
+    return existing as PaymentConfig;
+  }
+  const seeded = cloneDefaultConfig();
+  seeded.updatedAt = nowIso();
+  await db.collection("payment_config").insertOne(seeded as never);
+  return seeded;
 }
 
 export async function savePaymentConfig(
@@ -59,10 +59,10 @@ export async function savePaymentConfig(
     ...updatedAt: nowIso(),
     ...updatedBy: updatedBy ? updatedBy.toHexString() : null,
     };
-    await db
+  await db
     .collection("payment_config")
     .updateOne({_id: PAYMENT_CONFIG_ID as never}, {$set: merged}, {upsert: true});
-    return merged;
+  return merged;
 }
 
 export function getPlanById(config: PaymentConfig, planId: string): PremiumPlan | null {

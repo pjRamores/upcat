@@ -11,5 +11,5 @@ export default defineConfig({
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     exclude: ["e2e/**", "node_modules/**", "dist/**"],
     environment: "node",
-  }
+  },
 });

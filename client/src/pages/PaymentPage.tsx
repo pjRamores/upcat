@@ -20,7 +20,7 @@ export default function PaymentPage() {
   const [notes, setNotes] = useState("");
   const [screenshot, setScreenshot] = useState<File|null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [statusMessage, setStatusMessage] = useState<string>|null>(null);
+  const [statusMessage, setStatusMessage] = useState<string|null>(null);
 
   const promo = search.get("promo")||"";
 
@@ -104,28 +104,27 @@ export default function PaymentPage() {
     <h1 className="text-2x1 font-bold text-slate-900">Complete Payment</h1>
 <p className="mt-1 text-sm text-slate-600">Plan: {selectedPlan.name} • P{selectedPlan.price}</p>
 
-{promo} && (
+{promo} &&
+(
 <p className="mt-2 inline-flex rounded-md border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-800">
 Promo code applied: {promo}
 </p>
 )
 
-{config.activePaymentType === "manual" && config.manual && (
+{config.activePaymentType === "manual" && config.manual &&
 <div className="mt-6 space-y-5">
 <section className="rounded-xl border border-slate-200 bg-white p-5">
 <div data-help="pay_methods"/>
-<h2 className="text-sm font-semibold text-slate-900">Step 1: Select payment channel</h2>
+<h2 className="text-sm font-sembold text-slate-900">Step 1: Select payment channel</h2>
 <div className="mt-3 grid gap-3 sm:grid-cols-3">
 {config.manual.channels.map((c) => (
 <button
 key={c.id}
 type="button"
 onClick={() => setChannelId(c.id)}
-className={`rounded-lg border px-4 py-3 text-left ${
-c.id === channelId ? "border-primary-500 bg-primary-50" : "border-slate-200"
-}`}
+className={`rounded-lg border px-4 py-3 text-left ${c.id === channelId ? "border-primary-500 bg-primary-50" : "border-slate-200"}`}
 >
-<div className="text-sm font-semibold text-slate-900">{c.icon}{c.name}</div>
+<div className="text-sm font-sembold text-slate-900">{c.icon}{c.name}</div>
 <div
 className="text-xs text-slate-500">{c.type === "bank" ? c.bankName || "Bank transfer" : "E-wallet"}</div>
 </button>
@@ -133,9 +132,10 @@ className="text-xs text-slate-500">{c.type === "bank" ? c.bankName || "Bank tran
 </div>
 </section>
 
-{channel} && (
+{channel} &&
+(
 <section className="rounded-xl border border-slate-200 bg-white p-5">
-<h2 className="text-sm font-semibold text-slate-900">Step 2: Payment details</h2>
+<h2 className="text-sm font-sembold text-slate-900">Step 2: Payment details</h2>
 <p className="mt-1 text-sm text-slate-700">Send
 exactly <strong>P{selectedPlan.price.toFixed(2)}</strong> to:</p>
 <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
@@ -143,9 +143,10 @@ exactly <strong>P{selectedPlan.price.toFixed(2)}</strong> to:</p>
 <p><strong>Account Number:</strong>{channel.accountNumber}</p>
 {channel.bankName && <p><strong>Bank:</strong>{channel.bankName}</p>}
 {channel.qrCodeImage && (
-<img src={channel.qrCodeImage} alt={channel.qrCodeLabel || "QR code"}
+<img src={channel.qrCodeImage} alt={channel.qrCodeLabel || "QR code"}>
 className="mt-3 h-52 w-52 rounded-border border-slate-200 object-contain"/>
-)}</div>
+)
+}</div>
 <div
 className="mt-3 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
 Processing time: {config.manual.processingTimeMessage}
@@ -155,7 +156,7 @@ Processing time: {config.manual.processingTimeMessage}
 
 <section className="rounded-xl border border-slate-200 bg-white p-5">
 <div data-help="pay_reference"/>
-<h2 className="text-sm font-semibold text-slate-900">Step 3: Submit payment proof</h2>
+<h2 className="text-sm font-sembold text-slate-900">Step 3: Submit payment proof</h2>
 <div className="mt-3 grid gap-3 sm:grid-cols-2">
 <input value={referenceNumber} onChange={(e) => setReferenceNumber(e.target.value)}
 placeholder="Reference/Transaction Number"
@@ -167,14 +168,14 @@ className="rounded-md border border-slate-300 px-3 py-2 text-sm"/>
 placeholder="Additional notes (optional)" rows={3}
 className="rounded-md border border-slate-300 px-3 py-2 text-sm sm:col-span-2"/>
 <input type="file" accept="image/jpeg, image/png, image/webp"
-onChange={(e) => setScreenshot(e.target.files?.[0]) ?? null}
+onChange={(e) => setScreenshot(e.target.files?.[0]) ?? null)}
 className="rounded-md border border-slate-300 px-3 py-2 text-sm sm:col-span-2"/>
 </div>
 <button
 type="button"
 onClick={submitManual}
 disabled={submitting}
-className="mt-4 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:opacity-60"
+className="mt-4 rounded-md bg-primary-600 px-4 py-2 text-sm font-sembold text-white hover:bg-primary-700 disabled:opacity-60"
 >
 {submitting ? "Submitting..." : "Submit Payment Proof"}
 </button>
@@ -184,13 +185,13 @@ className="mt-4 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-w
 
 {config.activePaymentType === "pangmeryenda" && (
 <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
-<h2 className="text-sm font-semibold text-slate-900">Pay with PangMeryenda</h2>
+<h2 className="text-sm font-sembold text-slate-900">Pay with PangMeryenda</h2>
 <p className="mt-1 text-sm text-slate-600">You will be redirected to PangMeryenda to complete this payment securely.</p>
 <button
 type="button"
 onClick={startPangMeryenda}
 disabled={submitting}
-className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-60"
+className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm font-sembold text-white hover:bg-emerald-700 disabled:opacity-60"
 >
 {submitting ? "Preparing checkout..." : "Pay with PangMeryenda"}
 </button>
@@ -205,3 +206,4 @@ Logged in as {user?.email}
 </p>
 </div>
 );
+}

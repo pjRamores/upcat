@@ -101,55 +101,57 @@ return (
   <header>
     <h1 className="text-2x1 font-bold text-gray-900">Account settings</h1>
     <p className="mt-1 text-sm text-gray-500">
-Manage·how·you·sign·in,·your·password,·and·your·account·data.
+{
+  "Manage·how·you·sign·in", "your·password", "and·your·account·data."
+}
 </p>
 </header>
 
 {/* — Profile — */}
-<Section·title="Profile">
-  <dl·className="grid·grid-cols-1·gap-y-2·text-sm·sm:grid-cols-2">
-    <Row·label="Name">
-      {user?.firstName}·{user?.lastName}
+<Section title="Profile">
+  <dl className="grid·grid-cols-1·gap-y-2·text-sm·sm:grid-cols-2">
+    <Row label="Name">
+      {user?.firstName} {user?.lastName}
     </Row>
-    <Row·label="Email">{user?.email}</Row>
-    <Row·label="Role">{user?.role??·"reviewee}}</Row>
-    <Row·label="Verified">{user?.isVerified??·"Yes":::"No}}</Row>
+    <Row label="Email">{user?.email}</Row>
+    <Row label="Role">{user?.role??."reviewee}}</Row>
+    <Row label="Verified">{user?.isVerified??."Yes"::"No}}</Row>
   </dl>
-  {!hasPassword&&(
-    <p·className="mt-4·rounded-lg·bg-amber-50·px-3·py-2·text-xs·text-amber-800">
-      ▲You signed in with a social provider only — set a password below so you don't lose
+  {!hasPassword && (
+    <p className="mt-4·rounded-lg·bg-amber-50·px-3·py-2·text-xs·text-amber-800">
+      ▲ You signed in with a social provider only — set a password below so you don't lose
       access if that provider becomes unavailable.
     </p>
   )}
 </Section>
 
 {/* — Linked·accounts — */}
-<Section·title="Linked·accounts">
-  {accounts&&accounts.length>0?(
-    <ul·className="divide-y·divide-gray-100·rounded-lg·border·border-gray-200">
-      {accounts.map((a)=>(
+<Section title="Linked·accounts">
+  {accounts && accounts.length > 0 ? (
+    <ul className="divide-y·divide-gray-100·rounded-lg·border·border-gray-200">
+      {accounts.map((a) => (
         <li>
           key={a.provider}
           className="flex·items-center·justify-between·gap-4·px-4·py-3"
         >
-          <div·className="min-w-0">
-            <p·className="text-sm·font-semibold·text-gray-900">
+          <div className="min-w-0">
+            <p className="text-sm·font-semibold·text-gray-900">
               {SOCIAL_PROVIDER_META[a.provider].label}
             </p>
-            <p·className="truncate·text-xs·text-gray-500">
-              {a.email??-"}-•linked{new·Date(a.linkedAt).toLocaleDateString()}
+            <p className="truncate·text-xs·text-gray-500">
+              {a.email??."—"} · linked {new Date(a.linkedAt).toLocaleDateString()}
               {a.lastLoginAt
-                ?`•last used ${new·Date(a.lastLoginAt).toLocaleDateString()}`
-                :""}
+                ? `last used ${new Date(a.lastLoginAt).toLocaleDateString()}`
+                : ""}
             </p>
           </div>
         </button>
         <type="button"
-          onClick={()=>onUnlink(a.provider)}
+          onClick={() => onUnlink(a.provider)}
           disabled={lastSocialOnly}
           title={
             lastSocialOnly
-            ?"Set a password before unlinking your only sign-in method."
+            ? "Set a password before unlinking your only sign-in method."
             : ""
           }
         }
@@ -161,51 +163,52 @@ Manage·how·you·sign·in,·your·password,·and·your·account·data.
     </li>
   ))}
 </ul>
-)::(
-  <p·className="text-sm·text-gray-500">No·social·accounts·linked·yet.</p>
+) : (
+  <p className="text-sm·text-gray-500">No·social·accounts·linked·yet.</p>
 )
 
-<div·className="mt-4">
-  <p·className="mb-2·text-xs·font-semibold·uppercase·tracking-wide·text-gray-500">
+<div className="mt-4">
+  <p className="mb-2·text-xs·font-semibold·uppercase·tracking-wide·text-gray-500">
     Link another account
   </p>
-  <SocialLoginButtons·purpose="link"·divider={null}/>
+  <SocialLoginButtons purpose="link" divider={null}>
 </div>
 </Section>
 
 {/* — Password — */}
-<Section·title={hasPassword?:"Change·password":::"Set a password"}>
-  <PasswordSection·hasPassword={!!hasPassword}·onChanged={reload}/>
+<Section title={hasPassword ? "Change·password" : "Set a password"}>
+  <PasswordSection hasPassword={!!hasPassword} onChanged={reload}/>
 </Section>
 
 {/* — Recovery·codes — */}
-<Section·title="Recovery·codes">
+<Section title="Recovery·codes">
   <RecoveryCodesSection/>
 </Section>
 
 {/* — Security·questions — */}
-<Section·title="Security·questions">
+<Section title="Security·questions">
   <SecurityQuestionsSection/>
 </Section>
 
 {/* — Data·export — */}
-<Section·title="Export·your·data">
+<Section title="Export·your·data">
   <DataExportSection/>
 </Section>
 
 {/* — Subscription·&·payments — */}
-<Section·title="Subscription·&·payments">
-  <p·className="text-sm·text-gray-600">
+<Section title="Subscription·&·payments">
+  <p className="text-sm·text-gray-600">
     Review your current plan, payment status, and manual submission history.
   </p>
-  <Link·to="/settings/payments"·className="btn-primary·mt-3·inline-block">
+  <Link to="/settings/payments" className="btn-primary·mt-3·inline-block">
     Manage subscription
   </Link>
 </Section>
 
 {/* — Support·tickets·shortcut — */}
-<Section·title="Support">
-  <p·className="text-sm·text-gray-600">
+<Section title="Support">
+  <p className="text-sm·text-gray-600">
+```json
 // Need help? View your open tickets or start a new conversation with our team.
 </p>
 <Link to="/support" className="btn-primary mt-3 inline-block">
@@ -366,8 +369,7 @@ function Section({
     );
   }
 
-  /* --- Set / change password --------------------------------------------------- */
-
+  /* --- Set / change password ------------------------------------------- */
   function PasswordSection({
     hasPassword,
     onChanged,
@@ -415,6 +417,7 @@ function Section({
       };
     };
   }
+}
 return (
   <form onSubmit={submit} className="space-y-3">
     {hasPassword && (
@@ -436,20 +439,10 @@ return (
         required
         className="input-field"
       />
-      {next && <PasswordStrengthBar password={next}/>}
     </Field>
-    <Field label="Confirm new password">
-      <input
-        type="password"
-        value={confirm}
-        onChange={(e) => setConfirm(e.target.value)}
-        required
-        className="input-field"
-      />
-    </Field>
-    <button type="submit" disabled={busy} className="btn-primary">
+    <Button type="submit" disabled={busy} className="btn-primary">
       {busy ? "Saving..." : hasPassword ? "Change password" : "Set password"}
-    </button>
+    </Button>
   </form>
 );
 }
@@ -495,31 +488,29 @@ function HelpGuidanceSection() {
       setSaving(false);
     }
   }
+}
 
-  return (
-    <div className="space-y-3" data-help="set_help_prefs">
-      <Toggle
-        label="Show help tooltips (?) on pages"
-        description="Contextual help icons appear next to complex features"
-        checked={showTooltips}
-        onChange={async (value) => {
-          setShowTooltips(value);
-          await save({showTooltips: value});
-        }}
-      />
-      <Toggle
-        label="Show onboarding guides for new features"
-        description="Interactive tours appear when you first encounter a feature"
-        checked={showOnboarding}
-        onChange={async (value) => {
-          setShowOnboarding(value);
-          await save({showOnboarding: value});
-        }}
-      />
-    </Toggle>
-    label="Reduced help mode"
-    description="Minimal guidance for experienced users"
-  );
+return (
+  <div className="space-y-3" data-help="set_help_prefs">
+    <Toggle
+      label="Show help tooltips (?) on pages"
+      description="Contextual help icons appear next to complex features"
+      checked={showTooltips}
+      onChange={async (value) => {
+        setShowTooltips(value);
+        await save({showTooltips: value});
+      }}
+    />
+    <Toggle
+      label="Show onboarding guides for new features"
+      description="Interactive tours appear when you first encounter a feature"
+      checked={showOnboarding}
+      onChange={async (value) => {
+        setShowOnboarding(value);
+        await save({showOnboarding: value});
+      }}
+    />
+  )
 }
 checked={reducedHelp}
 onChange={async(value)=>{
@@ -558,7 +549,7 @@ try{
 await helpApi.onboardingFlow(flowId,{manual:true});
 localStorage.setItem(
 "upcat.onboarding.state.v1",
-JSON.stringify({flowId,stepIndex:0,completedSteps:[]}),
+JSON.stringify({flowId,stepIndex:0,completedSteps:[[]]}),
 );
 window.location.href="/dashboard";
 }catch{
@@ -584,7 +575,8 @@ className="mt-1 h-4 w-4"/>
 );
 }
 
-/* ---Recovery codes-------------------------------------------*/
+/*——Recovery codes——*/
+
 function RecoveryCodesSection() {
 const addToast = useToastStore((s)=>s.addToast);
 const [status, setStatus] = useState<RecoveryCodesStatus|null>(null);
@@ -619,106 +611,105 @@ setCodes(r.codes);
 setConfirmed(false);
 await load();
 } catch (err) {
-  const msg =
-    (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-    "Could not generate codes."
-    addToast("error", msg);
-  finally {
-    setBusy(false);
-  }
+const msg =
+(err as { response?: { data?: { error?: string } } }).response?.data?.error ||
+"Could not generate codes."
+addToast("error", msg);
+} finally {
+setBusy(false);
+}
 };
 
 const copyAll = () => {
-  if (!codes) return;
-  void navigator.clipboard.writeText(codes.join("\n"));
-  addToast("success", "Codes copied to clipboard.");
+if (!codes) return;
+void navigator.clipboard.writeText(codes.join("\n"));
+addToast("success", "Codes copied to clipboard.");
 };
 
 const downloadAll = () => {
-  if (!codes) return;
-  const blob = new Blob([
-    [
-      `UPCAT Simulator - Recovery Codes\nGenerated: ${new Date().toLocaleString()}\n\n` +
-      codes.join("\n") +
-      "\n",
-    ],
-    {type: "text/plain"},
-  ]);
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "upcat-recovery-codes.txt";
-  a.click();
-  URL.revokeObjectURL(url);
+if (!codes) return;
+const blob = new Blob([
+  `UPCAT Simulator - Recovery Codes\nGenerated: ${new Date().toLocaleString()}\n\n` +
+  codes.join("\n") +
+  "\n",
+  ],
+  {type: "text/plain"},
+);
+const url = URL.createObjectURL(blob);
+const a = document.createElement("a");
+a.href = url;
+a.download = "upcat-recovery-codes.txt";
+a.click();
+URL.revokeObjectURL(url);
 };
 
 if (!status) return <Spinner/>;
 
 return (
-  <div className="space-y-3 text-sm text-gray-700">
-    <p>
-      Recovery codes let you sign in if you lose access to your password and social
-      providers. Each code works once.
-    </p>
-    <p className="text-xs text-gray-500">
-      {status.hasRecoveryCodes}
-      ? `${status.unusedCount}/${status.totalCount} codes remaining` generated ${
-        status.generatedAt ? new Date(status.generatedAt).toLocaleDateString() : "-"
-      }
-    }
+<div className="space-y-3 text-sm text-gray-700">
+<p>
+Recovery codes let you sign in if you lose access to your password and social
+providers. Each code works once.
+</p>
+<p className="text-xs text-gray-500">
+{status.hasRecoveryCodes
+? `${status.unusedCount}/${status.totalCount} codes remaining • generated ${
+status.generatedAt ? new Date(status.generatedAt).toLocaleDateString() : "—"
+}`
+```
 
-    : `You have no recovery codes yet. Generate ${RECOVERY_CODE_COUNT} codes you can store securely.`
-  </p>
-  <button onClick={generate} disabled={busy} className="btn-primary">
-    {busy ? "Generating..." : status.hasRecoveryCodes ? "Regenerate codes" : "Generate codes"}
-  </button>
+You have no recovery codes yet. Generate ${RECOVERY_CODE_COUNT} codes you can store securely.`
 
-  <Modal
-    isOpen={!!codes}
-    onClose={() => confirmed && setCodes(null)}
-    title="Save your recovery codes"
-    hideCloseButton={!confirmed}
-  >
-    <div className="space-y-3 text-sm">
-      <p className="rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800">
-        These codes will only be shown once. Save them somewhere safe.
-      </p>
-      <pre className="grid grid-cols-2 gap-2 rounded-md bg-gray-50 p-3 font-mono text-xs">
-        {codes?.map((c) => <span key={c}>{c}</span>)}
-      </pre>
-      <div className="flex flex-wrap gap-2">
-        <button onClick={copyAll} className="btn-secondary text-xs">
-          Copy
-        </button>
-        <button onClick={downloadAll} className="btn-secondary text-xs">
-          Download.txt
-        </button>
-      </div>
-      <label className="flex items-start gap-2 text-xs text-gray-700">
-        <input
-          type="checkbox"
-          checked={confirmed}
-          onChange={(e) => setConfirmed(e.target.checked)}
-        />
-        I've saved my recovery codes in a safe place.
-      </label>
-      <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={() => setCodes(null)}
-          disabled={!confirmed}
-          className="btn-primary text-xs">
-        >
-        Done
-      </button>
-    </div>
-  </div>
+</p>
+<button onClick={generate} disabled={busy} className="btn-primary">
+{busy ? "Generating..." : status.hasRecoveryCodes ? "Regenerate codes" : "Generate codes"}
+</button>
+
+<Modal
+isOpen={!!codes}
+onClose={() => confirmed && setCodes(null)}
+title="Save your recovery codes"
+hideCloseButton={!confirmed}
+>
+<div className="space-y-3 text-sm">
+<p className="rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800">
+These codes will only be shown once. Save them somewhere safe.
+</p>
+<pre className="grid-grid-cols-2 gap-2 rounded-md bg-gray-50 p-3 font-mono text-xs">
+{codes?.map((c) => <span key={c}>{c}</span>)}
+</pre>
+<div className="flex flex-wrap gap-2">
+<button onClick={copyAll} className="btn-secondary text-xs">
+Copy
+</button>
+<button onClick={downloadAll} className="btn-secondary text-xs">
+Download.txt
+</button>
+</div>
+<label className="flex items-start gap-2 text-xs text-gray-700">
+<input
+type="checkbox"
+checked={confirmed}
+onChange={(e) => setConfirmed(e.target.checked)}
+/>
+I've saved my recovery codes in a safe place.
+</label>
+<div className="flex justify-end">
+<button
+type="button"
+onClick={() => setCodes(null)}
+disabled={!confirmed}
+className="btn-primary text-xs">
+Done
+</button>
+</div>
+</div>
 </Modal>
 </div>
 );
 }
 
-/* --- Security questions --- *//
+/* --- Security questions --- */
 function SecurityQuestionsSection() {
 const addToast = useToastStore((s) => s.addToast);
 const [picks, setPicks] = useState<number[]>([0, 1, 2]);
@@ -799,10 +790,10 @@ return (
 );
 }
 
-/* --- Data export --------------------------------------------------------- */
+/* Data export ---------------------------------------------------------*/
 function DataExportSection() {
   const addToast = useToastStore((s) => s.addToast);
-  const [recent, setRecent] = useState<DataRequest[]>({null}(null));
+  const [recent, setRecent] = useState<DataRequest[]>({null});
   const [opts, setOpts] = useState<DataExportOptions>({
     format: "json",
     includeExamHistory: true,
@@ -915,17 +906,20 @@ return (
                   </p>
                 </div>
               </div>
-              {ready && r.export && (
-                <button
-                  onClick={() => download(r._id, r.export!.format)}
+            )}
+            {ready && r.export && (
+              <button
+                onClick={() => download(r._id, r.export!.format)}
+              {
                 className="btn-secondary text-xs"
+              }
               >
-// Scheduled deletion flow
+/* ---- Scheduled deletion flow ----------------------------------------- */
 function DeletionFlow({
   hasPassword,
   onScheduled,
   onExecuted,
-}): {
+}) {
   hasPassword: boolean;
   onScheduled: () => void;
   onExecuted: () => void;
@@ -1015,21 +1009,20 @@ function DeletionFlow({
   <p className="font-semibold·text-red-900">Deletion·scheduled</p>
   <p className="mt-1·text-xs·text-red-800">
     Status: <strong>{pending.status}</strong>
-    {scheduled &&
-    (
+    {scheduled·&& (
       <>
         {"."}
         scheduled·for <strong>{scheduled.toLocaleString()}</strong>
       </>
     )}
-    {!pending.deletion?.confirmedAt && (
+    {!pending.deletion?.confirmedAt·&& (
       <> awaiting·email·confirmation</>
     )}
   </p>
   <button
     type="button"
     onClick={() => setOpen(true)}
-    className="mt-2·rounded-md·border·border-red-300·bg-white·px-4·py-2·text-sm·font-semibold·text-red-700·hover:bg-red-100"
+    className="mt-2·rounded-md·border·border-red-300·bg-white·px-3·py-1.5·text-xs·font-semibold·text-red-700·hover:bg-red-100"
   >
     Cancel·deletion
   </button>
@@ -1045,19 +1038,19 @@ return (
       onClick={() => setOpen(true)}
       className="mt-4·rounded-md·border·border-red-300·bg-white·px-4·py-2·text-sm·font-semibold·text-red-700·hover:bg-red-50"
     >
-      Delete·my·account
+      Delete my account
     </button>
-    <Modal·isOpen={open}·onClose={close}·title="Schedule·account·deletion"·size="lg">
-      <form·onSubmit={submit}·className="space-y-4">
+    <Modal isOpen={open} onClose={close} title="Schedule·account·deletion" size="lg">
+      <form onSubmit={submit} className="space-y-4">
         <div className="rounded-md·bg-red-50·p-3·text-xs·text-red-800">
           <p className="font-semibold">
-            You'll·have·{DATA_DELETION_GRACE_DAYS}·days·to·change·your·mind. After·that:
+            You'll have {DATA_DELETION_GRACE_DAYS} days to change your mind. After that:
           </p>
           <ul className="mt-1·list-inside·list-disc·space-y-0.5">
-            <li>Your·profile·and·login·credentials·are·deleted.</li>
-            <li>All·linked·social·providers·are·unlinked.</li>
-            <li>Past·exam·sessions·are·anonymized·(or·removed·entirely).</li>
-            <li>Your·contact·messages·are·deleted.</li>
+            <li>Your profile and login credentials are deleted.</li>
+            <li>All linked social providers are unlinked.</li>
+            <li>Past exam sessions are anonymized (or removed entirely).</li>
+            <li>Your contact messages are deleted.</li>
           </ul>
         </div>
 
@@ -1071,7 +1064,7 @@ return (
               onChange={() => setScope("full")}
             />
           </span>
-          <strong>Full·deletion</strong> -- remove·account·+·all·associated·data.
+          <strong>Full deletion</strong> -- remove account + all associated data.
         </span>
       </label>
       <label className="mt-1·flex·items-start·gap-2·text-sm">
@@ -1082,8 +1075,8 @@ return (
           onChange={() => setScope("data_only")}
         />
         <span>
-          <strong>Data·only</strong> -- keep·your·account·but·wipe·exam·history/
-          personal·data.
+          <strong>Data only</strong> -- keep your account but wipe exam history /
+personal data.
         </span>
       </label>
     </fieldset>
@@ -1094,29 +1087,30 @@ return (
         checked={retainStats}
         onChange={(e) => setRetainStats(e.target.checked)}
       />
-    </span>
-    Allow·my·anonymized·aggregate·stats·to·remain·(helps·platform·improvements).
-  </span>
-</label>
+      <span>
+        Allow my anonymized aggregate stats to remain (helps platform improvements).
+      </span>
+    </label>
 
-<Field·label={`Type "${ACCOUNT_DELETE_CONFIRMATION}" to confirm`}>
-  <input
-    autoFocus
-    value={confirmation}
-    onChange={(e) => setConfirmation(e.target.value)}
-    className="input-field"
-  />
-</Field>
-{hasPassword&&(
-  <Field·label="Re-enter·your·password">
-    <input
-      type="password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      className="input-field"
-    />
-  </Field>
-)
+    <Field label={`Type "${ACCOUNT_DELETE_CONFIRMATION}" to confirm`}>
+      <input
+        autoFocus
+        value={confirmation}
+        onChange={(e) => setConfirmation(e.target.value)}
+        className="input-field"
+      />
+    </Field>
+    {hasPassword&&(
+      <Field label="Re-enter your password">
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        className="input-field"
+      />
+    </Field>
+  )
+}
 <div className="flex·justify-end·gap-2·pt-2">
   <button
     type="button"
@@ -1131,12 +1125,12 @@ return (
     disabled={busy}
     className="rounded-md·bg-red-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-red-700·disabled:opacity-60"
   >
-    {busy?."Scheduling..."::"Schedule deletion"}
+    {busy?:"Scheduling...":::"Schedule deletion"}
   </button>
 </div>
 </form>
 </Modal>
-{/* Reference to avoid "unused" for onExecuted in this layout (kept for parity with old API). */}
+{/* Reference to avoid "unused" for onExecuted in this layout (kept for parity with old API).*/}
 <span className="hidden">data-handler={onExecuted.toString().length}</span>
 </>
 );

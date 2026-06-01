@@ -224,8 +224,8 @@ function Hero() {
 
 </div>
 
-<div className="lg:col-span-5">data-reveal</div>
-<StudentIllustration/>
+<div className="lg:col-span-5·data-reveal">
+  <StudentIllustration/>
 </div>
 </div>
 </section>
@@ -233,7 +233,7 @@ function Hero() {
 }
 
 /* CSS/SVG illustration -- no external assets needed. */
-function Stat({label, value}: {label: `string`; value: `string`}) {
+function Stat({label, value}: {label: string; value: string}) {
   return (
     <div>
       <dt className="text-xs·uppercase·tracking-wide·text-gray-500">{label}</dt>
@@ -307,7 +307,7 @@ function StudentIllustration() {
 
           <div>
             className="absolute·right-2·top-1/2·flex·items-center·gap-2·rounded-full·bg-white·py-2·pl-2·pr-4·shadow-xl·ring-1·ring-black/5">
-            <span className="text-xl">❤</span>
+            <span className="text-xl">◎</span>
             <span className="text-sm·font-bold·text-gray-900">7-day·streak</span>
           </div>
         </div>
@@ -316,15 +316,14 @@ function StudentIllustration() {
   }
 }
 
-/* --- FEATURES --- */
+/* FEATURES --------------------------------------------------------------*/
 const FEATURES = [
   {
-    icon: "❤",
+    icon: "💡",
     title: "Realistic Exam Simulation",
     desc: "Timed, randomized practice exams that cover every UPCAT subject area, just like the real test.",
   }
 ];
-},
 {
   icon: "4",
   title: "Instant Scoring & Review",
@@ -354,33 +353,34 @@ function Features() {
           Built by students, for students. A focused toolkit for serious UPCAT prep.
         </p>
       </div>
+    </div>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {FEATURES.map((f, i) => (
+    <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {FEATURES.map((f, i) => (
+        <div>
+          key={f.title}
+          data-reveal
+          style={{transitionDelay: `${i * 60}ms`}}
+          className="group rounded-2x1 border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary-200 " +
+          "hover:shadow-lg"
+        >
           <div>
-            key={f.title}
-            data-reveal
-            style={{transitionDelay: `${i * 60}ms`}}
-            className="group-rounded-2x1 border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary-200 " +
-              "hover:shadow-lg"
-          >
-            <div>
-              className="flex h-12 w-12 items-center justify-center rounded-x1 bg-primary-50 text-2x1 ring-1 ring-primary-100 transition-colors " +
-              "group-hover:bg-primary-100">
-                {f.icon}
-              </div>
-              <h3 className="mt-5 text-lg font-semibold text-gray-900">
-                {f.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                {f.desc}
-              </p>
+            className="flex h-12 w-12 items-center justify-center rounded-x1 bg-primary-50 text-2x1 ring-1 ring-primary-100 transition-colors " +
+            "group-hover:bg-primary-100">
+              {f.icon}
             </div>
-          ))}
+            <h3 className="mt-5 text-lg font-semibold text-gray-900">
+              {f.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              {f.desc}
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      ))}
+    </div>
+  </section>
+);
 }
 
 /* --- HOW IT WORKS --- */
@@ -418,18 +418,20 @@ function HowItWorks() {
           Three simple steps from sign-up to score improvement.
         </p>
       </div>
+    </div>
 
-      <ol className="mt-14 grid gap-8 md:grid-cols-3">
-        {STEPS.map((step, idx) => (
-          <li>
-            key={step.number}
-            data-reveal
-            style={{transitionDelay: `${idx * 80}ms`}}
-            className="relative"
-          >
-            <div className="rounded-2x1 border border-gray-200 bg-white p-8 shadow-sm">
+    <ol className="mt-14 grid gap-8 md:grid-cols-3">
+      {STEPS.map((step, idx) => (
+        <li>
+          key={step.number}
+          data-reveal
+          style={{transitionDelay: `${idx * 80}ms`}}
+          className="relative"
+        >
+          <div className="rounded-2x1 border border-gray-200 bg-white p-8 shadow-sm">
 <div className="flex·items-center·gap-4">
-<span className="flex·h-12·w-12·items-center·justify-center·rounded-full·bg-primary-600·text-lg·font-bold·text-white·shadow-lg·shadow-primary-200">
+<span
+className="flex·h-12·w-12·items-center·justify-center·rounded-full·bg-primary-600·text-lg·font-bold·text-white·shadow-lg·shadow-primary-200">
 {step.number}
 </span>
 <span className="text-3xl">{step.icon}</span>
@@ -443,10 +445,13 @@ function HowItWorks() {
 </div>
 
 {idx <·STEPS.length·-·1·&&·(
-<div aria-hidden className="absolute·right-[-22px]·top-1/2·hidden·-translate-y-1/2·text-primary-300·md:block"
+<div
+aria-hidden
+className="absolute·right-[-22px]·top-1/2·hidden·-translate-y-1/2·text-primary-300·md:block"
 >
-<svg width="24" height="24" viewBox="0·0·24·24" fill="none">
-<path d="M5·12h14m-6·616·6·6·6"
+<svg·width="24"·height="24"·viewBox="0·0·24·24"·fill="none">
+<path
+d="M5·12h14m-6·616·6·6·6"
 stroke="currentColor"
 strokeWidth="2"
 strokeLinecap="round"
@@ -465,11 +470,11 @@ strokeLinejoin="round"
 /*—— SUBJECT·AREAS ——*/
 const SUBJECT_DESCRIPTIONS: Record<(typeof SUBJECT_AREAS)[number], string> = {
 "Language·Proficiency":
-"Vocabulary,·grammar,·and·usage·across·Filipino·and·English·—the·building·blocks·of·every·UPCAT·section.",
+"Vocabulary,·grammar,·and·usage·across·Filipino·and·English—the·building·blocks·of·every·UPCAT·section.",
 Mathematics:
 "Arithmetic,·algebra,·geometry,·and·basic·trigonometry.·Practice·problem-solving·under·realistic·time·pressure.",
 Science:
-"Biology,·chemistry,·physics,·and·earth·science·fundamentals·—applied·through·scenario·and·analysis·questions.",
+"Biology,·chemistry,·physics,·and·earth·science·fundamentals—applied·through·scenario·and·analysis·questions.",
 "Reading·Comprehension":
 "Long-form·passages·with·inference,·main·idea,·and·tone·questions·to·sharpen·critical·reading.",
 };
@@ -501,30 +506,12 @@ question·bank.
 const meta = SUBJECT_META[subject];
 const palette = SUBJECT_BG[meta.color] ?? SUBJECT_BG.indigo;
 return (
-<div key={subject}
+<div
+key={subject}
 data-reveal
 style={{transitionDelay: `${i * 60}ms`}}
 className="group·flex·flex-col·rounded-2x1·border·border-gray-200·bg-white·p-6·shadow-sm·transition-all·duration-200·hover:-translate-y-1·+
-"hover:shadow-lg"
->
-<div className={`flex h-14 w-14 items-center justify-center rounded-2x1 bg-gradient-to-br text-3x1 ring-1 ${palette}`}
->
-{meta.icon}
-</div>
-<h3 className="mt-4·text-base·font-semibold·text-gray-900">
-{meta.label}
-</h3>
-<p className="mt-2·flex-1·text-sm·leading-relaxed·text-gray-600">
-{SUBJECT_DESCRIPTIONS[subject]}
-</p>
-</div>
-);
-})
-</div>
-</div>
-</section>
-);
-}
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
 /* --- SOCIAL PROOF --------------------------------------------------- */
 function SocialProof() {
   return (
@@ -544,7 +531,6 @@ function SocialProof() {
           UPCAT Simulator to sharpen their skills and walk into exam day with
           confidence.
         </p>
-
         <div className="mx-auto mt-10 grid max-w-3x1 grid-cols-3 gap-4 text-center">
           <ProofStat value="10,000+" label="Active learners"/>
           <ProofStat value="500,000+" label="Questions answered"/>
@@ -560,7 +546,7 @@ function Faq({items}: {items: FaqItem[]}) {
   return (
     <section id="faq" className="scroll-mt-24 bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-3x1 px-4">
-        <div className="text-center" data-reveal>
+        <div className="text-center data-reveal">
           <h2 className="text-3x1 font-bold tracking-tight text-gray-900 sm:text-4x1">
             Frequently asked questions
           </h2>
@@ -571,43 +557,50 @@ function Faq({items}: {items: FaqItem[]}) {
         </div>
       </div>
     </section>
-
-    <dl className="mt-12 divide-y divide-gray-200 border-t border-b border-gray-200">
-      {items.map((it, i) => (
-        <details
-          key={it.question}
-          data-reveal
-          style={{transitionDelay: `${i * 40}ms`}}
-          className="group py-5"
-        >
-          <summary
-            className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-gray-900 outline-none">
-            "focus-visible:ring-2 focus-visible:ring-primary-500"
-          </dt>{it.question}</dt>
-          <span
-            aria-hidden
-            className="ml-2 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700">
-            "transition-transform group-open:rotate-45"
-          </span>
-        </summary>
-        <dd className="mt-3 pr-9 text-sm leading-relaxed text-gray-600">
-          {it.answer}
-        </dd>
-      </details>
-    ))}
-  </dl>
-  </div>
-  </section>
-);
+    );
 }
 
-/* --- FINAL CTA --------------------------------------------------------- */
+/* --- FAQ --------------------------------------------------------------- */
+function Faq({items}: {items: FaqItem[]}) {
+  return (
+    <section id="faq" className="scroll-mt-24 bg-white py-20 sm:py-24">
+      <div className="mx-auto max-w-3x1 px-4">
+        <div className="text-center data-reveal">
+          <h2 className="text-3x1 font-bold tracking-tight text-gray-900 sm:text-4x1">
+            Frequently asked questions
+          </h2>
+          <p className="mt-3 text-lg text-gray-600">
+            Everything you need to know about the UPCAT and how to prepare with
+            UPCAT Simulator.
+          </p>
+        </div>
+      </section>
+    </section>
+  );
+}
+
+/* --- FINAL CTA --------------------------------------------------------------- */
 function FinalCta() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div
-        className="mx-auto max-w-3x1 rounded-3x1 border-border-primary-100 bg-gradient-to-br from-primary-50 to-white p-10 text-center shadow-sm sm:p-14"
+        className="mx-auto max-w-3x1 rounded-3x1 border border-primary-100 bg-gradient-to-br from-primary-50 to-white p-10 text-center shadow-sm sm:p-14"
         data-reveal
+      >
+        <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </span>
+      </summary>
+      <dd className="mt-3 pr-9 text-sm leading-relaxed text-gray-600">
+        {it.answer}
+      </dd>
+      </details>
+    ))}
+    </dl>
+  </div>
+  </section>
+  );
+}
 <h2 className="text-3xl·font-bold·tracking-tight·text-gray-900·sm:text-4xl">
 Ready to start prepping?
 </h2>
@@ -615,10 +608,10 @@ Ready to start prepping?
 Create your account and take your first practice exam today.
 </p>
 <div className="mt-8·flex·flex-col·items-center·justify-center·gap-3·sm:flex-row">
-<Link to="/register">className="btn-primary·text-base·!px-6·!py-3">
+<Link to="/register" className="btn-primary·text-base·!px-6·!py-3">
 Get Started
 </Link>
-<Link to="/login">className="btn-secondary·text-base·!px-6·!py-3">
+<Link to="/login" className="btn-secondary·text-base·!px-6·!py-3">
 I already have an account
 </Link>
 </div>

@@ -59,6 +59,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     setId: String(evt.setId ?? "unknown"),
     assignedAt: evt.assignedAt?.toISOString(),
   }));
+
   return res.status(200).json({
     success: true,
     data: {

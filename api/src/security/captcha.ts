@@ -192,7 +192,7 @@ async function checkAnswer(
   doc: CaptchaDoc,
   answer: unknown,
   meta: { elapsedMs?: number },
-) : Promise<{ valid: true } | { valid: false }; reason: VerifyResult["reason"]; > {
+) : Promise<{ valid: true } | { valid: false } | reason: VerifyResult["reason"] }> {
   switch (doc.type) {
     case "math": {
       const expected = doc.answer as number;
@@ -313,20 +313,28 @@ shape = targetShape;
 correctIds.push(id);
 } else {
 // Pick any other shape.
-let other: ShapeKind;
+let other = ShapeKind;
 do {
 other = pickOne(SHAPE_KINDS);
 } while (other === targetShape);
 shape = other;
 }
 options.push({id, svg: renderShapeSvg(shape)});
-}
 
 return {
 prompt: `Select every tile containing a ${targetShape}.`,
 options,
 correctIds,
 };
+}
+
+const SHAPE_PALETTE = ["#6366f1", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6", "#0ea5e9"];
+
+function shuffleInPlace<T>(arr: T[]): void {
+for (let i = arr.length - 1; i > 0; i--) {
+const j = randomInt(0, i + 1);
+[arr[i], arr[j]] = [arr[j] as T, arr[i] as T];
+}
 }
 
 const SHAPE_PALETTE = ["#6366f1", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6", "#0ea5e9"];
@@ -346,7 +354,7 @@ case "star":
 return `<polygon points="50,12 60,40 90,40 65,58 75,86 50,68 25,86 35,58 10,40 40,40" fill="${fill}" stroke="${stroke}" stroke-linejoin="round"/>`;
 case "hexagon":
 return `<polygon points="50,12 86,32 86,72 50,92 14,72 14,32" fill="${fill}" stroke="${stroke}" stroke-width="3"/>`;
-})();
+}}());
 return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${inner}</svg>`;
 }
 
@@ -370,7 +378,7 @@ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}">
 <rect width="${w}" height="${h}" fill="url(#g)"/>
 <rect width="${w}" height="${h}" fill="url(#p)"/>
 <rect x="${targetX}" y="${pieceY}" width="${size}" height="${size}" rx="8"
-fill="rgba(0,0,0.45)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/>
+fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/>
 </svg>`;
 }
 

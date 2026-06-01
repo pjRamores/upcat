@@ -105,4 +105,4 @@ return res.status(200).json({
     timerAdjustments: 0,
   }
 });
-} ;
+};

@@ -211,13 +211,13 @@ export interface SupportTicketVerification {
     fileRef: string | null;
   }[];
 }
-}
 export interface SupportTicketResolution {
   action: string | null;
   notes: string | null;
   resolvedBy: string | null;
   resolvedAt: string | null;
 }
+
 export interface SupportTicket {
   _id: string;
   ticketNumber: string;
@@ -236,12 +236,14 @@ export interface SupportTicket {
   createdAt: string;
   updatedAt: string;
 }
+
 export interface CreateSupportTicketPayload {
   type: SupportTicketType;
   subject: string;
   description: string;
   priority?: SupportTicketPriority;
 }
+
 export interface CreateGuestSupportTicketPayload extends CreateSupportTicketPayload {
   email: string;
   fullName: string;
@@ -250,10 +252,12 @@ export interface CreateGuestSupportTicketPayload extends CreateSupportTicketPayl
   /** Honeypot — bots fill it, humans don't. */
   website?: string;
 }
+
 export interface PostTicketMessagePayload {
   content: string;
   isInternal?: boolean;
 }
+
 export interface UpdateTicketStatusPayload {
   status?: SupportTicketStatus;
   priority?: SupportTicketPriority;
@@ -263,6 +267,7 @@ export interface UpdateTicketStatusPayload {
     notes?: string;
   };
 }
+
 export interface SupportDashboardSummary {
   open: number;
   inProgress: number;
@@ -293,11 +298,13 @@ export interface SupportDashboardSummary {
     createdAt: string;
   }[];
 }
+
 export interface CaptchaChallenge {
   token: string;
   question: string;
   expiresAt: string;
 }
+
 export type DataRequestType = "export" | "deletion";
 export type DataRequestStatus = "pending" | "processing" | "ready" | "completed" | "failed" | "cancelled";
 export type ExportFormat = "json" | "csv";
@@ -308,6 +315,7 @@ export interface DataExportOptions {
   includePersonalInfo: boolean;
   includeActivityLog: boolean;
 }
+
 export type DeletionScope = "full" | "data_only";
 export interface DataRequest {
   _id: string;
@@ -315,7 +323,6 @@ export interface DataRequest {
   type: DataRequestType;
   status: DataRequestStatus;
 }
-export?: {
 format: ExportFormat;
 includeExamHistory: boolean;
 includeStats: boolean;
@@ -371,6 +378,7 @@ action: IdentityDisputeAction | null;
 };
 createdAt: string;
 updatedAt: string;
+}
 export type AccountMergeStrategy = "keep_primary_data" | "merge_all";
 export interface MergeAccountsPayload {
 primaryUserId: string;
@@ -523,13 +531,13 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
-}
 export interface StartExamResponse {
   sessionId: string;
   totalQuestions: number;
   timeLimit: number;
   startedAt: string;
 }
+
 export interface StartExamPayload {
   totalQuestions?: number;
   distribution?: Partial<Record<SubjectArea, number>>;
@@ -541,30 +549,36 @@ export interface StartExamPayload {
   };
   timeLimit?: number;
 }
+
 export interface PaginatedQuestionsResponse {
   questions: ExamQuestion[];
   currentPage: number;
   totalPages: number;
   totalQuestions: number;
 }
+
 export interface SubmitAnswerPayload {
   questionId: string;
   answer: "A" | "B" | "C" | "D" | null;
   timeSpent?: number;
 }
+
 export interface BulkAnswerPayload {
   answers: SubmitAnswerPayload[];
 }
+
 export interface ReviewQuestion extends Question {
   userAnswer: "A" | "B" | "C" | "D" | null;
   isCorrect: boolean;
   timeSpent: number | null;
   passage?: Passage | null;
 }
+
 export interface ReviewResponse {
   session: ExamSession;
   questions: ReviewQuestion[];
 }
+
 export interface SessionSummary {
   _id: string;
   status: SessionStatus;
@@ -573,6 +587,7 @@ export interface SessionSummary {
   totalQuestions: number;
   percentage: number | null;
 }
+
 export type FlagReason = "incorrect_answer" | "typo" | "unclear" | "other";
 export type FlagStatus = "open" | "resolved" | "dismissed";
 export type AnnouncementType = "info" | "warning" | "maintenance";
@@ -589,6 +604,7 @@ export interface QuestionFlag {
   resolvedAt?: string;
   createdAt: string;
 }
+
 export interface Announcement {
   _id: string;
   title: string;
@@ -600,6 +616,7 @@ export interface Announcement {
   createdAt: string;
   createdBy?: string;
 }
+
 export interface PlatformSettings {
   examDefaults: {
     distribution: Record<SubjectArea, {
@@ -743,117 +760,116 @@ export interface LevelInfo {
   xpForCurrent: number;
   xpForNext: number;
 }
-xpToNextLevel: number;
-progressPct: number;
+...xpToNextLevel:number;
+...progressPct:number;
 }
 
 export interface StreakInfo {
-  current: number;
-  longest: number;
-  lastActiveDate: string | null;
-  multiplier: number;
-  /** Days remaining until streak breaks at midnight UTC (0 means already today).**/
-  hoursUntilExpiry: number | null;
+  current:number;
+  longest:number;
+  lastActiveDate:string||null;
+  multiplier:number;
+  /**Days remaining until streak breaks at midnight UTC (0 means already today).*/
+  hoursUntilExpiry:number||null;
 }
 
 export type AchievementCategory = "milestone" | "performance" | "streak" | "dedication" | "mastery" | "social";
 export type AchievementRarity = "common" | "uncommon" | "rare" | "epic" | "legendary";
-/** Declarative condition evaluated server-side against User+counters.**/
-
+/** Declarative condition evaluated server-side against User+counters.*/
 export type AchievementCondition = {
   kind: "examCount";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "perfectScores";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "scoreThreshold";
-  gte: number;
-  count: number;
-} | {
+  gte:number;
+  count:number;
+}||{
   kind: "streakDays";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "totalXp";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "levelReached";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "questionsAnswered";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "correctAnswers";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "practiceSessions";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "perfectSubject";
-  subject: string;
-  gte: number;
-} | {
+  subject:string;
+  gte:number;
+}||{
   kind: "studyMinutes";
-  gte: number;
-} | {
+  gte:number;
+}||{
   kind: "consecutiveDailyLogins";
-  gte: number;
+  gte:number;
 };
 
 export interface AchievementDef {
-  id: string;
-  id: string;
-  category: AchievementCategory;
-  rarity: AchievementRarity;
-  title: string;
-  description: string;
-  icon: string;
-  xpReward: number;
-  points: number;
-  condition: AchievementCondition;
-  /** Whether the achievement should be hidden until unlocked.**/
-  hidden: boolean;
-  /** When false, achievement isn't evaluated.**/
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
+  _id:string;
+  id:string;
+  category:AchievementCategory;
+  rarity:AchievementRarity;
+  title:string;
+  description:string;
+  icon:string;
+  xpReward:number;
+  points:number;
+  condition:AchievementCondition;
+  /**Whether the achievement should be hidden until unlocked.*/
+  hidden:boolean;
+  /**When false, achievement isn't evaluated.*/
+  isActive:boolean;
+  createdAt:string;
+  updatedAt:string;
 }
 
 export interface UserAchievement extends AchievementDef {
-  unlocked: boolean;
-  unlockedAt: string | null;
-  progress: number;
-  target: number;
-  progressPct: number;
+  unlocked:boolean;
+  unlockedAt:string||null;
+  progress:number;
+  target:number;
+  progressPct:number;
 }
 
 export type WeeklyChallengeMetric = "exams_completed" | "questions_correct" | "study_minutes" | "practice_sessions" | "perfect_scores" | "score_above_threshold";
 export interface WeeklyChallengeDef {
-  id: string;
-  id: string;
-  title: string;
-  description: string;
-  metric: WeeklyChallengeMetric;
-  target: number;
-  /** Optional metric threshold (e.g. score >= 85 for score_above_threshold).**/
-  threshold?: number;
-  xpReward: number;
-  isActive: boolean;
-  weight: number;
-  createdAt: string;
-  updatedAt: string;
+  _id:string;
+  id:string;
+  title:string;
+  description:string;
+  metric:WeeklyChallengeMetric;
+  target:number;
+  /**Optional metric threshold (e.g. score >= 85 for score_above_threshold).*/
+  threshold?:number;
+  xpReward:number;
+  isActive:boolean;
+  weight:number;
+  createdAt:string;
+  updatedAt:string;
 }
 
 export interface ActiveWeeklyChallenge {
-  challenge: WeeklyChallengeDef;
-  assignedAt: string;
-  expiresAt: string;
-  progress: number;
-  target: number;
-  progressPct: number;
-  completed: boolean;
-  completedAt: string | null;
-  rewardClaimed: boolean;
+  challenge:WeeklyChallengeDef;
+  assignedAt:string;
+  expiresAt:string;
+  progress:number;
+  target:number;
+  progressPct:number;
+  completed:boolean;
+  completedAt:string||null;
+  rewardClaimed:boolean;
 }
 ... msUntilExpiry: number;
 }
@@ -961,68 +977,65 @@ export interface PracticeCard {
   subjectArea: string;
 }
 status: PracticeCardStatus;
-/** SM-2 ease factor (start 2.5, floor 1.3).**/
+/** SM-2 ease factor (start 2.5, floor 1.3).*/
 easeFactor: number;
-/** Interval to next review, in days.**/
+/** Interval to next review, in days.*/
 intervalDays: number;
-/** SM-2 repetition counter (resets to 0 on lapse).**/
+/** SM-2 repetition counter (resets to 0 on lapse).*/
 repetitions: number;
-/** UTC ISO timestamp the card is next due.**/
+/** UTC ISO timestamp the card is next due.*/
 nextReviewDate: string;
-/** Last time the user answered this card (any rating).**/
+/** Last time the user answered this card (any rating).*/
 lastReviewedAt: string | null;
-/** Number of times this card was answered correctly across all reviews.**/
+/** Number of times this card was answered correctly across all reviews.*/
 correctCount: number;
-/** Number of times this card was answered incorrectly across all reviews.**/
+/** Number of times this card was answered incorrectly across all reviews.*/
 incorrectCount: number;
-/** Number of times the user pressed "again" (lapses).**/
+/** Number of times the user pressed "again" (lapses).*/
 lapses: number;
-/** Total user-rated reviews on this card.**/
+/** Total user-rated reviews on this card.*/
 totalReviews: number;
-/** Where the card originated.**/
+/** Where the card originated.*/
 source: "exam_incorrect" | "manual" | "weak_area_seed";
 createdAt: string;
 updatedAt: string;
 }
-
 export interface PracticeStartPayload {
   mode: PracticeMode;
-  /** Required when mode === "subject_focus".**/
+  /** Required when mode === "subject_focus".*/
   subjectArea?: string;
-  /** Max cards in the session (default 20).**/
+  /** Max cards in the session (default 20).*/
   maxQuestions?: number;
-  /** New-cards limit (default 5).**/
+  /** New-cards limit (default 5).*/
   newCardsLimit?: number;
 }
-
 export interface PracticeSessionCard {
   cardId: string;
   questionId: string;
   status: PracticeCardStatus;
-  /** Indicates this card was *added* by this session (not previously known).**/
+  /** Indicates this card was *added* by this session (not previously known).*/
   isNewIntroduction: boolean;
-  /** Order presented to the user.**/
+  /** Order presented to the user.*/
   order: number;
-  /** User's selected answer letter when answered.**/
+  /** User's selected answer letter when answered.*/
   userAnswer: string | null;
-  /** True/false set once the answer is graded.**/
+  /** True/false set once the answer is graded.*/
   isCorrect: boolean | null;
-  /** Rating the user submitted (again/hard/good/easy).**/
+  /** Rating the user submitted (again/hard/good/easy).*/
   rating: PracticeRating | null;
-  /** Seconds spent on the card.**/
+  /** Seconds spent on the card.*/
   timeSpent: number | null;
-  /** SM-2 snapshot *before* the rating was applied.**/
+  /** SM-2 snapshot *before* the rating was applied.*/
   preEaseFactor: number;
   preIntervalDays: number;
   preRepetitions: number;
-  /** SM-2 snapshot *after* the rating was applied.**/
+  /** SM-2 snapshot *after* the rating was applied.*/
   postEaseFactor: number | null;
   postIntervalDays: number | null;
   postRepetitions: number | null;
   postStatus: PracticeCardStatus | null;
   postNextReviewDate: string | null;
 }
-
 export interface PracticeSession {
   _id: string;
   userId: string;
@@ -1037,12 +1050,11 @@ export interface PracticeSession {
   startedAt: string;
   completedAt: string | null;
   durationMs: number | null;
-  /** Aggregates filled in on completion.**/
+  /** Aggregates filled in on completion.*/
   totalAnswered: number;
   totalCorrect: number;
   accuracyPct: number | null;
 }
-
 export interface PracticeStartResponse {
   sessionId: string;
   mode: PracticeMode;
@@ -1053,7 +1065,7 @@ export interface PracticeStartResponse {
     order: number;
     status: PracticeCardStatus;
     isNewIntroduction: boolean;
-    /** Sanitized question payload (no correctAnswer / rationale).**/
+    /** Sanitized question payload (no correctAnswer / rationale).*/
     question: {
       _id: string;
       subjectArea: SubjectArea;
@@ -1403,117 +1415,7 @@ export interface SecurityConfig {
 }
 ```
 
-TypeScript code:
-```typescript
-export interface IpIntelligence {
-  _id: string;
-  reputation: IpReputation;
-  threatScore: number;
-  isKnownProxy: boolean;
-  isKnownVPN: boolean;
-  isKnownTor: boolean;
-  isKnownDataCenter: boolean;
-  country: string | null;
-  asn: string | null;
-  asnOrg: string | null;
-  activity: {
-    firstSeenAt: string;
-    lastSeenAt: string;
-    totalRequests: number;
-    requestsToday: number;
-    failedLoginsTotal: number;
-    failedLoginsToday: number;
-    accountsCreated: number;
-    accountsCreatedToday: number;
-    examSessionsStarted: number;
-    flaggedActions: number;
-  };
-  fingerprints: string[];
-  userAgents: string[];
-  associatedUserIds: string[];
-  blocks: Array<
-    reason: string;
-    blockedAt: string;
-    expiresAt: string | null;
-    blockedBy: "system" | string;
-    lifted: boolean;
-    liftedAt: string | null;
-    liftedBy: string | null;
-  >;
-  riskFactors: string[];
-  updatedAt: string;
-}
-
-export interface BlockedEntity {
-  _id: string;
-  type: BlockedEntityType;
-  value: string;
-  reason: string;
-  severity: BlockSeverity;
-  blockedBy: "system" | string;
-  blockedAt: string;
-  expiresAt: string | null;
-  isActive: boolean;
-  metadata: {
-    hitCount: number;
-    lastHitAt: string | null;
-    associatedEvents: string[];
-  };
-}
-
-export interface EndpointLimitConfig {
-  perIp?: {
-    perMinute?: number;
-    perHour?: number;
-    perDay?: number;
-  };
-  perUser?: {
-    perMinute?: number;
-    perHour?: number;
-    perDay?: number;
-  };
-  endpoints: Record<string, EndpointLimitConfig>;
-}
-
-export interface SecurityConfig {
-  _id: "global";
-  rateLimits: {
-    global: {
-      requestsPerSecond: number;
-      burstLimit: number;
-    };
-    perIp: {
-      requestsPerMinute: number;
-      requestsPerHour: number;
-      requestsPerDay: number;
-    };
-    perUser: {
-      requestsPerMinute: number;
-      requestsPerHour: number;
-      requestsPerDay: number;
-    };
-    endpoints: Record<string, EndpointLimitConfig>;
-  };
-}
-
-export interface BotDetection {
-  enabled: boolean;
-  captchaThreshold: number;
-  blockThreshold: number;
-  honeypotEnabled: boolean;
-  fingerprintingEnabled: boolean;
-  behavioralAnalysisEnabled: boolean;
-}
-
-export interface Dos {
-  enabled: boolean;
-  globalRpsThreshold: number;
-  perIpSpikeMultiplier: number;
-  slowlorisTimeout: number;
-  maxConcurrentPerIp: number;
-  maxRequestBodySize: number;
-  maxUrlLength: number;
-}
+anomalyDetection: {
 enabled: boolean;
 impossibleTravelEnabled: boolean;
 impossibleTravelThresholdKm: number;
@@ -1628,9 +1530,9 @@ elapsedMs?: number;
 
 export interface CaptchaVerifyResponse {
 valid: boolean;
-/** Signed JWT (10-min expiry) — pass back as `X-Captcha-Token` on the gated request.*/
+/** Signed JWT (10-min expiry) - pass back as `X-Captcha-Token` on the gated request.*/
 token: string | null;
-//** When invalid, optional escalated challenge for the next attempt. */
+//** When invalid, optional escalated challenge for the next attempt.*/
 nextType?: CaptchaType;
 }
 
@@ -1745,103 +1647,103 @@ source: PaymentSource;
 grantedBy: string | null;
 autoRenew: boolean;
 history: Array<
-  startDate: string;
-  endDate: string | null;
-  planId: string;
-  source: string;
-  paymentId: string | null;
-  grantedBy: string | null;
-  cancelledAt: string | null;
-  cancellationReason: string | null;
+startDate: string;
+endDate: string | null;
+planId: string;
+source: string;
+paymentId: string | null;
+grantedBy: string | null;
+cancelledAt: string | null;
+cancellationReason: string | null;
 };
-} | null;
+| null;
 usage: Record<string, {
-  count: number;
-  period: string;
-  lastUsedAt: string;
+count: number;
+period: string;
+lastUsedAt: string;
 });
 export type PaymentSubmissionStatus = "pending" | "reviewing" | "approved" | "rejected" | "expired";
 export interface PaymentSubmission {
-  _id: string;
-  submissionNumber: string;
-  userId: string;
-  planId: string;
-  planName: string;
-  amount: number;
-  currency: "PHP";
-  channel: string;
-  channelName: string;
-  referenceNumber: string;
-  screenshot: {
-    url: string;
-    filename: string;
-    mimeType: string;
-    uploadedAt: string;
-    fileSize: number;
-  };
-  senderName: string | null;
-  senderNumber: string | null;
-  notes: string | null;
-  status: PaymentSubmissionStatus;
-  review: {
-    reviewedBy: string | null;
-    reviewedAt: string | null;
-    decision: "approved" | "rejected" | null;
-    rejectionReason: string | null;
-    adminNotes: string | null;
-  };
-  subscriptionGranted: {
-    startDate: string | null;
-    endDate: string | null;
-    applied: boolean;
-  };
-  expiresAt: string;
-  createdAt: string;
-  updatedAt: string;
+_id: string;
+submissionNumber: string;
+userId: string;
+planId: string;
+planName: string;
+amount: number;
+currency: "PHP";
+channel: string;
+channelName: string;
+referenceNumber: string;
+screenshot: {
+url: string;
+filename: string;
+mimeType: string;
+uploadedAt: string;
+fileSize: number;
+};
+senderName: string | null;
+senderNumber: string | null;
+notes: string | null;
+status: PaymentSubmissionStatus;
+review: {
+reviewedBy: string | null;
+reviewedAt: string | null;
+decision: "approved" | "rejected" | null;
+rejectionReason: string | null;
+adminNotes: string | null;
+};
+subscriptionGranted: {
+startDate: string | null;
+endDate: string | null;
+applied: boolean;
+};
+expiresAt: string;
+createdAt: string;
+updatedAt: string;
 }
 export interface PangMeryendaTransaction {
-  _id: string;
-  userId: string;
-  planId: string;
-  pangmeryendaTransactionId: string;
-  pangmeryendaPaymentUrl: string | null;
-  amount: number;
-  currency: "PHP";
-  status: "initiated" | "pending" | "completed" | "failed" | "cancelled" | "refunded";
-  webhookReceived: boolean;
-  webhookReceivedAt: string | null;
-  webhookPayload: Record<string, unknown> | null;
-  webhookVerified: boolean;
-  subscriptionGranted: {
-    startDate: string | null;
-    endDate: string | null;
-    applied: boolean;
-  };
-  errorMessage: string | null;
-  retryCount: number;
-  createdAt: string;
-  updatedAt: string;
-  completedAt: string | null;
+_id: string;
+userId: string;
+planId: string;
+pangmeryendaTransactionId: string;
+pangmeryendaPaymentUrl: string | null;
+amount: number;
+currency: "PHP";
+status: "initiated" | "pending" | "completed" | "failed" | "cancelled" | "refunded";
+webhookReceived: boolean;
+webhookReceivedAt: string | null;
+webhookPayload: Record<string, unknown> | null;
+webhookVerified: boolean;
+subscriptionGranted: {
+startDate: string | null;
+endDate: string | null;
+applied: boolean;
+};
+errorMessage: string | null;
+retryCount: number;
+createdAt: string;
+updatedAt: string;
+completedAt: string | null;
 }
 export interface PromoCode {
-  _id: string;
-  code: string;
-  type: "premium_grant" | "discount" | "extended_trial";
-  grant: {
-    planId: string | null;
-    durationDays: number | null;
-    discountPercent: number | null;
-    discountAmount: number | null;
-  };
-  maxUses: number | null;
-  currentUses: number;
-  maxUsesPerUser: number;
-  isActive: boolean;
-  validFrom: string;
-  validUntil: string | null;
-  restrictToNewUsers: boolean;
-  usedBy: Array<
-    userId: string;
+_id: string;
+code: string;
+type: "premium_grant" | "discount" | "extended_trial";
+grant: {
+planId: string | null;
+durationDays: number | null;
+discountPercent: number | null;
+discountAmount: number | null;
+};
+maxUses: number | null;
+currentUses: number;
+maxUsesPerUser: number;
+isActive: boolean;
+validFrom: string;
+validUntil: string | null;
+restrictToNewUsers: boolean;
+usedBy: Array<
+userId: string;
 usedAt: string;
 submissionId: string | null;
 }>;
@@ -1857,7 +1759,7 @@ export interface FeatureAccessResult {
     remaining: number | null;
     period: string | null;
     upgradeRequired: boolean;
-  }>;
+  }}>;
 }
 export interface SubscriptionStatusResponse {
   tier: SubscriptionTier;

@@ -78,7 +78,7 @@ async function getDashboard(req: VercelRequest, res: VercelResponse) {
       logsByLevel: levelMap,
       checks,
     },
-  }));
+  });
 }
 
 async function getLogs(req: VercelRequest, res: VercelResponse) {
@@ -103,13 +103,114 @@ return res.status(200).json({
   success: true,
   data: {
     items,
+total,
+page,
+limit,
+totalPages: Math.ceil(total / limit),
+},
+});
+}
+
+async function getMetrics(req: VercelRequest, res: VercelResponse) {
+const db = await getDb();
+const name = queryString(req.query.name, "api.request.duration");
+const range = queryString(req.query.range, "1h");
+const since = toDateFromRange(range);
+
+const docs = await db.collection("metrics").find({
+name,
+timestamp: {$gte: since}
+}).sort({timestamp: 1}).limit(200).toArray();
+return res.status(200).json({success: true, data: {name, range, points: docs}});
+}
+
+async function getAlerts(req: VercelRequest, res: VercelResponse) {
+const db = await getDb();
+const status = typeof req.query.status === "string" ? req.query.status : null;
+const severity = typeof req.query.severity === "string" ? req.query.severity : null;
+const page = Math.max(1, Number(req.query.page) || 1);
+const limit = Math.min(100, Math.max(10, Number(req.query.limit) || 50));
+
+const filter: Record<string, unknown> = {};
+if (status) filter.status = status;
+if (severity) filter.severity = severity;
+
+const [items, total] = await Promise.all([
+db.collection("alerts").find(filter).sort({firedAt: -1}).skip((page - 1) * limit).limit(limit).toArray(),
+db.collection("alerts").countDocuments(filter),
+]);
+
+return res.status(200).json({
+success: true,
+data: {
+items,
+total,
+page,
+limit,
+totalPages: Math.ceil(total / limit),
+},
+});
+}
+
+async function mutateAlert(req: VercelRequest, res: VercelResponse, adminId: ObjectId) {
+const action = queryString(req.query.action, "")
+const body = (req.body ?? {}).as({
+alertId?: string;
+notes?: string;
+rootCause?: string;
+silenceMinutes?: number
+});
+const alertId = queryString(body.alertId || req.query.id, "")
+if (!alertId) {
+return res.status(400).json({success: false, error: "alertId is required"});
+}
+if (action === "acknowledge") {
+await acknowledgeAlert(alertId, adminId, body.notes);
+return res.status(200).json({success: true});
+}
+if (action === "resolve") {
+await resolveAlert(alertId, adminId, body.notes, body.rootCause);
+return res.status(200).json({success: true});
+}
+if (action === "silence") {
+await silenceAlert(alertId, Number(body.silenceMinutes) || 30, body.notes);
+return res.status(200).json({success: true});
+}
+return res.status(400).json({success: false, error: "Unsupported alert action"});
+}
+
+async function testAlert(res: VercelResponse) {
+const alert = await fireAlert({
+source: {
+type: "system_event",
+checkId: null,
+metricName: null,
+ruleId: null,
+},
+severity: "warning",
+title: "Manual test alert",
+description: "Triggered from monitoring admin page",
+context: {
+currentValue: "manual",
+threshold: "none",
+duration: null,
+affectedComponents: ["admin"],
+relatedLogIds: null,
+relatedMetrics: null,
+},
+});
+return res.status(200).json({success: true, data: alert});
+}
+```
+
+This code is a TypeScript function that extracts metrics from a database and processes them based on specified criteria. It uses a `async` function to handle the database operations and a `filter` function to apply the desired conditions. The function returns a JSON object containing the metrics data. The code is structured with comments explaining each part, including types, methods, and error handling.
 if (req.method === "GET") {
   const rules = await db.collection("alert_rules").find({}).sort({updatedAt: -1}).toArray();
   return res.status(200).json({success: true, data: rules});
 }
 
 if (req.method === "POST") {
-  const body = (req.body ?? {}).asRecord<string, unknown>;
+  const body = (req.body ?? {}).as.Record<string, unknown>;
   const action = queryString(req.query.action, "create");
   if (action === "seed-defaults") {
     const docs = defaultAlertRulesSeed(adminId);
@@ -126,11 +227,11 @@ if (req.method === "POST") {
       $set: {
         ...body,
         ruleId,
-        ...updatedAt: new Date(),
+        updatedAt: new Date(),
       },
       $setOnInsert: {
-        ...createdAt: new Date(),
-        ...createdBy: adminId,
+        createdAt: new Date(),
+        createdBy: adminId,
       },
     },
     {upsert: true},
@@ -139,7 +240,7 @@ if (req.method === "POST") {
 }
 
 if (req.method === "PUT") {
-  const body = (req.body ?? {}).asRecord<string, unknown>;
+  const body = (req.body ?? {}).as.Record<string, unknown>;
   const ruleId = queryString(body.ruleId || req.query.id, "");
   if (!ruleId) return res.status(400).json({success: false, error: "ruleId is required"});
   await db.collection("alert_rules").updateOne({ruleId}, {$set: {...body, updatedAt: new Date()}});
@@ -168,10 +269,10 @@ async function healthChecks(req: VercelRequest, res: VercelResponse) {
   }
 
   if (req.method === "PUT") {
-    const body = (req.body ?? {}).asRecord<string, unknown>;
+    const body = (req.body ?? {}).as.Record<string, unknown>;
     const checkId = queryString(body.checkId || req.query.checkId, "");
     if (!checkId) return res.status(400).json({success: false, error: "checkId is required"});
-    await healthCheckRunner.updateCheckConfig(checkId, (body.config ?? {}).asNever);
+    await healthCheckRunner.updateCheckConfig(checkId, (body.config ?? {}).as never);
     return res.status(200).json({success: true});
   }
 
@@ -188,7 +289,7 @@ async function configResource(req: VercelRequest, res: VercelResponse, adminId: 
   }
 
   if (req.method === "PUT") {
-    const patch = (req.body ?? {}).asRecord<string, unknown>;
+    const patch = (req.body ?? {}).as.Record<string, unknown>;
     const saved = await saveMonitoringConfig(patch as never, adminId, db);
     return res.status(200).json({success: true, data: saved});
   }
@@ -277,7 +378,7 @@ await configResource(req, res, admin._id);
 return;
 }
 
-if (resource === "reports" && req.method === "GET") {
+if (resource === "reports") {
 await reports(req, res);
 return;
 }

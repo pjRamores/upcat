@@ -40,6 +40,7 @@ const DefaultIcon = (
  * Empty-state component for "no data yet" screens.
  * Always include an `actionLabel` so users have a way forward.
  */
+
 export default function EmptyState({
   icon,
   title,

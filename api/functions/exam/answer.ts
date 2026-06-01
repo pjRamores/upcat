@@ -22,8 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!questionId || !ObjectId.isValid(questionId)) {
     return res.status(400).json({success: false, error: "Valid questionId is required"});
   }
-
-  if (answer !== null && !["A", "B", "C", "D"].includes(answer ?? "") {
+  if (answer !== null && !["A", "B", "C", "D"].includes(answer ?? "")) {
     return res.status(400).json({success: false, error: "answer must be A|B|C|D or null"});
   }
 
@@ -35,11 +34,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!session) {
     return res.status(404).json({success: false, error: "Session not found"});
   }
-
   if (session.status !== "in_progress") {
     return res.status(400).json({success: false, error: "Session is not in progress"});
   }
-
   if (session.timerState?.pausedAt) {
     return res.status(409).json({success: false, error: "Session is paused. Resume before answering."});
   }

@@ -1,6 +1,6 @@
 /**
  * Cron: inactivity·check.
- * Schedule: 0 4 •••1 (weekly, Monday 04:00 UTC)
+ * Schedule: 0 4 ••••1 (weekly, Monday 04:00 UTC)
  *
  * - Sends a friendly reminder email to users who have not logged in
  * for INACTIVITY_REMINDER_DAYS (365). Marked via `security.inactivityReminderSentAt`.

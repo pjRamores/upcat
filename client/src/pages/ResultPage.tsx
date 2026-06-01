@@ -117,8 +117,8 @@ session.startedAt && session.completedAt
 ? Math.max(
 0,
 Math.floor(
-(new Date(session.completedAt).getTime() -
-new Date(session.startedAt).getTime()) /
+new Date(session.completedAt).getTime() -
+new Date(session.startedAt).getTime() /
 1000
 ),
 )
@@ -143,7 +143,8 @@ navigate(`/review/${sessionId}`);
 }}
 }}
 />
-showOverlay && (
+showOverlay &&
+(
 <XpAwardOverlay reward={reward} onClose={() => setShowOverlay(false)}/>
 )
 showAchievements && reward?.achievements?.length ? (
@@ -170,10 +171,10 @@ Completed {new Date(session.completedAt).toLocaleString()}
 </p>
 <p className="text-sm text-gray-500">
 {pct} >= 80
-?? "Excellent work!"
-pct >= 60
-?? "Good effort — keep practicing!"
-? "Don't give up — review and try again."
+? "Excellent work!"
+: pct >= 60
+? "Good effort — keep practicing!"
+: "Don't give up — review and try again."
 </p>
 </div>
 
@@ -210,7 +211,7 @@ tone="gray"
 <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
 <h2 className="text-lg font-semibold text-gray-900">By Subject</h2>
 <div className="mt-4 space-y-4">
-<SUBJECT_AREAS.map((s) => (
+{SUBJECT_AREAS.map((s) => (
 <SubjectBar key={s} subject={s} stats={score.bySubject[s]}/>
 ))}
 </div>

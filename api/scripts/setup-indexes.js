@@ -1,3 +1,4 @@
+script
 import {existsSync, readFileSync} from "node:fs";
 import {resolve} from "node:path";
 import {MongoClient} from "mongodb";
@@ -97,35 +98,36 @@ async function setupIndexes() {
     const questionSets = db.collection("question_sets");
     await questionSets.createIndex({setId: 1}, {unique: true, name: "set_id_unique"});
     await questionSets.createIndex(
-{isActive: 1, assignmentCount: 1, updatedAt: 1},
-{name: "active_assignment_distribution"},
+script
+{isActive:1, assignmentCount:1, updatedAt:1},
+{name:"active_assignment_distribution"},
 );
 
 const examSetAssignments = db.collection("exam_set_assignments");
 await examSetAssignments.createIndex(
-  {userId: 1, setId: 1},
-  {unique: true, name: "user_set_unique"},
+  {userId:1, setId:1},
+  {unique:true, name:"user_set_unique"},
 );
 
 await examSetAssignments.createIndex(
-  {userId: 1, lastAssignedAt: -1},
-  {name: "user_set_recent"},
+  {userId:1, lastAssignedAt:-1},
+  {name:"user_set_recent"},
 );
 
 const assignmentEvents = db.collection("exam_set_assignment_events");
 await assignmentEvents.createIndex(
-  {sessionId: 1},
-  {unique: true, name: "session_assignment_unique"},
+  {sessionId:1},
+  {unique:true, name:"session_assignment_unique"},
 );
 
 await assignmentEvents.createIndex(
-  {userId: 1, assignedAt: -1},
-  {name: "user_assignment_recent"},
+  {userId:1, assignedAt:-1},
+  {name:"user_assignment_recent"},
 );
 
 await assignmentEvents.createIndex(
-  {userId: 1, setId: 1, assignedAt: -1},
-  {name: "user_assignment_history"},
+  {userId:1, setId:1, assignedAt:-1},
+  {name:"user_set_assignment_history"},
 );
 
 console.log("√ question set indexes created");

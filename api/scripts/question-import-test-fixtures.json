@@ -68,7 +68,7 @@
               "linear",
               "math-alpha"
             ]
-          },
+          }
         },
         {
           "subjectArea": "Mathematics",
@@ -93,30 +93,30 @@
               ]
             }
           },
-        },
-        {
-          "subjectArea": "Science",
-          "subtopic": "Newton's·Second·Law",
-          "difficulty": "easy",
-          "type": "multiple_choice",
-          "questionText": "If a 2-kg object is pushed with a force of 10 N, what is its acceleration?",
-          "choices": [
-            {
-              "A": "2 m/s^2",
-              "B": "5 m/s^2",
-              "C": "8 m/s^2",
-              "D": "12 m/s^2"
-            },
-            {
-              "correctAnswer": "B",
-              "rationale": "Using a = F/m, acceleration is 10/2 = 5 m/s^2.",
-              "tags": [
-                "physics",
-                "force",
-                "science-alpha"
-              ]
-            }
-          ]
+          {
+            "subjectArea": "Science",
+            "subtopic": "Newton's·Second·Law",
+            "difficulty": "easy",
+            "type": "multiple_choice",
+            "questionText": "If a 2-kg object is pushed with a force of 10 N, what is its acceleration?",
+            "choices": [
+              {
+                "A": "2 m/s^2",
+                "B": "5 m/s^2",
+                "C": "8 m/s^2",
+                "D": "12 m/s^2"
+              },
+              {
+                "correctAnswer": "B",
+                "rationale": "Using a = F/m, acceleration is 10/2 = 5 m/s^2.",
+                "tags": [
+                  "physics",
+                  "force",
+                  "science-alpha"
+                ]
+              }
+            ]
+          }
         }
       ]
     }
@@ -140,45 +140,5 @@
     "biology",
     "cell",
     "science-alpha"
-  ]
-},
-{
-  "subjectArea": "Reading Comprehension",
-  "subtopic": "Main Idea",
-  "difficulty": "easy",
-  "type": "multiple_choice",
-  "questionText": "Passage: Urban gardens provide fresh produce and improve neighborhood engagement. What is the main idea?",
-  "choices": [
-    "A": "Urban gardens are difficult to maintain.",
-    "B": "Urban gardens have social and nutritional benefits.",
-    "C": "Only rural areas can produce vegetables.",
-    "D": "Neighborhoods should avoid shared spaces."
-  ],
-  "correctAnswer": "B",
-  "rationale": "The passage highlights both food access and community engagement benefits.",
-  "tags": [
-    "reading",
-    "main-idea",
-    "rc-alpha"
-  ]
-},
-{
-  "subjectArea": "Reading Comprehension",
-  "subtopic": "Inference",
-  "difficulty": "medium",
-  "type": "multiple_choice",
-  "questionText": "Passage: Maya packed an umbrella before leaving, though the sky was clear. Which inference is best supported?",
-  "choices": [
-    "A": "Maya expected possible rain later.",
-    "B": "Maya forgot what umbrellas are for.",
-    "C": "Maya dislikes sunny weather.",
-    "D": "Maya was going to the beach."
-  ],
-  "correctAnswer": "A",
-  "rationale": "Bringing an umbrella despite clear skies implies anticipation of rain.",
-  "tags": [
-    "reading",
-    "inference",
-    "rc-alpha"
   ]
 }

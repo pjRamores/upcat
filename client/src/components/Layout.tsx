@@ -38,7 +38,7 @@ export default function Layout() {
       <SetPasswordHint/>
       <AnnouncementBanner/>
       <SystemStatusBanner/>
-      <main>
+      <main
         id="main-content"
         role="main"
         tabIndex={-1}

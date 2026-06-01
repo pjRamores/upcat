@@ -1,11 +1,11 @@
 /**
- * Phase 15c — Active sessions + recent security activity for the user.
+ * Phase 15c - Active sessions + recent security activity for the user.
  *
  * Displayed inside SettingsPage. Lets the user revoke individual sessions
  * (other than the current one) or every other session at once.
  */
 import {useEffect, useState} from "react";
-import {userSecurityApi, type} UserSecurityEvent, type} UserSessionRow,} from "@/lib/securityApi";
+import {userSecurityApi, type} UserSecurityEvent, type UserSessionRow,} from "@/lib/securityApi";
 
 export default function SessionsSection() {
   const [sessions, setSessions] = useState<UserSessionRow[]> | null>(null);
@@ -58,7 +58,7 @@ export default function SessionsSection() {
 
   return (
     <div className="space-y-6">
-      <error && <p className="text-sm text-red-600">{error}</p>
+      {error && <p className="text-sm text-red-600">{error}</p>}
 
       <div>
         <div className="mb-2 flex items-center justify-between">
@@ -69,40 +69,42 @@ export default function SessionsSection() {
               onClick={revokeAll}
               disabled={busy === "all"}
               className="text-xs font-medium text-red-600 hover:underline disabled:opacity-50"
+            >
+              Sign out of all other devices
+            </button>
           )}
-          Sign out of all other devices
-        </button>
-      )}
-    </div>
-    {!sessions ? (
-      <p className="text-sm text-gray-500">Loading...</p>
-    ) : sessions.length === 0 ? (
-      <p className="text-sm text-gray-500">No active sessions.</p>
-    ) : (
-      <ul className="divide-y divide-gray-200 rounded border border-gray-200">
-        {sessions.map((s) => (
-          <li key={s._id} className="flex flex-wrap items-center gap-3 px-3 py-2 text-sm">
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-gray-800">{s.ip}</span>
+        </div>
+        {!sessions ? (
+          <p className="text-sm text-gray-500">Loading...</p>
+        ) : sessions.length === 0 ? (
+          <p className="text-sm text-gray-500">No active sessions.</p>
+        ) : (
+          <ul className="divide-y divide-gray-200 rounded border border-gray-200">
+            {sessions.map((s) => (
+              <li key={s._id} className="flex flex-wrap items-center gap-3 px-3 py-2 text-sm">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-gray-800">{s.ip}</span>
+                  </div>
+                  {s.isCurrent && (
+                    <span className="rounded bg-green-100 px-2 py-0.5 text-xs text-green-700">
+                      Current
+                    </span>
+                  )}
+                </div>
+                <div className="truncate text-xs text-gray-500">
+                  {s.userAgent || "Unknown device"}
+                </div>
+                <div className="text-xs text-gray-400">
+                  Last active {new Date(s.lastActiveAt).toLocaleString()}
+                </div>
               </div>
-              {s.isCurrent && (
-                <span className="rounded bg-green-100 px-2 py-0.5 text-xs text-green-700">
-                  Current
-                </span>
-              )}
-            </div>
-            <div className="truncate text-xs text-gray-500">
-              {s.userAgent || "Unknown device"}
-            </div>
-            <div className="text-xs text-gray-400">
-              Last active {new Date(s.lastActiveAt).toLocaleString()}
-            </div>
-          </div>
-        </li>
-      </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  )
+  </div>
 }
 <!s.isCurrent && (
   <button
@@ -135,22 +137,22 @@ export default function SessionsSection() {
               className={
                 e.severity === "critical" || e.severity === "high"
               }?
-                "text-xs text-red-600"
-              :
-                e.severity === "medium"
-              ?
-                "text-xs text-amber-600"
-              :
-                "text-xs text-gray-500"
-          }
-        </span>
-      </div>
-      <div className="text-xs text-gray-500">
-        {new Date(e.timestamp).toLocaleString()} {e.ip}
-        {e.country ? `${e.country}` : ""}
-      </div>
-    </li>
-  ))}
-</ul>
-)</div>
+              "text-xs text-red-600"
+              : e.severity === "medium"
+              ? "text-xs text-amber-600"
+              : "text-xs text-gray-500"
+              }
+          )
+        </li>
+      ))}
+      <ul>
+        <div className="text-xs text-gray-500">
+          {new Date(e.timestamp).toLocaleString()} {e.ip}
+          {e.country ? `${e.country}` : ""}
+        </div>
+      </li>
+    </ul>
+  )}
+</div>
+</div>
 );

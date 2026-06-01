@@ -55,7 +55,7 @@ export interface MonitoringConfig {
       startTime: string;
       endTime: string;
       timezone: string;
-      suppressSeverities: Array<"info" | "warning" | "critical" | "emergency"];
+      suppressSeverities: Array<"info" | "warning" | "critical" | "emergency">;
     };
   };
   dashboards: {
@@ -70,7 +70,7 @@ export interface MonitoringConfig {
 export const DEFAULT_MONITORING_CONFIG: MonitoringConfig = {
   _id: "global",
   logging: {
-    defaultLevel: (process.env.LOG_LEVEL as MonitoringConfig["logging"]["defaultLevel"]) || "info",
+    defaultLevel: (process.env.LOG_LEVEL as MonitoringConfig["logging"]]["defaultLevel"]) || "info",
     levelOverrides: {
       "api.auth": "debug",
       scheduler: "info",
@@ -223,10 +223,10 @@ return cachedConfig as MonitoringConfig;
 }
 
 export async function saveMonitoringConfig(
-  patch: Partial<MonitoringConfig>,
-  updatedBy: ObjectId | null,
-  db?: Db,
-) : Promise<MonitoringConfig> {
+patch: Partial<MonitoringConfig>,
+updatedBy: ObjectId | null,
+db?: Db,
+): Promise<MonitoringConfig> {
   const targetDb = db??(await getRawDb());
   const current = await getMonitoringConfig(targetDb);
   const next = deepMerge<MonitoringConfig>(current, patch);

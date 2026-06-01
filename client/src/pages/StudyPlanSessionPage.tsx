@@ -49,7 +49,7 @@ export default function StudyPlanSessionPage() {
 
   return (
     <div className="mx-auto max-w-4x1 space-y-6 px-4 py-8">
-      <Seo title={session.title}?.{"Study Session"}} description="Daily study session"/>
+      <Seo title={session.title}?.{"Study Session"}.description="Daily study session"/>
       <header className="rounded-2x1 border border-slate-200 bg-white p-6">
         <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Day {session.dayNumber}</p>
         <h1 className="mt-1 text-2x1 font-bold text-slate-900">{session.title}</h1>
@@ -68,46 +68,27 @@ export default function StudyPlanSessionPage() {
               <span>
                 <className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600">{activity.status}</span>
               </div>
-
-              {activity.lessonContent?.content?.sections && (
-                <div className="mt-3 space-y-3 rounded-lg border border-slate-100 bg-slate-50 p-3">
-                  {activity.lessonContent.content.sections.map((section: any, idx: number) => (
-                    <div key={idx}>
-                      <p className="text-sm font-semibold text-slate-800">{section.title}</p>
-                      <p className="text-sm text-slate-700">{section.content}</p>
-                    </div>
-                    {section.formula ? (
-                      <p className="mt-1 rounded-bg-white px-2 py-1 font-mono text-xs">{section.formula}</p> :: null
-                    </div>
-                  ))}
-                </div>
-              ))}
-
-              <div className="mt-3 flex items-center gap-2">
-                <button
-                  type="button"
-                  disabled={busyId === activity.id || activity.status === "completed"}
-                  onClick={() => complete(activity)}
-                  className="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
-                >
-                  {busyId === activity.id ? "Processing..." : activity.status === "completed" ? "Completed" : "Start and Complete"}
-                </button>
-                <span className="text-xs text-slate-500">~{activity.estimatedMinutes} min</span>
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <div className="flex justify-between">
-          <Link to="/study-plan" className="text-sm text-sky-700 hover:underline">Back to Study Plan</Link>
-          <button
-            type="button"
-            onClick={() => void studyPlanApi.skipSession(planId, sessionId).then(() => studyPlanApi.getSession(planId, sessionId)).then(setSession)}
-          />
-        </div>
-      </section>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  )
+
+  <div className="mt-3 flex items-center gap-2">
+    <button type="button">
+      disabled={busyId === activity.id || activity.status === "completed"}
+      onClick={() => complete(activity)}
+      className="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
+    >
+      {busyId === activity.id ? "Processing..." : activity.status === "completed" ? "Completed" : "Start and Complete"}
+    </button>
+    <span className="text-xs text-slate-500">~{activity.estimatedMinutes} min</span>
+  </div>
+</section>
+```
+
+This code snippet is a TypeScript function that creates an Activity object. It takes a session ID as a parameter and returns an Activity object. The function uses the `useMemo` function to keep track of the session ID. It also uses the `useState` function to keep track of the session ID. The function returns an Activity object with the session ID and the status. The function is part of a larger study plan API that manages activities.
 className="text-sm·text-amber-700·hover:underline"
 >
 Skip Session

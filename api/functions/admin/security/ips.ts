@@ -32,7 +32,7 @@ export default withSecurity({endpoint: "ADMIN/api/admin/security/ips"})(async (
       cidr?: string,
       severity?: "hard" || "soft",
       reason?: string,
-      duration?: number
+      duration?: number,
     });
     if (!body.cidr || !/\^\d{1,3}(\.\d{1,3}){3}\/\d{1,2}$|^[0-9a-f:]+\/\d{1,3}$/i.test(body.cidr)) {
       res.status(400).json({success: false, error: "Invalid CIDR"});
@@ -73,7 +73,7 @@ export default withSecurity({endpoint: "ADMIN/api/admin/security/ips"})(async (
     const body = (req.body ?? {}).as({
       severity?: "hard" || "soft",
       reason?: string,
-      duration?: number
+      duration?: number,
     });
     const expiresAt = body.duration ? new Date(Date.now() + body.duration * 1000) : null;
     const doc = {

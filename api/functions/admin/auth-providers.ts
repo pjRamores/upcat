@@ -79,7 +79,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const provider = (req.query.provider as string | undefined).toLowerCase();
   const action = req.query.action as string | undefined;
 
-  // GET (list) -------------------------------------------------------------------------
+  // GET (list) ------------------------------------------------------------------------
   if (req.method === "GET") {
     if (provider && !isSupportedProvider(provider)) {
       return res.status(400).json({success: false, error: "Unsupported provider."});
@@ -91,7 +91,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({success: true, data: list});
   }
 
-  // PUT (update one) -------------------------------------------------------------------------
+  // PUT (update one) ------------------------------------------------------------------------
   if (req.method === "PUT") {
     if (!isSupportedProvider(provider)) {
       return res.status(400).json({success: false, error: "Unsupported provider."});
@@ -133,7 +133,6 @@ targetType: "auth_provider",
 targetId: null,
 metadata: {provider, fields: Object.keys(body)},
 });
-
 return res.status(200).json({
 success: true,
 data: {

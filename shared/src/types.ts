@@ -202,12 +202,13 @@ export interface UserHelpBlock {
     reducedHelp: boolean;
   };
 }
+```
 
-// --- Gamification on the User record -------------------------------------------
+//--- Gamification on the User record ---
+
 export interface UserGamificationBlock {
   xp: number;
   level: number;
-}
 title: string;
 streak: {
 current: number;
@@ -312,6 +313,9 @@ export interface DeleteAccountPayload {
 /** Required: user must type the exact phrase to confirm. */
 confirmation: string;
 /** Required when the user has a local password. */
+...password?: string;
+}
+
 //--- Account recovery --------------------------------------------------------
 
 export interface GenerateRecoveryCodesResponse {
@@ -415,8 +419,9 @@ export interface SupportTicketVerification {
 export interface SupportTicketResolution {
   action: string | null;
   notes: string | null;
-resolvedBy: string | null;
-resolvedAt: string | null;
+}
+...resolvedBy: string | null;
+...resolvedAt: string | null;
 }
 
 export interface SupportTicket {
@@ -669,7 +674,7 @@ export interface VerifyEmailPayload {
   token: string;
 }
 
-// --- Password validation --------------------------------------------------------
+//—— Password validation ——
 export type PasswordStrength = "weak" | "medium" | "strong";
 
 export interface PasswordValidation {
@@ -678,7 +683,7 @@ export interface PasswordValidation {
   errors: string[];
 }
 
-// --- Exam --------------------------------------------------------------
+//—— Exam ——
 export type SubjectArea =
   | "Language Proficiency"
   | "Mathematics"
@@ -851,7 +856,7 @@ export interface ExamSession {
   createdAt:string;
 }
 
-//---Stats------------------------------------------
+//---Stats----------------------------------------------------------
 export interface UserStats {
   totalExams:number;
   averageScore:number;
@@ -859,7 +864,7 @@ export interface UserStats {
   subjectBreakdown:Record<SubjectArea, {attempts:number; averageScore:number}>;
 }
 
-//---API Responses------------------------------------------
+//---API Responses----------------------------------------------------------
 export interface ApiResponse<T =unknown> {
   success:boolean;
   data?:T;
@@ -918,19 +923,13 @@ export interface SessionSummary {
   percentage:number|null;
 }
 
-//---Admin------------------------------------------
+//---Admin----------------------------------------------------------
 export type FlagReason = "incorrect_answer"| "typo"| "unclear"| "other";
 export type FlagStatus = "open"| "resolved"| "dismissed";
 export type AnnouncementType = "info"| "warning"| "maintenance";
+```
 
-export interface QuestionFlag {
-  _id:string;
-  questionId:string;
-  userId:string;
-  userEmail?:string;
-  reason:FlagReason;
-  comment:string;
-}
+---
 status: FlagStatus;
 resolutionNote?: string;
 resolvedBy?: string;
@@ -977,11 +976,13 @@ export interface PlatformSettings {
     incorrect: number;
     unanswered: number;
   };
-  /**
-   * Optional ad-system overrides. When omitted, the server returns
-   * `DEFAULT_ADS_SETTINGS` merged with env-derived defaults (publisher.id).
-   */
-  ads?: import("./ads.js").AdsSettings;
+}
+
+/**
+ * Optional ad-system overrides. When omitted, the server returns
+ * `DEFAULT_ADS_SETTINGS` merged with env-derived defaults (publisher.id).
+ */
+ads?: import("./ads.js").AdsSettings;
 }
 
 export interface ActivityLogEntry {
@@ -1140,21 +1141,20 @@ export type AchievementRarity =
 /** Declarative condition evaluated server-side against User + counters. */
 export type AchievementCondition =
   | { kind: "examCount"; gte: number }
-{
-  kind: "perfectScores"; gte: number}
-  kind: "scoreThreshold"; gte: number; count: number}
-  kind: "streakDays"; gte: number}
-  kind: "totalXp"; gte: number}
-  kind: "levelReached"; gte: number}
-  kind: "questionsAnswered"; gte: number}
-  kind: "correctAnswers"; gte: number}
-  kind: "practiceSessions"; gte: number}
-  kind: "perfectSubject"; subject: string; gte: number}
-  kind: "studyMinutes"; gte: number}
-  kind: "consecutiveDailyLogins"; gte: number};
+| { kind: "perfectScores"; gte: number }
+| { kind: "scoreThreshold"; gte: number; count: number }
+| { kind: "streakDays"; gte: number }
+| { kind: "totalXp"; gte: number }
+| { kind: "levelReached"; gte: number }
+| { kind: "questionsAnswered"; gte: number }
+| { kind: "correctAnswers"; gte: number }
+| { kind: "practiceSessions"; gte: number }
+| { kind: "perfectSubject"; subject: string; gte: number }
+| { kind: "studyMinutes"; gte: number }
+| { kind: "consecutiveDailyLogins"; gte: number };
 
 export interface AchievementDef {
-  id: string;
+  _id: string;
   id: string; // stable string id, e.g. "first_exam"
   category: AchievementCategory;
   rarity: AchievementRarity;
@@ -1181,15 +1181,15 @@ export interface UserAchievement extends AchievementDef {
 }
 
 export type WeeklyChallengeMetric =
-  "exams_completed"
-  "questions_correct"
-  "study_minutes"
-  "practice_sessions"
-  "perfect_scores"
-  "score_above_threshold";
+  | "exams_completed"
+  | "questions_correct"
+  | "study_minutes"
+  | "practice_sessions"
+  | "perfect_scores"
+  | "score_above_threshold";
 
 export interface WeeklyChallengeDef {
-  id: string;
+  _id: string;
   id: string;
   title: string;
   description: string;
@@ -1245,15 +1245,16 @@ export interface XpAwardResult {
 }
 ```
 
-This code is a TypeScript interface for a `export` function that extracts and returns a `TypeScript` object containing various attributes of an `export` interface. The attributes are defined with type constraints and are organized into a structured JSON-like format. The code is strictly adhered to the specified rules, ensuring that only the raw, executable TypeScript code is output.
-achievementId: string;
-title: string;
-description: string;
-rarity: AchievementRarity;
-icon: string;
-xpAwarded: number;
-points: number;
-unlockedAt: string;
+export interface AchievementUnlockEvent {
+```typescript
+...achievementId: string;
+...title: string;
+...description: string;
+...rarity: AchievementRarity;
+...icon: string;
+...xpAwarded: number;
+...points: number;
+...unlockedAt: string;
 }
 
 /** Returned from exam/submit, practice/complete, and login when applicable. */
@@ -1312,9 +1313,10 @@ export interface AdminAchievementUpsertPayload {
   isActive?: boolean;
 }
 
-// -------------------------------------------------------------------------
+// ------------------------------------------------------------------------
+
 // Phase 13 - Spaced Repetition Practice Mode
-// -------------------------------------------------------------------------
+// ------------------------------------------------------------------------
 
 export type PracticeCardStatus = "new" | "learning" | "review" | "mastered";
 
@@ -1348,7 +1350,7 @@ numberOfTimes: this.card was answered incorrectly across all reviews.*/
 incorrectCount: number;
 numberOfTimes the user pressed "again" (lapses).*/
 lapses: number;
-Total user-rated reviews on this card.*/
+totalUserRatedReviews: on this card.*/
 totalReviews: number;
 Where the card originated.*/
 source: "exam_incorrect" | "manual" | "weak_area_seed";
@@ -1360,9 +1362,9 @@ export interface PracticeStartPayload {
   mode: PracticeMode;
   requiredWhenMode === "subject_focus".*/
   subjectArea?: string;
-  Max cards in the session (default 20).*/
+  maxCardsInTheSession (default: 20).*/
   maxQuestions?: number;
-  New-cards limit (default 5).*/
+  newCardsLimit (default: 5).*/
   newCardsLimit?: number;
 }
 
@@ -1370,17 +1372,17 @@ export interface PracticeSessionCard {
   cardId: string;
   questionId: string;
   status: PracticeCardStatus;
-  Indicates this card was *added* by this session (not previously known).*/
+  indicates: this.card was *added* by this session (not previously known).*/
   isNewIntroduction: boolean;
-  Order presented to the user.*/
+  order presented to the user.*/
   order: number;
-  User's selected answer letter when answered.*/
+  user's selected answer letter when answered.*/
   userAnswer: string | null;
-  True/false set once the answer is graded.*/
+  true/false set once the answer is graded.*/
   isCorrect: boolean | null;
   Rating the user submitted (again/hard/good/easy).*/
   rating: PracticeRating | null;
-  Seconds spent on the card.*/
+  seconds spent on the card.*/
   timeSpent: number | null;
   SM-2 snapshot *before* the rating was applied.*/
   preEaseFactor: number;
@@ -1408,7 +1410,7 @@ export interface PracticeSession {
   startedAt: string;
   completedAt: string | null;
   durationMs: number | null;
-  Aggregates filled in on completion.*/
+ Aggregates filled in on completion.*/
   totalAnswered: number;
   totalCorrect: number;
   accuracyPct: number | null;
@@ -1442,6 +1444,9 @@ export interface PracticeStartResponse {
     };
   };
 }
+...weakSubjects: string[];
+}
+
 export interface PracticeAnswerPayload {
   cardId: string;
   userAnswer: "A" | "B" | "C" | "D" | null;
@@ -1671,7 +1676,7 @@ export interface SecurityEventAction {
 }
 
 export interface SecurityEvent {
-  id: string;
+  _id: string;
   timestamp: string;
   type: string;
   severity: SecuritySeverity;
@@ -1686,7 +1691,7 @@ export interface SecurityEvent {
 }
 
 export interface IpIntelligence {
-  id: string;
+  _id: string;
   reputation: IpReputation;
   threatScore: number;
   isKnownProxy: boolean;
@@ -1725,7 +1730,7 @@ export interface IpIntelligence {
 }
 
 export interface BlockedEntity {
-  id: string;
+  _id: string;
   type: BlockedEntityType;
   value: string;
   reason: string;
@@ -1747,7 +1752,7 @@ export interface EndpointLimitConfig {
 }
 
 export interface SecurityConfig {
-  id: "global";
+  _id: "global";
   rateLimits {
     global: { requestsPerSecond: number; burstLimit: number };
     perIp: { requestsPerMinute: number; requestsPerHour: number; requestsPerDay: number };
@@ -1759,7 +1764,7 @@ enabled: boolean;
 captchaThreshold: number;
 blockThreshold: number;
 honeypotEnabled: boolean;
-fingerprintingEnabled: boolean;
+fingerprintEnabled: boolean;
 behavioralAnalysisEnabled: boolean;
 };
 dos: {
@@ -1939,9 +1944,9 @@ export interface ManualPaymentChannel {
   bankName: string | null;
   qrCodeImage: string | null;
   qrCodeLabel: string | null;
-  limits: {
-    daily: { max: number | null; current: number; lastResetDate: string };
-    monthly: { max: number | null; current: number; lastResetMonth: string };
+  limits:
+  ...| daily: { max: number | null; current: number; lastResetDate: string };
+  ...| monthly: { max: number | null; current: number; lastResetMonth: string };
   };
   autoDisabled: boolean;
   autoDisabledReason: string | null;
@@ -1957,7 +1962,8 @@ export interface FeatureGateConfig {
   category: FeatureCategory;
   accessLevel: FeatureAccessLevel;
   hasLimit: boolean;
-  limits: { free: number | null; premium: number | null } | null;
+  limits:
+  ...| free: number | null; premium: number | null } | null;
   limitPeriod: FeatureLimitPeriod | null;
 }
 export interface PaymentConfig {
@@ -2063,12 +2069,10 @@ export interface PaymentSubmission {
   expiresAt: string;
   createdAt: string;
 }
-import { interface } from "pangMeryendaTransaction";
-import { interface } from "promoCode";
-import { interface } { featureAccessResult };
-import { interface } { subscriptionStatusResponse };
+updatedAt: string;
+}
 
-interface interface {
+export interface PangMeryendaTransaction {
   _id: string;
   userId: string;
   planId: string;
@@ -2093,7 +2097,7 @@ interface interface {
   completedAt: string | null;
 }
 
-interface interface {
+export interface PromoCode {
   _id: string;
   code: string;
   type: "premium_grant" | "discount" | "extended_trial";
@@ -2115,9 +2119,7 @@ interface interface {
   createdBy: string;
 }
 
-interface interface { featureAccessResult };
-interface interface { subscriptionStatusResponse };
-interface interface {
+export interface FeatureAccessResult {
   tier: SubscriptionTier;
   features: Record<
     string,
@@ -2132,8 +2134,9 @@ interface interface {
   >;
 }
 
-interface interface { SubscriptionTier };
-interface interface { isPremium: boolean;
+export interface SubscriptionStatusResponse {
+  tier: SubscriptionTier;
+  isPremium: boolean;
   isLifetime: boolean;
   startDate: string | null;
   endDate: string | null;
@@ -2142,5 +2145,5 @@ interface interface { isPremium: boolean;
   source: string | null;
   isExpiringSoon: boolean;
   renewalOptions: PremiumPlan[];
-  history: UserSubscription["premium"] extends { history: infer | H } ? H : never;
+  history: UserSubscription["premium"] extends { history: infer | H }? H::never;
 }

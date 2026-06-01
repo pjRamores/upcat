@@ -1,3 +1,4 @@
+script
 /* eslint-disable max-lines */
 
 function article({
@@ -11,8 +12,8 @@ function article({
   relatedArticles = [],
   relatedFeaturePages = [],
   contextualHelpIds = [],
-  faqs = null,
-}) {
+  faqs = null
+}): {
   return {
     slug,
     category,
@@ -32,7 +33,7 @@ function article({
     screenshots: null,
     status: "published",
     seoTitle: title,
-    seoDescription: subtitle,
+    seoDescription: subtitle
   };
 }
 
@@ -42,57 +43,57 @@ const HELP_CATEGORIES = [
     category: "getting-started",
     name: "Getting Started",
     description: "Start here if you are new to the platform.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "practice-test",
     category: "practice-test",
     name: "Practice Tests",
     description: "Configure and review personalized practice sessions.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "mock-exam",
     category: "mock-exam",
     name: "Mock Exams",
     description: "Realistic exam simulation under stricter rules.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "gamification",
     category: "gamification",
     name: "Gamification & Progress",
     description: "XP, levels, streaks, achievements, and rankings.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "study-plan",
     category: "study-plan",
     name: "Study Plan",
     description: "Your adaptive daily curriculum.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "account",
     category: "account",
     name: "Account & Settings",
     description: "Profile, security, and help preferences.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "payment",
     category: "payment",
     name: "Premium & Payments",
     description: "Plans, billing, and subscription lifecycle.",
-    icon: "🤱",
+    icon: "🔍"
   },
   {
     _id: "troubleshooting",
     category: "troubleshooting",
     name: "Troubleshooting",
     description: "Common issues and quick solutions.",
-    icon: "🤱",
-  },
+    icon: "🔍"
+  }
 ];
 
 const HELP_ARTICLES = [
@@ -103,9 +104,10 @@ const HELP_ARTICLES = [
       order: 1,
       title: "Welcome to UPCAT Simulator",
       subtitle: "A beginner-friendly overview of the platform and how to get started.",
-    },
-  }
+    }
+  ]
 ];
+script
 relatedArticles: ["creating-account", "navigating-dashboard", "how-practice-test-works"],
 relatedFeaturePages: ["/dashboard", "/practice", "/study-plan"],
 body: `## What is UPCAT Simulator?
@@ -160,7 +162,7 @@ UPCAT Simulator is an independent educational platform and is not affiliated wit
 - Start your first practice session on [/practice](/practice)
 - ,
 - )),
-- article({
+article({
   slug: "creating-account",
   category: "getting-started",
   order: 2,
@@ -217,7 +219,7 @@ Set three security questions that you can remember but others cannot guess.
 
 ## Quick Checklist
 | Task | Recommended | Where |
-|---|---|---|
+| :--- | :--- | :--- |
 | Verify email | Yes | Inbox link |
 | Link social account | Optional | Settings |
 | Set local password | Yes | Settings |
@@ -301,7 +303,7 @@ A Practice Test is a configurable learning session designed for **understanding 
 
 ## Practice Test vs. Mock Exam
 | Aspect | Practice Test | Mock Exam |
-|---|---|---|
+| :--- | :--- | :--- |
 | Configuration | You choose all settings | Admin-defined structure |
 | Answer Flow | Card-by-card with rationale | Full exam sections |
 | Scoring | Deck progress and retention | Readiness assessment score |
@@ -330,23 +332,23 @@ A Practice Test is a configurable learning session designed for **understanding 
 - **Intermediate**: 5-6 mixed sessions per week
 - **Advanced**: 3-4 targeted sessions plus 1 mock exam per week
 
-- },)
-- article({
-- slug: "configuring-practice-test",
-- category: "practice-test",
-- order: 2,
-- title: "Configuring Your Practice Test",
-- subtitle: "Configure your session with practical setup recommendations.",
-- relatedArticles: ["taking-practice-test", "practice-test-results"],
-- relatedFeaturePages: ["/practice-test/configure", "/practice"],
-- contextualHelpIds: [
-- "pt_subject_select",
-- "pt_subtopic_select",
-- "pt_question_count",
-- "pt_random_cards",
-- "pt_presets",
-- ],
-- body: `## Step 1: Choose Subjects and Topics
+- },
+article({
+  slug: "configuring-practice-test",
+  category: "practice-test",
+  order: 2,
+  title: "Configuring Your Practice Test",
+  subtitle: "Configure your session with practical setup recommendations.",
+  relatedArticles: ["taking-practice-test", "practice-test-results"],
+  relatedFeaturePages: ["/practice-test/configure", "/practice"],
+  contextualHelpIds: [
+    "pt_subject_select",
+    "pt_subtopic_select",
+    "pt_question_count",
+    "pt_random_cards",
+    "pt_presets",
+  ],
+  body: `## Step 1: Choose Subjects and Topics
 - Select one or more subjects.
 - Optionally choose specific subtopics for focused drilling.
 - Use a broad selection for variety or a targeted selection to address weak areas.
@@ -393,16 +395,16 @@ After each card is revealed, rate its difficulty honestly:
 After your session, check deck status and due load in Practice Deck Statistics.
 Adjust your next session by subject focus, card volume, or mode.
 
-- },)
-- article({
-- slug: "taking-practice-test",
-- category: "practice-test",
-- order: 3,
-- title: "Taking a Practice Test",
-- subtitle: "Understand the interface, controls, and navigation during a session.",
-- relatedArticles: ["practice-test-results", "reviewing-practice-answers"],
-- relatedFeaturePages: ["/practice", "/practice/:sessionId"],
-- body: `## Interface overview
+- },
+article({
+  slug: "taking-practice-test",
+  category: "practice-test",
+  order: 3,
+  title: "Taking a Practice Test",
+  subtitle: "Understand the interface, controls, and navigation during a session.",
+  relatedArticles: ["practice-test-results", "reviewing-practice-answers"],
+  relatedFeaturePages: ["/practice", "/practice/:sessionId"],
+  body: `## Interface overview
 - Progress indicator
 - Card question and answer choices
 - Rationale panel after submission
@@ -432,17 +434,16 @@ At the end of a session, you get a summary and your deck stats update automatica
 > [!tip]
 > Accuracy and honest ratings together are more valuable than speed alone.
 },
-```
-
+- }),
 article({
   slug: "practice-test-results",
   category: "practice-test",
   order: 4,
   title: "Understanding Practice Test Results",
   subtitle: "Interpret deck metrics and retention trends to guide your next session.",
-  relatedArticles: ["reviewing-practice-answers", "configuring-practice-test"],
-  relatedFeaturePages: ["/practice/stats", "/practice"],
-  body: `## Practice results breakdown
+relatedArticles: ["reviewing-practice-answers", "configuring-practice-test"],
+relatedFeaturePages: ["/practice/stats", "/practice"],
+body: "## Practice results breakdown
 - Session accuracy and total answered
 - Deck status totals (new/learning/review/mastered)
 - Due today / due this week
@@ -470,17 +471,16 @@ article({
 - Low accuracy + high due backlog: reduce new cards temporarily.
 - Stable retention + shrinking weak areas: continue current cadence.
 
-```
-
+- }),
 article({
   slug: "reviewing-practice-answers",
   category: "practice-test",
   order: 5,
   title: "Reviewing Practice Test Answers",
   subtitle: "Turn review sessions into long-term retention and mastery.",
-  relatedArticles: ["practice-test-results", "how-practice-test-works"],
-  relatedFeaturePages: ["/practice/stats", "/practice"],
-  body: `## Where to review in the current flow
+relatedArticles: ["practice-test-results", "how-practice-test-works"],
+relatedFeaturePages: ["/practice/stats", "/practice"],
+body: "## Where to review in the current flow
 Practice review is distributed across:
 - per-card rationale during sessions
 - deck browser and subject metrics in Practice Deck Stats
@@ -513,28 +513,28 @@ Use subject-focus mode to reinforce the same concept with varied prompts.
 ```json
 > [!tip]
 > Strong review means understanding the decision path, not memorizing letter keys.
-```
-
+- ),
 article({
   slug: "how-mock-exam-works",
   category: "mock-exam",
   order: 1,
   title: "How Mock Exams Work",
   subtitle: "Understand the strict simulation rules and readiness assessment.",
-  relatedArticles: ["taking-mock-exam", "mock-exam-results", "mock-exam-strategies"],
-  relatedFeaturePages: ["/mock-exam", "/dashboard"],
-  quickFacts: [
-    {label: "Questions", value: "Set by admin, typically 100-200"},
-    {label: "Timer", value: "Strict per subtest, cannot pause"},
-    {label: "Subtests", value: "Usually 4"},
-    {label: "Feedback", value: "After full submission"},
-{label: "Scoring", value: "Raw, percentage, percentile"},
-body: `## What Is a Mock Exam?
+relatedArticles: ["taking-mock-exam", "mock-exam-results", "mock-exam-strategies"],
+relatedFeaturePages: ["/mock-exam", "/dashboard"],
+quickFacts: [
+  {label: "Questions", value: "Set by admin, typically 100-200"},
+  {label: "Timer", value: "Strict per subtest, cannot pause"},
+  {label: "Subtests", value: "Usually 4"},
+  {label: "Feedback", value: "After full submission"},
+{
+  label: "Scoring", value: "Raw, percentage, percentile"},
+  body: `## What Is a Mock Exam?
 A Mock Exam is a realistic simulation that replicates actual exam pressure and pacing.
 
 ## Practice Test vs. Mock Exam Comparison
 | Feature | Practice Test | Mock Exam |
-|---|---|---|
+| :--- | :--- | :--- |
 | Configuration | User-defined | Admin-defined |
 | Timer | Optional and pausable | Strict and cannot be paused |
 | Subjects | Flexible selection | Full exam structure |
@@ -555,17 +555,17 @@ A Mock Exam is a realistic simulation that replicates actual exam pressure and p
 ## Availability Notes
 Mock exam availability may be limited based on your subscription plan, cooldown periods, and scheduling windows.
 
-`,
--}}),
+- },
+- }}),
 article({
-slug: "taking-mock-exam",
-category: "mock-exam",
-order: 2,
-title: "Taking a Mock Exam — Step by Step",
-subtitle: "Complete a preparation checklist and understand the subtest flow.",
-relatedArticles: ["mock-exam-results", "mock-exam-strategies"],
-relatedFeaturePages: ["/mock-exam", "/exam/:id"],
-body: `## Before You Start
+  slug: "taking-mock-exam",
+  category: "mock-exam",
+  order: 2,
+  title: "Taking a Mock Exam—Step by Step",
+  subtitle: "Complete a preparation checklist and understand the subtest flow.",
+  relatedArticles: ["mock-exam-results", "mock-exam-strategies"],
+  relatedFeaturePages: ["/mock-exam", "/exam/:id"],
+  body: `## Before You Start
 Ensure you have:
 - Stable internet connection
 - Uninterrupted time block for the full exam
@@ -602,16 +602,17 @@ When you finish a subtest, review any unanswered and flagged items first, becaus
 > [!warning]
 > Treat mock exams like real exam events. Avoid interruptions and multitasking.
 
-},
+- },
+- }}),
 article({
-slug: "mock-exam-results",
-category: "mock-exam",
-order: 3,
-title: "Understanding Mock Exam Results",
-subtitle: "Interpret raw score, adjusted score, percentile, and readiness bands.",
-relatedArticles: ["mock-exam-strategies", "how-mock-exam-works"],
-relatedFeaturePages: ["/results/:sessionId", "/stats"],
-body: `## Overall Score Components
+  slug: "mock-exam-results",
+  category: "mock-exam",
+  order: 3,
+  title: "Understanding Mock Exam Results",
+  subtitle: "Interpret raw score, adjusted score, percentile, and readiness bands.",
+  relatedArticles: ["mock-exam-strategies", "how-mock-exam-works"],
+  relatedFeaturePages: ["/results/:sessionId", "/stats"],
+  body: `## Overall Score Components
 - Raw score (total correct)
 - Adjusted score (if negative marking applies)
 - Percentage correct
@@ -647,14 +648,14 @@ Predicted score is an estimate based on your performance, not an official result
 -,
 -...}),
 -article({
-  slug: "mock-exam-strategies",
-  category: "mock-exam",
-  order: 4,
-  title: "Mock·Exam·Strategies·&·Tips",
-  subtitle: "Practical·tactics·for·pacing,·answering·strategies,·and·test·discipline.",
-  relatedArticles: ["taking-mock-exam", "mock-exam-results"],
-  relatedFeaturePages: ["/mock-exam", "/exam/:id"],
-  body: `## Time Management Rules
+- slug: "mock-exam-strategies",
+- category: "mock-exam",
+- order: 4,
+- title: "Mock·Exam·Strategies·&·Tips",
+- subtitle: "Practical·tactics·for·pacing,·answering·strategies,·and·test·discipline.",
+- relatedArticles: ["taking-mock-exam", "mock-exam-results"],
+- relatedFeaturePages: ["/mock-exam", "/exam/:id"],
+- body: `## Time Management Rules
 - Calculate an average time budget per question.
 - Avoid spending more than 2 minutes on any single question.
 - Flag uncertain questions and return to them if time permits.
@@ -678,14 +679,14 @@ Predicted score is an estimate based on your performance, not an official result
 -,
 -...}),
 -article({
-  slug: "xp-levels-progress",
-  category: "gamification",
-  order: 1,
-  title: "XP,·Levels·&·Your·Progress",
-  subtitle: "Understand·XP·earning,·level·progression,·and·streak·multiplier·mechanics.",
-  relatedArticles: ["achievements-badges", "weekly-challenges", "leaderboard-rankings"],
-  relatedFeaturePages: ["/profile", "/leaderboard"],
-  body: `## What Is XP?
+- slug: "xp-levels-progress",
+- category: "gamification",
+- order: 1,
+- title: "XP, Levels·&·Your·Progress",
+- subtitle: "Understand·XP·earning,·level·progression,·and·streak·multiplier·mechanics.",
+- relatedArticles: ["achievements-badges", "weekly-challenges", "leaderboard-rankings"],
+- relatedFeaturePages: ["/profile", "/leaderboard"],
+- body: `## What Is XP?
 XP (Experience Points) reflects consistent study effort and progress.
 
 ## How To Earn XP
@@ -716,14 +717,14 @@ Each level requires more XP than the previous level. Level tiers provide milesto
 -,
 -...}),
 -article({
-  slug: "achievements-badges",
-  category: "gamification",
-  order: 2,
-  title: "Achievements·&·Badges",
-  subtitle: "Understand·badge·categories,·rarity·tiers,·and·unlock·notifications.",
-  relatedArticles: ["xp-levels-progress", "weekly-challenges"],
-  relatedFeaturePages: ["/profile"],
-  body: `## What Are Achievements?
+- slug: "achievements-badges",
+- category: "gamification",
+- order: 2,
+- title: "Achievements·&·Badges",
+- subtitle: "Understand·badge·categories,·rarity·tiers,·and·unlock·notifications.",
+- relatedArticles: ["xp-levels-progress", "weekly-challenges"],
+- relatedFeaturePages: ["/profile"],
+- body: `## What Are Achievements?
 Achievements are milestone badges that recognize consistency, performance, and mastery.
 
 ## Badge Categories
@@ -748,14 +749,14 @@ Achievements are milestone badges that recognize consistency, performance, and m
 
 - },)
 - article({
-  slug: "weekly-challenges",
-  category: "gamification",
-  order: 3,
-  title: "Weekly Challenges",
-  subtitle: "Understand weekly objectives and plan your study time effectively.",
-  relatedArticles: ["xp-levels-progress", "leaderboard-rankings"],
-  relatedFeaturePages: ["/profile", "/dashboard"],
-  body: `## Weekly Challenge Basics
+- slug: "weekly-challenges",
+- category: "gamification",
+- order: 3,
+- title: "Weekly Challenges",
+- subtitle: "Understand weekly objectives and plan your study time effectively.",
+- relatedArticles: ["xp-levels-progress", "leaderboard-rankings"],
+- relatedFeaturePages: ["/profile", "/dashboard"],
+- body: `## Weekly Challenge Basics
 A new challenge is assigned every Monday.
 
 Complete it before the Sunday cutoff to earn bonus rewards.
@@ -772,14 +773,14 @@ Complete it before the Sunday cutoff to earn bonus rewards.
 
 - },)
 - article({
-  slug: "leaderboard-rankings",
-  category: "gamification",
-  order: 4,
-  title: "Leaderboard & Rankings",
-  subtitle: "Understand how rankings are calculated and how they relate to your performance.",
-  relatedArticles: ["mock-exam-results", "xp-levels-progress"],
-  relatedFeaturePages: ["/leaderboard"],
-  body: `## What Leaderboard Shows
+- slug: "leaderboard-rankings",
+- category: "gamification",
+- order: 4,
+- title: "Leaderboard & Rankings",
+- subtitle: "Understand how rankings are calculated and how they relate to your performance.",
+- relatedArticles: ["mock-exam-results", "xp-levels-progress"],
+- relatedFeaturePages: ["/leaderboard"],
+- body: `## What Leaderboard Shows
 The leaderboard highlights relative performance within selected comparison scopes.
 
 ## Ranking Dimensions
@@ -800,14 +801,14 @@ Display names are partially masked for safety and fairness.
 
 - },)
 - article({
-  slug: "personalized-study-plan",
-  category: "study-plan",
-  order: 1,
-  title: "Your Personalized Study Plan",
-  subtitle: "Understand how diagnosis and adaptation create your learning path.",
-  relatedArticles: ["taking-practice-test", "mock-exam-strategies"],
-  relatedFeaturePages: ["/study-plan", "/study-plan/setup"],
-  body: `## What the Study Plan Does
+- slug: "personalized-study-plan",
+- category: "study-plan",
+- order: 1,
+- title: "Your Personalized Study Plan",
+- subtitle: "Understand how diagnosis and adaptation create your learning path.",
+- relatedArticles: ["taking-practice-test", "mock-exam-strategies"],
+- relatedFeaturePages: ["/study-plan", "/study-plan/setup"],
+- body: `## What the Study Plan Does
 It provides a structured daily curriculum that adapts based on your performance.
 
 ## Personalization Inputs
@@ -837,8 +838,8 @@ You can adjust your study timeline without losing any progress history.
 
 - },)
 - article({
-  slug: "account-settings",
-  category: "account",
+- slug: "account-settings",
+- category: "account",
 order: 1,
 title: "Account Settings & Security",
 subtitle: "Manage your profile, security options, and help preferences.",
@@ -913,19 +914,13 @@ subtitle: "Quick troubleshooting for technical, scoring, and account issues.",
 relatedArticles: ["taking-mock-exam", "account-settings", "premium-features"],
 relatedFeaturePages: ["/support", "/settings", "/payment"],
 faqs: [
-  {
-    question: "My exam timer ran out before I finished. What should I do?",
-    answer: "Review your pacing metrics in the exam results. Then run shorter timed practice drills to build speed before your next full simulation.",
-  },
-  {
-    question: "I lost internet connection during an exam.",
-    answer: "Reconnect to the internet as quickly as possible and reopen your exam session. Your answers are auto-synced periodically.",
-  },
-  {
-    question: "I forgot my password and do not have recovery codes.",
-    answer: "Use the account recovery flow. If needed, contact support with verification details.",
-  },
-  ],
+question: "My exam timer ran out before I finished. What should I do?",
+answer: "Review your pacing metrics in the exam results. Then run shorter timed practice drills to build speed before your next full simulation.",
+question: "I lost internet connection during an exam.",
+answer: "Reconnect to the internet as quickly as possible and reopen your exam session. Your answers are auto-synced periodically.",
+question: "I forgot my password and do not have recovery codes.",
+answer: "Use the account recovery flow. If needed, contact support with verification details.",
+],
 body: `## Timer Ended Before Completion
 ### Why This Happens
 - Spending too much time on a few difficult questions
@@ -944,6 +939,8 @@ body: `## Timer Ended Before Completion
 
 ## Score Seems Wrong
 Double-check:
+```json
+script
 - Negative marking rules for incorrect answers
 - Count of unanswered questions
 - Subtest-specific scoring formulas
@@ -980,83 +977,43 @@ Open a support ticket through the support page and include:
 
 ```json
 {
-  "welcome",
-  "creating-account",
-  "navigating-dashboard",
-  "how-practice-test-works",
-  "configuring-practice-test",
-  "taking-practice-test",
-  "practice-test-results",
-  "reviewing-practice-answers",
-  "how-mock-exam-works",
-  "taking-mock-exam",
-  "mock-exam-results",
-  "mock-exam-strategies",
-  "xp-levels-progress",
-  "achievements-badges",
-  "weekly-challenges",
-  "leaderboard-rankings",
-  "personalized-study-plan",
-  "account-settings",
-  "premium-features",
-  "common-issues",
-};
+  "id": "pt_subtopic_select",
+  "page": "/practice-test/configure",
+  "elementRef": "[data-help='pt_subject_select']",
+  "type": "tooltip",
+  "title": "Choosing Subjects",
+  "shortDescription": "Select one or more subjects. More subjects means more variety.",
+  "detailedContent": "null",
+  "helpArticleSlug": "configuring-practice-test",
+  "helpArticleSection": "#step-1-choose-subjects-and-topics",
+  "showForNewUsers": "true",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 1
+}
 ```
 
 ```json
-const CONTEXTUAL_HELP = [
-  {
-    "_id": "pt_subtopic_select",
-    "page": "/practice-test/configure",
-    "elementRef": "[data-help='pt_subtopic_select']",
-    "type": "tooltip",
-    "title": "Choosing Subjects",
-    "shortDescription": "Select one or more subjects. More subjects means more variety.",
-    "detailedContent": "null",
-    "helpArticleSlug": "configuring-practice-test",
-    "helpArticleSection": "#step-1-choose-subjects-and-topics",
-    "showForNewUsers": "true",
-    "showIcon": "true",
-    "triggerOnHover": "true",
-    "dismissable": "true",
-    "isActive": "true",
-    "order": 1
-  },
-  {
-    "_id": "pt_subtopic_select",
-    "page": "/practice-test/configure",
-    "elementRef": "[data-help='pt_subtopic_select']",
-    "type": "tooltip",
-    "title": "Subject Focus",
-    "shortDescription": "Pick one subject when Subject Focus mode is active; other modes keep this selector disabled.",
-    "detailedContent": "Use Subject Focus when you want every due card and any new introductions to stay inside one subject.",
-    "helpArticleSlug": "configuring-practice-test",
-    "helpArticleSection": "#step-1-choose-subjects-and-topics",
-    "showForNewUsers": "true",
-    "showIcon": "true",
-    "triggerOnHover": "true",
-    "dismissable": "true",
-    "isActive": "true",
-    "order": 2
-  },
-  {
-    "_id": "pt_question_count",
-    "page": "/practice-test/configure",
-    "elementRef": "[data-help='pt_question_count']",
-    "type": "popover",
-    "title": "Question and New-Card Limits",
-    "shortDescription": "Max Questions caps the full session; New Cards only fills leftover space when the mode supports introductions.",
+{
+  "id": "pt_question_count",
+  "page": "/practice-test/configure",
+  "elementRef": "[data-help='pt_question_count']",
+  "type": "popover",
+  "title": "Question and New-Card Limits",
+  "shortDescription": "Max Questions caps the full session; New Cards only fills leftover space when the mode supports introductions.",
 detailedContent: "Use 15-30 questions for focused daily practice and increase gradually as your stamina improves."
 Max Questions is the hard ceiling for the whole session. New Cards Limit is not added on top of that ceiling.
 it only controls how many fresh cards can be introduced after due cards are selected. Review mode ignores new cards.
-and Random mode samples existing cards directly.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: "#step-2-set-question-count",
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: false,
-dismissable: true,
-isActive: true,
+and Random mode samples existing cards directly."
+helpArticleSlug: "configuring-practice-test"
+helpArticleSection: "#step-2-set-question-count"
+showForNewUsers: true
+showIcon: true
+triggerOnHover: false
+dismissable: true
+isActive: true
 order: 3
 },
 {
@@ -1068,14 +1025,14 @@ order: 3
     shortDescription: "Always available deck booster with customizable count.",
     detailedContent: "Use this control anytime to grow your deck without leaving the page. Enter how many cards to add, then click Add random cards."
     This is useful when your deck is small, empty, or when you want extra variety before starting practice.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: "#step-3-grow-your-deck-with-random-cards",
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: false,
-order: 4
+    helpArticleSlug: "configuring-practice-test"
+    helpArticleSection: "#step-3-grow-your-deck-with-random-cards"
+    showForNewUsers: true
+    showIcon: true
+    triggerOnHover: true
+    dismissable: true
+    isActive: false
+    order: 4
 },
 {
     _id: "pt_difficulty_dist",
@@ -1085,14 +1042,14 @@ order: 4
     title: "Difficulty Distribution",
     shortDescription: "Deprecated setting from older practice flow.",
     detailedContent: "This help point remains for backward compatibility and is hidden in current UI.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: false,
-triggerOnHover: false,
-dismissable: true,
-isActive: false,
-order: 4
+    helpArticleSlug: "configuring-practice-test",
+    helpArticleSection: null,
+    showForNewUsers: false,
+    showIcon: false,
+    triggerOnHover: false,
+    dismissable: true,
+    isActive: false
+    order: 4
 },
 {
     _id: "pt_timer_toggle",
@@ -1102,14 +1059,14 @@ order: 4
     title: "Timer Setting",
     shortDescription: "Deprecated setting from older practice flow.",
     detailedContent: "This help point remains for backward compatibility and is hidden in current UI.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: false,
-triggerOnHover: false,
-dismissable: true,
-isActive: false,
-order: 5
+    helpArticleSlug: "configuring-practice-test",
+    helpArticleSection: null,
+    showForNewUsers: false,
+    showIcon: false,
+    triggerOnHover: false,
+    dismissable: true,
+    isActive: false
+    order: 5
 },
 {
     _id: "pt_immediate_feedback",
@@ -1119,14 +1076,14 @@ order: 5
     title: "Immediate Feedback",
     shortDescription: "Deprecated setting from older practice flow.",
     detailedContent: "This help point remains for backward compatibility and is hidden in current UI.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: false,
-triggerOnHover: false,
-dismissable: true,
-isActive: false,
-order: 6
+    helpArticleSlug: "configuring-practice-test",
+    helpArticleSection: null,
+    showForNewUsers: false,
+    showIcon: false,
+    triggerOnHover: false,
+    dismissable: true,
+    isActive: false
+    order: 6
 },
 {
     _id: "pt_shuffle",
@@ -1136,405 +1093,132 @@ order: 6
     title: "Randomization",
     shortDescription: "Deprecated setting from older practice flow.",
     detailedContent: "This help point remains for backward compatibility and is hidden in current UI.",
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: false,
-triggerOnHover: false,
-dismissable: true,
-isActive: false,
-order: 7
+    helpArticleSlug: "configuring-practice-test",
+    helpArticleSection: null,
+    showForNewUsers: false,
+    showIcon: false,
+    triggerOnHover: false,
+    dismissable: true,
+    isActive: false
+    order: 7
 },
 {
     _id: "pt_presets",
     page: "/practice-test/configure",
     elementRef: "[data-help='pt_presets']",
     type: "tooltip",
-title: "Saved Presets",
-shortDescription: "Reuse effective setups with one click.",
-detailedContent: null,
-helpArticleSlug: "configuring-practice-test",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 8
-},
-
 {
-    _id: "me_availability",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_availability']",
-    type: "tooltip",
-    title: "Exam Availability",
-    shortDescription: "Legacy entry for older mock-exam hub UI.",
-    detailedContent: "This help point is currently hidden because the selector is no longer present.",
-    helpArticleSlug: "how-mock-exam-works",
-    helpArticleSection: null,
-    showForNewUsers: false,
-    showIcon: false,
-    triggerOnHover: false,
-    dismissable: true,
-    isActive: false,
-    order: 1
-},
-
-{
-    _id: "me_attempts",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_attempts']",
-    type: "tooltip",
-    title: "Your Attempts",
-    shortDescription: "Tracks attempts and best score for this exam.",
-    detailedContent: null,
-    helpArticleSlug: "how-mock-exam-works",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: true,
-    dismissable: true,
-    isActive: true,
-    order: 2
-},
-
-{
-    _id: "me_cooldown",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_cooldown']",
-    type: "popover",
-    title: "Cooldown Period",
-    shortDescription: "Legacy entry for older mock-exam hub UI.",
-    detailedContent: "This help point is currently hidden because the selector is no longer present.",
-    helpArticleSlug: "how-mock-exam-works",
-    helpArticleSection: null,
-    showForNewUsers: false,
-    showIcon: false,
-    triggerOnHover: false,
-    dismissable: true,
-    isActive: false,
-    order: 3
-},
-
-{
-    _id: "me_readiness",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_readiness']",
-    type: "popover",
-    title: "Readiness Score",
-    shortDescription: "Legacy entry for older mock-exam hub UI.",
-    detailedContent: "This help point is currently hidden because the selector is no longer present.",
-    helpArticleSlug: "mock-exam-results",
-    helpArticleSection: null,
-    showForNewUsers: false,
-    showIcon: false,
-    triggerOnHover: false,
-    dismissable: true,
-    isActive: false,
-    order: 4
-},
-
-{
-    _id: "me_percentile",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_percentile']",
-    type: "tooltip",
-    title: "Percentile Ranking",
-    shortDescription: "Compares your result against all takers.",
-    detailedContent: null,
-    helpArticleSlug: "mock-exam-results",
-    helpArticleSection: "#percentile-explained",
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: true,
-    dismissable: true,
-    isActive: true,
-    order: 5
-},
-
-{
-    _id: "me_negative_marking",
-    page: "/mock-exam",
-    elementRef: "[data-help='me_negative_marking']",
-    type: "popover",
-    title: "Negative Marking",
-shortDescription: "Legacy·entry·for·older·mock-exam·hub·UI.",
-detailedContent: "This·help·point·is·currently·hidden·because·the·selector·is·no·longer·present.",
-helpArticleSlug: "mock-exam-strategies",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: false,
-triggerOnHover: false,
-dismissable: true,
-isActive: false,
-order: 6
-},
-
-{
-    _id: "ex_timer",
-    page: "/exam/:id",
-    elementRef: "[data-help='ex_timer']",
-    type: "tooltip",
-    title: "Time·Remaining",
-    shortDescription: "Auto-submits·at·zero.",
-    detailedContent: null,
-    helpArticleSlug: "taking-mock-exam",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: true,
-    dismissable: true,
-    isActive: true,
-    order: 1
-},
-{
-    _id: "ex_question_grid",
-    page: "/exam/:id",
-    elementRef: "[data-help='ex_question_grid']",
-    type: "popover",
-    title: "Question·Navigator",
-    shortDescription: "Color·states·show·answered·and·flagged·questions.",
-    detailedContent: "Use·this·grid·to·jump·quickly·and·close·unanswered·gaps·before·submission.",
-    helpArticleSlug: "taking-mock-exam",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: false,
-    dismissable: true,
-    isActive: true,
-    order: 2
-},
-{
-    _id: "ex_flag",
-    page: "/exam/:id",
-    elementRef: "[data-help='ex_flag']",
-    type: "tooltip",
-    title: "Flag·for·Review",
-    shortDescription: "Mark·uncertain·items·to·revisit.",
-    detailedContent: null,
-    helpArticleSlug: "taking-mock-exam",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: true,
-    dismissable: true,
-    isActive: true,
-    order: 3
-},
-{
-    _id: "ex_finish_subtest",
-    page: "/exam/:id",
-    elementRef: "[data-help='ex_finish_subtest']",
-    type: "popover",
-    title: "Finish·Subtest",
-    shortDescription: "You·may·not·be·able·to·go·back.",
-    detailedContent: "Review·unanswered·and·flagged·items·before·finishing·current·section.",
-    helpArticleSlug: "taking-mock-exam",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: false,
-    dismissable: true,
-    isActive: true,
-    order: 4
-},
-{
-    _id: "st_practice_vs_mock",
-    page: "/stats",
-    elementRef: "[data-help='st_practice_vs_mock']",
-    type: "tooltip",
-    title: "Practice·vs·Mock·Stats",
-    shortDescription: "Tracked·separately·for·learning·and·readiness.",
-    detailedContent: null,
-    helpArticleSlug: "how-practice-test-works",
-    helpArticleSection: null,
-    showForNewUsers: true,
-    showIcon: true,
-    triggerOnHover: true,
-    dismissable: true,
-    isActive: true,
-    order: 1
-},
-{
-    _id: "st_weak_areas",
-    page: "/stats",
-    elementRef: "[data-help='st_weak_areas']",
-    type: "popover",
-    title: "Weak·Areas",
-shortDescription: "Topics·with·low·accuracy·deserve·focus.",
-detailedContent: "Move·weak·topics·into·your·next·3-5·short·practice·sessions.",
-helpArticleSlug: "practice-test-results",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: false,
-dismissable: true,
-isActive: true,
-order: 2
-},
-{
-_id: "st_predicted_score",
-page: "/stats",
-elementRef: "[data-help='st_predicted_score']",
-type: "tooltip",
-title: "Predicted Score",
-shortDescription: "Estimate·only,·not·official·UPCAT·scoring.",
-detailedContent: null,
-helpArticleSlug: "mock-exam-results",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 3
-},
-{
-_id: "gm_xp_bar",
-page: "/profile",
-elementRef: "[data-help='gm_xp_bar']",
-type: "tooltip",
-title: "XP to Next Level",
-shortDescription: "Track·remaining·XP to·level·up.",
-detailedContent: null,
-helpArticleSlug: "xp-levels-progress",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 1
-},
-{
-_id: "gm_streak_mult",
-page: "/profile",
-elementRef: "[data-help='gm_streak_mult']",
-type: "popover",
-title: "Streak·Bonus",
-shortDescription: "Consecutive·days·multiply·XP·rewards.",
-detailedContent: "Even·a·quick·daily·review·keeps·streak·multipliers·alive.",
-helpArticleSlug: "xp-levels-progress",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: false,
-dismissable: true,
-isActive: true,
-order: 2
-},
-{
-_id: "gm_hidden_badge",
-page: "/profile",
-elementRef: "[data-help='gm_hidden_badge']",
-type: "tooltip",
-title: "Hidden·Achievement",
-shortDescription: "Unlock·by·exploring·and·staying·consistent.",
-detailedContent: null,
-helpArticleSlug: "achievements-badges",
-helpArticleSection: null,
-showForNewUsers: false,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 3
-},
-{
-_id: "gm_weekly_challenge",
-page: "/profile",
-elementRef: "[data-help='gm_weekly_challenge']",
-type: "tooltip",
-title: "Weekly·Challenge",
-shortDescription: "New·goal·each·week·for·bonus·XP.",
-detailedContent: null,
-helpArticleSlug: "weekly-challenges",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 4
-},
-{
-_id: "sp_diagnostic",
-page: "/study-plan",
-elementRef: "[data-help='sp_diagnostic']",
-type: "tooltip",
-title: "Diagnostic·Test",
-shortDescription: "Baseline·test·improves·plan·quality.",
-detailedContent: null,
-helpArticleSlug: "personalized-study-plan",
-helpArticleSection: null,
-showForNewUsers: true,
-showIcon: true,
-triggerOnHover: true,
-dismissable: true,
-isActive: true,
-order: 1
-},
-{
-  _id: "sp_assessment",
-  page: "/study-plan",
-  elementRef: "[data-help='sp_assessment']",
-  type: "popover",
-  title: "Module·Assessment",
-  shortDescription: "Check·mastery·before·unlocking·next·module.",
-  detailedContent: "Failing·an·assessment·usually·triggers·review·reinforcement·and·retry·opportunities.",
-  helpArticleSlug: "personalized-study-plan",
-  helpArticleSection: null,
-  showForNewUsers: true,
-  showIcon: true,
-  triggerOnHover: false,
-  dismissable: true,
-  isActive: true,
-  order: 2
-},
-{
-  _id: "sp_adaptation",
-  page: "/study-plan",
-  elementRef: "[data-help='sp_adaptation']",
+  _id: "me_availability",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_availability']",
   type: "tooltip",
-  title: "Plan·Adaptation",
-  shortDescription: "Plan·updates·based·on·your·current·performance.",
-  detailedContent: null,
-  helpArticleSlug: "personalized-study-plan",
+  title: "Exam Availability",
+  shortDescription: "Legacy entry for older mock-exam hub UI.",
+  detailedContent: "This help point is currently hidden because the selector is no longer present.",
+  helpArticleSlug: "how-mock-exam-works",
   helpArticleSection: null,
   showForNewUsers: false,
   showIcon: true,
   triggerOnHover: true,
   dismissable: true,
-  isActive: true,
-  order: 3
+  isActive: false,
+  order: 8
 },
 {
-  _id: "sp_on_track",
-  page: "/study-plan",
-  elementRef: "[data-help='sp_on_track']",
+  _id: "me_attempts",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_attempts']",
   type: "tooltip",
-  title: "Schedule·Status",
-  shortDescription: "Shows·ahead/on-track/behind·pacing.",
+  title: "Your Attempts",
+  shortDescription: "Tracks attempts and best score for this exam.",
   detailedContent: null,
-  helpArticleSlug: "personalized-study-plan",
+  helpArticleSlug: "how-mock-exam-works",
   helpArticleSection: null,
   showForNewUsers: true,
   showIcon: true,
   triggerOnHover: true,
   dismissable: true,
-  isActive: true,
+  isActive: false,
+  order: 1
+},
+{
+  _id: "me_cooldown",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_cooldown']",
+  type: "popover",
+  title: "Cooldown Period",
+  shortDescription: "Legacy entry for older mock-exam hub UI.",
+  detailedContent: "This help point is currently hidden because the selector is no longer present.",
+  helpArticleSlug: "how-mock-exam-works",
+  helpArticleSection: null,
+  showForNewUsers: false,
+  showIcon: false,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: false,
+  order: 2
+},
+{
+  _id: "me_readiness",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_readiness']",
+  type: "popover",
+  title: "Readiness Score",
+  shortDescription: "Legacy entry for older mock-exam hub UI.",
+  detailedContent: "This help point is currently hidden because the selector is no longer present.",
+  helpArticleSlug: "mock-exam-results",
+  helpArticleSection: null,
+  showForNewUsers: false,
+  showIcon: false,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: false,
+  order: 3
+},
+{
+  _id: "me_percentile",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_percentile']",
+  type: "tooltip",
+  title: "Percentile Ranking",
+  shortDescription: "Compares your result against all takers.",
+  detailedContent: null,
+  helpArticleSlug: "mock-exam-results",
+  helpArticleSection: "#percentile-explained",
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: false,
   order: 4
 },
 {
-  _id: "set_help_prefs",
-  page: "/settings",
-  elementRef: "[data-help='set_help_prefs']",
+  _id: "me_negative_marking",
+  page: "/mock-exam",
+  elementRef: "[data-help='me_negative_marking']",
+  type: "popover",
+  title: "Negative Marking",
+{
+  shortDescription: "Legacy·entry·for·older·mock-exam·hub·UI.",
+  detailedContent: "This·help·point·is·currently·hidden·because·the·selector·is·no·longer·present.",
+  helpArticleSlug: "mock-exam-strategies",
+  helpArticleSection: null,
+  showForNewUsers: false,
+  showIcon: false,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: false,
+  order: 6
+},
+{
+  _id: "ex_timer",
+  page: "/exam/:id",
+  elementRef: "[data-help='ex_timer']",
   type: "tooltip",
-  title: "Help·Preferences",
-  shortDescription: "Control·tooltip·and·onboarding·behavior·globally.",
+  title: "Time·Remaining",
+  shortDescription: "Auto-submits·at·zero.",
   detailedContent: null,
-  helpArticleSlug: "account-settings",
+  helpArticleSlug: "taking-mock-exam",
   helpArticleSection: null,
   showForNewUsers: true,
   showIcon: true,
@@ -1544,28 +1228,287 @@ order: 1
   order: 1
 },
 {
-  _id: "set_replay_tour",
-  page: "/settings",
-  elementRef: "[data-help='set_replay_tour']",
+  _id: "ex_question_grid",
+  page: "/exam/:id",
+  elementRef: "[data-help='ex_question_grid']",
+  type: "popover",
+  title: "Question·Navigator",
+  shortDescription: "Color·states·show·answered·and·flagged·questions.",
+  detailedContent: "Use·this·grid·to·jump·quickly·and·close·unanswered·gaps·before·submission.",
+  helpArticleSlug: "taking-mock-exam",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: true,
+  order: 2
+},
+{
+  _id: "ex_flag",
+  page: "/exam/:id",
+  elementRef: "[data-help='ex_flag']",
   type: "tooltip",
-  title: "Replay·Tours",
-  shortDescription: "Re-run·onboarding·tours·anytime.",
+  title: "Flag·for·Review",
+  shortDescription: "Mark·uncertain·items·to·revisit.",
   detailedContent: null,
-  helpArticleSlug: "welcome",
+  helpArticleSlug: "taking-mock-exam",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: true,
+  order: 3
+},
+{
+  _id: "ex_finish_subtest",
+  page: "/exam/:id",
+  elementRef: "[data-help='ex_finish_subtest']",
+  type: "popover",
+  title: "Finish·Subtest",
+  shortDescription: "You·may·not·be·able·to·go·back.",
+  detailedContent: "Review·unanswered·and·flagged·items·before·finishing·current·section.",
+  helpArticleSlug: "taking-mock-exam",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: true,
+  order: 4
+},
+{
+  _id: "st_practice_vs_mock",
+  page: "/stats",
+  elementRef: "[data-help='st_practice_vs_mock']",
+  type: "tooltip",
+  title: "Practice·vs·Mock·Stats",
+  shortDescription: "Tracked·separately·for·learning·and·readiness.",
+  detailedContent: null,
+  helpArticleSlug: "how-practice-test-works",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: true,
+  order: 1
+},
+{
+  _id: "st_weak_areas",
+  page: "/stats",
+  elementRef: "[data-help='st_weak_areas']",
+  type: "popover",
+  title: "Weak·Areas",
+}
+{
+  shortDescription: "Topics with low accuracy deserve focus.",
+  detailedContent: "Move weak topics into your next 3-5 short practice sessions.",
+  helpArticleSlug: "practice-test-results",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: true,
+  order: 2
+},
+{
+  _id: "st_predicted_score",
+  page: "/stats",
+  elementRef: "[data-help='st_predicted_score']",
+  type: "tooltip",
+  title: "Predicted Score",
+  shortDescription: "Estimate only, not official UPCAT scoring.",
+  detailedContent: null,
+  helpArticleSlug: "mock-exam-results",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: true,
+  order: 3
+},
+{
+  _id: "gm_xp_bar",
+  page: "/profile",
+  elementRef: "[data-help='gm_xp_bar']",
+  type: "tooltip",
+  title: "XP to Next Level",
+  shortDescription: "Track remaining XP to level up.",
+  detailedContent: null,
+  helpArticleSlug: "xp-levels-progress",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: true,
+  order: 1
+},
+{
+  _id: "gm_streak_mult",
+  page: "/profile",
+  elementRef: "[data-help='gm_streak_mult']",
+  type: "popover",
+  title: "Streak Bonus",
+  shortDescription: "Consecutive days multiply XP rewards.",
+  detailedContent: "Even a quick daily review keeps streak multipliers alive.",
+  helpArticleSlug: "xp-levels-progress",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: false,
+  dismissable: true,
+  isActive: true,
+  order: 2
+},
+{
+  _id: "gm_hidden_badge",
+  page: "/profile",
+  elementRef: "[data-help='gm_hidden_badge']",
+  type: "tooltip",
+  title: "Hidden Achievement",
+  shortDescription: "Unlock by exploring and staying consistent.",
+  detailedContent: null,
+  helpArticleSlug: "achievements-badges",
   helpArticleSection: null,
   showForNewUsers: false,
   showIcon: true,
   triggerOnHover: true,
   dismissable: true,
   isActive: true,
-  order: 2
+  order: 3
 },
 {
-  _id: "pay_methods",
-  page: "/payment",
-  elementRef: "[data-help='pay_methods']",
+  _id: "gm_weekly_challenge",
+  page: "/profile",
+  elementRef: "[data-help='gm_weekly_challenge']",
   type: "tooltip",
-  title: "Payment·Methods",
+  title: "Weekly Challenge",
+  shortDescription: "New goal each week for bonus XP.",
+  detailedContent: null,
+  helpArticleSlug: "weekly-challenges",
+  helpArticleSection: null,
+  showForNewUsers: true,
+  showIcon: true,
+  triggerOnHover: true,
+  dismissable: true,
+  isActive: true,
+  order: 4
+},
+{
+  _id: "sp_diagnostic",
+  page: "/study-plan",
+  elementRef: "[data-help='sp_diagnostic']",
+  type: "tooltip",
+  title: "Diagnostic Test",
+{
+  "shortDescription": "Baseline test improves plan quality.",
+  "detailedContent": "null",
+  "helpArticleSlug": "personalized-study-plan",
+  "helpArticleSection": "null",
+  "showForNewUsers": "true",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 1
+},
+{
+  "_id": "sp_assessment",
+  "page": "/study-plan",
+  "elementRef": "[data-help='sp_assessment']",
+  "type": "popover",
+  "title": "Module Assessment",
+  "shortDescription": "Check mastery before unlocking next module.",
+  "detailedContent": "Failing an assessment usually triggers review reinforcement and retry opportunities.",
+  "helpArticleSlug": "personalized-study-plan",
+  "helpArticleSection": "null",
+  "showForNewUsers": "true",
+  "showIcon": "true",
+  "triggerOnHover": "false",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 2
+},
+{
+  "_id": "sp_adaptation",
+  "page": "/study-plan",
+  "elementRef": "[data-help='sp_adaptation']",
+  "type": "tooltip",
+  "title": "Plan Adaptation",
+  "shortDescription": "Plan updates based on your current performance.",
+  "detailedContent": "null",
+  "helpArticleSlug": "personalized-study-plan",
+  "helpArticleSection": "null",
+  "showForNewUsers": "false",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 3
+},
+{
+  "_id": "sp_on_track",
+  "page": "/study-plan",
+  "elementRef": "[data-help='sp_on_track']",
+  "type": "tooltip",
+  "title": "Schedule Status",
+  "shortDescription": "Shows ahead on-track/behind pacing.",
+  "detailedContent": "null",
+  "helpArticleSlug": "personalized-study-plan",
+  "helpArticleSection": "null",
+  "showForNewUsers": "true",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 4
+},
+{
+  "_id": "set_help_prefs",
+  "page": "/settings",
+  "elementRef": "[data-help='set_help_prefs']",
+  "type": "tooltip",
+  "title": "Help Preferences",
+  "shortDescription": "Control tooltip and onboarding behavior globally.",
+  "detailedContent": "null",
+  "helpArticleSlug": "account-settings",
+  "helpArticleSection": "null",
+  "showForNewUsers": "true",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 1
+},
+{
+  "_id": "set_replay_tour",
+  "page": "/settings",
+  "elementRef": "[data-help='set_replay_tour']",
+  "type": "tooltip",
+  "title": "Replay Tours",
+  "shortDescription": "Re-run onboarding tours anytime.",
+  "detailedContent": "null",
+  "helpArticleSlug": "welcome",
+  "helpArticleSection": "null",
+  "showForNewUsers": "false",
+  "showIcon": "true",
+  "triggerOnHover": "true",
+  "dismissable": "true",
+  "isActive": "true",
+  "order": 2
+},
+{
+  "_id": "pay_methods",
+  "page": "/payment",
+  "elementRef": "[data-help='pay_methods']",
+  "type": "tooltip",
+  "title": "Payment Methods",
+script
 shortDescription: "Choose the most convenient approved channel.",
 detailedContent: null,
 helpArticleSlug: "premium-features",
@@ -1578,179 +1521,183 @@ isActive: true,
 order: 1
 },
 {
-  _id: "pay_reference",
-  page: "/payment",
-  elementRef: "[data-help='pay_reference']",
-  type: "tooltip",
-  title: "Reference Number",
-  shortDescription: "Use exact transaction reference for faster validation.",
-  detailedContent: null,
-  helpArticleSlug: "premium-features",
-  helpArticleSection: null,
-  showForNewUsers: true,
-  showIcon: true,
-  triggerOnHover: true,
-  dismissable: true,
-  isActive: true,
-  order: 2
+    _id: "pay_reference",
+    page: "/payment",
+    elementRef: "[data-help='pay_reference']",
+    type: "tooltip",
+    title: "Reference Number",
+    shortDescription: "Use exact transaction reference for faster validation.",
+    detailedContent: null,
+    helpArticleSlug: "premium-features",
+    helpArticleSection: null,
+    showForNewUsers: true,
+    showIcon: true,
+    triggerOnHover: true,
+    dismissable: true,
+    isActive: true,
+    order: 2
 },
 {
-  _id: "pay_processing",
-  page: "/payment",
-  elementRef: "[data-help='pay_processing']",
-  type: "popover",
-  title: "Processing Time",
-  shortDescription: "Manual verification may take several hours.",
-  detailedContent: "You can monitor status in account payment history after submission.",
-  helpArticleSlug: "premium-features",
-  helpArticleSection: null,
-  showForNewUsers: true,
-  showIcon: true,
-  triggerOnHover: false,
-  dismissable: true,
-  isActive: true,
-  order: 3
+    _id: "pay_processing",
+    page: "/payment",
+    elementRef: "[data-help='pay_processing']",
+    type: "popover",
+    title: "Processing Time",
+    shortDescription: "Manual verification may take several hours.",
+    detailedContent: "You can monitor status in account payment history after submission.",
+    helpArticleSlug: "premium-features",
+    helpArticleSection: null,
+    showForNewUsers: true,
+    showIcon: true,
+    triggerOnHover: false,
+    dismissable: true,
+    isActive: true,
+    order: 3
 },
 ];
 ```
 
-```typescript
+```json
 const ONBOARDING_FLOWS = [
-  {
+{
     _id: "new_user_tour",
     name: "Welcome Tour",
     description: "Two-minute product orientation for first-time users.",
     triggerCondition: "first_login",
     steps: [
-      {
-        id: "step_1_welcome",
-        order: 1,
-        target: {type: "full_screen", selector: null, page: null},
-        title: "Welcome to UPCAT Simulator!",
-        content: "We are here to help you prepare with clarity and confidence. This quick tour takes about two minutes.",
-        image: null,
-        position: "center",
-        primaryAction: {label: "Show Me Around", action: "next", navigateTo: null},
-        secondaryAction: {label: "I'll explore on my own", action: "skip"},
-        waitForInteraction: false,
-        highlightTarget: false,
-        allowBackdropClick: false,
-      },
-      {
-        id: "step_2_dashboard",
-        order: 2,
-        target: {type: "element", selector: "[data-tour='dashboard-main']", page: "/dashboard"},
-        title: "This is your dashboard",
-        content: "Your main shortcuts, progress cards, and next recommended action live here.",
-        image: null,
-        position: "bottom",
-        primaryAction: {label: "Next", action: "next", navigateTo: null},
-        secondaryAction: {label: "Skip Tour", action: "skip"},
-        waitForInteraction: false,
-        highlightTarget: true,
-        allowBackdropClick: false,
-      },
-      {
-        id: "step_3_practice",
-        order: 3,
-        target: {type: "element", selector: "[data-tour='review-card']", page: "/dashboard"},
-        title: "Review sessions for daily learning",
-        content: "Use the Review card for flexible drills focused on weak areas and retention.",
-        image: null,
-        position: "right",
-        primaryAction: {label: "Next", action: "next", navigateTo: null},
-        secondaryAction: {label: "Skip", action: "skip"},
-        waitForInteraction: false,
-        highlightTarget: true,
-        allowBackdropClick: false,
-      },
-      {
-        id: "step_4_mock",
-        order: 4,
-        target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
-        title: "Mock exams simulate the real pressure",
-        content: "Use them as readiness checks after focused preparation.",
-        image: null,
-        position: "right",
-primaryAction: {label: "Next", action: "next", navigateTo: null},
-secondaryAction: null,
-waitForInteraction: false,
-highlightTarget: true,
-allowBackdropClick: false,
+        {
+            id: "step_1_welcome",
+            order: 1,
+            target: {type: "full_screen", selector: null, page: null},
+            title: "Welcome to UPCAT Simulator!",
+            content: "We are here to help you prepare with clarity and confidence. This quick tour takes about two minutes.",
+            image: null,
+            position: "center",
+            primaryAction: {label: "Show Me Around", action: "next", navigateTo: null},
+            secondaryAction: {label: "I'll explore on my own", action: "skip"},
+            waitForInteraction: false,
+            highlightTarget: false,
+            allowBackdropClick: false
+        },
+        {
+            id: "step_2_dashboard",
+            order: 2,
+            target: {type: "element", selector: "[data-tour='dashboard-main']", page: "/dashboard"},
+            title: "This is your dashboard",
+            content: "Your main shortcuts, progress cards, and next recommended action live here.",
+            image: null,
+            position: "bottom",
+            primaryAction: {label: "Next", action: "next", navigateTo: null},
+            secondaryAction: {label: "Skip Tour", action: "skip"},
+            waitForInteraction: false,
+            highlightTarget: true,
+            allowBackdropClick: false
+        },
+        {
+            id: "step_3_practice",
+            order: 3,
+            target: {type: "element", selector: "[data-tour='review-card']", page: "/dashboard"},
+            title: "Review sessions for daily learning",
+            content: "Use the Review card for flexible drills focused on weak areas and retention.",
+            image: null,
+            position: "right",
+            primaryAction: {label: "Next", action: "next", navigateTo: null},
+            secondaryAction: {label: "Skip", action: "skip"},
+            waitForInteraction: false,
+            highlightTarget: true,
+            allowBackdropClick: false
+        },
+        {
+            id: "step_4_mock",
+            order: 4,
+            target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
+            title: "Mock exams simulate the real pressure",
+            content: "Use them as readiness checks after focused preparation.",
+            image: null,
+            position: "right"
+        }
+    ]
+}
+{
+  primaryAction: {label: "Next", action: "next", navigateTo: "null"},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false,
 },
 {
-    id: "step_5_gamification",
-    order: 5,
-    target: {type: "element", selector: "[data-tour='xp-summary']", page: "/dashboard"},
-    title: "Earn XP as you study",
-    content: "Consistency builds streaks and multipliers that reward good habits.",
-    image: null,
-    position: "left",
-    primaryAction: {label: "Next", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: false,
+  id: "step_5_gamification",
+  order: 5,
+  target: {type: "element", selector: "[data-tour='xp-summary']", page: "/dashboard"},
+  title: "Earn XP as you study",
+  content: "Consistency builds streaks and multipliers that reward good habits.",
+  image: null,
+  position: "left",
+  primaryAction: {label: "Next", action: "next", navigateTo: "null"},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false,
 },
 {
-    id: "step_6_study_plan",
-    order: 6,
-    target: {type: "element", selector: "[data-tour='study-plan-card']", page: "/dashboard"},
-    title: "Personalized study plan",
-    content: "Get a day-by-day path tuned to your strengths and weaknesses.",
-    image: null,
-    position: "left",
-    primaryAction: {label: "Next", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: false,
+  id: "step_6_study_plan",
+  order: 6,
+  target: {type: "element", selector: "[data-tour='study-plan-card']", page: "/dashboard"},
+  title: "Personalized study plan",
+  content: "Get a day-by-day path tuned to your strengths and weaknesses.",
+  image: null,
+  position: "left",
+  primaryAction: {label: "Next", action: "next", navigateTo: "null"},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false,
 },
 {
-    id: "step_7_stats",
-    order: 7,
-    target: {type: "element", selector: "[data-tour='stats-link']", page: "/dashboard"},
-    title: "Track progress clearly",
-    content: "Use stats to decide what to focus on next, not just to admire scores.",
-    image: null,
-    position: "bottom",
-    primaryAction: {label: "Next", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: false,
+  id: "step_7_stats",
+  order: 7,
+  target: {type: "element", selector: "[data-tour='stats-link']", page: "/dashboard"},
+  title: "Track progress clearly",
+  content: "Use stats to decide what to focus on next, not just to admire scores.",
+  image: null,
+  position: "bottom",
+  primaryAction: {label: "Next", action: "next", navigateTo: "null"},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false,
 },
 {
-    id: "step_8_help",
-    order: 8,
-    target: {type: "element", selector: "[data-tour='help-link']", page: "/dashboard"},
-    title: "Need help?",
-    content: "Use the help button and contextual question-mark icons anytime.",
-    image: null,
-    position: "bottom",
-    primaryAction: {label: "Got It", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: false,
+  id: "step_8_help",
+  order: 8,
+  target: {type: "element", selector: "[data-tour='help-link']", page: "/dashboard"},
+  title: "Need help?",
+  content: "Use the help button and contextual question-mark icons anytime.",
+  image: null,
+  position: "bottom",
+  primaryAction: {label: "Got It", action: "next", navigateTo: "null"},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false,
 },
 {
-    id: "step_9_done",
-    order: 9,
-    target: {type: "full_screen", selector: null, page: null},
-    title: "You're all set",
-    content: "Start with a short practice test or begin your diagnostic study-plan flow.",
-    image: null,
-    position: "center",
-    primaryAction: {
-        label: "Start a Practice Test",
-        action: "navigate",
-        navigateTo: "/practice-test/configure"
-    },
-    secondaryAction: {label: "Go to Dashboard", action: "skip"},
-    waitForInteraction: false,
-    highlightTarget: false,
-    allowBackdropClick: true,
+  id: "step_9_done",
+  order: 9,
+  target: {type: "full_screen", selector: null, page: null},
+  title: "You're all set",
+  content: "Start with a short practice test or begin your diagnostic study-plan flow.",
+  image: null,
+  position: "center",
+  primaryAction: {
+    label: "Start a Practice Test",
+    action: "navigate",
+    navigateTo: "/practice-test/configure"
+  },
+  secondaryAction: {label: "Go to Dashboard", action: "skip"},
+  waitForInteraction: false,
+  highlightTarget: false,
+  allowBackdropClick: true,
 },
 ],
 completionMessage: "You're all set! Happy studying!",
@@ -1760,56 +1707,57 @@ canBeReplayed: true,
 maxDisplayCount: 1,
 },
 {
-    id: "first_practice_tour",
-    name: "First Practice Tour",
-    description: "Guides user through first practice setup.",
-    triggerCondition: "first_practice",
-    steps: [
-        {
-            id: "fp_1",
-            order: 1,
-            target: {type: "full_screen", selector: null, page: "/practice-test/configure"},
-            title: "Let's configure your first practice test",
-            content: "We will guide each option and explain what to pick first.",
-            image: null,
-            position: "center",
-            primaryAction: {label: "Let's Go", action: "next", navigateTo: null},
-            secondaryAction: {label: "I've got this", action: "skip"},
-            waitForInteraction: false,
-highlightTarget: false,
-allowBackdropClick: false
+  _id: "first_practice_tour",
+  name: "First Practice Tour",
+  description: "Guides user through first practice setup.",
+  triggerCondition: "first_practice",
+  steps: [
+    {
+      id: "fp_1",
+      order: 1,
+      target: {type: "full_screen", selector: null, page: "/practice-test/configure"},
+      title: "Let's configure your first practice test",
+      content: "We will guide each option and explain what to pick first.",
+      image: null,
+      position: "center",
+      primaryAction: {label: "Let's Go", action: "next", navigateTo: null},
+      secondaryAction: {label: "I've got this", action: "skip"},
+      waitForInteraction: false,
+    }
+  ]
+}
+{
+  id: "fp_2",
+  order: 2,
+  target: {
+    type: "element",
+    selector: "[data-help='pt_subject_select']",
+    page: "/practice-test/configure"
+  },
+  title: "Choose a mode first",
+  content: "Your mode decides whether the subject selector and new-card pacing controls are active. Subject Focus unlocks the subject picker; "
+  + "Review and Random leave some options disabled on purpose.",
+  image: "null",
+  position: "bottom",
+  primaryAction: {label: "Next", action: "next", navigateTo: null},
+  secondaryAction: null,
+  waitForInteraction: true,
+  highlightTarget: true,
+  allowBackdropClick: false
 },
 {
-    id: "fp_2",
-    order: 2,
-    target: {
-        type: "element",
-        selector: "[data-help='pt_subject_select']",
-        page: "/practice-test/configure"
-    },
-    title: "Choose a mode first",
-    content: "Your mode decides whether the subject selector and new-card pacing controls are active. Subject Focus unlocks the subject picker; "
-    => "Review and Random leave some options disabled on purpose.",
-    image: null,
-    position: "bottom",
-    primaryAction: {label: "Next", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: true,
-    highlightTarget: true,
-    allowBackdropClick: false
-},
-{
-    id: "fp_3",
-    order: 3,
-    target: {
-        type: "element",
-        selector: "[data-help='pt_question_count']",
-        page: "/practice-test/configure"
+  id: "fp_3",
+  order: 3,
+  target:
+    {
+      type: "element",
+      selector: "[data-help='pt_question_count']",
+      page: "/practice-test/configure"
     },
     title: "Size the session",
     content: "Max Questions is the total cap for the whole session. New Cards Limit only fills any leftover space after due cards are chosen, "
-    => "and some modes disable it because they do not introduce new cards.",
-    image: null,
+    + "and some modes disable it because they do not introduce new cards.",
+    image: "null",
     position: "bottom",
     primaryAction: {label: "Next", action: "next", navigateTo: null},
     secondaryAction: null,
@@ -1818,12 +1766,13 @@ allowBackdropClick: false
     allowBackdropClick: false
 },
 {
-    id: "fp_4",
-    order: 4,
-    target: {type: "element", selector: "[data-help='pt_random_cards']", page: "/practice-test/configure"},
+  id: "fp_4",
+  order: 4,
+    target:
+      {type: "element", selector: "[data-help='pt_random_cards']", page: "/practice-test/configure"},
     title: "Grow your deck anytime",
     content: "Use Generate random cards to add more cards directly from this screen. Set the count first, then add only what you can realistically review today.",
-    image: null,
+    image: "null",
     position: "right",
     primaryAction: {label: "Next", action: "next", navigateTo: null},
     secondaryAction: null,
@@ -1832,12 +1781,13 @@ allowBackdropClick: false
     allowBackdropClick: false
 },
 {
-    id: "fp_5",
-    order: 5,
-    target: {type: "element", selector: "[data-help='pt_presets']", page: "/practice-test/configure"},
+  id: "fp_5",
+  order: 5,
+    target:
+      {type: "element", selector: "[data-help='pt_presets']", page: "/practice-test/configure"},
     title: "Start when ready",
     content: "After sizing and deck prep, start practice with a manageable volume and build consistency first.",
-    image: null,
+    image: "null",
     position: "left",
     primaryAction: {label: "Next", action: "next", navigateTo: null},
     secondaryAction: null,
@@ -1846,12 +1796,13 @@ allowBackdropClick: false
     allowBackdropClick: false
 },
 {
-    id: "fp_6",
-    order: 6,
-    target: {type: "full_screen", selector: null, page: "/practice-test/configure"},
+  id: "fp_6",
+  order: 6,
+    target:
+      {type: "full_screen", selector: null, page: "/practice-test/configure"},
     title: "You're ready",
     content: "Click start when ready. Focus on learning, not perfection.",
-    image: null,
+    image: "null",
     position: "center",
     primaryAction: {label: "Got It", action: "dismiss", navigateTo: null},
     secondaryAction: null,
@@ -1867,203 +1818,209 @@ canBeReplayed: true,
 maxDisplayCount: 1,
 },
 {
-    _id: "first_mock_tour",
-    name: "First Mock Tour",
-    description: "Introduces strict mock exam expectations.",
-    triggerCondition: "first_mock",
-    steps: [
-        {
-            id: "fm_1",
-            order: 1,
-            target: {type: "full_screen", selector: null, page: "/dashboard"},
-            title: "Mock exams are real simulation",
-            content: "These are stricter than practice mode and best for readiness checks.",
-            image: null,
-            position: "center",
-primaryAction: {label: "Tell·Me·More", action: "next", navigateTo: null},
-secondaryAction: {label: "I·already·know", action: "skip"},
-waitForInteraction: false,
-highlightTarget: false,
-allowBackdropClick: false
+  _id: "first_mock_tour",
+  name: "First Mock Tour",
+  description: "Introduces strict mock exam expectations.",
+  triggerCondition: "first_mock",
+  steps: [
+    {
+      id: "fm_1",
+      order: 1,
+      target:
+        {type: "full_screen", selector: null, page: "/dashboard"},
+      title: "Mock exams are real simulation",
+      content: "These are stricter than practice mode and best for readiness checks.",
+      image: "null",
+      position: "center"
+    }
+  ]
+}
+{
+  primaryAction: {label: "Tell·Me·More", action: "next", navigateTo: null},
+  secondaryAction: {label: "I·already·know", action: "skip"},
+  waitForInteraction: false,
+  highlightTarget: false,
+  allowBackdropClick: false
 },
 {
-    id: "fm_2",
-    order: 2,
-    target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
-    title: "Start·from·your·dashboard",
-    content: "Use·the·Mock·Exam·card·to·run·full·timed·simulations·when·you·are·warmed·up.",
-    image: null,
-    position: "center",
-    primaryAction: {label: "Understood", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: false
+  id: "fm_2",
+  order: 2,
+  target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
+  title: "Start·from·your·dashboard",
+  content: "Use the Mock·Exam·card to run full timed simulations when you are warmed up.",
+  image: null,
+  position: "center",
+  primaryAction: {label: "Understood", action: "next", navigateTo: null},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: false
 },
 {
-    id: "fm_3",
-    order: 3,
-    target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
-    title: "Before·you·start",
-    content: "Prepare·stable·connection, full·time·block, and·quiet·environment.",
-    image: null,
-    position: "center",
-    primaryAction: {label: "Got·It", action: "next", navigateTo: null},
-    secondaryAction: null,
-    waitForInteraction: false,
-    highlightTarget: true,
-    allowBackdropClick: true
+  id: "fm_3",
+  order: 3,
+  target: {type: "element", selector: "[data-tour='mock-card']", page: "/dashboard"},
+  title: "Before·you·start",
+  content: "Prepare·stable·connection, full·time·block, and quiet·environment.",
+  image: null,
+  position: "center",
+  primaryAction: {label: "Got·It", action: "next", navigateTo: null},
+  secondaryAction: null,
+  waitForInteraction: false,
+  highlightTarget: true,
+  allowBackdropClick: true
 },
 ],
 completionMessage: "Good·luck·on·your·first·simulation!",
 completionAction: {label: "Back·to·Dashboard", navigateTo: "/dashboard"},
 isActive: true,
 canBeReplayed: true,
-maxDisplayCount: 1,
+maxDisplayCount: 1
 },
 {
-    id: "gamification_intro",
-    name: "Gamification·Intro",
-    description: "Appears·when·user·first·earns·XP.",
-    triggerCondition: "first_xp_earned",
-    steps: [
-        {
-            id: "gx_1",
-            order: 1,
-            target: {type: "element", selector: "[data-tour='xp-earned']", page: "/results"},
-            title: "You·earned·XP",
-            content: "XP·rewards·your·consistency·and·effort.",
-            image: null,
-            position: "top",
-            primaryAction: {label: "Tell·Me·More", action: "next", navigateTo: null},
-            secondaryAction: {label: "Nice", action: "skip"},
-            waitForInteraction: false,
-            highlightTarget: true,
-            allowBackdropClick: false
-        },
-        {
-            id: "gx_2",
-            order: 2,
-            target: {type: "element", selector: "[data-help='gm_streak_mult']", page: "/profile"},
-            title: "Streak·multiplier",
-            content: "Daily·study·increases·XP·multiplier·over·time.",
-            image: null,
-            position: "right",
-            primaryAction: {label: "Next", action: "next", navigateTo: null},
-            secondaryAction: null,
-            waitForInteraction: false,
-            highlightTarget: true,
-            allowBackdropClick: false
-        },
-        {
-            id: "gx_3",
-            order: 3,
-            target: {type: "element", selector: "[data-help='gm_xp_bar']", page: "/profile"},
-            title: "Level·up",
-            content: "As·XP·accumulates, you·unlock·higher·titles·and·milestones.",
-            image: null,
-            position: "right",
-            primaryAction: {label: "Challenge·Accepted", action: "dismiss", navigateTo: null},
-            secondaryAction: null,
-            waitForInteraction: false,
-            highlightTarget: true,
-            allowBackdropClick: true
-        }
-    ],
+  _id: "gamification_intro",
+  name: "Gamification·Intro",
+  description: "Appears·when·user·first·earns·XP.",
+  triggerCondition: "first_xp_earned",
+  steps: [
+    {
+      id: "gx_1",
+      order: 1,
+      target: {type: "element", selector: "[data-tour='xp-earned']", page: "/results"},
+      title: "You·earned·XP",
+      content: "XP·rewards·your·consistency·and·effort.",
+      image: null,
+      position: "top",
+      primaryAction: {label: "Tell·Me·More", action: "next", navigateTo: null},
+      secondaryAction: {label: "Nice", action: "skip"},
+      waitForInteraction: false,
+      highlightTarget: true,
+      allowBackdropClick: false
+    },
+    {
+      id: "gx_2",
+      order: 2,
+      target: {type: "element", selector: "[data-help='gm_streak_mult']", page: "/profile"},
+      title: "Streak·multiplier",
+      content: "Daily·study·increases·XP·multiplier·over·time.",
+      image: null,
+      position: "right",
+      primaryAction: {label: "Next", action: "next", navigateTo: null},
+      secondaryAction: null,
+      waitForInteraction: false,
+      highlightTarget: true,
+      allowBackdropClick: false
+    },
+    {
+      id: "gx_3",
+      order: 3,
+      target: {type: "element", selector: "[data-help='gm_xp_bar']", page: "/profile"},
+      title: "Level·up",
+      content: "As·XP·accumulates·you·unlock·higher·titles·and·milestones.",
+      image: null,
+      position: "right",
+      primaryAction: {label: "Challenge·Accepted", action: "dismiss", navigateTo: null},
+      secondaryAction: null,
+      waitForInteraction: false,
+      highlightTarget: true,
+      allowBackdropClick: true
+    }
+  ]
 }
+script
 completionMessage: "Keep going. Small daily wins compound quickly.",
 completionAction: {label: "View Profile", navigateTo: "/profile"},
 isActive: true,
 canBeReplayed: true,
 maxDisplayCount: 2,
 };
-```
-
-```typescript
-function normalizeArticle(articleInput, now, adminId) {
-  return {
-    ...articleInput,
-    ...lastUpdatedAt: now,
-    ...updatedBy: adminId ?? null,
-    ...viewCount: 0,
-    ...helpfulCount: 0,
-    ...notHelpfulCount: 0,
-  };
 }
 
-export async function seedHelpSystem(db, options = {}){
-  const now = options.now ?? new Date();
-  const adminId = options.adminId ?? null;
+function normalizeArticle(articleInput, now, adminId) {
+return {
+...articleInput,
+...lastUpdatedAt: now,
+...updatedBy: adminId ?? null,
+...viewCount: 0,
+...helpfulCount: 0,
+...notHelpfulCount: 0,
+};
+}
 
-  const missing = REQUIRED_SLUGS.filter(
-    (slug) => !HELP_ARTICLES.some((articleRow) => articleRow.slug === slug),
-  );
-  if (missing.length > 0) {
-    throw new Error(`seed-help.js is missing required articles: ${missing.join(",")}`);
-  }
+export async function seedHelpSystem(db, options = {}) {
+const now = options.now ?? new Date();
+const adminId = options.adminId ?? null;
 
-  for (const category of HELP_CATEGORIES) {
-    await db.collection("help_categories").updateOne(
-      {id: category._id},
-      {$set: {...category, updatedAt: now}, $setOnInsert: {createdAt: now}},
-      {upsert: true},
-    );
-  }
+const missing = REQUIRED_SLUGS.filter(
+...(slug) => !HELP_ARTICLES.some((articleRow) => articleRow.slug === slug),
+);
+if (missing.length > 0) {
+throw new Error(`seed-help.js is missing required articles: ${missing.join(",")}`);
+}
+}
 
-  for (const row of HELP_ARTICLES) {
-    await db.collection("help_articles").updateOne(
-      {slug: row.slug},
-      {
-        $set: {
-          ...normalizeArticle(row, now, adminId),
-          ...updatedAt: now,
-        },
-        $setOnInsert: {
-          ...createdAt: now,
-        },
-        {upsert: true},
-      },
-    );
-  }
+for (const category of HELP_CATEGORIES) {
+await db.collection("help_categories").updateOne(
+...{id: category._id},
+...{$set: {...category, updatedAt: now}, $setOnInsert: {createdAt: now}},
+...{upsert: true},
+);
+}
 
-  for (const row of CONTEXTUAL_HELP) {
-    await db.collection("contextual_help").updateOne(
-      {id: row._id},
-      {
-        $set: {
-          ...row,
-          ...updatedAt: now,
-          ...updatedBy: adminId,
-        },
-        $setOnInsert: {
-          ...createdAt: now,
-        },
-        {upsert: true},
-      },
-    );
-  }
+for (const row of HELP_ARTICLES) {
+await db.collection("help_articles").updateOne(
+...{slug: row.slug},
+{
+...$set: {
+...normalizeArticle(row, now, adminId),
+...updatedAt: now,
+...},
+...$setOnInsert: {
+...createdAt: now,
+...},
+},
+...{upsert: true},
+);
+}
 
-  for (const flow of ONBOARDING_FLOWS) {
-    await db.collection("onboarding_flows").updateOne(
-      {id: flow._id},
-      {
-        $set: {
-          ...flow,
-          ...updatedAt: now,
-          ...updatedBy: adminId,
-        },
-        $setOnInsert: {
-          ...createdAt: now,
-        },
-        {upsert: true},
-      },
-    );
-  }
+for (const row of CONTEXTUAL_HELP) {
+await db.collection("contextual_help").updateOne(
+...{id: row._id},
+{
+...$set: {
+...row,
+...updatedAt: now,
+...updatedBy: adminId,
+...},
+...$setOnInsert: {
+...createdAt: now,
+...},
+},
+...{upsert: true},
+);
+}
 
-  return {
-    categories: HELP_CATEGORIES.length,
-    articles: HELP_ARTICLES.length,
-    contextualHelp: CONTEXTUAL_HELP.length,
-    onboardingFlows: ONBOARDING_FLOWS.length,
-  };
+for (const flow of ONBOARDING_FLOWS) {
+await db.collection("onboarding_flows").updateOne(
+...{id: flow._id},
+{
+...$set: {
+...flow,
+...updatedAt: now,
+...updatedBy: adminId,
+...},
+...$setOnInsert: {
+...createdAt: now,
+...},
+},
+...{upsert: true},
+);
+}
+
+return {
+categories: HELP_CATEGORIES.length,
+articles: HELP_ARTICLES.length,
+contextualHelp: CONTEXTUAL_HELP.length,
+onboardingFlows: ONBOARDING_FLOWS.length,
+};
 }

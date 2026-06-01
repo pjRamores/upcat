@@ -105,9 +105,9 @@ export default function AdminAnalyticsPage() {
 <StatCard label="DAU" value={data.engagementMetrics.dau} hint="Daily·active"
 icon={<span>◎</span>} accent="emerald"/>
 <StatCard label="WAU" value={data.engagementMetrics.wau} hint="Weekly·active"
-icon={<span>☽</span>} accent="indigo"/>
+icon={<span>☑</span>} accent="indigo"/>
 <StatCard label="MAU" value={data.engagementMetrics.mau} hint="Monthly·active"
-icon={<span>☽</span>} accent="violet"/>
+icon={<span>☑</span>} accent="violet"/>
 <StatCard label="Retention" value={`${data.userMetrics.retentionRate}%`}
 hint="≥2·completed·exams" icon={<span>◎</span>} accent="amber"/>
 </section>
@@ -116,7 +116,7 @@ hint="≥2·completed·exams" icon={<span>◎</span>} accent="amber"/>
 <StatCard label="Avg·Score" value={`${data.examMetrics.averageScore}%`} icon={<span>◎</span>}
 accent="violet"/>
 <StatCard label="Completion" value={`${data.examMetrics.completionRate}%`}
-icon={<span>☽</span>} accent="emerald"/>
+icon={<span>☑</span>} accent="emerald"/>
 <StatCard label="Abandon" value={`${data.examMetrics.abandonmentRate}%`} icon={<span>◎</span>}
 accent="rose"/>
 <StatCard label="Avg·question"
@@ -219,7 +219,7 @@ return (
               <p className="truncate·text-slate-800">{r.preview}</p>
               <p className="text-xs·text-slate-500">{r.subjectArea} ···{DIFFICULTY_LABELS[r.difficulty·as·Difficulty]·??·r.difficulty}</p>
             </div>
-            <span className="shrink-0·text-xs·font-sembold·text-slate-700">
+            <span className="shrink-0·text-xs·font-semibold·text-slate-700">
               {r[valueKey]}{suffix}·<span className="font-normal·text-slate-400">{valueLabel.toLowerCase()}</span>
             </span>
           </li>

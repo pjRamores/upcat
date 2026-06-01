@@ -52,6 +52,10 @@ async function shouldServeFlow(
     return {flow: null, reason: "already_completed"};
   }
 
+  if (!manual && completion?.skippedAt && !flow.canBeReplayed) {
+    return {flow: null, reason: "already_skipped"};
+  }
+
   if (!manual && !triggerMatchesPage(String(flow.triggerCondition ?? "manual"), currentPage)) {
     return {flow: null, reason: "trigger_not_met"};
   }
@@ -88,7 +92,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const completed = action !== "skip";
-    const stepsCompleted = Number((req.body as {stepsCompleted?: number}) | undefined).stepsCompleted ?? 0;
+    const stepsCompleted = Number((req.body as {stepsCompleted?: number}) | undefined)?.stepsCompleted ?? 0;
 
     await db.collection("users").updateOne(
       {_id: user._id},
@@ -106,12 +110,11 @@ if (completed) {
     await applyRewards(db, user._id, [
       {reason: "admin_grant", baseAmount: 15, description: `Onboarding completed: ${flowId}`},
     ]);
-  } catch {
-    // Reward failures should not block onboarding progression.
+    catch {
+      // Reward failures should not block onboarding progression.
+    }
   }
-}
-
-return res.status(200).json({success: true, data: completed? {recorded: true} : {skipped: true}});
+  return res.status(200).json({success: true, data: completed? {recorded: true} : {skipped: true}});
 }
 
 res.setHeader("Allow", "GET, POST");

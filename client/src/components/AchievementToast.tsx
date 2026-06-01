@@ -54,51 +54,54 @@ export default function AchievementToast({
       const gradient = RARITY_GLOW[event.rarity];
 
       return (
-        <div
-          className="fixed-bottom-6 right-6 z-[60] w-full max-w-sm px-4 pointer-events-none sm:px-0"
-          role="status"
-          aria-live="polite"
-        >
-          <div
-            className={`pointer-events-auto rounded-2x1 bg-gradient-to-br ${gradient} p-1 shadow-2x1 animate-toast-in`}
+        <div>
+          <className="fixed.bottom-6.right-6.z-[60] w-full max-w-sm px-4 pointer-events-none sm:px-0"
+            role="status"
+            aria-live="polite"
           >
-            <div className="rounded-[14px] bg-white p-4">
-              <div className="flex items-start gap-3">
-                <div
-                  className="flex-h-12 w-12 shrink-0 items-center justify-center rounded-x1 bg-gradient-to-br from-amber-200 to-amber-400 text-2x1">
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                      Achievement unlocked {event.rarity}
-                    </div>
-                    <h3 className="mt-0.5 font-bold text-slate-900">{event.title}</h3>
-                    <p className="mt-1 text-xs text-slate-600">{event.description}</p>
-                    <div className="mt-2 text-xs font-sembold text-emerald-600">
-                      {event.xpAwarded} XP + {event.points} pts
-                    </div>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-                  aria-label="Dismiss"
+            <div>
+              <className={`pointer-events-auto rounded-2x1 bg-gradient-to-br ${gradient} p-1 shadow-2x1 animate-toast-in`}>
                 >
-                  ×
-                </button>
+                  <div className="rounded-[14px] bg-white p-4">
+                    <div className="flex items-start gap-3">
+                      <div>
+                        <className="flex h-12 w-12 shrink-0 items-center justify-center rounded-x1 bg-gradient-to-br from-amber-200 to-amber-400 text-2x1">
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                Achievement unlocked
+                                {event.rarity}
+                            </div>
+                            <h3 className="mt-0.5 font-bold text-slate-900">{event.title}</h3>
+                            <p className="mt-1 text-xs text-slate-600">{event.description}</p>
+                            <div className="mt-2 text-xs font-sembold text-emerald-600">
+                                +{event.xpAwarded} XP +{event.points} pts
+                            </div>
+                        </div>
+                      </div>
+                      <button type="button">
+                        onClick={onClose}
+                        className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                        aria-label="Dismiss"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                  {events.length > 1 && (
+                    <div className="mt-3 flex-gap-1">
+                      {events.map((_, i) => (
+                        <div>
+                          <key={i}>
+                            className={`h-1 flex-1 rounded-full ${i <= index ? "bg-indigo-500" : "bg-slate-200"}`}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-            {events.length > 1 && (
-              <div className="mt-3 flex-gap-1">
-                {events.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-1 flex-1 rounded-full ${
-                      i <= index ? "bg-indigo-500" : "bg-slate-200"
-                    }`}
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>

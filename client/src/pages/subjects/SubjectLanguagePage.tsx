@@ -15,7 +15,7 @@ export default function SubjectLanguagePage() {
         "UPCAT·vocabulary",
       ]}
       intro="The·Language·Proficiency·subtest·rewards·careful·reading·and·precise·grammar.·Drill·the·rules·and·the·edge·cases—subject-verb·agreement,·+"
-      parallel_structure, idiomatic usage—in both English and Filipino."
+      parallel structure, idiomatic usage—in both English and Filipino."
       topics={[
         "Subject-verb·agreement·and·parallel·structure",
         "Pronoun·reference·and·modifier·placement",

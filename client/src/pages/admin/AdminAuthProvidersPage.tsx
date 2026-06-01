@@ -102,7 +102,7 @@ export default function AdminAuthProvidersPage() {
       } catch (err) {
         const msg =
           (err as { response?: { data?: { error?: string } } }).response?.data?.error ||
-"Test.failed.";
+"Test failed.";
 addToast("error", msg);
 }
 };
@@ -139,63 +139,69 @@ const publishStaticProviders = async () => {
 
 if (loading || !providers) {
   return (
-    <div className="space-y-6">
-      <section className="rounded-xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h2 className="text-sm font-semibold text-amber-900">Publish Static Auth Providers</h2>
-            <p className="mt-1 text-xs text-amber-800">
-              Export enabled social provider visibility to a static snapshot for login/register pages.
+    <div className="flex justify-center py-20">
+      <Spinner/>
+    </div>
+  );
+}
+
+return (
+  <div className="space-y-6">
+    <section className="rounded-xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="text-sm font-semibold text-amber-900">Publish Static Auth Providers</h2>
+          <p className="mt-1 text-xs text-amber-800">
+            Export enabled social provider visibility to a static snapshot for login/register pages.
+          </p>
+          {lastPublished && (
+            <p className="mt-1 text-xs text-amber-700">
+              Last published: <time>{new Date(lastPublished).toLocaleString()}</time>
             </p>
-            {lastPublished && (
-              <p className="mt-1 text-xs text-amber-700">
-                Last published: <time>{new Date(lastPublished).toLocaleString()}</time>
-              </p>
-            )}
-          </div>
-          <button
-            type="button"
-            disabled={publishing}
-            onClick={() => void publishStaticProviders()}
-            className="rounded bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
-          >
-            {publishing ? "Publishing..." : "Publish Now"}
-          </button>
+          )}
         </div>
-        <p className="mt-2 text-xs text-amber-700">
-          Next step: save the downloaded JSON to client/public/data/auth-providers.json, then rebuild and redeploy.
-        </p>
-      </section>
-
-      <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Enabled providers" value={`${enabledCount} / ${SOCIAL_PROVIDERS.length}`} icon="💡"/>
-        <StatCard label="Linked accounts" value={totalLinked} icon="💡"/>
-        <StatCard label="Social logins" value={totalLogins} icon="💡"/>
+        <button
+          type="button"
+          disabled={publishing}
+          onClick={() => void publishStaticProviders()}
+          className="rounded bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
+        >
+          {publishing ? "Publishing..." : "Publish Now"}
+        </button>
       </div>
+      <p className="mt-2 text-xs text-amber-700">
+        Next step: save the downloaded JSON to client/public/data/auth-providers.json, then rebuild and redeploy.
+      </p>
+    </section>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-        <table className="min-w-full divide-y divide-slate-200 text-sm">
-          <thead>
-            <tr>
-              <th className="px-4 py-3">Provider</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Client ID</th>
-              <th className="px-4 py-3">Redirect URI</th>
-              <th className="px-4 py-3">Scopes</th>
-              <th className="px-4 py-3">Linked</th>
-              <th className="px-4 py-3">7d logins</th>
-              <th className="px-4 py-3">text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr key={p} className="hover:bg-slate-50">
-              <td className="px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full">
-                    style={{backgroundColor: SOCIAL_PROVIDER_META[p].brandColor}}
-var aria-hidden =
-/>
+    <div className="grid gap-4 sm:grid-cols-3">
+      <StatCard label="Enabled providers" value={`${enabledCount} / ${SOCIAL_PROVIDERS.length}`} icon="💡"/>
+      <StatCard label="Linked accounts" value={totalLinked} icon="💡"/>
+      <StatCard label="Social logins" value={totalLogins} icon="💡"/>
+    </div>
 
+    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+      <table className="min-w-full divide-y divide-slate-200 text-sm">
+        <thead>
+          <tr>
+            <th className="px-4 py-3">Provider</th>
+            <th className="px-4 py-3">Status</th>
+            <th className="px-4 py-3">Client ID</th>
+            <th className="px-4 py-3">Redirect URI</th>
+            <th className="px-4 py-3">Scopes</th>
+            <th className="px-4 py-3">Linked</th>
+            <th className="px-4 py-3">7d logins</th>
+            <th className="px-4 py-3">text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr key={p} className="hover:bg-slate-50">
+            <td className="px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full">
+                  style={{backgroundColor: SOCIAL_PROVIDER_META[p].brandColor}}
+var aria-hidden
+//>
 <span className="font-sembold·text-slate-900">
 {SOCIAL_PROVIDER_META[p].label}
 </span>
@@ -208,7 +214,6 @@ var aria-hidden =
 )::(
 <Badge·variant="neutral">Disabled</Badge>
 )}
-
 </td>
 <td className="max-w-[14rem]·truncate·px-4·py-3·text-xs·text-slate-600">
 {cfg.clientId||<span className="text-slate-400">—not·set—</span>}
@@ -241,8 +246,7 @@ Edit
 type="button"
 onClick={()=>setConfirmDisable(p)::void·toggleEnabled(p, true)}
 }
-className={`rounded-md·px-2.5·py-1·text-xs·font-sembold·${
-cfg.enabled
+className={`rounded-md·px-2.5·py-1·text-xs·font-sembold·${cfg.enabled}
 ? "border·border-red-200·bg-white·text-red-700·hover:bg-red-50"
 : "bg-emerald-600·text-white·hover:bg-emerald-700"
 }`}
@@ -268,7 +272,7 @@ setEditing(null);
 await·reload();
 }}
 }
-/>
+)</>
 )
 
 <ConfirmDialog
@@ -393,21 +397,21 @@ return (
                 className="inline-flex·items-center·gap-1·rounded-full·bg-slate-100·px-2·py-0.5·text-xs·text-slate-700"
               ))
             }
-          )
-        </div>
+          </div>
 
-        <button
-          type="button"
-          onClick={() => removeScope(s)}
-          className="text-slate-400·hover:text-red-600"
-          aria-label={`Remove scope ${s}`}
-        >
-          x
-        </button>
+          <button
+            type="button"
+            onClick={() => removeScope(s)}
+            className="text-slate-400·hover:text-red-600"
+            aria-label={`Remove scope ${s}`}
+          >
+            x
+          </button>
+        </div>
       </span>
-    </div>
+    ))}
   </div>
-</div>
+  <div className="mt-2·flex·gap-2">
 <input
 value={scopeInput}
 onChange={(e) => setScopeInput(e.target.value)}

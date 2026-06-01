@@ -208,21 +208,19 @@ async function softDeleteAsset(req: VercelRequest, res: VercelResponse, adminId:
   if (inUse > 0) {
     return res.status(409).json({success: false, error: "Asset is referenced by active questions"});
   }
-
-  const result = await db.collection("question_media_assets").updateOne(
-{
-  _id: oid, isDeleted: {$ne: true}},
-  $set: {isDeleted: true, deletedAt: now, deletedBy: adminId, updatedAt: now}},
 }
+{_id: oid, isDeleted: {$ne: true}},
+{$set: {isDeleted: true}, deletedAt: now, deletedBy: adminId, updatedAt: now}},
 if (!result.matchedCount) {
-  return res.status(404).json({success: false, error: "Asset not found"});
+return res.status(404).json({success: false, error: "Asset not found"});
 }
+
 await logActivity(db, {
-  actorId: adminId,
-  actorRole: "admin",
-  action: "question.media_asset_deleted",
-  targetType: "question_media_asset",
-  targetId: oid,
+actorId: adminId,
+actorRole: "admin",
+action: "question.media_asset_deleted",
+targetType: "question_media_asset",
+targetId: oid,
 });
 return res.status(200).json({success: true, data: {deleted: true}});
 }

@@ -6,7 +6,7 @@ import Spinner from "@/components/Spinner";
 import AdSlot from "@/components/AdSlot";
 import {renderMarkdown} from "@/lib/markdown";
 import {
-  type: BlogPost,
+  type BlogPost,
   blogPostingSchema,
   breadcrumbSchema,
   canonicalUrl,
@@ -109,7 +109,7 @@ export default function BlogPostPage() {
 <nav aria-label="Breadcrumb">className="mb-4·text-sm·text-slate-500">
   <Link to="/" className="hover:text-primary-700">Home</Link>
   {"/"}
-  <Link to="/blog">className="hover:text-primary-700">Blog</Link>
+  <Link to="/blog" className="hover:text-primary-700">Blog</Link>
 </nav>
 <header className="mb-6">
   <h1 className="text-3xl·font-bold·tracking-tight·text-slate-900">{post.title}</h1>
@@ -117,13 +117,13 @@ export default function BlogPostPage() {
     By {post.authorName}
     {post.publishedAt} && (
     <>
-      {""..."
+      {"..."}
       <time·dateTime={post.publishedAt}}
       {new·Date(post.publishedAt).toLocaleDateString()}
     </time>
     </>
   )}
-  {""..."
+  {"..."}
   {readMinutes}·min·read
 </p>
   {post.tags.length}·0·&&(
@@ -150,14 +150,14 @@ export default function BlogPostPage() {
 )
 <div
   className="prose·prose-slate·max-w-none"
-  //·eslint-disable-next-line·react/no-danger·---renderMarkdown·escapes·input
-  dangerouslySetInnerHTML={{__html:.html}}
->
-  <div className="mt-10">
-    <AdSlot·slotId="blog_in_content"/>
-  </div>
-  <div className="mt-10·border-t·border-slate-200·pt-6·text-sm">
-    <Link to="/blog">className="text-primary-700·hover:underline">Back to all posts</Link>
-  </div>
+  //eslint-disable-next-line react/no-danger---renderMarkdown·escapes·input
+  dangerouslySetInnerHTML={{__html:html}}
+)
+<div className="mt-10">
+  <AdSlot·slotId="blog_in_content"/>
+</div>
+<div className="mt-10·border-t·border-slate-200·pt-6·text-sm">
+  <Link to="/blog" className="text-primary-700·hover:underline">Back to all posts</Link>
+</div>
 </article>
 );

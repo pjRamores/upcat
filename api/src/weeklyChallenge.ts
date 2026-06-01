@@ -54,16 +54,14 @@ export async function updateWeeklyChallengeProgress(
   userId: ObjectId,
   event: WeeklyEvent,
 ) : Promise<WeeklyChallengeProgressResult | null> {
-  const user = await db
-    .collection("users")
+  const user = await db.collection("users")
     .findOne({_id: userId}, {projection: {gamification: 1}});
   const wc = user?.gamification?.weeklyChallenge;
   if (!wc?.challengeId) return null;
   if (wc.completed) return {challengeId: wc.challengeId, progress: wc.progress, target: wc.target, completed: true};
   if (new Date(wc.expiresAt).getTime() < Date.now()) return null;
 
-  const def = (await db
-    .collection("weekly_challenges_catalog")
+  const def = (await db.collection("weekly_challenges_catalog")
     .findOne({id: wc.challengeId})) as unknown as WeeklyChallengeDef | null;
   if (!def) return null;
 

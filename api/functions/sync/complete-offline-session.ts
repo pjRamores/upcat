@@ -40,31 +40,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         },
       },
     );
-  }
-
-  await db.collection("exam_sessions").updateOne(
-    {_id: sessionId},
-    {
-      $set: {
-        status: "completed",
-        completedAt: new Date(body.completedAt || Date.now()),
-        offlineData: {
-          wasOffline: true,
-          totalOfflineMs: Number((body.offlineData as {
-            totalOfflineMs?: number
-          }) | undefined)?totalOfflineMs || 0),
-          syncedAt: new Date(),
-          recoveredFrom: null,
+    await db.collection("exam_sessions").updateOne(
+      {_id: sessionId},
+      {
+        $set: {
+          status: "completed",
+          completedAt: new Date(body.completedAt || Date.now()),
+          offlineData: {
+            wasOffline: true,
+            totalOfflineMs: Number((body.offlineData as {
+              totalOfflineMs?: number
+            }) | undefined)?totalOfflineMs || 0),
+            syncedAt: new Date(),
+            recoveredFrom: null,
+          },
         },
       },
-    },
-  );
-
-  return res.status(200).json({
-    success: true,
-    data: {
-      scored: true,
-      score: session.score || null,
-    },
-  });
+    );
+    return res.status(200).json({
+      success: true,
+      data: {
+        scored: true,
+        score: session.score || null,
+      },
+    });
+  }
 }

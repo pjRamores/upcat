@@ -2,9 +2,9 @@
  * Admin.security.event.endpoints (list + detail + review).
  *
  * Single-file dispatching by URL path to keep handler count tight:
- * GET .../api/admin/security/events
- * GET .../api/admin/security/events/:id
- * PUT .../api/admin/security/events/:id/review
+ * GET //api/admin/security/events
+ * GET //api/admin/security/events/:id
+ * PUT //api/admin/security/events/:id/review
  */
 
 import type {VercelRequest, VercelResponse} from "@vercel/node";
@@ -15,7 +15,7 @@ import {withSecurity} from "../../src/security/middleware.js";
 import {invalidateBlockedCache} from "../../src/security/blockedEntities.js";
 import {adjustThreatScore} from "../../src/security/ipIntel.js";
 
-export default withSecurity({endpoint: "GET /api/admin/security/events"})(async (
+export default withSecurity({endpoint: "GET //api/admin/security/events"})(async (
   req: VercelRequest,
   res: VercelResponse,
 ) => {
@@ -96,7 +96,7 @@ export default withSecurity({endpoint: "GET /api/admin/security/events"})(async 
       .limit(30)
       .toArray();
     const ipIntel = ev.source?.ip
-      ? await db.collection("ip_intelligence").findOne({_id: ev.source.ip} as never)
+      ? await db.collection("ip_intelligence").findOne({_id: ev.source.ip} as never})
       : null;
     res.status(200).json({success: true, data: {event: ev, related, ipIntel}});
     return;

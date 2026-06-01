@@ -1,6 +1,6 @@
 /**
  * Admin - Attack summary report.
- * GET/api/admin/security/reports/attack-summary?period=24h|7d|30d
+ * GET /api/admin/security/reports/attack-summary?period=24h|7d|30d
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {requireAdmin} from "../../src/auth.js";
@@ -13,7 +13,7 @@ const PERIODS: Record<string, number> = {
   "30d": 30 * 24 * 60 * 60 * 1000,
 };
 
-export default withSecurity({endpoint: "GET/api/admin/security/reports"}) (async (
+export default withSecurity({endpoint: "GET /api/admin/security/reports"}) (async (
   req: VercelRequest,
   res: VercelResponse,
 ) => {
@@ -41,7 +41,7 @@ export default withSecurity({endpoint: "GET/api/admin/security/reports"}) (async
     db
     .collection("security_events")
     .aggregate([
-      {$match: {timestamp: {$gte: since}, "source.country": {$ne: null}}},
+      {$match: {timestamp: {$gte: since}}, "source.country": {$ne: null}}},
       {$group: {_id: "$source.country", count: {$sum: 1}}},
       {$sort: {count: -1}},
       {$limit: 10},
@@ -50,7 +50,7 @@ export default withSecurity({endpoint: "GET/api/admin/security/reports"}) (async
     db
     .collection("security_events")
     .aggregate([
-      {$match: {timestamp: {$gte: since}}},
+      {$match: {timestamp: {$gte: since}}, "source.country": {$ne: null}}},
       {$group: {_id: "$source.ip", count: {$sum: 1}}},
       {$sort: {count: -1}},
       {$limit: 20},
@@ -63,7 +63,7 @@ export default withSecurity({endpoint: "GET/api/admin/security/reports"}) (async
   ]);
 
   const recommendations: string[] = [];
-  const critical = bySeverity.find((b) => b._id === "critical")?.count ?? 0;
+  const critical = bySeverity.find((b) => b._id === "critical").count ?? 0;
   if (critical > 50) recommendations.push("Critical event count is elevated -- review recent activity and consider lockdown if attacks persist.");
   if (topIps[0].count && topIps[0].count > 200) {
     recommendations.push(`IP ${topIps[0].id} generated ${topIps[0].count} events -- consider hard-blocking.`);

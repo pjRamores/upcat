@@ -21,7 +21,7 @@ export default function SubjectMathPage() {
         "Linear,·quadratic,·and·rational·equations·and·inequalities",
         "Functions:·domain,·range,·composition,·and·inverses",
         "Plane·and·coordinate·geometry,·including·circles·and·polygons",
-        "Right–triangle·trigonometry·and·the·unit·circle",
+        "Right-triangle·trigonometry·and·the·unit·circle",
         "Word·problems:·work,·mixture,·motion,·and·number·puzzles",
       ]}
       stats={{questionCount: "300+", subtopicCount: "18"}}
@@ -37,7 +37,7 @@ export default function SubjectMathPage() {
         explanation:
           "Substitute·x·=·2:·f(2)·=·3(2)²·-·2(2)·+·5·=·12·-·4·+·5·=·13.",
       }}
-      practiceCtaHref="/practice?subject=Mathematics"
+      practiceCtaRef="/practice?subject=Mathematics"
     </>
   );
 }

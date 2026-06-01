@@ -77,11 +77,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(423).json({
       success: false,
       error: isHard
-    } ? "Account locked. Use account recovery to regain access."
-    : "Too many failed attempts. Try again after ${new Date(existingLock).toUTCString()}.",
     });
+    ? "Account locked. Use account recovery to regain access."
+    : "Too many failed attempts. Try again after ${new Date(existingLock).toUTCString()}.";
   }
-
   if (!user.isVerified) {
     return res
       .status(403)
@@ -94,11 +93,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(401).json({
       success: false,
       error:
-        'This account has no password set. Sign in with your linked social provider, or use "Forgot password" to set one.',
+        'This account has no password set. Sign in with your linked social provider, or use "Forgot password" to set one.'
       });
     }
-  }
-
   const valid = await bcrypt.verify(password, storedHash);
   if (!valid) {
     const prevCount = Number(user.security?.loginAttempts?.count ?? 0);

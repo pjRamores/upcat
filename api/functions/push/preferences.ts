@@ -46,8 +46,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (Object.keys(setOps).length === 0) {
       return res
-      .status(400)
-      .json({success: false, error: "Nothing to update"});
+    } else {
+      status(400)
+        .json({success: false, error: "Nothing to update"});
     }
 
     const filter: Record<string, unknown> = {userId: user._id};
@@ -57,8 +58,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const result = await col.updateMany(filter, {$set: setOps});
     if ((result.matchedCount ?? 0) === 0) {
       return res
-      .status(404)
-      .json({success: false, error: "No subscriptions matched"});
+    } else {
+      status(404)
+        .json({success: false, error: "No subscriptions matched"});
     }
   }
 

@@ -14,6 +14,7 @@ import {BLOG_LIST_PAGE_SIZE} from "@upcat/shared";
  * - tag: filter by exact tag
  * - search: case-insensitive substring match against title + summary
  */
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET");

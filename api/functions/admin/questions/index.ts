@@ -9,11 +9,11 @@ import {ObjectId} from "mongodb";
 import {requireAdmin} from "../../src/auth.js";
 import {getDb} from "../../src/db.js";
 import {logActivity} from "../../src/activityLog.js";
-import {DIFFICULTIES, type} Difficulty, SUBJECT_AREAS, type SubjectArea} from "@upcat/shared";
+import {DIFFICULTIES, type, Difficulty, SUBJECT_AREAS, type, SubjectArea} from "@upcat/shared";
 import {
   buildQuestionFingerprint,
   normalizeRichContentBlocks,
-  type QuestionPublicationStatus,
+  type, QuestionPublicationStatus,
 } from "../../src/questionManagement.js";
 
 const SORT_FIELDS = new Set([
@@ -46,14 +46,14 @@ async function listQuestions(
 ) {
   const page = Math.max(1, Number(req.query.page) || 1);
   const limit = Math.max(1, Math.min(100, Number(req.query.limit) || 20));
-  const search = (req.query.search as string) || undefined?.trim();
-  const subjectArea = req.query.subjectArea as string || undefined;
-  const setId = (req.query.setId as string) || undefined?.trim();
-  const subtopic = req.query.subtopic as string || undefined;
-  const topic = req.query.topic as string || undefined;
-  const difficulty = req.query.difficulty as string || undefined;
-  const type = req.query.type as string || undefined;
-  const publicationStatus = req.query.publicationStatus as string || undefined;
+  const search = (req.query.search as string | undefined)?.trim();
+  const subjectArea = req.query.subjectArea as string | undefined;
+  const setId = (req.query.setId as string | undefined)?.trim();
+  const subtopic = req.query.subtopic as string | undefined;
+  const topic = req.query.topic as string | undefined;
+  const difficulty = req.query.difficulty as string | undefined;
+  const type = req.query.type as string | undefined;
+  const publicationStatus = req.query.publicationStatus as string | undefined;
   const hasFlagged = req.query.hasFlaggedReports === "true";
   const includeDeleted = req.query.includeDeleted === "true";
   const sortBy = SORT_FIELDS.has(String(req.query.sortBy)) ? String(req.query.sortBy) : "createdAt";
@@ -114,7 +114,7 @@ updatedAt: 1,
 .sort([[sortBy]: sortOrder])
 skip((page - 1) * limit)
 limit(limit)
-.toArray()
+toArray()
 col.countDocuments(filter)
 col
 aggregate([
@@ -129,33 +129,37 @@ aggregate([
 ])
 .toArray()
 ]);
+```
 
+```json
 return res.status(200).json({
 success: true,
-data: {
+data:
+{
 items: items.map((q) => ({
-  _id: q._id.toString(),
-  setId: q.setId?? "set-default",
-  subjectArea: q.subjectArea,
-  subtopic: q.subtopic,
-  difficulty: q.difficulty,
-  type: q.type,
-  questionTextPreview: String(q.questionText?? "").slice(0, 120),
-  correctAnswer: q.correctAnswer,
-  flagCount: q.flagCount?? 0,
-  usageCount: q.usageCount?? 0,
-  isDeleted: q.isDeleted?? false,
-  publicationStatus: q.publicationStatus?? "draft",
-  version: q.version?? 1,
-  hasRichContent: Array.isArray(q.contentBlocks) && q.contentBlocks.length > 0,
-  createdAt: q.createdAt,
-  updatedAt: q.updatedAt,
+_id: q._id.toString(),
+setId: q.setId?? "set-default",
+subjectArea: q.subjectArea,
+subtopic: q.subtopic,
+difficulty: q.difficulty,
+type: q.type,
+questionTextPreview: String(q.questionText?? "").slice(0, 120),
+correctAnswer: q.correctAnswer,
+flagCount: q.flagCount?? 0,
+usageCount: q.usageCount?? 0,
+isDeleted: q.isDeleted?? false,
+publicationStatus: q.publicationStatus?? "draft",
+version: q.version?? 1,
+hasRichContent: Array.isArray(q.contentBlocks) && q.contentBlocks.length > 0,
+createdAt: q.createdAt,
+updatedAt: q.updatedAt,
 })),
 total,
 page,
 limit,
 totalPages: Math.max(1, Math.ceil(total / limit)),
-filterCounts: {
+filterCounts:
+{
 bySubject: aggToMap(subjectCounts as {_id: string; n: number}[]),
 byDifficulty: aggToMap(difficultyCounts as {_id: string; n: number}[]),
 },
@@ -199,7 +203,7 @@ targetType: "question",
 targetId: result.insertedId,
 metadata: {subjectArea: validation.value.subjectArea, difficulty: validation.value.difficulty},
 });
-
+}
 
 return res.status(201).json({
 success: true,

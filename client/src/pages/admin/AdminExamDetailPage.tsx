@@ -6,7 +6,7 @@ import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import MathText from "@/components/MathText";
 import {adminApi} from "@/lib/adminApi";
 import {useToastStore} from "@/stores/toastStore";
-import {type} Difficulty, DIFFICULTY_LABELS, SUBJECT_AREAS} from "@upcat/shared";
+import {type Difficulty, DIFFICULTY_LABELS, SUBJECT_AREAS} from "@upcat/shared";
 
 interface ExamDetail {
   session: {
@@ -114,12 +114,12 @@ className="flex·flex-wrap·items-center·justify-between·gap-3·rounded-xl·bo
 <div>
 <h2 className="text-lg·font-bold·text-slate-900">Session·s._id.slice(-8)</h2>
 <p className="text-sm·text-slate-500">
-{data.user?.}</by<Link to={`/admin/users/${data.user._id}`}}
+{data.user?.<>by<Link to={`/admin/users/${data.user._id}`}}
 </p>
 <div className="mt-2·flex·flex-wrap·gap-2">
 <Badge
 variant={s.status === "completed" ? "success" : s.status === "in_progress" ? "info" : "warning"}>{s.status}</Badge>
-<span className="text-xs·text-slate-500">Exam·set: {s.setName?.trim() || "Unknown"}</span>
+<span className="text-xs·text-slate-500">Exam·set:{s.setName?.trim() || "Unknown"}</span>
 <span className="text-xs·text-slate-500">Started·new·Date(s.startedAt).toLocaleString()}</span>
 {s.completedAt && <span
 className="text-xs·text-slate-500">Completed·new·Date(s.completedAt).toLocaleString()}</span>
@@ -138,6 +138,7 @@ className="rounded-md·border·border-slate-200·px-3·py-1.5·text-xs·hover:bg
 Back</Link>
 </div>
 </div>
+```
 
 {s.score && (
 <div className="grid·grid-cols-2·gap-3·sm:grid-cols-4">

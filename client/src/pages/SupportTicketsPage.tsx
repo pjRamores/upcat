@@ -57,7 +57,7 @@ export default function SupportTicketsPage() {
           </p>
         ) : (
           <ul className="divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-            {tickets.map((t) => {
+            {tickets.map((t) => (
               const status = SUPPORT_TICKET_STATUS_META[t.status] ?? {label: t.status, color: "slate"};
               const type = SUPPORT_TICKET_TYPE_META[t.type] ?? {icon: "💢", label: t.type};
               return (
@@ -84,7 +84,7 @@ export default function SupportTicketsPage() {
                 </span>
               </li>
             );
-          })}
+          })
         </ul>
       )}
     </Modal>

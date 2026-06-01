@@ -46,31 +46,31 @@ export function readPersistedUser(): User | null {
     storage.removeItem(USER_STORAGE_KEY);
     return null;
   }
+}
 
-  export function persistAuthSession(
-    token: string,
-    user: User,
-    rememberMe: boolean,
-  ): void {
-    const storage = rememberMe ? localStorage : sessionStorage;
-    const otherStorage = rememberMe ? sessionStorage : localStorage;
+export function persistAuthSession(
+  token: string,
+  user: User,
+  rememberMe: boolean,
+) : void {
+  const storage = rememberMe ? localStorage : sessionStorage;
+  const otherStorage = rememberMe ? sessionStorage : localStorage;
 
-    otherStorage.removeItem(TOKEN_STORAGE_KEY);
-    otherStorage.removeItem(USER_STORAGE_KEY);
-    storage.setItem(TOKEN_STORAGE_KEY, token);
-    storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-  }
+  otherStorage.removeItem(TOKEN_STORAGE_KEY);
+  otherStorage.removeItem(USER_STORAGE_KEY);
+  storage.setItem(TOKEN_STORAGE_KEY, token);
+  storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+}
 
-  export function persistUserForCurrentSession(user: User): void {
-    const storage = getActiveAuthStorage();
-    if (!storage) return;
-    storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-  }
+export function persistUserForCurrentSession(user: User): void {
+  const storage = getActiveAuthStorage();
+  if (!storage) return;
+  storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+}
 
-  export function clearPersistedAuth(): void {
-    localStorage.removeItem(TOKEN_STORAGE_KEY);
-    localStorage.removeItem(USER_STORAGE_KEY);
-    sessionStorage.removeItem(TOKEN_STORAGE_KEY);
-    sessionStorage.removeItem(USER_STORAGE_KEY);
-  }
+export function clearPersistedAuth(): void {
+  localStorage.removeItem(TOKEN_STORAGE_KEY);
+  localStorage.removeItem(USER_STORAGE_KEY);
+  sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+  sessionStorage.removeItem(USER_STORAGE_KEY);
 }

@@ -273,5 +273,11 @@ export function createLogger(service: string, request?: Partial<MonitoringReques
     region: process.env.VERCEL_REGION || process.env.AWS_REGION || null,
     request: req,
     trace: req
+  ? {
+    traceId: req.traceId,
+    spanId: req.spanId,
+    parentSpanId: req.parentSpanId,
+  }
+  : null,
   });
 }

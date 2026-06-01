@@ -1,6 +1,7 @@
 /**
  * Activity feed for the admin dashboard.
- * Returns the most-recent log entries (default 100), enriched with the actor's name where available.
+ * Returns the most-recent log entries (default 100), enriched with the
+ * actor's name where available.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";

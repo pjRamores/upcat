@@ -2,7 +2,7 @@
  * Passage detail/update/soft-delete.
  * GET .../api/admin/passages/:id
  * PUT .../api/admin/passages/:id
- * DELETE .../api/admin/passages/:id
+ * DELETE /api/admin/passages/:id
  *
  * Delete returns 409 if the passage is still referenced by any
  * non-deleted questions and includes the dependent question IDs.
@@ -106,7 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 const now = new Date();
 await col.updateOne(
   {id: oid},
-  {$set: {isDeleted: true}, deletedAt: now, deletedBy: admin._id, updatedAt: now}},
+  {$set: {isDeleted: true, deletedAt: now, deletedBy: admin._id, updatedAt: now}},
 );
 await logActivity(db, {
   actorId: admin._id,
@@ -116,7 +116,6 @@ await logActivity(db, {
   targetId: oid,
 });
 return res.status(200).json({success: true, data: {deleted: true}});
-```
-
 res.setHeader("Allow", "GET,PUT,DELETE");
 return res.status(405).json({success: false, error: "Method not allowed"});
+}

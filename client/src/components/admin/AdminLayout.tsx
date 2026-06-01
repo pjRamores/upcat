@@ -56,7 +56,7 @@ const NAV: NavSection[] = [
           {
             to: "/admin/practice-sessions", label: "Practice Sessions", icon: "🔍"},
           },
-        ],
+        },
       },
       {
         heading: "Platform",
@@ -84,69 +84,49 @@ const NAV: NavSection[] = [
           {
             to: "/admin/audit-log", label: "Audit Log", icon: "🔍"},
           },
-        ],
-      },
-      {
-        heading: "Support",
-        items: [
-          {
-            to: "/admin/support", label: "Support Dashboard", icon: "🔍", end: true},
-          {
-            to: "/admin/support/tickets", label: "Tickets", icon: "🔍"},
-          {
-            to: "/admin/support/identity-disputes", label: "Identity Disputes", icon: "🔍"},
-          {
-            to: "/admin/data-requests", label: "Data Requests", icon: "🔍"},
+        },
+        {
+          heading: "Support",
+          items: [
+            {
+              to: "/admin/support", label: "Support Dashboard", icon: "🔍", end: true},
+            {
+              to: "/admin/support/tickets", label: "Tickets", icon: "🔍"},
+            {
+              to: "/admin/support/identity-disputes", label: "Identity Disputes", icon: "🔍"},
+            {
+              to: "/admin/data-requests", label: "Data Requests", icon: "🔍"},
+            },
           },
-        ],
-      },
-      {
-        heading: "Marketing",
-        items: [
-          {
-            to: "/admin/blog", label: "Blog Posts", icon: "🔍"},
-          {
-            to: "/admin/seo", label: "SEO & Redirects", icon: "🔍"},
-          {
-            to: "/admin/ads", label: "Ads", icon: "🔍"},
+        },
+        {
+          heading: "Marketing",
+          items: [
+            {
+              to: "/admin/blog", label: "Blog Posts", icon: "🔍"},
+            {
+              to: "/admin/seo", label: "SEO & Redirects", icon: "🔍"},
+            {
+              to: "/admin/ads", label: "Ads", icon: "🔍"},
+            },
           },
-        ],
-      },
-      {
-        heading: "Study Plan",
-        items: [
-          {
-            to: "/admin/study-plans/templates", label: "Templates", icon: "🔍"},
-          {
-            to: "/admin/study-plans/lessons", label: "Lessons", icon: "🔍"},
-          {
-            to: "/admin/study-plans/analytics", label: "Analytics", icon: "🔍"},
+        },
+        {
+          heading: "Study Plan",
+          items: [
+            {
+              to: "/admin/study-plans/templates", label: "Templates", icon: "🔍"},
+            {
+              to: "/admin/study-plans/lessons", label: "Lessons", icon: "🔍"},
+            {
+              to: "/admin/study-plans/analytics", label: "Analytics", icon: "🔍"},
+            },
           },
-        ],
-      },
-    ];
-  }
-];
-
-const TITLE_MAP: Record<string, string> = {
-  "/admin": "Dashboard",
-  "/admin/analytics": "Analytics",
-  "/admin/questions": "Questions",
-  "/admin/questions/new": "New Question",
-  "/admin/questions/workflow": "Question Workflow",
-  "/admin/questions/import-export": "Question Import / Export",
-  "/admin/question-sets": "Question Sets",
-  "/admin/questions/media": "Question Media Library",
-  "/admin/passages": "Passages",
-  "/admin/help/articles": "Help Articles",
-  "/admin/help/contextual": "Contextual Help",
-  "/admin/help/onboarding": "Onboarding Flows",
-  "/admin/help/analytics": "Help Analytics",
-  "/admin/passages/new": "New Passage",
-  "/admin/content-flags": "Reported Issues",
-  "/admin/users": "Users",
-  "/admin/users/new": "New User",
-};
+        },
+      ],
+    ]
+  ]
+}
 //admin/exams": "Exam·Sessions",
 //admin/practice-sessions": "Practice·Sessions",
 //admin/announcements": "Announcements",
@@ -166,7 +146,7 @@ const TITLE_MAP: Record<string, string> = {
 //admin/support/identity-disputes": "Identity·Disputes",
 //admin/data-requests": "Data·Requests",
 //admin/ads": "Ad·Settings",
-//admin/seo": "SEO·&·Redirects",
+//admin/seo": "SEO & Redirects",
 //admin/blog": "Blog·Posts",
 //admin/blog/new": "New·Blog·Post",
 //admin/study-plans/templates": "Study·Plan·Templates",
@@ -182,11 +162,12 @@ export default function AdminLayout() {
   const [menuQuery, setMenuQuery] = useState("");
   const hasMounted = useRef(false);
   const [collapsedSections, setCollapsedSections] = useState<SectionCollapseState>(() =>
-    NAV.reduce<SectionCollapseState>((acc, section) => {
-      acc[section.heading] = true;
-      return acc;
-    }, {})
-  );
+  {
+    // NAV.reduce<SectionCollapseState>((acc, section) => {
+    // acc[section.heading] = true;
+    // return acc;
+    }, {});
+  });
 
   useEffect(() => {
     setOpen(false);
@@ -247,7 +228,8 @@ export default function AdminLayout() {
           Search·admin·menu
         </label>
         <div className="relative">
-          id="admin-menu-search"
+          <input
+            id="admin-menu-search"
 type="search"
 value={menuQuery}
 onChange={(e) => setMenuQuery(e.target.value)}
@@ -257,71 +239,67 @@ className="w-full·rounded-md·border·border-slate-300·px-3·py-2·pr-8·text-
 <div className="min-w-0·flex-1">
   <p className="truncate·text-xs·text-slate-500">
     {breadcrumbs.map((c, i) => (
-      <span·key={c.path}>
-        {i > 0 && <span·className="mx-1">/</span>}
-        {i === breadcrumbs.length - 1 ? (
-          <span·className="font-medium·text-slate-700">{c.label}</span>
-        ) : (
-          <Link·to={c.path}·className="hover:text-primary-700">{c.label}</Link>
-        )}
-      </span>
+      <span·key={c.path}}
     ))}
-  </p>
-  <h1 className="truncate·text-lg·font-bold·text-slate-900">
-    {breadcrumbs[breadcrumbs.length - 1]?.label??."Admin"}
-  </h1>
+  </span>
+</div>
+
+</p>
+<h1 className="truncate·text-lg·font-bold·text-slate-900">
+  {breadcrumbs[breadcrumbs.length-1]?.label??."Admin"}
+</h1>
 </div>
 <div className="flex·items-center·gap-3">
-  <span·className="hidden·text-sm·text-slate-600·md:inline">
-    {user?.firstName}·{user?.lastName}
+  <span className="hidden·text-sm·text-slate-600·md:inline">
+    {user?.firstName} {user?.lastName}
   </span>
-  <span
-    className="rounded-full·bg-primary-100·px-2·py-0.5·text-xs·font-semibold·text-primary-700">
-    ADMIN
-  </span>
-  <button
-    type="button"
-    onClick={logout}
-    className="rounded-md·border·border-slate-200·px-3·py-1.5·text-xs·font-medium·text-slate-700·hover:bg-slate-50"
-  >
-    Logout
-  </button>
+</span>
+<span className="rounded-full·bg-primary-100·px-2·py-0.5·text-xs·font-semibold·text-primary-700">
+  ADMIN
+</span>
+<button
+type="button"
+onClick={logout}
+className="rounded-md·border·border-slate-200·px-3·py-1.5·text-xs·font-medium·text-slate-700·hover:bg-slate-50"
+>
+Logout
+</button>
 </div>
 </header>
-<main·className="min-w-0·flex-1·px-4·py-6·lg:px-8">
-  <Outlet/>
+<main className="min-w-0·flex-1·px-4·py-6·lg:px-8">
+<Outlet/>
 </main>
 </div>
 </div>
 );
 }
 
-function·buildCrumbs(pathname: string) {
+function·buildCrumbs(pathname:·string) {
   const segs = pathname.split("/").filter(Boolean);
-  const crumbs: { label: string; path: string }[] = [];
+  const crumbs: { label:·string; path:·string }[] = [];
   let acc = "";
   for (const s of segs) {
-    acc += `${s}`;
-    crumbs.push({label: TITLE_MAP[acc]??prettify(s), path: acc});
+    acc += `/${s}`;
+    crumbs.push({label:·TITLE_MAP[acc]??·prettify(s), path:·acc});
   }
-  return crumbs.length ? crumbs : [{label: "Admin", path: "/admin"}];
+  return crumbs.length ? crumbs : [{label:·"Admin", path:·"/admin"}];
 }
 
-function·isNavItemActive(item: { to: string; end?: boolean }, pathname: string) {
+function·isNavItemActive(item:·{·to:·string;·end?:·boolean·}, pathname:·string) {
   if (item.end) return pathname === item.to;
   return pathname === item.to || pathname.startsWith(`${item.to}/`);
 }
 
-function·slugify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+function·slugify(value:·string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "*");
 }
 
-function·prettify(s: string) {
-  if (!/^[a-f0-9]{24}$/i.test(s)) return "Detail";
-  return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, "");
+function·prettify(s:·string) {
+  if (/^[a-f0-9]{24}$/i.test(s)) return "Detail";
+  return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, "*");
 }
 
-function·ShieldIcon({className = "h-6·w-6"}: {className?: string}) {
+function·ShieldIcon({className =·"h-6·w-6"}:{·className?:·string·}) {
   return (
     <svg·viewBox="0·0·24·24"·className={className}·fill="currentColor"·aria-hidden>
       <path·d="M12·2·4·5v6c0·5·3.4·9.7·8·11·4.6-1.3·8-6·8-11V51-8-3Z"/>

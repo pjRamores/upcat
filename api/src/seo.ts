@@ -106,7 +106,7 @@ if (s.length > 1 && s.endsWith("/")) s = s.replace(/\/+$/, "");
 return s.toLowerCase();
 }
 
-/* —— Sitemap rendering —— */
+/*—— Sitemap rendering——*/
 
 export interface SitemapEntry {
   loc: string;
@@ -126,7 +126,7 @@ s
 export function renderSitemapXml(entries: SitemapEntry[]): string {
   const body = entries
   .map((e) => {
-    const parts: string[] = [ `<loc>${xmlEscape(e.loc)}</loc>` ];
+    const parts: string[] = [ `<loc>${xmlEscape(e.loc)}</loc>`];
     if (e.lastmod) parts.push(`<lastmod>${xmlEscape(e.lastmod)}</lastmod>`);
     if (e.changefreq) parts.push(`<changefreq>${e.changefreq}</changefreq>`);
     if (typeof e.priority === "number")
@@ -159,7 +159,7 @@ export function buildStaticSitemapEntries(
   }));
 }
 
-/* —— robots.txt rendering —— */
+/*—— robots.txt rendering——*/
 
 /**
  * Paths that crawlers must NOT index. Kept as a constant so admin can
@@ -196,7 +196,7 @@ export function renderRobotsTxt(siteUrl: string): string {
   return lines.join("\n");
 }
 
-/* —— ads.txt rendering —— */
+/*—— ads.txt rendering——*/
 
 /**
  * Render the ads.txt body. Per IAB Tech Lab spec each non-comment line is:

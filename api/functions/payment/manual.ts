@@ -205,87 +205,88 @@ submissionNumber: 1,
 planName: 1,
 amount: 1,
 channel: 1,
-status: 1,
-createdAt: 1,
-"review.reviewedAt": 1,
+status:1,
+createdAt:1,
+"review.reviewedAt":1,
 })
 .toArray(),
-db.collection("payment_submissions").countDocuments({userId: user._id}),
+db.collection("payment_submissions").countDocuments({userId:user._id}),
 });
+```
 
+```json
 return res.status(200).json({
-success: true,
-data: {
-items: items.map((i) => ({
-submissionNumber: i.submissionNumber,
-planName: i.planName,
-amount: i.amount,
-channel: i.channel,
-status: i.status,
-createdAt: i.createdAt,
-reviewedAt: (i.review as {reviewedAt?: Date}|undefined)?.reviewedAt??null,
+success:true,
+data:{
+items:items.map((i)=>({submissionNumber:i.submissionNumber,
+planName:i.planName,
+amount:i.amount,
+channel:i.channel,
+status:i.status,
+createdAt:i.createdAt,
+reviewedAt:(i.review as {reviewedAt?:Date}|undefined)?.reviewedAt??null,
 })),
 total,
 page,
 limit,
-totalPages: Math.max(1, Math.ceil(total / limit)),
+totalPages:Math.max(1,Math.ceil(total/limit)),
 },
 });
 }
 
-if (req.method === "GET" && submissionNumber) {
+if(req.method === "GET" && submissionNumber){
 const submission = await db.collection("payment_submissions").findOne({
 submissionNumber,
-userId: user._id,
+userId:user._id,
 });
-if (!submission) {
-return res.status(404).json({success: false, error: "Submission not found"});
+if(!submission){
+return res.status(404).json({success:false,error:"Submission not found"});
 }
 
-const sanitized = {
+const sanitized ={
 ...submission,
-_id: String(submission._id),
-userId: String(submission.userId),
-review: {
-...(submission.review as Record<string, unknown>),
-...adminNotes: undefined,
+_id:String(submission._id),
+userId:String(submission.userId),
+review:{
+...(submission.review as Record<string,unknown>),
+adminNotes:undefined,
 },
 };
-return res.status(200).json({success: true, data: sanitized});
+return res.status(200).json({success:true,data:sanitized});
 }
 
-if (req.method === "POST" && submissionNumber) {
-const action = String(req.query.action || "").toLowerCase();
-const url = String(req.url || "");
-const isCancel = action === "cancel" || url.endsWith("/cancel");
-if (!isCancel) {
-return res.status(405).json({success: false, error: "Method not allowed"});
+if(req.method === "POST" && submissionNumber){
+const action = String(req.query.action||"").toLowerCase();
+const url = String(req.url||"");
+const isCancel = action === "cancel"||url.endsWith("/cancel");
+if(!isCancel){
+return res.status(405).json({success:false,error:"Method not allowed"});
 }
 
 const submission = await db.collection("payment_submissions").findOne({
 submissionNumber,
-userId: user._id,
+userId:user._id,
 });
-if (!submission) {
-return res.status(404).json({success: false, error: "Submission not found"});
+if(!submission){
+return res.status(404).json({success:false,error:"Submission not found"});
 }
-if (submission.status !== "pending") {
-return res.status(400).json({success: false, error: "Only pending submissions can be cancelled"});
+if(submission.status !== "pending"){
+return res.status(400).json({success:false,error:"Only pending submissions can be cancelled"});
 }
 
 await db.collection("payment_submissions").updateOne({
-_id: submission._id},
+_id:submission._id},
 {
-$set: {
-status: "expired",
-updatedAt: new Date(),
-"review.rejectionReason": "Cancelled by user",
+$set:{
+status:"expired",
+updatedAt:new Date(),
+"review.rejectionReason":"Cancelled by user",
 },
 },
 );
-return res.status(200).json({success: true, data: {cancelled: true}});
+return res.status(200).json({success:true,data:{cancelled:true}});
 }
 
-res.setHeader("Allow", "GET, POST");
-return res.status(405).json({success: false, error: "Method not allowed"});
+res.setHeader("Allow","GET,POST");
+return res.status(405).json({success:false,error:"Method not allowed"});
 }

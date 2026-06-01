@@ -41,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         from: "exam_sessions",
         let: {uid: "$_id"},
         pipeline: [
-          {$match: {$expr: {$eq: ["$userId", "$uid"]}, status: "completed"}},
+          {$match: {$expr: {$eq: ["$userId", "$$uid"]}, status: "completed"}},
           {$group: {_id: null, n: {$sum: 1}, avg: {$avg: "$score.percentage"}}},
         ],
         as: "stats",
@@ -57,7 +57,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         isVerified: 1,
         createdAt: 1,
         lastLoginAt: 1,
-        examCount: {$ifNull: [{$arrayElemAt: ["$stats.n", 0}], 0}],
+        examCount: {$ifNull: [{$arrayElemAt: ["$stats.n", 0}]}, 0]},
         averageScore: {$arrayElemAt: ["$stats.avg", 0]},
       },
     },
@@ -105,6 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     targetId: null,
     metadata: {count: rows.length},
   });
+... });
 res.setHeader("Content-Type", "text/csv; charset=utf-8");
 res.setHeader("Content-Disposition", `attachment; filename="users-${Date.now()}.csv"`);
 return res.status(200).send(csv);
@@ -112,6 +113,6 @@ return res.status(200).send(csv);
 
 function csvCell(value: string): string {
   const needsQuote = /[",\n]/.test(value);
-  const escaped = value.replace(/"/g, '"'');
+  const escaped = value.replace(/"/g, '""');
   return needsQuote ? `${escaped}` : escaped;
 }

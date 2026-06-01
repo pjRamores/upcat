@@ -39,10 +39,10 @@ export function randomNonce(): string {
 }
 
 /** RFC 7636 PKCE pair (code_verifier, code_challenge using S256). */
-export function generatePkcePair(): { codeVerifier: string; codeChallenge: string } {
+export function generatePkcePair(): {codeVerifier: string; codeChallenge: string} {
   const codeVerifier = b64url(crypto.randomBytes(48));
   const codeChallenge = b64url(crypto.createHash("sha256").update(codeVerifier).digest());
-  return { codeVerifier, codeChallenge };
+  return {codeVerifier, codeChallenge};
 }
 
 export async function createOAuthState(
@@ -55,7 +55,7 @@ export async function createOAuthState(
     nonce: string | null;
     codeVerifier: string;
   },
-) : Promise<{ state: string }> {
+) : Promise<{state: string}> {
   const state = randomState();
   const now = new Date();
   await db.collection<OAuthStateDoc>("oauth_state").insertOne({
@@ -70,30 +70,28 @@ export async function createOAuthState(
     createdAt: now,
     expiresAt: new Date(now.getTime() + TTL_MS),
   });
-  return { state };
+  return {state};
 }
 
 /**
  * Atomically claim an oauth_state record by its state string.
  * Returns the document with codeVerifier already decrypted, or null if
- * not found // expired // already consumed.
+ * not found / expired / already consumed.
  */
 export async function consumeOAuthState(
   db: Db,
   state: string,
   provider: SocialProvider,
-) : Promise<{ OAuthStateDoc }> {
-  Promise<{ OAuthStateDoc }>({ codeVerifier: string }) | null> {
-    const col = db.collection<OAuthStateDoc>("oauth_state");
-    const doc = await col.findOneAndDelete({state, provider});
-    if (!doc) return null;
-    if (doc.expiresAt && doc.expiresAt.getTime() < Date.now()) return null;
-    let codeVerifier: string;
-    try {
-      codeVerifier = decrypt(doc.codeVerifierEnc);
-    } catch {
-      return null;
-    }
-    return {...doc, codeVerifier};
+) : Promise<{OAuthStateDoc && {codeVerifier: string}} | null> {
+  const col = db.collection<OAuthStateDoc>("oauth_state");
+  const doc = await col.findOneAndDelete({state, provider});
+  if (!doc) return null;
+  if (doc.expiresAt && doc.expiresAt.getTime() < Date.now()) return null;
+  let codeVerifier: string;
+  try {
+    codeVerifier = decrypt(doc.codeVerifierEnc);
+  } catch {
+    return null;
   }
+  return {...doc, codeVerifier};
 }

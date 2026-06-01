@@ -45,7 +45,7 @@ export default function RoutedSeo({
     structured.push(extraStructuredData);
   }
 
-  return (
+  return {
     <SEOHead
       title={effectiveTitle}
       description={effectiveDescription}
@@ -55,5 +55,5 @@ export default function RoutedSeo({
       ogImage={cfg?.ogImage}
       structuredData={structured.length > 0 ? structured : null}
     />
-  );
+  };
 }

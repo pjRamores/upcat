@@ -299,7 +299,7 @@ async function postMessage(
   if (req.method !== "POST") {
     return res.status(405).json({success: false, error: "Method not allowed"});
   }
-  const content, isInternal = (req.body ?? {}).as {
+  const {content, isInternal} = (req.body ?? {}).as {
     content?: string;
     isInternal?: boolean;
   };
@@ -307,6 +307,7 @@ async function postMessage(
     return res
     .status(400)
     .json({success: false, error: "Reply must be 1-5000 characters."});
+}
 }
 const db = await getDb();
 const doc = await db
@@ -404,7 +405,7 @@ async function updateStatus(
     .findOneAndUpdate({ticketNumber}, update.as never, {returnDocument: "after"});
 
   // mongodb v6 driver returns the document directly (not wrapped in {value}).
-  const doc = (r as unknown as SupportTicketDoc) | {value: SupportTicketDoc | null} | null;
+  const doc = (r as unknown as SupportTicketDoc | {value: SupportTicketDoc | null}) | null;
   const ticket =
     doc && typeof doc === "object" && "value" in doc
     ? (doc as {value: SupportTicketDoc | null}) .value
@@ -434,12 +435,7 @@ await logActivity(db, {
 return res.status(200).json({success: true, data: {updated: true}});
 }
 
-async function verifyIdentity(
-  req: VercelRequest,
-  res: VercelResponse,
-  ticketNumber: string,
-  admin: {_id: ObjectId; email: string},
-) {
+async function verifyIdentity(req: VercelRequest, res: VercelResponse, ticketNumber: string, admin: {_id: ObjectId; email: string},) {
   if (req.method !== "POST") {
     return res.status(405).json({success: false, error: "Method not allowed"});
   }
@@ -484,6 +480,7 @@ function startOfDay(): Date {
   d.setUTCHours(0, 0, 0, 0);
   return d;
 }
+```
 
 function startOfWeek(): Date {
   const d = startOfDay();

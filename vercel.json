@@ -102,693 +102,701 @@
         "destination": "/api/functions/auth/recovery-codes?action=generate"
       }
     ]
-    ]
-  }
+  ]
+}
 {
   "source": "/api/auth/recovery-codes/status",
   "destination": "/api/functions/auth/recovery-codes?action=status"
-},
-{
-"source": "/api/auth/recovery-codes/verify",
-"destination": "/api/functions/auth/recovery-codes?action=verify"
-},
-{
-"source": "/api/auth/security-questions/set",
-"destination": "/api/functions/auth/security-questions?action=set"
-},
-{
-"source": "/api/auth/security-questions/lookup",
-"destination": "/api/functions/auth/security-questions?action=lookup"
-},
-{
-"source": "/api/auth/security-questions/verify",
-"destination": "/api/functions/auth/security-questions?action=verify"
-},
-{
-"source": "/api/auth/recover-account",
-"destination": "/api/functions/auth/recover-account"
-},
-{
-"source": "/api/auth/:path*",
-"destination": "/api/functions/auth/:path*"
-},
-{
-"source": "/api/account/email-preferences",
-"destination": "/api/functions/account/email-preferences"
-},
-{
-"source": "/api/account/data-export/:requestId/download",
-"destination": "/api/functions/account/data-export?requestId=:requestId&download=1"
-},
-{
-"source": "/api/account/data-export/:requestId",
-"destination": "/api/functions/account/data-export?requestId=:requestId"
-},
-{
-"source": "/api/account/data-export",
-"destination": "/api/functions/account/data-export"
-},
-{
-"source": "/api/account/deletion-request/:requestId/confirm",
-"destination": "/api/functions/account/deletion-request?requestId=:requestId&action=confirm"
-},
-{
-"source": "/api/account/deletion-request/:requestId/cancel",
-"destination": "/api/functions/account/deletion-request?requestId=:requestId&action=cancel"
-},
-{
-"source": "/api/account/deletion-request/:requestId",
-"destination": "/api/functions/account/deletion-request?requestId=:requestId"
-},
-{
-"source": "/api/account/deletion-request",
-"destination": "/api/functions/account/deletion-request"
-},
-{
-"source": "/api/support/captcha",
-"destination": "/api/functions/support/guest"
-},
-{
-"source": "/api/support/tickets/guest",
-"destination": "/api/functions/support/guest"
-},
-{
-"source": "/api/support/tickets/:ticketNumber/messages",
-"destination": "/api/functions/support/tickets?ticketNumber=:ticketNumber&messages=1"
-},
-{
-"source": "/api/support/tickets/:ticketNumber",
-"destination": "/api/functions/support/tickets?ticketNumber=:ticketNumber"
-},
-{
-"source": "/api/support/tickets",
-"destination": "/api/functions/support/tickets"
-},
-{
-"source": "/api/account",
-"destination": "/api/functions/account"
-},
-{
-"source": "/api/stats/:path*",
-"destination": "/api/functions/stats/:path*"
-},
-{
-"source": "/api/contact",
-"destination": "/api/functions/contact"
-},
-{
-"source": "/api/announcements",
-"destination": "/api/functions/announcements"
-},
-{
-"source": "/api/status",
-"destination": "/api/functions/status"
-},
-{
-"source": "/api/health",
-"destination": "/api/functions/monitoring/health?mode=basic"
-},
-{
-"source": "/api/health/detailed",
-"destination": "/api/functions/monitoring/health?mode=detailed"
-},
-{
-"source": "/api/health/public",
-"destination": "/api/functions/monitoring/health?mode=public"
-},
-{
-"source": "/api/monitoring/client-errors",
-"destination": "/api/functions/monitoring/client-errors"
-},
-{
-"source": "/api/exam/start",
-"destination": "/api/functions/exam/start"
-},
-{
-"source": "/api/exam/sessions",
-"destination": "/api/functions/exam/sessions"
-},
-{
-"source": "/api/exam/questions/:questionId/flag",
-"destination": "/api/functions/exam/flag?questionId=:questionId"
-},
-{
-"source": "/api/exam/:sessionId/questions",
-"destination": "/api/functions/exam/questions?sessionId=:sessionId"
-},
-{
-"source": "/api/exam/:sessionId/answer",
-"destination": "/api/functions/exam/answer?sessionId=:sessionId"
-},
-{
-"source": "/api/exam/:sessionId/answer-bulk",
-"destination": "/api/functions/exam/answer-bulk?sessionId=:sessionId"
-},
-{
-"source": "/api/exam/:sessionId/submit",
-"destination": "/api/functions/exam/submit?sessionId=:sessionId"
-},
-{
-"source": "/api/exam/:sessionId/review",
-"destination": "/api/functions/exam/review?sessionId=:sessionId"
-},
-{
-"source": "/api/admin/dashboard/summary",
-"destination": "/api/functions/admin/dashboard/summary"
-},
-{
-"source": "/api/admin/dashboard/activity",
-"destination": "/api/functions/admin/dashboard/activity"
-},
-{
-"source": "/api/admin/analytics",
-"destination": "/api/functions/admin/analytics"
-},
-{
-"source": "/api/admin/audit-log",
-"destination": "/api/functions/admin/audit-log"
-},
-{
-"source": "/api/admin/settings",
-"destination": "/api/functions/admin/settings"
-},
-{
-"source": "/api/admin/questions/bulk-delete",
-"destination": "/api/functions/admin/questions/bulk-delete"
-},
-{
-"source": "/api/admin/questions/import",
-"destination": "/api/functions/admin/questions/import"
-},
-{
-"source": "/api/admin/questions/:id",
-"destination": "/api/functions/admin/questions/detail?id=:id"
-},
-{
-"source": "/api/admin/questions",
-"destination": "/api/functions/admin/questions"
-},
-{
-"source": "/api/admin/passages/:id",
-"destination": "/api/functions/admin/passages/detail?id=:id"
-},
-{
-"source": "/api/admin/passages",
-"destination": "/api/functions/admin/passages"
-},
-{
-"source": "/api/admin/users/export",
-"destination": "/api/functions/admin/users/export"
-},
-{
-"source": "/api/admin/users/create",
-"destination": "/api/functions/admin/users?action=create"
-},
-{
-"source": "/api/admin/users/:id/unlock",
-"destination": "/api/functions/admin/users/unlock?userId=:id"
-},
-{
-"source": "/api/admin/users/:id/deactivate",
-"destination": "/api/functions/admin/users/actions?action=deactivate&id=:id"
-},
-{
-"source": "/api/admin/users/:id/reactivate",
-"destination": "/api/functions/admin/users/actions?action=reactivate&id=:id"
-},
-{
-"source": "/api/admin/users/:id/reset-password",
-"destination": "/api/functions/admin/users/actions?action=reset-password&id=:id"
-},
-{
-"source": "/api/admin/users/:id/verify-email",
-"destination": "/api/functions/admin/users/actions?action=verify-email&id=:id"
-},
-{
-"source": "/api/admin/users/:id/upgrade",
-"destination": "/api/functions/admin/users/subscription?action=upgrade&userId=:id"
-},
-{
-"source": "/api/admin/users/:id/downgrade",
-"destination": "/api/functions/admin/users/subscription?action=downgrade&userId=:id"
-},
-{
-"source": "/api/admin/users/:id/extend",
-"destination": "/api/functions/admin/users/subscription?action=extend&userId=:id"
-},
-{
-"source": "/api/admin/users/:id",
-"destination": "/api/functions/admin/users/detail?id=:id"
-},
-{
-"source": "/api/admin/users",
-"destination": "/api/functions/admin/users"
-},
-{
-"source": "/api/admin/exams/:sessionId",
-"destination": "/api/functions/admin/exams/detail?id=:sessionId"
-},
-{
-"source": "/api/admin/exams",
-"destination": "/api/functions/admin/exams"
-},
-{
-"source": "/api/admin/practice-sessions/:id",
-"destination": "/api/functions/admin/practice-sessions/detail?id=:id"
-},
-{
-"source": "/api/admin/practice-sessions",
-"destination": "/api/functions/admin/practice-sessions"
-},
-{
-"source": "/api/admin/content-flags/summary",
-"destination": "/api/functions/admin/content-flags/summary"
-},
-{
-"source": "/api/admin/content-flags/:id",
-"destination": "/api/functions/admin/content-flags?id=:id"
-},
-{
-"source": "/api/admin/content-flags",
-"destination": "/api/functions/admin/content-flags"
-},
-{
-"source": "/api/admin/announcements/:id",
-"destination": "/api/functions/admin/announcements?id=:id"
-},
-{
-"source": "/api/admin/announcements",
-"destination": "/api/functions/admin/announcements"
-},
-{
-"source": "/api/admin/auth/providers/:provider/test",
-"destination": "/api/functions/admin/auth-providers?provider=:provider&action=test"
-},
-{
-"source": "/api/admin/auth/providers/:provider",
-"destination": "/api/functions/admin/auth-providers?provider=:provider"
-},
-{
-"source": "/api/admin/auth/providers",
-"destination": "/api/functions/admin/auth-providers"
-},
-{
-"source": "/api/admin/support/dashboard",
-"destination": "/api/functions/admin/support/tickets?view=dashboard"
-},
-{
-"source": "/api/admin/support/merge-accounts",
-"destination": "/api/functions/admin/support/merge-accounts"
-},
-{
-"source": "/api/admin/support/identity-disputes/:id",
-"destination": "/api/functions/admin/support/disputes?id=:id"
-},
-{
-"source": "/api/admin/support/identity-disputes",
-"destination": "/api/functions/admin/support/disputes"
-},
-{
-"source": "/api/admin/support/tickets/:ticketNumber/messages",
-"destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=message"
-},
-{
-"source": "/api/admin/support/tickets/:ticketNumber/status",
-"destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=status"
-},
-{
-"source": "/api/admin/support/tickets/:ticketNumber/verify-identity",
-"destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=verify"
-},
-{
-"source": "/api/admin/support/tickets/:ticketNumber",
-"destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber"
-},
-{
-"source": "/api/admin/support/tickets",
-"destination": "/api/functions/admin/support/tickets"
-},
-{
-"source": "/api/admin/data-requests/:id",
-"destination": "/api/functions/admin/data-requests?id=:id"
-},
-{
-"source": "/api/admin/data-requests",
-"destination": "/api/functions/admin/data-requests"
-},
-{
-"source": "/api/admin/deletion-log",
-"destination": "/api/functions/admin/deletion-log"
-},
-{
-"source": "/api/admin/gamification/achievements/:id",
-"destination": "/api/functions/admin/gamification?resource=achievements&id=:id"
-},
-{
-"source": "/api/admin/gamification/achievements",
-"destination": "/api/functions/admin/gamification?resource=achievements"
-},
-{
-"source": "/api/admin/gamification/challenges/:id",
-"destination": "/api/functions/admin/gamification?resource=challenges&id=:id"
-},
-{
-"source": "/api/admin/gamification/challenges",
-"destination": "/api/functions/admin/gamification?resource=challenges"
-},
-{
-"source": "/api/admin/gamification/grant-xp",
-"destination": "/api/functions/admin/gamification?resource=grant-xp"
-},
-{
-"source": "/api/admin/gamification",
-"destination": "/api/functions/admin/gamification"
-},
-{
-"source": "/api/gamification/profile",
-"destination": "/api/functions/gamification/profile"
-},
-{
-"source": "/api/gamification/achievements",
-"destination": "/api/functions/gamification/achievements"
-},
-{
-"source": "/api/gamification/leaderboard",
-"destination": "/api/functions/gamification/leaderboard"
-},
-{
-"source": "/api/gamification/weekly-challenge",
-"destination": "/api/functions/gamification/weekly-challenge"
-},
-{
-"source": "/api/gamification/dismiss-notifications",
-"destination": "/api/functions/gamification/dismiss-notifications"
-},
-{
-"source": "/api/practice/start",
-"destination": "/api/functions/practice/start"
-},
-{
-"source": "/api/practice/stats",
-"destination": "/api/functions/practice/stats"
-},
-{
-"source": "/api/practice/cards",
-"destination": "/api/functions/practice/cards"
-},
-{
-"source": "/api/practice/:sessionId/answer",
-"destination": "/api/functions/practice/answer?sessionId=:sessionId"
-},
-{
-"source": "/api/practice/:sessionId/rate",
-"destination": "/api/functions/practice/rate?sessionId=:sessionId"
-},
-{
-"source": "/api/practice/:sessionId/complete",
-"destination": "/api/functions/practice/complete?sessionId=:sessionId"
-},
-{
-"source": "/api/push/public-key",
-"destination": "/api/functions/push/public-key"
-},
-{
-"source": "/api/push/subscribe",
-"destination": "/api/functions/push/subscribe"
-},
-{
-"source": "/api/push/unsubscribe",
-"destination": "/api/functions/push/unsubscribe"
-},
-{
-"source": "/api/push/preferences",
-"destination": "/api/functions/push/preferences"
-},
-{
-"source": "/api/admin/push/test",
-"destination": "/api/functions/admin/push/test"
-},
-{
-"source": "/api/admin/push/broadcast",
-"destination": "/api/functions/admin/push/broadcast"
-},
-{
-"source": "/api/captcha/generate",
-"destination": "/api/functions/captcha/generate"
-},
-{
-"source": "/api/captcha/verify",
-"destination": "/api/functions/captcha/verify"
-},
-{
-"source": "/api/account/security/sessions",
-"destination": "/api/functions/account/security/sessions"
-},
-{
-"source": "/api/account/security/sessions/revoke-all",
-"destination": "/api/functions/account/security/sessions"
-},
-{
-"source": "/api/account/security/sessions/:id/revoke",
-"destination": "/api/functions/account/security/sessions"
-},
-{
-"source": "/api/account/security/activity",
-"destination": "/api/functions/account/security/activity"
-},
-{
-"source": "/api/admin/security/dashboard",
-"destination": "/api/functions/admin/security/dashboard"
-},
-{
-"source": "/api/admin/security/events",
-"destination": "/api/functions/admin/security/events"
-},
-{
-"source": "/api/admin/security/events/:id",
-"destination": "/api/functions/admin/security/events"
-},
-{
-"source": "/api/admin/security/events/:id/review",
-"destination": "/api/functions/admin/security/events"
-},
-{
-"source": "/api/admin/security/ips",
-"destination": "/api/functions/admin/security/ips"
-},
-{
-"source": "/api/admin/security/ips/:ip",
-"destination": "/api/functions/admin/security/ips"
-},
-{
-"source": "/api/admin/security/ips/:ip/block",
-"destination": "/api/functions/admin/security/ips"
-},
-{
-"source": "/api/admin/security/ips/:ip/unblock",
-"destination": "/api/functions/admin/security/ips"
-},
-{
-"source": "/api/admin/security/blocked",
-"destination": "/api/functions/admin/security/blocked"
-},
-{
-"source": "/api/admin/security/blocked/:id",
-"destination": "/api/functions/admin/security/blocked"
-},
-{
-"source": "/api/admin/security/config",
-"destination": "/api/functions/admin/security/config"
-},
-{
-"source": "/api/admin/security/emergency/lockdown",
-"destination": "/api/functions/admin/security/emergency"
-},
-{
-"source": "/api/admin/security/emergency/unlock",
-"destination": "/api/functions/admin/security/emergency"
-},
-{
-"source": "/api/admin/security/reports/attack-summary",
-"destination": "/api/functions/admin/security/reports"
-},
-{
-"source": "/api/admin/monitoring/dashboard",
-"destination": "/api/functions/admin/monitoring/index?resource=dashboard"
-},
-{
-"source": "/api/admin/monitoring/logs",
-"destination": "/api/functions/admin/monitoring/index?resource=logs"
-},
-{
-"source": "/api/admin/monitoring/metrics",
-"destination": "/api/functions/admin/monitoring/index?resource=metrics"
-},
-{
-"source": "/api/admin/monitoring/alerts",
-"destination": "/api/functions/admin/monitoring/index?resource=alerts&action=acknowledge&id=:id"
-},
-{
-"source": "/api/admin/monitoring/alerts/:id/resolve",
-"destination": "/api/functions/admin/monitoring/index?resource=alerts&action=resolve&id=:id"
-},
-{
-"source": "/api/admin/monitoring/alerts/:id/silence",
-"destination": "/api/functions/admin/monitoring/index?resource=alerts&action=silence&id=:id"
-},
-{
-"source": "/api/admin/monitoring/test-alert",
-"destination": "/api/functions/admin/monitoring/index?resource=alerts"
-},
-{
-"source": "/api/admin/monitoring/alert-rules",
-"destination": "/api/functions/admin/monitoring/index?resource=alert-rules"
-},
-{
-"source": "/api/admin/monitoring/alert-rules/seed-defaults",
-"destination": "/api/functions/admin/monitoring/index?resource=alert-rules&action=seed-defaults"
-},
-{
-"source": "/api/admin/monitoring/health-checks",
-"destination": "/api/functions/admin/monitoring/index?resource=health-checks"
-},
-{
-"source": "/api/admin/monitoring/health-checks/run-all",
-"destination": "/api/functions/admin/monitoring/index?resource=health-checks&action=run-all"
-},
-{
-"source": "/api/admin/monitoring/health-checks/:checkId/run",
-"destination": "/api/functions/admin/monitoring/index?resource=health-checks&checkId=:checkId"
-},
-{
-"source": "/api/admin/monitoring/config",
-"destination": "/api/functions/admin/monitoring/index?resource=config"
-},
-{
-"source": "/api/admin/monitoring/reports",
-"destination": "/api/functions/admin/monitoring/index?resource=reports"
-},
-{
-"source": "/api/admin/monitoring/reports/evaluate-rules",
-"destination": "/api/functions/admin/monitoring/index?resource=reports&action=evaluate-rules"
-},
-{
-"source": "/api/cron/:job",
-"destination": "/api/functions/cron/:job"
-},
-{
-"source": "/api/seo/sitemap",
-"destination": "/api/functions/seo/sitemap"
-},
-{
-"source": "/api/seo/robots",
-"destination": "/api/functions/seo/robots"
-},
-{
-"source": "/api/seo/ads-txt",
-"destination": "/api/functions/seo/ads-txt"
-},
-{
-"source": "/api/seo/page-meta",
-"destination": "/api/functions/seo/page-meta"
-},
-{
-"source": "/api/seo/redirect",
-"destination": "/api/functions/seo/redirect-lookup"
-},
-{
-"source": "/api/admin/seo/overrides",
-"destination": "/api/functions/admin/seo?resource=overrides"
-},
-{
-"source": "/api/admin/seo/redirects",
-"destination": "/api/functions/admin/seo?resource=redirects"
-},
-{
-"source": "/api/admin/seo/redirects/:id",
-"destination": "/api/functions/admin/seo?resource=redirects&id=:id"
-},
-{
-"source": "/api/admin/seo/sitemap-status",
-"destination": "/api/functions/admin/seo?resource=sitemap-status"
-},
-{
-"source": "/api/ads/config",
-"destination": "/api/functions/ads/config"
-},
-{
-"source": "/api/ads/video/impression",
-"destination": "/api/functions/ads/video/impression"
-},
-{
-"source": "/api/blog/:slug",
-"destination": "/api/functions/blog/detail?slug=:slug"
-},
-{
-"source": "/api/blog",
-"destination": "/api/functions/blog/list"
-},
-{
-"source": "/api/admin/blog/:id",
-"destination": "/api/functions/admin/blog?id=:id"
-},
-{
-"source": "/sitemap.xml",
-"destination": "/api/functions/seo/sitemap"
-},
-{
-"source": "/robots.txt",
-"destination": "/api/functions/seo/robots"
-},
-{
-"source": "/ads.txt",
-"destination": "/api/functions/seo/ads.txt"
-},
-{
-"source": "/app-ads.txt",
-"destination": "/api/functions/seo/ads.txt"
-},
-{
-"source": "/((?!api/).*)",
-"destination": "/index.html"
-},
-"headers": [
-{
-"source": "/(.*)",
-"headers": [
-{
-"key": "X-Content-Type-Options",
-"value": "nosniff"
-},
-{
-"key": "X-Frame-Options",
-"value": "DENY"
-},
-{
-"key": "Referrer-Policy",
-"value": "strict-origin-when-cross-origin"
-},
-{
-"key": "Strict-Transport-Security",
-"value": "max-age=63072000;includeSubDomains;preload"
-},
-{
-"key": "Permissions-Policy",
-"value": "camera=(), microphone=(), geolocation=()"
-},
-{
-"key": "Content-Security-Policy",
-"value": "default-src='self'; script-src='self' https://pagead2.googlesyndication.com https://*.google.com https://*.googletagservices.com;style-src='self' 'unsafe-inline'
 }
-]
+{
+  "source": "/api/auth/recovery-codes/verify",
+  "destination": "/api/functions/auth/recovery-codes?action=verify"
+}
+{
+  "source": "/api/auth/security-questions/set",
+  "destination": "/api/functions/auth/security-questions?action=set"
+}
+{
+  "source": "/api/auth/security-questions/lookup",
+  "destination": "/api/functions/auth/security-questions?action=lookup"
+}
+{
+  "source": "/api/auth/security-questions/verify",
+  "destination": "/api/functions/auth/security-questions?action=verify"
+}
+{
+  "source": "/api/auth/recover-account",
+  "destination": "/api/functions/auth/recover-account"
+}
+{
+  "source": "/api/auth/:path*",
+  "destination": "/api/functions/auth/:path*"
+}
+{
+  "source": "/api/account/email-preferences",
+  "destination": "/api/functions/account/email-preferences"
+}
+{
+  "source": "/api/account/data-export/:requestId/download",
+  "destination": "/api/functions/account/data-export?requestId=:requestId&download=1"
+}
+{
+  "source": "/api/account/data-export/:requestId",
+  "destination": "/api/functions/account/data-export?requestId=:requestId"
+}
+{
+  "source": "/api/account/data-export",
+  "destination": "/api/functions/account/data-export"
+}
+{
+  "source": "/api/account/deletion-request/:requestId/confirm",
+  "destination": "/api/functions/account/deletion-request?requestId=:requestId&action=confirm"
+}
+{
+  "source": "/api/account/deletion-request/:requestId/cancel",
+  "destination": "/api/functions/account/deletion-request?requestId=:requestId&action=cancel"
+}
+{
+  "source": "/api/account/deletion-request/:requestId",
+  "destination": "/api/functions/account/deletion-request?requestId=:requestId"
+}
+{
+  "source": "/api/account/deletion-request",
+  "destination": "/api/functions/account/deletion-request"
+}
+{
+  "source": "/api/support/captcha",
+  "destination": "/api/functions/support/guest"
+}
+{
+  "source": "/api/support/tickets/guest",
+  "destination": "/api/functions/support/guest"
+}
+{
+  "source": "/api/support/tickets/:ticketNumber/messages",
+  "destination": "/api/functions/support/tickets?ticketNumber=:ticketNumber&messages=1"
+}
+{
+  "source": "/api/support/tickets/:ticketNumber",
+  "destination": "/api/functions/support/tickets?ticketNumber=:ticketNumber"
+}
+{
+  "source": "/api/support/tickets",
+  "destination": "/api/functions/support/tickets"
+}
+{
+  "source": "/api/account",
+  "destination": "/api/functions/account"
+}
+{
+  "source": "/api/stats/:path*",
+  "destination": "/api/functions/stats/:path*"
+}
+{
+  "source": "/api/contact",
+  "destination": "/api/functions/contact"
+}
+{
+  "source": "/api/announcements",
+  "destination": "/api/functions/announcements"
+}
+{
+  "source": "/api/status",
+  "destination": "/api/functions/status"
+}
+{
+  "source": "/api/health",
+  "destination": "/api/functions/monitoring/health?mode=basic"
+}
+}
+{
+  "source": "/api/health/detailed",
+  "destination": "/api/functions/monitoring/health?mode=detailed"
+}
+{
+  "source": "/api/health/public",
+  "destination": "/api/functions/monitoring/health?mode=public"
+}
+{
+  "source": "/api/monitoring/client-errors",
+  "destination": "/api/functions/monitoring/client-errors"
+}
+{
+  "source": "/api/exam/start",
+  "destination": "/api/functions/exam/start"
+}
+{
+  "source": "/api/exam/sessions",
+  "destination": "/api/functions/exam/sessions"
+}
+{
+  "source": "/api/exam/questions/:questionId/flag",
+  "destination": "/api/functions/exam/flag?questionId=:questionId"
+}
+{
+  "source": "/api/exam/:sessionId/questions",
+  "destination": "/api/functions/exam/questions?sessionId=:sessionId"
+}
+{
+  "source": "/api/exam/:sessionId/answer",
+  "destination": "/api/functions/exam/answer?sessionId=:sessionId"
+}
+{
+  "source": "/api/exam/:sessionId/answer-bulk",
+  "destination": "/api/functions/exam/answer-bulk?sessionId=:sessionId"
+}
+{
+  "source": "/api/exam/:sessionId/submit",
+  "destination": "/api/functions/exam/submit?sessionId=:sessionId"
+}
+{
+  "source": "/api/exam/:sessionId/review",
+  "destination": "/api/functions/exam/review?sessionId=:sessionId"
+}
+{
+  "source": "/api/admin/dashboard/summary",
+  "destination": "/api/functions/admin/dashboard/summary"
+}
+{
+  "source": "/api/admin/dashboard/activity",
+  "destination": "/api/functions/admin/dashboard/activity"
+}
+{
+  "source": "/api/admin/analytics",
+  "destination": "/api/functions/admin/analytics"
+}
+{
+  "source": "/api/admin/audit-log",
+  "destination": "/api/functions/admin/audit-log"
+}
+{
+  "source": "/api/admin/settings",
+  "destination": "/api/functions/admin/settings"
+}
+{
+  "source": "/api/admin/questions/bulk-delete",
+  "destination": "/api/functions/admin/questions/bulk-delete"
+}
+{
+  "source": "/api/admin/questions/import",
+  "destination": "/api/functions/admin/questions/import"
+}
+{
+  "source": "/api/admin/questions/:id",
+  "destination": "/api/functions/admin/questions/detail?id=:id"
+}
+{
+  "source": "/api/admin/questions",
+  "destination": "/api/functions/admin/questions"
+}
+{
+  "source": "/api/admin/passages/:id",
+  "destination": "/api/functions/admin/passages/detail?id=:id"
+}
+{
+  "source": "/api/admin/passages",
+  "destination": "/api/functions/admin/passages"
+}
+{
+  "source": "/api/admin/users/export",
+  "destination": "/api/functions/admin/users/export"
+}
+{
+  "source": "/api/admin/users/create",
+  "destination": "/api/functions/admin/users?action=create"
+}
+{
+  "source": "/api/admin/users/:id/unlock",
+  "destination": "/api/functions/admin/users/unlock?userId=:id"
+}
+{
+  "source": "/api/admin/users/:id/deactivate",
+  "destination": "/api/functions/admin/users/actions?action=deactivate&id=:id"
+}
+}
+{
+  "source": "/api/admin/users/:id/reactivate",
+  "destination": "/api/functions/admin/users/actions?action=reactivate&id=:id"
 },
 {
-"source": "/assets/(.*)",
-"headers": [
+  "source": "/api/admin/users/:id/reset-password",
+  "destination": "/api/functions/admin/users/actions?action=reset-password&id=:id"
+},
 {
-"key": "Cache-Control",
-"value": "public, max-age=31536000, immutable"
+  "source": "/api/admin/users/:id/verify-email",
+  "destination": "/api/functions/admin/users/actions?action=verify-email&id=:id"
+},
+{
+  "source": "/api/admin/users/:id/upgrade",
+  "destination": "/api/functions/admin/users/subscription?action=upgrade&userId=:id"
+},
+{
+  "source": "/api/admin/users/:id/downgrade",
+  "destination": "/api/functions/admin/users/subscription?action=downgrade&userId=:id"
+},
+{
+  "source": "/api/admin/users/:id/extend",
+  "destination": "/api/functions/admin/users/subscription?action=extend&userId=:id"
+},
+{
+  "source": "/api/admin/users/:id",
+  "destination": "/api/functions/admin/users/detail?id=:id"
+},
+{
+  "source": "/api/admin/users",
+  "destination": "/api/functions/admin/users"
+},
+{
+  "source": "/api/admin/exams/:sessionId",
+  "destination": "/api/functions/admin/exams/detail?id=:sessionId"
+},
+{
+  "source": "/api/admin/exams",
+  "destination": "/api/functions/admin/exams"
+},
+{
+  "source": "/api/admin/practice-sessions/:id",
+  "destination": "/api/functions/admin/practice-sessions/detail?id=:id"
+},
+{
+  "source": "/api/admin/practice-sessions",
+  "destination": "/api/functions/admin/practice-sessions"
+},
+{
+  "source": "/api/admin/content-flags/summary",
+  "destination": "/api/functions/admin/content-flags/summary"
+},
+{
+  "source": "/api/admin/content-flags/:id",
+  "destination": "/api/functions/admin/content-flags?id=:id"
+},
+{
+  "source": "/api/admin/content-flags",
+  "destination": "/api/functions/admin/content-flags"
+},
+{
+  "source": "/api/admin/announcements/:id",
+  "destination": "/api/functions/admin/announcements?id=:id"
+},
+{
+  "source": "/api/admin/announcements",
+  "destination": "/api/functions/admin/announcements"
+},
+{
+  "source": "/api/admin/auth/providers/:provider/test",
+  "destination": "/api/functions/admin/auth-providers?provider=:provider&action=test"
+},
+{
+  "source": "/api/admin/auth/providers/:provider",
+  "destination": "/api/functions/admin/auth-providers?provider=:provider"
+},
+{
+  "source": "/api/admin/auth/providers",
+  "destination": "/api/functions/admin/auth-providers"
+},
+{
+  "source": "/api/admin/support/dashboard",
+  "destination": "/api/functions/admin/support/tickets?view=dashboard"
+},
+{
+  "source": "/api/admin/support/merge-accounts",
+  "destination": "/api/functions/admin/support/merge-accounts"
+},
+{
+  "source": "/api/admin/support/identity-disputes/:id",
+  "destination": "/api/functions/admin/support/disputes?id=:id"
+},
+{
+  "source": "/api/admin/support/identity-disputes",
+  "destination": "/api/functions/admin/support/disputes"
+},
+{
+  "source": "/api/admin/support/tickets/:ticketNumber/messages",
+  "destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=message"
+},
+{
+  "source": "/api/admin/support/tickets/:ticketNumber/status",
+  "destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=status"
+},
 }
-]
-]
+{
+  "source": "/api/admin/support/tickets/:ticketNumber/verify-identity",
+  "destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber&action=verify"
+}
+{
+  "source": "/api/admin/support/tickets/:ticketNumber",
+  "destination": "/api/functions/admin/support/tickets?ticketNumber=:ticketNumber"
+}
+{
+  "source": "/api/admin/data-requests/:id",
+  "destination": "/api/functions/admin/data-requests?id=:id"
+}
+{
+  "source": "/api/admin/data-requests",
+  "destination": "/api/functions/admin/data-requests"
+}
+{
+  "source": "/api/admin/deletion-log",
+  "destination": "/api/functions/admin/deletion-log"
+}
+{
+  "source": "/api/admin/gamification/achievements/:id",
+  "destination": "/api/functions/admin/gamification?resource=achievements&id=:id"
+}
+{
+  "source": "/api/admin/gamification/achievements",
+  "destination": "/api/functions/admin/gamification?resource=achievements"
+}
+{
+  "source": "/api/admin/gamification/challenges/:id",
+  "destination": "/api/functions/admin/gamification?resource=challenges&id=:id"
+}
+{
+  "source": "/api/admin/gamification/challenges",
+  "destination": "/api/functions/admin/gamification?resource=challenges"
+}
+{
+  "source": "/api/admin/gamification/grant-xp",
+  "destination": "/api/functions/admin/gamification?resource=grant-xp"
+}
+{
+  "source": "/api/admin/gamification",
+  "destination": "/api/functions/admin/gamification"
+}
+{
+  "source": "/api/gamification/profile",
+  "destination": "/api/functions/gamification/profile"
+}
+{
+  "source": "/api/gamification/achievements",
+  "destination": "/api/functions/gamification/achievements"
+}
+{
+  "source": "/api/gamification/leaderboard",
+  "destination": "/api/functions/gamification/leaderboard"
+}
+{
+  "source": "/api/gamification/weekly-challenge",
+  "destination": "/api/functions/gamification/weekly-challenge"
+}
+{
+  "source": "/api/gamification/dismiss-notifications",
+  "destination": "/api/functions/gamification/dismiss-notifications"
+}
+{
+  "source": "/api/practice/start",
+  "destination": "/api/functions/practice/start"
+}
+{
+  "source": "/api/practice/stats",
+  "destination": "/api/functions/practice/stats"
+}
+{
+  "source": "/api/practice/cards",
+  "destination": "/api/functions/practice/cards"
+}
+{
+  "source": "/api/practice/:sessionId/answer",
+  "destination": "/api/functions/practice/answer?sessionId=:sessionId"
+}
+{
+  "source": "/api/practice/:sessionId/rate",
+  "destination": "/api/functions/practice/rate?sessionId=:sessionId"
+}
+{
+  "source": "/api/practice/:sessionId/complete",
+  "destination": "/api/functions/practice/complete?sessionId=:sessionId"
+}
+{
+  "source": "/api/push/public-key",
+  "destination": "/api/functions/push/public-key"
+}
+{
+  "source": "/api/push/subscribe",
+  "destination": "/api/functions/push/subscribe"
+}
+{
+  "source": "/api/push/unsubscribe",
+  "destination": "/api/functions/push/unsubscribe"
+}
+}
+{
+  "source": "/api/push/preferences",
+  "destination": "/api/functions/push/preferences"
+}
+{
+  "source": "/api/admin/push/test",
+  "destination": "/api/functions/admin/push/test"
+}
+{
+  "source": "/api/admin/push/broadcast",
+  "destination": "/api/functions/admin/push/broadcast"
+}
+{
+  "source": "/api/captcha/generate",
+  "destination": "/api/functions/captcha/generate"
+}
+{
+  "source": "/api/captcha/verify",
+  "destination": "/api/functions/captcha/verify"
+}
+{
+  "source": "/api/account/security/sessions",
+  "destination": "/api/functions/account/security/sessions"
+}
+{
+  "source": "/api/account/security/sessions/revoke-all",
+  "destination": "/api/functions/account/security/sessions"
+}
+{
+  "source": "/api/account/security/sessions/:id/revoke",
+  "destination": "/api/functions/account/security/sessions"
+}
+{
+  "source": "/api/account/security/activity",
+  "destination": "/api/functions/account/security/activity"
+}
+{
+  "source": "/api/admin/security/dashboard",
+  "destination": "/api/functions/admin/security/dashboard"
+}
+{
+  "source": "/api/admin/security/events",
+  "destination": "/api/functions/admin/security/events"
+}
+{
+  "source": "/api/admin/security/events/:id",
+  "destination": "/api/functions/admin/security/events"
+}
+{
+  "source": "/api/admin/security/events/:id/review",
+  "destination": "/api/functions/admin/security/events"
+}
+{
+  "source": "/api/admin/security/ips",
+  "destination": "/api/functions/admin/security/ips"
+}
+{
+  "source": "/api/admin/security/ips/:ip",
+  "destination": "/api/functions/admin/security/ips"
+}
+{
+  "source": "/api/admin/security/ips/:ip/block",
+  "destination": "/api/functions/admin/security/ips"
+}
+{
+  "source": "/api/admin/security/ips/:ip/unblock",
+  "destination": "/api/functions/admin/security/ips"
+}
+{
+  "source": "/api/admin/security/blocked",
+  "destination": "/api/functions/admin/security/blocked"
+}
+{
+  "source": "/api/admin/security/blocked/:id",
+  "destination": "/api/functions/admin/security/blocked"
+}
+{
+  "source": "/api/admin/security/config",
+  "destination": "/api/functions/admin/security/config"
+}
+{
+  "source": "/api/admin/security/emergency/lockdown",
+  "destination": "/api/functions/admin/security/emergency"
+}
+{
+  "source": "/api/admin/security/emergency/unlock",
+  "destination": "/api/functions/admin/security/emergency"
+}
+{
+  "source": "/api/admin/security/reports/attack-summary",
+  "destination": "/api/functions/admin/security/reports"
+}
+{
+  "source": "/api/admin/monitoring/dashboard",
+  "destination": "/api/functions/admin/monitoring/index?resource=dashboard"
+}
+{
+  "source": "/api/admin/monitoring/logs",
+  "destination": "/api/functions/admin/monitoring/index?resource=logs"
+}
+}
+{
+  "source": "/api/admin/monitoring/metrics",
+  "destination": "/api/functions/admin/monitoring/index?resource=metrics"
+}
+{
+  "source": "/api/admin/monitoring/alerts",
+  "destination": "/api/functions/admin/monitoring/index?resource=alerts"
+}
+{
+  "source": "/api/admin/monitoring/alerts/:id/acknowledge",
+  "destination": "/api/functions/admin/monitoring/index?resource=alerts&action=acknowledge&id=:id"
+}
+{
+  "source": "/api/admin/monitoring/alerts/:id/resolve",
+  "destination": "/api/functions/admin/monitoring/index?resource=alerts&action=resolve&id=:id"
+}
+{
+  "source": "/api/admin/monitoring/alerts/:id/silence",
+  "destination": "/api/functions/admin/monitoring/index?resource=alerts&action=silence&id=:id"
+}
+{
+  "source": "/api/admin/monitoring/test-alert",
+  "destination": "/api/functions/admin/monitoring/index?resource=alerts"
+}
+{
+  "source": "/api/admin/monitoring/alert-rules",
+  "destination": "/api/functions/admin/monitoring/index?resource=alert-rules"
+}
+{
+  "source": "/api/admin/monitoring/alert-rules/seed-defaults",
+  "destination": "/api/functions/admin/monitoring/index?resource=alert-rules&action=seed-defaults"
+}
+{
+  "source": "/api/admin/monitoring/health-checks",
+  "destination": "/api/functions/admin/monitoring/index?resource=health-checks"
+}
+{
+  "source": "/api/admin/monitoring/health-checks/run-all",
+  "destination": "/api/functions/admin/monitoring/index?resource=health-checks&action=run-all"
+}
+{
+  "source": "/api/admin/monitoring/health-checks/:checkId/run",
+  "destination": "/api/functions/admin/monitoring/index?resource=health-checks&checkId=:checkId"
+}
+{
+  "source": "/api/admin/monitoring/config",
+  "destination": "/api/functions/admin/monitoring/index?resource=config"
+}
+{
+  "source": "/api/admin/monitoring/reports",
+  "destination": "/api/functions/admin/monitoring/index?resource=reports"
+}
+{
+  "source": "/api/admin/monitoring/reports/evaluate-rules",
+  "destination": "/api/functions/admin/monitoring/index?resource=reports&action=evaluate-rules"
+}
+{
+  "source": "/api/cron/:job",
+  "destination": "/api/functions/cron/:job"
+}
+{
+  "source": "/api/seo/sitemap",
+  "destination": "/api/functions/seo/sitemap"
+}
+{
+  "source": "/api/seo/robots",
+  "destination": "/api/functions/seo/robots"
+}
+{
+  "source": "/api/seo/ads-txt",
+  "destination": "/api/functions/seo/ads-txt"
+}
+{
+  "source": "/api/seo/page-meta",
+  "destination": "/api/functions/seo/page-meta"
+}
+{
+  "source": "/api/seo/redirect",
+  "destination": "/api/functions/seo/redirect-lookup"
+}
+{
+  "source": "/api/admin/seo/overrides",
+  "destination": "/api/functions/admin/seo?resource=overrides"
+}
+{
+  "source": "/api/admin/seo/redirects",
+  "destination": "/api/functions/admin/seo?resource=redirects"
+}
+{
+  "source": "/api/admin/seo/redirects/:id",
+  "destination": "/api/functions/admin/seo?resource=redirects&id=:id"
+}
+{
+  "source": "/api/admin/seo/sitemap-status",
+  "destination": "/api/functions/admin/seo?resource=sitemap-status"
+}
+}
+{
+  "source": "/api/ads/config",
+  "destination": "/api/functions/ads/config"
+}
+{
+  "source": "/api/ads/video/impression",
+  "destination": "/api/functions/ads/video/impression"
+}
+{
+  "source": "/api/blog/:slug",
+  "destination": "/api/functions/blog/detail?slug=:slug"
+}
+{
+  "source": "/api/blog",
+  "destination": "/api/functions/blog/list"
+}
+{
+  "source": "/api/admin/blog/:id",
+  "destination": "/api/functions/admin/blog?id=:id"
+}
+{
+  "source": "/sitemap.xml",
+  "destination": "/api/functions/seo/sitemap"
+}
+{
+  "source": "/robots.txt",
+  "destination": "/api/functions/seo/robots"
+}
+{
+  "source": "/ads.txt",
+  "destination": "/api/functions/seo/ads-txt"
+}
+{
+  "source": "/app-ads.txt",
+  "destination": "/api/functions/seo/ads-txt"
+}
+{
+  "source": "/((?!api/).*)",
+  "destination": "/index.html"
+}
+],
+"headers": [
+  {
+    "source": "/(.*)",
+    "headers": [
+      {
+        "key": "X-Content-Type-Options",
+        "value": "nosniff"
+      },
+      {
+        "key": "X-Frame-Options",
+        "value": "DENY"
+      },
+      {
+        "key": "Referrer-Policy",
+        "value": "strict-origin-when-cross-origin"
+      },
+      {
+        "key": "Strict-Transport-Security",
+        "value": "max-age=63072000; includeSubDomains; preload"
+      },
+      {
+        "key": "Permissions-Policy",
+        "value": "camera=(), microphone=(), geolocation=()"
+      },
+      {
+        "key": "Content-Security-Policy",
+        "value": "default-src='self'; script-src='self' https://pagead2.googlesyndication.com https://*.google.com https://*.googletagservices.com; style-src='self' 'unsafe-inline'
+      }
+    ]
+  },
+  {
+    "source": "/assets/(.*)",
+    "headers": [
+      {
+        "key": "Cache-Control",
+        "value": "public, max-age=31536000, immutable"
+      }
+    ]
+  ]
+}
 }

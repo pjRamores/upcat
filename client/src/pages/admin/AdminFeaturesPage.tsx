@@ -83,26 +83,26 @@ export default function AdminFeaturesPage() {
         setSaving(true);
         const {data} = await apiClient.put(
           `${API_ROUTES.ADMIN.FEATURES}/${editingId}`,
-        );
-        limits:
-          free: parseLimit(editingData.freeLimit),
-          premium: parseLimit(editingData.premiumLimit),
+        {
+          limits:
+            free: parseLimit(editingData.freeLimit),
+            premium: parseLimit(editingData.premiumLimit),
         },
         limitPeriod: editingData.limitPeriod || null,
+      },
       );
-    };
 
-    if (data.success) {
-      toast.addToast("success", `Feature "${editingId}" updated successfully`);
-      await loadFeatures();
-      setEditingId(null);
-      setEditingData(null);
-    }
-    catch (error: any) {
-      const message = error.response?.data?.error || "Failed to update feature";
-      toast.addToast("error", message);
-      console.error(error);
-    } finally {
+      if (data.success) {
+        toast.addToast("success", `Feature "${editingId}" updated successfully`);
+        await loadFeatures();
+        setEditingId(null);
+        setEditingData(null);
+      }
+      catch (error: any) {
+        const message = error.response?.data?.error || "Failed to update feature";
+        toast.addToast("error", message);
+        console.error(error);
+      } finally {
 setSaving(false);
 }
 };
@@ -149,7 +149,7 @@ Free tier limit (blank = unlimited)
 </label>
 <input
 type="number"
-value={editingData?.freeLimit ?? ""}
+value={editingData?.freeLimit ??=""}
 onChange={(e) =>
 setEditingData((prev) =>
 prev
@@ -158,7 +158,7 @@ prev
 ...freeLimit: e.target.value,
 }
 : prev,
-})
+}
 }
 className="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
 placeholder="Enter limit or leave blank for unlimited"
@@ -171,7 +171,7 @@ Premium tier limit (blank = unlimited)
 </label>
 <input
 type="number"
-value={editingData?.premiumLimit ?? ""}
+value={editingData?.premiumLimit ??=""}
 onChange={(e) =>
 setEditingData((prev) =>
 prev
@@ -180,7 +180,7 @@ prev
 ...premiumLimit: e.target.value,
 }
 : prev,
-})
+}
 }
 className="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
 placeholder="Enter limit or leave blank for unlimited"
@@ -192,7 +192,7 @@ placeholder="Enter limit or leave blank for unlimited"
 Period
 </label>
 <select
-value={editingData?.limitPeriod ?? ""}
+value={editingData?.limitPeriod ??=""}
 onChange={(e) =>
 setEditingData((prev) =>
 prev
@@ -201,7 +201,7 @@ prev
 ...limitPeriod: (e.target.value || "") as FeatureEditState["limitPeriod"],
 }
 : prev,
-})
+}
 }
 className="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
 <option.value="">None</option>
@@ -249,11 +249,12 @@ className="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm focus:b
     </div>
   )}
 </div>
-)})
+){}
 </div>
+```
 
 {features.length === 0 && (
   <div className="rounded-lg·border·border-dashed·border-slate-300·bg-slate-50·p-8·text-center">
     <p className="text-sm·text-slate-600">No·features·found</p>
   </div>
-)};
+)}

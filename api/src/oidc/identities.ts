@@ -126,7 +126,7 @@ const r = await db
 return r.deletedCount === 1;
 }
 
-export async function deleteAllIdentitiesForUser(db: Db, userId: ObjectId) : Promise<number> {
+export async function deleteAllIdentitiesForUser(db: Db, userId: ObjectId): Promise<number> {
 const r = await db
 .collection<UserIdentityDoc>("user_identities")
 .deleteMany({userId});

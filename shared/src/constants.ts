@@ -102,110 +102,112 @@ export const API_ROUTES = {
     START: "/exam/start",
     SESSIONS: "/exam/sessions",
     QUESTIONS: (id: string) => `/exam/${id}/questions`,
-ANSWER: (id: string) => `/exam/${id}/answer`,
-ANSWER_BULK: (id: string) => `/exam/${id}/answer-bulk`,
-SUBMIT: (id: string) => `/exam/${id}/submit`,
-REVIEW: (id: string) => `/exam/${id}/review`,
+{
+  ANSWER: (id: string) => `/exam/${id}/answer`,
+  ANSWER_BULK: (id: string) => `/exam/${id}/answer-bulk`,
+  SUBMIT: (id: string) => `/exam/${id}/submit`,
+  REVIEW: (id: string) => `/exam/${id}/review`,
 },
 STATS: {
-OVERVIEW: "/stats/overview",
-SUBJECT_BREAKDOWN: "/stats/subject-breakdown",
-DIFFICULTY_BREAKDOWN: "/stats/difficulty-breakdown",
-PROGRESS: "/stats/progress-over-time",
-WEAK_AREAS: "/stats/weak-areas",
-LEADERBOARD: "/stats/leaderboard",
-/** @deprecated kept for the dashboard quick-stats card */
-SUMMARY: "/stats/summary",
+  OVERVIEW: "/stats/overview",
+  SUBJECT_BREAKDOWN: "/stats/subject-breakdown",
+  DIFFICULTY_BREAKDOWN: "/stats/difficulty-breakdown",
+  PROGRESS: "/stats/progress-over-time",
+  WEAK_AREAS: "/stats/weak-areas",
+  LEADERBOARD: "/stats/leaderboard",
+  /** @deprecated kept for the dashboard quick-stats card */
+  SUMMARY: "/stats/summary",
 },
 CONTACT: "/contact",
 ANNOUNCEMENTS: "/announcements",
 STATUS: "/status",
 PAYMENT: {
-CONFIG: "/payment/config",
-MANUAL_SUBMIT: "/payment/manual/submit",
-MANUAL_SUBMISSIONS: "/payment/manual/submissions",
-MANUAL_SUBMISSION: (submissionNumber: string) =>
- `/payment/manual/submissions/${submissionNumber}`,
-MANUAL_CANCEL: (submissionNumber: string) =>
- `/payment/manual/submissions/${submissionNumber}/cancel`,
-PANGMERYENDA_INITIATE: "/payment/pangmeryenda/initiate",
-PANGMERYENDA_STATUS: (transactionId: string) =>
- `/payment/pangmeryenda/status/${transactionId}`,
-PANGMERYENDA_WEBHOOK: "/payment/pangmeryenda/webhook",
-PANGMERYENDA_SUCCESS: "/payment/pangmeryenda/success",
-PANGMERYENDA_FAILED: "/payment/pangmeryenda/failed",
-PANGMERYENDA_CANCELLED: "/payment/pangmeryenda/cancelled",
-PROMO_VALIDATE: "/payment/promo-code/validate",
-PROMO_REDEEM: "/payment/promo-code/redeem",
+  CONFIG: "/payment/config",
+  MANUAL_SUBMIT: "/payment/manual/submit",
+  MANUAL_SUBMISSIONS: "/payment/manual/submissions",
+  MANUAL_SUBMISSION: (submissionNumber: string) =>
+    `/payment/manual/submissions/${submissionNumber}`,
+  MANUAL_CANCEL: (submissionNumber: string) =>
+    `/payment/manual/submissions/${submissionNumber}/cancel`,
+  PANGMERYENDA_INITIATE: "/payment/pangmeryenda/initiate",
+  PANGMERYENDA_STATUS: (transactionId: string) =>
+    `/payment/pangmeryenda/status/${transactionId}`,
+  PANGMERYENDA_WEBHOOK: "/payment/pangmeryenda/webhook",
+  PANGMERYENDA_SUCCESS: "/payment/pangmeryenda/success",
+  PANGMERYENDA_FAILED: "/payment/pangmeryenda/failed",
+  PANGMERYENDA_CANCELLED: "/payment/pangmeryenda/cancelled",
+  PROMO_VALIDATE: "/payment/promo-code/validate",
+  PROMO_REDEEM: "/payment/promo-code/redeem",
 },
 FEATURES: {
-ACCESS: "/features/access",
-CHECK: "/features/check",
-TRACK_USAGE: "/features/track-usage",
+  ACCESS: "/features/access",
+  CHECK: "/features/check",
+  TRACK_USAGE: "/features/track-usage",
 },
 SUBSCRIPTION: {
-STATUS: "/subscription/status",
-CANCEL: "/subscription/cancel",
+  STATUS: "/subscription/status",
+  CANCEL: "/subscription/cancel",
 },
 HELP: {
-ARTICLES: "/help/articles",
-ARTICLE: (slug: string) => `/help/articles/${slug}`,
-CATEGORIES: "/help/categories",
-ARTICLE_FEEDBACK: (slug: string) => `/help/articles/${slug}/feedback`,
-SEARCH: "/help/search",
-CONTEXTUAL: "/help/contextual",
-CONTEXTUAL_DISMISS: (id: string) => `/help/contextual/${id}/dismiss`,
-ONBOARDING: (flowId: string) => `/help/onboarding/${flowId}`,
-ONBOARDING_COMPLETE: (flowId: string) => `/help/onboarding/${flowId}/complete`,
-ONBOARDING_SKIP: (flowId: string) => `/help/onboarding/${flowId}/skip`,
-ONBOARDING_CHECK: "/help/onboarding/check",
-PREFERENCES: "/help/preferences",
+  ARTICLES: "/help/articles",
+  ARTICLE: (slug: string) => `/help/articles/${slug}`,
+  CATEGORIES: "/help/categories",
+  ARTICLE_FEEDBACK: (slug: string) => `/help/articles/${slug}/feedback`,
+  SEARCH: "/help/search",
+  CONTEXTUAL: "/help/contextual",
+  CONTEXTUAL_DISMISS: (id: string) => `/help/contextual/${id}/dismiss`,
+  ONBOARDING: (flowId: string) => `/help/onboarding/${flowId}`,
+  ONBOARDING_COMPLETE: (flowId: string) => `/help/onboarding/${flowId}/complete`,
+  ONBOARDING_SKIP: (flowId: string) => `/help/onboarding/${flowId}/skip`,
+  ONBOARDING_CHECK: "/help/onboarding/check",
+  PREFERENCES: "/help/preferences",
 },
 ADMIN: {
-DASHBOARD: "/admin/dashboard/summary",
-QUESTIONS: "/admin/questions",
-QUESTION: (id: string) => `/admin/questions/${id}`,
-QUESTIONS_BULK_DELETE: "/admin/questions/bulk-delete",
-QUESTIONS_IMPORT: "/admin/questions/import",
-QUESTIONS_IMPORT_PREVIEW: "/admin/questions/import/preview",
-QUESTIONS_IMPORT_CONFIRM: "/admin/questions/import/confirm",
-QUESTIONS_IMPORT_BATCH: (id: string) => `/admin/questions/import/${id}`,
-QUESTIONS_IMPORT_BATCH_UNDO: (id: string) => `/admin/questions/import/${id}/undo`,
-QUESTIONS_EXPORT: "/admin/questions/export",
-QUESTION_WORKFLOW: (id: string) => `/admin/questions/${id}/workflow`,
-QUESTION_VERSIONS: (id: string) => `/admin/questions/${id}/versions`,
-QUESTION_MEDIA_ASSETS: "/admin/questions/media-assets",
-QUESTION_MEDIA_ASSET: (id: string) => `/admin/questions/media-assets/${id}`,
-HELP_ARTICLES: "/admin/help/articles",
-HELP_ARTICLE: (slug: string) => `/admin/help/articles/${slug}`,
-HELP_CONTEXTUAL: "/admin/help/contextual",
-HELP_CONTEXTUAL_ID: (id: string) => `/admin/help/contextual/${id}`,
-HELP_ONBOARDING: "/admin/help/onboarding",
-HELP_ONBOARDING_FLOW: (flowId: string) => `/admin/help/onboarding/${flowId}`,
-HELP_ANALYTICS: "/admin/help/analytics",
-PASSAGES: "/admin/passages",
-PASSAGE: (id: string) => `/admin/passages/${id}`,
-USERS: "/admin/users",
-USER: (id: string) => `/admin/users/${id}`,
-USER_CREATE: "/admin/users/create",
-USER_DEACTIVATE: (id: string) => `/admin/users/${id}/deactivate`,
-USER_REACTIVATE: (id: string) => `/admin/users/${id}/reactivate`,
-USER_RESET_PASSWORD: (id: string) => `/admin/users/${id}/reset-password`,
-USER_VERIFY_EMAIL: (id: string) => `/admin/users/${id}/verify-email`,
-USERS_EXPORT: "/admin/users/export",
-ANALYTICS: "/admin/analytics",
-EXAMS: "/admin/exams",
-EXAM: (id: string) => `/admin/exams/${id}`,
-FLAGS: "/admin/content-flags",
-FLAG: (id: string) => `/admin/content-flags/${id}`,
-FLAGS_SUMMARY: "/admin/content-flags/summary",
-ANNOUNCEMENTS: "/admin/announcements",
-ANNOUNCEMENT: (id: string) => `/admin/announcements/${id}`,
-SETTINGS: "/admin/settings",
-AUDIT_LOG: "/admin/audit-log",
-AUTH_PROVIDERS: "/admin/auth/providers",
-AUTH_PROVIDER: (p: string) => `/admin/auth/providers/${p}`,
-AUTH_PROVIDER_TEST: (p: string) => `/admin/auth/providers/${p}/test`,
+  DASHBOARD: "/admin/dashboard/summary",
+  QUESTIONS: "/admin/questions",
+  QUESTION: (id: string) => `/admin/questions/${id}`,
+  QUESTIONS_BULK_DELETE: "/admin/questions/bulk-delete",
+  QUESTIONS_IMPORT: "/admin/questions/import",
+  QUESTIONS_IMPORT_PREVIEW: "/admin/questions/import/preview",
+  QUESTIONS_IMPORT_CONFIRM: "/admin/questions/import/confirm",
+  QUESTIONS_IMPORT_BATCH: (id: string) => `/admin/questions/import/${id}`,
+  QUESTIONS_IMPORT_BATCH_UNDO: (id: string) => `/admin/questions/import/${id}/undo`,
+  QUESTIONS_EXPORT: "/admin/questions/export",
+  QUESTION_WORKFLOW: (id: string) => `/admin/questions/${id}/workflow`,
+  QUESTION_VERSIONS: (id: string) => `/admin/questions/${id}/versions`,
+  QUESTION_MEDIA_ASSETS: "/admin/questions/media-assets",
+  QUESTION_MEDIA_ASSET: (id: string) => `/admin/questions/media-assets/${id}`,
+  HELP_ARTICLES: "/admin/help/articles",
+  HELP_ARTICLE: (slug: string) => `/admin/help/articles/${slug}`,
+  HELP_CONTEXTUAL: "/admin/help/contextual",
+  HELP_CONTEXTUAL_ID: (id: string) => `/admin/help/contextual/${id}`,
+  HELP_ONBOARDING: "/admin/help/onboarding",
+  HELP_ONBOARDING_FLOW: (flowId: string) => `/admin/help/onboarding/${flowId}`,
+  HELP_ANALYTICS: "/admin/help/analytics",
+  PASSAGES: "/admin/passages",
+  PASSAGE: (id: string) => `/admin/passages/${id}`,
+  USERS: "/admin/users",
+  USER: (id: string) => `/admin/users/${id}`,
+  USER_CREATE: "/admin/users/create",
+  USER_DEACTIVATE: (id: string) => `/admin/users/${id}/deactivate`,
+  USER_REACTIVATE: (id: string) => `/admin/users/${id}/reactivate`,
+  USER_RESET_PASSWORD: (id: string) => `/admin/users/${id}/reset-password`,
+  USER_VERIFY_EMAIL: (id: string) => `/admin/users/${id}/verify-email`,
+  USERS_EXPORT: "/admin/users/export",
+  ANALYTICS: "/admin/analytics",
+  EXAMS: "/admin/exams",
+  EXAM: (id: string) => `/admin/exams/${id}`,
+  FLAGS: "/admin/content-flags",
+  FLAG: (id: string) => `/admin/content-flags/${id}`,
+  FLAGS_SUMMARY: "/admin/content-flags/summary",
+  ANNOUNCEMENTS: "/admin/announcements",
+  ANNOUNCEMENT: (id: string) => `/admin/announcements/${id}`,
+  SETTINGS: "/admin/settings",
+  AUDIT_LOG: "/admin/audit-log",
+ AUTH_PROVIDERS: "/admin/auth/providers",
+ AUTH_PROVIDER: (p: string) => `/admin/auth/providers/${p}`,
+ AUTH_PROVIDER_TEST: (p: string) => `/admin/auth/providers/${p}/test`,
+}
 PAYMENT_CONFIG: "/admin/payment/config",
 PAYMENT_CONFIG_TYPE: "/admin/payment/config/type",
 PAYMENT_CONFIG_PLANS: "/admin/payment/config/plans",
@@ -262,10 +264,10 @@ export const ANNOUNCEMENT_TYPES = ["info", "warning", "maintenance"] as const;
 export const DEFAULT_PLATFORM_SETTINGS = {
   examDefaults: {
     distribution: {
-      "Language·Proficiency": {questions: 25, timeLimit: 45},
+      "Language Proficiency": {questions: 25, timeLimit: 45},
       Mathematics: {questions: 30, timeLimit: 54},
       Science: {questions: 25, timeLimit: 45},
-      "Reading·Comprehension": {questions: 20, timeLimit: 36},
+      "Reading Comprehension": {questions: 20, timeLimit: 36},
     },
     difficultyMix: {easy: 25, medium: 40, hard: 25, very_hard: 10},
   },
@@ -279,8 +281,8 @@ export const DEFAULT_PLATFORM_SETTINGS = {
 export const DEFAULT_FEATURE_GATING = [
   {
     id: "mock_exam_access",
-    name: "Mock·Exam·Access",
-    description: "Start·full·mock·exams.",
+    name: "Mock-Exam-Access",
+    description: "Start full mock exams.",
     category: "exams",
     accessLevel: "all",
     hasLimit: true,
@@ -289,8 +291,8 @@ export const DEFAULT_FEATURE_GATING = [
   },
   {
     id: "practice_test_access",
-    name: "Practice·Test·Access",
-    description: "Start·practice·sessions.",
+    name: "Practice-Test-Access",
+    description: "Start practice sessions.",
     category: "exams",
     accessLevel: "all",
     hasLimit: true,
@@ -299,8 +301,8 @@ export const DEFAULT_FEATURE_GATING = [
   },
   {
     id: "practice_question_count",
-    name: "Max·Questions·per·Practice",
-    description: "Maximum·number·of·questions·per·practice·session.",
+    name: "Max Questions per Practice",
+    description: "Maximum number of questions per practice session.",
     category: "exams",
     accessLevel: "all",
     hasLimit: true,
@@ -309,7 +311,7 @@ export const DEFAULT_FEATURE_GATING = [
   },
   {
     id: "immediate_feedback",
-    name: "Immediate·Feedback·Mode",
+    name: "Immediate Feedback Mode",
   }
 ];
 {
@@ -635,8 +637,8 @@ bankName: "BDO·Unibank",
 qrCodeImage: null,
 qrCodeLabel: null,
 limits: {
-  daily: {max: null, current: 0, lastResetDate: "1970-01-01"},
-  monthly: {max: null, current: 0, lastResetMonth: "1970-01"},
+daily: {max: null, current: 0, lastResetDate: "1970-01-01"},
+monthly: {max: null, current: 0, lastResetMonth: "1970-01"},
 },
 autoDisabled: false,
 autoDisabledReason: null,
@@ -644,73 +646,72 @@ autoDisabledAt: null,
 additionalNotes: null,
 order: 3,
 },
-],
 },
 pangmeryenda: {
-  enabled: false,
-  apiBaseUrl: "https://api.pangmeryenda.com",
-  apiKey: null,
-  apiSecretEnc: null,
-  webhookSecret: null,
-  merchantId: null,
-  planMapping: [],
-  successRedirectUrl: "/payment/success",
-  failureRedirectUrl: "/payment/failed",
-  cancelRedirectUrl: "/payment/cancelled",
-  webhookEndpoint: "/api/payment/pangmeryenda/webhook",
+enabled: false,
+apiBaseUrl: "https://api.pangmeryenda.com",
+apiKey: null,
+apiSecretEnc: null,
+webhookSecret: null,
+merchantId: null,
+planMapping: [],
+successRedirectUrl: "/payment/success",
+failureRedirectUrl: "/payment/failed",
+cancelRedirectUrl: "/payment/cancelled",
+webhookEndpoint: "/api/payment/pangmeryenda/webhook",
 },
 featureGating: {
-  features: DEFAULT_FEATURE_GATING,
+features: DEFAULT_FEATURE_GATING,
 },
 updatedAt: new Date(0).toISOString(),
 updatedBy: null,
 } as const;
 
 export const CONTACT_SUBJECTS = [
-  "General·Inquiry",
-  "Bug·Report",
-  "Feature·Request",
-  "Content·Issue",
-  "Other",
+"General·Inquiry",
+"Bug·Report",
+"Feature·Request",
+"Content·Issue",
+"Other",
 ] as const;
 
 export type ContactSubject = (typeof CONTACT_SUBJECTS)[number];
 
 export const CONTACT_LIMITS = {
-  nameMax: 100,
-  emailMax: 200,
-  messageMin: 10,
-  messageMax: 5000,
-  maxPerHour: 3,
+nameMax: 100,
+emailMax: 200,
+messageMin: 10,
+messageMax: 5000,
+maxPerHour: 3,
 } as const;
 
-// Social login -------------------------------------------------------------------------
+// Social login ----------------------------------------------------------
 export const SOCIAL_PROVIDERS = ["google", "linkedin", "facebook"] as const;
 
 export const SOCIAL_PROVIDER_META: Record<
-  (typeof SOCIAL_PROVIDERS)[number],
-  { label: string, brandColor: string, defaultScopes: string[] }
+(typeof SOCIAL_PROVIDERS)[number],
+{label: string, brandColor: string, defaultScopes: string[]}
 > = {
-  google: {
-    label: "Google",
-    brandColor: "#ea4335",
-    defaultScopes: ["openid", "email", "profile"],
-  },
-  linkedin: {
-    label: "LinkedIn",
-    brandColor: "#0a66c2",
-    defaultScopes: ["openid", "profile", "email"],
-  },
-  facebook: {
-    label: "Facebook",
-    brandColor: "#1877f2",
-    defaultScopes: ["email", "public_profile"],
-  },
+google: {
+label: "Google",
+brandColor: "#ea4335",
+defaultScopes: ["openid", "email", "profile"],
+},
+linkedin: {
+label: "LinkedIn",
+brandColor: "#0a66c2",
+defaultScopes: ["openid", "profile", "email"],
+},
+facebook: {
+label: "Facebook",
+brandColor: "#1877f2",
+defaultScopes: ["email", "public_profile"],
+},
 };
 
 export const ACCOUNT_DELETE_CONFIRMATION = "DELETE·MY·ACCOUNT";
 
-// Account recovery -------------------------------------------------------------------------
+// Account recovery ----------------------------------------------------------
 /** Codes are XXXX-XXXX-XXXX, alphanumeric, excluding ambiguous characters. */
 export const RECOVERY_CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 export const RECOVERY_CODE_COUNT = 10;
@@ -719,16 +720,16 @@ export const RECOVERY_TOKEN_TTL_SECONDS = 15 * 60;
 
 /** Pre-defined questions available to the user (must be exactly 3 chosen). */
 export const SECURITY_QUESTION_BANK = [
-  "What was the name of your first pet?",
-  "What elementary school did you attend?",
-  "What is your mother's maiden name?",
-  "What city were you born in?",
-  "What was your childhood nickname?",
-  "What was the name of your first teacher?",
-  "What is the make of your first car?",
-  "What is your favorite book?",
-  "What was the name of the street you grew up on?",
-  "In what city did your parents meet?",
+"What was the name of your first pet?",
+"What elementary school did you attend?",
+"What is your mother's maiden name?",
+"What city were you born in?",
+"What was your childhood nickname?",
+"What was the name of your first teacher?",
+"What is the make of your first car?",
+"What is your favorite book?",
+"What was the name of the street you grew up on?",
+"In what city did your parents meet?",
 ] as const;
 export const SECURITY_QUESTIONS_REQUIRED = 3;
 
@@ -760,33 +761,33 @@ export const SUPPORT_TICKET_TYPE_META: Record<
   account_recovery: {
     label: "Account Recovery",
     description: "I can't sign in / regain access.",
-    icon: "☹️",
+    icon: "☹️"
   },
   identity_dispute: {
     label: "Identity Dispute",
     description: "A social account I own is linked to someone else.",
-    icon: "☺️",
+    icon: "☺️"
   },
   data_export: {
     label: "Data Export Help",
     description: "Questions about exporting my data.",
-    icon: "☺️",
+    icon: "☺️"
   },
   data_deletion: {
     label: "Data Deletion Help",
     description: "Questions about deleting my account/data.",
-    icon: "☺️",
+    icon: "☺️"
   },
   account_merge: {
     label: "Account Merge",
     description: "I have two accounts and want them combined.",
-    icon: "☺️",
+    icon: "☺️"
   },
   general_support: {
     label: "General Support",
     description: "Other questions.",
-    icon: "☺️",
-  },
+    icon: "☺️"
+  }
 };
 
 export const SUPPORT_TICKET_STATUSES = [
@@ -945,7 +946,7 @@ export const ACHIEVEMENT_RARITIES = [
 ] as const;
 
 export const ACHIEVEMENT_RARITY_META: Record<
-  (typeof ACHIEVEMENT_RARITIES)[number],
+  (typeof ACHIEVEMENT_RARITIES) [number],
   { label: string; color: string; glow: string }
 > = {
   common: { label: "Common", color: "slate", glow: "shadow-slate-200" },
@@ -956,7 +957,7 @@ export const ACHIEVEMENT_RARITY_META: Record<
 };
 
 export const ACHIEVEMENT_CATEGORY_META: Record<
-  (typeof ACHIEVEMENT_CATEGORIES)[number],
+  (typeof ACHIEVEMENT_CATEGORIES) [number],
   { label: string; icon: string }
 > = {
   milestone: { label: "Milestones", icon: "trophy" },
@@ -967,7 +968,7 @@ export const ACHIEVEMENT_CATEGORY_META: Record<
   social: { label: "Social", icon: "users" },
 };
 
-// --- Spaced Repetition ----------------------------------------------------------
+// --- Spaced Repetition --------------------------------------------------------
 export const SRS_DEFAULT_EASE = 2.5;
 export const SRS_MIN_EASE = 1.3;
 export const SRS_MASTERY_INTERVAL_DAYS = 30;
@@ -987,7 +988,7 @@ export const PRACTICE_MODES = [
   "random",
 ] as const;
 
-// --- PWA / Push --------------------------------------------------------------
+// --- PWA / Push ------------------------------------------------------------
 export const PWA_INSTALL_DISMISS_DAYS = 7;
 export const PWA_INSTALL_MIN_VISITS = 3;
 export const OFFLINE_PREFETCH_LIMIT_DEFAULT = 100;
@@ -1000,7 +1001,7 @@ export const PUSH_NOTIFICATION_TYPES = [
   "announcement",
 ] as const;
 
-export type PushNotificationType = (typeof PUSH_NOTIFICATION_TYPES)[number];
+export type PushNotificationType = (typeof PUSH_NOTIFICATION_TYPES) [number];
 
 // --- Phase-12 API routes (registered alongside the main API_ROUTES tree) ---
 export const API_ROUTES_V12 = {
@@ -1037,7 +1038,7 @@ export const API_ROUTES_V12 = {
   },
 } as const;
 
-// --- Phase-12 cron.cadences ----------------------------------------------------------
+// --- Phase-12 cron.cadences --------------------------------------------------------
 export const CRON_SCHEDULES_V12 = {
 assignWeeklyChallenges: "0·4·*·1", //Mondays·04:00·UTC
 studyReminders: "0·9·*·*", //09:00·UTC·daily
@@ -1142,110 +1143,109 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
     description: "Score 90% or higher on a practice exam.",
     icon: "award",
     xpReward: 200,
-points: 50,
-condition: {kind: "scoreThreshold", gte: 90, count: 1}
+{
+  points: 50,
+  condition: {kind: "scoreThreshold", gte: 90, count: 1}
 },
 {
-id: "flawless",
-category: "performance",
-rarity: "legendary",
-title: "Flawless Victory",
-description: "Achieve a perfect 100% on a practice exam.",
-icon: "crown",
-xpReward: 500,
-points: 200,
-condition: {kind: "perfectScores", gte: 1}
+  id: "flawless",
+  category: "performance",
+  rarity: "legendary",
+  title: "Flawless Victory",
+  description: "Achieve a perfect 100% on a practice exam.",
+  icon: "crown",
+  xpReward: 500,
+  points: 200,
+  condition: {kind: "perfectScores", gte: 1}
 },
 {
-id: "perfectionist",
-category: "performance",
-rarity: "epic",
-title: "Perfectionist",
-description: "Achieve 5 perfect scores.",
-icon: "diamond",
-xpReward: 1000,
-points: 300,
-condition: {kind: "perfectScores", gte: 5}
+  id: "perfectionist",
+  category: "performance",
+  rarity: "epic",
+  title: "Perfectionist",
+  description: "Achieve 5 perfect scores.",
+  icon: "diamond",
+  xpReward: 1000,
+  points: 300,
+  condition: {kind: "perfectScores", gte: 5}
 },
 {
-id: "consistent_excellence",
-category: "performance",
-rarity: "epic",
-title: "Consistent Excellence",
-description: "Score 90%+ on 10 different exams.",
-icon: "shield-check",
-xpReward: 750,
-points: 200,
-condition: {kind: "scoreThreshold", gte: 90, count: 10}
+  id: "consistent_excellence",
+  category: "performance",
+  rarity: "epic",
+  title: "Consistent Excellence",
+  description: "Score 90%+ on 10 different exams.",
+  icon: "shield-check",
+  xpReward: 750,
+  points: 200,
+  condition: {kind: "scoreThreshold", gte: 90, count: 10}
 },
-
 // Streaks
 {
-id: "warming_up",
-category: "streak",
-rarity: "common",
-title: "Warming Up",
-description: "Maintain a 3-day study streak.",
-icon: "flame",
-xpReward: 50,
-points: 15,
-condition: {kind: "streakDays", gte: 3}
+  id: "warming_up",
+  category: "streak",
+  rarity: "common",
+  title: "Warming Up",
+  description: "Maintain a 3-day study streak.",
+  icon: "flame",
+  xpReward: 50,
+  points: 15,
+  condition: {kind: "streakDays", gte: 3}
 },
 {
-id: "on_fire",
-category: "streak",
-rarity: "uncommon",
-title: "On Fire",
-description: "Maintain a 7-day study streak.",
-icon: "flame",
-xpReward: 150,
-points: 40,
-condition: {kind: "streakDays", gte: 7}
+  id: "on_fire",
+  category: "streak",
+  rarity: "uncommon",
+  title: "On Fire",
+  description: "Maintain a 7-day study streak.",
+  icon: "flame",
+  xpReward: 150,
+  points: 40,
+  condition: {kind: "streakDays", gte: 7}
 },
 {
-id: "fortnight_focus",
-category: "streak",
-rarity: "rare",
-title: "Fortnight Focus",
-description: "Maintain a 14-day study streak.",
-icon: "calendar-days",
-xpReward: 300,
-points: 75,
-condition: {kind: "streakDays", gte: 14}
+  id: "fortnight_focus",
+  category: "streak",
+  rarity: "rare",
+  title: "Fortnight Focus",
+  description: "Maintain a 14-day study streak.",
+  icon: "calendar-days",
+  xpReward: 300,
+  points: 75,
+  condition: {kind: "streakDays", gte: 14}
 },
 {
-id: "unstoppable",
-category: "streak",
-rarity: "epic",
-title: "Unstoppable",
-description: "Maintain a 30-day study streak.",
-icon: "zap",
-xpReward: 750,
-points: 200,
-condition: {kind: "streakDays", gte: 30}
+  id: "unstoppable",
+  category: "streak",
+  rarity: "epic",
+  title: "Unstoppable",
+  description: "Maintain a 30-day study streak.",
+  icon: "zap",
+  xpReward: 750,
+  points: 200,
+  condition: {kind: "streakDays", gte: 30}
 },
 {
-id: "legendary_dedication",
-category: "streak",
-rarity: "legendary",
-title: "Legendary Dedication",
-description: "Maintain a 100-day study streak.",
-icon: "star",
-xpReward: 2500,
-points: 500,
-condition: {kind: "streakDays", gte: 100}
+  id: "legendary_dedication",
+  category: "streak",
+  rarity: "legendary",
+  title: "Legendary Dedication",
+  description: "Maintain a 100-day study streak.",
+  icon: "star",
+  xpReward: 2500,
+  points: 500,
+  condition: {kind: "streakDays", gte: 100}
 },
-
 // Dedication
 {
-id: "early_bird",
-category: "dedication",
-rarity: "common",
-title: "Early Bird",
-description: "Answer 100 questions in total.",
-icon: "sunrise",
-xpReward: 75,
-points: 20,
+  id: "early_bird",
+  category: "dedication",
+  rarity: "common",
+  title: "Early Bird",
+  description: "Answer 100 questions in total.",
+  icon: "sunrise",
+  xpReward: 75,
+  points: 20,
 condition: {kind: "questionsAnswered", gte: 100}
 },
 {
@@ -1396,7 +1396,7 @@ condition: {kind: "questionsAnswered", gte: 100}
   condition: {kind: "levelReached", gte: 100}
 },
 
-//--- Practice//·SRS-related·(still·meaningful·even·before·SRS·UI·ships)---
+//--- Practice//SRS-related(still·meaningful·even·before·SRS·UI·ships)---
 //{
   id: "practice_starter",
   category: "dedication",
@@ -1451,9 +1451,7 @@ condition: {kind: "questionsAnswered", gte: 100}
 }
 
 export const WEEKLY_CHALLENGE_CATALOG_SEED: WeeklyChallengeCatalogSeed[] = [
-  {
-    id: "weekly_exams_3",
-    title: "Three-Exam·Week",
+];
 description: "Complete 3 practice exams this week.",
 metric: "exams_completed",
 target: 3,
@@ -1592,7 +1590,7 @@ export const SECURITY_EVENT_TYPES = [
 "cors.unauthorized_origin",
 ] as const;
 
-export type SecurityEventType = (typeof SECURITY_EVENT_TYPES) [number];
+export type SecurityEventType = (typeof SECURITY_EVENT_TYPES)[number];
 
 export const SECURITY_EVENT_RETENTION_DAYS = 90;
 
@@ -1705,15 +1703,15 @@ cooldownPeriod: 300,
 headers: {
 hsts: {enabled: true, maxAge: 31_536_000, includeSubDomains: true},
 csp: {
-defaultSrc: ["'self'"],
-scriptSrc: ["'self'"],
-styleSrc: ["'self'", "'unsafe-inline'"],
-imgSrc: ["'self'", "data:", "https:"],
-connectSrc: ["'self'"],
-fontSrc: ["'self'", "data:"],
-frameSrc: ["'none'"],
-objectSrc: ["'none'"],
-baseUri: ["'self'"],
+defaultSrc: [''self''],
+scriptSrc: [''self''],
+styleSrc: [''self'', ''unsafe-inline''],
+imgSrc: [''self'', 'data:', 'https:'],
+connectSrc: [''self''],
+fontSrc: [''self'', 'data:'],
+frameSrc: [''none''],
+objectSrc: [''none''],
+baseUri: [''self''],
 },
 xFrameOptions: "DENY",
 xContentTypeOptions: "nosniff",
@@ -1770,6 +1768,7 @@ expiredBlocksCleanup: "*/15.*.*.*.*", // every 15 min
 securityReport: "0.0.*.*.*", // daily midnight UTC
 staleSessionCleanup: "0.*/6.*.*.*", // every 6 hours
 ipIntelligenceAggregation: "30.0.*.*.*", // daily 00:30 UTC
+}
 }·as·const;
 
 export·const·RATE_LIMIT_BUCKET_TTL_SECONDS·=·86_400;//·24h·inactivity→·auto-remove
@@ -1777,9 +1776,9 @@ export·const·USER_SESSION_RETENTION_DAYS·=·30;
 
 /**·Rate-limit·windows·in·milliseconds,·matching·the·perMinute/perHour/perDay·keys.·*/
 export·const·RATE_WINDOWS·=·{
-  ··perMinute:·60_000,
-  ··perHour:·3_600_000,
-  ··perDay:·86_400_000,
+··perMinute:·60_000,
+··perHour:·3_600_000,
+··perDay:·86_400_000,
 }·as·const;
 
 //——CAPTCHA——

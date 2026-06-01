@@ -111,6 +111,7 @@ return res.status(201).json({
 success: true,
 data: {_id: result.insertedId.toString(), ...doc},
 });
+```
+
 res.setHeader("Allow", "GET,POST");
 return res.status(405).json({success: false, error: "Method not allowed"});
-}

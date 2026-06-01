@@ -1,5 +1,5 @@
-import { type } from "mongodb";
-import { DEFAULT_EXAM_CONFIG, SUBJECT_AREAS, type } from "@upcat/shared";
+import {type Db, ObjectId} from "mongodb";
+import {DEFAULT_EXAM_CONFIG, SUBJECT_AREAS, type SubjectArea} from "@upcat/shared";
 
 type ExamDifficulty = "easy" | "medium" | "hard" | "very_hard";
 
@@ -82,7 +82,7 @@ async function normalizeUserSetAssignments(db: Db, userId: ObjectId): Promise<Us
     const canonical = group.find((assignment) => typeof assignment.setId === "string" && assignment.setId.trim() === normalizedSetId) ?? group[0];
     if (!canonical) continue;
 
-    const mergedAssignedCount = group.reduce((total, assignment) => total + Math.max(0, Number(assignment.assignCount ?? 0)), 0);
+    const mergedAssignedCount = group.reduce((total, assignment) => total + Math.max(0, Number(assignment.assignCount ?? 0))), 0);
     const mostRecentDoc = group.reduce((latest, assignment) => {
       const latestTime = Math.max(
         toComparableTime(latest.lastAssignedAt),
@@ -247,9 +247,9 @@ setId: null,
 setId: ""
 ],
 {
-$set: {setId: "set-default", updatedAt: new Date()},
-}
+$set: {setId: "set-default", updatedAt: new Date()}},
 );
+}
 
 /**
  * If no set configuration exists yet, bootstrap one entry per discovered setId.
@@ -292,14 +292,12 @@ difficultyMix: buildDefaultDifficultyMix(),
 createdAt: now,
 updatedAt: now,
 })));
-
 if (existing.length > 0 && docs.length === 0) {
 return existing.map((doc) => ({
 ...doc,
 setId: setDocIdValue(doc as QuestionSetConfigDoc && {_id?: unknown}),
 }));
 }
-
 if (docs.length > 0) {
 const inserts = setsCol as unknown as {
 insertMany?: (d: QuestionSetConfigDoc[], o?: {ordered?: boolean}) => Promise<unknown>
@@ -316,12 +314,6 @@ if (typeof inserts.insertMany === "function") {
   return docs;
 }
 }
-
-const refreshed = await setsCol.find({isActive: {$ne: false}}).toArray();
-return refreshed.map((doc) => ({
-  ...doc,
-  setId: setDocIdValue(doc as QuestionSetConfigDoc && {_id?: unknown}),
-  }));
 
 export async function pickQuestionSetForUser(
   db: Db,

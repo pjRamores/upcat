@@ -205,6 +205,11 @@ ticketNumber: string,
   // admin replied & visible → "awaiting_user"
   const nextStatus =
     !message.isInternal && isAdmin
+? "awaiting_user"
+: !isAdmin && doc.status === "awaiting_user"
+: ? "open"
+: doc.status;
+
 await db.collection<SupportTicketDoc>("support_tickets").updateOne(
   {_id: doc._id},
   {

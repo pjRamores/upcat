@@ -3,7 +3,7 @@ import SubjectPage from "@/pages/SubjectPage";
 export default function SubjectReadingPage() {
   return (
     <SubjectPage
-      subject="Reading.Comprehension"
+      subject="Reading·Comprehension"
       path="/subjects/reading-comprehension"
       title="UPCAT·Reading·Comprehension·Review·&·Practice"
       description="Sharpen·your·critical-reading·skills·for·the·UPCAT·with·long-form·passages·and·main-idea·inference,·and·tone·questions."
@@ -15,7 +15,7 @@ export default function SubjectReadingPage() {
       ]}
       intro="UPCAT·reading·passages·are·dense·and·the·questions·reward·inference,·not·lookup.·Build·endurance·with·full-length·passages."+
       "and·train·your·eye·to·spot·the·author's·purpose,·tone,·and·structural·cues."
-    ]
+    }
     topics={[
       "Identifying·main·ideas·and·topic·sentences",
       "Inference·and·reading·between·the·lines",
@@ -38,7 +38,8 @@ export default function SubjectReadingPage() {
       explanation:
         "To·linger·means·to·stay·or·remain·longer·than·expected.·The·contrast·with·the·storm·passing·reinforces·that·the·silence·persisted.",
       }}
+    }
     practiceCtaHref="/practice?subject=Reading%20Comprehension"
   />
-  );
+);
 }

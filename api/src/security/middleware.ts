@@ -135,7 +135,7 @@ if (block) {
       severity: "high",
       source: srcFromCtx(ctx),
       target: {type: "endpoint", value: ctx.endpoint},
-      details: {rule: block.rule._id, reason: block.rule.reason},
+      details: {rule: block.rule_id, reason: block.rule.reason},
       action: {taken: "blocked", automated: true},
     });
     res.status(403).json({success: false, error: "Access denied."});
@@ -209,7 +209,6 @@ if (req.body && typeof req.body === "object") {
         details: {threat: t, paths: inspection.paths.slice(0, 5)},
 action: {taken: "sanitized", automated: true},
 });
-
 void adjustThreatScore(
 ctx.clientIp,
 t === "xss_attempt"
@@ -218,7 +217,6 @@ t === "xss_attempt"
 ? "proto_pollution"
 : "injection_attempt",
 );
-
 (req as {body: unknown}).body = sanitizePayload(req.body);
 }
 
@@ -284,7 +282,7 @@ windowMs: 1000,
 });
 if (g.limited) return {scope: "global", result: g};
 
-// b) Per-IP general (per-minute/hour/day) -- fail-fast on any.
+// b) Per-IP general (per-minute/hour/day) - fail-fast on any.
 for (const win of ["perMinute", "perHour", "perDay"] as const) {
 const limit =
 win === "perMinute"
@@ -315,7 +313,7 @@ return matched
 })();
 ```
 
-```typescript
+```javascript
 if (endpointCfg?.perIp) {
   for (const win of ["perMinute", "perHour", "perDay"] as const) {
     const limit = endpointCfg.perIp[win];
@@ -341,7 +339,7 @@ if (userId) {
     const r = await checkAndIncrement({
       scope: "user",
       identifier: userId,
-      endpoint: `*${win}`,
+      endpoint: `${win}`,
       limit,
       windowMs: RATE_WINDOWS[win],
     });
@@ -359,7 +357,7 @@ if (endpointCfg?.perUser) {
     const r = await checkAndIncrement({
       scope: "user",
       identifier: userId,
-      endpoint: `${ctx.endpoint}#${win}`,
+      endpoint: `${win}`,
       limit,
       windowMs: RATE_WINDOWS[win],
     });

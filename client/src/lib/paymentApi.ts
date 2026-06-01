@@ -78,7 +78,7 @@ export const paymentApi = {
   return data.data;
 },
 
-mySubmissions: (page = 1, limit = 20) =>
+mySubmissions: (page = 1, limit = 20) => {
   unwrap<
     items: Array<
       submissionNumber: string;
@@ -93,52 +93,51 @@ mySubmissions: (page = 1, limit = 20) =>
     page: number;
     limit: number;
     totalPages: number;
-  >>(apiClient.get(`${API_ROUTES.PAYMENT.MANUAL_SUBMISSIONS}?page=${page}&limit=${limit}`)),
+  }>(apiClient.get(`${API_ROUTES.PAYMENT.MANUAL_SUBMISSIONS}?page=${page}&limit=${limit}`)),
 
-  submissionDetail: (submissionNumber: string) =>
+  submissionDetail: (submissionNumber: string) => {
     unwrap<Record<string, unknown>>(
       apiClient.get(API_ROUTES.PAYMENT.MANUAL_SUBMISSION(submissionNumber)),
     ),
-
-  cancelSubmission: (submissionNumber: string) =>
-    unwrap<{ cancelled: true }>
+    cancelSubmission: (submissionNumber: string) => {
+      unwrap<{ cancelled: true }>
 apiClient.post(API_ROUTES.PAYMENT.MANUAL_CANCEL(submissionNumber)),
 );
 
 initiatePangMeryenda:(planId: string, promoCode?: string) =>
-unwrap<{ transactionId: string; paymentUrl: string; redirectTo: string }>(
+unwrap({ transactionId: string; paymentUrl: string; redirectTo: string }>(
 apiClient.post(API_ROUTES.PAYMENT.PANGMERYENDA_INITIATE, {planId, promoCode}),
 );
 
 pangMeryendaStatus:(transactionId: string) =>
-unwrap<{ transactionId: string; status: string; amount: number; completedAt: string | null }>(
+unwrap({ transactionId: string; status: string; amount: number; completedAt: string | null }>(
 apiClient.get(API_ROUTES.PAYMENT.PANGMERYENDA_STATUS(transactionId)),
 );
 
 validatePromoCode:(code: string) =>
-unwrap<{ valid: boolean; type?: string; grant?: Record<string, unknown>; reason?: string }>(
+unwrap({ valid: boolean; type?: string; grant?: Record<string, unknown>; reason?: string }>(
 apiClient.post(API_ROUTES.PAYMENT.PROMO_VALIDATE, {code}),
 );
 
 redeemPromoCode:(code: string) =>
-unwrap<{ redeemed: boolean; result: { tier: string; endDate: string | null } | null; reason?: string }>(
+unwrap({ redeemed: boolean; result: { tier: string; endDate: string | null } | null; reason?: string }>(
 apiClient.post(API_ROUTES.PAYMENT.PROMO_REDEEM, {code}),
 );
 
 featureAccess: () => unwrap<FeatureAccessResponse>(apiClient.get(API_ROUTES.FEATURES.ACCESS)),
 
 featureCheck:(featureId: string) =>
-unwrap<{ allowed: boolean; reason?: string; upgradeUrl?: string }>(
+unwrap({ allowed: boolean; reason?: string; upgradeUrl?: string }>(
 apiClient.post(API_ROUTES.FEATURES.CHECK, {featureId}),
 );
 
 trackFeature:(featureId: string) =>
-unwrap<{ tracked: boolean; count: number; period: string }>(
+unwrap({ tracked: boolean; count: number; period: string }>(
 apiClient.post(API_ROUTES.FEATURES.TRACK_USAGE, {featureId}),
 );
 
 subscriptionStatus: () =>
-unwrap{
+unwrap({
 tier: "free" | "premium";
 isPremium: boolean;
 isLifetime: boolean;
@@ -150,10 +149,10 @@ source: string | null;
 isExpiringSoon: boolean;
 renewalOptions: Array<Record<string, unknown>>;
 history: Array<Record<string, unknown>>;
-}>(apiClient.get(API_ROUTES.SUBSCRIPTION.STATUS)),
+})(apiClient.get(API_ROUTES.SUBSCRIPTION.STATUS)),
 
 cancelSubscription: () =>
-unwrap<{ cancelled: true; premiumEndsAt: string | null }>(
+unwrap({ cancelled: true; premiumEndsAt: string | null }>(
 apiClient.post(API_ROUTES.SUBSCRIPTION.CANCEL),
 );
 };

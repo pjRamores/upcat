@@ -33,7 +33,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const hasPassword = !!(
     (user as {auth?: {hasPassword?: boolean; passwordHash?: string | null}}).auth
-    ? hasPassword ||
+    ??.hasPassword ||
     (user as {auth?: {passwordHash?: string | null}}).auth?.passwordHash ||
     (user as {passwordHash?: string}).passwordHash
   );

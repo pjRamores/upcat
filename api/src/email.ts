@@ -222,11 +222,11 @@ You can cancel any time before that date by signing in and going to Settings →
 export async function sendDeletionExecutedEmail(to: string): Promise<void> {
 await safeSend({
 to,
-subject: "Your UPCAT account has been deleted",
+subject: "Account deletion cancelled",
 html: panel(
 h2 style="color:#0f172a;margin:0 0 12px">Account deleted</h2>
 <p style="color:#334155">As requested, your account and personal data have been permanently removed from UPCAT Simulator. Thank you for using the service.</p>`,
-});
+},
 });
 }
 
@@ -236,9 +236,9 @@ to,
 subject: "Account deletion cancelled",
 html: panel(
 h2 style="color:#0f172a;margin:0 0 12px">Deletion cancelled</h2>
-<p style="color:#334155">Your pending account-deletion request has been cancelled. Your account remains active.</p>",
+<p style="color:#334155">Your pending account-deletion request has been cancelled. Your account remains active.</p>`,
  "#16a34a",
-});
+},
 });
 }
 
@@ -254,6 +254,7 @@ h2 style="color:#0f172a;margin:0 0 12px">Support ticket received</h2>
 <p style="color:#334155">We've recorded your request — reference: <strong>{args.ticketNumber}</strong>.</p>
 <p style="color:#334155">Subject: ${escape(args.subject)}</p>
 <p style="color:#64748b;font-size:13px">An admin will review your ticket shortly. We'll email you when there's an update.</p>`,
+},
 });
 }
 
@@ -280,6 +281,7 @@ h2 style="color:#0f172a;margin:0 0 12px">${titleMap[args.updateType]}</h2>
 <p style="text-align:center;margin:24px 0">
 <a href="${args.previewUrl}" style="background:#4f46e5;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600">View ticket</a>
 </p>`,
+},
 });
 }
 
@@ -294,6 +296,7 @@ html: panel(
 h2 style="color:#0f172a;margin:0 0 12px">Account merged</h2>
 <p style="color:#334155">Your accounts have been merged by support. The primary account remains as: <strong>{escape(args.keptEmail)}</strong>.
 Use that email to sign in going forward.</p>`,
+},
 });
 }
 
@@ -416,6 +419,7 @@ export async function sendPaymentRejectedEmail(
 "#dc2626",
 });
 });
+}
 
 export async function sendSubscriptionExpiringSoonEmail(
 to: string,
@@ -461,7 +465,7 @@ html: panel(
 <h2 style="color:#0f172a;margin:0 0 12px">Premium granted by admin</h2>
 <p style="color:#334155">Upgraded by <strong>${escape(args.adminName)}</strong></p>
 <p style="color:#334155">Plan: <strong>${escape(args.planName)}</strong></p>
-<p style="color:#334155">${args.endDate ? \"Valid until <strong>${new Date(args.endDate).toUTCString()}</strong>\" : \"This upgrade is lifetime."}</p>,
+<p style="color:#334155">${args.endDate ? `Valid until <strong>${new Date(args.endDate).toUTCString()}</strong>` : "This upgrade is lifetime."}</p>,
 "#16a34a",
 });
 });
@@ -477,7 +481,7 @@ html: panel(
 <h2 style="color:#0f172a;margin:0 0 12px">PangMeryenda payment confirmed</h2>
 <p style="color:#334155">Transaction: <strong>${escape(args.transactionId)}</strong></p>
 <p style="color:#334155">Plan: <strong>${escape(args.planName)}</strong></p>
-<p style="color:#334155">${args.endDate ? \"Premium active until <strong>${new Date(args.endDate).toUTCString()}</strong>\" : \"Premium is active with no expiry."}</p>,
+<p style="color:#334155">${args.endDate ? `Premium active until <strong>${new Date(args.endDate).toUTCString()}</strong>` : "Premium is active with no expiry."}</p>,
 "#16a34a",
 });
 });

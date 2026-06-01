@@ -45,7 +45,7 @@ export default function FormattedTextareaEditor({
       </div>
       <p className="text-xs text-slate-500">
         Markdown toolbar includes headings, emphasis, links, images, and lists. Math works
-        with `<code>`$...$</code> and `<code>`$...$</code>.
+        with <code>$...$</code> and <code>$...$</code>.
       </p>
     </div>
   );

@@ -52,8 +52,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
   if (session.status !== "in_progress") {
     return res
-      .status(400)
-      .json({success: false, error: "Session is not in progress"});
+    .status(400)
+    .json({success: false, error: "Session is not in progress"});
   }
 
   const sessionCards = (session.cards ?? []) as Array<
@@ -68,13 +68,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const sessionCard = sessionCards[idx];
   if (sessionCard.isCorrect === null) {
     return res
-      .status(400)
-      .json({success: false, error: "Answer this card first via /answer"});
+    .status(400)
+    .json({success: false, error: "Answer this card first via /answer"});
   }
   if (sessionCard.rating !== null) {
     return res
-      .status(400)
-      .json({success: false, error: "Card has already been rated"});
+    .status(400)
+    .json({success: false, error: "Card has already been rated"});
   }
 
   const card = await db
@@ -119,23 +119,23 @@ totalReviews: 1,
 );
 ```
 
-```typescript
+```json
 await db.collection("practice_sessions").updateOne(
 {_id: sessionOid, "cards.cardId": cardOid},
 {
 set: {
-cards.${idx}.rating}: rating,
-cards.${idx}.postEaseFactor}: post.easeFactor,
-cards.${idx}.postIntervalDays}: post.intervalDays,
-cards.${idx}.postRepetitions}: post.repetitions,
-cards.${idx}.postStatus}: post.status,
-cards.${idx}.postNextReviewDate}: post.nextReviewDate,
+cards.${idx}.rating]: rating,
+cards.${idx}.postEaseFactor]: post.easeFactor,
+cards.${idx}.postIntervalDays]: post.intervalDays,
+cards.${idx}.postRepetitions]: post.repetitions,
+cards.${idx}.postStatus]: post.status,
+cards.${idx}.postNextReviewDate]: post.nextReviewDate,
 },
 },
 );
 ```
 
-```typescript
+```json
 const data: PracticeRateResponse = {
 cardId: cardOid.toString(),
 status: post.status,
@@ -145,4 +145,3 @@ repetitions: post.repetitions,
 nextReviewDate: post.nextReviewDate.toISOString(),
 };
 return res.status(200).json({success: true, data});
-}

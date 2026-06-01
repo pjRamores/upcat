@@ -24,7 +24,7 @@ import {useAuthStore} from "@/stores/authStore";
 import Seo from "@/components/Sec";
 import {API_ROUTES, type} Difficulty, DIFFICULTY_LABELS, SUBJECT_META, type SubjectArea} from "@upcat/shared";
 
-//--- Types ----------------------------------------------------------
+//--- Types --------------------------------------------------------
 
 interface OverviewData {
   totalExamsTaken: number;
@@ -90,7 +90,7 @@ interface StudyPlanSnapshot {
 
 type Period = "week" | "month" | "all";
 
-//--- Color palette (consistent across charts) --------------------------
+//--- Color palette (consistent across charts) --------------------
 const PALETTE = {
   primary: "#8b2049", // maroon-700
   good: "#16a34a",
@@ -232,7 +232,7 @@ assessment {studyPlan.averageAssessmentScore}%
 <div className="text-right">
 <div
 className={`text-sm·font-semibold ${studyPlan.daysAhead} >= 0 ? "text-emerald-700" : "text-amber-700"`}>
-{studyPlan.daysAhead} >= 0 ? `${studyPlan.daysAhead} day(s) ahead` : `${Math.abs(studyPlan.daysAhead)} day(s) behind}$
+{studyPlan.daysAhead} >= 0 ? ${studyPlan.daysAhead} day(s) ahead`: ${Math.abs(studyPlan.daysAhead)} day(s) behind}
 </div>
 <Link to="/study-plan/analytics"
 className="mt-1·inline-block·text-sm·font-medium·text-emerald-700·hover:underline">
@@ -250,7 +250,7 @@ View·study·plan·analytics →
 {/* Performance over time */}
 <Panel title="Performance·Over·Time">
 <div className="mb-3·flex·flex-wrap·gap-1">
-{[["week", "month", "all"]·as·Period[]].map((p) => (
+{[["week", "month", "all"]·as·Period[]).map((p) => (
 <PeriodPill
 key={p}
 active={progressPeriod === p}
@@ -267,32 +267,32 @@ onClick={() => setProgressPeriod(p)}
 <EmptyState·message="Take·your·first·exam·to·see·your·progress."/>
 ) : (
 <ResponsiveContainer·width="100%"·height="100%">
-<LineChart·data={progress}·margin={{top: 10,·right: 16,·left: -8,·bottom: 0}}>
+<LineChart·data={progress}·margin={{top:10, right:16, left:-8, bottom:0}}>
 <CartesianGrid·strokeDasharray="3·3"·stroke="#f3f4f6"/>
-<XAxis·dataKey="date"·tick={{fontSize: 11}}·stroke="#9ca3af"/>
-<YAxis·domain={[0, 100]}·tick={{fontSize: 11}}·stroke="#9ca3af"·unit="%"/>
+<XAxis·dataKey="date"·tick={{fontSize:11}}·stroke="#9ca3af"/>
+<YAxis·domain={[0,100]}·tick={{fontSize:11}}·stroke="#9ca3af"·unit="%"/>
 <Tooltip
-contentStyle={{borderRadius: 8,·border: "1px·solid·#e5e7eb",·fontSize: 12}}
-formatter={(v:·number,·name:·string)} => [`${v}%`,·name]}
+contentStyle={{borderRadius:8, border:"1px·solid·#e5e7eb", fontSize:12}}
+formatter={(v:number, name:string) => [`${v}%`, name]}
 />
-<Legend·wrapperStyle={{fontSize: 12}}/>
+<Legend·wrapperStyle={{fontSize:12}}/>
 <Line
 type="monotone"
 dataKey="averageScore"
 name="Avg·Score"
-stroke={PALETTE·primary}
+stroke={PALETTE.primary}
 strokeWidth={2.5}
-dot={{r: 4}}
-activeDot={{r: 6}}
+dot={{r:4}}
+activeDot={{r:6}}
 animationDuration={800}
 />
 <Line
 type="monotone"
 dataKey="accuracy"
 name="Accuracy"
-stroke={PALETTE·good}
+stroke={PALETTE.good}
 strokeWidth={2}
-dot={{r: 3}}
+dot={{r:3}}
 animationDuration={800}
 />
 </LineChart>
@@ -316,10 +316,10 @@ Panel title="Subject·Breakdown">
 ))}
 </div>
 </div>
-{/* Radar */}
+</Radar */
 <div className="h-64·min-h-56">
   <ResponsiveContainer width="100%" height="100%">
-    <RadarChart data={subjects.map((s) => ({
+    <RadarChart data={subject.map((s) => ({
       subject: SUBJECT_META[s.subjectArea].label.split("·")[0],
       accuracy: s.accuracy,
     }))}>
@@ -333,8 +333,8 @@ Panel title="Subject·Breakdown">
         fillOpacity={0.3}
         animationDuration={800}
       />
-      <Tooltip formatter={(v:number)} => `${v}%`}
-      contentStyle={{borderRadius:8,fontSize:12}}/>
+      <Tooltip formatter={(v:number) => `${v}%`}
+        contentStyle={{borderRadius:8,fontSize:12}}/>
     </RadarChart>
   </ResponsiveContainer>
 </div>
@@ -395,7 +395,7 @@ Panel title="Subject·Breakdown">
                 </div>
               </div>
             </div>
-          )}
+          </Pie>
         </Panel>
       </div>
 
@@ -420,7 +420,8 @@ Panel title="Subject·Breakdown">
       <Panel title="Leaderboard">
         <div data-help="st_predicted_score"/>
         <div className="mb-3·flex·flex-wrap·gap-1">
-{([["week", "month", "all"]·as·Period[]).map((p) =>·(
+script
+((["week", "month", "all"]·as·Period[]).map((p) =>·(
   <PeriodPill
     key={p}
     active={leaderboardPeriod === p}
@@ -429,29 +430,28 @@ Panel title="Subject·Breakdown">
     {p === "week" ? "This·Week" : p === "month" ? "This·Month" : "All·Time"}
   </PeriodPill>
   ))}
-</div>
-{leaderboard === null?·(
-  <SkeletonList/>
-) : leaderboard.length === 0?·(
-  <EmptyState·compact·message="No·rankings·for·this·period·yet."/>
-) :·(
-  <LeaderboardTable·rows={leaderboard}·me={myRank}·myEmail={me?.email}/>
+  </div>
+  {leaderboard === null?·(
+    <SkeletonList/>
+  )·: leaderboard.length === 0?·(
+    <EmptyState·compact·message="No·rankings·for·this·period·yet."/>
+  )·:(
+    <LeaderboardTable·rows={leaderboard}·me={myRank}·myEmail={me?.email}/>
   )}
-</Panel>
-</div>
-</section>
+  </Panel>
+  </div>
+  </section>
 
-{/* — Recent activity feed —————— */}
-<section·className="mt-8">
-  <RecentActivity/>
-</section>
-</div>
+  {/* — Recent activity feed —————- */}
+  <section className="mt-8">
+    <RecentActivity/>
+  </section>
+  </div>
 );
-}
 
 // — Components —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 <span className="absolute·inset-0·flex·items-center·justify-center·text-[11px]·font-bold">
-{percentage}%
+  {percentage}%
 </span>
 </div>
 </div>
@@ -460,98 +460,89 @@ Panel title="Subject·Breakdown">
 }
 
 function SubjectBar({stat}: {stat: SubjectStat}) {
-const meta = SUBJECT_META[stat.subjectArea];
-const color = colorForAccuracy(stat.accuracy);
-return (
-<div>
-<div className="mb-1·flex·items-center·justify-between·text-sm">
-<span className="font-medium·text-gray-800">
-{meta.icon}{meta.label}
-</span>
-<span className="text-gray-600">
-{stat.correct}/{stat.totalQuestions} • <strong>{stat.accuracy}%</strong>
-</span>
-</div>
-<div className="h-2·w-full·overflow-hidden·rounded-full·bg-gray-100">
-<div
-className="h-full·rounded-full·transition-all"
-style={{width: `${stat.accuracy}%`, backgroundColor: color}}
-/>
-</div>
-{stat.trend.length} > 0 && (
-<p className="mt-1·text-[11px]·text-gray-400">
-Last {stat.trend.length}: {stat.trend.map((t) => `${t.accuracy}%`).join("→")}
-</p>
-)
-}
-</div>
-);
+  const meta = SUBJECT_META[stat.subjectArea];
+  const color = colorForAccuracy(stat.accuracy);
+  return (
+    <div>
+      <div className="mb-1·flex·items-center·justify-between·text-sm">
+        <span className="font-medium·text-gray-800">
+          {meta.icon} {meta.label}
+        </span>
+        <span className="text-gray-600">
+          {stat.correct}/{stat.totalQuestions} • <strong>{stat.accuracy}%</strong>
+        </span>
+      </div>
+      <div className="h-2·w-full·overflow-hidden·rounded-full·bg-gray-100">
+        <div>
+          className="h-full·rounded-full·transition-all"
+          style={{width: `${stat.accuracy}%`, backgroundColor: color}}
+        </div>
+      </div>
+      {stat.trend.length} • 0 && (
+        <p className="mt-1·text-[11px]·text-gray-400">
+          Last {stat.trend.length}: {stat.trend.map((t) => `${t.accuracy}%`).join("→")}
+        </p>
+      )}
+    </div>
+  );
 }
 
 function WeakAreaItem({weak}: {weak: WeakArea}) {
-const navigate = useNavigate();
-const meta = SUBJECT_META[weak.subjectArea];
-return (
-<li className="rounded-lg·border·border-gray-100·bg-gray-50/50·p-3">
-<div className="flex·items-center·justify-between·gap-2">
-<div className="min-w-0">
-<p className="truncate·text-sm·font-medium·text-gray-900">{weak.subtopic}</p>
-<p className="text-[11px]·text-gray-500">
-{meta.icon}{meta.label} • {weak.correct}/{weak.totalAttempted}·correct
-</p>
-</div>
-<span className="text-sm·font-bold·text-amber-600">{weak.accuracy}%</span>
-</div>
-<div className="mt-2·h-1.5·w-full·overflow-hidden·rounded-full·bg-gray-200">
-<div
-className="h-full·rounded-full·bg-amber-500"
-style={{width: `${weak.accuracy}%`}}
-/>
-</div>
-<button
-type="button"
-onClick={() => navigate("/dashboard")}
-className="mt-2·text-xs·font-semibold·text-primary-600·hover:underline"
->
-Practice This Topic →
-</button>
-</li>
-);
+  const navigate = useNavigate();
+  const meta = SUBJECT_META[weak.subjectArea];
+  return (
+    <li className="rounded-lg·border·border-gray-100·bg-gray-50/50·p-3">
+      <div className="flex·items-center·justify-between·gap-2">
+        <div className="min-w-0">
+          <p className="truncate·text-sm·font-medium·text-gray-900">{weak.subtopic}</p>
+          <p className="text-[11px]·text-gray-500">
+            {meta.icon} {meta.label} • {weak.correct}/{weak.totalAttempted}·correct
+          </p>
+        </div>
+        <span className="text-sm·font-bold·text-amber-600">{weak.accuracy}%</span>
+      </div>
+      <div className="mt-2·h-1.5·w-full·overflow-hidden·rounded-full·bg-gray-200">
+        <div>
+          className="h-full·rounded-full·bg-amber-500"
+          style={{width: `${weak.accuracy}%`}}
+        </div>
+        <button
+          type="button"
+          onClick={() => navigate("/dashboard")}
+          className="mt-2·text-xs·font-semibold·text-primary-600·hover:underline"
+        >
+          Practice This Topic →
+        </button>
+      </li>
+    );
+  );
 }
 
 function LeaderboardTable({
-rows, me, myEmail:
-_, myEmail?: string}) {
-return (
-<div className="overflow-hidden·rounded-lg·border·border-gray-100">
-<table className="w-full·text-sm">
-<thead className="bg-gray-50·text-xs·uppercase·text-gray-500">
-<tr>
-<th className="w-10·px-3·py-2·text-left">#</th>
-<th className="px-2·py-2·text-left">Name</th>
-<th className="px-2·py-2·text-right">Avg</th>
-<th className="px-2·py-2·text-right">Exams</th>
-</tr>
-</thead>
-<tbody className="divide-y·divide-gray-100">
-{rows.map((r) => (
-<LeaderboardRowItem key={`${r.rank}-${r.firstName}-${r.lastInitial}`}·row={r}/>
-))}
-{me && (
-<tr>
-<td colspan={4}
-className="border-t·border-dashed·border-gray-200·py-1·text-center·text-[11px]·text-gray-400">
-</td>
-</tr>
-<LeaderboardRowItem·row={me}/>
-</tr>
-))
-}
-</tbody>
-</table>
-</div>
-);
-}
+  rows, me, myEmail, myEmail2:
+  {:rows: LeaderboardRow[]}; me: LeaderboardRow | null; myEmail?: string}) {
+  return (
+    <div className="overflow-hidden·rounded-lg·border·border-gray-100">
+      <table className="w-full·text-sm">
+        <thead className="bg-gray-50·text-xs·uppercase·text-gray-500">
+          <tr>
+            <th className="w-10·px-3·py-2·text-left">#</th>
+            <th className="px-2·py-2·text-left">Name</th>
+            <th className="px-2·py-2·text-right">Avg</th>
+            <th className="px-2·py-2·text-right">Exams</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan=4>
+              {rows.map((r) => (
+                <LeaderboardRowItem key={`${r.rank}-${r.firstName}-${r.lastInitial}`} row={r}/>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
 }
 
 function LeaderboardRowItem({row}: {row: LeaderboardRow}) {
@@ -577,7 +568,7 @@ function RecentActivity() {
     completedAt: string | null,
     totalQuestions: number,
     percentage: number | null
-  }) | null>(null);
+  })[0] | null>(null);
 
   useEffect(() => {
     apiClient.get(`${API_ROUTES.EXAM.SESSIONS}limit=10`)
@@ -605,61 +596,52 @@ function RecentActivity() {
                     backgroundColor:
                     pct === null ? "#9ca3af" : colorForAccuracy(pct),
                     }}
-                />
-                <div>
-                  <div className="flex-flex-wrap items-center justify-between gap-2 rounded-lg border-border-gray-100 bg-white p-3">
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">{formatted}</p>
-                      <p className="text-xs text-gray-500">
-                        {it.totalQuestions} questions • {it.status.replace("_", ".")}
-                      </p>
-                    </div>
-                  </div>
-                  {pct !== null && (
-                    <span className="rounded-full px-3 py-1 text-xs font-bold"
-                    style={{
-                      backgroundColor: `${colorForAccuracy(pct)}20`,
-                      color: colorForAccuracy(pct),
+                </span>
+              </li>
+              <pct !== null && (
+                <span>
+                  className="rounded-full px-3 py-1 text-xs font-bold"
+                  style={{
+                    backgroundColor: `${colorForAccuracy(pct)}20`,
+                    color: colorForAccuracy(pct),
                     }}
-                  )}
-                </p>
-              </div>
-            </div>
-          )}
-        </ol>
-      )}
-    </Panel>
-  );
-}
+                </span>
+              )
+            )}
+          </ol>
+        </Panel>
+      );
+    }
 
-// ---- Skeleton & empty states --------------------------
+    // ---- Skeleton & empty states ----
 
-function SkeletonCard() {
-  return (
-    <div className="h-20 animate-pulse rounded-xl border-border-gray-200 bg-gray-50"/>
-  );
-}
+    function SkeletonCard() {
+      return (
+        <div className="h-20 animate-pulse rounded-xl border-border-gray-200 bg-gray-50"/>
+      );
+    }
 
-function SkeletonChart() {
-  return <div className="h-64 animate-pulse rounded-lg bg-gray-50"/>;
-}
+    function SkeletonChart() {
+      return <div className="h-64 animate-pulse rounded-lg bg-gray-50"/>;
+    }
 
-function SkeletonList() {
-  return (
-    <div className="space-y-2">
-      {Array.from({length: 4}).map((_, i) => (
-        <div key={i} className="h-12 animate-pulse rounded-lg bg-gray-50"/>
-      ))}
-    </div>
-  );
-}
+    function SkeletonList() {
+      return (
+        <div className="space-y-2">
+          {Array.from({length: 4}).map((_, i) => (
+            <div key={i} className="h-12 animate-pulse rounded-lg bg-gray-50"/>
+          ))}
+        </div>
+      );
+    }
 
-function EmptyState({message, compact}: {message: string; compact?: boolean}) {
-  return (
-<div>
-  className={`flex items-center justify-center text-center text-sm text-gray-400 ${compact ? "py-4" : "py-12"}`}
+    function EmptyState({message, compact}: {message: string; compact?: boolean}) {
+      return (
+<div
+  className={`flex items-center justify-center text-center text-sm text-gray-400 ${compact ? "py-4" : "py-12"}`}>
   {message}
 </div>
+);
 ```
 
 ```typescript
@@ -673,6 +655,6 @@ function emptyOverview(): OverviewData {
     overallAccuracy: 0,
     totalTimeSpent: {formatted: "0h·0m", hours: 0, minutes: 0},
     currentStreak: 0,
-    longestStreak: 0
+    longestStreak: 0,
   };
 }

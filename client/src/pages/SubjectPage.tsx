@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import SEOHead from "@/components/Seo";
 import AdSlot from "@/components/AdSlot";
-import {useAuthStore} from "@stores/authStore";
+import {useAuthStore} from "@/stores/authStore";
 import {breadcrumbSchema, courseSchema, DEFAULT_SITE_URL, SUBJECT_META, type, SubjectArea,} from "@upcat/shared";
 
 const SITE_URL =
@@ -205,17 +205,17 @@ Answer: {props.sampleQuestion.answerLetter}.
 <h2 className="text-2x1·font-bold·tracking-tight·text-gray-900">
 Ready to drill {meta.label.toLowerCase()}?
 </h2>
-<p className="mt-3·text-base·text-gray-600">
+<p className="mt-3 text-base text-gray-600">
 Start a focused practice session — instant scoring, full explanations, and analytics so you can watch your accuracy climb.
 </p>
-<div className="mt-6·flex·flex-wrap·justify-center·gap-3">
+<div className="mt-6 flex flex-wrap justify-center gap-3">
 <Link
 to={props.practiceCtaHref}
-className="btn-primary·text-base·!px-6·!py-3"
+className="btn-primary text-base !px-6 !py-3"
 >
 Start Practicing Now
 </Link>
-<Link to="/" className="btn-secondary·text-base·!px-6·!py-3">
+<Link to="/" className="btn-secondary text-base !px-6 !py-3">
 Back to Home
 </Link>
 </div>

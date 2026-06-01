@@ -81,7 +81,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({success: false, error: "Invalid diagnostic id"});
     }
-    const body = (req.body ?? {}).as {
+    const body = (req.body??{}) as {
       subjectArea?: SubjectArea;
       answers?: { questionId: string; answer: string; timeSpent?: number }[];
     };
@@ -201,7 +201,7 @@ if (req.method === "POST" && id && action === "complete") {
 if (req.method === "POST" && action === "skip") {
   const body = (req.body ?? {}) as {
     method?: "historical" | "self_assessment";
-    selfAssessment?: {subjectArea: SubjectArea; level: "beginner" | "intermediate" | "advanced"}[];
+    selfAssessment?: { subjectArea: SubjectArea; level: "beginner" | "intermediate" | "advanced" }[];
 }
 let diagnosticResults;
 if (body.method === "historical") {

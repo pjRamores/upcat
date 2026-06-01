@@ -83,13 +83,13 @@ export default function NotificationsSection() {
         case "ok":
           addToast("success", "Notifications enabled on this device.");
           await reload();
-          break;
+        break;
         case "denied":
           addToast(
             "error",
             result.message ?? "Notifications are blocked. Update your browser settings.",
           );
-          break;
+        break;
         case "unsupported":
           addToast("error", "Your browser does not support push notifications.");
           break;
@@ -122,16 +122,8 @@ const onTogglePref = async (sub: Subscription, key: keyof PushPreferences, value
     ? curr.map((s) =>
       s.subscriptionId === sub.subscriptionId
       ? {...s, preferences: {...s.preferences, [key]: value}}
-      : s,
-    ))
-    : curr,
-  );
-  try {
-    await pushApi.updatePreferences({
-      endpoint: sub.endpoint,
-      preferences: [{key]: value},
-    });
-  } catch {
+    ));
+  catch {
     addToast("error", "Could not update preference.");
     setSubs(prev);
   }
@@ -144,11 +136,12 @@ const onReminderTimeChange = async (sub: Subscription, reminderTime: string) => 
     curr
     ? curr.map((s) =>
       s.subscriptionId === sub.subscriptionId ? {...s, reminderTime} : s,
-    ))
-    : curr,
-  );
+    ));
   try {
-    await pushApi.updatePreferences({endpoint: sub.endpoint, reminderTime});
+    await pushApi.updatePreferences({
+      endpoint: sub.endpoint,
+      preferences: [{key]: value},
+    });
   } catch {
     addToast("error", "Could not update reminder time.");
     setSubs(prev);
@@ -172,7 +165,7 @@ return (
     {!hasAny && (
       <div className="rounded-lg border border-primary-100 bg-primary-50/50 p-4">
         <p className="text-sm text-primary-900">
-          Get a gentle daily nudge, streak warnings, and achievement alerts -- even when the app is closed.
+          Get a gentle daily nudge, streak warnings, and achievement alerts — even when the app is closed.
         </p>
         {permission === "denied"? (
           <p className="mt-2 text-xs text-red-700">
@@ -209,7 +202,7 @@ onClick={onEnable}
 disabled={enabling}
 className="rounded-md·border·border-gray-200·bg-white·px-3·py-1.5·text-xs·font-semibold·text-gray-700·hover:bg-gray-50·disabled:opacity-50"
 >
-{enabling·?·"Working...": "Re-enable·on·this·device"}
+{enabling·?·"Working..."·:·"Re-enable·on·this·device"}
 </button>
 <button
 type="button"
@@ -228,7 +221,7 @@ function SubscriptionRow({
   sub,
   onToggle,
   onReminderChange,
-}): {
+}: {
   sub: Subscription;
   onToggle: (s: Subscription, k: keyof PushPreferences, v: boolean) => void;
   onReminderChange: (s: Subscription, time: string) => void;
@@ -246,7 +239,7 @@ function SubscriptionRow({
             {sub.timezone?.}` `${sub.timezone}``:""}
             {sub.lastUsedAt}
             ? `` last used ${new Date(sub.lastUsedAt).toLocaleDateString()}`
-            :""}
+            : ""
         </p>
       </div>
     </div>

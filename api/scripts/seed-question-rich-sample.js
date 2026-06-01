@@ -1,3 +1,4 @@
+script
 /* eslint-disable no-console */
 import {ObjectId} from "mongodb";
 
@@ -101,5 +102,6 @@ export async function seedQuestionRichSamples(db, options = {}){
         updatedAt: now,
       },
     ]);
+script
 console.log("√Seeded·rich·media·question·samples·(2·questions,·1·passage)");
 }

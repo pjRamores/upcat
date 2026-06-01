@@ -86,8 +86,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           {
             $group: {
               _id: "$entries.k",
-              completed: {$sum: {$cond: [{$ne: ["$entries.v.completedAt", null]], 1, 0}]},
-              skipped: {$sum: {$cond: [{$ne: ["$entries.v.skippedAt", null]], 1, 0}]},
+              completed: {$sum: {$cond: [{$ne: ["$entries.v.completedAt", null]}, 1, 0}]},
+              skipped: {$sum: {$cond: [{$ne: ["$entries.v.skippedAt", null]}, 1, 0}]},
               avgSteps: {$avg: "$entries.v.stepsCompleted"},
               started: {$sum: 1},
               },
@@ -100,7 +100,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 _id: null,
                 helpful: {$sum: {$cond: ["$helpful", 1, 0}]},
                 notHelpful: {$sum: {$cond: ["$helpful", 0, 1}]},
-                withComments: {$sum: {$cond: [{$and: [{$ne: ["$comment", null]], {$ne: ["$comment", """]}]], 1, 0}]},
+                withComments: {$sum: {$cond: [{$and: [{$ne: ["$comment", null]}, {$ne: ["$comment", """]]}, 1, 0}]},
               },
           },
           },
@@ -137,3 +137,4 @@ feedbackSummary: feedbackSummaryAgg[0] ?? {helpful: 0, notHelpful: 0, withCommen
 feedbackComments: comments,
 },
 });
+}

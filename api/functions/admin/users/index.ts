@@ -4,7 +4,7 @@
  * POST /api/admin/users/create
  *
  * The create flow lives in this file as well so we can reuse the
- * email/uniqeness/role validation. The router exposes both verbs
+ * email/uniqueness/role validation. The router exposes both verbs
  * via separate Vercel rewrites.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
@@ -116,7 +116,7 @@ const [items, totalArr] = await Promise.all([
   db.collection("users").aggregate([{$match: match}, {$count: "n"}]).toArray(),
 ]);
 
-const total = (totalArr[0]) as { n?: number } | undefined ? n : 0;
+const total = (totalArr[0]) as {n?: number} | undefined? .n?? 0;
 
 return res.status(200).json({
   success: true,
@@ -139,7 +139,7 @@ return res.status(200).json({
     page,
     limit,
     totalPages: Math.max(1, Math.ceil(total / limit)),
-  },
+  }),
 });
 
 async function createUser(
@@ -208,12 +208,12 @@ async function createUser(
 {_id: insert.insertedId},
 {$set: {resetToken: token, resetTokenExpiry: expiry, updatedAt: new Date()}},
 try {
-  await sendPasswordResetEmail(email, token);
-} catch (err) {
-  // eslint-disable-next-line no-console
-  console.error("[admin.user.create] invite email failed", err);
+await sendPasswordResetEmail(email, token);
+catch (err) {
+// eslint-disable-next-line no-console
+console.error("[admin.user.create] invite email failed", err);
 }
 return res.status(201).json({
-  success: true,
-  data: {_id: insert.insertedId.toString(), email, role, invited: sendInvite},
+success: true,
+data: {_id: insert.insertedId.toString(), email, role, invited: sendInvite},
 });

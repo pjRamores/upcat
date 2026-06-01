@@ -1,11 +1,11 @@
 /**
- * Question sets - admin·CRUD.
+ * Question sets - admin-CRUD.
  *
- * GET .../api/admin/question-sets ...→ paginated·list
- * POST .../api/admin/question-sets ...→ create·new·set
- * GET .../api/admin/question-sets/:id ...→ get·one·set·detail
- * PUT .../api/admin/question-sets/:id ...→ update·set
- * DELETE .../api/admin/question-sets/:id ...→ soft-delete·set (mark·inactive)
+ * GET .../api/admin/question-sets ...→ paginated list
+ * POST .../api/admin/question-sets ...→ create new set
+ * GET .../api/admin/question-sets/:id ...→ get one set detail
+ * PUT .../api/admin/question-sets/:id ...→ update set
+ * DELETE .../api/admin/question-sets/:id ...→ soft-delete set (mark inactive)
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {ObjectId} from "mongodb";
@@ -91,7 +91,7 @@ async function listSets(req: VercelRequest, res: VercelResponse, db: Awaited<Ret
     const order = (req.query.order as string | undefined)?.trim() === "asc" ? 1 : -1;
 
     const col = db.collection("question_sets");
-    const total = await col.countDocuments({});
+    const total = await col.countDocuments();
 
     const docs = await col
       .find({})
@@ -101,110 +101,110 @@ async function listSets(req: VercelRequest, res: VercelResponse, db: Awaited<Ret
       .toArray();
   }
   const sets = await Promise.all(
-docs.map(async((doc: any) => {
-  doc,
-  usageCount: await db.collection("exam_sessions").countDocuments({"config.setId": doc._id?.toString()}},
-  })),
+docs.map(async((doc: any) => ({
+doc,
+usageCount: await db.collection("exam_sessions").countDocuments({"config.setId": doc._id?.toString()}},
+))),
+));
 
-  return res.status(200).json({
-    success: true,
-    data: {
-      items: sets,
-      total,
-      page,
-      limit,
-      totalPages: Math.ceil(total / limit),
-    },
-  }));
-
-  catch (err) {
-    console.error("[question-sets] list error:", err);
-    return res.status(500).json({success: false, error: "Failed to list question sets"});
-  }
+return res.status(200).json({
+success: true,
+data: {
+items: sets,
+total,
+page,
+limit,
+totalPages: Math.ceil(total / limit),
+},
+});
+} catch (err) {
+console.error("[question-sets] list error:", err);
+return res.status(500).json({success: false, error: "Failed to list question sets"});
+}
 }
 
 async function getDetail(
-  req: VercelRequest,
-  res: VercelResponse,
-  db: Awaited<ReturnType<typeof getDb>>,
-  id: string,
+req: VercelRequest,
+res: VercelResponse,
+db: Awaited<ReturnType<typeof getDb>>,
+id: string,
 ) {
-  try {
-    const col = db.collection("question_sets");
-    let objectId: ObjectId;
-    try {
-      objectId = new ObjectId(id);
-    } catch {
-      return res.status(400).json({success: false, error: "Invalid set ID format"});
-    }
+try {
+const col = db.collection("question_sets");
+let objectId: ObjectId;
+try {
+objectId = new ObjectId(id);
+} catch {
+return res.status(400).json({success: false, error: "Invalid set ID format"});
+}
+}
 
-    const doc = await col.findOne({_id: objectId});
+const doc = await col.findOne({_id: objectId});
 
-    if (!doc) return res.status(404).json({success: false, error: "Question set not found"});
+if (!doc) return res.status(404).json({success: false, error: "Question set not found"});
 
-    const usageCount = await db.collection("exam_sessions").countDocuments({"config.setId": id});
-    const questionCount = await db.collection("questions").countDocuments({setId: id});
+const usageCount = await db.collection("exam_sessions").countDocuments({"config.setId": id});
+const questionCount = await db.collection("questions").countDocuments({setId: id});
 
-    return res.status(200).json({
-      success: true,
-      data: {
-        ...doc,
-        usageCount,
-        questionCount,
-        },
-      });
-    } catch (err) {
-      console.error("[question-sets] get detail error:", err);
-      return res.status(500).json({success: false, error: "Failed to get question set"});
-    }
+return res.status(200).json({
+success: true,
+data: {
+doc,
+usageCount,
+questionCount,
+},
+});
+} catch (err) {
+console.error("[question-sets] get detail error:", err);
+return res.status(500).json({success: false, error: "Failed to get question set"});
+}
 }
 
 async function createSet(
-  req: VercelRequest,
-  res: VercelResponse,
-  db: Awaited<ReturnType<typeof getDb>>,
-  adminId: ObjectId,
+req: VercelRequest,
+res: VercelResponse,
+db: Awaited<ReturnType<typeof getDb>>,
+adminId: ObjectId,
 ) {
-  try {
-    const {
-      name,
-      description,
-      distribution: rawDistribution,
-      priority: rawPriority
-    } = req.body as Record<string, any>;
+try {
+const {
+name,
+description,
+distribution: rawDistribution,
+priority: rawPriority
+} = req.body as Record<string, any>;
 
-    // Validation
-    if (!name || typeof name !== "string" || !name.trim()) {
-      return res.status(400).json({success: false, error: "name is required"});
-    }
+// Validation
+if (!name || typeof name !== "string" || !name.trim()) {
+return res.status(400).json({success: false, error: "name is required"});
+}
 
-    const priority = rawPriority === undefined ? 1 : Math.min(100, Math.max(1, Math.floor(Number(rawPriority) || 1)));
-    if (rawPriority !== undefined && (typeof rawPriority !== "number" || rawPriority < 1 || rawPriority > 100)) {
-      return res.status(400).json({success: false, error: "priority must be a number between 1 and 100"});
-    }
+const priority = rawPriority === undefined ? 1 : Math.min(100, Math.max(1, Math.floor(Number(rawPriority) || 1)));
+if (rawPriority !== undefined && (typeof rawPriority !== "number" || rawPriority < 1 || rawPriority > 100)) {
+return res.status(400).json({success: false, error: "priority must be a number between 1 and 100"});
+}
 
-    if (!rawDistribution || typeof rawDistribution !== "object") {
-      return res.status(400).json({success: false, error: "distribution is required"});
-    }
+if (!rawDistribution || typeof rawDistribution !== "object") {
+return res.status(400).json({success: false, error: "distribution is required"});
+}
 
-    const normalizedDistribution = normalizeDistribution(rawDistribution);
-    const distribution = Object.fromEntries(
-      SUBJECT_AREAS.map((subject) => [
-        subject,
-        {
-          questions: 0,
-          timeLimit: Math.max(0, Number(normalizedDistribution[subject]?.timeLimit ?? 0)),
-        },
-      ]),
-    ) as SubjectDistribution;
-    const {totalQuestions, totalTimeLimit} = computeTotals(distribution);
+const normalizedDistribution = normalizeDistribution(rawDistribution);
+const distribution = Object.fromEntries(
+SUBJECT_AREAS.map((subject) => [
+subject,
+questions: 0,
+timeLimit: Math.max(0, Number(normalizedDistribution[subject]?.timeLimit ?? 0)),
+],
+])
+) as SubjectDistribution;
+const {totalQuestions, totalTimeLimit} = computeTotals(distribution);
 
-    if (totalTimeLimit <= 0) {
-      return res.status(400).json({success: false, error: "Total time limit must be greater than 0"});
-    }
+if (totalTimeLimit <= 0) {
+return res.status(400).json({success: false, error: "Total time limit must be greater than 0"});
+}
 
-    // Validate all subjects in distribution are valid
-    for (const subject of Object.keys(distribution)) {
+// Validate all subjects in distribution are valid
+for (const subject of Object.keys(distribution)) {
 if (!SUBJECT_AREAS.includes(subject as SubjectArea)) {
   return res.status(400).json({success: false, error: `Invalid subject: ${subject}`});
 }
@@ -213,7 +213,7 @@ if (!SUBJECT_AREAS.includes(subject as SubjectArea)) {
 const now = new Date().toISOString();
 const setObjectId = new ObjectId();
 const setId = setObjectId.toString();
-const newSet = any => {
+const newSet = any = {
   _id: setObjectId,
   setId,
   name: name.trim(),
@@ -302,14 +302,13 @@ async function updateSet(
       if (typeof distribution !== "object") {
         return res.status(400).json({success: false, error: "distribution must be an object"});
       }
-    }
 
-    const normalizedDistribution = normalizeDistribution(distribution);
-    // Subject item counts are read-only and are auto-synced from published questions.
-    // Only allow admins to edit per-subject time limits here.
-    const mergedDistribution = Object.fromEntries(
-      SUBJECT_AREAS.map((subject) => {
-        const existingEntry = (existing.distribution as Record<string, {
+      const normalizedDistribution = normalizeDistribution(distribution);
+      // Subject item counts are read-only and are auto-synced from published questions.
+      // Only allow admins to edit per-subject time limits here.
+      const mergedDistribution = Object.fromEntries(
+        SUBJECT_AREAS.map((subject) => {
+          const existingEntry = (existing.distribution as Record<string, {
 questions?: unknown
 }> | undefined)?.[subject];
 const nextEntry = normalizedDistribution[subject];
@@ -399,8 +398,8 @@ try {
 // mongodb@6 returns the updated document directly (or null), while older
 // versions returned an object with a value property.
 const updatedDoc = (result && typeof result === "object" && "value" in result)
-? (result as {value?: Record<string, any> | null}) : value;
-result = Record<string, any> | null;
+? (result as {value?: Record<string, any> | null}) : value
+: result as Record<string, any> | null;
 
 if (!updatedDoc) {
   return res.status(404).json({success: false, error: "Question set not found"});
@@ -413,6 +412,7 @@ await logActivity(db, {
   actorId: adminId,
   actorRole: "admin",
   action: "question_set_updated",
+}
 targetType: "question_set",
 targetId: id,
 metadata: {changes: Object.keys(updates)},
@@ -422,7 +422,7 @@ return res.status(200).json({
 success: true,
 data: refreshedDoc??updatedDoc,
 });
-catch (err) {
+} catch (err) {
 console.error("[question-sets] update error:", err);
 return res.status(500).json({success: false, error: "Failed to update question set"});
 }
@@ -458,10 +458,11 @@ isActive: false,
 updatedAt: new Date().toISOString(),
 },
 },
-{returnDocument: "after"},
+{
+returnDocument: "after"},
 );
 
-const deletedDoc = (result && typeof result === "object" && "value") in result
+const deletedDoc = (result && typeof result === "object" && "value" in result)
 ? (result as {value?: Record<string, any> | null}).value
 : result as Record<string, any> | null;
 
@@ -480,7 +481,7 @@ return res.status(200).json({
 success: true,
 data: deletedDoc,
 });
-catch (err) {
+} catch (err) {
 console.error("[question-sets] delete error:", err);
 return res.status(500).json({success: false, error: "Failed to delete question set"});
 }

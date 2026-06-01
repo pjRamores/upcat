@@ -130,7 +130,7 @@ useEffect(() => {
         .then((result) => {
           setFlow(normalizeOnboardingFlow(result.flow));
           setStepIndex(Math.max(0, parsed.stepIndex));
-          setCompletedSteps(parsed.completedSteps??[]);
+          setCompletedSteps(parsed.completedSteps ?? []);
           setStorageChecked(true);
         })
         .catch(() => {
@@ -412,24 +412,24 @@ style={{width: `${((stepIndex + 1) / flow.steps.length) * 100}%`}}/>
 <button type="button"
 className="roundedpx-3 py-2 text-sm text-slate-600 hover:bg-slate-100"
 onClick={() => setStepIndex((prev) => Math.max(0, prev - 1))}}
-Back
-</button>
-)}
-<button
-type="button"
-onClick={() => void.next()}
-disabled={nextDisabled}
-className="rounded.bg-primary-600·px-3·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:cursor-not-allowed·disabled:bg-slate-400"
->
-{nextLabel}
-</button>
-</div>
-{nextDisabled &&
-<p className="mt-2·text-right·text-xs·text-slate-600">Interact with the highlighted area to
-continue.</p>}
-</section>
-</div>
-</div>,
-document.body,
-);
+... Back
+... </button>
+... )}
+... <button
+... type="button"
+... onClick={() => void.next()}
+... disabled={nextDisabled}
+... className="rounded.bg-primary-600·px-3·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700·disabled:cursor-not-allowed·disabled:bg-slate-400"
+... >
+... {nextLabel}
+... </button>
+... </div>
+... {nextDisabled &&
+... <p className="mt-2·text-right·text-xs·text-slate-600">Interact with the highlighted area to
+... continue.</p>}
+... </section>
+... </div>
+... </div>,
+... document.body,
+... );
 }

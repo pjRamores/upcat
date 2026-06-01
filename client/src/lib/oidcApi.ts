@@ -61,7 +61,7 @@ export const oidcApi = {
   /** Auth required - remove a linked provider. */
   unlink: (provider: SocialProvider) =>
   unwrap<{ unlinked: true; provider: SocialProvider }>(
-    apiClient.post(API_ROUTES.AUTH.UNLINK, {provider}),
+    apiClient.post(API_ROUTES.AUTH.UNLINK, { provider }),
   );
 
   /** Auth required - set or change the local password. */
@@ -75,6 +75,6 @@ export const oidcApi = {
   /** Auth required - permanently delete the current user's account. */
   deleteAccount: (body: { confirmation: string; password?: string }) =>
   unwrap<{ deleted: true }>(
-    apiClient.delete(API_ROUTES.ACCOUNT, {data: body}),
+    apiClient.delete(API_ROUTES.ACCOUNT, { data: body }),
   );
 };

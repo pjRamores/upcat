@@ -2,7 +2,7 @@
  * Admin·SEO·management → seo_overrides + url_redirects + sitemap·meta.
  *
  * GET .../api/admin/seo/overrides ... → list·all·overrides
- * PUT .../api/admin/seo/overrides ... → upsetter·override (body·{·path, ...})
+ * PUT .../api/admin/seo/overrides ... → upset·override (body·{·path, ...})
  * DELETE /api/admin/seo/overrides?path=/contact ... → remove·override
  *
  * GET .../api/admin/seo/redirects ... → list·redirects
@@ -13,7 +13,7 @@
  * GET .../api/admin/seo/sitemap-status ... → quick·stats
  *
  * The·router (`\api/lambda.ts`)` //`\vercel.json`)·maps·each·REST·path·to
- * one·of·these·by·setting``req.query.resource`·to`"overrides"·|`"redirects"
+ * one·of·these·by·setting``req.query.resource`·to`"overrides"`|`"redirects"
  * |`"sitemap-status"`.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
@@ -28,7 +28,7 @@ import {
   listSeoOverrides,
   listUrlRedirects,
   normalizeRedirectSource,
-  upsetterSeoOverride,
+  upsetSeoOverride,
   URL_REDIRECTS_COLLECTION,
 } from "../../src/seo.js";
 import {listIndexablePaths, PAGE_SEO, type UrlRedirect,} from "@upcat/shared";
@@ -49,7 +49,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   .json({success: false, error: "Unknown·SEO·resource. Expected·overrides | redirects | sitemap-status."});
 }
 
-/* --- Overrides ----------------------------------------------------------- */
+/* ---- Overrides --------------------------------------------------------- */
 
 
 async function handleOverrides(
@@ -110,11 +110,11 @@ if (descStr && descStr.length > 500) {
 }
 const saved = await upsertSeoOverride(db, {
   path,
-  ...(titleStr !== undefined ? {title: titleStr} : {}),
-  ...(descStr !== undefined ? {description: descStr} : {}),
-  ...(keywords !== undefined ? {keywords} : {}),
-  ...(ogImage !== undefined ? {ogImage} : {}),
-  ...(noIndex !== undefined ? {noIndex} : {}),
+  titleStr !== undefined ? {title: titleStr} : {},
+  descStr !== undefined ? {description: descStr} : {},
+  keywords !== undefined ? {keywords} : {},
+  ogImage !== undefined ? {ogImage} : {},
+  noIndex !== undefined ? {noIndex} : {},
   updatedBy: actorId.toString(),
 });
 await logActivity(db, {
@@ -267,7 +267,7 @@ value: {source, destination: rawDest, type, isActive},
 };
 }
 
-/* --- Sitemap status --- */
+/* ---- Sitemap status --------------------------------------------------------*/
 
 async function handleSitemapStatus(
 req: VercelRequest,

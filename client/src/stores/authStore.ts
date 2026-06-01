@@ -103,18 +103,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         ?.error || "Registration failed";
 set({error: message, isLoading: false});
 },
-},
-
 logout: () => {
   clearPersistedAuth();
   set({user: null, token: null, isAuthenticated: false});
 },
-},
-
 fetchMe: async () => {
   set({isLoading: true});
   try {
-    const {data} = await apiClient.get<{data: User}}(API_ROUTES.AUTH.ME);
+    const {data} = await apiClient.get<{data: User}>(API_ROUTES.AUTH.ME);
     persistUserForCurrentSession(data.data);
     set({user: data.data, isAuthenticated: true, isLoading: false});
   } catch {
@@ -125,7 +121,7 @@ fetchMe: async () => {
       isAuthenticated: false,
       isLoading: false,
     });
-  },
+  }
   clearError: () => set({error: null});
 
   role: () => {

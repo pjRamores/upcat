@@ -1,20 +1,21 @@
+script
 #!/usr/bin/env node
 /**
  * End-to-end integration test for the UPCAT Simulator API.
  *
  * Usage:
- * node --env-file=api/.env scripts/test-integration.mjs
+ * node --env-file=api/.env·scripts/test-integration.mjs
  * # or manually:
- * API_BASE_URL=http://localhost:3001/api MONGODB_URI=... node scripts/test-integration.mjs
+ * API_BASE_URL=http://localhost:3001/api·MONGODB_URI=...·node·scripts/test-integration.mjs
  *
  * Test scenarios covered:
- * Auth -- register, verify, login, /me, /auth/providers, /auth/linked-accounts
- * Exam -- start session, fetch questions (paginated), bulk answer, submit, review
- * Stats -- overview, summary, subject-breakdown, difficulty-breakdown,
+ * Auth ... register, verify, login, /me, /auth/providers, /auth/linked-accounts
+ * Exam ... start session, fetch questions (paginated), bulk answer, submit, review
+ * Stats ... overview, summary, subject-breakdown, difficulty-breakdown,
  * progress-over-time, weak-area, leaderboard
- * Account -- GET /account (noop), GET /account/data-export, GET /account/deletion-request
- * Misc -- announcements, status health check
- * Cleanup -- removes all seeded rows so every run is idempotent
+ * Account ... GET /account (noop), GET /account/data-export, GET /account/deletion-request
+ * Misc ... announcements, status health check
+ * Cleanup ... removes all seeded rows so every run is idempotent
  *
  * Exits non-zero on any failure so it can gate CI.
  */
@@ -38,12 +39,12 @@ const TEST_FIRST = "Integration";
 const TEST_LAST = `Tester_${SUFFIX}`;
 const TEST_PASSWORD = "Test1234!Secure";
 
-/** @type {Array<{step:string; ok:boolean; detail:string}} */ const results = [];
+/** @type {Array<{step: string; ok: boolean; detail: string}} */ const results = [];
 
 function log(step, ok, detail = "") {
   results.push({step, ok, detail});
   const tag = ok ? "" : "x";
-  console.log(`${tag} ${step}${detail}? ` - ${detail} : ""`);
+  console.log(`${tag} ${step}${detail}?` - ${detail} : ""`);
 }
 
 async function call(path, init = {}, token) {
@@ -63,11 +64,11 @@ async function call(path, init = {}, token) {
     });
   } catch (error) {
     const fallback = [error?.name, error?.message].filter(Boolean).join(": ") || String(error);
-    const msg =
+    const msg = {
       controller.signal.aborted
       ? `request timed out after ${REQUEST_TIMEOUT_MS}ms`
       : (error?.cause?.message || fallback || "network failure");
-    throw new Error(
+    } throw new Error(
       `HTTP ${init?.method?? "GET"} ${url} failed: ${msg}. ` +
       `Ensure the API server is running (npm run dev:api) and API_BASE_URL is correct.`,
     );
@@ -99,20 +100,18 @@ async function main() {
     await call("/status");
 
     // Auth: public endpoints
-  }
-
-  // Health: status (public, no auth)
-}
+  } // Health // status (public, no auth)
+script
 let r = await call("/status");
-log("GET /status", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/:status", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // Public announcements
 r = await call("/announcements");
-log("GET /announcements", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/:announcements", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // Public auth providers list
 r = await call("/auth/providers");
-log("GET /auth/providers", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/:auth/providers", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // Auth: register
 
@@ -126,7 +125,7 @@ password: TEST_PASSWORD,
 confirmPassword: TEST_PASSWORD,
 }),
 });
-log("POST /auth/register", r.status === 200 || r.status === 201, `status=${r.status} ${r.body?.error??}"});
+log("POST/:auth/register", r.status === 200 || r.status === 201, `status=${r.status} ${r.body?.error??}"});
 
 // Auth: force-verify email in DB
 
@@ -136,8 +135,9 @@ email: TEST_EMAIL.toLowerCase(),
 {
 $set: {isVerified: true, verifiedAt: new Date()},
 $unset: {verificationToken: "", verificationTokenExpiry: ""},
-};
-log("verify email (db)", upd.matchedCount === 1, `matched=${upd.matchedCount}`);
+},
+);
+log("verify:email(db)", upd.matchedCount === 1, `matched=${upd.matchedCount}`);
 
 // Auth: login
 
@@ -146,19 +146,19 @@ method: "POST",
 body: JSON.stringify({email: TEST_EMAIL, password: TEST_PASSWORD}),
 });
 token = r.body?.data?.token ?? null;
-log("POST /auth/login", r.status === 200 && !!token, `status=${r.status}`);
+log("POST/:auth/login", r.status === 200 && !!token, `status=${r.status}`);
 if (!token) throw new Error("no token — cannot continue");
 
 // Auth: /me
 
 r = await call("/auth/me", {}, token);
 const me = r.body?.data;
-log("GET /auth/me", r.status === 200 && !!me?._id, `userId=${me?._id}`);
+log("GET/:auth/me", r.status === 200 && !!me?._id, `userId=${me?._id}`);
 
 // Auth: linked accounts
 
 r = await call("/auth/linked-accounts", {}, token);
-log("GET /auth/linked-accounts", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/:auth/linked-accounts", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // Auth: invalid login (wrong password)
 
@@ -166,7 +166,7 @@ r = await call("/auth/login", {
 method: "POST",
 body: JSON.stringify({email: TEST_EMAIL, password: "WrongPassword1!"}),
 });
-log("POST /auth/login (wrong pw → 401)", r.status === 401, `status=${r.status}`);
+log("POST/:auth/login (wrong pw → 401)", r.status === 401, `status=${r.status}`);
 
 // Exam: start
 
@@ -176,7 +176,7 @@ body: JSON.stringify({totalQuestions: 10}),
 }, token);
 sessionId = r.body?.data?.sessionId ?? null;
 log(
-"POST /exam/start",
+"POST/:exam/start",
 (r.status === 200 || r.status === 201) && !!sessionId,
 `status=${r.status} session=${sessionId}`,
 );
@@ -185,14 +185,14 @@ if (!sessionId) throw new Error("no sessionId — cannot continue");
 // Exam: sessions list
 
 r = await call("/exam/sessions", {}, token);
-log("GET /exam/sessions", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/:exam/sessions", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // Exam: fetch all questions (single page, large limit)
 
 r = await call(`/exam/${sessionId}/questions?limit=200`, {}, token);
 const questions = r.body?.data?.questions ?? [];
 log(
-"GET /exam/:id/questions",
+"GET/:exam/:id/questions",
 r.status === 200 && Array.isArray(questions) && questions.length > 0,
 `count=${questions.length}`,
 );
@@ -207,30 +207,31 @@ timeSpent: Math.floor(Math.random() * 30) + 5,
 }));
 r = await call(`/exam/${sessionId}/answer-bulk`, {
 method: "POST",
+script
 body: JSON.stringify({answers}),
 }, token);
-log("POST /exam/:id/answer-bulk", r.status === 200, `status=${r.status}`);
+log("POST/exam/:id/answer-bulk", r.status === 200, `status=${r.status}`);
 
 // — Exam: submit —
 
 r = await call(`/exam/${sessionId}/submit`, {method: "POST"}, token);
 const score = r.body?.data?.score;
 log(
-  "POST /exam/:id/submit",
+  "POST/exam/:id/submit",
   r.status === 200 && !!score,
-  `pct=${score?.percentage???"%"}`,
+  `pct=${score?.percentage???"%"`,
 );
 
 // — Exam: review (only works after submit) —
 
 r = await call(`/exam/${sessionId}/review`, {}, token);
-log("GET /exam/:id/review", r.status === 200 && r.body?.success === true, `status=${r.status}`);
+log("GET/exam/:id/review", r.status === 200 && r.body?.success === true, `status=${r.status}`);
 
 // — Exam: duplicate submit → 200 with alreadyScored flag —
 
 r = await call(`/exam/${sessionId}/submit`, {method: "POST"}, token);
 log(
-  "POST /exam/:id/submit (already scored)",
+  "POST/exam/:id/submit (already scored)",
   r.status === 200 && r.body?.data?.alreadyScored === true,
   `status=${r.status}`,
 );
@@ -263,7 +264,7 @@ r = await call("/account/data-export", {
   }),
 }, token);
 log(
-  "POST /account/data-export",
+  "POST/account/data-export",
   r.status === 200 || r.status === 201 || r.status === 202 || r.status === 409,
   `status=${r.status}`,
 );
@@ -276,7 +277,7 @@ r = await call("/account/deletion-request", {
   body: JSON.stringify({}),
 }, token);
 log(
-  "POST /account/deletion-request (no scope → 400)",
+  "POST/account/deletion-request (no scope → 400)",
   r.status === 400,
   `status=${r.status}`,
 );
@@ -284,7 +285,7 @@ log(
 // — Auth: accessing protected route without token → 401 —
 
 r = await call("/auth/me");
-log("GET /auth/me (no token → 401)", r.status === 401, `status=${r.status}`);
+log("GET/auth/me (no token → 401)", r.status === 401, `status=${r.status}`);
 
 } catch (err) {
   log("UNCAUGHT", false, err?.message ?? String(err));
@@ -314,6 +315,7 @@ const failed = results.length - passed;
 console.log(`\n— Summary: ${passed} passed, ${failed} failed —`);
 // Use setTimeout to let the event loop drain before exiting (avoids UV_HANDLE_CLOSING·crash)
 setTimeout(() => process.exit(false === 0 ? 0 : 1), 100);
+script
 main().catch((e) => {
   console.error(e);
   process.exit(1);

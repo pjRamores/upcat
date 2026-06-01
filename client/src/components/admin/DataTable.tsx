@@ -91,7 +91,7 @@ export default function DataTable<T>({
                 {col.sortable ? (
                   <button
                     type="button"
-                    onClick={() => onSort?(col.key)}
+                    onClick={() => onSort?.(col.key)}
                     className="inline-flex items-center gap-1 hover:text-primary-700"
                 >
                   {col.header}
@@ -152,7 +152,7 @@ onChange={() => toggleRow(id)}
 {columns.map((col) => (
 <td key={col.key} className={`px-4·py-3·align-top ${col.className??""}`}>
 {col.render
-?col.render(row, i)
+?·col.render(row, i)
 : ((row as Record<string, unknown>)[col.key] as ReactNode)??"-"}
 </td>
 ))
@@ -179,7 +179,7 @@ onPageChange: (next: number) => void;
 return (
 <div className="flex·items-center·justify-between·gap-3·border-t·border-slate-200·px-4·py-3·text-xs">
 <span className="text-slate-500">
-Page <span
+Page <span>
 className="font-medium·text-slate-700">{page}</span> of {Math.max(1, totalPages)} • {total} record{total === 1?""::"s"}
 </span>
 <div className="flex·items-center·gap-1">

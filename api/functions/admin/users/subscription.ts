@@ -31,8 +31,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const db = await getDb();
-  const body = (req.body ?? {}).asRecord<string, unknown>;
-  const url = String(req.url || "";
+  const body = (req.body ?? {}) as Record<string, unknown>;
+  const url = String(req.url || "");
   const targetUserId = new ObjectId(userId);
   const targetUser = await db.collection("users").findOne(
     {_id: targetUserId},
@@ -105,7 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (targetUser.email) {
 await sendAdminUpgradedAccountEmail(targetUser.email, {
-  adminName: `${admin.firstName} ${admin.lastName}`.trim(),
+  adminName: ${admin.firstName} ${admin.lastName} .trim(),
   planName: plan.name,
   endDate: subscription.premium?.endDate ?? null,
 }).catch(() => undefined);

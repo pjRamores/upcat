@@ -125,7 +125,7 @@ return res.status(400).json({success: false, error: "Missing article slug"});
 }
 
 const body = (req.body ?? {}).as Record<string, unknown>;
-const patch: Record<string, unknown> = {
+const patch = Record<string, unknown> = {
 ...body,
 ...lastUpdatedAt: new Date(),
 ...updatedBy: admin._id,

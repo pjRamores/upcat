@@ -47,7 +47,7 @@ export default function AdminPracticeSessionsPage() {
       });
       setData(result as unknown as {items: PracticeSessionRow[]; total: number; totalPages: number});
       catch (e) {
-        const msg = (e as {response?: {data?: {error?: string}}}).response?.data?.error;
+        const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
         addToast("error", msg ?? "Could not load practice sessions.");
       } finally {
         setLoading(false);
@@ -68,7 +68,7 @@ export default function AdminPracticeSessionsPage() {
         setConfirmDeleteId(null);
         await refresh();
       } catch (e) {
-        const msg = (e as {response?: {data?: {error?: string}}}).response?.data?.error;
+        const msg = (e as {response?: {data?: {error?: string}}})?.response?.data?.error;
         addToast("error", msg ?? "Failed to delete practice session.");
       } finally {
         setDeleting(null);

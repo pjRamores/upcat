@@ -3,7 +3,7 @@
  * Schedule: 0 0 * * * (UTC midnight)
  *
  * Produces a 24h summary of security activity and persists it to
- * security reports for the admin console audit trail. Also logs a
+ * security reports for the admin console + audit trail. Also logs a
  * synthetic event so admins can see the report ran.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";

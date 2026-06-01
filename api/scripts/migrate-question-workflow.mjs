@@ -1,3 +1,4 @@
+script
 /* eslint-disable no-console */
 import {MongoClient} from "mongodb";
 import {createHash} from "node:crypto";

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# -------------------------------------------------------------------------
+# _____
 # deploy-cloudflare.sh - Deploy UPCAT Simulator to Cloudflare Pages
 #
 # Steps:
@@ -17,9 +17,9 @@
 #
 set -euo pipefail
 
-: "${CLOUDFLARE_API_TOKEN:?missing.CLOUDFLARE_API_TOKEN}"
-: "${CLOUDFLARE_ACCOUNT_ID:?missing.CLOUDFLARE_ACCOUNT_ID}"
-: "${CLOUDFLARE_PROJECT_NAME:?missing.CLOUDFLARE_PROJECT_NAME}"
+: "${CLOUDFLARE_API_TOKEN:?missing CLOUDFLARE_API_TOKEN}"
+: "${CLOUDFLARE_ACCOUNT_ID:?missing CLOUDFLARE_ACCOUNT_ID}"
+: "${CLOUDFLARE_PROJECT_NAME:?missing CLOUDFLARE_PROJECT_NAME}"
 DEPLOY_ENV="${DEPLOY_ENV:-production}"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/)../" && pwd)"
@@ -43,7 +43,7 @@ export CLOUDFLARE_ACCOUNT_ID
 # Deploy using Wrangler (requires wrangler CLI to be installed)
 # If deploying via GitHub Actions, use the official GitHub Action instead:
 # https://github.com/cloudflare/wrangler-action
-if command -v wrangler && /dev/null; then
+if command -v wrangler &> /dev/null; then
   echo "□ Using local Wrangler CLI"
   if [ "$DEPLOY_ENV" == "staging" ]; then
     wrangler deploy \

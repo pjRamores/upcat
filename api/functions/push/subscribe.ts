@@ -1,7 +1,8 @@
 /**
  * POST /api/push/subscribe
  *
- * Upserts a browser push subscription for the authenticated user. The uniqueness key is `endpoint` -- re-subscribing from the same device.
+ * Upserts a browser push subscription for the authenticated user. The
+ * uniqueness key is `endpoint` -- re-subscribing from the same device
  * (after a key rotation, for example) replaces the prior record.
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
@@ -27,15 +28,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const body = (req.body ?? {}).asPartial<PushSubscribePayload>;
   if (
     !body.endpoint ||
-    typeof body.endpoint !== "string" ||
-    !body.endpoint.startsWith("http")
+    typeof body.endpoint !== "string"
+    || body.endpoint.startsWith("http")
   ) {
     return res.status(400).json({success: false, error: "Invalid endpoint"});
   }
   if (
     !body.keys ||
-    typeof body.keys.p256dh !== "string" ||
-    typeof body.keys.auth !== "string"
+    typeof body.keys.p256dh !== "string"
+    || typeof body.keys.auth !== "string"
   ) {
     return res.status(400).json({success: false, error: "Missing subscription keys"});
   }

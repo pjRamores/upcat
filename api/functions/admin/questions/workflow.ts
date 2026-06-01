@@ -31,7 +31,7 @@ async function updateWorkflow(req: VercelRequest, res: VercelResponse, adminId: 
 
   const nextStatus = normalizeStatus(req.body?.status);
   if (!nextStatus) {
-    return res.status(400).json({success: false, error: "status must be draft, in_review, published, or archived"});
+    return res.status(400).json({success: false, error: "status must be draft, in review, published, or archived"});
   }
 
   const note = String(req.body?.note ?? "").trim();
@@ -87,7 +87,7 @@ async function updateWorkflow(req: VercelRequest, res: VercelResponse, adminId: 
     },
   });
 
-  await syncQuestionSetPublishedCounts(db, String(current.setId ?? "")).trim();
+  await syncQuestionSetPublishedCounts(db, String(current.setId ?? "").trim());
 
   await logActivity(db, {
     actorId: adminId,
@@ -102,6 +102,9 @@ async function updateWorkflow(req: VercelRequest, res: VercelResponse, adminId: 
     success: true,
     data: {
       questionId: oid.toString(),
+    }
+  });
+}
 from: currentStatus,
 to: nextStatus,
 version,

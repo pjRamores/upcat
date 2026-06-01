@@ -42,53 +42,56 @@ export default function ConfirmDialog({
         setTyped("");
         onClose();
       }}
-      title={title}
-      footer={
-        <div className="flex justify-end gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              setTyped("");
-              onClose();
-            }}
-            className="rounded-md border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50"
-          >
-            {cancelLabel}
-          </button>
-          <button
-            type="button"
-            disabled={!matches || busy}
-            onClick={async(() => {
-              setBusy(true);
-              try {
-                await onConfirm();
-                setTyped("");
-              } finally {
-                setBusy(false);
-              }
-            }}
-            className={`rounded-md px-4 py-2 text-sm font-semibold ${buttonClass}`}
-          >
-            {busy ? "Working..." : confirmLabel}
-          </button>
-        </div>
-      }
     >
-      <p className="text-sm text-slate-700">{message}</p>
-      {confirmText && (
-        <div className="mt-4">
-          <label className="block text-xs font-medium text-slate-600">
-            Type <span className="font-mono font-semibold">{confirmText}</span> to confirm
-          </label>
-          <input
-            type="text"
-            value={typed}
-            onChange={(e) => setTyped(e.target.value)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1">
-            "focus:ring-primary-500"
-          </input>
-        </div>
-      )}
-    </Modal>
-  );
+      <div className="flex justify-end gap-2">
+        <button
+          type="button"
+          onClick={() => {
+            setTyped("");
+            onClose();
+          }}
+        >
+          className="rounded-md border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50"
+        >
+          {cancelLabel}
+        </button>
+        <button
+          type="button"
+          disabled={!matches || busy}
+          onClick={async () => {
+            setBusy(true);
+            try {
+              await onConfirm();
+              setTyped("");
+            } finally {
+              setBusy(false);
+            }
+          }}
+        }
+        className={`rounded-md px-4 py-2 text-sm font-semibold ${buttonClass}`}
+      >
+        {busy ? "Working..." : confirmLabel}
+      </button>
+    </div>
+  )
 }
+
+<p className="text-sm text-slate-700">{message}</p>
+{confirmText && (
+  <div className="mt-4">
+    <label className="block text-xs font-medium text-slate-600">
+      Type <span className="font-mono font-semibold">{confirmText}</span> to confirm
+    </label>
+    <input
+      type="text"
+      value={typed}
+      onChange={(e) => setTyped(e.target.value)}
+      className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1">
+      "focus:ring-primary-500"
+    </input>
+    autoFocus
+  />
+</div>
+})
+</Modal>
+);

@@ -1,3 +1,4 @@
+script
 /**
  * One-shot raster icon generator. Run via:
  * node scripts/generate-pwa-icons.mjs
@@ -106,6 +107,7 @@ function fillGradient(size, maskable) {
   const cx = size / 2;
   const cy = size / 2;
   const radius = maskable ? size * 0.62 : size * 0.9;
+script
 const cornerR = maskable ? 0 : Math.round(size * 0.18);
 for (let y = 0; y < size; y++) {
   for (let x = 0; x < size; x++) {

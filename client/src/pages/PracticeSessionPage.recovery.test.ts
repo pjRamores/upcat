@@ -36,7 +36,7 @@ class MemoryStorage implements Storage {
   }
 }
 
-describe("PracticeSessionPage.recovery.helpers", () => {
+describe("PracticeSessionPage-recovery-helpers", () => {
   beforeEach(() => {
     vi.stubGlobal("sessionStorage", new MemoryStorage());
   });

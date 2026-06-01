@@ -34,10 +34,10 @@ type SessionCard = PracticeStartResponse["cards"][number];
 
 const RATING_ORDER: PracticeRating[] = ["again", "hard", "good", "easy"];
 const RATING_STYLES: Record<PracticeRating, string> = {
-  again: "bg-rose-600:hover:bg-rose-700:text-white",
-  hard: "bg-amber-500:hover:bg-amber-600:text-white",
-  good: "bg-emerald-600:hover:bg-emerald-700:text-white",
-  easy: "bg-sky-600:hover:bg-sky-700:text-white",
+  again: "bg-rose-600 hover:bg-rose-700 text-white",
+  hard: "bg-amber-500 hover:bg-amber-600 text-white",
+  good: "bg-emerald-600 hover:bg-emerald-700 text-white",
+  easy: "bg-sky-600 hover:bg-sky-700 text-white",
 };
 
 interface RevealState {
@@ -52,15 +52,15 @@ export default function PracticeSessionPage() {
   const addToast = useToastStore((s) => s.addToast);
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string>(null)(null);
+  const [error, setError] = useState<string | null>(null);
   const [cards, setCards] = useState<SessionCard[]>([]);
   const [idx, setIdx] = useState(0);
-  const [userAnswer, setUserAnswer] = useState<A" | "B" | "C" | "D">(null)(null);
-  const [reveal, setReveal] = useState<RevealState>(null)(null);
+  const [userAnswer, setUserAnswer] = useState<A" | "B" | "C" | "D">(null);
+  const [reveal, setReveal] = useState<RevealState | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [rating, setRating] = useState<PracticeRating>(null)(null);
+  const [rating, setRating] = useState<PracticeRating | null>(null);
   const [completing, setCompleting] = useState(false);
-  const [reward, setReward] = useState<GamificationReward>(null)(null);
+  const [reward, setReward] = useState<GamificationReward | null>(null);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showAchievements, setShowAchievements] = useState(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
@@ -133,11 +133,6 @@ createPracticeSnapshot(idx, cards.length),
 return () => clearInterval(snapTimer);
 }, [sessionId, idx, cards.length]);
 
-useEffect(() => {
-if (!sessionId || cards.length === 0) return;
-persistPracticeRuntime(sessionId, idx);
-}, [sessionId, idx, cards.length]);
-
 const currentCard = cards[idx] ?? null;
 const isLastCard = idx >= cards.length - 1;
 const progressPct = useMem(
@@ -207,8 +202,8 @@ const res = await practiceApi.complete(sessionId);
 setSummary({
 totalAnswered: res.totalAnswered,
 totalCorrect: res.totalCorrect,
-});
 }
+);
 }
 accuracyPct: res.accuracyPct,
 });
@@ -309,6 +304,7 @@ return (
 </div>
 );
 }
+
 const choiceMap = new Map(currentCard.question.choices.map((c) => [c.label, c.text]));
 return (
   <div className="mx-auto max-w-6x1 px-4 py-8">

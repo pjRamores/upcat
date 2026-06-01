@@ -12,7 +12,7 @@ export default function FullPageLoader({
     <div>
       <role="status"
         aria-live="polite"
-        className="flex-min-h-screen items-center justify-center bg-slate-50"
+        className="flex min-h-screen items-center justify-center bg-slate-50"
       >
         <div className="flex flex-col items-center gap-4 text-primary-600">
           <Spinner className="h-8 w-8"/>

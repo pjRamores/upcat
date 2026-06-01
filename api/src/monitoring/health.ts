@@ -418,7 +418,7 @@ return {due: checks.length, executed};
 async getChecks(db?: Db): Promise<HealthCheckDocument[]> {
   const targetDb = db ?? (await getRawDb());
   await upsertDefinitions(targetDb);
-  return targetDb.collection<HealthCheckDocument>("health_checks").find({}).sort({checkId: 1}).toArray();
+  return targetDb.collection<HealthCheckDocument>("health_checks").find(()).sort({checkId: 1}).toArray();
 }
 
 async updateCheckConfig(checkId: string, patch: Partial<HealthCheckConfig>, db?: Db): Promise<void> {
@@ -430,7 +430,7 @@ async updateCheckConfig(checkId: string, patch: Partial<HealthCheckConfig>, db?:
   );
 }
 
-private async persistResult(checkId: string, result: HealthCheckResult, db: Db): Promise<void> {
+private async persistResult(checkId: string, result: HealthCheckResult, db?: Db): Promise<void> {
   const current = await db.collection<HealthCheckDocument>("health_checks").findOne({checkId});
   const now = new Date();
   const nextFailures = result.status === "healthy" ? 0 : (current?.consecutiveFailures ?? 0) + 1;
@@ -460,25 +460,26 @@ private async persistResult(checkId: string, result: HealthCheckResult, db: Db):
           $slice: -100,
         },
       },
-      {upsert: true},
-    });
+    },
+    {upsert: true},
+  );
 
-    if (result.status !== "healthy") {
-      log.warn("Health check degraded", {
-        checkId,
-        status: result.status,
-        responseTimeMs: result.responseTimeMs,
-        message: result.message ?? null,
-      });
-    }
-
-    await upsertHealthAlert(
+  if (result.status !== "healthy") {
+    log.warn("Health check degraded", {
       checkId,
-      result.status,
-      result.message || `${checkId} ${result.status}`,
-      db,
-    );
+      status: result.status,
+      responseTimeMs: result.responseTimeMs,
+      message: result.message ?? null,
+    });
   }
+
+  await upsertHealthAlert(
+    checkId,
+    result.status,
+    result.message || `${checkId} ${result.status}`,
+    db,
+  );
+}
 }
 
 export const healthCheckRunner = new HealthCheckRunner();
@@ -515,5 +516,5 @@ if (checks.some((check) => check.currentStatus === "unhealthy")) overall = "unhe
 else if (checks.some((check) => check.currentStatus === "degraded")) overall = "degraded";
 else if (!checks.length || !cfg.healthChecks.enabled) overall = "unknown";
 
-return { overall, checks: map };
+return {overall, checks: map};
 }

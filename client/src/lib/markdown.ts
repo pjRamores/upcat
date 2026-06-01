@@ -13,7 +13,7 @@
  * - Horizontal rule (---)
  *
  * All input is HTML-escaped before tokens are recognised, so a hostile
- * post body can not inject raw HTML or javascript: URLs. The output is
+ * post-body can not inject raw HTML or javascript: URLs. The output is
  * trusted only because of this escaping pass.
  */
 
@@ -37,7 +37,7 @@ function renderInline(line: string): string {
   s = s.replace(/`([^`]+)`/g, (_m, code: string) => `<code>${code}</code>`);
   // Bold then italic (longest match first).
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  s = s.replace(/(^|[^\s])_([^_]+)_(?=[\s].,!?]|$)/g, "$1<em>$2</em>");
+  s = s.replace(/(^|[s())_([^_]+)_(?=[\s].,!?]|)$/g, "$1<em>$2</em>");
   s = s.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   // Images ![alt] (src) -- http/https and absolute-root relative paths only.
   s = s.replace(
@@ -46,7 +46,7 @@ function renderInline(line: string): string {
   );
   // Links [text] (href) -- http/https only.
   s = s.replace(
-    /$$([^$$])+$$$$((?:(?:https?:\/\/|\/|[^$$]\s]+)\)/g,
+    /\$$([^$$])+$$$$((?:(?:https?:\/\/|\/|[^$$]\s]+)\)/g,
     (_m, text: string, href: string) =>
       `<a href="${href}" rel="noopener noreferrer">${href.startsWith("http") ? ' target="_blank"' : ""}</a>`,
   );
@@ -115,7 +115,7 @@ while (i < lines.length) {
       code.push(lines[i]);
       i++;
     }
-    i++; // skip closing ````
+    i++; // skip closing ```
     out.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
     continue;
   }
@@ -148,7 +148,7 @@ while (i < lines.length) {
 
     out.push("<tbody>");
     i += 2;
-    while (i < lines.length && /^\\.|.*\\|\/s*$/.test(lines[i])) {
+    while (i < lines.length && /^|.*|\s*$/.test(lines[i])) {
       const row = splitTableRow(lines[i]);
       out.push("<tr>");
       for (let c = 0; c < header.length; c++) {
@@ -181,7 +181,7 @@ while (i < lines.length) {
   }
 
   // Ordered list.
-  const ol = /^\/d+\.\s+(.+)$/.exec(line);
+  const ol = /^d+\.\s+(.+)$/.exec(line);
   if (ol) {
     flushPara();
     closeBlockquote();
@@ -194,6 +194,7 @@ while (i < lines.length) {
       inOl = true;
     }
     out.push(`<li>${renderInline(ol[1]!)}</li>`);
+script
 i++;
 continue;
 }
@@ -227,7 +228,6 @@ closeBlockquote();
 paraBuf.push(line);
 i++;
 }
-
 flushPara();
 closeLists();
 closeBlockquote();

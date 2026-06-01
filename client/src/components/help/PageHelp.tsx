@@ -114,7 +114,7 @@ if (!items.length) return null;
 
 return createPortal(
   <>
-  {items
+  {items}
   .filter((item) => positions[item.id])
   .map((item) => {
     const pos = positions[item.id]!
@@ -155,11 +155,11 @@ function HelpOverlay({
   item,
   onClose,
   onDismiss,
-}): {
+  }: {
   item: ContextualHelpPoint;
   onClose: () => void;
   onDismiss: () => void;
-}) {
+  }) {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -207,31 +207,31 @@ function HelpOverlay({
 
 return (
   <div className="fixed inset-0 z-[80]">role="dialog" aria-modal="true">
-    <button type="button" aria-label="Close help" className="absolute inset-0 bg-black/20" onClick={onClose}>
+  <button type="button" aria-label="Close help" className="absolute inset-0 bg-black/20" onClick={onClose}>
 <div
   className="absolute·left-1/2·top-24·w-[min(92vw,420px)]·-translate-x-1/2·rounded-xl·border·border-slate-200·bg-white·p-4·shadow-xl">
   <div className="flex·items-start·justify-between·gap-3">
     <h3 className="text-sm·font-semibold·text-slate-900">{item.title}</h3>
     <button type="button" className="rounded·p-1·text-slate-500·hover:bg-slate-100"
       onClick={onClose}>
-    </button>
-  </div>
-  <p className="mt-2·text-sm·text-slate-700">{item.shortDescription}</p>
-  {item.detailedContent && item.type === "popover" && (
-    <p className="mt-2·text-xs·text-slate-600">{item.detailedContent}</p>
-  )}
-  <div className="mt-3·flex·flex-wrap·items-center·gap-3">
-    {item.helpArticleSlug && (
-      <Link className="text-xs·font-medium·text-primary-700·hover:underline"
-        to={`/help/article/${item.helpArticleSlug}${item.helpArticleSection??}"`}>
-      Learn more →
-    </Link>
+      </button>
+    </div>
+    <p className="mt-2·text-sm·text-slate-700">{item.shortDescription}</p>
+    {item.detailedContent && item.type === "popover" && (
+      <p className="mt-2·text-xs·text-slate-600">{item.detailedContent}</p>
     )}
-    {item.dismissable && (
-      <button type="button" className="text-xs·text-slate-600·underline">onClick={onDismiss}>
-      Don't show again
-    </button>
+    <div className="mt-3·flex·flex-wrap·items-center·gap-3">
+      {item.helpArticleSlug && (
+        <Link className="text-xs·font-medium·text-primary-700·hover:underline"
+          to={`/help/article/${item.helpArticleSlug}${item.helpArticleSection??"}`}>
+          Learn more
+        </Link>
+      )}
+      {item.dismissable && (
+        <button type="button" className="text-xs·text-slate-600·underline">onClick={onDismiss}>
+          Don't show again
+        </button>
+      )}
     )}
   </div>
 </div>
-);

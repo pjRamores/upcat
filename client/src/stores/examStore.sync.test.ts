@@ -72,19 +72,16 @@ describe("examStore.sync.integration", () => {
             startedAt: new Date().toISOString(),
           },
         },
-        }, }
-    });
-    vi.mocked(checkServerStatus).mockResolvedValue({
-      status: "in_progress",
-      serverAnswerCount: 0,
-      lastServerUpdate: null,
-      timerState: {remainingMs: 3_600_000, adjustments: 45_000},
-      maintenanceExtension: 45_000,
-    });
-    await useExamStore.getState().init("sess-1");
+        data: {
+          timerState: {remainingMs: 3_600_000, adjustments: 45_000},
+          maintenanceExtension: 45_000,
+        },
+      });
+      await useExamStore.getState().init("sess-1");
 
-    const state = useExamStore.getState();
-    expect(state.timerExtensionMs).toBe(45_000);
+      const state = useExamStore.getState();
+      expect(state.timerExtensionMs).toBe(45_000);
+    });
   });
 
   it("submit flushes dirty answers and posts submit payload", async () => {

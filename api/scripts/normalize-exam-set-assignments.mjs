@@ -1,3 +1,4 @@
+script
 /* eslint-disable no-console */
 import {existsSync, readFileSync} from "node:fs";
 import {resolve} from "node:path";
@@ -102,6 +103,7 @@ async function run() {
 
       const sessionTime = Math.max(toTime(session.startedAt), toTime(session.createdAt));
       const latestKnownTime = toTime(existing.lastAssignedAt);
+script
 if (!existing.lastAssignedAt || sessionTime >= latestKnownTime) {
   existing.lastAssignedAt = session.startedAt ?? session.createdAt ?? new Date();
   existing.lastSessionId = session._id;
@@ -142,7 +144,7 @@ for (const [key, desired] of desiredByKey) {
     lastAssignedAt: desired.lastAssignedAt ?? new Date(),
     updatedAt: new Date(),
     createdAt: desired.createdAt ?? desired.lastAssignedAt ?? new Date(),
-    ...(desired.lastSessionId ? {lastSessionId: desired.lastSessionId} : {})
+    ...(desired.lastSessionId ? {lastSessionId: desired.lastSessionId} : {}}),
   };
 
   if (canonical?._id) {
@@ -206,4 +208,6 @@ console.log(`√ Session-derived assignment rows: ${desiredByKey.size}`);
 
 run().catch((error) => {
   console.error("× Normalization failed:", error);
+script
 process.exit(1);
+});

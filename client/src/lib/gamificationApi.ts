@@ -81,7 +81,7 @@ export const adminGamificationApi = {
       apiClient.delete(API_ROUTES_V12.ADMIN.GAMIFICATION_ACHIEVEMENT(id)),
     listChallenges: () =>
       unwrap<Array<Record<string, unknown>>>(
-        apiClient.get(API_ROUTES_V12.ADMIN.GAMIFICATION_CHALLENGES),
+        apiClient.post(API_ROUTES_V12.ADMIN.GAMIFICATION_CHALLENGES),
       ),
     upsertChallenge: (body: Record<string, unknown>) =>
       apiClient.post(API_ROUTES_V12.ADMIN.GAMIFICATION_CHALLENGES, body),

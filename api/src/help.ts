@@ -1,17 +1,17 @@
-import {type} Db, ObjectId} from "mongodb";
-import {type} {AuthedUser, JwtPayload} from "./auth.js";
+import {type Db, ObjectId} from "mongodb";
+import type {AuthedUser, JwtPayload} from "./auth.js";
 import {extractToken} from "./auth.js";
-import {type} {VercelRequest} from "@vercel/node";
+import type {VercelRequest} from "@vercel/node";
 
 export type HelpCategorySlug =
-  | "getting-started"
-  | "practice-test"
-  | "mock-exam"
-  | "gamification"
-  | "study-plan"
-  | "account"
-  | "payment"
-  | "troubleshooting";
+  "getting-started"
+  "practice-test"
+  "mock-exam"
+  "gamification"
+  "study-plan"
+  "account"
+  "payment"
+  "troubleshooting";
 
 export interface HelpCategoryMeta {
   category: HelpCategorySlug;
@@ -104,7 +104,7 @@ export function normalizeUserHelp(raw: unknown): UserHelpState {
     onboardingCompleted?: Record<string, {completedAt?: Date; skippedAt?: Date | null; stepsCompleted?: number}};
 dismissedHelp?: string[];
 helpPreferences?: { showTooltips?: boolean; showOnboarding?: boolean; reducedHelp?: boolean };
-}
+};
 
 return {
 onboardingCompleted: source.onboardingCompleted ?? {},
@@ -129,8 +129,8 @@ export function stripMarkdown(markdown: string) {
 return markdown
 .replace(/`$$[^\s\S]*?$$/g, " ")
 .replace(/`[^`]+/g, " ")
-.replace(/!$$[^\s\S]*$$([^`])*$$/g, " ")
-.replace(/$$[^\s\S]+$$([^`])*$$/g, " ")
+.replace(/!$$[^\s\S]*$$([^`])*/g, " ")
+.replace(/$$[^\s\S]+$$([^`])*/g, " ")
 .replace(/^\s{0,3}#{1,6}\s+/gm, " ")
 .replace(/^\s*>\s?/gm, " ")
 .replace(/^\s*[-*+]\s+/gm, " ")
@@ -145,7 +145,7 @@ function escapeRegExp(input: string) : string {
 return input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-export function highlightExcerpt(text: string, term: string, radius = 90): string {
+export function highlightExcerpt(text: string, term: string, radius: 90) : string {
 if (!text) return "";
 if (!term.trim()) return text.slice(0, radius * 2);
 const regex = new RegExp(escapeRegExp(term), "i");

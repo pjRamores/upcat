@@ -2,7 +2,7 @@ import {useMemo} from "react";
 import type {VideoAdSettings, VideoAdTrigger} from "@upcat/shared";
 import {useAdsConfig} from "@hooks/useAdsConfig";
 import {useShouldShowAds} from "@hooks/useShouldShowAds";
-import {isOutsideMinInterval, readVideoAdState, writeVideoAdState};
+import {isOutsideMinInterval, readVideoAdState, writeVideoAdState,} from "@lib/videoAdState";
 
 interface VideoAdDecision {
   /**/

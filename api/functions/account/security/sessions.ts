@@ -9,7 +9,7 @@ import {ObjectId} from "mongodb";
 import {requireUser} from "../../src/auth.js";
 import {getDb} from "../../src/db.js";
 import {withSecurity} from "../../src/security/middleware.js";
-import {extractJti, revokeAllSessions, revokeSession} from "../../src/security/sessions.js";
+import {extractJti, revokeAllSessions, revokeSession,} from "../../src/security/sessions.js";
 import {logSecurityEvent} from "../../src/security/events.js";
 
 export default withSecurity({endpoint: "ACCOUNT /api/account/security/sessions"})(async (
@@ -103,4 +103,5 @@ export default withSecurity({endpoint: "ACCOUNT /api/account/security/sessions"}
       })),
     },
   });
+}
 });

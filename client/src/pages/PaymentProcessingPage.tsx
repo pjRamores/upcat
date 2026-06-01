@@ -48,8 +48,16 @@ export default function PaymentProcessingPage() {
       <div className="mx-auto max-w-2x1 px-4 py-16 text-center">
         <h1 className="text-3x1 font-bold text-slate-900">Payment Processing...</h1>
         <p className="mt-3 text-slate-600">We're confirming your payment. This usually takes a few moments.</p>
-        <div>
+        <div
           className="mx-auto mt-8 h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-primary-600"/>
+
+        {timedOut && (
+          <p className="mt-5 text-sm text-amber-700">
+            Taking longer than expected. Check your subscription status in Settings.
+          </p>
+        )}
+        <div className="mt-6">
+          <Link to="/settings" className="text-sm font-sembold text-primary-700 underline">Go to Settings</Link>
         </div>
       </div>
     );

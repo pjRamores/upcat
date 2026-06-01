@@ -1,6 +1,6 @@
 /**
  * Account - User security activity feed.
- *  GET /api/account/security/activity?limit=20
+ * GET /api/account/security/activity?limit=20
  */
 import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {requireUser} from "../../src/auth.js";
@@ -52,5 +52,5 @@ export default withSecurity({endpoint: "GET /api/account/security/activity"})(as
         details: e.details,
       })),
     },
-  });
+  }));
 });

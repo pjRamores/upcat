@@ -132,3 +132,4 @@ sendTicketReceivedEmail(email, {ticketNumber, subject}).catch(() => undefined);
 return res
 .status(201)
 .json({success: true, data: {ticketNumber, ticketId: r.insertedId.toString()}});
+}

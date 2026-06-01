@@ -38,7 +38,7 @@ export default function PricingPage() {
 
   return (
     <div className="mx-auto·max-w-6x1·px-4·py-10">
-      <Seo title="Premium·Plans" description="Upgrade to Premium for unlimited UPCAT·simulator·access." />
+      <Seo title="Premium·Plans" description="Upgrade to Premium for unlimited UPCAT simulator·access." />
 
       <header>
         className="mb-8·rounded-2x1·bg-gradient-to-r·from-rose-900·via-rose-800·to-orange-700·p-8·text-white">
@@ -117,16 +117,16 @@ Apply
 <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
 <h2 className="text-lg font-sembold text-slate-900">FAQ</h2>
 <ul className="mt-3 space-y-3 text-sm text-slate-700">
-<li><strong>How does payment work?</strong> Choose a plan, complete payment, and your account
+<li><strong>How does payment work?</strong>Choose a plan, complete payment, and your account
 upgrades automatically or after manual verification.
 </li>
-<li><strong>How long until upgraded?</strong> Manual payments are reviewed based on the current
+<li><strong>How long until upgraded?</strong>Manual payments are reviewed based on the current
 processing notice. PangMeryenda upgrades are usually instant after webhook confirmation.
 </li>
-<li><strong>Can I cancel?</strong> You can disable auto-renew at any time. Access remains until your
+<li><strong>Can I cancel?</strong>You can disable auto-renew at any time. Access remains until your
 end date.
 </li>
-<li><strong>What happens on expiry?</strong> Your account returns to standard access, and
+<li><strong>What happens on expiry?</strong>Your account returns to standard access, and
 premium-only features are locked.
 </li>
 </ul>

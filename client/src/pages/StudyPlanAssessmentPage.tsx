@@ -73,7 +73,8 @@ export default function StudyPlanAssessmentPage() {
               >
                 Review Answers
               </button>
-              <button
+            </div>
+            <button
                 type="button"
                 onClick={() => navigate("/study-plan")}
                 className="rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold text-white"
@@ -106,7 +107,7 @@ export default function StudyPlanAssessmentPage() {
   type="radio"
   name={q._id}
   checked={answers[q._id] === choice.label}
-  onChange={() => setAnswers((prev) => ({...prev, [q._id]: choice.label})))}
+  onChange={() => setAnswers((prev) => ({...prev, [q._id]: choice.label}))}
 </input>
 </span>
 <className="text-sm">{choice.label}.{choice.text}</span>

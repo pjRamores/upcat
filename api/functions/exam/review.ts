@@ -81,8 +81,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         correctAnswer: entry.correctAnswer ?? doc.correctAnswer,
         rationale: doc.rationale,
         tags: doc.tags ?? [],
-        createdAt: (doc.createdAt as Date).toISOString?.() ?? "",
-        updatedAt: (doc.updatedAt as Date).toISOString?.() ?? "",
+        createdAt: (doc.createdAt as Date).toISOString().() ?? "",
+        updatedAt: (doc.updatedAt as Date).toISOString().() ?? "",
         orderIndex: entry.orderIndex,
         userAnswer: entry.userAnswer,
         isCorrect: entry.isCorrect ?? false,
@@ -90,16 +90,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         isReported: false,
         timeSpent: entry.timeSpent,
         passage: passage
-      } ? {
-        _id: (passage._id as ObjectId).toString(),
-        title: passage.title,
-        content: passage.content,
-        source: passage.source,
-        subjectArea: passage.subjectArea,
-      }
-    } : null;
-  });
+      }?
+      _id: (passage._id as ObjectId).toString(),
+      title: passage.title,
+      content: passage.content,
+      source: passage.source,
+      subjectArea: passage.subjectArea,
+    }
+  );
   filter(Boolean);
+}
 return res.status(200).json({
   success: true,
   data: {

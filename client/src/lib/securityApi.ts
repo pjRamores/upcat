@@ -151,5 +151,5 @@ bySeverity: Array<{id: string; count: number}>;
 topCountries: Array<{id: string; count: number}>;
 topIps: Array<{id: string; count: number}>;
 recommendations: string[];
-}(apiClient.get(`${API_ROUTES_V15.ADMIN.REPORTS}?period=${period}`),
-);
+}(apiClient.get(`${API_ROUTES_V15.ADMIN.REPORTS}?period=${period}`)),
+};

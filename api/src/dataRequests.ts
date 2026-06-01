@@ -47,9 +47,9 @@ function toCsv(rows: Record<string, unknown>[]) : string {
 interface ExportBundle {
   generatedAt: string;
   user: Record<string, unknown> | null;
-  examSessions: Record<string, unknown> [] | null;
+  examSessions: Record<string, unknown> | null;
   stats: Record<string, unknown> | null;
-  activityLog: Record<string, unknown> [] | null;
+  activityLog: Record<string, unknown> | null;
 }
 
 export async function runDataExport(
@@ -146,7 +146,8 @@ completedAt: s.completedAt,
 totalQuestions: ((s.config ?? {}).as({totalQuestions?: number}).totalQuestions,
 percentage: ((s.score ?? {}).as({percentage?: number}).percentage,
 })),
-));
+),
+);
 parts.push("\n\n");
 }
 if (bundle.stats) {
@@ -162,10 +163,11 @@ bundle.activityLog.map((a) => ({
 _id: String(a._id),
 action: a.action,
 targetType: a.targetType,
-targetId: a.targetId?.String(a.targetId)?: null,
+targetId: a.targetId ? String(a.targetId) : null,
 createdAt: a.createdAt,
-metadata: JSON.stringify(a.metadata??{}),
+metadata: JSON.stringify(a.metadata ?? {}),
 })),
+),
 );
 parts.push("\n");
 }
@@ -220,7 +222,7 @@ await db.collection("users").updateOne(
     $set: {
       status: "failed",
       updatedAt: new Date(),
-      failureReason: (err as Error)?.message ?? "unknown",
+      failureReason: (err as Error)?.message?? "unknown",
     },
   },
 };

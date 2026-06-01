@@ -34,17 +34,17 @@ async function loadQuestionSetNameMap(db: Db, setIds: string[]): Promise<Map<str
       })
     .toArray();
 
-  const nameMap = new Map<string, string>();
-  for (const setDoc of setDocs as Array<{_id?: ObjectId; setId?: unknown; name?: unknown}}) {
-    if (typeof setDoc.name !== "string" || !setDoc.name.trim()) continue;
-    const setName = setDoc.name.trim();
-    if (setDoc._id) nameMap.set(setDoc._id.toString(), setName);
-    if (typeof setDoc.setId === "string" && setDoc.setId.trim()) {
-      nameMap.set(setDoc.setId.trim(), setName);
+    const nameMap = new Map<string, string>();
+    for (const setDoc of setDocs as Array<{_id?: ObjectId; setId?: unknown; name?: unknown}}) {
+      if (typeof setDoc.name !== "string" || !setDoc.name.trim()) continue;
+      const setName = setDoc.name.trim();
+      if (setDoc._id) nameMap.set(setDoc._id.toString(), setName);
+      if (typeof setDoc.setId === "string" && setDoc.setId.trim()) {
+        nameMap.set(setDoc.setId.trim(), setName);
+      }
     }
-  }
 
-  return nameMap;
+    return nameMap;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -83,29 +83,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           userId: session.userId?.toString() ?? null,
         },
         user: user
-        ? {
-          _id: user._id.toString(),
+      },
+      ...{
+        _id: user._id.toString(),
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role
+      }
+    });
+    const q = qMap.get(entry.questionId.toString());
+    return {
+      success: true,
+      data: {
+        session: {
+          ...session,
+          _id: session._id.toString(),
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
           role: user.role
         }
       },
-      null,
-      questions: (session.questions ?? []).map((entry: {
-        questionId: ObjectId,
-        orderIndex: number,
-        userAnswer: string | null,
-        isCorrect: boolean | null,
-        answeredAt: Date | null,
-        timeSpent: number | null
-      }) => {
-        const q = qMap.get(entry.questionId.toString());
-        return {
-          ...
-        }
+      ...{
+        _id: user._id.toString(),
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role
       }
-    });
+    }
   }
 }
 questionId: entry.questionId.toString(),
@@ -116,13 +123,13 @@ answeredAt: entry.answeredAt,
 timeSpent: entry.timeSpent,
 question: q
 ? {
-  subjectArea: q.subjectArea,
-  subtopic: q.subtopic,
-  difficulty: q.difficulty,
-  questionText: q.questionText,
-  choices: q.choices,
-  correctAnswer: q.correctAnswer,
-  rationale: q.rationale,
+subjectArea: q.subjectArea,
+subtopic: q.subtopic,
+difficulty: q.difficulty,
+questionText: q.questionText,
+choices: q.choices,
+correctAnswer: q.correctAnswer,
+rationale: q.rationale,
 }
 null,
 });
@@ -142,76 +149,75 @@ const filter: Record<string, unknown> = {};
 if (status) filter.status = status;
 if (userId && ObjectId.isValid(userId)) filter.userId = new ObjectId(userId);
 if (typeof minScore === "number" || typeof maxScore === "number") {
-  filter["score.percentage"] = {
-    ...(typeof minScore === "number" ? {$gte: minScore} : {}),
-    ...(typeof maxScore === "number" ? {$lte: maxScore} : {}),
-  };
+filter["score.percentage"] = {
+...(typeof minScore === "number" ? {$gte: minScore} : {}),
+...(typeof maxScore === "number" ? {$lte: maxScore} : {}),
+};
 }
 
 if (user) {
-  const escaped = user.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const userRegex = new RegExp(escaped, "i");
-  const userOrClauses: Record<string, unknown>[] = [
-    {firstName: {$regex: userRegex}},
-    {lastName: {$regex: userRegex}},
-    {email: {$regex: userRegex}},
-  ];
-  if (ObjectId.isValid(user)) {
-    userOrClauses.push({_id: new ObjectId(user)});
-  }
+const escaped = user.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const userRegex = new RegExp(escaped, "i");
+const userOrClauses: Record<string, unknown>[] = [
+...{firstName: {$regex: userRegex}},
+...{lastName: {$regex: userRegex}},
+...{email: {$regex: userRegex}},
+];
+if (ObjectId.isValid(user)) {
+userOrClauses.push({_id: new ObjectId(user)});
+}
 
-  const matchedUsers = await db.collection("users")
-    .find(
-      {$or: userOrClauses},
-      {projection: {_id: 1}},
-    )
-    .toArray();
-  const matchedUserIds = matchedUsers
-    .map((u) => (u._id instanceof ObjectId ? u._id : null))
-    .filter((id) => id.isObjectId => Boolean(id));
+const matchedUsers = await db.collection("users")
+.find(
+...{or: userOrClauses},
+...{projection: {_id: 1}},
+)
+.toArray();
+const matchedUserIds = matchedUsers.map((u) => (u._id instanceof ObjectId ? u._id : null))
+.filter((id) => id.isObjectId => Boolean(id));
 
-  if (matchedUserIds.length === 0) {
-    return res.status(200).json({
-      success: true,
-      data: {
-        items: [],
-        total: 0,
-        page,
-        limit,
-        totalPages: 1,
-      },
-    });
-  }
+if (matchedUserIds.length === 0) {
+return res.status(200).json({
+success: true,
+data: {
+items: [],
+total: 0,
+page,
+limit,
+totalPages: 1,
+},
+});
+}
 
-  const existingUserIdFilter = filter.userId;
-  if (existingUserIdFilter instanceof ObjectId) {
-    const explicitUserId = existingUserIdFilter.toString();
-    const explicitIdMatched = matchedUserIds.some((id) => id.toString() === explicitUserId);
-    if (!explicitIdMatched) {
-      return res.status(200).json({
-        success: true,
-        data: {
-          items: [],
-          total: 0,
-          page,
-          limit,
-          totalPages: 1,
-        },
-      });
-    }
-    filter.userId = existingUserIdFilter;
-  } else {
-    filter.userId = {$in: matchedUserIds};
-  }
+const existingUserIdFilter = filter.userId;
+if (existingUserIdFilter instanceof ObjectId) {
+const explicitUserId = existingUserIdFilter.toString();
+const explicitIdMatched = matchedUserIds.some((id) => id.toString() === explicitUserId);
+if (!explicitIdMatched) {
+return res.status(200).json({
+success: true,
+data: {
+items: [],
+total: 0,
+page,
+limit,
+totalPages: 1,
+},
+});
+}
+filter.userId = existingUserIdFilter;
+}else {
+filter.userId = {$in: matchedUserIds};
+}
 }
 
 const [items, total] = await Promise.all([
-  db
-    .collection("exam_sessions")
-    .aggregate([
-      {$match: filter},
+db
+.collection("exam_sessions")
+aggregate([
+{$match: filter},
 {$sort: {startedAt: -1}},
-{$skip: (page - 1) * limit},
+{$skip: {page -1} • limit},
 {$limit: limit},
 {
   $lookup: {
@@ -236,17 +242,25 @@ const [items, total] = await Promise.all([
     "user.email": 1,
   },
 },
-])
+]
 .toArray(),
 db.collection("exam_sessions").countDocuments(filter),
 });
 ```
 
-```json({
+```json
+const questionSetNameMap = await loadQuestionSetNameMap(
+  db,
+  items.map((session) => getSessionSetId(session as { setId?: unknown; config?: { setId?: unknown } | null })),
+);
+```
+
+```json
+return res.status(200).json({
   success: true,
   data: {
     items: items.map((s) => {
-      const rawSetId = getSessionSetId(session as { setId?: unknown; config?: { setId?: unknown } | null }),
+      const rawSetId = getSessionSetId(s as { setId?: unknown; config?: { setId?: unknown } | null });
       return {
         _id: s._id.toString(),
         status: s.status,
@@ -268,4 +282,4 @@ db.collection("exam_sessions").countDocuments(filter),
     limit,
     totalPages: Math.max(1, Math.ceil(total / limit)),
   },
-})
+});

@@ -14,10 +14,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const db = await getDb();
   const body = (req.body ?? {}).as({
-    sessionId?: string,
-    sessionType?: string,
+    sessionId?: string;
+    sessionType?: string;
     snapshot?: Record<string, unknown>;
-    deviceId?: string
+    deviceId?: string;
   });
 
   if (!body.sessionId || !ObjectId.isValid(body.sessionId)) {

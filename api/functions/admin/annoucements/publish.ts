@@ -35,41 +35,43 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       expiresAt: a.expiresAt ?? null,
       createdAt: a.createdAt,
     }));
-    const now = Date.now();
-    const activeCount = announcements.filter((a) => {
-      if (!a.isActive) return false;
-      const startsOk = !a.startsAt || new Date(a.startsAt).getTime() <= now;
-      const expiresOk = !a.expiresAt || new Date(a.expiresAt).getTime() >= now;
-      return startsOk && expiresOk;
-    }).length;
-
-    const payload = {
-      version: 1,
-      publishedAt: new Date().toISOString(),
-      publishedBy: admin.email,
-      meta: {
-        totalAnnouncements: announcements.length,
-        activeAnnouncements: activeCount,
-      },
-      announcements,
-    };
-
-    return res.status(200).json({
-      success: true,
-      data: {
-        exported: true,
-        contentSize: JSON.stringify(payload).length,
-        payload,
-      },
-    });
-  } catch (error) {
-    console.error("Announcements publish error:", error);
-    return res.status(500).json({
-      success: false,
-      error:
-        error instanceof Error
-        ? error.message
-        : "Failed to publish announcements",
-    });
   }
+
+  const now = Date.now();
+  const activeCount = announcements.filter((a) => {
+    if (!a.isActive) return false;
+    const startsOk = !a.startsAt || new Date(a.startsAt).getTime() <= now;
+    const expiresOk = !a.expiresAt || new Date(a.expiresAt).getTime() >= now;
+    return startsOk && expiresOk;
+  }).length;
+
+  const payload = {
+    version: 1,
+    publishedAt: new Date().toISOString(),
+    publishedBy: admin.email,
+    meta: {
+      totalAnnouncements: announcements.length,
+      activeAnnouncements: activeCount,
+    },
+    announcements,
+  };
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      exported: true,
+      contentSize: JSON.stringify(payload).length,
+      payload,
+    },
+  });
+} catch (error) {
+  console.error("Announcements publish error:", error);
+  return res.status(500).json({
+    success: false,
+    error:
+      error instanceof Error
+      ? error.message
+      : "Failed to publish announcements",
+  });
+}
 }

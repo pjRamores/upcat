@@ -3,7 +3,7 @@
  *
  * Pure utility helpers that handlers (or `withSecurity` extensions) can
  * call to score bot risk. Each helper returns a structured result that
- * the caller can act on — these helpers don't write to the database or
+ * the caller can act on—these helpers don't write to the database or
  * issue responses themselves.
  *
  * Includes:
@@ -170,12 +170,11 @@ export function checkHoneypot(
 export function requireCaptcha(req: VercelRequest, res: VercelResponse): boolean {
   const token = extractCaptchaToken(req.headers);
   if (token) return false;
-  res
-    .status(428)
-    .json({
-      success: false,
-      error: "CAPTCHA required.",
-      code: "captcha_required",
-    });
+  res.status(428)
+  .json({
+    success: false,
+    error: "CAPTCHA required.",
+    code: "captcha_required",
+  });
   return true;
 }

@@ -1,8 +1,8 @@
 /**
- * Phase 14 — PWA install card.
+ * Phase 14 - PWA install card.
  *
  * Shows an unobtrusive "Install UPCAT Simulator" banner once the browser
- * fires `beforeinstallprompt` . Dismissal is remembered for 7 days. Hidden
+ * fires `beforeinstallprompt`. Dismissal is remembered for 7 days. Hidden
  * when the app is already installed (display-mode standalone).
  */
 import {useEffect, useState} from "react";

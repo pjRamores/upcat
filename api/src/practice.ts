@@ -2,8 +2,8 @@
  * Phase 13 — Spaced Repetition (SM-2) engine.
  *
  * Implements a slightly relaxed SM-2 with four rating buckets:
- * again → quality 0 (lapse: reset to learning, interval=0, ease=0.20)
- * hard → quality 3 (ease=0.15, interval×max(0.5*ease, 1.2))
+ * again → quality 0 (lapse: reset to learning, interval=0, ease-0.20)
+ * hard → quality 3 (ease-0.15, interval×max(0.5*ease, 1.2))
  * good → quality 4 (standard SM-2)
  * easy → quality 5 (ease+0.15, interval×ease×1.3)
  *
@@ -15,7 +15,6 @@
  */
 import {type Db, type Document, ObjectId, type WithId} from "mongodb";
 import type {PracticeCard, PracticeCardStatus, PracticeMode, PracticeRating, PracticeSessionCard,} from "@upcat/shared";
-
 import {
   PRACTICE_DEFAULTTS,
   SRS_DEFAULT_EASE,
@@ -216,51 +215,55 @@ accuracy: {
       $divide: [
         "$correct",
         {$add: ["$correct", "$incorrect"]},
+        ],
+        },
+        1,
+        ],
+        },
+        },
       ],
       },
-      1,
-    ],
-  ],
-},
-{$sort: {accuracy: 1}},
-{$limit: 2},
-])
-.toArray();
-weakSubjects = accuracy.map((r) => String(r._id));
-if (weakSubjects.length > 0) baseFilter.subjectArea = {$in: weakSubjects};
-}
-
-// Due cards (review mode honours this regardless).
-const dueCards = await col
-.find({
-  ...baseFilter,
-  status: {$in: ["learning", "review"]},
-  nextReviewDate: {$lte: now},
-})
-.sort({nextReviewDate: 1, _id: 1})
-limit(opts.maxQuestions)
-.toArray();
-
-// New cards — only if mode includes them.
-const wantNew =
-opts.mode === "mixed" ||
-opts.mode === "weak_areas" ||
-opts.mode === "subject_focus";
-const newCards: WithId<Document>[] = [];
-if (wantNew && dueCards.length < opts.maxQuestions) {
-  const remaining = opts.maxQuestions - dueCards.length;
-  const limit = Math.min(opts.newCardsLimit, remaining);
-  if (limit > 0) {
-    const fetched = await col
-   .find({...baseFilter, status: "new"})
-   .sort({createdAt: 1, _id: 1})
-    limit(limit)
-   .toArray();
-    newCards.push(...fetched);
+      {
+        {$sort: {accuracy: 1}},
+        {$limit: 2},
+      ]
+    ]
+    .toArray();
+    weakSubjects = accuracy.map((r) => String(r._id));
+    if (weakSubjects.length > 0) baseFilter.subjectArea = {$in: weakSubjects};
   }
-}
 
-return {dueCards, newCards, weakSubjects};
+  // Due cards (review mode honours this regardless).
+  const dueCards = await col
+  .find({
+    ...baseFilter,
+    ...status: {$in: ["learning", "review"]},
+    ...nextReviewDate: {$lte: now},
+  })
+  .sort({nextReviewDate: 1, _id: 1})
+  .limit(opts.maxQuestions)
+  .toArray();
+
+  // New cards — only if mode includes them.
+  const wantNew =
+    opts.mode === "mixed" ||
+    opts.mode === "weak_areas" ||
+    opts.mode === "subject_focus";
+  const newCards = WithId<Document>[] = [];
+  if (wantNew && dueCards.length < opts.maxQuestions) {
+    const remaining = opts.maxQuestions - dueCards.length;
+    const limit = Math.min(opts.newCardsLimit, remaining);
+    if (limit > 0) {
+      const fetched = await col
+      .find({...baseFilter, status: "new"})
+      .sort({createdAt: 1, _id: 1})
+      .limit(limit)
+      .toArray();
+      newCards.push(...fetched);
+    }
+  }
+
+  return {dueCards, newCards, weakSubjects};
 }
 
 // Stats helpers
@@ -280,7 +283,7 @@ export async function computePracticeStats(
     accuracyPct: number;
     dueToday: number;
   }>;
-upcoming: Array<{date: string; count: number}>;
+  upcoming: Array<{date: string; count: number}>;
 } > {
   const col = db.collection("practice_cards");
   const sessions = db.collection("practice_sessions");
@@ -290,31 +293,32 @@ upcoming: Array<{date: string; count: number}>;
   const inSevenDays = new Date(now.getTime() + 7 * 86_400_000);
 
   const [statusAgg, dueTodayCount, dueWeekCount, subjectAgg, upcomingAgg, retentionAgg, totalReviewsAgg] =
-  await Promise.all([
-    col
-    .aggregate([
-      {$match: {userId}},
-      {$group: {_id: "$status", count: {$sum: 1}}},
-    ])
-    .toArray(),
-    col.countDocuments({
-      userId,
-      status: {$in: ["learning", "review"]},
-      nextReviewDate: {$lte: startOfTomorrow},
-    }),
-    col.countDocuments({
-      userId,
-      status: {$in: ["learning", "review"]},
-      nextReviewDate: {$lte: inSevenDays},
-    }),
-    col
-    .aggregate([
-      {$match: {userId}},
-      {$group: {
+    await Promise.all([
+      col
+      .aggregate([
+        {$match: {userId}},
+        {$group: {_id: "$status", count: {$sum: 1}}},
+      ])
+      .toArray(),
+      col.countDocuments({
+        userId,
+        status: {$in: ["learning", "review"]},
+        nextReviewDate: {$lte: startOfTomorrow},
+      }),
+      col.countDocuments({
+        userId,
+        status: {$in: ["learning", "review"]},
+        nextReviewDate: {$lte: inSevenDays},
+      }),
+      col
+      .aggregate([
+        {$match: {userId}},
+        {
+          $group: {
 _id: "$subjectArea",
 cards: {$sum: 1},
 mastered: {
-  sum: {$cond: [{$eq: ["$status", "mastered"]}, 1, 0}],
+  sum: {$cond: [{$eq: ["$status", "mastered"]], 1, 0}],
 },
 correct: {$sum: "$correctCount"},
 incorrect: {$sum: "$incorrectCount"},
@@ -334,44 +338,38 @@ dueToday: {
 .toArray(),
 col
 aggregate([
-  {
-    $match: {
-      userId,
-      status: {$in: ["learning", "review"]},
-      nextReviewDate: {$lte: inSevenDays},
-    },
+  match: {
+    userId,
+    status: {$in: ["learning", "review"]},
+    nextReviewDate: {$lte: inSevenDays},
   },
-  {
-    $group: {
-      _id: {
-        $dateToString: {format: "%Y-%m-%d", date: "$nextReviewDate"},
-      },
-      count: {$sum: 1},
+  group: {
+    _id: {
+      $dateToString: {format: "%Y-%m-%d", date: "$nextReviewDate"},
     },
+    count: {$sum: 1},
   },
-  {$sort: {_id: 1}},
- .toArray(),
-col
+  sort: {$id: 1},
+  toArray(),
+  col
 aggregate([
-    {$match: {userId, totalReviews: {$gt: 0}}},
-    {
-      $group: {
-        _id: null,
-        correct: {$sum: "$correctCount"},
-        total: {
-          $sum: {$add: ["$correctCount", "$incorrectCount"]},
-        },
-      },
+    match: {userId, totalReviews: {$gt: 0}}},
+  group: {
+    _id: null,
+    correct: {$sum: "$correctCount"},
+    total: {
+      $sum: {$add: ["$correctCount", "$incorrectCount"]},
     },
+  },
+  sort: {
+    _id: 1},
+  toArray(),
+  col
+aggregate([
+    match: {userId, status: "completed"}},
+    group: {_id: null, total: {$sum: "$totalAnswered"}}},
   ],
-  ])
-  .toArray(),
-sessions
-aggregate([
-    {$match: {userId, status: "completed"}},
-    {$group: {_id: null, total: {$sum: "$totalAnswered"}}},
-  ])
-  .toArray(),
+  toArray(),
 ]);
 
 const totals = {cards: 0, new: 0, learning: 0, review: 0, mastered: 0};

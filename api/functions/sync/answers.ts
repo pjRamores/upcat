@@ -103,37 +103,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     else skipped += 1;
 
     await db.collection("sync_queue").insertOne({
-userId: user._id,
-deviceId: body.deviceId || "unknown",
-type: "exam_answers",
-payload: {
-sessionId: body.sessionId,
-questionId: ans.questionId,
-answer: ans.answer,
-timeSpent: ans.timeSpent,
-},
-occurredAt: new Date(incomingAnsweredAt),
-receivedAt: new Date(),
-processedAt: new Date(),
-status: "completed",
-failureReason: null,
-retryCount: 0,
-maxRetries: Number(process.env.SYNC_MAX_RETRIES || "5"),
-conflict: null,
-sequenceNumber: accepted + skipped,
-batchId: null,
-createdAt: new Date(),
-expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-});
-}
-
 return res.status(200).json({
-success: true,
-data: {
-synced: true,
-answersAccepted: accepted,
-answersSkipped: skipped,
-conflicts,
-},
-});
+  success: true,
+  data: {
+    synced: true,
+    answersAccepted: accepted,
+    answersSkipped: skipped,
+    conflicts,
+  },
+})
 }

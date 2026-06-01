@@ -83,6 +83,7 @@ export function faqSchema(items: FaqItem[]): object {
       },
     })),
     });
+  }
 }
 
 export interface BreadcrumbItem {
@@ -103,7 +104,7 @@ export function breadcrumbSchema(
       position: idx + 1,
       name: it.name,
       item: normalizedSite + it.path,
-    })),
+    }));
   };
 }
 export interface CourseSchemaOptions {

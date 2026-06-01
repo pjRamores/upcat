@@ -32,23 +32,24 @@ async function loadQuestionSetNameMap(db: Db, setIds: string[]): Promise<Map<str
         $or: [
           {setId: {$in: normalizedSetIds}},
           ...(objectIds.length > 0 ? [{_id: {$in: objectIds}}] : []),
-        ],
-      },
-      {projection: {_id: 1, setId: 1, name: 1}},
-    )
+          ...],
+        {
+          projection: {_id: 1, setId: 1, name: 1}},
+        }
+      )
     .toArray();
 
-  const nameMap = new Map<string, string>();
-  for (const setDoc of setDocs as Array<{_id?: ObjectId; setId?: unknown; name?: unknown}}) {
-    if (typeof setDoc.name !== "string" || !setDoc.name.trim()) continue;
-    const setName = setDoc.name.trim();
-    if (setDoc._id) nameMap.set(setDoc._id.toString(), setName);
-    if (typeof setDoc.setId === "string" && setDoc.setId.trim()) {
-      nameMap.set(setDoc.setId.trim(), setName);
+    const nameMap = new Map<string, string>();
+    for (const setDoc of setDocs as Array<{_id?: ObjectId; setId?: unknown; name?: unknown}}) {
+      if (typeof setDoc.name !== "string" || !setDoc.name.trim()) continue;
+      const setName = setDoc.name.trim();
+      if (setDoc._id) nameMap.set(setDoc._id.toString(), setName);
+      if (typeof setDoc.setId === "string" && setDoc.setId.trim()) {
+        nameMap.set(setDoc.setId.trim(), setName);
+      }
     }
-  }
 
-  return nameMap;
+    return nameMap;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -130,47 +131,52 @@ db
 const stats = statsAgg[0].as({total?: number; avg?: number; best?: number}) | undefined;
 const questionSetNameMap = await loadQuestionSetNameMap(
 db,
-examHistory.map((session) => getSessionSetId(session.as({
+examHistory.map((session) => getSessionSetId(session as {
 setId?: unknown;
 config?: {setId?: unknown}} | null
-})));
+}));
+);
+
 return res.status(200).json({
 success: true,
 data: {
 ...doc,
 _id: doc._id.toString(),
-deactivatedBy: doc.deactivatedBy?.toString?.() ?? doc.deactivatedBy?? null,
+deactivatedBy: doc.deactivatedBy?.toString?.() ?? doc.deactivatedBy ?? null,
 examHistory: examHistory.map((e) => {
-const rawSetId = getSessionSetId(e.as({setId?: unknown; config?: {setId?: unknown}} | null));
+const rawSetId = getSessionSetId(e as {setId?: unknown; config?: {setId?: unknown}} | null});
 return {
 _id: e._id.toString(),
 status: e.status,
 startedAt: e.startedAt,
 completedAt: e.completedAt,
-totalQuestions: e.config?.totalQuestions?? 0,
-setName: rawSetId?.questionSetNameMap.get(rawSetId)?? null::null,
-percentage: e.score?.percentage?? null,
-}});
-stats:
-totalExams: stats?.total?? 0,
-averageScore: stats?.avg?. Math.round(stats.avg*10) / 10::0,
-bestScore: stats?.best?? 0,
+totalQuestions: e.config?.totalQuestions ?? 0,
+setName: rawSetId?.questionSetNameMap.get(rawSetId) ?? null::null,
+percentage: e.score?.percentage ?? null,
+});
+},
+stats: {
+totalExams: stats?.total ?? 0,
+averageScore: stats?.avg ?? Math.round(stats.avg * 10) / 10 :: 0,
+bestScore: stats?.best ?? 0,
 },
 contactMessages: contactMessages.map((m) => ({
 _id: m._id.toString(),
 subject: m.subject,
-message: String(m.message?? "").slice(0, 200),
+message: String(m.message ?? "").slice(0, 200),
 status: m.status,
 createdAt: m.createdAt,
 })),
 recentLogins: recentLogins.map((l) => ({
 createdAt: l.createdAt,
-metadata: l.metadata?? {},
+metadata: l.metadata ?? {},
 })),
 },
 });
+}
+
 if (req.method === "PUT") {
-const body = req.body?? {};
+const body = req.body ?? {};
 const set = Record<string, unknown> = {updatedAt: new Date()};
 
 for (const k of ["firstName", "lastName", "notes"] as const) {
@@ -204,6 +210,8 @@ metadata: {fields: Object.keys(set).filter((k) => k !== "updatedAt")},
 });
 return res.status(200).json({success: true, data: {updated: true}});
 }
+```
+
 res.setHeader("Allow", "GET,PUT");
 return res.status(405).json({success: false, error: "Method not allowed"});
 }

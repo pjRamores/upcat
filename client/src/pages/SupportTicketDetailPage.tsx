@@ -34,71 +34,67 @@ export default function SupportTicketDetailPage() {
 
   useEffect(() => {
     endRef.current?.scrollIntoView({behavior: "smooth"});
-  }, [ticketNumber]);
+  }, [ticket?.messages.length]);
 
-  useEffect(() => {
-    submitReply = async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!reply.trim()) return;
-      setBusy(true);
-      try {
-        await supportApi.postMessage(ticketNumber, {content: reply.trim()});
-        setReply("");
-        await load();
-      } catch (err) {
-        const msg =
-          (err as {response?: {data?: {error?: string}}}).response?.data?.error ||
-          "Could not send your reply.";
-        addToast("error", msg);
-      } finally {
-        setBusy(false);
-      }
-    };
-
-    if (missing) {
-      return (
-        <div className="mx-auto max-w-2xl px-4 py-10 text-center">
-          <h1 className="text-xl font-bold">Ticket not found</h1>
-          <Link to="/support" className="btn-primary mt-4 inline-block">
-            Back to tickets
-          </Link>
-        </div>
-      );
+  const submitReply = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reply.trim()) return;
+    setBusy(true);
+    try {
+      await supportApi.postMessage(ticketNumber, {content: reply.trim()});
+      setReply("");
+      await load();
+    } catch (err) {
+      const msg =
+        (err as {response?: {data?: {error?: string}}}).response?.data?.error ||
+        "Could not send your reply.";
+      addToast("error", msg);
+    } finally {
+      setBusy(false);
     }
+  };
 
-    if (!ticket) {
-      return (
-        <div className="flex justify-center py-12">
-          <Spinner/>
-        </div>
-      );
-    }
-
-    const status = SUPPORT_TICKET_STATUS_META[ticket.status];
-    const type = SUPPORT_TICKET_TYPE_META[ticket.type];
-    const isClosed = ticket.status === "resolved" || ticket.status === "rejected";
-
+  if (missing) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-10">
-        <Seo title={`Ticket ${ticket.ticketNumber}`} noindex/>
-        <Link to="/support" className="mb-2 inline-block text-sm text-primary-700 hover:underline">
-          All tickets
+      <div className="mx-auto max-w-2xl px-4 py-10 text-center">
+        <h1 className="text-xl font-bold">Ticket not found</h1>
+        <Link to="/support" className="btn-primary mt-4 inline-block">
+          Back to tickets
         </Link>
-
-        <header className="rounded-t-xl border-border-gray-200 bg-white px-4 py-3 shadow-sm">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <h1 className="text-lg font-bold text-gray-900">
-              <span className="font-mono text-xs text-gray-500">{ticket.ticketNumber}</span>{"."}
-            </h1>
-          </div>
-          <span>
-            {status.label}
-          </span>
-        </header>
       </div>
-    </p>
-  </div>
-</p>
+    );
+  }
+
+  if (!ticket) {
+    return (
+      <div className="flex justify-center py-12">
+        <Spinner/>
+      </div>
+    );
+  }
+
+  const status = SUPPORT_TICKET_STATUS_META[ticket.status];
+  const type = SUPPORT_TICKET_TYPE_META[ticket.type];
+  const isClosed = ticket.status === "resolved" || ticket.status === "rejected";
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-10">
+      <Seo title={`Ticket ${ticket.ticketNumber}`} noindex/>
+      <Link to="/support" className="mb-2 inline-block text-sm text-primary-700 hover:underline">
+        All tickets
+      </Link>
+
+      <header className="rounded-t-xl border-border-gray-200 bg-white px-4 py-3 shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h1 className="text-lg font-bold text-gray-900">
+            <span className="font-mono text-xs text-gray-500">{ticket.ticketNumber}</span>{"."}
+          </h1>
+        </div>
+      </header>
+      {status.label}
+    </span>
+  );
+}
 {type.icon}{type.label}·opened{"·"}
 {new·Date(ticket.createdAt).toLocaleString()}
 </p>
@@ -139,7 +135,11 @@ className="input-field"
 </button>
 </div>
 </>
-)
+)}
+</form>
+</div>
+);
+}
 
 function·Message({m}: {m:·SupportTicketMessage·}) {
 const·isAdmin = m.sender === "admin";
@@ -154,9 +154,7 @@ return (
 return (
 <div·className={`flex ${isAdmin ? "justify-start" : "justify-end"}`}>
 <div
-className={`max-w-[75%] rounded-2x1·px-4·py-2·text-sm·shadow-sm ${
-isAdmin ? "bg-white text-gray-900" : "bg-primary-600 text-white"
-}`}
+className={`max-w-[75%] rounded-2x1·px-4·py-2·text-sm·shadow-sm ${isAdmin ? "bg-white text-gray-900" : "bg-primary-600 text-white"}`}
 >
 <p·className="mb-1·text-xs·font-semibold·opacity-75">{m.senderName}</p>
 <p·className="whitespace-pre-wrap·break-words">{m.content}</p>

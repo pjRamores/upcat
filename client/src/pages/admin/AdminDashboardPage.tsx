@@ -63,9 +63,9 @@ export default function AdminDashboardPage() {
         hint={`${summary.exams.activeRightNow} in progress`} icon={<span>❤️</span>} accent="violet"/>
         <StatCard label="Today" value={summary.exams.completedToday}
         hint={`${summary.exams.completedThisWeek} this week`} icon={<span>❤️</span>} accent="indigo"/>
-        <StatCard label="Avg Score" value={`${summary.exams.averageScore.toFixed(1)}}`} icon={<span>❤️</span>}
+        <StatCard label="Avg Score" value={`${summary.exams.averageScore.toFixed(1)}}%`} icon={<span>❤️</span>}
         accent="emerald"/>
-        <StatCard label="Completion" value={`${summary.exams.averageCompletionRate.toFixed(1)}}`}
+        <StatCard label="Completion" value={`${summary.exams.averageCompletionRate.toFixed(1)}}%`}
         icon={<span>❤️</span>} accent="amber"/>
       </section>
 
@@ -99,56 +99,37 @@ export default function AdminDashboardPage() {
           )}
         </section>
       </div>
-
-      <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-sm font-bold text-slate-700">Recent Activity</h2>
-          <Link to="/admin/audit-log" className="text-xs font-medium text-primary-700 hover:underline">View
-          full log</Link>
-        </div>
-        {activity.length === 0 ? (
-          <p className="text-sm text-slate-500">No activity yet.</p>
-        ) : (
-          <ul className="divide-y divide-slate-100 text-sm">
-            {activity.slice(0, 25).map((a) => (
-              <li key={a._id} className="flex items-center justify-between gap-3 py-2">
-                </li>
-              ))}
-            </ul>
-          ))}
-        </ul>
-      </section>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
+}
 <div className="min-w-0">
-  <p className="truncate font-medium text-slate-800">{a.action}</p>
-  <p className="truncate text-xs text-slate-500">
-    {{a.as.ActivityLogEntry && {
-      actorName?: string
-    }}.actorName??."system"}·{a.targetType??."-"}
+  <p className="truncate·font-medium·text-slate-800">{a.action}</p>
+  <p className="truncate·text-xs·text-slate-500">
+    {{a·as·ActivityLogEntry·&{
+      actorName?:·string
+    }}·actorName·??·"system"}·{a.targetType·??·"-"}
   </p>
 </div>
 <time>
-  className="shrink-0 text-xs text-slate-400">{new Date(a.createdAt).toLocaleString()}</time>
+  className="shrink-0·text-xs·text-slate-400">{new·Date(a.createdAt).toLocaleString()}</time>
 </li>
-))}
+)})
 </ul>
 )</section>
 </div>
 );
 }
 
-function BarRow({label, value, max}: {label: string; value: number; max: number}) {
-  const pct = max > 0 ? (value / max) * 100 : 0;
-  return (
+function·BarRow({label,·value,·max}:{·label:·string;·value:·number;·max:·number·}){
+  const·pct=·max>·0?·(value/·max)·*·100:·0;
+  return·(
     <li>
-      <div className="flex items-center justify-between text-xs text-slate-600">
+      <div·className="flex·items-center·justify-between·text-xs·text-slate-600">
         <span>{label}</span>
-        <span className="font-semibold">{value}</span>
+        <span·className="font-semibold">{value}</span>
       </div>
-      <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
-        <div className="h-full bg-primary-500" style={{width: `${pct}%`}}/>
+      <div·className="mt-1·h-2·overflow-hidden·rounded-full·bg-slate-100">
+        <div·className="h-full·bg-primary-500·style={{width:`${pct}%`}}/>
       </div>
     </li>
   );

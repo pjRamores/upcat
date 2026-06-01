@@ -24,8 +24,8 @@ export interface StaticHelpContent {
     totalCategories: number;
     lastUpdatedAt: string;
   };
-  categories: (HelpCategoryInfo && {articleCount: number})[];
-  articles: (HelpArticle && {wordCount: number; estimatedReadingMinutes: number})[];
+  categories: (HelpCategoryInfo & {articleCount: number})[];
+  articles: (HelpArticle & {wordCount: number; estimatedReadingMinutes: number})[];
 }
 
 let cachedContent: StaticHelpContent | null = null;
@@ -206,23 +206,22 @@ export function getStaticArticlesByCategory(
   categoryId: string,
   limit?: number
 ) {
-) : Array<
-  ...Pick<HelpArticle, "slug" | "title" | "subtitle" | "category"> &&
-  {
-    ...estimatedReadingMinutes : number;
-  }
-  > {
-    const items = content.articles
-    .filter((a) => a.category === categoryId)
-    .map((a) => ({
-      slug: a.slug,
-      title: a.title,
-      subtitle: a.subtitle ?? null,
-      category: a.category,
-      estimatedReadingMinutes: (a as any).estimatedReadingMinutes || 1,
-    }));
-    return limit ? items.slice(0, limit) : items;
-  }
+): Array<
+  Pick<HelpArticle, "slug" | "title" | "subtitle" | "category"> & {
+  estimatedReadingMinutes: number;
+}
+> {
+  const items = content.articles
+  .filter((a) => a.category === categoryId)
+  .map((a) => ({
+    slug: a.slug,
+    title: a.title,
+    subtitle: a.subtitle ?? null,
+    category: a.category,
+    estimatedReadingMinutes: (a as any).estimatedReadingMinutes || 1,
+  }));
+  return limit ? items.slice(0, limit) : items;
+}
 
 /**
  * Get a single article by slug from static content
@@ -243,13 +242,13 @@ export function getStaticRelatedArticles(
 ): Array<Pick<HelpArticle, "slug" | "title" | "subtitle" | "category"> {
   const slugSet = new Set(relatedSlugs);
   return content.articles
-    .filter((a) => slugSet.has(a.slug))
-    .map((a) => ({
-      slug: a.slug,
-      title: a.title,
-      subtitle: a.subtitle ?? null,
-      category: a.category,
-    }));
+  .filter((a) => slugSet.has(a.slug))
+  .map((a) => ({
+    slug: a.slug,
+    title: a.title,
+    subtitle: a.subtitle ?? null,
+    category: a.category,
+  }));
 }
 
 /**

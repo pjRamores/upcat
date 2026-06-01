@@ -1,3 +1,4 @@
+script
 /* eslint-disable no-console */
 /**
  * Migration: backfill `users.auth` `shape` and `seed` `auth_provider_settings`.
@@ -6,8 +7,10 @@
  * node scripts/migrate-auth.mjs
  *
  * What it does:
- * 1. For every user document, ensure `auth.passwordHash` mirrors the legacy top-level `passwordHash` field, and set `auth.hasPassword`.
- * 2. Inserts the singleton `auth_provider_settings` document with all providers disabled, only if it does not exist yet.
+ * 1. For every user document, ensure `auth.passwordHash` mirrors the
+ *    legacy top-level `passwordHash` field, and set `auth.hasPassword`.
+ * 2. Inserts the singleton `auth_provider_settings` document with all
+ *    providers disabled, only if it does not exist yet.
  */
 import {existsSync, readFileSync} from "node:fs";
 import {resolve} from "node:path";
@@ -83,9 +86,9 @@ async function run() {
     await settings.insertOne({
       _id: "global",
       providers: {
-        google: empty([["openid", "email", "profile"]),
-        linkedin: empty([["openid", "profile", "email"]]),
-        facebook: empty([["email", "public_profile"]),
+        google: empty(["openid", "email", "profile"]),
+        linkedin: empty(["openid", "profile", "email"]),
+        facebook: empty(["email", "public_profile"]),
       },
       updatedAt: new Date(),
       updatedBy: null,
@@ -98,6 +101,7 @@ async function run() {
   await client.close();
   process.exit(0);
 }
+script
 run().catch((err) => {
   console.error("×Migration·failed:", err);
   process.exit(1);

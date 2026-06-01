@@ -62,30 +62,29 @@ export async function syncQuestionSetPublishedCounts(db: Db, setId: string) {
       },
       toArray();
 
-    const countsBySubject = new Map(
-      counts.map((row) => [String((row as {_id?: unknown})._id), Number((row as {count?: unknown}).count ?? 0)])
-    );
+      const countsBySubject = new Map(
+        counts.map((row) => [String((row as {_id?: unknown})._id), Number((row as {count?: unknown}).count ?? 0)]),
+      );
 
-    const difficultyCounts = await db
-      .collection("questions")
-      .aggregate([
-        {
-          $match: {
-            isDeleted: {$ne: true},
-            $and: [
-              {$or: [{setId}, {setId: setObjectId}]},
-              {
-                $or: [
-                  {publicationStatus: "published"},
-                  {publicationStatus: {$exists: false}, isDraft: false},
-                  {publicationStatus: null, isDraft: false},
-                ],
-              },
-              {},
-            },
-            {},
-            {$group: {_id: "$difficulty", count: {$sum: 1}}},
-          ]
+      const difficultyCounts = await db
+        .collection("questions")
+        .aggregate([
+          {
+            $match: {
+              isDeleted: {$ne: true},
+              $and: [
+                {$or: [{setId}, {setId: setObjectId}]},
+                {
+                  $or: [
+                    {publicationStatus: "published"},
+                    {publicationStatus: {$exists: false}, isDraft: false},
+                    {publicationStatus: null, isDraft: false},
+                  ],
+                },
+                {},
+                {},
+                {$group: {_id: "$difficulty", count: {$sum: 1}}},
+              ]
         },
         toArray();
 
@@ -116,9 +115,12 @@ const nextDistribution = Object.fromEntries(
       },
     ];
   });
+);
 
 const totalQuestions = SUBJECT_AREAS.reduce(
-  (sum, subject) => sum + Number((nextDistribution as Record<string, { questions?: unknown }>)[subject]?.questions ?? 0),
+  (sum, subject) => sum + Number((nextDistribution as Record<string, {
+    questions?: unknown
+  })[subject]?.questions ?? 0),
   0,
 );
 

@@ -63,33 +63,33 @@ export default function DashboardPage() {
     })();
     // Lazy gamification profile load -- non-fatal.
     void gamificationApi
-    .profile()
-    .then((p) => {
-      if (!cancelled) setProfile(p);
-    })
-    .catch(() => undefined);
+      .profile()
+      .then((p) => {
+        if (!cancelled) setProfile(p);
+      })
+      .catch(() => undefined);
     // Practice deck snapshot -- non-fatal.
     void practiceApi
-    .stats()
-    .then((s) => {
-      if (!cancelled) setPracticeDue({dueToday: s.dueToday, deckSize: s.totals.cards});
-    })
-    .catch(() => undefined);
+      .stats()
+      .then((s) => {
+        if (!cancelled) setPracticeDue({dueToday: s.dueToday, deckSize: s.totals.cards});
+      })
+      .catch(() => undefined);
     void studyPlanApi
-    .getActivePlan(false)
-    .then(async (plan) => {
-      if (!plan || cancelled) return;
-      const today = await studyPlanApi.getToday(plan._id);
-      const session = (today as {session?: {title?: string; dayNumber?: number}}).session;
-      if (session?.title) {
-        setStudyToday({
-          title: session.title,
-          dayNumber: Number(session.dayNumber ?? 1),
-          planId: plan._id,
-        });
-      }
-    })
-    .catch(() => undefined);
+      .getActivePlan(false)
+      .then(async (plan) => {
+        if (!plan || cancelled) return;
+        const today = await studyPlanApi.getToday(plan._id);
+        const session = (today as {session?: {title?: string; dayNumber?: number}}).session;
+        if (session?.title) {
+          setStudyToday({
+            title: session.title,
+            dayNumber: Number(session.dayNumber ?? 1),
+            planId: plan._id,
+          });
+        }
+      })
+      .catch(() => undefined);
     return () => {
       cancelled = true;
     };
@@ -99,8 +99,10 @@ export default function DashboardPage() {
     flushSync(() => {
       setStarting(true);
     });
-    const active = sessions.find((s) => s.status === "in_progress");
-    if (active?._id) {
+  };
+
+  const active = sessions.find((s) => s.status === "in_progress");
+  if (active?._id) {
 addToast("info", "You already have an in-progress mock exam. Resuming it now.");
 navigate(`/exam/${active._id}?resume=1`);
 return;
@@ -164,8 +166,8 @@ return (
 
     <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
       <StatCard label="Total Exams" value={stats.totalExams}/>
-      <StatCard label="Average Score" value={`${stats.averageScore}%`}/>
-      <StatCard label="Best Score" value={`${stats.bestScore}%`}/>
+      <StatCard label="Average Score" value={${stats.averageScore}%}/>
+      <StatCard label="Best Score" value={${stats.bestScore}%}/>
     </div>
 
     {profile && (
@@ -174,38 +176,36 @@ return (
         data-tour="xp-summary"
         data-help="me_percentile"
         className="mt-6 block rounded-xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50 p-5 shadow-sm transition-hover:from-indigo-100"
-        hover:to-purple-100
-      >
-        <div className="flex flex-wrap items-center gap-4">
-          <div
-            className="flex·h-14·w-14·items-center·justify-center·rounded-xl·bg-gradient-to-br·from-indigo-600·to-purple-600·text-2x1·font-bold·text-white"
-          >
-            {profile.level.level}
+        hover:to-purple-100>
+      )
+      <div className="flex flex-wrap items-center gap-4">
+        <div
+          className="flex·h-14·w-14·items-center·justify-center·rounded-xl·bg-gradient-to-br·from-indigo-600·to-purple-600·text-2x1·font-bold·text-white"
+         >{profile.level.level}
+        </div>
+        <div className="flex-1·min-w-0">
+          <div className="text-xs·font-sembold·uppercase·tracking-wide·text-indigo-700">
+            {profile.level.title}
           </div>
-          <div className="flex-1·min-w-0">
-            <div className="text-xs·font-sembold·uppercase·tracking-wide·text-indigo-700">
-              {profile.level.title}
-            </div>
-            <div className="font-bold·text-slate-900">
-              {profile.level.xp.toLocaleString()} XP
-            </div>
-            <div className="mt-1·h-2·overflow-hidden·rounded-full·bg-white">
-              <div
-                className="h-full·bg-gradient-to-r·from-indigo-500·to-purple-500"
-                style={{width: `${profile.level.progressPct}%`}}
-              />
-            </div>
-            <div className="mt-1·text-[11px]·text-slate-500">
-              {profile.level.xpToNextLevel.toLocaleString()} XP to level{"}
-              {profile.level.level+1}
-            </div>
+          <div className="font-bold·text-slate-900">
+            {profile.level.xp.toLocaleString()}·XP
+          </div>
+          <div className="mt-1·h-2·overflow-hidden·rounded-full·bg-white">
+            <div
+              className="h-full·bg-gradient-to-r·from-indigo-500·to-purple-500"
+              style={{width: `${profile.level.progressPct}%`}}
+            />
+          </div>
+          <div className="mt-1·text-[11px]·text-slate-500">
+            {profile.level.xpToNextLevel.toLocaleString()}·XP to level{"}
+            {profile.level.level+1}
           </div>
         </div>
-        <div className="text-right">
-          <div className="text-2x1">© {profile.streak.current}</div>
-          <div className="text-[10px]·uppercase·tracking-wide·text-slate-500">
-            day streak
-          </div>
+      </div>
+      <div className="text-right">
+        <div className="text-2x1">© {profile.streak.current}</div>
+        <div className="text-[10px]·uppercase·tracking-wide·text-slate-500">
+          day·streak
         </div>
       </div>
     </div>
@@ -226,6 +226,7 @@ return (
     </p>
   </div>
 </div>
+</div>
 <div className="mt-5·grid·gap-4·md:grid-cols-2">
   <button
     type="button"
@@ -242,8 +243,7 @@ focus:outline-none focus-visible:ring-2 focus-visible:ring-maroon-400`
     <div>
       <h3 className="text-base·font-semibold·text-maroon-900">Mock·Exam</h3>
       <p className="mt-1·text-sm·text-slate-600">
-        Take a full timed exam to simulate real test conditions and measure your current
-readiness.
+        Take a full timed exam to simulate real test conditions and measure your current readiness.
       </p>
     </div>
     {starting ? (
@@ -264,30 +264,29 @@ readiness.
         {hasInProgress ? "Opening·your·in-progress·mock·exam..." : "Preparing·your·mock·exam..."}
       </p>
     </div>
-    ) : hasInProgress ? (
-      <div className="mt-4">
-        <p className="text-xs·text-slate-500">In·progress·exam·detected</p>
-      </div>
-    ) : null}
-  </div>
-</button>
-
-<Link
-  to="/practice"
-  data-tour="review-card"
-  className="block·rounded-xl·border·border-maroon-200·bg-white/80·p-4·shadow-sm·transition·hover:bg-white"
+    ) : (
+      hasInProgress ? (
+        <div className="mt-4">
+          <p className="text-xs·text-slate-500">In·progress·exam·detected</p>
+        </div>
+      ) : null)
+    </button>
+  )
+  <Link
+    to="/practice"
+    data-tour="review-card"
+    className="block·rounded-xl·border·border-maroon-200·bg-white/80·p-4·shadow-sm·transition·hover:bg-white"
 >
-  <div className="flex·items-start·justify-between·gap-3">
-    <div>
-      <h3 className="text-base·font-semibold·text-maroon-900">Review</h3>
-      <p className="mt-1·text-sm·text-slate-600">
-        Review cards at your own pace, focus on weak areas, and build retention with quick
-sessions.
-      </p>
-    </div>
-    <div className="rounded-full·bg-maroon-100·px-2·py-1·text-xs·font-semibold·text-maroon-700">
-      Flexible
-    </div>
+    <div className="flex·items-start·justify-between·gap-3">
+      <div>
+        <h3 className="text-base·font-semibold·text-maroon-900">Review</h3>
+        <p className="mt-1·text-sm·text-slate-600">
+          Review cards at your own pace, focus on weak areas, and build retention with quick sessions.
+        </p>
+      </div>
+      <div className="rounded-full·bg-maroon-100·px-2·py-1·text-xs·font-semibold·text-maroon-700">
+        Flexible
+      </div>
     </div>
     <div className="mt-4">
       <p className="text-xs·text-slate-500">
@@ -308,7 +307,7 @@ sessions.
     "hover:to-teal-100"
   >
     <div className="flex·flex-wrap·items-center·gap-4">
-      <div
+      <div>
         className="flex·h-14·w-14·items-center·justify-center·rounded-xl·bg-gradient-to-br·from-emerald-50·to-teal-600·text-2x1·text-white·shadow-md">
         </div>
         <div className="flex-1·min-w-0">
@@ -332,10 +331,6 @@ sessions.
     <div className="flex·justify-center·py-8">
       <Spinner/>
     </div>
-  ) : sessions.length === 0 ? (
-    <p className="mt-4·text-sm·text-gray-400">
-      No·exams·yet. Start·your·first·one·above!
-    </p>
   ) : (
     <ul className="mt-4·divide-y·divide-gray-100">
       {sessions.map((s) => (
@@ -346,7 +341,7 @@ sessions.
   <div className="mt-4·text-right">
     <Link to="/stats">data-tour="stats-link"
     className="text-sm·font-medium·text-primary-600·hover:underline">
-      View·all·stats →
+      View all stats →
     </Link>
   </div>
 </div>
@@ -355,8 +350,8 @@ sessions.
   isOpen={Boolean(upgradePrompt)}
   onClose={() => setUpgradePrompt(null)}
   size="md"
-  title={<span className="text-primary-700">Upgrade·to·Premium</span>}
-  description="Continue·taking·mock·exams·without·monthly·limits."
+  title={<span className="text-primary-700">Upgrade to Premium</span>}
+  description="Continue taking mock exams without monthly limits."
   footer={
     <>
       <button
@@ -364,7 +359,7 @@ sessions.
         onClick={() => setUpgradePrompt(null)}
         className="rounded-md·border·border-slate-200·bg-white·px-4·py-2·text-sm·font-medium·text-slate-700·hover:bg-slate-50"
       >
-        Not·now
+        Not now
       </button>
       <button
         type="button"
@@ -375,24 +370,25 @@ sessions.
           navigate(target);
         }}
         className="rounded-md·bg-primary-600·px-4·py-2·text-sm·font-semibold·text-white·hover:bg-primary-700"
-      >
-        Upgrade·now
-      </button>
-    </>
-  }
->
-
-<div className="space-y-3">
-  <p className="text-sm·text-slate-700">{upgradePrompt?.message}</p>
-  <div
-    className="rounded-lg·border·border-primary-100·bg-primary-50·px-3·py-2·text-xs·text-primary-800">
-    Premium·gives·you·unlimited·mock·exams·plus·advanced·analytics.
+        >
+          Upgrade now
+        </button>
+      </>
+    }
+  >
+    <div className="space-y-3">
+      <p className="text-sm·text-slate-700">{upgradePrompt?.message}</p>
+      <div
+        className="rounded-lg·border·border-primary-100·bg-primary-50·px-3·py-2·text-xs·text-primary-800">
+        Premium gives you unlimited mock exams plus advanced analytics.
+      </div>
+    </div>
   </div>
-</div>
 </Modal>
 
 </div>
 );
+}
 
 function StatCard({label, value}: {label: string; value: string | number}) {
   return (

@@ -65,21 +65,21 @@ export default function StudyPlanAnalyticsPage() {
       {analytics && (
         <>
           <section className="grid gap-4 sm:grid-cols-3">
-            <Tile label="Completion" value={`${analytics.overview?.progressPercent ?? 0}%`}/>
-            <Tile label="Assessment Avg" value={`${analytics.performance?.averageAssessmentScore ?? 0}%`}/>
-            <Tile label="Readiness" value={`${analytics.readinessEstimate?.overall ?? 0}%`}/>
+            <Tile label="Completion" value={`${analytics.overview?.progressPercent ?? 0}%`} />
+            <Tile label="Assessment Avg" value={`${analytics.performance?.averageAssessmentScore ?? 0}%`} />
+            <Tile label="Readiness" value={`${analytics.readinessEstimate?.overall ?? 0}%`} />
           </section>
 
           {analytics.readinessEstimate?.recommendation && (
             <section className="rounded-x1 border border-sky-200 bg-sky-50 p-4">
-              <h2 className="font-sembold text-sky-900">Readiness Recommendation</h2>
+              <h2 className="font-semibold text-sky-900">Readiness Recommendation</h2>
               <p className="mt-2 text-sm text-sky-800">{analytics.readinessEstimate.recommendation}</p>
               {analytics.readinessEstimate.recommendation.toLowerCase().includes("mock-exam") && (
                 <button
                   type="button"
                   onClick={() => void handleStartMockExam()}
                   disabled={startingMockExam}
-                  className="mt-4 inline-flex items-center rounded-lg bg-sky-600 px-4 py-2 font-sembold text-white hover:bg-sky-700 disabled:opacity-50"
+                  className="mt-4 inline-flex items-center rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white hover:bg-sky-700 disabled:opacity-50"
               )}
               {startingMockExam ? "Starting Mock Exam..." : "Take Mock Exam"}
             </button>
@@ -89,7 +89,7 @@ export default function StudyPlanAnalyticsPage() {
     </section>
   )}
   <section className="rounded-x1 border border-slate-200 bg-white p-4">
-    <h2 className="font-sembold text-slate-900">Subject Progress</h2>
+    <h2 className="font-semibold text-slate-900">Subject Progress</h2>
     <div className="mt-3 space-y-2">
       {(analytics.subjectProgress ?? []).map((s: any) => (
         <div key={s.subject} className="rounded-border border-slate-200 p-2 text-sm">

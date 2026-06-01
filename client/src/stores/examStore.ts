@@ -42,30 +42,31 @@ interface ExamState {
   loading: boolean;
   submitting: boolean;
   error: string | null;
+}
 
-  init(sessionId: string): Promise<void>;
+init(sessionId: string): Promise<void>;
 
-  loadPage(page: number): Promise<void>;
+loadPage(page: number): Promise<void>;
 
-  ensureLoaded(orderIndex: number): Promise<void>;
+ensureLoaded(orderIndex: number): Promise<void>;
 
-  setCurrent(index: number): void;
+setCurrent(index: number): void;
 
-  selectAnswer(letter: AnswerLetter): void;
+selectAnswer(letter: AnswerLetter): void;
 
-  toggleFlag(): void;
+toggleFlag(): void;
 
-  tick(seconds: number): void;
+tick(seconds: number): void;
 
-  flushDirty(): Promise<number>;
+flushDirty(): Promise<number>;
 
-  pauseSession(): Promise<void>;
+pauseSession(): Promise<void>;
 
-  resumeSession(): Promise<void>;
+resumeSession(): Promise<void>;
 
-  submit(): Promise<void>;
+submit(): Promise<void>;
 
-  reset(): void;
+reset(): void;
 }
 
 const PAGE_SIZE = 25;
@@ -321,14 +322,14 @@ try {
     set({timerExtensionMs: extensionMs});
   }
   // Local sessionStorage is the source of truth for answers during the exam.
-} catch {
-  // best-effort only; normal exam flow should continue
-}
+  catch {
+    // best-effort only; normal exam flow should continue
+  }
 
-persistFromStore(get);
-catch(e) {
+  persistFromStore(get);
+} catch (e) {
   const msg =
-    (e as {response?: {data?: {error?: string}}}).response?.data?.error ||
+    (e as { response?: { data?: { error?: string } } }).response?.data?.error ||
     "Failed to load exam";
   set({error: msg, loading: false});
 }
@@ -340,7 +341,7 @@ async loadPage(page) {
   const {data} = await apiClient.get(
     `${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=${page}&limit=${PAGE_SIZE}`,
   );
-  const payload = data.data as {questions: LoadedQuestion[]};
+  const payload = data.data as { questions: LoadedQuestion[] };
   set((s) => {
     const loaded = {...s.loaded};
     const states = [...s.states];
@@ -351,7 +352,7 @@ async loadPage(page) {
         st.questionId = q._id;
         st.subjectArea = q.subjectArea;
         st.difficulty = q.difficulty;
-        const ua = (q as unknown as {userAnswer?: AnswerLetter | null}).userAnswer ?? null;
+        const ua = (q as unknown as { userAnswer?: AnswerLetter | null }).userAnswer ?? null;
         if (ua && !st.answer) st.answer = ua;
       }
     }
@@ -423,104 +424,105 @@ persistFromStoreThrottled(get);
 },
 
 async flushDirty() {
-  const {sessionId, states} = get();
-  if (!sessionId) return 0;
-  const dirty = states.filter((s) => s.dirty && s.questionId);
-  if (dirty.length === 0) return 0;
-  try {
-    const {data} = await apiClient.post(
-      API_ROUTES.EXAM.ANSWER_BULK(sessionId),
-      {
-        answers: dirty.map((d) => ({
-          questionId: d.questionId,
-          answer: d.answer,
-          timeSpent: d.timeSpent,
-        })),
-      },
-    );
-    const dirtyIds = new Set(dirty.map((d) => d.questionId));
-    set((s) => ({
-      states: s.states.map((st) =>
-        dirtyIds.has(st.questionId) ? {...st, dirty: false} : st,
-      }),
-    }));
-    persistFromStore(get);
-    return (data?.data?.count as number) ?? dirty.length;
-  } catch {
-    persistFromStoreThrottled(get);
-    return 0;
-  }
+const {sessionId, states} = get();
+if (!sessionId) return 0;
+const dirty = states.filter((s) => s.dirty && s.questionId);
+if (dirty.length === 0) return 0;
+try {
+const {data} = await apiClient.post(
+API_ROUTES.EXAM.ANSWER_BULK(sessionId),
+{
+answers: dirty.map((d) => ({
+questionId: d.questionId,
+answer: d.answer,
+timeSpent: d.timeSpent,
+}})),
+},
+);
+const dirtyIds = new Set(dirty.map((d) => d.questionId));
+set((s) => ({
+states: s.states.map((st) =>
+dirtyIds.has(st.questionId) ? {...st, dirty: false} : st,
+});
+}));
+persistFromStore(get);
+return (data?.data?.count as number) ?? dirty.length;
+} catch {
+persistFromStoreThrottled(get);
+return 0;
+}
 },
 
 async pauseSession() {
-  const {sessionId, isPaused} = get();
-  if (!sessionId || isPaused) return;
+const {sessionId, isPaused} = get();
+if (!sessionId || isPaused) return;
 
-  await get().flushDirty();
+await get().flushDirty();
 
-  const eventAtIso = new Date().toISOString();
-  try {
-    const {data} = await apiClient.post(`/exam/${sessionId}/pause`, {at: eventAtIso});
-    const payload = (data?.data ?? {}) as {
-      paused?: boolean;
-      pausedAt?: string | null;
-      timerExtensionMs?: number;
-    };
-    set({
-      isPaused: Boolean(payload.paused),
-      pausedAt: payload.pausedAt ? new Date(payload.pausedAt).getTime() : Date.now(),
-      timerExtensionMs: Number(payload.timerExtensionMs ?? get().timerExtensionMs),
-    });
-    if (typeof navigator !== "undefined" && navigator.onLine) {
-      void flushSessionActionQueue(sessionId);
-    }
-    persistFromStore(get);
-    return;
-  } catch (error) {
-    if (!isTransientSyncError(error)) throw error;
-  }
+const eventAtIso = new Date().toISOString();
+try {
+const {data} = await apiClient.post(`/exam/${sessionId}/pause`, {at: eventAtIso});
+const payload = (data?.data ?? {}) as {
+paused?: boolean;
+pausedAt?: string | null;
+timerExtensionMs?: number;
+};
+set({
+isPaused: Boolean(payload.paused),
+pausedAt: payload.pausedAt ? new Date(payload.pausedAt).getTime() : Date.now(),
+timerExtensionMs: Number(payload.timerExtensionMs ?? get().timerExtensionMs),
+});
+if (typeof navigator !== "undefined" && navigator.onLine) {
+void flushSessionActionQueue(sessionId);
+}
+persistFromStore(get);
+return;
+} catch (error) {
+if (!isTransientSyncError(error)) throw error;
+}
 
-  const fallbackPausedAt = Date.now();
-  set({
-    isPaused: true,
-    pausedAt: fallbackPausedAt,
-  });
-    enqueueSessionAction(sessionId, "pause", new Date(fallbackPausedAt).toISOString());
-    persistFromStore(get);
-  },
+const fallbackPausedAt = Date.now();
+set({
+isPaused: true,
+pausedAt: fallbackPausedAt,
+});
+enqueueSessionAction(sessionId, "pause", new Date(fallbackPausedAt).toISOString());
+persistFromStore(get);
+},
 
 async resumeSession() {
-  const {sessionId, pausedAt: currentPausedAt, timerExtensionMs: currentExtensionMs} = get();
-  if (!sessionId) return;
+const {sessionId, pausedAt: currentPausedAt, timerExtensionMs: currentExtensionMs} = get();
+if (!sessionId) return;
 
-  const eventAt = Date.now();
-  const eventAtIso = new Date(eventAt).toISOString();
+const eventAt = Date.now();
+const eventAtIso = new Date(eventAt).toISOString();
 
-  try {
-    const {data} = await apiClient.post(`/exam/${sessionId}/resume`, {at: eventAtIso});
-    const payload = (data?.data ?? {}) as {
-      paused?: boolean;
-      pausedAt?: string | null;
-      timerExtensionMs?: number;
-    };
-    set({
-      isPaused: Boolean(payload.paused),
-      pausedAt: payload.pausedAt ? new Date(payload.pausedAt).getTime() : null,
-      timerExtensionMs: Number(payload.timerExtensionMs ?? get().timerExtensionMs),
-    });
-    if (typeof navigator !== "undefined" && navigator.onLine) {
-      void flushSessionActionQueue(sessionId);
-    }
-    persistFromStore(get);
-    // Ensure the current question's page is loaded so the question panel
-    // never stays on the inner spinner after the blur lifts.
-    await get().ensureLoaded(get().currentIndex);
-    return;
-  } catch (error) {
-    if (!isTransientSyncError(error)) throw error;
-  }
+try {
+const {data} = await apiClient.post(`/exam/${sessionId}/resume`, {at: eventAtIso});
+const payload = (data?.data ?? {}) as {
+paused?: boolean;
+pausedAt?: string | null;
+timerExtensionMs?: number;
+};
+set({
+isPaused: Boolean(payload.paused),
+pausedAt: payload.pausedAt ? new Date(payload.pausedAt).getTime() : null,
+timerExtensionMs: Number(payload.timerExtensionMs ?? get().timerExtensionMs),
+});
+if (typeof navigator !== "undefined" && navigator.onLine) {
+void flushSessionActionQueue(sessionId);
+}
+persistFromStore(get);
+// Ensure the current question's page is loaded so the question panel
+// never stays on the inner spinner after the blur lifts.
+await get().ensureLoaded(get().currentIndex);
+return;
+} catch (error) {
+if (!isTransientSyncError(error)) throw error;
+}
+```
 
-  const additionalPausedMs = currentPausedAt ? Math.max(0, eventAt - currentPausedAt) : 0;
+const additionalPausedMs = currentPausedAt ? Math.max(0, eventAt - currentPausedAt) : 0;
 set({
   isPaused: false,
   pausedAt: null,

@@ -1,3 +1,4 @@
+script
 /* eslint-disable no-console */
 /**
  * UPCAT Simulator — Question Bank Seed Script
@@ -85,26 +86,28 @@ const passages = [
       "food chain.",
       createdAt: NOW,
     },
-    {
-      _id: PASSAGE_RIZAL_ID,
-      title: "Jose Rizal and the Philippine Revolution",
-      subjectArea: "Reading Comprehension",
-      source: "Adapted from Philippine History resources",
-      content:
-        "Dr. Jose Rizal is widely regarded as the national hero of the Philippines. Born in 1861 in." +
-        "Calamba, Laguna, Rizal was a polymath — a physician, novelist, poet, and reformist who." +
-        "advocated for peaceful reform under Spanish colonial rule. His two novels, Noli Me Tángere." +
-        "(1887) and El Filibusterismo (1891), exposed the abuses of the Spanish friars and colonial." +
-        "officials, awakening Filipino national consciousness.\n\n" +
-        "Although Rizal himself did not endorse armed revolution, his writings inspired the Katipunan," +
-        "a secret society founded by Andres Bonifacio that launched the Philippine Revolution in 1896." +
-        "Rizal was arrested, tried for sedition, and executed by firing squad at Bagumbayan (now." +
-        "Rizal Park) on December 30, 1896. His martyrdom galvanized the revolution and cemented his." +
-        "legacy as a symbol of Filipino patriotism.",
-        createdAt: NOW,
+  },
+  {
+    _id: PASSAGE_RIZAL_ID,
+    title: "Jose Rizal and the Philippine Revolution",
+    subjectArea: "Reading Comprehension",
+    source: "Adapted from Philippine History resources",
+    content:
+      "Dr. Jose Rizal is widely regarded as the national hero of the Philippines. Born in 1861 in." +
+      "Calamba, Laguna, Rizal was a polymath — a physician, novelist, poet, and reformist who." +
+      "advocated for peaceful reform under Spanish colonial rule. His two novels, Noli Me Tángere." +
+      "(1887) and El Filibusterismo (1891), exposed the abuses of the Spanish friars and colonial." +
+      "officials, awakening Filipino national consciousness.\n\n" +
+      "Although Rizal himself did not endorse armed revolution, his writings inspired the Katipunan," +
+      "a secret society founded by Andres Bonifacio that launched the Philippine Revolution in 1896." +
+      "Rizal was arrested, tried for sedition, and executed by firing squad at Bagumbayan (now." +
+      "Rizal Park) on December 30, 1896. His martyrdom galvanized the revolution and cemented his." +
+      "legacy as a symbol of Filipino patriotism.",
+      createdAt: NOW,
     }
   }
-];
+]
+script
 },
 ];
 
@@ -142,8 +145,8 @@ const questions = [
   }),
   q({
     subjectArea: "Mathematics",
-    subtopic: "Algebra",
-    difficulty: "medium",
+    subtopic: "Geometry",
+    difficulty: "easy",
     questionText:
       "If $f(x)=x^2-3x+2$, what is the value of $f(4)$?",
     choices: [
@@ -176,23 +179,6 @@ const questions = [
   }),
   q({
     subjectArea: "Mathematics",
-    subtopic: "Geometry",
-    difficulty: "medium",
-    questionText:
-      "A right triangle has legs of length 5 and 12. What is the length of the hypotenuse?",
-    choices: [
-      {label: "A", text: "13"},
-      {label: "B", text: "15"},
-      {label: "C", text: "17"},
-      {label: "D", text: "20"},
-    ],
-    correctAnswer: "A",
-    rationale:
-      "By the Pythagorean theorem: $c^2=5^2+12^2=25+144=169$, so c=13.",
-    tags: ["pythagorean-theorem", "right-triangles"],
-  }),
-  q({
-    subjectArea: "Mathematics",
     subtopic: "Trigonometry",
     difficulty: "medium",
     questionText:
@@ -210,219 +196,259 @@ const questions = [
   }),
   q({
     subjectArea: "Mathematics",
-subtopic: "Statistics",
-difficulty: "easy",
-questionText:
-  "Find the mean of the data set: 4, 8, 15, 16, 23, 42.",
-choices: [
-  {label: "A", text: "16"},
-  {label: "B", text: "18"},
-  {label: "C", text: "20"},
-  {label: "D", text: "22"},
-],
-correctAnswer: "B",
-rationale:
-  "Sum = 4+8+15+16+23+42 = 108. Mean = 108 / 6 = 18.",
-tags: ["mean", "central-tendency"],
-},
-q({
-subjectArea: "Mathematics",
-subtopic: "Calculus",
-difficulty: "hard",
-questionText:
-  "What is the derivative of $f(x) = 3x^4 - 2x^2 + 7$?",
-choices: [
-  {label: "A", text: "$12x^3 - 4x$"},
-  {label: "B", text: "$12x^3 - 4x + 7$"},
-  {label: "C", text: "$3x^3 - 2x$"},
-  {label: "D", text: "$12x^4 - 4x^2$"},
-],
-correctAnswer: "A",
-rationale:
-  "Apply the power rule term by term: d/dx(3x²) = 12x^3, d/dx(-2x²) = -4x, d/dx(7) = 0.",
-tags: ["derivatives", "power-rule"],
-},
-q({
-subjectArea: "Mathematics",
-subtopic: "Algebra",
-difficulty: "hard",
-questionText:
-  "Solve the quadratic equation $x^2 - 5x + 6 = 0$.",
-choices: [
-  {label: "A", text: "x = 1, x = 6"},
-  {label: "B", text: "x = 2, x = 3"},
-  {label: "C", text: "x = -2, x = -3"},
-  {label: "D", text: "x = -1, x = -6"},
-],
-correctAnswer: "B",
-rationale:
-  "Factor: (x - 2)(x - 3) = 0, so x = 2 or x = 3. Check: 4 - 10 + 6 = 0 √ and 9 - 15 + 6 = 0 √.",
-tags: ["quadratic-equations", "factoring"],
-},
-// ----------------- SCIENCE (7) -----------------
-
-q({
-subjectArea: "Science",
-subtopic: "Biology",
-difficulty: "easy",
-questionText:
-  "Which organelle is known as the 'powerhouse of the cell'?",
-choices: [
-  {label: "A", text: "Nucleus"},
-  {label: "B", text: "Ribosome"},
-  {label: "C", text: "Mitochondrion"},
-  {label: "D", text: "Golgi apparatus"},
-],
-correctAnswer: "C",
-rationale:
-  "Mitochondria produce ATP through cellular respiration, supplying the cell with energy.",
-tags: ["cell-biology", "organelles"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Biology",
-difficulty: "medium",
-questionText:
-  "DNA replication is described as 'semi-conservative' because:",
-
-choices: [
-  {label: "A", text: "Half of the DNA is destroyed during replication.",
+{
+  subtopic: "Statistics",
+  difficulty: "easy",
+  questionText:
+    "Find the mean of the data set: 4, 8, 15, 16, 23, 42.",
+  choices:
+    [
+      {label: "A", text: "16"},
+      {label: "B", text: "18"},
+      {label: "C", text: "20"},
+      {label: "D", text: "22"},
+    ],
+    correctAnswer: "B",
+    rationale:
+      "Sum = 4+8+15+16+23+42 = 108. Mean = 108 / 6 = 18.",
+    tags: ["mean", "central-tendency"],
   },
-  {label: "B", text: "Each new DNA molecule contains one old strand and one new strand.",
+  q({
+    subjectArea: "Mathematics",
+    subtopic: "Calculus",
+    difficulty: "hard",
+    questionText:
+      "What is the derivative of $f(x) = 3x^4 - 2x^2 + 7$?",
+    choices:
+      [
+        {label: "A", text: "$12x^3 - 4x$"},
+        {label: "B", text: "$12x^3 - 4x + 7$"},
+        {label: "C", text: "$3x^3 - 2x$"},
+        {label: "D", text: "$12x^4 - 4x^2$"},
+      ],
+      correctAnswer: "A",
+      rationale:
+        "Apply the power rule term by term: d/dx(3x²) = 12x^3, d/dx(-2x²) = -4x, d/dx(7) = 0.",
+        tags: ["derivatives", "power-rule"],
+      },
+    },
+    q({
+    subjectArea: "Mathematics",
+    subtopic: "Algebra",
+    difficulty: "hard",
+    questionText:
+      "Solve the quadratic equation $x^2 - 5x + 6 = 0$.",
+    choices:
+      [
+        {label: "A", text: "x = 1, x = 6"},
+        {label: "B", text: "x = 2, x = 3"},
+        {label: "C", text: "x = -2, x = -3"},
+        {label: "D", text: "x = -1, x = -6"},
+      ],
+      correctAnswer: "B",
+      rationale:
+        "Factor: (x - 2)(x - 3) = 0, so x = 2 or x = 3. Check: 4 - 10 + 6 = 0 √ and 9 - 15 + 6 = 0 √.",
+        tags: ["quadratic-equations", "factoring"],
+      },
+    }),
+    // ----------------- SCIENCE (7) -----------------
+    q({
+    subjectArea: "Science",
+    subtopic: "Biology",
+    difficulty: "easy",
+    questionText:
+      "Which organelle is known as the 'powerhouse of the cell'?",
+    choices:
+      [
+        {label: "A", text: "Nucleus"},
+        {label: "B", text: "Ribosome"},
+        {label: "C", text: "Mitochondrion"},
+        {label: "D", text: "Golgi apparatus"},
+      ],
+      correctAnswer: "C",
+      rationale:
+        "Mitochondria produce ATP through cellular respiration, supplying the cell with energy.",
+        tags: ["cell-biology", "organelles"],
+      },
+    }),
+    q({
+    subjectArea: "Science",
+    subtopic: "Biology",
+    difficulty: "medium",
+    questionText:
+      "DNA replication is described as 'semi-conservative' because.",
+    choices:
+      [
+        {label: "A", text: "Half of the DNA is destroyed during replication.",
+        },
+        {label: "B", text: "Each new DNA molecule contains one old strand and one new strand.",
+        },
+        {label: "C", text: "Only half of the chromosome is copied.",
+        },
+        {label: "D", text: "The process conserves only half of the genetic information.",
+        },
+      ],
+      correctAnswer: "B",
+      rationale:
+        "In semi-conservative replication, the parental DNA strands separate and each serves as a template.",
+        tags: ["genetics", "DNA"],
+      },
+    }),
+    q({
+    subjectArea: "Science",
+    subtopic: "Chemistry",
+    difficulty: "easy",
+    questionText: "What is the chemical symbol for gold?",
+    choices:
+      [
+        {label: "A", text: "Go"},
+        {label: "B", text: "Gd"},
+        {label: "C", text: "Au"},
+        {label: "D", text: "Ag"},
+      ],
+      correctAnswer: "C",
+      rationale:
+        "Gold's symbol Au comes from its Latin name 'aurum'. (Ag is silver, from 'argentum').",
+        tags: ["periodic-table", "elements"],
+      },
+    }),
+    q({
+    subjectArea: "Science",
+{
+  subtopic: "Chemistry",
+  difficulty: "medium",
+  questionText:
+    "What is the pH of a neutral aqueous solution at 25°C?",
+  choices:
+    [
+      {label: "A", text: "0"},
+      {label: "B", text: "7"},
+      {label: "C", text: "10"},
+      {label: "D", text: "14"},
+    ],
+    correctAnswer: "B",
+    rationale:
+      "Pure water at 25°C has equal concentrations of H⁺ and OH⁻ ions (1 × 10⁻⁷ M each), giving a pH of 7.",
+    tags: ["acids-bases", "pH"],
   },
-  {label: "C", text: "Only half of the chromosome is copied.",
-  },
-  {label: "D", text: "The process conserves only half of the genetic information.",
-  },
-],
-correctAnswer: "B",
-rationale:
-  "In semi-conservative replication, the parental DNA strands separate and each serves as a template.",
-  "so each daughter molecule has one original (conserved) strand and one newly synthesized strand.",
-tags: ["genetics", "DNA"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Chemistry",
-difficulty: "easy",
-questionText: "What is the chemical symbol for gold?",
-choices: [
-  {label: "A", text: "Go"},
-  {label: "B", text: "Gd"},
-  {label: "C", text: "Au"},
-  {label: "D", text: "Ag"},
-],
-correctAnswer: "C",
-rationale:
-  "Gold's symbol Au comes from its Latin name 'aurum'. (Ag is silver, from 'argentum'.)",
-tags: ["periodic-table", "elements"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Chemistry",
-difficulty: "medium",
-questionText:
-  "What is the pH of a neutral aqueous solution at 25°C?",
-choices: [
-  {label: "A", text: "0"},
-  {label: "B", text: "7"},
-  {label: "C", text: "10"},
-  {label: "D", text: "14"},
-  ],
-correctAnswer: "B",
-rationale:
-  "Pure water at 25°C has equal concentrations of H⁺ and OH⁻ ions (1×10⁻⁷ M each), giving a pH of 7.",
-tags: ["acids-bases", "pH"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Physics",
-difficulty: "medium",
-questionText:
-  "An object accelerates from rest at 4 m/s². What is its velocity after 5 seconds?",
-choices: [
-  {label: "A", text: "9 m/s"},
-  {label: "B", text: "16 m/s"},
-  {label: "C", text: "20 m/s"},
-  {label: "D", text: "25 m/s"},
-  ],
-correctAnswer: "C",
-rationale:
-  "Using v = u + at with u = 0, a = 4 m/s², t = 5 s: v = 0 + (4) (5) = 20 m/s.",
-tags: ["kinematics", "motion"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Physics",
-difficulty: "hard",
-questionText:
-  "According to Newton's third law of motion, for every action there is:",
-choices: [
-  {label: "A", text: "An equal and opposite reaction.",
-  {label: "B", text: "A reaction in the same direction.",
-  {label: "C", text: "No reaction unless friction is present.",
-  {label: "D", text: "A reaction proportional to mass.",
-  ],
-correctAnswer: "A",
-rationale:
-  "Newton's third law: when one body exerts a force on a second body, the second body exerts an.",
-+ "equal and opposite force on the first.",
-tags: ["newtons-laws", "forces"],
-},
-q({
-subjectArea: "Science",
-subtopic: "Earth Science",
-difficulty: "easy",
-questionText:
-  "Which layer of Earth lies directly beneath the crust?",
-choices: [
-  {label: "A", text: "Inner core"},
-  {label: "B", text: "Outer core"},
-  {label: "C", text: "Mantle"},
-  {label: "D", text: "Lithosphere"},
-  ],
-correctAnswer: "C",
-rationale:
-  "Earth's structure from outside in: crust → mantle → outer core → inner core. The mantle.",
-+ "is the thick layer just below the crust.",
-tags: ["geology", "earth-structure"],
-},
-// ----------------- LANGUAGE PROFICIENCY (6) -----------------
-
-q({
-subjectArea: "Language Proficiency",
-subtopic: "Grammar",
-difficulty: "easy",
-questionText:
-  "Choose the sentence with the correct subject-verb agreement:",
-choices: [
-  {label: "A", text: "The team are playing well today.",
-  {label: "B", text: "The team is playing well today.",
-  {label: "C", text: "The team were playing well today.",
-  {label: "D", text: "The team be playing well today.",
-  ],
-correctAnswer: "B",
-rationale:
-  "In American English, collective nouns like 'team' typically take a singular verb when.",
-+ "treated as a single unit: 'The team is...'",
-tags: ["subject-verb-agreement"],
-},
-q({
-subjectArea: "Language Proficiency",
-subtopic: "Vocabulary",
-difficulty: "medium",
-questionText:
-  "Choose the word that is most nearly opposite in meaning to BENEVOLENT:",
-choices: [
-  {label: "A", text: "Generous"},
-  {label: "B", text: "Kind"},
-  {label: "C", text: "Malevolent"},
-  {label: "D", text: "Indifferent"},
-  ],
-correctAnswer: "C",
-rationale:
-  "Benevolent means well-meaning and kindly. Its direct antonym is malevolent — wishing evil.",
-+ "or harm to others.",
+  q({
+    subjectArea: "Science",
+    subtopic: "Physics",
+    difficulty: "medium",
+    questionText:
+      "An object accelerates from rest at 4 m/s². What is its velocity after 5 seconds?",
+    choices:
+      [
+        {label: "A", text: "9 m/s"},
+        {label: "B", text: "16 m/s"},
+        {label: "C", text: "20 m/s"},
+        {label: "D", text: "25 m/s"},
+      ],
+      correctAnswer: "C",
+      rationale:
+        "Using v = u + at with u = 0, a = 4 m/s², t = 5 s: v = 0 + (4) (5) = 20 m/s.",
+        tags: ["kinematics", "motion"],
+      },
+    },
+    q({
+      subjectArea: "Science",
+      subtopic: "Physics",
+      difficulty: "hard",
+      questionText:
+        "According to Newton's third law of motion, for every action there is:",
+        choices:
+          [
+            {label: "A", text: "An equal and opposite reaction.",
+            },
+            {label: "B", text: "A reaction in the same direction.",
+            },
+            {label: "C", text: "No reaction unless friction is present.",
+            },
+            {label: "D", text: "A reaction proportional to mass.",
+            },
+          ],
+          correctAnswer: "A",
+          rationale:
+            "Newton's third law: when one body exerts a force on a second body, the second body exerts an.",
+            },
+            "equal and opposite force on the first.",
+            tags: ["newtons-laws", "forces"],
+          },
+        },
+        q({
+          subjectArea: "Science",
+          subtopic: "Earth Science",
+          difficulty: "easy",
+          questionText:
+            "Which layer of Earth lies directly beneath the crust?",
+            choices:
+              [
+                {label: "A", text: "Inner core"},
+                {label: "B", text: "Outer core"},
+                {label: "C", text: "Mantle"},
+                {label: "D", text: "Lithosphere"},
+              ],
+          },
+          correctAnswer: "C",
+          rationale:
+            "Earth's structure from outside in: crust → mantle → outer core → inner core. The mantle.",
+            },
+            "is the thick layer just below the crust.",
+            tags: ["geology", "earth-structure"],
+          },
+        }),
+    },
+    // ----------------- LANGUAGE PROFICIENCY (6) -----------------
+    q({
+      subjectArea: "Language Proficiency",
+      subtopic: "Grammar",
+      difficulty: "easy",
+      questionText:
+        "Choose the sentence with the correct subject-verb agreement:",
+        choices:
+          [
+            {label: "A", text: "The team are playing well today.",
+            },
+            {label: "B", text: "The team is playing well today.",
+            },
+            {label: "C", text: "The team were playing well today.",
+            },
+            {label: "D", text: "The team be playing well today.",
+            },
+          ],
+          correctAnswer: "B",
+          rationale:
+            "In American English, collective nouns like 'team' typically take a singular verb when.",
+            },
+            "treated as a single unit: 'The team is...'",
+            tags: ["subject-verb-agreement"],
+          },
+        },
+        q({
+          subjectArea: "Language Proficiency",
+          subtopic: "Vocabulary",
+          difficulty: "medium",
+          questionText:
+            "Choose the word that is most nearly opposite in meaning to BENEVOLENT:",
+            choices:
+              [
+                {label: "A", text: "Generous"},
+                {label: "B", text: "Kind"},
+                {label: "C", text: "Malevolent"},
+                {label: "D", text: "Indifferent"},
+              ],
+          },
+          correctAnswer: "C",
+          rationale:
+            "Benevolent means well-meaning and kindly. Its direct antonym is malevolent — wishing evil.",
+            },
+            "or harm to others.",
+          },
+        },
+      },
+    },
+  }
+}
 tags: ["antonyms", "vocabulary"],
 q({
 subjectArea: "Language Proficiency",
@@ -454,24 +480,24 @@ choices: [
 ],
 correctAnswer: "B",
 rationale:
-"Ephemeral means lasting for a very short time, so 'short-lived' is the closest synonym."
+"Ephemeral means lasting for a very short time, so 'short-lived' is the closest synonym.",
 tags: ["synonyms", "vocabulary"],
 q({
 subjectArea: "Language Proficiency",
 subtopic: "Grammar",
 difficulty: "hard",
 questionText:
-"Choose the sentence that uses the semicolon correctly:",
+"Choose the sentence that uses the semicolon correctly.",
 choices: [
     {label: "A", text: "I love reading; especially novels."},
     {label: "B", text: "I love reading novels; my brother prefers comics."},
-    {label: "C", text: "I love reading; and writing."},
-    {label: "D", text: "I love; reading novels."},
+    {label: "C", text: "I love reading and writing."},
+    {label: "D", text: "I love reading novels."},
 ],
 correctAnswer: "B",
 rationale:
 "A semicolon joins two related independent clauses. Option B has two complete sentences on." +
-"either side; the others use semicolons before fragments or coordinating conjunctions."
+"either side; the others use semicolons before fragments or coordinating conjunctions.",
 tags: ["punctuation", "semicolons"],
 q({
 subjectArea: "Language Proficiency",
@@ -487,7 +513,7 @@ choices: [
 ],
 correctAnswer: "C",
 rationale:
-"Ubiquitous means present, appearing, or found everywhere."
+"Ubiquitous means present, appearing, or found everywhere.",
 tags: ["vocabulary"],
 }),
 // ----------------- READING COMPREHENSION (6) -----------------
@@ -536,87 +562,102 @@ q({
   subjectArea: "Reading Comprehension",
   subtopic: "Inference",
   difficulty: "medium",
-  type: "passage_based",
-  passageId: PASSAGE_PHOTOSYNTHESIS_ID,
+  type: "passage-based",
+  passageId: "PASSAGE_PHOTOSYNTHESIS_ID",
   questionText:
   "Based on the passage, what would most likely happen if photosynthesis suddenly stopped?",
-  choices: [
+  choices:
+  [
     {label: "A", text: "The Earth would become warmer.",
+    },
     {label: "B", text: "Atmospheric oxygen would gradually decrease and food chains would collapse.",
+    },
     {label: "C", text: "Plants would grow faster.",
+    },
     {label: "D", text: "Carbon dioxide levels would drop.",
     },
-    correctAnswer: "B",
-    rationale:
-    "The passage states that photosynthesis produces nearly all atmospheric oxygen and forms the.",
-    "base of nearly every food chain, so its absence would deplete oxygen and disrupt ecosystems.",
-    tags: ["inference", "biology"],
-  }),
-
+  ],
+  correctAnswer: "B",
+  rationale:
+"The passage states that photosynthesis produces nearly all atmospheric oxygen and forms the.",
+"base of nearly every food chain, so its absence would deplete oxygen and disrupt ecosystems.",
+tags: ["inference", "biology"],
+},
 // Rizal passage
 q({
   subjectArea: "Reading Comprehension",
   subtopic: "Main Idea",
   difficulty: "easy",
-  type: "passage_based",
-  passageId: PASSAGE_RIZAL_ID,
+  type: "passage-based",
+  passageId: "PASSAGE_RIZAL_ID",
   questionText: "What is the central idea of the passage?",
-  choices: [
+  choices:
+  [
     {label: "A", text: "Rizal was the founder of the Katipunan.",
+    },
     {
       label: "B",
-      text: "Rizal's writings inspired Filipino nationalism even though he opposed armed revolution."
+      text: "Rizal's writings inspired Filipino nationalism even though he opposed armed revolution.",
     },
-    {label: "C", text: "Andres Bonifacio was a more important hero than Rizal.",
     {
-      label: "D", text: "Spanish colonial rule was generally peaceful."
+      label: "C", text: "Andres Bonifacio was a more important hero than Rizal.",
     },
-    correctAnswer: "B",
-    rationale:
-    "The passage emphasizes that Rizal favored peaceful reform but his works awakened national consciousness.",
-    "and inspired the revolution despite his stance.",
-    tags: ["main-idea", "philippine-history"],
-    }),
+    {
+      label: "D", text: "Spanish colonial rule was generally peaceful.",
+    },
+    {
+      correctAnswer: "B",
+      rationale:
+"The passage emphasizes that Rizal favored peaceful reform but his works awakened national consciousness.",
+"and inspired the revolution despite his stance.",
+tags: ["main-idea", "philippine-history"],
+},
 q({
   subjectArea: "Reading Comprehension",
   subtopic: "Detail",
   difficulty: "medium",
-  type: "passage_based",
-  passageId: PASSAGE_RIZAL_ID,
+  type: "passage-based",
+  passageId: "PASSAGE_RIZAL_ID",
   questionText:
   "According to the passage, where and when was Rizal executed?",
-  choices: [
+  choices:
+  [
     {label: "A", text: "Calamba, Laguna in 1861"},
     {label: "B", text: "Manila in 1887"},
     {label: "C", text: "Bagumbayan on December 30, 1896"},
     {label: "D", text: "Bagumbayan in 1891"},
-    correctAnswer: "C",
-    rationale:
-    "The passage explicitly states Rizal was executed by firing squad at Bagumbayan on December 30, 1896.",
-    tags: ["detail", "philippine-history"],
-    }),
+    {
+      correctAnswer: "C",
+      rationale:
+"The passage explicitly states Rizal was executed by firing squad at Bagumbayan on December 30, 1896.",
+tags: ["detail", "philippine-history"],
+},
 q({
   subjectArea: "Reading Comprehension",
   subtopic: "Inference",
   difficulty: "hard",
-  type: "passage_based",
-  passageId: PASSAGE_RIZAL_ID,
+  type: "passage-based",
+  passageId: "PASSAGE_RIZAL_ID",
   questionText:
   "What can be inferred about the impact of Rizal's death on the Philippine Revolution?",
-  choices: [
+  choices:
+  [
     {label: "A", text: "It ended the revolution immediately.",
+    },
     {label: "B", text: "It strengthened the resolve of revolutionaries.",
+    },
     {label: "C", text: "It convinced the Spanish to grant independence.",
+    },
     {label: "D", text: "It had no significant effect.",
     },
-    correctAnswer: "B",
-    rationale:
-    "The passage says his martyrdom 'galvanized the revolution', which implies it energized and.",
-    "strengthened the revolutionary movement.",
-    tags: ["inference", "philippine-history"],
-    }),
-];
-
+    {
+      correctAnswer: "B",
+      rationale:
+"The passage says his martyrdom 'galvanized the revolution', which implies it energized and.",
+"strengthened the revolutionary movement.",
+tags: ["inference", "philippine-history"],
+},
+]);
 // Main
 async function seed() {
   loadEnvFile();
@@ -629,6 +670,7 @@ async function seed() {
   const client = new MongoClient(uri);
   console.log("→ Connecting to MongoDB...");
 }
+script
 await client.connect();
 
 try {
@@ -654,7 +696,7 @@ try {
     const existing = await db.collection("questions").countDocuments();
     if (existing > 0) {
       console.log(`△ 'questions' already has ${existing} documents. Skipping seed.`);
-      console.log("⚠ Use --clean to wipe and reseed.");
+      console.log("⋯ Use --clean to wipe and reseed.");
       await backfillQuestionSetIds(db);
       await ensurePredefinedQuestionSet(db);
       // Ensure seeded default users still exist on repeat runs.
@@ -680,41 +722,41 @@ try {
   await ensurePredefinedQuestionSet(db);
 
   // Summary
-  console.log("\n⚠ Seed Summary:");
+  console.log("\n⋯ Seed Summary:");
   const bySubject = {};
   const byDifficulty = {easy: 0, medium: 0, hard: 0};
   for (const qq of questions) {
     bySubject[qq.subjectArea] = (bySubject[qq.subjectArea] || 0) + 1;
     byDifficulty[qq.difficulty]++;
   }
-  console.log("⚠ By subject:");
+  console.log("⋯ By subject:");
   for (const [subj, count] of Object.entries(bySubject)) {
-    console.log(`⚠ • ${subj}: ${count}`);
+    console.log(`⋯ • ${subj}: ${count}`);
   }
-  console.log("⚠ By difficulty:");
+  console.log("⋯ By difficulty:");
   for (const [diff, count] of Object.entries(byDifficulty)) {
-    console.log(`⚠ • ${diff}: ${count}`);
+    console.log(`⋯ • ${diff}: ${count}`);
   }
 
-  console.log("\n⚠ Seed completed successfully.");
+  console.log("\n⋯ Seed completed successfully.");
 
-  // Seed default users (1 admin + 5 reviewees)
+  // Seed default users (1 admin + 5 reviewees) -
   await seedDefaultUsers(db);
 
-  // Phase 16: payment/subscription defaults
+  // Phase 16: payment/subscription defaults -
   await seedPaymentAndSubscriptionDefaults(db);
   await seedMonitoringDefaults(db);
 
-  // Study plan lessons and templates
+  // Study plan lessons and templates -
   await seedStudyPlanContent(db);
 
-  // Rich media samples for question workflow
+  // Rich media samples for question workflow -
   await seedQuestionRichSamples(db, {setId: PREDEFINED_SET_ID});
 
-  // Help center, contextual help, onboarding
+  // Help center, contextual help, onboarding -
   await seedHelpSystem(db);
 
-  // Phase 12: gamification catalogs
+  // Phase 12: gamification catalogs -
   await seedGamificationCatalogs(db);
   finally {
     await client.close();
@@ -733,6 +775,7 @@ async function backfillQuestionSetIds(db) {
   );
   if (migrateLegacy.modifiedCount > 0) {
     console.log(`→ Migrated ${migrateLegacy.modifiedCount} question(s) from '${LEGACY_PREDEFINED_SET_ID}' to '${PREDEFINED_SET_ID}'`);
+script
 const result = await db.collection("questions").updateMany(
   {
     $or: [
@@ -747,10 +790,10 @@ const result = await db.collection("questions").updateMany(
         updatedAt: new Date(),
       },
     },
-    ),
-    if (result.modifiedCount > 0) {
-      console.log(`Backfilled setId for ${result.modifiedCount} question(s) to '${PREDEFINED_SET_ID}'`);
-    }
+  );
+  if (result.modifiedCount > 0) {
+    console.log(`Backfilled setId for ${result.modifiedCount} question(s) to '${PREDEFINED_SET_ID}'`);
+  }
 }
 
 async function ensurePredefinedQuestionSet(db) {
@@ -764,10 +807,10 @@ async function ensurePredefinedQuestionSet(db) {
         updatedAt: new Date(),
       },
     },
-    ),
-    if (migrateLegacySetDoc.modifiedCount > 0) {
-      console.log(`Migrated ${migrateLegacySetDoc.modifiedCount} question_set document(s) from '${LEGACY_PREDEFINED_SET_ID}' to '${PREDEFINED_SET_ID}'`);
-    }
+  );
+  if (migrateLegacySetDoc.modifiedCount > 0) {
+    console.log(`Migrated ${migrateLegacySetDoc.modifiedCount} question_set document(s) from '${LEGACY_PREDEFINED_SET_ID}' to '${PREDEFINED_SET_ID}'`);
+  }
 
   const match = {
     setId: PREDEFINED_SET_ID,
@@ -836,6 +879,7 @@ async function ensurePredefinedQuestionSet(db) {
         updatedAt: now,
       },
       $setOnInsert: {
+script
 async function seedDefaultUsers(db) {
   const users = db.collection("users");
 
@@ -1034,7 +1078,6 @@ async function seedGamificationCatalogs(db) {
   category: "performance",
   rarity: "epic",
   title: "Consistent Excellence",
-}
 {
   description: "Score·90%+·on·10·different·exams.",
   icon: "shield-check",
@@ -1246,112 +1289,114 @@ async function seedGamificationCatalogs(db) {
   category: "milestone",
   rarity: "legendary"
 }
-title: "UPCAT·Champion",
-description: "Reach the max·level·of·100.",
-icon: "crown",
-xpReward: 5000,
-points: 1000,
-condition: {kind: "levelReached", gte: 100}
+{
+  title: "UPCAT·Champion",
+  description: "Reach the max level of 100.",
+  icon: "crown",
+  xpReward: 5000,
+  points: 1000,
+  condition: {kind: "levelReached", gte: 100}
 },
 {
-id: "practice_starter",
-category: "dedication",
-rarity: "common",
-title: "Practice·Starter",
-description: "Complete·your·first·practice·session.",
-icon: "play",
-xpReward: 50,
-points: 10,
-condition: {kind: "practiceSessions", gte: 1}
+  id: "practice_starter",
+  category: "dedication",
+  rarity: "common",
+  title: "Practice Starter",
+  description: "Complete your first practice session.",
+  icon: "play",
+  xpReward: 50,
+  points: 10,
+  condition: {kind: "practiceSessions", gte: 1}
 },
 {
-id: "practice_regular",
-category: "dedication",
-rarity: "uncommon",
-title: "Practice·Regular",
-description: "Complete·25·practice·sessions.",
-icon: "repeat",
-xpReward: 250,
-points: 60,
-condition: {kind: "practiceSessions", gte: 25}
+  id: "practice_regular",
+  category: "dedication",
+  rarity: "uncommon",
+  title: "Practice Regular",
+  description: "Complete 25 practice sessions.",
+  icon: "repeat",
+  xpReward: 250,
+  points: 60,
+  condition: {kind: "practiceSessions", gte: 25}
 },
 {
-id: "review_perfectionist",
-category: "performance",
-rarity: "uncommon",
-title: "Reviewer",
-description: "Answer·100·questions·correctly.",
-icon: "check-check",
-xpReward: 150,
-points: 40,
-condition: {kind: "correctAnswers", gte: 100}
+  id: "review_perfectionist",
+  category: "performance",
+  rarity: "uncommon",
+  title: "Reviewer",
+  description: "Answer 100 questions correctly.",
+  icon: "check-check",
+  xpReward: 150,
+  points: 40,
+  condition: {kind: "correctAnswers", gte: 100}
 },
 ];
 const challenges = [
-{
-id: "weekly_exams_3",
-title: "Three-Exam·Week",
-description: "Complete·3·practice·exams·this·week.",
-metric: "exams_completed",
-target: 3,
-xpReward: 250,
-weight: 10
-},
-{
-id: "weekly_exams_5",
-title: "Exam·Marathon",
-description: "Complete·5·practice·exams·this·week.",
-metric: "exams_completed",
-target: 5,
-xpReward: 500,
-weight: 6
-},
-{
-id: "weekly_correct_100",
-title: "Hundred·Correct",
-description: "Answer·100·questions·correctly·this·week.",
-metric: "questions_correct",
-target: 100,
-xpReward: 300,
-weight: 8
-},
-{
-id: "weekly_correct_250",
-title: "Quarter·Champion",
-description: "Answer·250·questions·correctly·this·week.",
-metric: "questions_correct",
-target: 250,
-xpReward: 700,
-weight: 4
-},
-{
-id: "weekly_minutes_120",
-title: "Two-Hour·Focus",
-description: "Study·for·120·minutes·this·week.",
-metric: "study_minutes",
-target: 120,
-xpReward: 250,
-weight: 9
-},
-{
-id: "weekly_minutes_300",
-title: "Deep·Dive",
-description: "Study·for·300·minutes·this·week.",
-metric: "study_minutes",
-target: 300,
-xpReward: 600,
-weight: 5
-},
-{
-id: "weekly_practice_5",
-title: "Practice·Pentathlon",
-description: "Complete·5·practice·sessions·this·week.",
-metric: "practice_sessions",
-target: 5,
-xpReward: 350,
-weight: 7
-}
+  {
+    id: "weekly_exams_3",
+    title: "Three-Exam Week",
+    description: "Complete 3 practice exams this week.",
+    metric: "exams_completed",
+    target: 3,
+    xpReward: 250,
+    weight: 10
+  },
+  {
+    id: "weekly_exams_5",
+    title: "Exam Marathon",
+    description: "Complete 5 practice exams this week.",
+    metric: "exams_completed",
+    target: 5,
+    xpReward: 500,
+    weight: 6
+  },
+  {
+    id: "weekly_correct_100",
+    title: "Hundred Correct",
+    description: "Answer 100 questions correctly this week.",
+    metric: "questions_correct",
+    target: 100,
+    xpReward: 300,
+    weight: 8
+  },
+  {
+    id: "weekly_correct_250",
+    title: "Quarter Champion",
+    description: "Answer 250 questions correctly this week.",
+    metric: "questions_correct",
+    target: 250,
+    xpReward: 700,
+    weight: 4
+  },
+  {
+    id: "weekly_minutes_120",
+    title: "Two-Hour Focus",
+    description: "Study for 120 minutes this week.",
+    metric: "study_minutes",
+    target: 120,
+    xpReward: 250,
+    weight: 9
+  },
+  {
+    id: "weekly_minutes_300",
+    title: "Deep Dive",
+    description: "Study for 300 minutes this week.",
+    metric: "study_minutes",
+    target: 300,
+    xpReward: 600,
+    weight: 5
+  },
+  {
+    id: "weekly_practice_5",
+    title: "Practice Pentathlon",
+    description: "Complete 5 practice sessions this week.",
+    metric: "practice_sessions",
+    target: 5,
+    xpReward: 350,
+    weight: 7
+  }
 ];
+script
 },
 {
   id: "weekly_perfect_1",
@@ -1459,6 +1504,7 @@ async function seedPaymentAndSubscriptionDefaults(db) {
     }
   ];
 }
+script
 grant: {
   planId: null,
   durationDays: 7,
@@ -1489,7 +1535,7 @@ for (const promo of promos) {
 }
 
 console.log(
-  `\n Payment defaults: ${paymentResult.upsertedCount} -> 0? \"config.seeded\":: \"config.exists\"`,
+  `\n Payment defaults: ${paymentResult.upsertedCount} -> 0? "config.seeded":: "config.exists"`,
   `${promoInserted} promo code(s) inserted.`,
 );
 }
@@ -1565,6 +1611,7 @@ async function seedMonitoringDefaults(db) {
       },
     }
 }
+script
 quietHours: {
 enabled: false,
 startTime: "22:00",
@@ -1603,7 +1650,7 @@ const checks = [
 "rate_limit_storage",
 ].map((checkId) => ({
 checkId,
-name: checkId.replace(/_/g, "·"),
+name: checkId.replace(/_/g, " "),
 category: "application",
 config: {
 enabled: true,
@@ -1630,8 +1677,8 @@ updatedAt: now,
 }));
 let checksInserted = 0;
 for (const check of checks) {
-const result = await db.collection("health_checks").updateOne(
-{checkId: check.checkId},
+const result = await db.collection("health_checks").updateOne({
+checkId: check.checkId},
 {$setOnInsert: check},
 {upsert: true},
 );
@@ -1671,6 +1718,7 @@ createdBy: new ObjectId("000000000000000000000001"),
 createdAt: now,
 }
 ];
+script
 updatedAt: now,
 },
 {
@@ -1717,8 +1765,8 @@ for (const rule of rules) {
 }
 
 console.log(
-  `\nMonitoring defaults: ${configResult.upsertedCount} > 0? "config.seeded"::"config.exists"`,
-  `${checksInserted} health checks inserted, ${rulesInserted} alert rules inserted.`,
+  "\nMonitoring defaults: ${configResult.upsertedCount} > 0? "config.seeded"::"config.exists"},
+  ${checksInserted} health checks inserted, ${rulesInserted} alert rules inserted.,
 );
 }
 

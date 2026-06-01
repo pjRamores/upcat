@@ -220,7 +220,7 @@ config.totalQuestions = sampledMeta.length;
 if (sampledMeta.length === 0) {
   return res.status(503).json({
     success: false,
-    error: `No eligible questions found for set '${questionSet.setId}'. Assign questions to this set or activate a set with published questions.`,
+    error: `No eligible questions found for set '${questionSet.setId}'`. Assign questions to this set or activate a set with published questions.,
   });
 }
 
@@ -234,7 +234,7 @@ const randomizedById = new Map(
     if (randomized.choices.length === 0) return null;
     return [doc._id.toString(), randomized].as const;
   })
-).filter((entry): entry is readonly | string, {
+).filter((entry): entry is readonly [string], {
   choices: QuestionChoice[],
   correctAnswer: "A" | "B" | "C" | "D"
 }) => Boolean(entry));

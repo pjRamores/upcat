@@ -1,9 +1,9 @@
 /**
  * Question detail / update / soft-delete.
  *
- * GET /api/admin/questions/:id
- * PUT /api/admin/questions/:id
- * DELETE /api/admin/questions/:id (soft-delete)
+ * GET / api/admin/questions/:id
+ * PUT / api/admin/questions/:id
+ * DELETE / api/admin/questions/:id (soft-delete)
  *
  * The :id` route param is supplied by Vercel's rewrite rules.
  */
@@ -141,14 +141,14 @@ return res.status(404).json({success: false, error: "Question not found"});
 await logActivity(db, {
 actorId: admin._id,
 actorRole: "admin",
-action: "question.deleted",
+action: "question_deleted",
 targetType: "question",
 targetId: oid,
 });
 ```
 
 ```json
-await syncQuestionSetPublishedCounts(db, String(existing.setId ?? "").trim());
+await syncQuestionSetPublishedCounts(db, String(existing.setId ?? "")).trim();
 ```
 
 ```json

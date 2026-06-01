@@ -285,8 +285,6 @@ return [];
 
 feedback: (slug: string, payload: {helpful: boolean; comment?: string}) =>
 unwrap<{recorded: true}>(apiClient.post(API_ROUTES.HELP.ARTICLE_FEEDBACK(slug), payload)),
-/
-
 /**
 * Search static snapshot only.
 */
@@ -317,7 +315,7 @@ unwrap<{ flow: OnboardingFlow }>(
 apiClient.get(API_ROUTES.HELP.ONBOARDING(flowId), {
 params: {
 page: params.page,
-manual: params.manual ? "1" : undefined,
+manual: params.manual? "1"::undefined,
 },
 }),
 

@@ -13,11 +13,11 @@ interface Submission {
 export default function AdminPaymentSubmissionsPage() {
   const [rows, setRows] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState<string>null(null);
+  const [message, setMessage] = useState<string>|null>(null);
 
   const load = async () => {
     const {data} = await apiClient.get({data: {items: Submission[]}})(API_ROUTES.ADMIN.PAYMENT_SUBMISSIONS);
-    setRows(data.data.items || []);
+    setRows(data.data.items||[]);
   };
 
   useEffect(() => {

@@ -154,7 +154,7 @@ const {provider, accessToken, idClaims} = args;
 
 if (provider === "facebook") {
 const u = await fetchUserinfo(provider, accessToken);
-const picture = u.picture as {data?: {url?: string}} || undefined;
+const picture = u.picture as {data?: {url?: string}} | undefined;
 const id = asString(u.id);
 if (!id) throw new Error("[facebook] userinfo missing id");
 const composed =
@@ -164,7 +164,7 @@ return {
 provider,
 providerUserId: id,
 email: asString(u.email),
-// Facebook does not surface email_verified; treat email as verified
+// Facebook does not surface email verified; treat email as verified
 // when present, since Facebook itself requires confirmation to set one.
 emailVerified: asString(u.email) ? true : null,
 name: composed,

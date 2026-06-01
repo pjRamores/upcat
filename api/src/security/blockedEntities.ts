@@ -101,8 +101,7 @@ export interface CheckOptions {
 }
 ```
 
-/**
- * Returns the first matching block rule (hard wins over soft).
+/** Returns the first matching block rule (hard wins over soft).**
 * Hit counts are incremented async on the matched rule(s).
 */
 

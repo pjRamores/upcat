@@ -67,7 +67,7 @@ export function hasUsableStaticAuthProviders(
   data: StaticAuthProviders | null,
 ) : data is StaticAuthProviders {
   if (!data) return false;
-  for (const p of SOCIAL_PROVIDERS as readonly SocialProvider[]) {
+  for (const p of SOCIAL_PROVIDERS) as readonly SocialProvider[] {
     if (!data.providers[p]) return false;
   }
   return true;

@@ -30,13 +30,12 @@ export async function getDeviceFingerprint(): Promise<string> {
     const hash = await sha256Hex(JSON.stringify(signals));
     const short = hash.slice(0, 32);
     cached = short;
-    try {
-      sessionStorage.setItem(KEY, short);
-    } catch {
-      /* swallow */
-    }
-    return short;
+  try {
+    sessionStorage.setItem(KEY, short);
+  } catch {
+    /* swallow */
   }
+  return short;
 }
 
 interface Signals {
@@ -150,17 +149,16 @@ function fontFingerprint(): string {
           const k = `${base}:${span.offsetWidth}x${span.offsetHeight}`;
           if (!sizes.has(k)) {
             detected.push(f);
+            break;
           }
-          break;
         }
+        if (detected.length >= 6) break;
       }
-      if (detected.length >= 6) break;
+      return detected.join(",");
+    } finally {
+      document.body.removeChild(span);
     }
-    return detected.join(",");
-  } finally {
-    document.body.removeChild(span);
-  }
-  catch {
+  } catch {
     return "";
   }
 }

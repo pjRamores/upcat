@@ -54,7 +54,7 @@ export default function AdminStudyPlanLessonsPage() {
             placeholder="Lesson title"/>
           <button type="button" onClick={create}
             className="rounded-bg-sky-600 px-3 py-2 text-sm font-semibold text-white">Create
-          </button>
+            </button>
         </div>
       </div>
 
@@ -69,13 +69,11 @@ export default function AdminStudyPlanLessonsPage() {
             </tr>
           </thead>
           <tbody>
-            {lessons.map(({l}) => (
-              <tr key={l._id} className="border-t border-slate-100">
-                <td className="py-2">{l.title}</td>
-                <td className="py-2">{l.subtopic}</td>
-                <td className="py-2">{l.status}</td>
-              </tr>
-            ))}
+            <tr><key={l._id} className="border-t border-slate-100">
+              <td className="py-2">{l.title}</td>
+              <td className="py-2">{l.subtopic}</td>
+              <td className="py-2">{l.status}</td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -138,15 +138,10 @@ status?: string;
 userId?: string;
 page?: number;
 limit?: number;
-}) => {
-unwrap<
-requests: (import("@upcat/shared").DataRequest) {
-userEmail?: string;
-userFullName?: string;
 }) [],
-total: number;
-page: number;
-limit: number;
+total: number,
+page: number,
+limit: number,
 }>(apiClient.get(API_ROUTES.ADMIN.DATA_REQUESTS, {params})),
 update: (id: string, body: {action: "cancel" | "expedite"}) =>
 unwrap<{ok: true}>(
@@ -155,8 +150,8 @@ apiClient.put(API_ROUTES.ADMIN.DATA_REQUEST(id), body),
 deletionLog: (params: {emailHash?: string; page?: number; limit?: number}) =>
 unwrap<
 entries: import("@upcat/shared").DeletionLogEntry[],
-total: number;
-page: number;
-limit: number;
+total: number,
+page: number,
+limit: number,
 }>(apiClient.get(API_ROUTES.ADMIN.DELETION_LOG, {params})),
 };

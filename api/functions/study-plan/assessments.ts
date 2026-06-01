@@ -42,7 +42,7 @@ interface DbStudyPlanAssessment {
     unanswered: number;
     percentage: number;
     passed: boolean;
-    bySubtopic: { subtopic: string; correct: number; total: number; percentage: number }[];
+    bySubtopic: {subtopic: string; correct: number; total: number; percentage: number}[];
   };
   startedAt: Date;
   completedAt: Date | null;
@@ -219,17 +219,17 @@ if (req.method === "POST" && assessmentSessionId && action === "assessment-submi
   }
 
   const assessment = await db
-  .collection<DbStudyPlanAssessment>("study_plan_assessments")
-  .findOne({_id: new ObjectId(assessmentSessionId), userId: user._id});
+    .collection<DbStudyPlanAssessment>("study_plan_assessments")
+    .findOne({_id: new ObjectId(assessmentSessionId), userId: user._id});
   if (!assessment) {
     return res.status(404).json({success: false, error: "Assessment session not found"});
   }
 
   const qdocs = await db
-  .collection("questions")
-  .find({_id: {$in: assessment.questions.map((q) => q.questionId)}})
-  .project({_id: 1, correctAnswer: 1, subtopic: 1, rationale: 1})
-  .toArray();
+    .collection("questions")
+    .find({_id: {$in: assessment.questions.map((q) => q.questionId)}})
+    .project({_id: 1, correctAnswer: 1, subtopic: 1, rationale: 1})
+    .toArray();
   const byId = new Map(qdocs.map((q) => [String(q._id), q]));
 
   let correct = 0;
@@ -261,15 +261,15 @@ if (req.method === "POST" && assessmentSessionId && action === "assessment-submi
   });
 
   const percentage = assessment.questions.length
-  ? Math.round((correct / assessment.questions.length) * 100)
-  : 0;
+    ? Math.round((correct / assessment.questions.length) * 100)
+    : 0;
   const passed = percentage >= assessment.config.passThreshold;
   const strengths = [...bySubtopic.entries()]
-  .filter(([, v]) => Math.round((v.correct / Math.max(1, v.total)) * 100) >= 75)
-  .map(([k]) => k);
+    .filter(([, v]) => Math.round((v.correct / Math.max(1, v.total)) * 100) >= 75)
+    .map(([k]) => k);
   const weaknesses = [...bySubtopic.entries()]
-  .filter(([, v]) => Math.round((v.correct / Math.max(1, v.total)) * 100) < 60)
-  .map(([k]) => k);
+    .filter(([, v]) => Math.round((v.correct / Math.max(1, v.total)) * 100) < 60)
+    .map(([k]) => k);
 
   assessment.status = "completed";
   assessment.completedAt = new Date();
@@ -312,57 +312,57 @@ status: assessment.status,
 const planDoc = await db.collection<DbStudyPlan>("study_plans")
 .findOne({_id: assessment.studyPlanId, userId: user._id});
 if (!planDoc) {
-  return res.status(404).json({success: false, error: "Study plan not found"});
+return res.status(404).json({success: false, error: "Study plan not found"});
 }
 const plan = toApiStudyPlan(planDoc);
 const found = findModule(plan, assessment.moduleId);
 if (!found) {
-  return res.status(404).json({success: false, error: "Module not found"});
+return res.status(404).json({success: false, error: "Module not found"});
 }
 
 found.module.assessment.attempts.push({
-  attemptNumber: assessment.attemptNumber,
-  sessionId: assessment._id.toString(),
-  score: percentage,
-  passed,
-  completedAt: assessment.completedAt.toISOString(),
-  timeSpent: assessment.totalTimeSpent ?? 0,
+attemptNumber: assessment.attemptNumber,
+sessionId: assessment._id.toString(),
+score: percentage,
+passed,
+completedAt: assessment.completedAt.toISOString(),
+timeSpent: assessment.totalTimeSpent??0,
 });
-found.module.assessment.bestScore = Math.max(found.module.assessment.bestScore ?? 0, percentage);
+found.module.assessment.bestScore = Math.max(found.module.assessment.bestScore??0, percentage);
 if (passed) {
-  found.module.assessment.status = "passed";
-  found.module.assessment.passedAt = assessment.completedAt.toISOString();
-  found.module.status = "completed";
+found.module.assessment.status = "passed";
+found.module.assessment.passedAt = assessment.completedAt.toISOString();
+found.module.status = "completed";
 
-  const allModules = plan.curriculum.phases.flatMap((phase) => phase.modules);
-  const moduleIndex = allModules.findIndex((m) => m.id === found.module.id);
-  if (moduleIndex >= 0 && moduleIndex < allModules.length - 1) {
-    const next = allModules[moduleIndex + 1];
-    if (next.status === "locked") {
-      next.status = "active";
-      if (next.sessions[0]) next.sessions[0].status = "available";
-      next.assessment.status = "available";
-    }
-  }
+const allModules = plan.curriculum.phases.flatMap((phase) => phase.modules);
+const moduleIndex = allModules.findIndex((m) => m.id === found.module.id);
+if (moduleIndex >= 0 && moduleIndex < allModules.length - 1) {
+const next = allModules[moduleIndex + 1];
+if (next.status === "locked") {
+next.status = "active";
+if (next.sessions[0]) next.sessions[0].status = "available";
+next.assessment.status = "available";
+}
+}
 } else {
-  found.module.assessment.status =
-    found.module.assessment.attempts.length >= found.module.assessment.maxAttempts
-    ? "failed"
-    : "available";
+found.module.assessment.status =
+found.module.assessment.attempts.length >= found.module.assessment.maxAttempts
+? "failed"
+: "available";
 }
 
 plan.progress = recalculatePlanProgress(plan);
 plan.schedule = computeSchedule(plan);
 
 await db.collection("study_plans").updateOne({
-  _id: assessment.studyPlanId},
+_id: assessment.studyPlanId},
 {
-  $set: {
-    curriculum: plan.curriculum,
-    progress: plan.progress,
-    schedule: plan.schedule,
-    updatedAt: new Date(),
-  },
+$set: {
+curriculum: plan.curriculum,
+progress: plan.progress,
+schedule: plan.schedule,
+updatedAt: new Date(),
+},
 },
 });
 
@@ -371,34 +371,34 @@ const xpEarned = passed
 : 5;
 
 await awardXp(db, user._id, {
-  reason: "admin_grant",
-  baseAmount: xpEarned,
-  description: passed ? "Passed study plan assessment" : "Completed study plan assessment",
-  metadata: {
-    category: "study_plan_assessment",
-    moduleId: assessment.moduleId,
-    score: percentage,
-    passed,
-  },
+reason: "admin_grant",
+baseAmount: xpEarned,
+description: passed ? "Passed study plan assessment" : "Completed study plan assessment",
+metadata: {
+category: "study_plan_assessment",
+moduleId: assessment.moduleId,
+score: percentage,
+passed,
+},
 });
 
 return res.status(200).json({
-  success: true,
-  data: {
-    score: {
-      total: assessment.score.total,
-      correct: assessment.score.correct,
-      percentage: assessment.score.percentage,
-      passed,
-    },
-    bySubtopic: assessment.score.bySubtopic,
-    feedback: assessment.feedback,
-    attemptsRemaining: Math.max(0, found.module.assessment.maxAttempts - found.module.assessment.attempts.length),
-    moduleUnlocked: passed
-    ? plan.curriculum.phases.flatMap((phase) => phase.modules).find((m) => m.status === "active")?.id ?? null
-    : null,
-    xpEarned,
-  },
+success: true,
+data: {
+score: {
+total: assessment.score.total,
+correct: assessment.score.correct,
+percentage: assessment.score.percentage,
+passed,
+},
+bySubtopic: assessment.score.bySubtopic,
+feedback: assessment.feedback,
+attemptsRemaining: Math.max(0, found.module.assessment.maxAttempts - found.module.assessment.attempts.length),
+moduleUnlocked: passed
+? plan.curriculum.phases.flatMap((phase) => phase.modules).find((m) => m.status === "active")?.id ?? null
+: null,
+xpEarned,
+},
 });
 }
 

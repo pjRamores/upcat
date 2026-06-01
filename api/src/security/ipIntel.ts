@@ -96,7 +96,7 @@ export async function adjustThreatScore(
       .collection("ip_intelligence")
       .findOne({_id: ip as never}, {projection: {threatScore: 1, riskFactors: 1}})) as
       {threatScore: number; riskFactors: string[]}
-    ) | null;
+    | null;
     const oldScore = doc?.threatScore ?? 0;
     const newScore = Math.min(THREAT_SCORE_MAX, Math.max(THREAT_SCORE_MIN, oldScore + delta));
     const reputation = classifyThreatScore(newScore);
@@ -117,7 +117,7 @@ return null;
 }
 }
 
-/** Bumps the per-IP "failed_login" counters (sec event logging is separate). */
+/** Bumps the per-IP "failed login" counters (sec event logging is separate). */
 export async function recordFailedLogin(
   ip: string,
   opts: {unknownAccount: boolean},
@@ -141,6 +141,7 @@ export async function recordFailedLogin(
   );
 } catch {
 /* swallow */
+}
 }
 export async function getIpIntel(ip: string) {
   const db = await getDb();

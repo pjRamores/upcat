@@ -102,6 +102,9 @@ export function normalizeRichContentBlocks(input: unknown): RichContentBlock[] {
     });
   });
 }
+return blocks;
+}
+
 export function inferDuplicateTier(input: {
   existingFingerprint?: string | null;
   candidateFingerprint: string;

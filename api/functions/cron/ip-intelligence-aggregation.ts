@@ -1,6 +1,6 @@
 /**
  * Cron: daily IP intelligence aggregation.
- * Schedule: 30.0 * * * (UTC 00:30 -- runs after security-report at 00:00)
+ * Schedule: 30.0 * * * (UTC 00:30 - runs after security-report at 00:00)
  *
  * Marks suspicious IPs based on patterns from the last 7 days:
  * ... - IPs that triggered >50 security events -> reputation "suspicious"

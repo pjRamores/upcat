@@ -41,14 +41,15 @@ export default function AdminGamificationPage() {
             ["achievements", "Achievements"],
             ["challenges", "Challenges"],
             ["grant", "Grant·XP"],
-          ] as [Tab, string][];
-        } as [Tab, string][];
+          ] as [Tab, string] []
+        } as [Tab, string] []
         map(([k, label]) => (
           <button
             key={k}
             type="button"
             onClick={() => setTab(k)}
-          ) as [Tab, string][])
+          ) as [Tab, string] []
+        )]
       </nav>
 
       {tab === "overview" && <OverviewTab/>}
@@ -162,29 +163,25 @@ function AchievementsTab() {
                 <td className="px-3 py-2 text-right">{String(a.xpReward)}</td>
                 <td className="px-3 py-2 text-right">{String(a.points)}</td>
               </tr>
+              <tr className="px-3 py-2 text-center">
+                {a.isActive ? "✓" : "-"}
+              </tr>
+              <tr className="px-3 py-2 text-right">
+                {a.isActive ? (
+                  <button
+                    type="button"
+                    onClick={() => deactivate(String(a.id))}
+                    className="text-xs text-rose-600 hover:underline"
+                  />
+                )}
+              </tr>
             </tbody>
           </table>
         </div>
-      </thead>
-      <tbody>
-        <tr className="px-3 py-2 text-right">
-          <a.isActive ? "✓" : "-"}
-        </td>
-        <td className="px-3 py-2 text-right">
-          <a.isActive ? (
-            <button
-              type="button"
-              onClick={() => deactivate(String(a.id))}
-              className="text-xs text-rose-600 hover:underline"
-            />
-          )>
-            Deactivate
-          </button>
-        </tr>
       </tbody>
     </table>
   </div>
-}
+};
 </table>
 </div>
 <p className="mt-3 text-xs text-slate-500">
@@ -236,7 +233,7 @@ function ChallengesTab() {
               <td className="px-3 py-2 text-slate-600">{String(c.metric)}</td>
               <td className="px-3 py-2 text-right">{String(c.target)}</td>
               <td className="px-3 py-2 text-right">{String(c.xpReward)}</td>
-              <td className="px-3 py-2 text-right">{String(c.weight ?? 1)}</td>
+              <td className="px-3 py-2 text-right">{String(c.weight??1)}</td>
               <td className="px-3 py-2 text-center">
                 {c.isActive ? "√" : "-"}
               </td>
@@ -277,7 +274,7 @@ function GrantTab() {
           <strong>Manual XP adjustment:</strong> Use this tool for one-off corrections (e.g., bug fixes, missed credits, support resolutions). All grants are logged in the activity audit trail with your admin ID, the amount, and the reason provided. Streak multipliers are not applied to manual grants.
         </p>
       </div>
-      <form
+      <form>
         onSubmit={submit}
         className="max-w-md space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
       >
@@ -318,14 +315,14 @@ type="submit"
 disabled={busy}
 className="rounded-md·bg-primary-600·px-4·py-2·text-sm·font-medium·text-white·hover:bg-primary-700·disabled:opacity-60"
 >
-{busy ? "Granting..." : "Grant·XP"}
+{busy?."Granting...":"Grant·XP"}
 </button>
 </form>
 </>
 );
 }
 
-function StatTile({label, value}: {label: string; value: string}) {
+function StatTile({label, value}:{·label:·string;·value:·string·}) {
 return (
 <div className="rounded-xl·border·border-slate-200·bg-white·p-5·shadow-sm">
 <div className="text-xs·font-semibold·uppercase·tracking-wide·text-slate-500">

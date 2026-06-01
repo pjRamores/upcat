@@ -100,8 +100,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const config = await savePaymentConfig(db, {plans: plans as never}, admin._id);
     return res.status(200).json({success: true, data: config.plans});
   }
-
-  if (hasPath(url, "/config/manual") || body.action === "manual") {
+}
 const patch = {
   manual: {
     processingTimeMessage: typeof body.processingTimeMessage === "string" ? body.processingTimeMessage : undefined,
@@ -172,10 +171,6 @@ if (hasPath(url, "/config/pangmeryenda/test") || body.action === "pangmeryenda-t
 }
 ```
 
+return res.status(400).json({success: false, error: "Unknown payment config action"});
 ```json
-{
-  success: true,
-  data: connected
-  {connected: true, accountInfo: {merchantId: cfg.pangmeryenda.merchantId}}
-  {connected: false, error: "Missing PangMeryenda credentials"}
 }

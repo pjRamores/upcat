@@ -36,9 +36,8 @@ export default function StudyPlanCalendarPage() {
               <tr key={`${row.date}-${row.title}`} className="border-t border-slate-100">
                 <td className="px-4 py-3">{row.date}</td>
                 <td className="px-4 py-3">{row.title}</td>
-                <td className="px-4 py-3">{row.assessmentDay ? "@" : ""}</td>
+                <td className="px-4 py-3">{row.assessmentDay}</td>
                 <td className="px-4 py-3">{row.module}</td>
-                <td className="px-4 py-3">{row.status}</td>
               </tr>
             ))}
           </tbody>

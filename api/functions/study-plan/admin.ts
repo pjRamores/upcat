@@ -31,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
 
       if (req.method === "POST" && !id) {
-        const body = (req.body ?? {}).asPartial<StudyPlanTemplate>;
+        const body = (req.body ?? {}) as Partial<StudyPlanTemplate>;
         if (!body.name || !body.structure?.phases?.length) {
           return res.status(400).json({success: false, error: "name and structure.phases are required"});
         }
@@ -44,14 +44,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           createdAt: now,
           updatedAt: now,
         });
-        return res.status(201).json({success: true, data: {id: insert.insertId.toString()}});
+        return res.status(201).json({success: true, data: {id: insert.insertedId.toString()}});
       }
 
       if (req.method === "PUT" && id) {
         if (!ObjectId.isValid(id)) {
           return res.status(400).json({success: false, error: "Invalid template id"});
         }
-        const body = (req.body ?? {}).asRecord<string, unknown>;
+        const body = (req.body ?? {}) as Record<string, unknown>;
         await db.collection("study_plan_templates").updateOne({
           {_id: new ObjectId(id)},
           {$set: {...body, updatedAt: new Date().toISOString()}},
@@ -75,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
 
       if (req.method === "POST" && !id) {
-        const body = (req.body ?? {}).asRecord<string, unknown>;
+        const body = (req.body ?? {}) as Record<string, unknown>;
         if (!body.title || !body.subjectArea || !body.subtopic) {
           return res.status(400).json({
             success: false,
@@ -91,14 +91,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           createdAt: now,
           updatedAt: now,
         });
-        return res.status(201).json({success: true, data: {id: insert.insertId.toString()}});
+        return res.status(201).json({success: true, data: {id: insert.insertedId.toString()}});
       }
 
       if (req.method === "PUT" && id) {
         if (!ObjectId.isValid(id)) {
           return res.status(400).json({success: false, error: "Invalid lesson id"});
         }
-        const body = (req.body ?? {}).asRecord<string, unknown>;
+        const body = (req.body ?? {}) as Record<string, unknown>;
         await db.collection("study_lessons").updateOne({
           {_id: new ObjectId(id)},
 $set: {
@@ -115,9 +115,9 @@ return res.status(405).json({success: false, error: "Method not allowed"});
 
 if (action === "analytics" && req.method === "GET") {
 const [totalActivePlans, totalCompletedPlans, totalAbandonedPlans] = await Promise.all([
-db.collection("study_plans").countDocuments({status: "active"});
-db.collection("study_plans").countDocuments({status: "completed"});
-db.collection("study_plans").countDocuments({status: "abandoned"});
+db.collection("study_plans").countDocuments({status: "active"})
+db.collection("study_plans").countDocuments({status: "completed"})
+db.collection("study_plans").countDocuments({status: "abandoned"})
 ]);
 
 const totalPlans = await db.collection("study_plans").countDocuments({});
@@ -127,7 +127,7 @@ const averageCompletionRate = totalPlans
 
 const failedModules = await db.collection("study_plan_assessments").aggregate([
 {$match: {"score.passed": false}, status: "completed"},
-{$group: {_id: "$moduleId"}, fails: {$sum: 1}, avgScore: {$avg: "$score.percentage"}}},
+{$group: {_id: "$moduleId"}, fails: {$sum: 1}, avgScore: {$avg: "$score.percentage"}}],
 {$sort: {fails: -1}},
 {$limit: 10},
 ]).toArray();
@@ -165,7 +165,7 @@ user: byUser.get(String(plan.userId)) ?? null,
 planId: String(plan._id),
 status: plan.status,
 progress: plan.progress,
-})));
+})),
 });
 }
 
