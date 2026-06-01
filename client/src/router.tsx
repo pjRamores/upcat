@@ -101,7 +101,7 @@ const AdminIdentityDisputesPage = lazy(
 );
 const AdminDataRequestsPage = lazy(() => import("@/pages/admin/AdminDataRequestsPage"));
 
-const AdminAdsSettingsPage = lazy(() => import("@/pages/admin/AdminSettingsPage"));
+const AdminAdsSettingsPage = lazy(() => import("@/pages/admin/AdminAdsSettingsPage"));
 const AdminSeoPage = lazy(() => import("@/pages/admin/AdminSeoPage"));
 const AdminBlogPage = lazy(() => import("@/pages/admin/AdminBlogPage"));
 const AdminBlogEditPage = lazy(() => import("@/pages/admin/AdminBlogEditPage"));
@@ -159,14 +159,13 @@ function AppRouteError(): React.ReactElement {
         message.toLowerCase().includes("failed to fetch dynamically imported module");
 
     return (
-        <div>
-            className="mx-auto flex min-h-[60vh] w-full max-w-2xl flex-col items-center justify-center px-4 py-12
-            text-center">
+        <div
+            className="mx-auto flex min-h-[60vh] w-full max-w-2xl flex-col items-center justify-center px-4 py-12 text-center">
             <h1 className="text-2xl font-bold text-slate-900">Page failed to load</h1>
             <p className="mt-3 text-sm text-slate-600">
-                {isChunkLoadFailure}
-                ? "A new app version was detected while this page was loading."
-                : "We hit an unexpected error while rendering this route."
+                {isChunkLoadFailure
+                    ? "A new app version was detected while this page was loading."
+                    : "We hit an unexpected error while rendering this route."}
             </p>
             <p className="mt-2 max-w-xl rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-50">
                 {message}
@@ -229,9 +228,15 @@ export const router = createBrowserRouter([
                     {path: "monitoring", element: lazyRoute(AdminMonitoringPage)},
                     {path: "support", element: lazyRoute(AdminSupportDashboardPage)},
                     {path: "support/tickets", element: lazyRoute(AdminSupportTicketsPage)},
-                    {path: "support/tickets/:ticketNumber", element: lazyRoute(AdminSupportTicketDetailPage)},
+                    {
+                        path: "support/tickets/:ticketNumber",
+                        element: lazyRoute(AdminSupportTicketDetailPage),
+                    },
                     {path: "support/merge", element: lazyRoute(AdminMergeWizardPage)},
-                    {path: "support/identity-disputes", element: lazyRoute(AdminIdentityDisputesPage)},
+                    {
+                        path: "support/identity-disputes",
+                        element: lazyRoute(AdminIdentityDisputesPage),
+                    },
                     {path: "data-requests", element: lazyRoute(AdminDataRequestsPage)},
                     {path: "ads", element: lazyRoute(AdminAdsSettingsPage)},
                     {path: "payment/config", element: lazyRoute(AdminPaymentConfigPage)},
@@ -255,172 +260,85 @@ export const router = createBrowserRouter([
     },
 // — Reviewee / public tree (Navbar + Footer Layout) —
 {
-    element: <Layout/>
-    errorElement: <AppRouteError/>
+    element: <Layout/>,
+    errorElement: <AppRouteError/>,
     children: [
         // — Public routes —
         {path: "/", element: lazyRoute(LandingPage)},
         {path: "/login", element: lazyRoute(LoginPage)},
         {path: "/register", element: lazyRoute(RegisterPage)},
         {path: "/verify-email", element: lazyRoute(VerifyEmailPage)},
-        {path: "/maintenance", element: lazyRoute(lazy(() => import "@/pages/MaintenancePage"
-))
-},
-    {
-        path: "/forgot-password", element
-    :
-        lazyRoute(ForgotPasswordPage)
-    }
-,
-    {
-        path: "/reset-password", element
-    :
-        lazyRoute(ResetPasswordPage)
-    }
-,
-    {
-        path: "/terms", element
-    :
-        lazyRoute(TermsPage)
-    }
-,
-    {
-        path: "/privacy", element
-    :
-        lazyRoute(PrivacyPage)
-    }
-,
-    {
-        path: "/contact", element
-    :
-        lazyRoute(ContactPage)
-    }
-,
-    {
-        path: "/pricing", element
-    :
-        lazyRoute(PricingPage)
-    }
-,
-    {
-        path: "/payment/success", element
-    :
-        lazyRoute(PaymentSuccessPage)
-    }
-,
-    {
-        path: "/payment/processing", element
-    :
-        lazyRoute(PaymentProcessingPage)
-    }
-,
-    {
-        path: "/payment/failed", element
-    :
-        lazyRoute(PaymentFailedPage)
-    }
-,
-    {
-        path: "/payment/cancelled", element
-    :
-        lazyRoute(PaymentCancelledPage)
-    }
-,
-    {
-        path: "/auth/callback/:provider", element
-    :
-        lazyRoute(AuthCallbackPage)
-    }
-,
-    {
-        path: "/recover-account", element
-    :
-        lazyRoute(RecoverAccountPage)
-    }
-,
-    {
-        path: "/recover-account/reset", element
-    :
-        lazyRoute(RecoverAccountResetPage)
-    }
-,
-    {
-        path: "/support/guest", element
-    :
-        lazyRoute(GuestSupportPage)
-    }
-,
-    {
-        path: "/account/deletion/confirm", element
-    :
-        lazyRoute(DeletionConfirmPage)
-    }
-,
+        {path: "/maintenance", element: lazyRoute(lazy(() => import("@/pages/MaintenancePage")))},
+        {path: "/forgot-password", element: lazyRoute(ForgotPasswordPage)},
+        {path: "/reset-password", element: lazyRoute(ResetPasswordPage)},
+        {path: "/terms", element: lazyRoute(TermsPage)},
+        {path: "/privacy", element: lazyRoute(PrivacyPage)},
+        {path: "/contact", element: lazyRoute(ContactPage)},
+        {path: "/pricing", element: lazyRoute(PricingPage)},
+        {path: "/payment/success", element: lazyRoute(PaymentSuccessPage)},
+        {path: "/payment/processing", element: lazyRoute(PaymentProcessingPage)},
+        {path: "/payment/failed", element: lazyRoute(PaymentFailedPage)},
+        {path: "/payment/cancelled", element: lazyRoute(PaymentCancelledPage)},
+        {path: "/auth/callback/:provider", element: lazyRoute(AuthCallbackPage)},
+        {path: "/recover-account", element: lazyRoute(RecoverAccountPage)},
+        {path: "/recover-account/reset", element: lazyRoute(RecoverAccountResetPage)},
+        {path: "/support/guest", element: lazyRoute(GuestSupportPage)},
+        {path: "/account/deletion/confirm", element: lazyRoute(DeletionConfirmPage)},
 
-    // — Subject area landing pages (SEO depth) —
-    {
-        path: "/subjects/mathematics", element
-    :
-        lazyRoute(SubjectMathPage)
-    }
-,
-    {
-        path: "/subjects/science", element
-    :
-        lazyRoute(SubjectSciencePage)
-    }
-,
-    {
-        path: "/subjects/language-proficiency",
-            element
-    :
-        lazyRoute(SubjectLanguagePage),
-    }
-,
-    {
-        path: "/subjects/reading-comprehension",
-            element
-    :
-        lazyRoute(SubjectReadingPage),
-    }
-,
+        // — Subject area landing pages (SEO depth) —
+        {
+            path: "/subjects/mathematics", element:
+                lazyRoute(SubjectMathPage)
+        }
+        ,
+        {
+            path: "/subjects/science", element:
+                lazyRoute(SubjectSciencePage)
+        }
+        ,
+        {
+            path: "/subjects/language-proficiency",
+            element:
+                lazyRoute(SubjectLanguagePage),
+        }
+        ,
+        {
+            path: "/subjects/reading-comprehension",
+            element:
+                lazyRoute(SubjectReadingPage),
+        }
+        ,
 
-    // — Blog —
-    {
-        path: "/blog", element
-    :
-        lazyRoute(BlogListPage)
-    }
-,
-    {
-        path: "/blog/:slug", element
-    :
-        lazyRoute(BlogPostPage)
-    }
-,
-    {
-        path: "/help", element
-    :
-        lazyRoute(HelpCenterPage)
-    }
-,
-    {
-        path: "/help/category/:category", element
-    :
-        lazyRoute(HelpCategoryPage)
-    }
-,
-    {
-        path: "/help/article/:slug", element
-    :
-        lazyRoute(HelpArticlePage)
-    }
-,
-    {
-        path: "/help/search", element
-    :
-        lazyRoute(HelpSearchPage)
-    }
+        // — Blog —
+        {
+            path: "/blog", element:
+                lazyRoute(BlogListPage)
+        }
+        ,
+        {
+            path: "/blog/:slug", element:
+                lazyRoute(BlogPostPage)
+        }
+        ,
+        {
+            path: "/help", element:
+                lazyRoute(HelpCenterPage)
+        }
+        ,
+        {
+            path: "/help/category/:category", element:
+                lazyRoute(HelpCategoryPage)
+        }
+        ,
+        {
+            path: "/help/article/:slug", element:
+                lazyRoute(HelpArticlePage)
+        }
+        ,
+        {
+            path: "/help/search", element:
+                lazyRoute(HelpSearchPage)
+        }
 ,
 
     // — Protected routes —
