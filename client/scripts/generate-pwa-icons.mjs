@@ -24,20 +24,19 @@ const OUT_DIR = resolve(__dirname, "..", "public", "icons");
 mkdirSync(OUT_DIR, {recursive: true});
 
 // --- PNG encoder (no deps) ---
-
 function crc32(buf) {
     let c;
-    const table = (crc32._t ||= () => {
+    const table = (crc32._t ||= (() => {
         const t = new Uint32Array(256);
         for (let n = 0; n < 256; n++) {
             c = n;
-            for (let k = 0; k < 8; k++) c = c && 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+            for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
             t[n] = c >>> 0;
         }
         return t;
-    })();
+    })());
     let crc = 0xffffffff;
-    for (let i = 0; i < buf.length; i++) crc = table[(crc ^ buf[i]) && 0xff] ^ (crc >>> 8);
+    for (let i = 0; i < buf.length; i++) crc = table[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
     return (crc ^ 0xffffffff) >>> 0;
 }
 
@@ -86,7 +85,6 @@ const GLYPHS = {
         "X...X",
         "X...X",
         "X...X",
-        "X...X",
         ".XXX.",
     ],
     P: [
@@ -94,7 +92,6 @@ const GLYPHS = {
         "X...X",
         "X...X",
         "XXXX.",
-        "X...",
         "X...",
         "X...",
         "X...",
@@ -106,7 +103,6 @@ function fillGradient(size, maskable) {
     const cx = size / 2;
     const cy = size / 2;
     const radius = maskable ? size * 0.62 : size * 0.9;
-    script
     const cornerR = maskable ? 0 : Math.round(size * 0.18);
     for (let y = 0; y < size; y++) {
         for (let x = 0; x < size; x++) {
@@ -145,52 +141,52 @@ function fillGradient(size, maskable) {
             }
         }
         return buf;
-    }
+}
 
-    function drawText(buf, size, text, color) {
-        const glyphW = 5;
-        const glyphH = 7;
-        const spacing = 1;
-        const charsW = text.length * glyphW + (text.length - 1) * spacing;
-        const scale = Math.floor((size * 0.55) / charsW);
-        const totalW = charsW * scale;
-        const totalH = glyphH * scale;
-        const startX = Math.floor((size - totalW) / 2);
-        const startY = Math.floor((size - totalH) / 2);
+function drawText(buf, size, text, color) {
+    const glyphW = 5;
+    const glyphH = 7;
+    const spacing = 1;
+    const charsW = text.length * glyphW + (text.length - 1) * spacing;
+    const scale = Math.floor((size * 0.55) / charsW);
+    const totalW = charsW * scale;
+    const totalH = glyphH * scale;
+    const startX = Math.floor((size - totalW) / 2);
+    const startY = Math.floor((size - totalH) / 2);
 
-        for (let ci = 0; ci < text.length; ci++) {
-            const glyph = GLYPHS[text[ci]];
-            if (!glyph) continue;
-            const offsetX = startX + ci * (glyphW + spacing) * scale;
-            for (let gy = 0; gy < glyphH; gy++) {
-                const row = glyph[gy];
-                for (let gx = 0; gx < glyphW; gx++) {
-                    if (row[gx] !== "X") continue;
-                    for (let py = 0; py < scale; py++) {
-                        for (let px = 0; px < scale; px++) {
-                            const x = offsetX + gx * scale + px;
-                            const y = startY + gy * scale + py;
-                            const i = (y * size + x) * 4;
-                            buf[i] = color[0];
-                            buf[i + 1] = color[1];
-                            buf[i + 2] = color[2];
-                            buf[i + 3] = 255;
-                        }
+    for (let ci = 0; ci < text.length; ci++) {
+        const glyph = GLYPHS[text[ci]];
+        if (!glyph) continue;
+        const offsetX = startX + ci * (glyphW + spacing) * scale;
+        for (let gy = 0; gy < glyphH; gy++) {
+            const row = glyph[gy];
+            for (let gx = 0; gx < glyphW; gx++) {
+                if (row[gx] !== "X") continue;
+                for (let py = 0; py < scale; py++) {
+                    for (let px = 0; px < scale; px++) {
+                        const x = offsetX + gx * scale + px;
+                        const y = startY + gy * scale + py;
+                        const i = (y * size + x) * 4;
+                        buf[i] = color[0];
+                        buf[i + 1] = color[1];
+                        buf[i + 2] = color[2];
+                        buf[i + 3] = 255;
                     }
                 }
             }
         }
-
-        function generate(size, name, {maskable = false}) {
-            const buf = fillGradient(size, maskable);
-            drawText(buf, size, "UP", [255, 255, 255]);
-            const png = encodePng(size, size, buf);
-            const path = resolve(OUT_DIR, name);
-            writeFileSync(path, png);
-            console.log(`√ ${path} (${png.length.toLocaleString()} bytes)`);
-        }
-
-        generate(192, "icon-192.png");
-        generate(512, "icon-512.png");
-        generate(512, "icon-maskable-512.png", {maskable: true});
     }
+}
+
+function generate(size, name, {maskable = false}) {
+    const buf = fillGradient(size, maskable);
+    drawText(buf, size, "UP", [255, 255, 255]);
+    const png = encodePng(size, size, buf);
+    const path = resolve(OUT_DIR, name);
+    writeFileSync(path, png);
+    console.log(`√ ${path} (${png.length.toLocaleString()} bytes)`);
+}
+
+generate(192, "icon-192.png");
+generate(512, "icon-512.png");
+generate(512, "icon-maskable-512.png", {maskable: true});
