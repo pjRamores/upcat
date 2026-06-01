@@ -12,12 +12,12 @@ const HOST = "127.0.0.1";
 async function killPort3001() {
     return new Promise((resolve) => {
         const server = net.createServer();
-        server.on("error", (err) => {
+        server.once("error", (err) => {
             if (err.code === "EADDRINUSE") {
                 // Port is in use, need to kill it
                 if (process.platform === "win32") {
                     // Windows
-                    const cmd = `netstat -ano | findstr ${PORT}`;
+                    const cmd = `netstat -ano | findstr :${PORT}`;
                     const proc = spawn("cmd.exe", ["/c", cmd], {stdio: "pipe"});
                     let output = "";
                     proc.stdout.on("data", (data) => {
@@ -33,28 +33,25 @@ async function killPort3001() {
                                 console.log(`Killed process ${pid} on port ${PORT}`);
                             }
                         }
+                        server.close(resolve);
+                    });
+                } else {
+                    // Unix-like
+                    const proc = spawn("lsof", ["-i", `${PORT}`, "-t"], {
+                        stdio: "pipe",
+                    });
+                    let pid = "";
+                    proc.stdout.on("data", (data) => {
+                        pid += data.toString().trim();
+                    });
+                    proc.on("close", () => {
+                        if (pid) {
+                            spawnSync("kill", ["-9", pid], {stdio: "ignore"});
+                            console.log(`Killed process ${pid} on port ${PORT}`);
+                        }
                     });
                     server.close(resolve);
                 }
-            )
-                ;
-            } else {
-                // Unix-like
-                const proc = spawn("lsof", ["-i", `${PORT}`, "-t"], {
-                    stdio: "pipe",
-                });
-                let pid = "";
-                proc.stdout.on("data", (data) => {
-                    pid += data.toString().trim();
-                });
-                proc.on("close", () => {
-                    if (pid) {
-                        spawnSync("kill", ["-9", pid], {stdio: "ignore"});
-                        console.log(`Killed process ${pid} on port ${PORT}`);
-                    }
-                });
-                server.close(resolve);
-            }
         )
             ;
         });
