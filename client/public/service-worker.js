@@ -28,59 +28,60 @@ const APP_SHELL = [
     "/icons/icon-192.png",
     "/icons/icon-512.png",
 ];
-  // GET endpoints safe to cache offline. Anything not listed bypasses the cache.
+
+// GET endpoints safe to cache offline. Anything not listed bypasses the cache.
 const CACHEABLE_API_PATTERNS = [
-  //^\/api\/announcements\b/
-  //^\/api\/status\b/
-  //^\/api\/practice\/stats\b/
-  //^\/api\/gamification\/profile\b/
-  //^\/api\/help\/articles\b/
-  //^\/api\/help\/categories\b/
-  //^\/api\/help\/search\b/
-  //^\/api\/help\/contextual\b/
+  /^\/api\/announcements\b/,
+  /^\/api\/status\b/,
+  /^\/api\/practice\/stats\b/,
+  /^\/api\/gamification\/profile\b/,
+  /^\/api\/help\/articles\b/,
+  /^\/api\/help\/categories\b/,
+  /^\/api\/help\/search\b/,
+  /^\/api\/help\/contextual\b/,
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(SHELL_CACHE).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()),
-  });
+    event.waitUntil(
+      caches.open(SHELL_CACHE).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()),
+    );
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      Promise.all(
-        keys
-        .filter((k) => k !== SHELL_CACHE && k !== RUNTIME_CACHE && k !== API_CACHE)
-        .map((k) => caches.delete(k)),
-      ),
-    }).then(() => self.clients.claim()),
-  });
+    event.waitUntil(
+        caches.keys().then((keys) =>
+            Promise.all(
+                keys
+                .filter((k) => k !== SHELL_CACHE && k !== RUNTIME_CACHE && k !== API_CACHE)
+                .map((k) => caches.delete(k)),
+            ),
+        ).then(() => self.clients.claim()),
+    );
 });
 
 self.addEventListener("fetch", (event) => {
-  const {request} = event;
-  if (request.method !== "GET") return;
+    const {request} = event;
+    if (request.method !== "GET") return;
 
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return;
+    const url = new URL(request.url);
+    if (url.origin !== self.location.origin) return;
 
-  if (url.pathname.startsWith("/api/")) {
-    if (CACHEABLE_API_PATTERNS.some((re) => re.test(url.pathname))) {
-      event.respondWith(networkFirstWithTtl(request));
+    if (url.pathname.startsWith("/api/")) {
+        if (CACHEABLE_API_PATTERNS.some((re) => re.test(url.pathname))) {
+            event.respondWith(networkFirstWithTtl(request));
+        }
+        // Non-allow-listed API calls fall through to the network (no SW handling).
+        return;
     }
-    // Non-allow-listed API calls fall through to the network (no SW handling).
-    return;
-  }
 
-  // Navigation requests → serve cached shell, then refresh in the background.
-  if (request.mode === "navigate") {
-    event.respondWith(navigationHandler(request));
-    return;
-  }
+    // Navigation requests → serve cached shell, then refresh in the background.
+    if (request.mode === "navigate") {
+        event.respondWith(navigationHandler(request));
+        return;
+    }
 
-  // Static assets (JS/CSS/images) → cache-first with revalidate.
-  event.respondWith(cacheFirst(request, RUNTIME_CACHE));
+    // Static assets (JS/CSS/images) → cache-first with revalidate.
+    event.respondWith(cacheFirst(request, RUNTIME_CACHE));
 });
 
 async function navigationHandler(request) {
