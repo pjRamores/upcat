@@ -18,42 +18,19 @@ const NAV: NavSection[] = [
         ],
     },
     {
-      heading: "Content",
-      items:
-          [
-            {
-              to: "/admin/questions", label: "Questions", icon: "🔍"
-            },
-            {
-              to: "/admin/question-sets", label: "Question Sets", icon: "🔍"
-            },
-            {
-              to: "/admin/questions/workflow", label: "Question Workflow", icon: "🔍"
-            },
-            {
-              to: "/admin/questions/import-export", label: "Import / Export", icon: "🔍"
-            },
-            {
-              to: "/admin/questions/media", label: "Media Library", icon: "🔍"
-            },
-            {
-              to: "/admin/passages", label: "Passages", icon: "🔍"
-            },
-            {
-              to: "/admin/help/articles", label: "Help Articles", icon: "🔍"
-            },
-            {
-              to: "/admin/help/contextual", label: "Contextual Help", icon: "🔍"
-            },
-            {
-              to: "/admin/help/onboarding", label: "Onboarding Flows", icon: "🔍"
-            },
-            {
-              to: "/admin/help/analytics", label: "Help Analytics", icon: "🔍"
-            },
-            {
-              to: "/admin/content-flags", label: "Reported Issues", icon: "🔍"
-            },
+        heading: "Content",
+        items: [
+            {to: "/admin/questions", label: "Questions", icon: "🔍"},
+            {to: "/admin/question-sets", label: "Question Sets", icon: "🔍"},
+            {to: "/admin/questions/workflow", label: "Question Workflow", icon: "🔍"},
+            {to: "/admin/questions/import-export", label: "Import / Export", icon: "🔍"},
+            {to: "/admin/questions/media", label: "Media Library", icon: "🔍"},
+            {to: "/admin/passages", label: "Passages", icon: "🔍"},
+            {to: "/admin/help/articles", label: "Help Articles", icon: "🔍"},
+            {to: "/admin/help/contextual", label: "Contextual Help", icon: "🔍"},
+            {to: "/admin/help/onboarding", label: "Onboarding Flows", icon: "🔍"},
+            {to: "/admin/help/analytics", label: "Help Analytics", icon: "🔍"},
+            {to: "/admin/content-flags", label: "Reported Issues", icon: "🔍"},
         ],
     },
     {
