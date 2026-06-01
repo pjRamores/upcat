@@ -37,7 +37,7 @@ async function killPort3001() {
                     });
                 } else {
                     // Unix-like
-                    const proc = spawn("lsof", ["-i", `${PORT}`, "-t"], {
+                    const proc = spawn("lsof", ["-i", `:${PORT}`, "-t"], {
                         stdio: "pipe",
                     });
                     let pid = "";
@@ -49,20 +49,18 @@ async function killPort3001() {
                             spawnSync("kill", ["-9", pid], {stdio: "ignore"});
                             console.log(`Killed process ${pid} on port ${PORT}`);
                         }
+                        server.close(resolve);
                     });
-                    server.close(resolve);
                 }
-        )
-            ;
+            } else {
+                server.close(resolve);
+            }
+        });
+        server.listen(PORT, () => {
+            server.close(resolve);
         });
     });
-    server.listen(PORT, () => {
-        server.close(resolve);
-    });
 }
-
-)
-;
 
 async function waitForPortFree(timeoutMs = 5000) {
     const start = Date.now();
