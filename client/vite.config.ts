@@ -14,8 +14,8 @@ export default defineConfig({
         port: 5173,
         proxy: {
             "/api": {
-                  target: "http://localhost:3001",
-                  changeOrigin: true,
+                target: "http://localhost:3001",
+                changeOrigin: true,
             },
             // SEO routes are served by the API in dev (lambda.ts aliases them).
             // Production traffic hits them through Vercel rewrites in vercel.json.
