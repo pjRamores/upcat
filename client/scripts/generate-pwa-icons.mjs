@@ -76,7 +76,6 @@ function encodePng(width, height, rgba) {
 }
 
 // --- Tiny bitmap font for "UP" (5x7 per glyph) ---
-
 const GLYPHS = {
     U: [
         "X...X",
@@ -92,9 +91,9 @@ const GLYPHS = {
         "X...X",
         "X...X",
         "XXXX.",
-        "X...",
-        "X...",
-        "X...",
+        "X....",
+        "X....",
+        "X....",
     ],
 };
 
@@ -140,7 +139,8 @@ function fillGradient(size, maskable) {
                 buf[i + 3] = 0;
             }
         }
-        return buf;
+    }
+    return buf;
 }
 
 function drawText(buf, size, text, color) {
@@ -178,7 +178,7 @@ function drawText(buf, size, text, color) {
     }
 }
 
-function generate(size, name, {maskable = false}) {
+function generate(size, name, {maskable = false} = {}) {
     const buf = fillGradient(size, maskable);
     drawText(buf, size, "UP", [255, 255, 255]);
     const png = encodePng(size, size, buf);
