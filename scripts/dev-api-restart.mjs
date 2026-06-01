@@ -67,7 +67,7 @@ async function waitForPortFree(timeoutMs = 5000) {
     while (Date.now() - start < timeoutMs) {
         const free = await new Promise((resolve) => {
             const server = net.createServer();
-            server.on("error", () => {
+            server.once("error", () => {
                 server.close();
                 resolve(false);
             });
