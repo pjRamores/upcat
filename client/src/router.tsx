@@ -336,10 +336,13 @@ export const router = createBrowserRouter([
                     {path: "/support", element: lazyRoute(SupportTicketsPage)},
                     {
                         path: "/support/:ticketNumber",
-                        element:
-                            lazyRoute(SupportTicketDetailPage),
+                        element: lazyRoute(SupportTicketDetailPage),
                     },
                 ],
-        },
+            },
+
+            // -- 404 fallback ----------------
+            {path: "*", element: <RoleAwareNotFound/>},
+        ],
     },
-}
+]);
