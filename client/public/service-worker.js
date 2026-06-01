@@ -96,10 +96,10 @@ async function navigationHandler(request) {
         if (cached) return cached;
         return new Response(
             `<!doctype html><meta charset="utf-8"><title>Offline</title>
-          <body style="font-family:system-ui;padding:2rem;text-align:center">
-            <h1>You're offline</h1>
-            <p>Reconnect to keep practicing.</p>
-          </body>`,
+      <body style="font-family:system-ui;padding:2rem;text-align:center">
+        <h1>You're offline</h1>
+        <p>Reconnect to keep practicing.</p>
+      </body>`,
             {status: 503, headers: {"Content-Type": "text/html"}},
         );
     }
@@ -160,7 +160,7 @@ async function networkFirstWithTtl(request) {
     }
 }
 
-// Push handler
+// -- Push handler --
 self.addEventListener("push", (event) => {
     if (!event.data) return;
     let payload;
@@ -203,8 +203,8 @@ self.addEventListener("notificationclick", (event) => {
                     /* ignore */
                 }
             }
-        )
-        })
+            await clients.openWindow(targetUrl)
+        })(),
     );
 });
 
