@@ -214,6 +214,127 @@ export const router = createBrowserRouter([
   }
 ]);
 {
+  path: "questions/import-export", element: lazyRoute(AdminQuestionImportExportPage)},
+  path: "question-sets", element: lazyRoute(AdminQuestionSetsPage)},
+  path: "questions/media", element: lazyRoute(AdminQuestionMediaLibraryPage)},
+  path: "passages", element: lazyRoute(AdminPassagesPage)},
+  path: "passages/new", element: lazyRoute(AdminPassageEditPage)},
+  path: "passages/:id", element: lazyRoute(AdminPassageEditPage)},
+  path: "content-flags", element: lazyRoute(AdminContentFlagsPage)},
+  path: "users", element: lazyRoute(AdminUsersPage)},
+  path: "users/new", element: lazyRoute(AdminUserNewPage)},
+  path: "users/:id", element: lazyRoute(AdminUserDetailPage)},
+  path: "exams", element: lazyRoute(AdminExamsPage)},
+  path: "exams/:id", element: lazyRoute(AdminExamDetailPage)},
+  path: "practice-sessions", element: lazyRoute(AdminPracticeSessionsPage)},
+  path: "announcements", element: lazyRoute(AdminAnnouncementsPage)},
+  path: "settings", element: lazyRoute(AdminSettingsPage)},
+  path: "auth-providers", element: lazyRoute(AdminAuthProvidersPage)},
+  path: "audit-log", element: lazyRoute(AdminAuditLogPage)},
+  path: "gamification", element: lazyRoute(AdminGamificationPage)},
+  path: "security", element: lazyRoute(AdminSecurityPage)},
+  path: "monitoring", element: lazyRoute(AdminMonitoringPage)},
+  path: "support", element: lazyRoute(AdminSupportDashboardPage)},
+  path: "support/tickets", element: lazyRoute(AdminSupportTicketsPage)},
+{
+  path: "support/tickets/:ticketNumber",
+  element: lazyRoute(AdminSupportTicketDetailPage),
+},
+{
+  path: "support/merge", element: lazyRoute(AdminMergeWizardPage)},
+{
+  path: "support/identity-disputes",
+  element: lazyRoute(AdminIdentityDisputesPage),
+},
+{
+  path: "data-requests", element: lazyRoute(AdminDataRequestsPage)},
+{
+  path: "ads", element: lazyRoute(AdminAdsSettingsPage)},
+{
+  path: "payment/config", element: lazyRoute(AdminPaymentConfigPage)},
+{
+  path: "payment/submissions", element: lazyRoute(AdminPaymentSubmissionsPage)},
+{
+  path: "features", element: lazyRoute(AdminFeaturesPage)},
+{
+  path: "promo-codes", element: lazyRoute(AdminPromoCodesPage)},
+{
+  path: "study-plans/templates", element: lazyRoute(AdminStudyPlanTemplatesPage)},
+{
+  path: "study-plans/lessons", element: lazyRoute(AdminStudyPlanLessonsPage)},
+{
+  path: "study-plans/analytics", element: lazyRoute(AdminStudyPlanAnalyticsPage)},
+{
+  path: "help/articles", element: lazyRoute(AdminHelpArticlesPage)},
+{
+  path: "help/contextual", element: lazyRoute(AdminHelpContextualPage)},
+{
+  path: "help/onboarding", element: lazyRoute(AdminHelpOnboardingPage)},
+{
+  path: "help/analytics", element: lazyRoute(AdminHelpAnalyticsPage)},
+{
+  path: "seo", element: lazyRoute(AdminSeoPage)},
+{
+  path: "blog", element: lazyRoute(AdminBlogPage)},
+{
+  path: "blog/new", element: lazyRoute(AdminBlogEditPage)},
+{
+  path: "blog/:id", element: lazyRoute(AdminBlogEditPage)},
+},
+},
+},
+// — Reviewee / public tree (Navbar + Footer Layout) —
+{
+  element: <Layout/>
+  errorElement: <AppRouteError/>
+  children: [
+    // — Public routes —
+    {path: "/", element: lazyRoute(LandingPage)},
+    {path: "/login", element: lazyRoute(LoginPage)},
+    {path: "/register", element: lazyRoute(RegisterPage)},
+    {path: "/verify-email", element: lazyRoute(VerifyEmailPage)},
+    {path: "/maintenance", element: lazyRoute(lazy(() => import "@/pages/MaintenancePage"))},
+    {path: "/forgot-password", element: lazyRoute(ForgotPasswordPage)},
+    {path: "/reset-password", element: lazyRoute(ResetPasswordPage)},
+    {path: "/terms", element: lazyRoute(TermsPage)},
+    {path: "/privacy", element: lazyRoute(PrivacyPage)},
+    {path: "/contact", element: lazyRoute(ContactPage)},
+    {path: "/pricing", element: lazyRoute(PricingPage)},
+    {path: "/payment/success", element: lazyRoute(PaymentSuccessPage)},
+    {path: "/payment/processing", element: lazyRoute(PaymentProcessingPage)},
+    {path: "/payment/failed", element: lazyRoute(PaymentFailedPage)},
+    {path: "/payment/cancelled", element: lazyRoute(PaymentCancelledPage)},
+    {path: "/auth/callback/:provider", element: lazyRoute(AuthCallbackPage)},
+    {path: "/recover-account", element: lazyRoute(RecoverAccountPage)},
+    {path: "/recover-account/reset", element: lazyRoute(RecoverAccountResetPage)},
+    {path: "/support/guest", element: lazyRoute(GuestSupportPage)},
+    {path: "/account/deletion/confirm", element: lazyRoute(DeletionConfirmPage)},
+
+    // — Subject area landing pages (SEO depth) —
+    {path: "/subjects/mathematics", element: lazyRoute(SubjectMathPage)},
+    {path: "/subjects/science", element: lazyRoute(SubjectSciencePage)},
+    {
+      path: "/subjects/language-proficiency",
+      element: lazyRoute(SubjectLanguagePage),
+    },
+    {
+      path: "/subjects/reading-comprehension",
+      element: lazyRoute(SubjectReadingPage),
+    },
+
+    // — Blog —
+    {path: "/blog", element: lazyRoute(BlogListPage)},
+    {path: "/blog/:slug", element: lazyRoute(BlogPostPage)},
+    {path: "/help", element: lazyRoute(HelpCenterPage)},
+    {path: "/help/category/:category", element: lazyRoute(HelpCategoryPage)},
+    {path: "/help/article/:slug", element: lazyRoute(HelpArticlePage)},
+    {path: "/help/search", element: lazyRoute(HelpSearchPage)},
+
+    // — Protected routes —
+    {
+      element: <ProtectedRoute requiredRole="reviewee"/>
+      children: [
+{
   path: "/dashboard", element: lazyRoute(DashboardPage)},
   path: "/mock-exam", element: lazyRoute(StudyPlanAnalyticsPage)},
   path: "/exam/:sessionId", element: lazyRoute(BatchExamPage)},

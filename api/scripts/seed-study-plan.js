@@ -2419,6 +2419,2565 @@ lessonBase({
       formula: "null",
       example: {
         problem: "She·likes·reading·to·swim, and·biking.",
+solution: "She likes reading, swimming, and biking.",
+explanation: "All list items are now in gerund form.",
+},
+},
+keyTakeaways: [
+  "Keep sentence parts grammatically consistent.",
+  "Avoid fragments and run-ons.",
+  "Use punctuation to show relationships clearly.",
+  "Parallelism improves readability and logic.",
+]
+quickReference: [
+  {label: "Parallel List", value: "verb-ing, verb-ing, verb-ing"},
+  {label: "Common Error", value: "Mixed infinitive and gerund forms"},
+  {label: "Check", value: "Read list items aloud"},
+]
+relatedQuestionTags: ["parallelism", "sentence-construction", "grammar"],
+lessonBase({
+  subjectArea: "Reading Comprehension",
+  subtopic: "Passage Strategies",
+  title: "Strategies for Reading Passages",
+  difficulty: "easy",
+  estimatedReadingMinutes: 12,
+  sections: [
+    {
+      type: "text",
+      title: "Skim Then Scan",
+      content: "Skim first for structure and tone, then scan for key details tied to specific questions.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "tip",
+      title: "Main Idea Method",
+      content: "After each paragraph, ask what is the author doing here? Defining, arguing, contrasting, or giving evidence?",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+      formula: null,
+      example: null,
+    },
+    {
+      type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+ formula: null,
+      example: null,
+    },
+    {
+    type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+ formula: null,
+      example: null,
+    },
+    {
+    type: "summary",
+      title: "Exam Routine",
+      content: "Preview questions, read actively, annotate quickly, and eliminate weak answer choices.",
+ formula: null,
+      example: null,
+    },
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary","
+    {
+    type: "summary",
+    {
+    type: "summary",
+    type: "summary",
+    {
+    type: "summary",
+    {
+    type: "summary",
+    {
+    type: "summary", 
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        •
+        ...,
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      »️, 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        //      ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., 
+        ..., ..., 
+        ..., 
+        ..., ..., 
+        ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, "境内, "境内, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, "境内, "境内, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, "境内, or, "境内, "境内, "境内, "..., or, or, or, "..., or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, "境内, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, or, "境内, "境内, "境内, "..., "，or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "for, "or, "or, "or, "or, ", "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "for, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, or, "or, or, or, or, or, "or, "or, or, or, or, "or, "or, or, or, "or, or, or, "or, "or, "or, "or, "or, "or, or, or, "or, or, "or, "or, "or, "or, "or, or, or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "r\n, "for, "or, or, or, or, "or, "or, "or, or, "or, "or, "or, "or, "or, "or, "or, "or, "or, "or, or, "or, "for, "or, "or, "or, "or, "l, "or, "i, "...", "i, "...", "or, "l, or, or, "or, "or, "or, "or, "or, or, "or, or, or, "or, or, "or, or, "or, "or, "or, or, "or, "or, "or, "or, "or, "or, "r, "for, "or, "r, "or, "or, "for, "or, or, or, "or, "or, "or, "or, "or, "or, "or, "or, "for, "or, "or, "or, "or, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "and, "r, "r, "for, "r, "tire", "for, "r, "return, or, "r, r, "r, "r, "r, r, r, r, r, r, r, "r, r, "r, "," "," "," "r, "r, "r, "r, "tire, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "text, "r, "r, "r, "r, "r, "t, r, "r, "r, "r, "r, r, r, r, "r, "r, r, "and, "r, "r, "and, "r, "r, "r, "r, "r, r, r, "r, r, "re, "and, r, "r, "r, "r, r, "r, "r, "r, "," "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "," "r, "r, "r, "," "r, "r, "r, r, r, "，" "，" "text, "i, "ver, "and, ", "r, "," "text, r, ", "," "r, "i, "r, "r, "r, ", "r, "r, r, "r, "r, r, r, r, r, "r, ", "r, "r, "r, r, r, "r, "r, r, "r, r, "r, "r, r, r, r, "and, "r, "r, "r, "r, "r, "r, "r, "l, "r, "r, "l, "r, "r, "r, or, "r, or, "r, or, "r, "r, "r, "r, "r, "r, "r, "r, or, "or, "r, or, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "r, "re, "re, "Ir, "i, "l, "i, "i, "i, "i, "i, "i, "i: *</td="for, "re, "re, "re, "re, "r,  ..., "re, or, "r, or, "Ir, *</td, "re, "r, or, or, "r, "re, "r, or, "re, "re, "re, "re, "re, "Ir, "re, "i, "and, "i, "i, "re, "re, "re, "re, "re, "re, "re, "re, "re, "re, "re, "re, "re, "re, "r, "re, "r, "r, "r, "r, "r, "re, "re, "re, "re, "r, "re, "r, "r, or, "re, "re, "re, "re, "r, "r, "r, "r, "r, "r, "r, "i, "l, "i, "i: 
+    <td, "i, "r, "r, *</td, "r, or, "l, "r, "r,*</td, "Region, "Name, "Value, "Value, "value, "r, "re, "r, "re, "r, "r, "r, or, value, "value, "re, "r, "r, value, "value, "value, "value, "i, "i, "i: "i: "re, "i, "i: "i, "i, "r, "re, "r, "r, "r, "re, "r, "r, "r, "r, "r, ", ", "re, ", "ver, "ver, "i, "I, "for, "Region, "value, "image, "value, "re, "re, "re, "re, "s, or, "value, "value, "value, "value, "re, "re, or, or, "l, "l, "liter, "liter, "..., "Region, ..., "Region, "s, "s, "s, "s, "s, "s,*</td, "s, or, "s, or, "s, "s, "s, "s, "s, "re, "s, "re, "re, "re, "name, "Name, "Name: "Name: "Name: "Name: "Name:Name:Name:Name:Name:Name:Name:Name:Name:Name:Name:Name:  , "re, "s, "re, "r, "s, ..., "s,   ..., "s,*</td="­, "s,*</td, "s, or, "s, "s, "s, "re, "r, "s, or,  * *</td* *</td* *repeat, "value, "image, "s, "image, "­, "s, "s, "s, "s, "s, "re, "s, "s, "s, "s, "s, "re, "s, "re, "re, "re, "­, "re, "re, "re, "re, "re, "­, "­, "­, "and, ", "re, "re, "re, "re, "and, "re, "re, "re, "r, "s, "s, " , "s, "s, "r, "­, "s, "­, "­, "­, "for, "for", "­, "­, "­, "­, "­, "re, "s, "s, "s, "s, "s, "s, "s, "s, "re, "s, "s, "s, "image, "image, "ver, "ver, "­, "­, "s, "re, "           *</td align="image, "s, "s, "s, "s, "s, "s, "s, "text, "­, "­, "image, "image, "name: "­, "name:name:name: * *</td="text, "­, "inputs, "s, "s, or, "s, "­, "s, "­, "­, "­, "­, "r, "s, "s, "­, "­, "­, "­, "­, "­, "­, "­, "­, "r, "­, "image, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "s, "­, "­, "­, "­, "­, "­, "­, "s, "­, "­, "name, "­, "name, "name, "s, "s, "s, "s, "s, "s, "s, "s, "s, "­, ", "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "­, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "­, "s, "s, "­, "­, "nature, "nature, "re, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "­, "­, "­, "s, "­, "s, ", "s, ", "s, "s, "s, "..., "s, "s, "s, "s, "image, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "s, "...", "s, "r, "­, "s, "name, "s, "s, "s, "s, "s, "s, "s, "s, "s, "text, "s, "s, "name, "name:name, "­, "s, "... "... "s, "s, "s, "s, "s, "s, "s, "­, "­, "s, "lots, "s, "­, "nature, "s, "s, "s, "s, "s, "s, "s, "re... "r, "­nature, "s, "r, "s, "re, "re, "for, "Ir, "re, "re, "re, "m
+    ..., "m, "nature, "...", "­, "nature, "..., "re, "r, "re, "re, "s, "s, "s, "s, "­, "­, "­, "re, "­, "­, "​, "­, "­, "­, "s, "s, "s, "­, "s, "s, "s, "境内, "s, ", "," or, "s, "for, "for, "for, "liter, "s, "s, "re, "­, "­, "s, "s, "s, "s, "­, "s, "s, "r, "s, "r, "s, "s, "s, "s, "s, "s, "m, "­, "­, "­, "s, "s, "­, "­, "s, "s, "r, "s, "­, "­, "­, "s, "re, "m, "m, "m, "­, "­, "­, "m, "­, "m, "­, "repeat, "repeat, "s, "s, "s, "s, "s, "r, "s, "m, "m, "m, "m, "境内, "m, "name, "m, "region, "for, "r, "m, "­, "­, "­, "liter, "­, "­, "­, "­, "text, "      repeat, " {*​, "item, "­, "r, "s, "... "...", "m, "name, "name, "name, "name, "re, "s, "s, "s, "​, "name, "repeat, "line, "re, "­, "line, "...", "repeat, "repeat, "​, "­, "​, "­, "­, "r, "­, "­, "name, "name, "­, "re, "name, "m, "name, "m, "name, "m, "name, "m, "s, "s, "... `core, "name, "name, "name, "name, "m, "m, "­, "I, "I, "­, "­, "r, "­, "​*​*​*​*​*​*​*​*​*</td>
+    {name, "name, "­, "name, "­, "­, "text, "...", "s, "...", "­, "­, "­, "m, "=", "­, "­, "m, "­, "­name, "­, "­, "­read, "­, "­readsound, "­read, "I, "­reads "", "r, "m, "m, "m, "m, "m, "境内, "m, "name, "­
+    "text, "­
+    , or, "­
+    "text, "r, "text, "­, "­, "m, "­
+    ..., "for, "­, "­
+    "­, "­
+    ...", "repeat, "­, "­, "s, "­, "­, "­
+    "text, "­
+*​, "­
+    "，" <font, "name: 
+    "name, "r, "text, "text, "text, "s
+    "text, "s, "s, "s, "s, "repeat, "­
+    "text, "name, "text, "name, "text, "name, "text, "name, "name, "text, "text, "­
+    "text, "name, "name, "name, "name, "­reads=", "­
+    "text, "text, "name, "text, "­, "text, "­name, "name, "­name, "name, "name, "name, "­, "­, "­, "m, "me, "name, "境内, " read, "reads, "reads, "reads, "­, "­
+    <tr>
+    <tr>
+    <tr>
+    "texture, "text, "text, "surementary, "text, "text, "name, "text, "name
+```{*­reads
+```{font, "text, "text, "name, "name, "name
+```{* readsion, "name, "name, "name, "name, "name, "name, "r, "reads, "reads, "reads, "read, "reads, "threat, "readsize
+    <tr, "name, "name, "name, "name
+```{name, "re, "name
+*<br>
+    <tr, "text, "s, "s
+* readsound, "re, "re, "re, "threat, "name, "name, "name, ornamental, "name, "name, "name, "name, "name, ornamentalized, "name, "name, "reads, "re, ornamental, "ide, "repeat, ornamning, "name, "re, "lengths
+    `[... readsion, "re, "s, "s
+*​*...,
+    <tr, "text, "s, "s, "s, "s, "s, "s, "s, "s, "s, "re... [mealong, "re, "re, "name, "name, "name, "name, "name, "name, "or, "or, "or, "or, "name, "...  *... [re, "name, "native, "... [re, "name, "s, "... `[*... [... `[... `[... `[... `reads
+      <tr, "name, "literation
+    <tr.ly, "name, "lue, "...[iterate, "... `[... `[font, "... `[repeat, "... *​*​, "... `[... `reads, "­, or
+    `[*.
+    `[... `[*.
+    `[... `[*\*... `[*native, "repeatable, "repeat, "surementation, "repeat, "... `[mealong, "repeat, "name, "reads, "re*n, "re, "re, "threads[alized, "retr.tear, "resear, "re... [re... [or, "name
+    <tr... [re... reads
+    <tr, "re
+    <tr, "repeatable, "s, "s, "s, "... reads
+    "s, "name, "reads, "reads, "reads, "reads, "s
+    <tr, "s
+    <tr, "line, "reads
+    <tr, "s
+    <tr... *<tr... [repeat, "re... `[re... [re... `[re, "s
+    "reads
+    <td align="line, "reads
+    <td>s
+    <td align="field
+    <tr, "name, "i
+    <tr, "i, "i, "re... reads
+    <td>*<td>* reads
+    <td align="reads
+    <td align="reads
+    <td align="­[* reads
+    <td>* * * reads, "re: reads
+    `reads
+    `reads, "reads
+    `reads
+    `readsure
+    `reads
+    "reads, "reads
+    "reads
+    "readsurement, "reads
+    `reads
+    "reads
+    "reads
+    "readsuremental*<td align="reads
+    "s
+    "reads, "reads
+    "s
+    "s
+    `s
+    <td>*<br>
+    <td>*  *... `s
+    `reads, "reads, "reads
+    "reads
+    "reads
+    "reads
+    "reads
+    "reads
+    <td align="line, "reads
+    <td align="s
+    <td align="s
+    "s
+    <td align="s
+    <td align="reads
+    "reads
+    <td align="line, "s
+    <td align="line, "texturementary, "texturementary, "... reads
+    "... [re, "s
+    <td> [td align="reads
+    <td align="reads, "s
+    <td align="reads
+    `{... `reads
+    "reads
+    `[td="reads
+    `readsure
+    "reads
+    `[td
+    `[... `[*    reads
+    `reads
+    <td>... [td aligning
+    <td align="reads
+    <td•  [td
+    `reads
+    `... `reads, "re...reads
+    <td align="reads
+    "reads, "re... `[... `reads, "reads, "reads, "reads,<td,<td>
+    {@...
+lessonBase({
+  subjectArea: "Reading·Comprehension",
+  subtopic: "Inference",
+  title: "Inference and Implication",
+  difficulty: "medium",
+  estimatedReadingMinutes: 13,
+  sections: [
+    {
+      type: "definition",
+      title: "Inference vs. Implication",
+      content: "An implication is suggested by the author; an inference is concluded by the reader from clues.",
+      formula: null,
+      example: null
+    },
+    {
+      type: "text",
+      title: "Evidence-Based Inference",
+      content: "Strong inferences combine textual clues with logical reasoning. Avoid assumptions that go beyond the passage.",
+      formula: null,
+      example: null
+    },
+    {
+      type: "example",
+      title: "Example",
+      content: "Infer tone from wording.",
+      formula: null,
+      example: {
+        problem: "The report called the proposal 'ambitious but underfunded.' What is implied?",
+        solution: "The idea is promising but unlikely to succeed without more resources.",
+        explanation: "Both positive and limiting language shape a cautious interpretation.",
+      }
+    },
+  ],
+  keyTakeaways: [
+    "Inference must be evidence-based.",
+    "Notice tone words and qualifiers.",
+    "Avoid extreme choices unless text supports them.",
+    "Cross-check inference with multiple clues.",
+  ],
+  quickReference: [
+    {label: "Inference", value: "What the reader concludes"},
+    {label: "Implication", value: "What the author suggests"},
+    {label: "Rule", value: "Use text + logic"},
+  ]
+}
 {
   relatedQuestionTags: ["inference", "implication", "author-purpose"],
   lessonBase({
