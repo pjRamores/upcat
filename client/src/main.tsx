@@ -12,7 +12,9 @@ import {installGlobalResilienceHooks} from "./lib/resilience";
 import {installSyncQueueHooks} from "./lib/syncQueue";
 import "./index.css";
 
-// Register the service worker + capture the install prompt as early as possible so the PWA install card can offer to install on first eligible page view.
+// Register the service worker + capture the install prompt as early as
+// possible so the PWA install card can offer to install on first eligible
+// page view.
 captureInstallPrompt();
 registerServiceWorker();
 installGlobalErrorTracking();
@@ -20,13 +22,13 @@ installGlobalResilienceHooks();
 installSyncQueueHooks();
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ErrorBoundary>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-        <ToastContainer/>
-        <InstallPwaCard/>
-      </HelmetProvider>
-    </ErrorBoundary>
-  </StrictMode>,
+    <StrictMode>
+        <ErrorBoundary>
+            <HelmetProvider>
+                <RouterProvider router={router}/>
+                <ToastContainer/>
+                <InstallPwaCard/>
+            </HelmetProvider>
+        </ErrorBoundary>
+    </StrictMode>,
 );
