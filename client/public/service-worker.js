@@ -203,7 +203,7 @@ self.addEventListener("notificationclick", (event) => {
                     /* ignore */
                 }
             }
-            await clients.openWindow(targetUrl)
+            await clients.openWindow(targetUrl);
         })(),
     );
 });
