@@ -1,0 +1,666 @@
+{
+    "version": 1,
+    "publishedAt": "2026-05-21T01:16:37.420Z",
+    "publishedBy": "admin@upcatsimulator.com",
+    "meta": {
+        "totalArticles": .20,
+        "totalCategories": 8,
+        "lastUpdatedAt": "2026-05-18T09:01:39.413Z"
+    },
+    "categories": [
+        {
+            "category": "getting-started",
+            "description": "Start here if you are new to the platform.",
+            "icon": "♀",
+            "name": "Getting Started",
+            "articleCount": 3
+        },
+        {
+            "category": "practice-test",
+            "description": "Configure and review personalized practice sessions.",
+            "icon": "♂",
+            "name": "Practice Tests",
+            "articleCount": 5
+        },
+        {
+            "category": "mock-exam",
+            "description": "Realistic exam simulation under stricter rules.",
+            "icon": "@",
+            "name": "Mock Exams",
+            "articleCount": 4
+        },
+        {
+            "category": "gamification",
+            "description": "XP, levels, streaks, achievements, and rankings.",
+            "icon": "%",
+            "name": "Gamification & Progress",
+            "articleCount": 4
+        },
+        {
+            "category": "study-plan",
+            "description": "Your adaptive daily curriculum.",
+            "icon": "!",
+            "name": "Study Plan",
+            "articleCount": 1
+        },
+        {
+            "category": "account",
+            "description": "Profile, security, and help preferences.",
+            "icon": "@",
+            "name": "Account & Settings",
+            "articleCount": 1
+        },
+        {
+            "category": "payment",
+            "description": "Plans, billing, and subscription lifecycle.",
+            "icon": "$",
+            "name": "Premium & Payments",
+            "articleCount": 1
+        },
+        {
+            "category": "troubleshooting",
+            "description": "Common issues and quick solutions.",
+            "icon": "%",
+            "name": "Troubleshooting",
+            "articleCount": 1
+        }
+    ],
+    "articles": [
+        {
+            "slug": "account-settings",
+            "category": "account",
+            "content": {
+                "format": "markdown",
+                "body": "## Profile management\nIn Settings, you can review account identity fields and linked login providers.\n\n### Password and security\n- Change password\n- Generate recovery codes\n- Configure security questions\n- Linked social accounts\nConnect or disconnect Google, Facebook, and LinkedIn providers.\n\n### Notification controls\nManage push reminders and challenge alerts.\n\n### Privacy controls\nReview settings related to analytics sharing and account data requests.\n\n### Help preferences\nYou can toggle:\n- Contextual help tooltips\n- Onboarding guides\n- Reduced help mode"
+            },
+            "contextualHelpIds": [],
+            "fags": null,
+            "helpfulCount": 0,
+            "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+            "notHelpfulCount": 0,
+            "order": 1,
+            "quickFacts": null,
+            "relatedArticles": [
+                "creating-account",
+                "common-issues"
+            ],
+            "relatedFeaturePages": [
+                "/settings"
+            ],
+            "seoDescription": "Profile updates, recovery controls, and help preference settings.",
+            "seoTitle": "Account Settings & Security",
+            "subcategory": null,
+            "subtitle": "Profile updates, recovery controls, and help preference settings.",
+            "title": "Account Settings & Security",
+            "viewCount": 2,
+            "wordCount": 69,
+            "estimatedReadingMinutes": 1
+        },
+        {
+            "slug": "xp-levels-progress",
+            "category": "gamification",
+
+{
+    "content": {
+        "format": "markdown",
+        "body": "## What is XP?\nXP (Experience Points) reflects consistent study effort.\n\n### How to earn XP\nActivity | XP |\n|---|---|\n| Complete a practice test | 30 |\n| Complete a mock exam | 75 |\n| Correct answer (practice) | 1 |\n| Correct answer (mock) | 3 |\n\n### High score bonuses | Variies. |\n| Daily login | 10 |\n| Study plan session completion | 30 |\n\n### Streak multiplier\nLonger active streaks increase XP gain.\nExample: If base reward is 75 and multiplier is 1.75, awarded XP is 131 (rounded policy may vary).\n\n### Level system\nEach level requires more XP than the previous level. Level title bands provide milestone identity and motivation.\n\n### Where to monitor progress\n- Dashboard summary\n- Profile page\n- Post-session reward breakdown\n- Leaderboard comparisons"
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 1,
+    "quickFacts": null,
+    "relatedArticles": [
+        "achievements-badges",
+        "weekly-challenges",
+        "leaderboard-rankings"
+    ],
+    "relatedFeaturePages": [
+        "/profile",
+        "/leaderboard"
+    ],
+    "seoDescription": "How XP is earned, how levels work, and how streak multipliers apply.",
+    "seoTitle": "XP, Levels & Your Progress",
+    "subcategory": null,
+    "subtitle": "How XP is earned, how levels work, and how streak multipliers apply.",
+    "title": "XP, Levels & Your Progress",
+    "viewCount": 2,
+    "wordCount": 106,
+    "estimatedReadingMinutes": -1
+},
+{
+    "slug": "achievements-badges",
+    "category": "gamification",
+    "content": {
+        "format": "markdown",
+        "body": "## What are achievements?\nAchievements are milestone badges for consistency, performance, and mastery.\n\n### Category examples\n- Milestones (activity counts)\n- Performance (high scores)\n- Streak (consecutive active days)\n- Dedication (time and behavior patterns)\n- Mastery (subject excellence)\n- Hidden achievements (surprise unlocks)\n\n### Rarity tiers\n- Common\n- Uncommon\n- Rare\n- Epic\n- Legendary\n\n### Tips to unlock efficiently\n1. Prioritize consistency first.\n2. Mix easy wins with long-term goals.\n3. Review progress weekly and adjust focus."
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 2,
+    "quickFacts": null,
+    "relatedArticles": [
+        "xp-levels-progress",
+        "weekly-challenges"
+    ],
+    "relatedFeaturePages": [
+        "/profile"
+    ],
+    "seoDescription": "Badge categories, rarity levels, and how unlocks are announced.",
+    "seoTitle": "Achievements & Badges",
+    "subcategory": null,
+    "subtitle": "Badge categories, rarity levels, and how unlocks are announced.",
+    "title": "Achievements & Badges",
+    "viewCount": 0,
+    "wordCount": 62,
+    "estimatedReadingMinutes": -1
+},
+{
+    "slug": "weekly-challenges",
+    "category": "gamification",
+    "content": {
+        "format": "markdown",
+        "body": "## Weekly challenge basics\nA new challenge is assigned every Monday.\nComplete it before Sunday cutoff for bonus rewards.\n\n### Typical challenge examples\n- Complete 3 practice tests\n- Reach target score in a subject\n- Maintain streak target\n\n### Planning advice\n- Check your challenge early Monday.\n- Spread effort across the week.\n- Pair challenge tasks with your existing study plan."
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 3,
+    "quickFacts": null,
+    "relatedArticles": [
+        "xp-levels-progress",
+        "leaderboard-rankings"
+    ],
+    "relatedFeaturePages": [
+        "/profile",
+        "/dashboard"
+    ],
+    "seoDescription": "How weekly objectives work and how to plan around them.",
+    "seoTitle": "Weekly Challenges",
+    "subcategory": null,
+    "subtitle": "How weekly objectives work and how to plan around them.",
+    "title": "Weekly Challenges",
+    "viewCount": 2,
+    "wordCount": 54,
+    "estimatedReadingMinutes": -1
+},
+{
+    "slug": "leaderboard-rankings",
+    "category": "gamification",
+    "content": {
+
+{
+    "format": "markdown",
+    "body": "### What is UPCAT Simulator?\nUPCAT Simulator is an online review platform designed to help students prepare for college entrance-style tests through guided study, targeted practice, and realistic exam simulation.\nIt gives you three study experiences:\n1. **Practice Tests** for flexible learning sessions.\n2. **Mock Exams** for realistic time-pressure assessment.\n3. **Study Plan** for daily, personalized progress.\n\n### What is the UPCAT?\nThe University of the Philippines College Admission Test (UPCAT) is a high-stakes admission exam used by the University of the Philippines system. It typically includes language, mathematics, science, and reading-heavy reasoning.\n[info]\n> The platform focuses on skill-building and exam readiness. It is not a replacement for school learning, but a structured companion.\n\n### How this platform helps you prepare:\n1. Build fundamentals first: You can start with easier practice sets and immediate feedback to understand concepts deeply.\n2. Train speed and endurance: Once your foundation improves, you can add timers and transition to longer sessions.\n3. Measure real readiness: Mock exams replicate stricter conditions so you can evaluate performance under pressure.\n4. Track progress over time: Your dashboards and stats pages show trends, weak areas, and improvements.\n\n### Main feature overview\nFeature | Best For |\n---|---|\nPractice Test | Learning and drills (Low to medium) | Immediate or end-of-test feedback\nExam Readiness Checks | High | End-of-exam only\nStudy Plan | Daily guided progress | Medium | Session and module-based\nGamification | Motivation and consistency | N/A | Real-time XP/achievement updates\nYour first 5 minutes | Open your dashboard.\nStart a **short practice session** (20-30 questions). Keep timer optional on your first run. Turn on immediate feedback. Review mistakes and note 1-2 weak topics.\nPlatform disclaimer: UPCAT Simulator is an independent educational platform and is not affiliated with the University of the Philippines or the official UPCAT administration.\n\n### Next steps\nRead [How Practice Tests Work] (/help/article/how-practice-test-works)\nRead [Navigating the Dashboard] (/help/article/navigating-dashboard)\nStart your first practice session on [/practice] (/practice)\n",
+    "contextualHelpIds": [],
+    "fags": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 1,
+    "quickFacts": null,
+    "relatedArticles": [
+        "/dashboard",
+        "/practice",
+        "/study-plan"
+    ],
+    "seoDescription": "A beginner-friendly overview of what the platform is and how to begin.",
+    "seoTitle": "Welcome to UPCAT Simulator",
+    "subcategory": null,
+    "subtitle": "A beginner-friendly overview of what the platform is and how to begin.",
+    "title": "Welcome to UPCAT Simulator",
+    "viewCount": 3,
+    "wordCount": 294,
+    "estimatedReadingMinutes": 2
+},
+{
+    "slug": "creating-account",
+    "category": "getting-started",
+    "content": {
+        "format": "markdown",
+        "body": "### Registration steps\n1. Go to the registration page.\n2. Enter your first name, last name, email, and password.\n3. Confirm your password and submit.\n4. Check your email for the verification link.\n\n[Registration Form Placeholder] (/help-assets/screenshots/register-form.png)\n\n### Email verification after registration:\n1. Open your inbox.\n2. Find the verification email from UPCAT Simulator.\n3. Click the verification button.\n4. Return to the app and sign in.\n\n> If you do not verify your email, some account recovery and security actions may be limited.\n\n### Social login options:\nyou can link or sign in with:\n- Google\n- Facebook\n- LinkedIn\n\n### Recommended setup:\neven if you use social login, set a local password in Settings so you have a backup sign-in method.\n\n### Set up your profile after first login: visit Settings and confirm:\n- Full name\n- Contact email\n- Notification preferences\n- Linked accounts\n\n### Account security basics:\n\n### Password\nUse a strong password:\n- At least 8 characters\n- Uppercase +\n- Lowercase -\n- Number and symbol\n\n### Recovery codes\nGenerate recovery codes and store them safely offline.\n\n### Security questions\nSet three questions you can remember but others cannot guess.\n\n### Quick checklist\nTask | Recommended | Where |\n---|---|---|\nVerify email | Yes | Inbox link | \nLink social account | Optional | Settings |\nSet local password | Yes | Settings |\nGenerate recovery codes | Yes | Settings |\nConfigure notifications | Yes | Settings |\nTroubleshooting | If verification email does not arrive:\n1. Check spam/junk folders.\n2. Wait 2-5 minutes and retry.\n3. Confirm email spelling.\n4. Contact support if still missing."
+    },
+    "contextualHelpIds": [],
+    "fags": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 2,
+    "quickFacts": null,
+    "relatedArticles": [
+        "/dashboard",
+        "/practice",
+        "/study-plan"
+    ],
+    "seoDescription": "A beginner-friendly overview of what the platform is and how to begin.",
+    "seoTitle": "Welcome to UPCAT Simulator",
+    "subcategory": null,
+    "subtitle": "A beginner-friendly overview of what the platform is and how to begin.",
+    "title": "Welcome to UPCAT Simulator",
+    "viewCount": 3,
+    "wordCount": 294,
+    "estimatedReadingMinutes": 2
+}
+{
+  "account-settings": "",
+  "navigating-dashboard": "",
+  "relatedFeaturePages": [
+    "/register",
+    "/settings"
+  ],
+  "seoDescription": "Registration, verification, social login, and basic security setup.",
+  "seoTitle": "Creating Your Account",
+  "subcategory": null,
+  "subtitle": "Registration, verification, social login, and basic security setup.",
+  "title": "Creating Your Account",
+  "viewCount": 2,
+  "wordCount": 218,
+  "estimatedReadingMinutes": 1
+},
+{
+  "slug": "navigating-dashboard",
+  "category": "getting-started",
+  "content": {
+    "format": "markdown",
+    "body": "## Dashboard layout at a glance\nThe dashboard is your command center. You can start study actions, view summaries, and jump quickly to deeper analytics.\n![](Dashboard Annotated Placeholder) (/help-assets/screenshots/dashboard-annotated.png)\n### Main areas\n#### Practice Test section\nUse this for flexible practice sessions with configurable scope and pacing.\n#### Mock Exam section\nUse this when you want stricter simulation and readiness measurement.\n#### Study Plan section\nShows your current personalized plan and today's next session.\n#### Statistics preview\nDisplays trends and quick metrics so you can decide what to focus on next.\n#### Gamification summary\nShows your XP, level, streak, and challenge progress.\n#### Quick actions and shortcuts\n- **Start Practice**: begin a learning-focused session.\n- **Resume Session**: continue unfinished work.\n- **View Stats**: inspect weak areas and trends.\n- **Open Profile**: check achievements and streak status.\n### Recommended dashboard routine\n1. Check weak areas.\n2. Run a targeted practice session.\n3. Review mistakes.\n4. Complete one study plan activity.\n5. End with a short reflection note.\n## Beginner tip\nStart small and consistent. A daily 30-minute focused session usually beats irregular marathon sessions."
+  },
+  "contextualHelpIds": [],
+  "fags": null,
+  "helpfulCount": 0,
+  "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+  "notHelpfulCount": 0,
+  "order": 3,
+  "quickFacts": null,
+  "relatedArticles": [
+    "how-practice-test-works",
+    "how-mock-exam-works",
+    "personalized-study-plan"
+  ],
+  "relatedFeaturePages": [
+    "/dashboard",
+    "/stats",
+    "/profile"
+  ],
+  "seoDescription": "Understand every dashboard section and where to click first.",
+  "seoTitle": "Navigating the Dashboard",
+  "subcategory": null,
+  "subtitle": "Understand every dashboard section and where to click first.",
+  "title": "Navigating the Dashboard",
+  "viewCount": 2,
+  "wordCount": 160,
+  "estimatedReadingMinutes": 1
+},
+{
+  "slug": "how-mock-exam-works",
+  "category": "mock-exam",
+  "content": {
+    "format": "markdown",
+    "body": "## What is a Mock Exam?\nA Mock Exam is a realistic simulation of exam pressure and pacing.\n### Practice vs Mock comparison\n| Feature | Practice Test | Mock Exam |
+| --- | --- | --- |
+| Configuration | User-defined | Admin-defined |
+| Timer | Optional and pausable | Strict and non-pausable |
+| Subjects | Flexible | Full exam structure |
+| Navigation | Usually freer | Subtest-restricted |
+| Scoring | Learning-oriented | Readiness-oriented |
+### Key characteristics
+- Fixed structure and rules
+- Subtests with separate time limits
+- Possible negative marking
+- Limited retries and cooldowns
+### Best time to take mock exams
+- After steady practice for at least 2 weeks
+- After finishing key study plan modules (1-2 weeks before your target exam date)
+### Availability notes
+Mock availability may be limited by plan, cooldown, or scheduling windows."
+  },
+  "contextualHelpIds": [],
+  "fags": null,
+  "helpfulCount": 0,
+  "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+  "notHelpfulCount": 0,
+  "order": 1,
+  "quickFacts": [
+    {
+      "label": "Questions",
+      "value": "Set by admin, typically 100-200"
+    },
+    {
+      "label": "Timer",
+      "value": "Strict per subtest, cannot pause"
+    },
+    {
+      "label": "Subtests",
+      "value": "Usually 4"
+    },
+    {
+      "label": "Feedback",
+      "value": "After full submission"
+    },
+    {
+      "label": "Scoring",
+      "value": "Raw, percentage, percentile"
+    }
+  ],
+  "relatedArticles": [
+    "taking-mock-exam",
+    "mock-exam-results",
+    "mock-exam-strategies"
+  ],
+  "relatedFeaturePages": [
+    "/mock-exam",
+{
+    "slug": "taking-mock-exam",
+    "category": "mock-exam",
+    "content": {
+        "format": "markdown",
+        "body": "## Before you start\nnChecklist:\nn- Stable internet\nn- Full uninterrupted time block\nn- Quiet environment\nn- Scratch paper and pencil\nn\n### Start sequence\nn1. Open available mock exam.\nn2. Review total duration and rules.\nn3. Confirm readiness checklist.\nn4. Click begin (timer starts immediately).\nn\n### Subtest flow\nnMock exams commonly run in multiple subtests, each with separate timing.\nn\n### Timer warning colors\nn- White: comfortable\nn- Yellow: less than 10 minutes\nn- Red: less than 5 minutes\nn- Flashing: less than 1 minute\n\n### Navigation rules\nn- Usually you can move within current subtest.\nn- Returning to previous subtests is typically not allowed.\nn\n### Finishing subtests\nnWhen you finish a subtest, review unanswered and flagged items first because prior sections are usually locked afterward.\nn\n### Emergency situations\nn- Connection loss: answered items are periodically synced\nn- Browser crash: recover session quickly\nn- Power interruption: timer usually continues server-side\nn\n[!warning] n> Treat mock exams like real exam events. Avoid interruptions and multitasking."
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedat": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 2,
+    "quickFacts": null,
+    "relatedArticles": [
+        "mock-exam-results",
+        "mock-exam-strategies"
+    ],
+    "relatedFeaturePages": [
+        "/mock-exam",
+        "/exam/:id"
+    ],
+    "seoDescription": "Preparation checklist, subtest flow, and emergency guidance.",
+    "seoTitle": "Taking a Mock Exam - Step by Step",
+    "subcategory": null,
+    "subtitle": "Preparation checklist, subtest flow, and emergency guidance.",
+    "title": "Taking a Mock Exam - Step by Step",
+    "viewCount": 1,
+    "wordCount": 137,
+    "estimatedReadingMinutes": 1
+}
+{
+    "slug": "mock-exam-results",
+    "category": "mock-exam",
+    "content": {
+        "format": "markdown",
+        "body": "## Overall score components\nn- Raw score\nn- Adjusted score (if negative marking)\nn- Percentage\nn- Readiness band\nn\n### Adjusted score formula\nnAdjusted score is often calculated as: n*Adjusted = Correct -- (Incorrect * Penalty)**\nExample:\nn- Correct: 156\nn- Incorrect: 30\nn- Penalty: -0.25\nn-- Adjusted: 156 -- (30 x -0.25) = -148.5\n\n### Percentile explained\nnIf you are at the 78th percentile, you scored higher than 78% of test takers in that comparison group.\nn\n### Predicted score\nnPredicted score is an estimate, not an official result.\nn\n[!warning] n> Do not over-focus on one predicted value. Track trajectory across multiple mocks.\nn\n### Time analysis interpretation\nn- Finished very early: possible rushing\nn- Ran out of time: pacing issue\nn- Used most time effectively: balanced pacing\n\n### Action plan after results\nn1. Identify weakest subtest.\nn2. Run targeted practice.\nn3. Repeat mock after focused review."
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedat": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 3,
+    "quickFacts": null,
+    "relatedArticles": [
+        "mock-exam-strategies",
+        "how-mock-exam-works"
+    ],
+    "relatedFeaturePages": [
+        "/results/:sessionId",
+        "/stats"
+    ],
+    "seoDescription": "Raw score, adjusted score, percentile, and readiness interpretation.",
+    "seoTitle": "Understanding Mock Exam Results",
+    "subcategory": null,
+    "subtitle": "Raw score, adjusted score, percentile, and readiness interpretation.",
+    "title": "Understanding Mock Exam Results",
+    "viewCount": 1,
+    "wordCount": 124,
+    "estimatedReadingMinutes": 1
+}
+{
+    "slug": "mock-exam-strategies",
+    "category": "mock-exam",
+    "content": {
+        "format": "markdown",
+        "body": "## Time management rules\nn- Budget average time per item.\nn- Avoid spending over 2 minutes on one question.\nn- Flag and return when possible.\nn- Reserve final minutes for quick checks.\nn\n### Answering strategy\nn- Read question stem completely first.\nn- Eliminate clearly wrong choices.\nn- Use keyword clues.\nn- In math/science, estimate first for sanity checking.\nn\n### Negative marking strategy\nn- If you can eliminate 2+ options, educated guessing may be favorable.\nn- If no elimination is possible, skipping may be safer depending on penalty.\nn\n### Preparation routine before mock day\nn- Take 2-3 mocks before target date.\nn- Simulate real conditions.\nn- Review error patterns, not just final scores.\nn- Rest before high-stakes runs."
+    },
+    "contextualHelpIds": [],
+    "faqs": null,
+    "helpfulCount": 0,
+    "lastUpdatedat": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 4,
+    "quickFacts": null,
+    "relatedArticles": [
+
+{
+  "slug": "premium-features",
+  "category": "payment",
+  "content": {
+    "format": "markdown",
+    "body": "## Premium overview\nPremium gives expanded access and convenience features designed for high-frequency learners.\n\n## Free vs. Premium (example)\nCapability | Free | Premium |\n---|---|---|\nMock attempts | Limited | Expanded |
+Practice limits | Standard caps | Higher caps |
+Ads | Visible | Reduced/none |
+Advanced analytics | Limited | Full |
+\n## How to upgrade\n1. Open pricing.\n2. Pick a plan.\n3. Choose payment method.\n4. Submit payment and wait verification if manual processing applies.
+\n## Subscription management
+In settings, you can view plan status, expiration, and recent payment submissions.
+\nIf premium expires your account remains active but premium-only capabilities may return to free-tier limits."
+  },
+  "contextualHelpIds": [],
+  "fags": null,
+  "helpfulCount": 0,
+  "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+  "notHelpfulCount": 0,
+  "order": 1,
+  "quickFacts": null,
+  "relatedArticles": [
+    "account-settings",
+    "common-issues"
+  ],
+  "relatedFeaturePages": [
+    "/pricing",
+    "settings/payments",
+    "/payment"
+  ],
+  "seoDescription": "Understand premium benefits, upgrade flow, and subscription management.",
+  "seoTitle": "Premium Features",
+  "subcategory": null,
+  "subtitle": "Understand premium benefits, upgrade flow, and subscription management.",
+  "title": "Premium Features",
+  "viewCount": 0,
+  "wordCount": 89,
+  "estimatedReadingMinutes": -1
+},
+{
+  "slug": "how-practice-test-works",
+  "category": "practice-test",
+  "content": {
+    "format": "markdown",
+    "body": "## What is a Practice Test? A Practice Test is a configurable learning session designed for **understanding and improvement**, not pressure.\nPractice Test vs Mock Exam | Aspect | Practice Test | Mock Exam |
+---|---|---|
+Configuration | You choose settings: Admin-defined | Timer | Optional and pausable | Strict and non-pausable |
+Feedback | Can be immediate | End-only |
+Purpose | Learning and skill-building | Readiness assessment |
+Stress level | Low to medium | High |
+## Key characteristics
+- You configure almost everything.
+- Timer is optional.
+- Feedback can be immediate.
+- Results are tracked separately from mock exams.
+- Session design encourages experimentation.
+## When to use practice tests
+- Daily review sessions
+- Weak-topic drilling
+- Learning new material
+- Confidence building before mock exams
+[tip] Use practice tests to debug your thinking process. The goal is not just score, but clarity.
+## Suggested frequency
+Beginners: 4-5 short sessions weekly
+Intermediate: 5-6 mixed sessions weekly
+Advanced: 3-4 targeted sessions + 1 mock exam"
+  },
+  "contextualHelpIds": [
+    "pt_subject_select",
+    "pt_question_count",
+    "pt_difficulty_dist"
+  ],
+  "fags": null,
+  "helpfulCount": 0,
+  "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+  "notHelpfulCount": 0,
+  "order": 1,
+  "quickFacts": [
+    {
+      "label": "Questions",
+      "value": "5 to 200 (you choose)"
+    },
+    {
+      "label": "Timer",
+      "value": "Optional, 5 to 300 minutes"
+    },
+    {
+      "label": "Feedback",
+      "value": "Immediate or after submission"
+    },
+    {
+      "label": "Pause",
+      "value": "Yes when timer is enabled"
+    },
+    {
+      "label": "Subjects",
+      "value": "Any combination"
+    }
+  ],
+  "relatedArticles": [
+    "configuring-practice-test",
+    "taking-practice-test",
+    "practice-test-results"
+  ],
+  "relatedFeaturePages": [
+{
+    "slug": "practice",
+    "category": "practice",
+    "content": {
+        "format": "markdown",
+        "body": "### Step 1: Choose subjects and topics\n- Pick one or more subjects.\n- Optionally choose subtopics for focused drills.\n- Use broad selection for variety, targeted selection for weakness repair.\n\n### Step 2: Set question count\nRange is usually **5 to 200+**.\nRecommended ranges:\n- Quick review: 10-20 questions (15-30 min)\n- Standard session: 30-50 questions (45-75 min)\n- Deep practice: 75-100 questions (90-150 min)\n- Endurance: 100-200 questions (2-3 hours)\nIf your selected filters have fewer available questions, the system will use what is available.\n### Step 3: Configure difficulty distribution\nDifficulty meaning:\n- **Easy**: foundational and direct\n- **Medium**: multi-step reasoning\n- **Hard**: high complexity and longer solving\nPresets:\n- Balanced: 33/34/33\n- Easy-Focus: 50/35/15\n- Challenge Mode: 15/35/50\nYou can also set custom ratios; total should equal 100%.\n### Step 4: Timer settings\nWhy use timer?\n- Trains pacing\n- Simulates pressure\n- Reveals speed bottlenecks\nRule of thumb: **1 to 2 minutes per question**.\n### Step 5: Feedback mode\nImmediate feedback is best for learning. You get correction and rationale instantly.\n### After Submission\nBest for simulation and concentration continuity.\n### Additional options\n- Shuffle questions: recommended\n- Shuffle choices: recommended\n- Question type blend: multiple choice, passage-based, or both\nPresets and recommendations\nSave successful configurations as presets. Reusing validated setups helps compare progress fairly over time."
+    },
+    "contextualHelpIds": [
+        "pt_subject_select",
+        "pt_subtopic_select",
+        "pt_question_count",
+        "pt_difficulty_dist",
+        "pt_timer_toggle",
+        "pt_immediate_feedback",
+        "pt_shuffle",
+        "pt_presets"
+    ],
+    "fags": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 2,
+    "quickFacts": null,
+    "relatedArticles": [
+        "taking-practice-test",
+        "practice-test-results"
+    ],
+    "relatedFeaturePages": [
+        "/practice-test/configure",
+        "/practice"
+    ],
+    "seoDescription": "Step-by-step setup guide with practical recommendations.",
+    "seoTitle": "Configuring Your Practice Test",
+    "subcategory": null,
+    "subtitle": "Step-by-step setup guide with practical recommendations.",
+    "title": "Configuring Your Practice Test",
+    "viewCount": 2,
+    "wordCount": 209,
+    "estimatedReadingMinutes": 1
+},
+{
+    "slug": "taking-practice-test",
+    "category": "practice-test",
+    "content": {
+        "format": "markdown",
+        "body": "### Interface overview\n- Timer bar (if enabled)\n- Progress indicator\n- Question body and choices\n- Previous/Next navigation\n- Question grid (answered/unanswered/flagged)\n\n### Answering questions\n- Click a choice to select.\n- Click again to change your selection.\n- Answers are auto-saved.\n\n### Immediate feedback flow\n1. Select answer\n2. See correctness\n3. Read rationale\n4. Move forward\nColor coding:\n- Green: correct\n- Red: incorrect\n\n### Flagging for review\nFlags help you revisit uncertain items.\nThey do not affect score.\nUse flags for timeboxing difficult items.\n\n### Pausing (if timer enabled)\nWhen paused:\n- Timer stops\n- Current state is preserved\n- Resume continues from exact state\n\n### Submitting\nYou will get a confirmation prompt, including unanswered counts if any.\n\n### Keyboard shortcuts\n1/2/3/4 or A/B/C/D: select answer\nLeft/Right arrow: previous/next\nF: flag current question\nEnter: confirm and continue\nSpace: pause/resume timer\nIf you feel stuck,\nflag and move. Momentum preserves focus."
+    },
+    "contextualHelpIds": [],
+    "fags": null,
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 3,
+    "quickFacts": null,
+    "relatedArticles": [
+        "practice-test-results",
+        "reviewing-practice-answers"
+    ],
+    "relatedFeaturePages": [
+        "/practice",
+        "/practice/sessionId"
+    ],
+    "seoDescription": "Interface, controls, navigation, and keyboard shortcuts.",
+    "seoTitle": "Taking a Practice Test",
+    "subcategory": null,
+    "subtitle": "Interface, controls, navigation, and keyboard shortcuts.",
+    "title": "Taking a Practice Test",
+    "viewCount": 1,
+    "wordCount": 131,
+    "estimatedReadingMinutes": 1
+},
+{
+    "slug": "practice-test-results",
+    "category": "practice-test",
+    "content": {
+        "format": "markdown",
+
+{
+    "slug": "common-issues",
+    "category": "troubleshooting",
+}
+{
+    "content": {
+        "format": "markdown",
+        "body": "## Timer ended before completion\n### Why this happens\n- Over-investing in a few difficult questions\n- Slow reading pace\n- Re-checking too often\n### Fix plan\n1. Practice with strict per-question targets.\n2. Use flag-and-return strategy.\n3. Review slowest subtopics.\n\n# Lost internet during exam\n- Reconnect immediately.\n- Reopen session page.\n- Continue if time remains.\n\n# Score seems wrong\nCheck:\n- Negative marking rules\n- Unanswered count\n- Subtest-specific scoring\nIf mismatch persists, submit a support ticket with session ID.\n\n# Cannot start mock exam\nPossible causes:\n- Cooldown active\n- Attempt limit reached\n- Schedule window closed\n\n# Payment submitted but not approved yet\nManual review can take processing time depending on queue and submission clarity.\n\n# Forgot password and no recovery codes\nUse recovery flow first, then support verification if needed.\n\n# Blank page or app not loading\n1. Hard refresh\n2. Clear cached files\n3. Try a different browser/network\n4. Check platform status\n\n# Question typo or content issue\nUse in-app question flagging to report inaccuracies.\n\n# Contact support\nOpen a ticket through the support page and include:\n- account email\n- issue summary\n- steps to reproduce\n- screenshot if available"
+    },
+    "contextualHelpIds": [],
+    "fags": [
+        {
+            "question": "My exam timer ran out before I finished. What should I do?",
+            "answer": "Review pacing metrics in your results, then run shorter timed drills to build speed before your next full simulation."
+        },
+        {
+            "question": "I lost internet during an exam.",
+            "answer": "Reconnect quickly and reopen your session. Most answers are auto-synced periodically."
+        },
+        {
+            "question": "I forgot my password and have no recovery codes.",
+            "answer": "Use account recovery flow and contact support with verification details if needed."
+        }
+    ],
+    "helpfulCount": 0,
+    "lastUpdatedAt": "2026-05-18T09:01:39.413Z",
+    "notHelpfulCount": 0,
+    "order": 1,
+    "quickFacts": null,
+    "relatedArticles": [
+        "taking-mock-exam",
+        "account-settings",
+        "premium-features"
+    ],
+    "relatedFeaturePages": [
+        "/support",
+        "/settings",
+        "/payment"
+    ],
+    "seoDescription": "Quick fixes for timer, connectivity, scoring, access, and payment concerns.",
+    "seoTitle": "Common Issues & Solutions",
+    "subcategory": null,
+    "subtitle": "Quick fixes for timer, connectivity, scoring, access, and payment concerns.",
+    "title": "Common Issues & Solutions",
+    "viewCount": 2,
+    "wordCount": 164,
+    "estimatedReadingMinutes": 1
+}
+]
