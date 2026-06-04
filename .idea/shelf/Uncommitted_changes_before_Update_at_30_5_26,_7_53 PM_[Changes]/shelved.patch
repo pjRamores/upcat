@@ -1,0 +1,1313 @@
+Index: prompts/reading.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>You are an expert standardized-test item writer and exam editor.\nCreate an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and explanation or solution.\nThe deliverable MUST be a single, cleanly formatted PDF-ready document.\n\nGOAL\nProduce 1 complete mock exam that covers the full scope of the UPCAT-style READING COMPREHENSION subtest.\n\nIMPORTANT CONSTRAINTS\n- Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).\n- Use clear, unambiguous wording; one best answer only.\n- Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.\n- Difficulty mix: 25% easy, 50% medium, 25% hard.\n- Should contain 50% English and 50% Filipino.\n- Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.\n- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.\n\nEXAM BLUEPRINT (EDITABLE DEFAULT)\nCreate a “Full-Length” 100-item and 80-minute mock exam (use 4-6 passages of varying length; include at least 1 paired passage set)\n\nSCOPE + OBJECTIVES (YOU MUST COVER ALL)\nObjectives to include (ensure each appears in multiple items across passages):- Main idea / central claim- Supporting details and evidence- Inference and implied meaning- Tone, purpose, and author’s attitude- Logic/argument structure (claims, reasons, assumptions)- Meaning of words/phrases in context- Synthesis/comparison (especially for paired passages)- Interpreting a short informational element when embedded (e.g., a small table/graph described in text)- Appropriate Title of Selection\n- Author's Point of View\n- Drawing Conclusions\n- Essays, Articles, Speeches\n- Facts and Opinion\n- Procedures\n- Comic Strips, Editorial Cartoon, Graphs\n- Figures of Speech\n- Getting the Main Idea / Topic Sentence\n- Inference\n- Literary and Textual Criticism\n- Meaning Through Context Clues\n- Poetry\n- Mythology and Fables\n- Short Stories\n- Skimming and Scanning Reading Strategies\n\nDOCUMENT REQUIREMENTS (PDF-READY)\nFormat the output as a single document, with each section separated by a page break.\n\nSECTION 1 - The Exam (NO answers here)\nRules for the exam section:\n- Number every item consecutively.\n- Keep formatting clean for printing (consistent spacing, readable line breaks).\n- Avoid putting explanations/solutions in the exam section.\n\nSECTION 2 - Answer Key\n- print in Spreadsheet format\n- The row number should be mapped to the item number in the exam\n\nSECTION 3 - Solutions / Rationales (concise but complete)\nFor EACH item, provide:\n- Correct answer letter\n- 2-6 sentence rationale\n- Tag each item with:\n    - Objective tag (from the objective lists above)\n    - Difficulty tag (Easy/Medium/Hard)\n\nSECTION 4 - Objective Coverage Checklist\nCreate a checklist/table showing each objective and the question IDs that assess it.\nThis must demonstrate that ALL objectives listed above are covered.\n\nQUALITY CONTROL (DO THIS BEFORE FINALIZING)\n- Check that every question has exactly one best answer.\n- Check that distractors are plausible and not obviously wrong.\n- Check that each subtest meets the requested item count and difficulty distribution.\n- Check that objective coverage is complete; if not, revise questions until it is.\n- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.\n- Check numbering consistency and that the answer key matches the questions.\n\nOUTPUT IN PDF\nReturn the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prompts/reading.md b/prompts/reading.md
+--- a/prompts/reading.md	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/prompts/reading.md	(date 1780071859480)
+@@ -6,19 +6,27 @@
+ Produce 1 complete mock exam that covers the full scope of the UPCAT-style READING COMPREHENSION subtest.
+ 
+ IMPORTANT CONSTRAINTS
++
+ - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
+ - Use clear, unambiguous wording; one best answer only.
+ - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
+ - Difficulty mix: 25% easy, 50% medium, 25% hard.
+ - Should contain 50% English and 50% Filipino.
+ - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
+-- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
++- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in
++  question.
+ 
+ EXAM BLUEPRINT (EDITABLE DEFAULT)
+-Create a “Full-Length” 100-item and 80-minute mock exam (use 4-6 passages of varying length; include at least 1 paired passage set)
++Create a “Full-Length” 100-item and 80-minute mock exam (use 4-6 passages of varying length; include at least 1 paired
++passage set)
+ 
+ SCOPE + OBJECTIVES (YOU MUST COVER ALL)
+-Objectives to include (ensure each appears in multiple items across passages):- Main idea / central claim- Supporting details and evidence- Inference and implied meaning- Tone, purpose, and author’s attitude- Logic/argument structure (claims, reasons, assumptions)- Meaning of words/phrases in context- Synthesis/comparison (especially for paired passages)- Interpreting a short informational element when embedded (e.g., a small table/graph described in text)- Appropriate Title of Selection
++Objectives to include (ensure each appears in multiple items across passages):- Main idea / central claim- Supporting
++details and evidence- Inference and implied meaning- Tone, purpose, and author’s attitude- Logic/argument structure (
++claims, reasons, assumptions)- Meaning of words/phrases in context- Synthesis/comparison (especially for paired
++passages)- Interpreting a short informational element when embedded (e.g., a small table/graph described in text)-
++Appropriate Title of Selection
++
+ - Author's Point of View
+ - Drawing Conclusions
+ - Essays, Articles, Speeches
+@@ -40,16 +48,19 @@
+ 
+ SECTION 1 - The Exam (NO answers here)
+ Rules for the exam section:
++
+ - Number every item consecutively.
+ - Keep formatting clean for printing (consistent spacing, readable line breaks).
+ - Avoid putting explanations/solutions in the exam section.
+ 
+ SECTION 2 - Answer Key
++
+ - print in Spreadsheet format
+ - The row number should be mapped to the item number in the exam
+ 
+ SECTION 3 - Solutions / Rationales (concise but complete)
+ For EACH item, provide:
++
+ - Correct answer letter
+ - 2-6 sentence rationale
+ - Tag each item with:
+@@ -61,12 +72,16 @@
+ This must demonstrate that ALL objectives listed above are covered.
+ 
+ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
++
+ - Check that every question has exactly one best answer.
+ - Check that distractors are plausible and not obviously wrong.
+ - Check that each subtest meets the requested item count and difficulty distribution.
+ - Check that objective coverage is complete; if not, revise questions until it is.
+-- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.
++- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D
++  options.
+ - Check numbering consistency and that the answer key matches the questions.
+ 
+ OUTPUT IN PDF
+-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+\ No newline at end of file
++Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF
++export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable
++for PDF generations.
+\ No newline at end of file
+Index: prompts/language.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>You are an expert standardized-test item writer and exam editor.\nCreate an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and explanation or solution.\nThe deliverable MUST be a single, cleanly formatted PDF-ready document.\n\nGOAL\nProduce 1 complete mock exam that covers the full scope of the UPCAT-style LANGUAGE PROFICIENCY subtest.\n\n\nIMPORTANT CONSTRAINTS\n- Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).\n- Use clear, unambiguous wording; one best answer only.\n- Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.\n- Difficulty mix: 25% easy, 50% medium, 25% hard.\n- Should contain 50% English and 50% Filipino\n- Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.\n- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.\n\n\nEXAM BLUEPRINT (EDITABLE DEFAULT)\nCreate a “Full-Length” 80-item and 50-minute mock exam\n\nSCOPE + OBJECTIVES (YOU MUST COVER ALL)\nObjectives to include (ensure each appears in multiple items):- Filipino: Assess proficiency in Filipino grammar, vocabulary, reading comprehension, paragraph analysis, idiomatic expressions, figures of speech, and understanding of the Filipino language and its usage.\n- Grammar and Composition: Evaluate mastery of English grammar, sentence structure, capitalization, punctuation, parts of speech, modifiers, conjunctions, prepositions, verb tenses, subject-verb and pronoun-antecedent agreement, active and passive voice, parallelism, prefixes and suffixes, idiomatic expressions, and correction of common grammatical errors.\n- Vocabulary: Measure vocabulary development through analogies, spelling, idiomatic expressions, synonyms, antonyms, homonyms, word meanings, and basic etymology.\n- Sentence structure: fragments/run-ons, coordination/subordination, clarity and concision- Punctuation and mechanics: commas, semicolons, apostrophes, capitalization (reasonable l80el)- Diction/word choice: precise vocabulary in context, commonly confused words- Error identification/sentence improvement: choose the best revision for correctness and style\n\n\nDOCUMENT REQUIREMENTS (PDF-READY)\nFormat the output as a single document, with each section separated by a page break.\n\nSECTION 1 - The Exam (NO answers here)\nRules for the exam section:\n- Number every item consecutively.\n- Keep formatting clean for printing (consistent spacing, readable line breaks).\n- Avoid putting explanations/solutions in the exam section.\n\nSECTION 2 - Answer Key\n- print in Spreadsheet format\n- The row number should be mapped to the item number in the exam\n\nSECTION 3 - Solutions / Rationales (concise but complete)\nFor EACH item, provide:\n- Correct answer letter\n- 2-6 sentence rationale (or step-by-step math/science solution when needed)\n- Tag each item with:\n    - Objective tag (from the objective lists above)\n    - Difficulty tag (Easy/Medium/Hard)\n\nSECTION 4 - Objective Coverage Checklist\nCreate a checklist/table showing each objective and the question IDs that assess it.\nThis must demonstrate that ALL objectives listed above are covered.\n\nQUALITY CONTROL (DO THIS BEFORE FINALIZING)\n- Check that every question has exactly one best answer.\n- Check that distractors are plausible and not obviously wrong.\n- Check that each subtest meets the requested item count and difficulty distribution.\n- Check that objective coverage is complete; if not, revise questions until it is.\n- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.\n- Check numbering consistency and that the answer key matches the questions.\n\nOUTPUT IN PDF\nReturn the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prompts/language.md b/prompts/language.md
+--- a/prompts/language.md	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/prompts/language.md	(date 1780071859477)
+@@ -5,42 +5,54 @@
+ GOAL
+ Produce 1 complete mock exam that covers the full scope of the UPCAT-style LANGUAGE PROFICIENCY subtest.
+ 
+-
+ IMPORTANT CONSTRAINTS
++
+ - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
+ - Use clear, unambiguous wording; one best answer only.
+ - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
+ - Difficulty mix: 25% easy, 50% medium, 25% hard.
+ - Should contain 50% English and 50% Filipino
+ - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
+-- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
+-
++- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in
++  question.
+ 
+ EXAM BLUEPRINT (EDITABLE DEFAULT)
+ Create a “Full-Length” 80-item and 50-minute mock exam
+ 
+ SCOPE + OBJECTIVES (YOU MUST COVER ALL)
+-Objectives to include (ensure each appears in multiple items):- Filipino: Assess proficiency in Filipino grammar, vocabulary, reading comprehension, paragraph analysis, idiomatic expressions, figures of speech, and understanding of the Filipino language and its usage.
+-- Grammar and Composition: Evaluate mastery of English grammar, sentence structure, capitalization, punctuation, parts of speech, modifiers, conjunctions, prepositions, verb tenses, subject-verb and pronoun-antecedent agreement, active and passive voice, parallelism, prefixes and suffixes, idiomatic expressions, and correction of common grammatical errors.
+-- Vocabulary: Measure vocabulary development through analogies, spelling, idiomatic expressions, synonyms, antonyms, homonyms, word meanings, and basic etymology.
+-- Sentence structure: fragments/run-ons, coordination/subordination, clarity and concision- Punctuation and mechanics: commas, semicolons, apostrophes, capitalization (reasonable l80el)- Diction/word choice: precise vocabulary in context, commonly confused words- Error identification/sentence improvement: choose the best revision for correctness and style
++Objectives to include (ensure each appears in multiple items):- Filipino: Assess proficiency in Filipino grammar,
++vocabulary, reading comprehension, paragraph analysis, idiomatic expressions, figures of speech, and understanding of
++the Filipino language and its usage.
+ 
++- Grammar and Composition: Evaluate mastery of English grammar, sentence structure, capitalization, punctuation, parts
++  of speech, modifiers, conjunctions, prepositions, verb tenses, subject-verb and pronoun-antecedent agreement, active
++  and passive voice, parallelism, prefixes and suffixes, idiomatic expressions, and correction of common grammatical
++  errors.
++- Vocabulary: Measure vocabulary development through analogies, spelling, idiomatic expressions, synonyms, antonyms,
++  homonyms, word meanings, and basic etymology.
++- Sentence structure: fragments/run-ons, coordination/subordination, clarity and concision- Punctuation and mechanics:
++  commas, semicolons, apostrophes, capitalization (reasonable l80el)- Diction/word choice: precise vocabulary in
++  context, commonly confused words- Error identification/sentence improvement: choose the best revision for correctness
++  and style
+ 
+ DOCUMENT REQUIREMENTS (PDF-READY)
+ Format the output as a single document, with each section separated by a page break.
+ 
+ SECTION 1 - The Exam (NO answers here)
+ Rules for the exam section:
++
+ - Number every item consecutively.
+ - Keep formatting clean for printing (consistent spacing, readable line breaks).
+ - Avoid putting explanations/solutions in the exam section.
+ 
+ SECTION 2 - Answer Key
++
+ - print in Spreadsheet format
+ - The row number should be mapped to the item number in the exam
+ 
+ SECTION 3 - Solutions / Rationales (concise but complete)
+ For EACH item, provide:
++
+ - Correct answer letter
+ - 2-6 sentence rationale (or step-by-step math/science solution when needed)
+ - Tag each item with:
+@@ -52,12 +64,16 @@
+ This must demonstrate that ALL objectives listed above are covered.
+ 
+ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
++
+ - Check that every question has exactly one best answer.
+ - Check that distractors are plausible and not obviously wrong.
+ - Check that each subtest meets the requested item count and difficulty distribution.
+ - Check that objective coverage is complete; if not, revise questions until it is.
+-- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.
++- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D
++  options.
+ - Check numbering consistency and that the answer key matches the questions.
+ 
+ OUTPUT IN PDF
+-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+\ No newline at end of file
++Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF
++export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable
++for PDF generations.
+\ No newline at end of file
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># upcat
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/README.md	(date 1780072863497)
+@@ -1,1 +1,904 @@
+-# upcat
+\ No newline at end of file
++# UPCAT Simulator
++
++> A free, full-stack practice platform for the **UP College Admission Test (UPCAT)** – timed mock exams, instant
++> scoring, per-subject analytics, and a review mode that explains every answer.
++
++> ▲ **Disclaimer** – This project is an **independent, non-commercial study aid**. It is **not affiliated with,
++endorsed by, or sponsored by** the University of the Philippines or the UP Office of Admissions. All question content is
++> contributed by volunteers for educational purposes only.
++
++<p>
++<a href="https://upcat-simulator.example.com">Live demo </a>
++</p>
++
++## Tech stack
++
++![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
++![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript&logoColor=white)
++![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
++![Tailwind](https://img.shields.io/badge/Tailwind-4-38BDF8?logo=tailwindcss&logoColor=white)
++![MongoDB](https://img.shields.io/badge/MongoDB-6-47A248?logo=mongodb&logoColor=white)
++![Cloudflare](https://img.shields.io/badge/Cloudflare-Pages-F38020?logo=cloudflare&logoColor=white)
++![Vercel](https://img.shields.io/badge/Vercel-Functions-000?logo=vercel&logoColor=white)
++![AWS](https://img.shields.io/badge/AWS-Lambda%20%2B%20S3-FF9900?logo=amazonaws&logoColor=white)
++![License](https://img.shields.io/badge/license-MIT-blue)
++
++## Features
++
++- **Authentic exam flow** – 4 subjects (Language Proficiency, Reading Comprehension, Science, Math), timed, randomized
++  question order
++- **Practice modes** – full mock or per-subject quick drill
++- **Instant scoring + breakdown** by subject, difficulty, and topic
++- **Review mode** – see correct answer + worked solution for every item
++- **Stats dashboard** – progress over time, weak areas, leaderboard
++- **Account system** – email verification, password reset (via Resend)
++- **Accessible** – skip-link, focus management, reduced-motion support
++- **Code-split** routes with a hardened security baseline (CSP/HSTS/X-Frame-Options)
++
++## Screenshots
++
++| Landing       | Dashboard     | Exam          | Results       |
++|---------------|---------------|---------------|---------------|
++| _placeholder_ | _placeholder_ | _placeholder_ | _placeholder_ |
++
++## Prerequisites
++
++- **Node.js 20+** (use `nvm`/`fnm` to pin)
++- **MongoDB Atlas** account (free M0 cluster is enough to start)
++- **Resend** API key for transactional email (verify, reset)
++- One of:
++    - **Vercel** account (simplest path), _or_
++    - **AWS** account with permissions for S3, CloudFront, Lambda, API Gateway, SSM
++
++## Getting started
++
++```bash
++# 1. Clone
++git clone https://github.com/your-org/upcat-simulator.git
++cd upcat-simulator
++```
++
++# 2. Install (npm workspaces)
++
++npm install
++
++# 3. Configure environment
++
++cp client/.env.example client/.env
++cp api/.env.example api/.env
++
++# Edit api/.env and fill in MONGODB URI, JWT_SECRET, EMAIL_SERVICE_API_KEY, ...
++
++# 4. One-time DB bootstrap
++
++npm run setup:indexes # creates MongoDB indexes
++npm run seed # safe insert (skips if collection non-empty)
++npm run seed --workspace=api
++
++# npm run seed:clean # wipe & reseed
++
++# 5. Run locally
++
++npm run dev # Vite on :5173
++npm run dev:api # vercel dev on :3001 (in another terminal)
++
++# 6. Run all E2E tests (from project root)
++
++npm run e2e
++
++# (from client folder)
++
++npx playwright test e2e/01-public-pages.spec.ts
++npx playwright test e2e/01-public-pages.spec.ts --grep "redirects to /login when unauthenticated"
++
++# 7. Open video/HTML report after run
++
++npm run e2e:report
++
++```
++
++Open <http://localhost:5173>.
++
++### End-to-end test
++
++```bash
++API_BASE_URL=http://localhost:3001/api \
++MONGODB_URI=mongodb+srv://... \
++MONGODB_DB_NAME=upcat_simulator \
++npm run test:integration
++```
++
++Registers a temp user, runs the full exam flow, fetches stats, and cleans up. Exits non-zero on any failure.
++
++## Deployment
++
++This project supports **three deployment options** for maximum flexibility:
++
++### Option A – Cloudflare Pages + Workers (Recommended Primary)
++
++Cloudflare provides zero cold-start latency, global edge network, and integrated DDoS protection.
++
++**Setup:**
++
++1. Create a Cloudflare account and note your **Account ID** and **Zone ID**.
++2. Install Wrangler: `npm install -g wrangler`
++3. Configure [wrangler.toml](wrangler.toml) with your IDs:
++   ```toml
++   account_id = "YOUR_ACCOUNT_ID_HERE"
++   zone_id = "YOUR_ZONE_ID_HERE"
++   ```
++
++4. Set environment secrets:
++   ```bash
++   wrangler secret put MONGODB_URI
++   wrangler secret put JWT_SECRET
++   wrangler secret put EMAIL_SERVICE_API_KEY
++   # ... add all secrets from api/..env.example
++   ```
++
++5. Deploy:
++   ```bash
++   DEPLOY_TARGET=cloudflare ./scripts/deploy.sh
++   ```
++
++**GitHub Actions CI/CD:**
++
++Add the official [cloudflare/wrangler-action](https://github.com/cloudflare/wrangler-action) to your workflow. Set
++`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_PROJECT_NAME` as repository secrets.
++
++**Key benefits:**
++
++- ✓ Zero cold-start latency (always warm)
++- ✓ Global edge network (automatic geo-replication)
++- ✓ Native DDoS protection
++- ✓ Built-in analytics and logging
++- ✓ Cheaper than Lambda for consistent traffic
++
++**Troubleshooting:**
++
++- If `wrangler deploy` fails, ensure `CLOUDFLARE_API_TOKEN` has `account:cloudflare_pages:edit` permission.
++- Check the [Cloudflare Pages docs](https://developers.cloudflare.com/pages/) for region/timeout limits.
++
++---
++
++### Option B – Vercel (Flexible Alternative)
++
++Vercel offers integrated preview deployments, automatic CI/CD, and simplicity.
++
++**Setup:**
++
++1. Link your GitHub repo to Vercel.
++2. Set environment variables in the Vercel Dashboard:
++   ```bash
++   MONGODB_URI
++   JWT_SECRET
++   EMAIL_SERVICE_API_KEY
++   FRONTEND_URL
++   # ... all from api/..env.example
++   ```
++
++3. Deploy:
++   ```bash
++   npm i -g vercel
++   vercel link          # one-time
++   VERCEL_PROD=1 ./scripts/deploy.sh
++   ```
++
++Or push to `main` – the [GitHub Actions workflow](/.github/workflows/deploy.yml) will run lint/typecheck/build and
++deploy via `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID` secrets.
++
++**Key benefits:**
++
++- ✓ Integrated preview deployments per PR
++- ✓ Automatic CI/CD via GitHub integration
++- ✓ One-click rollbacks
++- ✓ Built-in analytics
++- ✓ Simpler local development with `vercel dev`
++
++**Limitations:**
++
++- Cold-start latency on serverless functions (~100-500ms)
++- Best for variable workloads; less cost-efficient for consistent high traffic
++
++---
++
++### Option C – AWS (S3 + CloudFront + Lambda)
++
++For organizations already invested in AWS infrastructure.
++
++**Setup:**
++
++Reference IaC fragments live in [infra/aws/](infra/aws). End-to-end flow:
++
++1. Create the S3 bucket + CloudFront distribution
++   from [infra/aws/cloudfront-distribution.json](infra/aws/cloudfront-distribution.json) (SPA fallback: 403/404 →
++   `/index.html`).
++2. Push all secrets to **SSM Parameter Store** under `/upcat/prod/...` (commands
++   in [infra/aws/README.md](infra/aws/README.md)).
++3. Deploy:
++   ```bash
++   DEPLOY_TARGET=aws \
++   AWS_REGION=ap-southeast-1 \
++   S3_BUCKET=upcat-frontend \
++   CLOUDFRONT_DISTRIBUTION_ID=ABCDEFG \
++
++```json
++[
++  scripts/deploy.sh
++](scripts/deploy.sh) builds the Vite bundle, syncs to S3 with the correct cache headers, invalidates
++CloudFront, and runs `serverless deploy` for the Lambda backend defined in [serverless.yml](serverless.yml).
++
++**GitHub Actions CI/CD: **
++Dispatch the [Deploy workflow](.github/workflows/deploy.yml) with input `target=aws`; OIDC role assumption uses
++`AWS_DEPLOY_ROLE_ARN`.
++
++**Key benefits: **
++
++- Full control of infrastructure
++- Can integrate with existing AWS services (RDS, Secrets Manager, etc.)
++- Predictable cost for stable workloads
++
++**Considerations: **
++
++- More setup and maintenance required
++- Cold-start latency on Lambda functions
++- Requires AWS CLI and Serverless Framework
++
++---
++
++### Comparison Matrix
++
++| Feature | Cloudflare | Vercel | AWS |
++| : --- |: --- |: --- |:--- |
++| **Cold-start latency** | ~0ms | ~100-500ms | ~100-500ms |
++| **Global CDN** | Yes (global edge) | Yes | Yes (CloudFront) |
++| **Setup complexity** | Low | Very low | Medium-High |
++| **Cost model** | Pay-per-request | Generous free tier | Pay-per-GB/hour |
++| **CI/CD integration** | GitHub Action | Native | GitHub Action |
++| **Preview deployments** | Limited | Excellent | Manual |
++| **Recommended for** | Production traffic | Development/staging | Large enterprises |
++
++---
++
++For a detailed deployment guide covering environment setup, secret management, and troubleshooting,
++see [DEPLOYMENT.md
++](DEPLOYMENT.md).
++
++## API reference
++
++All routes are mounted under `/api`. Auth-protected routes expect `Authorization: Bearer <jwt>`.
++
++### Auth (`/api/auth`)
++
++| Method | Path | Auth | Description |
++|: --- |: --- |: --- |: --- |
++| POST | `/register` | - | Create account, send verification email |
++| POST | `/verify-email` | - | Confirm email with one-time token |
++| POST | `/login` | - | Returns JWT and user profile |
++| GET | `/me` | √ | Current user profile |
++| POST | `/forgot-password` | - | Send password-reset email |
++| POST | `/reset-password` | - | Set new password with reset token |
++
++### Exam (`/api/exam`)
++
++| Method | Path | Auth | Description |
++|: --- |: --- | : --- |: --- |
++| POST | `/start` | √ | Create a new exam session (`mode: "full" \| "subject"`) |
++| GET | `/sessions` | √ | List user's exam sessions |
++| GET | `/sessionId/questions` | √ | Fetch questions for a session |
++| POST | `/sessionId/answer` | √ | Record a single answer |
++| POST | `/sessionId/answer-bulk` | √ | Record many answers in one round-trip |
++| POST | `/sessionId/submit` | √ | Finalize, compute score, persist results |
++| GET | `/sessionId/review` | √ | Per-question review with correct answer + explanation |
++
++### Stats (`/api/stats`)
++
++| Method | Path | Auth | Description |
++|: --- |: --- |: --- | : --- |
++| GET | `/overview` | √ | High-level KPIs (avg score, sessions, streak) |
++| GET | `/summary` | √ | Detailed score summary |
++| GET | `/subject-breakdown` | √ | Score by subject |
++| GET | `/difficulty-breakdown` | √ | Score by question difficulty |
++| GET | `/progress-over-time` | √ | Time-series of scores |
++| GET | `/weak-areas` | √ | Topics with lowest accuracy |
++| GET | `/leaderboard` | - | Anonymized top scores |
++
++### Misc
++
++| Method | Path | Auth | Description |
++|: --- |: --- |: --- |: --- |
++| POST | `/contact` | - | Submit contact form (rate-limited 3/hour/IP) |
++| GET | `/health` | - | AWS deployment only - liveness probe |
++
++## Security
++
++The platform applies defense-in-depth across the stack: - **HTTP headers** – CSP, HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy,
++Permissions-Policy – enforced via `vercel.json` and a CloudFront `ResponseHeadersPolicy`.
++- **CORS** allow-list – only `FRONTEND_URL` (plus localhost in dev) is accepted; preflight handled
++in [api/src/security.ts
++](api/src/security.ts).
++- **Rate limiting** – MongoDB sliding-window limiter: - Auth endpoints: **5** / min / IP**
++- Exam endpoints: **30** / min / user**
++- Contact form: **3** / hour / IP**
++- Stats: **60** / min / user**
++- **Input sanitization** – server-side `sanitizeText` strips HTML/control chars; client uses DOMPurify before rendering
++```json
++user-supplied strings.
++- **MongoDB** – only the official Node driver with parameterized filters; no string interpolation into query bodies.
++- **JWT** – HMAC-SHA256 with a 256-bit secret pulled from SSM (`SecureString`).
++- **Secrets** – never committed; loaded from Vercel env or AWS SSM Parameter Store.
++
++## Project structure
++
++```json
++upcat/
++client/                # Vite + React + Tailwind 4 frontend
++src/
++components/           # Navbar, Footer, Modal, Toast, Seo, ...
++pages/                 # Landing, Login, Dashboard, Exam, Stats, ...
++stores/                # Zustand stores
++router.tsx            # Code-split routes
++main.tsx              # App entry – ErrorBoundary > HelmetProvider > Router
++.env.example
++api/                  # Vercel-style serverless functions
++functions/             # auth/ exam/ stats/ contact
++src/                  # db, auth, email, security, exam/stats helpers
++scripts/              # setup-indexes, seed
++lambda.ts              # AWS Lambda entry (wraps functions with express)
++.env.example
++shared/                # Types shared by client + api
++infra/aws/             # S3 + CloudFront IaC reference docs
++scripts/
++deploy.sh            # One-shot AWS deployment
++test-integration.mjs   # End-to-end API smoke test
++github/workflows/
++ci.yml               # Lint + typecheck + test + build on PR
++deploy.yml            # Deploy to Vercel/AWS on push to main
++serverless.yml        # Lambda + API Gateway config
++vercel.json            # Vercel rewrites + security headers
++package.json          # npm workspaces root
++```
++
++## Contributing
++
++1. Fork and create a feature branch from `main`.
++2. Run `npm install` then `npm run dev` + `npm run dev:api`.
++3. Keep changes focused; one feature/fix per PR.
++4. Match existing style – TypeScript strict, ESLint clean, no `any` without a reason.
++5. Before pushing: `npm run lint`, type-check both workspaces, and add/update tests where practical.
++6. Open a PR – CI will run lint, type-check, and the build.
++
++Bug reports and question contributions are welcome via GitHub Issues. For question submissions please include the source
++citation; we do not accept content copied from copyrighted review materials.
++
++## License
++
++[MIT](LICENSE) © UPCAT Simulator contributors.
++
++## Social Login (Phase 10)
++
++Reviewees can sign up or sign in with Google, LinkedIn, or Facebook in addition to email/password. Multiple social
++accounts can be linked to the same user. Admins enable each provider at runtime under `/admin/auth-providers`.
++
++### Required environment variables (api/.env)
++
++| Variable              | Required | Description                                                                                                    |
++|:----------------------|:---------|:---------------------------------------------------------------------------------------------------------------|
++| `MONGODB_URI`         | yes      | Mongo connection string.                                                                                       |
++| `JWT_SECRET`          | yes      | Symmetric secret for the user JWT (HS256).                                                                     |
++| `ENCRYPTION_KEY`      | yes      | 64-character hex (= 32 bytes) AES-256-GCM key used to encrypt OAuth client secrets and stored provider tokens. |
++| `RESEND_API_KEY`      | optional | Outbound email (verification + password reset).                                                                |
++| `ADMIN_SEED_PASSWORD` | optional | Used by `npm run seed` to create the default admin user.                                                       |
++
++Provider client IDs / client secrets / redirect URIs / scopes are **not** read from env; they live in the
++`auth_provider_settings` MongoDB document and are edited from the admin UI. Secrets are encrypted at rest with
++`ENCRYPTION_KEY`.
++
++### One-time migration
++
++After deploying Phase 10, run:
++
++```bash
++cd api
++npm run setup-indexes    # creates new indexes (user_identities, oauth_state, ↵)
++npm run migrate:auth     # backfills users.auth and seeds auth_provider_settings
++```
++
++### New API endpoints
++
++Public:
++
++- `GET` /api/auth/providers` ↵ which providers are enabled (clientId only).
++- `POST` /api/auth/social/:provider/start` ↵ begin OAuth (PKCE + state + nonce).
++- `POST` /api/auth/social/:provider/callback` ↵ exchange code, log in or link.
++
++Authenticated:
++
++- `GET` /api/auth/linked-accounts`
++- `POST` /api/auth/unlink`
++- `POST` /api/auth/set-password`
++- `DELETE` /api/account` ↵ permanent account deletion.
++
++Admin:
++
++- `GET` /api/admin/auth/providers`
++- `PUT` /api/admin/auth/providers/:provider`
++- `POST` /api/admin/auth/providers/:provider/test`
++
++### Security notes
++
++- Authorization Code Flow with **PKCE (S256)** is mandatory.
++- `state` is single-use and TTL-protected (10 min) via the `oauth_state` collection (TTL index on `expiresAt`).
++- OIDC `id_token` signatures are verified against the provider JWKS; `iss`,
++- `aud`, `nonce`, and `exp` are all checked.
++- Client secrets and stored OAuth tokens are encrypted with AES-256-GCM and versioned (`v1:iv:tag:ct`) so future key
++  rotations remain backward-compatible.
++- `/api/auth/social/:provider/start` and `/callback` are rate-limited to 10 req/min/IP.
++- Unlinking the last sign-in method is blocked when the user has no password set ("Set a password first or keep at least
++  one linked provider.").
++
++## Account recovery, support, and data rights (Phase 11)
++
++The platform ships a full **account-recovery, support, and GDPR-style data-rights** stack built into the same workspace,
++no external services required beyond Resend for email and MongoDB for storage.
++
++### Reviewee surface
++
++- **Recovery codes** Generate 10 single-use codes from /settings (bcrypt-hashed).
++- **Security questions** Pick 3 of 10 from the bank; answers are bcrypt-hashed.
++- **Account recovery flow** /recover-account offers three pathways (recovery code, security questions, contact support);
++  successful verification issues a short-lived recovery JWT and routes to /recover-account/reset.
++- **Support tickets** /support lists the user's tickets; new ticket modal + /support/:ticketNumber thread for replies.
++  Guests can open a ticket via /support/guest (math CAPTCHA + honeypot, rate-limited).
++- **Data export** /settings panel lets users pick what to include (profile, exam history, stats, activity log), pick
++  JSON or CSV, and download a packaged blob (inline =12 MB, GridFS bucket above). Limited to 1 export per 24 hours.
++- **Scheduled deletion** /settings danger zone schedules deletion with a 7-day grace period. The user receives an email
++  with a one-click confirm + cancel link (48-hour confirm TTL); /account/deletion/confirm handles the public landing.
++  The deletion runs via the hourly cron job and emails a final receipt.
++
++### Admin surface
++
++- **/admin/support** KPI dashboard (open, in-progress, awaiting-user, average resolution time, oldest open, 30-day
++  open/resolve trend, by-type and by-priority breakdowns, recent feed).
++- **/admin/support/tickets** Filterable table (status, type, priority, search, pagination).
++- **/admin/support/tickets/:n** Thread + reply (with **internal note** toggle), status/priority/assignee controls,
++  identity-verification modal, unlock-account shortcut, link to the merge wizard.
++- **/admin/support/merge** 6-step wizard for combining two accounts (re-auth with admin password, transfers
++  user_identities, optional exam_sessions, always contact_messages; soft-deletes secondary with mergedInto stamp).
++- **/admin/support/identity-disputes** List + inline decision modal (transfer_identity, reject_claim, remove_identity).
++- **/admin/data-requests** Three tabs: Exports, Deletions, Deletion Log (with emailHash search for compliance look-ups).
++
++### Backend infrastructure
++
++- **Endpoints** added under /api/auth/recovery-codes, /api/auth/security-questions, /api/auth/recover-account,
++  /api/account/data-export, /api/account/deletion-request, /api/support/tickets (+ /guest, /captcha),
++  /api/admin/support/*,
++- /api/admin/support/merge-accounts, /api/admin/support/identity-disputes, /api/admin/data-requests,
++  /api/admin/deletion-log, /api/admin/users/:id/unlock.
++- **Login lockout** Soft (5 fails ? 15 min), medium (10 ? 1 h, locked-email), hard (20 ? indefinite). Returns 423 when
++  blocked.
++- **Cron jobs** (configured in vercel.json crons):
++    - **execute-deletions** (hourly) runs due deletion requests.
++    - **cleanup-exports** (every 6 h) removes expired export blobs.
++    - **auto-close-tickets** (daily) auto-closes awaiting_user tickets >14 d.
++    - **inactivity-check** (weekly) reminder at 365 d, flag at 730 d.
++      All cron endpoints require the SCHEDULED_FUNCTIONS_SECRET env var (Bearer or ?secret=).
++- **Email templates** 12 new transactional templates: export ready, deletion requested/confirmed/executed/cancelled,
++  ticket received/update, account merged, dispute notification/resolved, account locked, inactivity reminder. All routed
++  through `safeSend` which no-ops when `RESEND_API_KEY` is absent.
++- **Indexes** Added in `api/src/setup-indexes.ts` for recovery_codes, support_tickets, data_requests, identity_disputes,
++  deletion_log, and a shared counters collection (ticket numbers).
++- **CAPTCHA** HMAC-SHA256 signed stateless math challenge with 10-min TTL.
++- **Storage** Exports inline as `Binary` =12 MB, otherwise GridFS bucket `data_exports`. Tombstones in `deletion_log`for
++  compliance audit (only emailHash retained, never the address itself).
++
++### Environment variables
++
++Add to `api/.env`:
++
++```bash
++ash
++SCHEDULED_FUNCTIONS_SECRET=use-a-strong-random-string
++CAPTCHA_HMAC_SECRET=another-strong-random-string
++```
++
++When deploying to Vercel, also configure these in the project's environment variables. The 4 cron jobs are wired
++automatically via the `crons` block in `vercel.json`.
++
++---
++Spaced-repetition practice mode and PWA / offline support are scoped for follow-up phases.
++
++### Mechanics
++
++- **XP curve**: level N requires `floor(100 * (N-1)^1.5)` cumulative XP, capped at level 100 (UPCAT Champion). Titles
++  change every 10 levels.
++- **Streak multipliers**: x1.00 (0-2 days), x1.25 (3-6), x1.50 (7-13), x1.75 (14-29), x2.00 (30+). Multiplier is applied
++  to every XP grant except the daily-login bonus and admin grants.
++- **Per-event XP**: (configurable through the achievements/challenges catalog, default values in `XP_REWARDS`):
++    - Exam completion: 50 + 2/correct + 25 (≥80%) + 50 (≥90%) + 200 (perfect)
++    - Per-subject perfect: 30
++    - Daily login: 10 (no multiplier)
++    - Review all incorrect: 20
++- **Achievements**: 30+ seeded across `milestone`, `performance`, `streak`, `dedication`, `mastery`, and `social`
++  categories with five rarities (common → legendary). Each unlock awards XP + points and emits a toast.
++- **Weekly challenges**: a single random challenge is assigned every Monday (cron `assign-weekly-challenges`) drawn from
++  `weekly_challenges_catalog`, weighted by `weight`. Progress increments on exam/practice activity; rewards are paid on
++  the next API call after the target is met.
++
++### New collections & indexes
++
++- `xp_transactions` – every XP grant. Indexed by `userId+createdAt`.
++- `achievements_catalog` – definitions seeded by `seed.js` or by the admin "Re-seed defaults" button. Unique on `id`.
++- `weekly_challenges_catalog` – same shape. Unique on `id`.
++
++The `users.gamification` sub-document holds level/XP/streak/stats. Legacy users are auto-backfilled with a default block
++on first read.
++
++### Endpoints
++
++- `GET /api/gamification/profile` – full profile (level, streak, recent XP).
++- `GET /api/gamification/achievements` – every catalog entry + per-user progress and unlock state (hidden achievements
++  remain blanked until unlocked).
++- `GET /api/gamification/leaderboard?scope=weekly|monthly|all_time`
++- `GET /api/gamification/weekly-challenge` – active challenge for caller.
++- `POST /api/gamification/dismiss-notifications` – acknowledges pending achievement notifications so they stop nagging.
++- `GET /api/admin/gamification` – admin overview stats.
++- `POST /api/admin/gamification/grant-xp` – manually award/penalise XP.
++- `GET/POST/DELETE /api/admin/gamification/achievements[/:id]`
++- `GET/POST /api/admin/gamification/challenges`
++
++### Frontend
++
++- **`/profile`** – level / XP progress, streak meter, weekly challenge, recent XP transactions, and the achievement
++  gallery (filterable by category).
++- **`/leaderboard`** – weekly / monthly / all-time tabs; the current user's rank is highlighted (or pinned below the
++  table when off-screen).
++- **`Dashboard`** – new gradient card surfaces level + XP progress + streak.
++- **`Admin → Gamification`** – overview tiles, achievements table (with deactivate + re-seed), challenges table, and a
++  manual grant-XP form.
++- **`XpAwardOverlay`** + **`AchievementToast`** – celebration UI that fires on the Results page after every exam (driven
++  by the `gamification` envelope returned from `POST /api/exam/:sessionId/submit`).
++
++### Cron
++
++Phase 12 adds one extra cron entry in `vercel.json`:
++
++```bash
++ash
++0 4 * * 1 /api/cron/assign-weekly-challenges
++```
++
++Triggered by Vercel with the standard `Authorization: Bearer <SCHEDULED_FUNCTIONS_SECRET>` header.
++
++### Seeding
++
++`npm run -w api seed` now also calls `seedGamificationCatalogs(db)`,
++upserting the 30+ default achievements and 10 default weekly challenges.
++Re-running is idempotent.
++
++---
++
++## Phase 13 – Spaced Repetition Practice Mode
++
++Phase 13 adds a personal **practice deck** powered by a relaxed SM-2 spaced-repetition algorithm. Every question a user
++gets wrong on an exam is automatically enrolled as a practice card; cards then resurface on a schedule that adapts to
++how well the user remembers them.
++
++### Card lifecycle & SM-2
++
++Cards transition through four statuses:
++
++```text
++new → learning → review → mastered
++```
++
++Each card stores an **ease factor** (default 2.5, floor 1.3, ceiling 3.0), an **interval** (days until next review), and
++a **repetitions** counter. The user rates each answered card on a four-button scale:
++
++| Rating | Effect on ease | Interval |
++|:-------|:---------------|:---------|
++
++```json
++|---------|----------------|--------------------------------|
++| Again   | -0.20          | reset to learning (interval 0) |
++| Hard    | -0.15          | x `max(0.5 - ease, 1.2)` |
++| Good    | unchanged      | x ease (standard SM-2) |
++| Easy    | +0.15          | x ease x 1.3 |
++
++A card is promoted to **mastered** once its interval reaches 30 days *and* its ease is at least 2.5. A lapse ("Again") demotes it back to learning.
++
++### Modes
++
++- **Review Due** – only cards whose `nextReviewDate ≤ now`.
++- **Weak Areas** – auto-targets the two subjects with the lowest accuracy across your deck, then fills with due + a few new cards.
++- **Subject Focus** – restrict practice to a single subject area.
++- **Mixed** – due cards plus a small batch of fresh ones to keep the deck moving when nothing is overdue.
++
++### Endpoints
++
++| Route | Method | Purpose |
++|: --- | : --- |: --- |
++| `/api/practice/start` | POST | Pick cards + create a new session. |
++| `/api/practice/: sessionId/answer` | POST | Grade a card; reveal answer + rationale. |
++| `/api/practice/: sessionId/rate` | POST | Apply SM-2 rating; advance card schedule. |
++| `/api/practice/:sessionId/complete` | POST | Finalize, award XP, evaluate achievements. |
++| `/api/practice/stats` | GET | Deck snapshot + 7-day review forecast. |
++| `/api/practice/cards` | GET | Paginated deck browser (filter + search). |
++
++`POST /api/exam/: sessionId/submit` is also extended: incorrect questions are now appended to the user's deck via `addCardsForQuestions`, and the response envelope includes `practiceCardsAdded`.
++
++### Gamification wiring
++
++Completing a practice session calls the same `applyRewards` / weekly challenge / achievement evaluator path as exam submit: - `+XP_REWARDS.PRACTICE_COMPLETED` (default **30 XP**) for finishing.
++- `+XP_REWARDS.PRACTICE_PER_CORRECT x correctCount` (default **2 XP** each).
++- Bumps `gamification.stats.practiceSessions`, feeding the `practiceSessions` achievement condition.
++- Updates weekly-challenge counters `practice_sessions` and `questions_correct`.
++
++### Collections & indexes
++
++`practice_cards` (per-user x question): - unique compound `{userId: 1, questionId: 1}`
++- `{userId: 1, status: 1, nextReviewDate: 1}` – daily-due query
++- `{userId: 1, subjectArea: 1, status: 1}` – subject focus & weak areas
++
++`practice_sessions`: - `{userId: 1, startedAt: -1}` – session history
++- `{userId: 1, status: 1, completedAt: -1}` – recent completions
++
++All Phase 13 indexes are created by `npm run -w api setup-indexes`.
++
++### Client pages
++
++- **`/practice`** – landing page with the mode picker, deck-overview tiles (deck size, due today, mastered, retention), and recent sessions.
++- **`/practice/: sessionId`** – card-by-card flashcard UI: answer → reveal correctness + rationale → rate (Again / Hard / Good / Easy) → next card. On the final card, the session is finalized and the standard `XpAwardOverlay` + `AchievementToast` celebration UI fires.
++- **`/practice/stats`** – deck health: status breakdown, retention %, per-subject table, 7-day review forecast, and a paginated card browser with status / search filters.
++
++The Dashboard also surfaces an **"X cards due today""** call-to-action card once the user's deck is non-empty.
++
++## Phase 14 – PWA, Offline Cache & Push Notifications
++
++Phase 14 ships the final subsystem: an installable Progressive Web App, a service worker with offline caching, and Web Push notifications driven by VAPID keys and Vercel cron.
++
++### Installable PWA
++
++- [`client/public/manifest.webmanifest`](client/public/manifest.webmanifest)
++declares the app identity, theme color, icons (192/512/maskable + SVG), and two app shortcuts (Dashboard, Practice).
++- Icons are generated by a zero-dependency Node script: `node client/scripts/generate-pwa-icons.mjs`. Re-run it whenever the brand mark or palette changes.
++- [`InstallPwaCard`
++](client/src/components/InstallPwaCard.tsx) listens for the browser's `beforeinstallprompt` event and surfaces an unobtrusive bottom-right card. Dismissals are remembered for `PWA_INSTALL_DISMISS_DAYS` (7) days; it never appears when the app is already running in standalone mode.
++
++### Service worker (offline + caching)
++
++[
++`client/public/service-worker.js`](client/public/service-worker.js) registers under scope `/` and uses three caches: | Cache | Strategy | Contents |
++|: --- |: --- |: --- |
++| `SHELL_CACHE` | cache-first (pre-cached on install) | `/`, `/index.html`, `/manifest.webmanifest`, brand icons |
++| `RUNTIME_CACHE` | cache-first + stale-while-revalidate | hashed JS/CSS chunks, fonts, images |
++```json
++| `API_CACHE`      | network-first with 24h TTL           | allow-listed read-only API endpoints
++
++The cacheable API allow-list is intentionally narrow – only `/api/announcements`,
++`/api/status`, `/api/practice/stats`, and `/api/gamification/profile`. Authenticated
++mutations always go to the network. Navigation requests fall back to a
++minimal inline HTML page when offline.
++
++### Push notifications (Web Push + VAPID)
++
++- Server uses [`web-push`
++](https: //www.npmjs.com/package/web-push). On
++push failure with `404` / `410`, the subscription is auto-pruned;
++other errors increment `failureCount`.
++- VAPID keys are read from environment variables – set them once per
++deployment: ```bash
++npx web-push generate-vapid-keys
++# then set on Vercel / your host: #   VAPID_PUBLIC_KEY=<generated>
++#   VAPID_PRIVATE_KEY=<generated>
++#   VAPID_SUBJECT=mailto: admin@example.com
++  ```
++
++- The client calls `GET /api/push/public-key` to fetch the public key on
++  demand, subscribes via `PushManager.subscribe`, then POSTs the
++  subscription record to `/api/push/subscribe`.
++
++### API endpoints (Phase 14)
++
++User-facing:
++
++- `GET /api/push/public-key`    - VAPID public key (503 when unset).
++- `POST /api/push/subscribe`    - upsert subscription by endpoint.
++- `POST /api/push/unsubscribe`    - remove a subscription owned by the caller.
++- `GET /api/push/preferences`    - list this user's subscriptions + per-type preferences.
++- `PATCH /api/push/preferences`    - update preferences and/or `reminderTime`
++  (HH:mm, local) for one endpoint or all of the user's endpoints.
++
++Admin-only:
++
++- `POST /api/admin/push/test`    - sends a test push to the admin's own subscriptions.
++- `POST /api/admin/push/broadcast`  - push to every subscription opted in
++  to a notification type; optionally filtered by role.
++
++### Notification types
++
++Five preference keys (`PUSH_NOTIFICATION_TYPES`) in
++[`shared/src/constants.ts`](shared/src/constants.ts)) – every user can
++toggle each one per device:
++
++- `daily_reminder` – gentle nudge at the user's chosen local time.
++- `streak_alert` – evening warning when the streak is about to lapse.
++- `achievement` – fired by the gamification engine on unlock / level-up.
++- `weekly_challenge` – new weekly challenge available.
++- `announcement` – admin-broadcast announcements.
++
++### Cron handlers
++
++Both run on Vercel cron (see [`vercel.json`](vercel.json)):
++
++| Path                        | Schedule       | Purpose                                                                                                                                    |
++|:----------------------------|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
++| `/api/cron/study-reminders` | `0,30 * * * *` | Every 30 min; sends `daily_reminder` to subscriptions whose local time matches `reminderTime` (±30 min) and who haven't been active today. |
++| `/api/cron/streak-warnings` | `0 19 * * * *` | Daily 19:00 UTC; warns users with `streak.current > 0` and no activity today.                                                              
++
++Both endpoints require the `SCHEDULED_FUNCTIONS_SECRET` bearer token –
++Vercel cron is configured to send it automatically.
++
++### Storage & indexes
++
++`push_subscriptions` collection (one document per browser/device):
++
++```ts
++{
++  userId, endpoint /* unique */, keys
++}
++{
++  p256dh, auth
++}
++{
++  userAgent, timezone, reminderTime /* "HH:mm" */,
++  preferences
++}
++{
++  daily_reminder, streak_alert, achievement,
++  weekly_challenge, announcement
++}
++{
++  createdAt, lastUsedAt, failureCount
++}
++```
++
++Indexes created by `npm run -w api setup-indexes`:
++
++- `endpoint_unique` – unique on `endpoint`.
++- `by_user` – `{ userId: 1 }`.
++- `daily_reminder_filter` – `{ "preferences.daily_reminder": 1, reminderTime: 1 }`.
++- `streak_alert_filter` – `{ "preferences.streak_alert": 1, userId: 1 }`.
++
++### Client surfaces
++
++- **Settings → Notifications** – per-device toggles for all 5 types, daily
++  reminder time picker, "Disable on this device" button, and an
++
++```json
++"Enable notifications" CTA when no subscription exists.
++- **Install banner** – global `InstallPwaCard` rendered from `main.tsx`,
++  auto-hidden once installed.
++- **Service worker registration** – `registerServiceWorker()` runs on
++  `window.load`; it skips localhost+DEV to avoid clashing with Vite's HMR.
++
++### Required environment
++
++| Variable | Where | Notes |
++| :--- | :--- | :--- |
++| `VAPID_PUBLIC_KEY` | api | base64url; also exposed via `/api/push/public-key`. |
++| `VAPID_PRIVATE_KEY` | api | keep secret. |
++| `VAPID_SUBJECT` | api | `mailto:` or `https:` URL; defaults to `mailto:admin@upcat.local`. |
++| `SCHEDULED_FUNCTIONS_SECRET` | api | Reused from earlier phases; protects cron routes.
++
++## Phase 15 – Security Hardening
++
++Phase 15 ships a production-grade defense-in-depth security layer:
++rate limiting, IP intelligence, threat scoring, CAPTCHA, bot detection,
++admin console, user session management, and edge WAF configs.
++
++### Pipeline overview
++
++Every API handler is wrapped in `withSecurity()` ([api/src/security/middleware.ts](api/src/security/middleware.ts)), which runs the following checks **before** the handler executes:
++
++1. **CORS** – strict allow-list of origins.
++2. **Lockdown gate** – when emergency lockdown is on, non-admin traffic
++   gets `503 Service Unavailable`.
++3. **Block-list match** – IP, CIDR, fingerprint, email-domain, or UA
++   regex (cached 60 s in [blockedEntities.ts](api/src/security/blockedEntities.ts)).
++4. **Size limits** – body ≤ 1 MiB, URL ≤ 2 KiB.
++5. **Sliding-window rate limits** – global → per-IP → per-endpoint
++   ([rateLimit.ts](api/src/security/rateLimit.ts)).
++6. **Body sanitization** – strips Mongo operators (`$`, `.`), prototype
++   pollution (`__proto__`, `constructor`, `prototype`), limits depth.
++7. **Security headers** – HSTS, CSP, X-Content-Type-Options, X-Frame-Options,
++   Referrer-Policy, Permissions-Policy.
++8. **IP intelligence** – fire-and-forget upsert into `ip_intelligence`
++   tracks request counts, fingerprints, associated user IDs, threat score.
++
++### CAPTCHA system
++
++Four challenge types (
++[captcha.ts](api/src/security/captcha.ts) +
++[Captcha.tsx](client/src/components/Captcha.tsx)):
++
++| Type | Implementation |
++| :--- | :--- |
++| math | Arithmetic problem (`12 + 7 = ?`) – fast, accessible. |
++| image | "Pick all the X" 3x3 grid of procedural SVG icons. |
++| puzzle | Slide a piece into a notch – verifies tolerance + min solve ms. |
++| pow | Client computes a SHA-256 with N leading zero bits. |
++
++Verified challenges return a short-lived JWT (`aud: "captcha"`) that the client auto-attaches as `X-Captcha-Token` for the next request, via the [apiClient interceptor](client/src/lib/api.ts).
++
++### Device fingerprinting
++
++[client/src/lib/fingerprint.ts](client/src/lib/fingerprint.ts) hashes screen/timezone/language/canvas/WebGL/font signals into a SHA-256 fingerprint, sent as `X-Device-Fingerprint`. It feeds session tracking and helps detect account-sharing or credential stuffing.
++
++### Threat scoring
++
++Every event nudges the source IP's threat score ([ipIntel.ts](api/src/security/ipIntel.ts)):
++
++| Range | Reputation | Effect |
++| :--- | :--- | :--- |
++| 0-24 | trusted | Normal traffic. |
++| 25-49 | neutral | Default. |
++| 50-74 | suspicious | Soft-block: CAPTCHA required. |
++| 75-89 | high_risk | Reduced rate limits. |
++| 90-100 | malicious | Hard-block candidate; lockdown counts critical hits. |
++
++Scores decay by 2 points/hour via cron so legitimate users recover.
++
++### Admin Security Console
++
++`/admin/security` ([AdminSecurityPage.tsx](client/src/pages/admin/AdminSecurityPage.tsx)) provides six tabs:
++
++- **Dashboard** – KPIs, recent events, top threats, geo distribution.
++- **Events** – filterable feed with dismiss / block-IP / block-user actions.
++- **IP Intelligence** – sortable IP list with one-click block / unblock + CIDR block form.
++- **Blocked** – CRUD across all 5 block types.
++- **Config** – live JSON editor for `security_config` (password re-auth required) + lockdown control.
++- **Reports** – 24h / 7d / 30d attack summaries with auto recommendations.
++
++### User session management
++
++`/settings` now includes a **Sessions & activity** section ([SessionsSection.tsx](client/src/components/SessionsSection.tsx)).
++Users see every active session (IP, location, last active) and can revoke individual sessions or every other device at once. Successful logins mint JWTs with a unique `jti` claim, tracked in `user_sessions`.
++
++### Cron jobs
++| Path | Schedule | Purpose |
++| :--- | :--- | :--- |
++| `/api/cron/threat-score-decay` | hourly | Decay scores; reset daily counters at 00:00 UTC. |
++| `/api/cron/security-cleanup` | every 15 min | Expire blocks, sessions, CAPTCHAs. |
++| `/api/cron/security-report` | daily 00:00 UTC | Snapshot 24h activity to `security_reports`. |
++| `/api/cron/ip-intelligence-aggregation` | daily 00:30 UTC | Flag noisy / multi-user IPs. |
++
++### Edge WAF
++
++Pre-built configs in [infra/edge/](infra/edge/):
++
++- [aws-waf.json](infra/edge/aws-waf.json) – AWS WAFv2 WebACL.
++- [cloudflare-rules.json](infra/edge/cloudflare-rules.json) – Cloudflare custom ruleset.
++- [infra/edge/README.md](infra/edge/README.md) – deployment + origin lockdown instructions.
++
++These shed the bulk of malicious traffic at the edge so the app tier stays healthy under DDoS / scraping / credential-stuffing attacks.
++
++### Collections introduced
++
++- `security_config` – singleton `_id: "global"` config doc.
++- `security_events` – append-only event log (TTL 90 days).
++- `ip_intelligence` – per-IP record (score, activity, fingerprints).
++- `blocked_entities` – active block rules across 5 entity types.
++- `rate_limit_buckets` – sliding-window counters (TTL 24h).
++- `captcha_challenges` – pending challenges (TTL 10 min).
++- `user_sessions` – JWT `jti` tracking (TTL 30 days).
++- `security_reports` – daily snapshot for audit trail.
++
++### Required environment
++
++| Variable | Where | Notes |
++| :--- | :--- | :--- |
++| `JWT_SECRET` | api | Existing – now also signs CAPTCHA tokens + session `jti`s. |
++| `ADMIN_WHITELIST_IPS` | api | Optional comma-separated list; bypasses rate limits. |
++| `SCHEDULED_FUNCTIONS_SECRET` | api | Existing – protects all new cron routes. |
++| `ALLOWED_ORIGINS` | api | Existing – strict CORS allow-list. |
+\ No newline at end of file
+Index: prompts/math.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>You are an expert standardized-test item writer and exam editor.\nCreate an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and explanation or solution.\nThe deliverable MUST be a single, cleanly formatted PDF-ready document.\n\nGOAL\nProduce 1 complete mock exam that covers the full scope of the UPCAT-style MATHEMATICS subtest.\n\n\nIMPORTANT CONSTRAINTS\n- Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).\n- Use clear, unambiguous wording; one best answer only.\n- Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.\n- Difficulty mix: 25% easy, 50% medium, 25% hard.\n- Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.\n- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.\n- Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.\n- Include at least 5 word problems.\n\nEXAM BLUEPRINT (EDITABLE DEFAULT)\nCreate a “Full-Length” 60-item and 75-minute mock exam\n\nSCOPE + OBJECTIVES (YOU MUST COVER ALL)\nObjectives to include (cover broadly and repeatedly):Algebra\n* Simplify and evaluate algebraic expressions.\n* Solve linear, quadratic, logarithmic, radical, and rational equations.\n* Apply laws of exponents and factoring techniques.\n* Analyze functions, sequences, series, and coordinate geometry.\n* Solve word problems using algebraic models.\nArithmetic and Sets\n* Perform operations on integers, fractions, decimals, and sets.\n* Apply order of operations, ratios, proportions, and percentages.\n* Determine factors, multiples, and divisibility.\n* Classify real and imaginary numbers.\nGeometry\n* Analyze geometric figures, angles, triangles, polygons, and circles.\n* Compute perimeter, area, volume, and surface area.\n* Apply congruence, similarity, and measurement conversions.\nInequalities\n* Solve and graph linear, polynomial, rational, and absolute value inequalities.\nLogic\n* Analyze propositions and logical statements.\n* Construct truth tables and determine logical equivalences.\nStatistics\n* Solve problems involving probability, counting principles, permutations, and combinations.\n* Interpret graphs and compute measures of central tendency.\n* Apply conditional probability concepts.\nTrigonometry\n* Evaluate trigonometric functions and identities.\n* Apply sine and cosine laws.\n* Use degree/radian measures, special angles, and the unit circle.\n\nDOCUMENT REQUIREMENTS (PDF-READY)\nFormat the output as a single document, with each section separated by a page break.\n\nSECTION 1 - The Exam (NO answers here)\nRules for the exam section:\n- Number every item consecutively.\n- Keep formatting clean for printing (consistent spacing, readable line breaks).\n- Avoid putting explanations/solutions in the exam section.\n\nSECTION 2 - Answer Key\n- print in Spreadsheet format\n- The row number should be mapped to the item number in the exam\n\nSECTION 3 - Solutions / Rationales (concise but complete)\nFor EACH item, provide:\n- Correct answer letter\n- 2-6 sentence rationale (or step-by-step math/science solution when needed)\n- Tag each item with:\n    - Objective tag (from the objective lists above)\n    - Difficulty tag (Easy/Medium/Hard)\n\nSECTION 4 - Objective Coverage Checklist\nCreate a checklist/table showing each objective and the question IDs that assess it.\nThis must demonstrate that ALL objectives listed above are covered.\n\nQUALITY CONTROL (DO THIS BEFORE FINALIZING)\n- Check that every question has exactly one best answer.\n- Check that distractors are plausible and not obviously wrong.\n- Check that each subtest meets the requested item count and difficulty distribution.\n- Check that objective coverage is complete; if not, revise questions until it is.\n- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.\n- Check numbering consistency and that the answer key matches the questions.\n\nOUTPUT IN PDF\nReturn the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prompts/math.md b/prompts/math.md
+--- a/prompts/math.md	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/prompts/math.md	(date 1780071859484)
+@@ -5,14 +5,15 @@
+ GOAL
+ Produce 1 complete mock exam that covers the full scope of the UPCAT-style MATHEMATICS subtest.
+ 
+-
+ IMPORTANT CONSTRAINTS
++
+ - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
+ - Use clear, unambiguous wording; one best answer only.
+ - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
+ - Difficulty mix: 25% easy, 50% medium, 25% hard.
+ - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
+-- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
++- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in
++  question.
+ - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
+ - Include at least 5 word problems.
+ 
+@@ -21,30 +22,31 @@
+ 
+ SCOPE + OBJECTIVES (YOU MUST COVER ALL)
+ Objectives to include (cover broadly and repeatedly):Algebra
++
+ * Simplify and evaluate algebraic expressions.
+ * Solve linear, quadratic, logarithmic, radical, and rational equations.
+ * Apply laws of exponents and factoring techniques.
+ * Analyze functions, sequences, series, and coordinate geometry.
+ * Solve word problems using algebraic models.
+-Arithmetic and Sets
++  Arithmetic and Sets
+ * Perform operations on integers, fractions, decimals, and sets.
+ * Apply order of operations, ratios, proportions, and percentages.
+ * Determine factors, multiples, and divisibility.
+ * Classify real and imaginary numbers.
+-Geometry
++  Geometry
+ * Analyze geometric figures, angles, triangles, polygons, and circles.
+ * Compute perimeter, area, volume, and surface area.
+ * Apply congruence, similarity, and measurement conversions.
+-Inequalities
++  Inequalities
+ * Solve and graph linear, polynomial, rational, and absolute value inequalities.
+-Logic
++  Logic
+ * Analyze propositions and logical statements.
+ * Construct truth tables and determine logical equivalences.
+-Statistics
++  Statistics
+ * Solve problems involving probability, counting principles, permutations, and combinations.
+ * Interpret graphs and compute measures of central tendency.
+ * Apply conditional probability concepts.
+-Trigonometry
++  Trigonometry
+ * Evaluate trigonometric functions and identities.
+ * Apply sine and cosine laws.
+ * Use degree/radian measures, special angles, and the unit circle.
+@@ -54,16 +56,19 @@
+ 
+ SECTION 1 - The Exam (NO answers here)
+ Rules for the exam section:
++
+ - Number every item consecutively.
+ - Keep formatting clean for printing (consistent spacing, readable line breaks).
+ - Avoid putting explanations/solutions in the exam section.
+ 
+ SECTION 2 - Answer Key
++
+ - print in Spreadsheet format
+ - The row number should be mapped to the item number in the exam
+ 
+ SECTION 3 - Solutions / Rationales (concise but complete)
+ For EACH item, provide:
++
+ - Correct answer letter
+ - 2-6 sentence rationale (or step-by-step math/science solution when needed)
+ - Tag each item with:
+@@ -75,12 +80,16 @@
+ This must demonstrate that ALL objectives listed above are covered.
+ 
+ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
++
+ - Check that every question has exactly one best answer.
+ - Check that distractors are plausible and not obviously wrong.
+ - Check that each subtest meets the requested item count and difficulty distribution.
+ - Check that objective coverage is complete; if not, revise questions until it is.
+-- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.
++- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D
++  options.
+ - Check numbering consistency and that the answer key matches the questions.
+ 
+ OUTPUT IN PDF
+-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+\ No newline at end of file
++Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF
++export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable
++for PDF generations.
+\ No newline at end of file
+Index: prompts/science.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>You are an expert standardized-test item writer and exam editor.\nCreate an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and explanation or solution.\nThe deliverable MUST be a single, cleanly formatted PDF-ready document.\n\nGOAL\nProduce 1 complete mock exam that covers the full scope of the UPCAT-style SCIENCE subtest.\n\n\nIMPORTANT CONSTRAINTS\n- Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).\n- Use clear, unambiguous wording; one best answer only.\n- Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.\n- Difficulty mix: 25% easy, 50% medium, 25% hard.\n- Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.\n- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in-question.\n- Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.\n\nEXAM BLUEPRINT (EDITABLE DEFAULT)\nCreate a “Full-Length” 60-item and 60-minute mock exam\n\nSCOPE + OBJECTIVES (YOU MUST COVER ALL)\nObjectives to include (balanced across domains; mix conceptual + light calculation):Biology\nAssess knowledge of biological principles including cells, biomolecules, metabolism, genetics, evolution, ecology, reproduction, taxonomy, biodiversity, viruses, and the characteristics of major plant and animal groups.\nChemistry\nEvaluate understanding of matter, chemical bonding, compounds, reactions, solutions, acids and bases, gas laws, thermodynamics, organic chemistry, and chemical nomenclature.\nEarth Science\nMeasure comprehension of Earth’s structure, origin, processes, plate tectonics, earthquakes, volcanoes, rocks, fossils, atmosphere, climate, geologic history, and the solar system.\nGeneral Science\nTest foundational scientific concepts including measurement, the scientific method, astronomy, geology, meteorology, and the principles of light.\nPhysics\nAssess understanding of motion, forces, energy, momentum, vectors and scalars, fluid mechanics, pressure, friction, electricity, magnetism, waves, optics, and circular motion.\n\nDOCUMENT REQUIREMENTS (PDF-READY)\nFormat the output as a single document, with each section separated by a page break.\n\nSECTION 1 - The Exam (NO answers here)\nRules for the exam section:\n- Number every item consecutively.\n- Keep formatting clean for printing (consistent spacing, readable line breaks).\n- Avoid putting explanations/solutions in the exam section.\n\nSECTION 2 - Answer Key\n- print in Spreadsheet format\n- The row number should be mapped to the item number in the exam\n\nSECTION 3 - Solutions / Rationales (concise but complete)\nFor EACH item, provide:\n- Correct answer letter\n- 2-6 sentence rationale (or step-by-step math/science solution when needed)\n- Tag each item with:\n    - Objective tag (from the objective lists above)\n    - Difficulty tag (Easy/Medium/Hard)\n\nSECTION 4 - Objective Coverage Checklist\nCreate a checklist/table showing each objective and the question IDs that assess it.\nThis must demonstrate that ALL objectives listed above are covered.\n\nQUALITY CONTROL (DO THIS BEFORE FINALIZING)\n- Check that every question has exactly one best answer.\n- Check that distractors are plausible and not obviously wrong.\n- Check that each subtest meets the requested item count and difficulty distribution.\n- Check that objective coverage is complete; if not, revise questions until it is.\n- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.\n- Check numbering consistency and that the answer key matches the questions.\n\nOUTPUT IN PDF\nReturn the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prompts/science.md b/prompts/science.md
+--- a/prompts/science.md	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/prompts/science.md	(date 1780071859508)
+@@ -5,14 +5,15 @@
+ GOAL
+ Produce 1 complete mock exam that covers the full scope of the UPCAT-style SCIENCE subtest.
+ 
+-
+ IMPORTANT CONSTRAINTS
++
+ - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
+ - Use clear, unambiguous wording; one best answer only.
+ - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
+ - Difficulty mix: 25% easy, 50% medium, 25% hard.
+ - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
+-- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in-question.
++- Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data
++  in-question.
+ - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
+ 
+ EXAM BLUEPRINT (EDITABLE DEFAULT)
+@@ -20,31 +21,39 @@
+ 
+ SCOPE + OBJECTIVES (YOU MUST COVER ALL)
+ Objectives to include (balanced across domains; mix conceptual + light calculation):Biology
+-Assess knowledge of biological principles including cells, biomolecules, metabolism, genetics, evolution, ecology, reproduction, taxonomy, biodiversity, viruses, and the characteristics of major plant and animal groups.
++Assess knowledge of biological principles including cells, biomolecules, metabolism, genetics, evolution, ecology,
++reproduction, taxonomy, biodiversity, viruses, and the characteristics of major plant and animal groups.
+ Chemistry
+-Evaluate understanding of matter, chemical bonding, compounds, reactions, solutions, acids and bases, gas laws, thermodynamics, organic chemistry, and chemical nomenclature.
++Evaluate understanding of matter, chemical bonding, compounds, reactions, solutions, acids and bases, gas laws,
++thermodynamics, organic chemistry, and chemical nomenclature.
+ Earth Science
+-Measure comprehension of Earth’s structure, origin, processes, plate tectonics, earthquakes, volcanoes, rocks, fossils, atmosphere, climate, geologic history, and the solar system.
++Measure comprehension of Earth’s structure, origin, processes, plate tectonics, earthquakes, volcanoes, rocks, fossils,
++atmosphere, climate, geologic history, and the solar system.
+ General Science
+-Test foundational scientific concepts including measurement, the scientific method, astronomy, geology, meteorology, and the principles of light.
++Test foundational scientific concepts including measurement, the scientific method, astronomy, geology, meteorology, and
++the principles of light.
+ Physics
+-Assess understanding of motion, forces, energy, momentum, vectors and scalars, fluid mechanics, pressure, friction, electricity, magnetism, waves, optics, and circular motion.
++Assess understanding of motion, forces, energy, momentum, vectors and scalars, fluid mechanics, pressure, friction,
++electricity, magnetism, waves, optics, and circular motion.
+ 
+ DOCUMENT REQUIREMENTS (PDF-READY)
+ Format the output as a single document, with each section separated by a page break.
+ 
+ SECTION 1 - The Exam (NO answers here)
+ Rules for the exam section:
++
+ - Number every item consecutively.
+ - Keep formatting clean for printing (consistent spacing, readable line breaks).
+ - Avoid putting explanations/solutions in the exam section.
+ 
+ SECTION 2 - Answer Key
++
+ - print in Spreadsheet format
+ - The row number should be mapped to the item number in the exam
+ 
+ SECTION 3 - Solutions / Rationales (concise but complete)
+ For EACH item, provide:
++
+ - Correct answer letter
+ - 2-6 sentence rationale (or step-by-step math/science solution when needed)
+ - Tag each item with:
+@@ -56,12 +65,16 @@
+ This must demonstrate that ALL objectives listed above are covered.
+ 
+ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
++
+ - Check that every question has exactly one best answer.
+ - Check that distractors are plausible and not obviously wrong.
+ - Check that each subtest meets the requested item count and difficulty distribution.
+ - Check that objective coverage is complete; if not, revise questions until it is.
+-- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D options.
++- Check that the letters corresponding to the correct answers are shuffled and randomly distributed among the A–D
++  options.
+ - Check numbering consistency and that the answer key matches the questions.
+ 
+ OUTPUT IN PDF
+-Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable for PDF generations.
+\ No newline at end of file
++Return the final as a PDF-ready document (no extra commentary outside the document). If your system supports direct PDF
++export, export to PDF. If not, format it as print-ready content with clear page breaks and consistent styling suitable
++for PDF generations.
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.\n\n# dependencies\n/node_modules\n/.pnp\n.pnp.js\n\n# testing\n/coverage\n\n# next.js\n/.next/\n/out/\n\n# production\n/build\n\n# misc\n.DS_Store\n*.pem\n\n# debug\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# local env files\n.env*.local\n.env\n\n# vercel\n.vercel\n\n# typescript\n*.tsbuildinfo\nnext-env.d.ts\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision ca0b5ae62ca22a766b4240ae9dc72dcce94ac2f1)
++++ b/.gitignore	(date 1780070616018)
+@@ -24,7 +24,7 @@
+ yarn-debug.log*
+ yarn-error.log*
+ 
+-# local env files
++# local .env files
+ .env*.local
+ .env
+ 

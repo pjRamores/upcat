@@ -1,0 +1,5 @@
+# dependencies
+/node_modules
+.last-run.json
+playwright-report/
+playwright-results/

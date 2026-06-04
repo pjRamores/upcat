@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3fe5f419-6c84-4fe2-b3e6-6ccf6020d545" name="Changes" comment="sync">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account/data-exports.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account/deletion-request.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account/email-preferences.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account/security/activity.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/account/security/sessions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/ads/publish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/analytics.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/annoucements/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/annoucements/publish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/audit-logs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/auth-providers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/auth-providers/publish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/blog/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/content-flags/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/content-flags/summary.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/dashboard/activity.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/dashboard/summary.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/data_requests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/deletion-logs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/exams/assignment-history.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/exams/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/exams/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/features.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/gamification.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/help/analytics.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/help/articles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/help/contextual.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/help/onboarding.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/help/publish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/maintenance/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/monitoring/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/passages/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/passages/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/payment/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/payment/revenue-report.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/payment/submissions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/practice-sessions/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/practice-sessions/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/promo-codes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/push/broadcast.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/push/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/question-sets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/bulk-delete.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/export.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/import-workflow.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/import.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/media-assets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/questions/workflow.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/blocked.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/dashboard.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/emergency.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/events.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/ips.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/security/reports.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/seo/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/seo/publish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/support/disputes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/support/merge-accounts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/support/tickets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/export.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/subscription.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/admin/users/unlock.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/ads/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/ads/video/impression.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/announcements.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/forgot-password.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/linked-accounts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/login.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/me.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/providers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/recover-accounts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/recover-codes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/register.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/reset-password.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/security-questions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/set-password.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/social/callback.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/social/start.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/unlink.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/auth/verify-email.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/blog/detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/blog/list.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/captcha/generate.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/captcha/verify.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/contact.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/assign-weekly-challenges.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/auto-close-tickets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/check-channel-limits.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/check-expired-subscriptions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/cleanup-exports.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/execute-deletions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/expire-stale-submissions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/inactivity-check.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/ip-intelligence-aggregation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/maintenance-auto-end.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/maintenance-auto-start.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/monitoring-alert-rules.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/monitoring-health-checks.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/question-media-cleanup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/reset-channel-daily-limits.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/reset-channel-monthly-limits.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/security-cleanup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/security-reports.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/streak-warnings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/study-plan-adaptation-check.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/study-plan-reminders.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/study-reminders.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/subscription-expiry-reminder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/sync-queue-cleanup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/cron/threat-score-decay.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/answer-bulk.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/answer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/finish.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/flags.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/pause.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/questions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/review.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/sessions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/start.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/exam/submit.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/features/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/gamification/achievements.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/gamification/dismiss-notifications.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/gamification/leaderboard.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/gamification/profile.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/gamification/weekly-challenge.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/article-detail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/articles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/categories.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/contextual.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/feedback.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/onboarding-check.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/onboarding.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/preferences.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/help/search.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/maintenance/notify-me.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/maintenance/status.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/monitoring/client-errors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/monitoring/health.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/payment/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/payment/manual.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/payment/pangmeryenda.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/payment/promo-code.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/answer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/bootstrap.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/cards.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/complete.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/rate.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/start.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/practice/stats.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/push/preferences.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/push/public-key.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/push/subscribe.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/push/unsubscribe.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/seo/ads-text.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/seo/page-meta.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/seo/redirect-lookup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/seo/robots.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/seo/sitemap.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/difficulty-breakdown.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/leaderboard.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/overview.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/progress-over-time.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/subject-breakdown.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/summary.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/stats/weak-areas.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/status.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/study-plan/admin.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/study-plan/assessments.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/study-plan/diagnostic.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/study-plan/plans.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/subscription/status.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/support/guest.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/support/tickets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/answers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/complete-offline-session.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/heartbeat.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/recover-session.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/session-snapshot.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/functions/sync/session-status.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/migrate-auth.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/migrate-question-workflow.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/normalize-exam-set-assignments.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/question-import-test-fixtures.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/seed-help.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/seed-question-rich-sample.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/seed-study-plan.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/seed.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/scripts/setup-indexes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/server.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/achievements.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/activityLog.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/ads.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/blog.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/captcha.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/cronAuth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/dataRequests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/db.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/email.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/encryption.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/examHelpers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/examScoring.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/examSets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/gamification.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/help.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/maintenance.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/maintenanceMiddleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/alerts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/context.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/health.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/logger.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/metrics.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/monitoring/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/multipart.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/exchange.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/identities.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/prividers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/rateLimit.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/oidc/state.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/pangmeryenda.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/paymentConfig.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/paymentStorage.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/payments.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/platformSettings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/practice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/push.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/questionManagement.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/questionSetSync.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/recovery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/blockedEntities.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/botSignals.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/captcha.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/events.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/headers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/ipIntel.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/rateLimit.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/requestContext.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/sanitize.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/security/sessions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/seo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/setup-indexes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/statsHelpers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/studyPlan.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/subscription.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/support.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/weeklyChallenge.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/data/ads-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/data/announcements.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/data/auth-providers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/data/help-content.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/data/seo-overrides.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/manifest.webmanifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/service-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/viet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/scripts/generate-pwa-icons.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AchievementToast.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AdSlot.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AnnouncementBanner.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BootstrapDeckDialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Captcha.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ConsentBanner.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/EmptyState.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ErrorBoundary.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/FlagQuestionModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Footer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/FullPageLoader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/InstallPwaCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/MathText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Modal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/NotificationsSection.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/PasswordStrengthBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/PremiumBadge.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/PremiumGate.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProtectedRoute.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RoutedSeo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Seo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SessionsSection.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SetPasswordHint.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Skeleton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SocialLoginButtons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Spinner.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SystemStatusBanner.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ToastContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UsageMeter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/VideoAdModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/XpAwardOverlay.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/AdminLayout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/Badge.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/ConfirmDialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/DataTable.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/FormattedTextarea.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/FormattedTextareaEditor.psx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/admin/StatCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/help/HelpFax.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/help/OnboardingTour.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/help/PageHelp.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/support/NewTicketForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useAdsConfig.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useSetFilter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useShouldShowAds.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useVideoInterstitial.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/accountApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/adminApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/adsense.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/authPersistence.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/captchaApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/clientErrorTracking.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/clientErrorTracking.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/consent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/fingerprint.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/gamificationApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/helpApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/markdown.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/markdown.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/offlineResume.integration.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/oidcApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/paymentApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/practiceApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/pushApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/pwa.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/resilience.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/resilience.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/securityApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/sessionRecovery.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/sessionRecovery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/staticAdsConfig.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/staticAnnouncements.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/staticAuthProviders.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/staticHelpContent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/staticSeoOverrides.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/studyPlanApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/supportApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/syncQueue.install.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/syncQueue.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/syncQueue.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/videoAdState.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.startup.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/AccountPaymentsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/AuthCallbackPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BatchExamPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BlogListPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BlogPostPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ContactPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/DashboardPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/DeletionConfirmPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ExamPage.offlineBehavior.text.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ExamPage.timerBehavior.text.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ExamPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ForgotPasswordPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GuestSupportPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HelpArticlePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HelpCategoryPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HelpCenterPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HelpSearchPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LandingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LeaderboardPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MaintenancePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NotFoundPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PaymentCancelledPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PaymentFailedPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PaymentPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PaymentProcessingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PaymentSuccessPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PracticePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PracticeSessionPage.recovery.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PracticeSessionPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PractiveStatsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PricingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PrivacyPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ProfilePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RecoveryAccountPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RecoveryAccountResetPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RegisterPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ResetPasswordPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ResultPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ReviewPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SettingsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StatsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanAnalyticsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanAssessmentPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanCalendarPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanDiagnosticPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanHubPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanSessionPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanSettingsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StudyPlanSetupPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SubjectPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SupportTicketDetailPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SupportTicketsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TermsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/VerifyEmailPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminAdsSettingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminAnalyticsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminAnnouncementsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminAuditLogPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminAuthProvidersPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminBlogEditPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminBlogPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminContentFlagsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminDashboardPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminDataRequestsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminExamDetailPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminExamsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminFeaturesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminGamificationPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminHelpAnalyticsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminHelpArticlesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminHelpContextualPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminHelpOnboardingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminIdentityDisputesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminMergeWizardPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminMonitoringPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPassageEditPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPassagesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPaymentConfigPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPaymentSubmissionPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPractiveSessionsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminPromoCodesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionEditPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionImportExportPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionMediaLibraryPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionSetsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionWorkflowPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminQuestionsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSecurityPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSeoPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSettingsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminStudyPlanAnalyticsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminStudyPlanLessonsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminStudyPlanTemplatesPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSupportDashboardPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSupportTIcketDetailPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminSupportTicketsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminUserDetailPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminUserNewPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminUsersPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/practiveSessionRecovery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/subjects/SubjectLanguagePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/subjects/SubjectMathPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/subjects/SubjectReadingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/subjects/SubjectSciencePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/adminSetStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/authStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/consentStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/examStore.edgeCases.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/examStore.recovery.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/examStore.submitFailures.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/examStore.sync.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/examStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/stores/toastStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/vitest.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_routes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/deploy-cloudflare.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/deploy.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/dev-api-restart.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/sync-help-content.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-integration.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/serverless.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/ads.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/ads.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/ads.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/blog.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/constants.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/constants.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/contants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/seo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/structuredData.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/studyPlan.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/types.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/validations.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wrangler.toml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;pjRamores&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pjRamores/upcat.git&quot;,
+    &quot;accountId&quot;: &quot;a20ddef3-6ddb-4683-95c0-7e8866f94e67&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3E2bbMq65vlN9wV61A0yU7myHxI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.api &gt; assign-weekly-challenges.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pjramores/projects/orion/upcat&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/pjramores/projects/orion/upcat/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="api &gt; assign-weekly-challenges.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/api/functions/cron/assign-weekly-challenges.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/api/functions/cron">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.api &gt; assign-weekly-challenges.ts" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fe5f419-6c84-4fe2-b3e6-6ccf6020d545" name="Changes" comment="" />
+      <created>1779379681973</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779379681973</updated>
+      <workItem from="1780071722959" duration="29120000" />
+      <workItem from="1780276102570" duration="21732000" />
+      <workItem from="1780568892512" duration="617000" />
+    </task>
+    <task id="LOCAL-00001" summary="ocr code/text extract">
+      <option name="closed" value="true" />
+      <created>1780142230974</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780142230974</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ocr code/text extract">
+      <option name="closed" value="true" />
+      <created>1780190060348</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780190060348</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ocr code/text extract">
+      <option name="closed" value="true" />
+      <created>1780209959182</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780209959182</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ocr code/text extract">
+      <option name="closed" value="true" />
+      <created>1780275953970</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780275953970</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added .gitignore">
+      <option name="closed" value="true" />
+      <created>1780276174895</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780276174895</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ocr code/text extract">
+      <option name="closed" value="true" />
+      <created>1780295029381</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780295029381</updated>
+    </task>
+    <task id="LOCAL-00007" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780295557470</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780295557470</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780295756922</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780295756922</updated>
+    </task>
+    <task id="LOCAL-00009" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780295935480</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780295935480</updated>
+    </task>
+    <task id="LOCAL-00010" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296045456</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296045456</updated>
+    </task>
+    <task id="LOCAL-00011" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296309956</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296309956</updated>
+    </task>
+    <task id="LOCAL-00012" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296448705</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296448705</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296608991</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296608991</updated>
+    </task>
+    <task id="LOCAL-00014" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296765504</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296765504</updated>
+    </task>
+    <task id="LOCAL-00015" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296821198</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296821198</updated>
+    </task>
+    <task id="LOCAL-00016" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780296879004</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1780296879004</updated>
+    </task>
+    <task id="LOCAL-00017" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780297152203</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1780297152203</updated>
+    </task>
+    <task id="LOCAL-00018" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780297420719</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1780297420719</updated>
+    </task>
+    <task id="LOCAL-00019" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780297618913</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1780297618913</updated>
+    </task>
+    <task id="LOCAL-00020" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780297883184</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1780297883184</updated>
+    </task>
+    <task id="LOCAL-00021" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780298006720</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1780298006720</updated>
+    </task>
+    <task id="LOCAL-00022" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780298074104</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1780298074104</updated>
+    </task>
+    <task id="LOCAL-00023" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780298519093</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1780298519093</updated>
+    </task>
+    <task id="LOCAL-00024" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780298690402</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1780298690402</updated>
+    </task>
+    <task id="LOCAL-00025" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780298836748</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1780298836748</updated>
+    </task>
+    <task id="LOCAL-00026" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780299121619</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299121619</updated>
+    </task>
+    <task id="LOCAL-00027" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780299457013</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299457013</updated>
+    </task>
+    <task id="LOCAL-00028" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780299567858</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299567858</updated>
+    </task>
+    <task id="LOCAL-00029" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780299842595</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299842595</updated>
+    </task>
+    <task id="LOCAL-00030" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780300909561</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1780300909561</updated>
+    </task>
+    <task id="LOCAL-00031" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780301478695</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1780301478695</updated>
+    </task>
+    <task id="LOCAL-00032" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780302262947</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1780302262947</updated>
+    </task>
+    <task id="LOCAL-00033" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780302457132</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1780302457132</updated>
+    </task>
+    <task id="LOCAL-00034" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780303074229</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1780303074229</updated>
+    </task>
+    <task id="LOCAL-00035" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780304098758</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1780304098758</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/shared/src/ads.js" />
+        <option value="$PROJECT_DIR$/shared/src/ads.d.ts" />
+        <option value="$PROJECT_DIR$/shared/src/constants.d.ts" />
+        <option value="$PROJECT_DIR$/shared/src/types.js" />
+        <option value="$PROJECT_DIR$/shared/src/types.d.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added .gitignore" />
+    <MESSAGE value="ocr code/text extract" />
+    <MESSAGE value="sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="sync" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

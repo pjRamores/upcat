@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "publishedAt": "2026-05-21T02:48:50.1622",
+  "publishedBy": "admin@upcatsimulator.com",
+  "meta": {
+    "enabledProviders": 1
+  },
+  "providers": {
+    "google": {
+      "enabled": true,
+      "clientId": "626064790359-foft2hdgdhnabs0d0jphofevsvi6lnsj.apps.googleusercontent.com"
+    },
+    "linkedin": {
+      "enabled": false,
+      "clientId": null
+    },
+    "facebook": {
+      "enabled": false,
+      "clientId": null
+    }
+  }
+}

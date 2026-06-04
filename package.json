@@ -1,0 +1,36 @@
+{
+    "name": "upcat-simulator",
+    "private": true,
+    "workspaces": [
+        "client",
+        "api",
+        "shared"
+    ],
+    "Debug": {
+        "scripts": {
+            "dev": "npm run dev --workspace=client",
+            "build": "npm run build --workspace=client",
+            "dev:api": "npm run dev --workspace=api",
+            "dev:api:restart": "node scripts/dev-api-restart.mjs",
+            "lint": "npm run lint --workspace=client",
+            "typecheck": "npm run -ws --if-present typecheck && tsc -p tsconfig.json --noEmit || true",
+            "setup:indexes": "npm run setup-indexes --workspace=api",
+            "seed": "npm run seed --workspace=api",
+            "seed:clean": "npm run seed:clean --workspace=api",
+            "test:integration": "node --env-file=api/.env scripts/test-integration.mjs",
+            "e2e": "npm run e2e --workspace=client",
+            "e2e:report": "npm run e2e:report --workspace=client",
+            "deploy": "DEPLOY_TARGET=cloudflare bash scripts/deploy.sh",
+            "deploy:cloudflare": "DEPLOY_TARGET=cloudflare bash scripts/deploy.sh",
+            "deploy:vercel": "DEPLOY_TARGET=vercel bash scripts/deploy.sh",
+            "deploy:aws": "DEPLOY_TARGET=aws bash scripts/deploy.sh",
+            "sync:help": "node scripts/sync-help-content.mjs"
+        }
+    },
+    "devDependencies": {
+        "serverless": "^3.39.0",
+        "serverless-http": "^3.2.0",
+        "express": "^4.21.0",
+        "@types/express": "^4.17.21"
+    }
+}
