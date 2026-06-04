@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fe5f419-6c84-4fe2-b3e6-6ccf6020d545" name="Changes" comment="refresh" />
+    <list default="true" id="3fe5f419-6c84-4fe2-b3e6-6ccf6020d545" name="Changes" comment="image captures">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,26 +32,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Node.js.api > assign-weekly-challenges.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/pjramores/projects/orion/upcat",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/Users/pjramores/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.api &gt; assign-weekly-challenges.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pjramores/projects/orion/upcat&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/pjramores/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="api &gt; assign-weekly-challenges.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/api/functions/cron/assign-weekly-challenges.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/api/functions/cron">
       <method v="2" />
@@ -76,7 +78,7 @@
       <updated>1779379681973</updated>
       <workItem from="1780071722959" duration="29120000" />
       <workItem from="1780276102570" duration="21732000" />
-      <workItem from="1780568892512" duration="920000" />
+      <workItem from="1780568892512" duration="2169000" />
     </task>
     <task id="LOCAL-00001" summary="ocr code/text extract">
       <option name="closed" value="true" />
@@ -382,7 +384,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780571715328</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="refresh">
+      <option name="closed" value="true" />
+      <created>1780571777439</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571777439</updated>
+    </task>
+    <task id="LOCAL-00040" summary="image captures">
+      <option name="closed" value="true" />
+      <created>1780571823742</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571823742</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +421,8 @@
     <MESSAGE value="sync" />
     <MESSAGE value="ocr code/text extract using qwen2.5vl" />
     <MESSAGE value="refresh" />
-    <option name="LAST_COMMIT_MESSAGE" value="refresh" />
+    <MESSAGE value="image captures" />
+    <option name="LAST_COMMIT_MESSAGE" value="image captures" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
