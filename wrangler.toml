@@ -1,5 +1,0 @@
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-main = "api/dist/index.js"
-# --- Custom Routes (for SPA fallback) -----------------------------------
-# All unmatched routes should serve index.html for client-side routing
-# This is configured in _routes.json for Pages
