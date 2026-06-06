@@ -4,9 +4,9 @@
  * Allows new users to generate random practice cards when their deck is empty.
  * Provides input for customizing the number of cards (1-50, default 5).
  */
-import { useState } from "react";
-import { practiceApi } from "@/lib/practiceApi";
-import { useToastStore } from "@/stores/toastStore";
+import {useState} from "react";
+import {practiceApi} from "@/lib/practiceApi";
+import {useToastStore} from "@/stores/toastStore";
 import Spinner from "@/components/Spinner";
 
 interface BootstrapDeckDialogProps {
@@ -15,11 +15,11 @@ interface BootstrapDeckDialogProps {
     onSuccess?: (cardsAdded: number) => void;
 }
 
-export default function BootstrapDeckDialog({ 
-    isOpen, 
-    onClose,
-    onSuccess,
-}: BootstrapDeckDialogProps) {
+export default function BootstrapDeckDialog({
+                                                isOpen,
+                                                onClose,
+                                                onSuccess,
+                                            }: BootstrapDeckDialogProps) {
     const addToast = useToastStore((s) => s.addToast);
     const [count, setCount] = useState(5);
     const [loading, setLoading] = useState(false);
@@ -29,10 +29,10 @@ export default function BootstrapDeckDialog({
         setLoading(true);
         try {
             const result = await practiceApi.bootstrap(finalCount);
-            addToast({
-                type: "success",
-                message: `Generated ${result.cardsAdded} random cards! Your deck is ready to practice.`,
-            });
+            addToast(
+                "success",
+                `Generated ${result.cardsAdded} random cards! Your deck is ready to practice.`
+            );
             onSuccess?.(result.cardsAdded);
             onClose();
         } catch (err) {
@@ -40,7 +40,7 @@ export default function BootstrapDeckDialog({
                 err && typeof err === "object" && "message" in err
                     ? String((err as { message: unknown }).message)
                     : "Failed to generate cards";
-            addToast({ type: "error", message: msg });
+            addToast("error", msg);
         } finally {
             setLoading(false);
         }
@@ -66,7 +66,7 @@ export default function BootstrapDeckDialog({
                                 type="button"
                                 onClick={() => setCount(Math.max(1, count - 1))}
                                 disabled={loading || count <= 1}
-                                className="rounded-md bg-slate-100 px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50"
+                                className="rounded-md bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50"
                             >
                                 -
                             </button>
@@ -84,7 +84,7 @@ export default function BootstrapDeckDialog({
                                 type="button"
                                 onClick={() => setCount(Math.min(50, count + 1))}
                                 disabled={loading || count >= 50}
-                                className="rounded-md bg-slate-100 px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50"
+                                className="rounded-md bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50"
                             >
                                 +
                             </button>
@@ -101,26 +101,27 @@ export default function BootstrapDeckDialog({
                         >
                             Cancel
                         </button>
-<button
-    type="button"
-    onClick={handleGenerate}
-    disabled={loading}
-    className="flex-1 flex items-center justify-center gap-2 rounded-md bg-maroon-600 px-4 py-2 text-sm font-medium text-white "
-    "hover:bg-maroon-700.disabled:opacity-50"
->
-    {loading ? (
-        <>
-            <Spinner className="text-white"/>
-            <span>Generating...</span>
-        </>
-    ) : (
-        <>
-            <span>✿</span>
-            <span>Generate Cards</span>
-        </>
-    )}
-</button>
-</div>
-</div>
-</div>;
+                        <button
+                            type="button"
+                            onClick={handleGenerate}
+                            disabled={loading}
+                            className="flex-1 flex items-center justify-center gap-2 rounded-md bg-maroon-600 px-4 py-2 text-sm font-medium text-white "
+                            "hover:bg-maroon-700.disabled:opacity-50"
+                        >
+                            {loading ? (
+                                <>
+                                    <Spinner className="text-white"/>
+                                    <span>Generating...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span>✨</span>
+                                    <span>Generate Cards</span>
+                                </>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
 }
