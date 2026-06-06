@@ -6,7 +6,7 @@
  * displayed one at a time with auto-dismissal.
  */
 import {useEffect, useState} from "react";
-import type { AchievementUnlockEvent } from "@upcat/shared";
+import type {AchievementUnlockEvent} from "@upcat/shared";
 
 interface Props {
     events: AchievementUnlockEvent[];
@@ -27,7 +27,7 @@ export default function AchievementToast({
                                              events,
                                              onClose,
                                              durationMs = 4000,
-}: Props) {
+                                         }: Props) {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export default function AchievementToast({
                 <div className="rounded-[14px] bg-white p-4">
                     <div className="flex items-start gap-3">
                         <div
-                            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-200.to-amber-400 text-2xl">
+                            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-200 to-amber-400 text-2xl">
                             🏆
                         </div>
                         <div className="flex-1">
@@ -78,37 +78,36 @@ export default function AchievementToast({
                                 +{event.xpAwarded} XP · +{event.points} pts
                             </div>
                         </div>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                            aria-label="Dismiss"
+                        >
+                            ⨉
+                        </button>
                     </div>
-                    <button
-                        type="button"
-                        onClick={onClose}
-                        className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-                        aria-label="Dismiss"
-                    >
-                        ⨉
-                    </button>
+                    {events.length > 1 && (
+                        <div className="mt-3 flex gap-1">
+                            {events.map((_, i) => (
+                                <div
+                                    key={i}
+                                    className={`h-1 flex-1 rounded-full ${
+                                        i <= index ? "bg-indigo-500" : "bg-slate-200"
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
-                {events.length > 1 && (
-                    <div className="mt-3 flex gap-1">
-                        {events.map((_, i) => (
-                            <div
-                                key={i}
-                                className={`h-1 flex-1 rounded-full ${
-                                    i <= index ? "bg-indigo-500" : "bg-slate-200"
-                                }`}
-                            />
-                        ))}
-                    </div>
-                )}
             </div>
-        </div>
+            <style>{`
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(1rem) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-toast-in { animation: toast-in 240ms ease-out; }
+    `}</style>
+    </div>
     );
 }
-
-<style>{`
-@keyframes toast-in {
-    from { opacity: 0; transform: translateY(1rem) scale(0.95); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-.animate-toast-in { animation: toast-in 240ms ease-out; }
-```
