@@ -23,7 +23,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(__dirname, "..", "public", "icons");
 mkdirSync(OUT_DIR, {recursive: true});
 
-// PNG encoder (no-deps) ---
+// ⎯ PNG encoder (no deps) ⎯
 function crc32(buf) {
     let c;
     const table = (crc32._t ||= (() => {
@@ -75,7 +75,7 @@ function encodePng(width, height, rgba) {
     ]);
 }
 
-// Tiny bitmap font for "UP" (5x7 per glyph) ---
+// ⎯ Tiny bitmap font for "UP" (5x7 per glyph) ⎯
 const GLYPHS = {
     U: [
         "X...X",
@@ -184,7 +184,7 @@ function generate(size, name, {maskable = false} = {}) {
     const png = encodePng(size, size, buf);
     const path = resolve(OUT_DIR, name);
     writeFileSync(path, png);
-    console.log(`✓${path} (${png.length.toLocaleString()} bytes)`);
+    console.log(`✓ ${path} (${png.length.toLocaleString()} bytes)`);
 }
 
 generate(192, "icon-192.png");
