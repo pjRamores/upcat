@@ -84,7 +84,7 @@ export default function AchievementToast({
                             className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
                             aria-label="Dismiss"
                         >
-                            ˣ
+                            ⅹ
                         </button>
                     </div>
                     {events.length > 1 && (
@@ -107,7 +107,7 @@ export default function AchievementToast({
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-toast-in { animation: toast-in 240ms ease-out; }
-        `}</style>
-          </div>
+      `}</style>
+        </div>
     );
 }
