@@ -174,7 +174,7 @@ function panelClass(extra?: string): string {
 function MathPrompt({
                         challenge,
                         onSubmit,
-                        disabled
+                        disabled,
                     }: {
     challenge: CaptchaMathChallenge;
     onSubmit: (answer: unknown) => void;
@@ -245,8 +245,8 @@ function ImagePrompt({
                             onClick={() => toggle(opt.id)}
                             disabled={disabled}
                             className={`relative aspect-square overflow-hidden rounded-lg border-2 bg-white transition ${
-                                isOn 
-                                    ? "border-primary-500 ring-2 ring-primary-200" 
+                                isOn
+                                    ? "border-primary-500 ring-2 ring-primary-200"
                                     : "border-slate-200 hover:border-slate-300"
                             }`}
                             aria-pressed={isOn}
@@ -341,4 +341,74 @@ function PuzzlePrompt({
             </p>
         </div>
     );
+}
+
+// --- Proof-of-work (invisible) --------------------------------------------
+
+function PowPrompt({
+    challenge,
+    onSubmit,
+    disabled,
+                   }: {
+    challenge: CaptchaPuzzleChallenge;
+    onSubmit: (answer: unknown) => void;
+    disabled: boolean;
+}) {
+    const [progress, setProgress] = useState(0);
+    const startedAt = useMemo(() => Date.now(), []);
+
+    useEffect(() => {
+        if (disabled) return;
+        let cancelled = false;
+
+        (async () => {
+            const prefix = "0".repeat(challenge.difficulty);
+            let nonce = 0;
+            // Process in chunks so we don't lock the main thread completely.
+            const CHUNK = 2_000;
+            while (!cancelled) {
+                for (let i = 0; i < CHUNK; i++) {
+                    const candidate = nonce.toString(36);
+                    const hash = await sha256Hex(challenge.challennge + candidate);
+                    if (hash.startsWith(prefix)) {
+                        onSubmit(candidate);
+                        return;
+                    }
+                    nonce++;
+                }
+                setProgress(Math.min(99, Math.floor(((Date.now() - startedAt) / 12_000) * 100)));
+                await new Promise(r => setTimeout(r, 0));
+            }
+        })();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [challenge.challenge, challenge.difficulty, disabled, onSubmit, startedAt]);
+
+    return (
+        <div className="flex items-center gap-3">
+            <div className="h-4 w-4 animate-pulse rounded-full bg-primary-500"/>
+            <div className="flex-1">
+                <p className="text-sm font-medium text-slate-800">Verifying...</p>
+                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-200">
+                    <div
+                        className="h-full bg-primary-500 transition-all"
+                        style={{width: `${progress}%`}}
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+async function sha256Hex(input: string): Promise<string> {
+    const enc = new TextEncoder().encode(input);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    const bytes = new Uint8Array(buf);
+    let hex = "";
+    for (let i = 0; i < bytes.length; i++) {
+        hex += bytes[i]!.toString(16).padStart(2, "0");
+    }
+    return hex;
 }
