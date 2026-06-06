@@ -205,25 +205,25 @@ export declare const DEFAULT_PLATFORM_SETTINGS: {
                 readonly questions: 25;
                 readonly timeLimit: 45;
             };
+            readonly Mathematics: {
+                readonly questions: 30;
+                readonly timeLimit: 54;
+            };
+            readonly Science: {
+                readonly questions: 25;
+                readonly timeLimit: 45;
+            };
+            readonly "Reading Comprehension": {
+                readonly questions: 20;
+                readonly timeLimit: 36;
+            };
         };
-        readonly Mathematics: {
-            readonly questions: 30;
-            readonly timeLimit: 54;
+        readonly difficultyMix: {
+            readonly easy: .25;
+            readonly medium: .40;
+            readonly hard: .25;
+            readonly very_hard: .10;
         };
-        readonly Science: {
-            readonly questions: 25;
-            readonly timeLimit: 45;
-        };
-        readonly "Reading Comprehension": {
-            readonly questions: 20;
-            readonly timeLimit: 36;
-        };
-    };
-    readonly difficultyMix: {
-        readonly easy: .25;
-        readonly medium: .40;
-        readonly hard: .25;
-        readonly very_hard: .10;
     };
     readonly registration: {
         readonly isOpen: true;
@@ -517,6 +517,7 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
         readonly order: 2;
     }, {
         readonly id: "180_days";
+        readonly name: "6 Months Premium";
         readonly duration: 180;
         readonly isLifetime: false;
         readonly price: 449;
@@ -540,63 +541,63 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
         readonly isActive: true;
         readonly features: readonly ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"];
         readonly order: 4;
-}];
-readonly manual: {
-    readonly processingTimeMessage: "Payment verification takes up to 12 hours";
-    readonly instructionsHeader: "How to Pay";
-    readonly instructionsBody: "1. Select your preferred channel.\n2. Send the exact amount.\n3. Save your transaction reference.\n4. Upload a clear screenshot of "+payment_confirmation+";";
-    readonly autoDisableThreshold: 90;
-    readonly channels: readonly [{
-        readonly id: "gcash";
-        readonly name: "GCash";
-        readonly type: "ewallet";
-        readonly icon: "💳";
-        readonly enabled: true;
-        readonly accountName: "UPCAT Simulator";
-        readonly accountNumber: "0917XXXXXX";
-        readonly bankName: null;
-        readonly qrCodeImage: null;
-        readonly qrCodeLabel: "Scan to pay via GCash";
-        readonly limits: {
-            readonly daily: {
-                readonly max: 50000;
-                readonly current: 0;
-                readonly lastResetDate: "1970-01-01";
+    }];
+    readonly manual: {
+        readonly processingTimeMessage: "Payment verification takes up to 12 hours";
+        readonly instructionsHeader: "How to Pay";
+        readonly instructionsBody: "1. Select your preferred channel.\n2. Send the exact amount.\n3. Save your transaction reference.\n4. Upload a clear screenshot of payment confirmation.";
+        readonly autoDisableThreshold: 90;
+        readonly channels: readonly [{
+            readonly id: "gcash";
+            readonly name: "GCash";
+            readonly type: "ewallet";
+            readonly icon: "💳";
+            readonly enabled: true;
+            readonly accountName: "UPCAT Simulator";
+            readonly accountNumber: "0917XXXXXX";
+            readonly bankName: null;
+            readonly qrCodeImage: null;
+            readonly qrCodeLabel: "Scan to pay via GCash";
+            readonly limits: {
+                readonly daily: {
+                    readonly max: 50000;
+                    readonly current: 0;
+                    readonly lastResetDate: "1970-01-01";
+                };
+                readonly monthly: {
+                    readonly max: 100000;
+                    readonly current: 0;
+                    readonly lastResetMonth: "1970-01";
+                };
             };
-            readonly monthly: {
-                readonly max: 100000;
-                readonly current: 0;
-                readonly lastResetMonth: "1970-01";
+            readonly autoDisabled: false;
+            readonly autoDisabledReason: null;
+            readonly autoDisabledAt: null;
+            readonly additionalNotes: "Include your UPCAT username in transfer notes.";
+            readonly order: 1;
+        }, {
+            readonly id: "maya";
+            readonly name: "Maya";
+            readonly type: "ewallet";
+            readonly icon: "maya";
+            readonly enabled: true;
+            readonly accountName: "UPCAT Simulator";
+            readonly accountNumber: "0999XXXXXX";
+            readonly bankName: null;
+            readonly qrCodeImage: null;
+            readonly qrCodeLabel: "Scan to pay via Maya";
+            readonly limits: {
+                readonly daily: {
+                    readonly max: 50000;
+                    readonly current: 0;
+                    readonly lastResetDate: "1970-01-01";
+                };
+                readonly monthly: {
+                    readonly max: 100000;
+                    readonly current: 0;
+                    readonly lastResetMonth: "1970-01";
+                };
             };
-        };
-        readonly autoDisabled: false;
-        readonly autoDisabledReason: null;
-        readonly autoDisabledAt: null;
-        readonly additionalNotes: "Include your UPCAT username in transfer notes.";
-        readonly order: 1;
-    }, {
-        readonly id: "maya";
-        readonly name: "Maya";
-        readonly type: "ewallet";
-        readonly icon: "maya";
-        readonly enabled: true;
-        readonly accountName: "UPCAT Simulator";
-        readonly accountNumber: "0999XXXXXX";
-        readonly bankName: null;
-        readonly qrCodeImage: null;
-        readonly qrCodeLabel: "Scan to pay via Maya";
-        readonly limits: {
-            readonly daily: {
-                readonly max: 50000;
-                readonly current: 0;
-                readonly lastResetDate: "1970-01-01";
-            };
-            readonly monthly: {
-                readonly max: 100000;
-                readonly current: 0;
-                readonly lastResetMonth: "1970-01";
-            };
-        };
         readonly autoDisabled: false;
         readonly autoDisabledReason: null;
         readonly autoDisabledAt: null;
