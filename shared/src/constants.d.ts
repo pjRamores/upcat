@@ -607,7 +607,7 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
             readonly id: "bdo";
             readonly name: "BDO";
             readonly type: "bank";
-            readonly icon: "bdo";
+            readonly icon: "🏦";
             readonly enabled: true;
             readonly accountName: "UPCAT Simulator Inc.";
             readonly accountNumber: "1234-5678-9012";
@@ -945,28 +945,18 @@ export declare const SUPPORT_TICKET_PRIORITY_META: Record<(typeof SUPPORT_TICKET
     label: string;
     color: string;
 }>;
-/**
- * Auto-close threshold for tickets in awaiting_user state.
- */
+/** Auto-close threshold for tickets in awaiting_user state. */
 export declare const SUPPORT_AUTO_CLOSE_DAYS = 14;
-/**
- * Guest support submission rate limit.
- */
+/** Guest support submission rate limit. */
 export declare const SUPPORT_GUEST_RATE: {
     readonly limit: 2;
     readonly windowMs: number;
 };
-/**
- * Hours an export download URL stays valid.
- */
+/** Hours an export download URL stays valid. */
 export declare const DATA_EXPORT_TTL_HOURS = 24;
-/**
- * Days from confirmation to scheduled deletion.
- */
+/** Days from confirmation to scheduled deletion. */
 export declare const DATA_DELETION_GRACE_DAYS = 7;
-/**
- * Hours the confirm-email link stays valid.
- */
+/** Hours the confirm-email link stays valid. */
 export declare const DATA_DELETION_CONFIRM_TTL_HOURS = 48;
 export declare const INACTIVITY_REMINDER_DAYS = 365;
 export declare const INACTIVITY_FLAG_DAYS = 730;
@@ -977,13 +967,9 @@ export declare const CRON_SCHEDULES: {
     readonly accountInactivityCheck: "0 4 * * 0";
 };
 export declare const MAX_LEVEL = 100;
-/**
- * XP required to reach a given level (cumulative).
- */
+/** XP required to reach a given level (cumulative). */
 export declare function xpRequiredForLevel(level: number): number;
-/**
- * Compute level + bounds + title from a raw XP total.
- */
+/** Compute level + bounds + title from a raw XP total. */
 export declare function levelFromXp(xp: number): {
     level: number;
     title: string;
@@ -992,9 +978,7 @@ export declare function levelFromXp(xp: number): {
     xpToNextLevel: number;
 };
 export declare function titleForLevel(level: number): string;
-/**
- * Streak multiplier thresholds (inclusive lower bound).
- */
+/** Streak multiplier thresholds (inclusive lower bound). */
 export declare const STREAK_MULTIPLIER_TIERS: readonly [{
     readonly minDays: 30;
     readonly multiplier: 2;
@@ -1012,9 +996,7 @@ export declare const STREAK_MULTIPLIER_TIERS: readonly [{
     readonly multiplier: 1;
 }];
 export declare function streakMultiplier(days: number): number;
-/**
- * Base XP rewards (also exposed via platform_settings.gamification.xp).
- */
+/** Base XP rewards (also exposed via platform_settings.gamification.xp). */
 export declare const XP_REWARDS: {
     readonly EXAM_COMPLETED: 50;
     readonly PER_CORRECT: 2;
@@ -1050,7 +1032,7 @@ export declare const PRACTICE_DEFAULTS: {
 };
 export declare const PRACTICE_MODES: readonly ["review", "weak_areas", "subject_focus", "mixed", "random"];
 export declare const PWA_INSTALL_DISMISS_DAYS = 7;
-export declare const PWA_INSTALL_MIN_VISITS = -3;
+export declare const PWA_INSTALL_MIN_VISITS = 3;
 export declare const OFFLINE_PREFETCH_LIMIT_DEFAULT = 100;
 export declare const PUSH_NOTIFICATION_TYPES: readonly ["daily_reminder", "streak_alert", "achievement", "weekly_challenge", "announcement"];
 export type PushNotificationType = (typeof PUSH_NOTIFICATION_TYPES)[number];
@@ -1119,47 +1101,13 @@ export declare const WEEKLY_CHALLENGE_CATALOG_SEED: WeeklyChallengeCatalogSeed[]
 export declare const LEADERBOARD_PAGE_SIZE = 50;
 export declare const LEADERBOARD_SCOPES: readonly ["weekly", "monthly", "all_time"];
 export type LeaderboardScope = (typeof LEADERBOARD_SCOPES)[number];
-export declare const SECURITY_EVENT_TYPES: readonly [
-    "rate_limit.exceeded",
-    "rate_limit.ip_blocked",
-    "auth.brute_force_detected",
-    "auth.credential_stuffing_detected",
-    "auth.impossible_travel",
-    "auth.suspicious_login",
-    "auth.account_takeover_attempt",
-    "auth.failed_login",
-    "auth.unknown_account",
-    "bot.detected",
-    "bot.captcha_failed",
-    "bot.scraping_detected",
-    "bot.honeypot_triggered",
-    "bot.timing_trap",
-    "dos.spike_detected",
-    "dos.slowloris_detected",
-    "input.injection_attempt",
-    "input.xss_attempt",
-    "input.payload_too_large",
-    "input.proto_pollution",
-    "session.hijack_attempt",
-    "session.token_reuse",
-    "session.revoked",
-    "admin.unauthorized_access_attempt",
-    "admin.lockdown_enabled",
-    "admin.lockdown_disabled",
-    "admin.manual_block_added",
-    "admin.manual_block_removed",
-    "admin.config_changed",
-    "admin.sessions_revoked_all",
-    "content.mass_flagging",
-    "exam.answer_automation_detected",
-    "cors.unauthorized_origin"
-];
+export declare const SECURITY_EVENT_TYPES: readonly ["rate_limit.exceeded", "rate_limit.ip_blocked", "auth.brute_force_detected", "auth.credential_stuffing_detected", "auth.impossible_travel", "auth.suspicious_login", "auth.account_takeover_attempt", "auth.failed_login", "auth.unknown_account", "bot.detected", "bot.captcha_failed", "bot.scraping_detected", "bot.honeypot_triggered", "bot.timing_trap", "dos.spike_detected", "dos.slowloris_detected", "input.injection_attempt", "input.xss_attempt", "input.payload_too_large", "input.proto_pollution", "session.hijack_attempt", "session.token_reuse", "session.revoked", "admin.unauthorized_access_attempt", "admin.lockdown_enabled", "admin.lockdown_disabled", "admin.manual_block_added", "admin.manual_block_removed", "admin.config_changed", "admin.sessions_revoked_all", "content.mass_flagging", "exam.answer_automation_detected", "cors.unauthorized_origin"];
 export type SecurityEventType = (typeof SECURITY_EVENT_TYPES)[number];
 export declare const SECURITY_EVENT_RETENTION_DAYS = 90;
 /** Points added to an IP's threat score when a signal fires. */
 export declare const THREAT_SCORE_ADJUSTMENTS: Record<string, number>;
-export declare const THREAT_SCORE_DECAY_PER_HOUR = .1;
-export declare const THREAT_SCORE_DECAY_PER_DAY_CLEAN = .5;
+export declare const THREAT_SCORE_DECAY_PER_HOUR = 1;
+export declare const THREAT_SCORE_DECAY_PER_DAY_CLEAN = 5;
 export declare const THREAT_SCORE_MIN = 0;
 export declare const THREAT_SCORE_MAX = 100;
 export declare const REPUTATION_THRESHOLDS: {
@@ -1186,162 +1134,155 @@ export declare const DEFAULT_SECURITY_CONFIG: {
             readonly requestsPerMinute: 60;
             readonly requestsPerHour: 1000;
         };
-};
-readonly endpoints: {
-    readonly "POST /api/auth/login": {
-        readonly perIp: {
-            readonly perMinute:.5;
-            readonly perHour:.20;
+        readonly endpoints: {
+            readonly "POST /api/auth/login": {
+                readonly perIp: {
+                    readonly perMinute: 5;
+                    readonly perHour: 20;
+                };
+            };
+            readonly "POST /api/auth/register": {
+                readonly perIp: {
+                    readonly perMinute: 3;
+                    readonly perHour: 10;
+                };
+            };
+            readonly "POST /api/auth/forgot-password": {
+                readonly perIp: {
+                    readonly perMinute: 3;
+                    readonly perHour: 5;
+                };
+            };
+            readonly "POST /api/auth/recovery-codes/verify": {
+                readonly perIp: {
+                    readonly perMinute: 5;
+                    readonly perHour: 15;
+                };
+            };
+            readonly "POST /api/auth/security-questions/verify": {
+                readonly perIp: {
+                    readonly perMinute: 3;
+                    readonly perHour: 10;
+                };
+            };
+            readonly "POST /api/exam/start": {
+                readonly perUser: {
+                    readonly perMinute: 2;
+                    readonly perHour: 10;
+                };
+            };
+            readonly "GET /api/exam/questions": {
+                readonly perUser: {
+                    readonly perMinute: 30;
+                };
+            };
+            readonly "POST /api/exam/answer": {
+                readonly perUser: {
+                    readonly perMinute: 60;
+                };
+            };
+            readonly "POST /api/exam/answer-bulk": {
+                readonly perUser: {
+                    readonly perMinute: 10;
+                };
+            };
+            readonly "POST /api/support/tickets/guest": {
+                readonly perIp: {
+                    readonly perMinute: 1;
+                    readonly perHour: 3;
+                };
+            };
+            readonly "POST /api/contact": {
+                readonly perIp: {
+                    readonly perMinute: 1;
+                    readonly perHour: 3;
+                };
+            };
+            readonly "POST /api/auth/social/start": {
+                readonly perIp: {
+                    readonly perMinute: 10;
+                    readonly perHour: 30;
+                };
+            };
+            readonly "GET /api/stats": {
+                readonly perUser: {
+                    readonly perMinute: 20;
+                };
+            };
+            readonly "GET /api/admin": {
+                readonly perUser: {
+                    readonly perMinute: 60;
+                };
+            };
         };
     };
-    readonly "POST /api/auth/register": {
-        readonly perIp: {
-            readonly perMinute:.3;
-            readonly perHour:.10;
-        };
-    };
-    readonly "POST /api/auth/forgot-password": {
-        readonly perIp: {
-            readonly perMinute:.3;
-            readonly perHour:.5;
-        };
-    };
-    readonly "POST /api/auth/recovery-codes/verify": {
-        readonly perIp: {
-            readonly perMinute:.5;
-            readonly perHour:.15;
-        };
-    };
-    readonly "POST /api/auth/security-questions/verify": {
-        readonly perIp: {
-            readonly perMinute:.3;
-            readonly perHour:.10;
-        };
-    };
-    readonly "POST /api/exam/start": {
-        readonly perUser: {
-            readonly perMinute:.2;
-            readonly perHour:.10;
-        };
-    };
-    readonly "GET /api/exam/questions": {
-        readonly perUser: {
-            readonly perMinute:.30;
-        };
-    };
-    readonly "POST /api/exam/answer": {
-        readonly perUser: {
-            readonly perMinute:.60;
-        };
-    };
-    readonly "POST /api/exam/answer-bulk": {
-        readonly perUser: {
-            readonly perMinute:.10;
-        };
-    };
-    readonly "POST /api/support/tickets/guest": {
-        readonly perIp: {
-            readonly perMinute:.1;
-            readonly perHour:.3;
-        };
-    };
-    readonly "POST /api/contact": {
-        readonly perIp: {
-            readonly perMinute:.1;
-            readonly perHour:.3;
-        };
-    };
-    readonly "POST /api/auth/social/start": {
-        readonly perIp: {
-            readonly perMinute:.10;
-            readonly perHour:.30;
-        };
-    };
-    readonly "GET /api/stats": {
-        readonly perUser: {
-            readonly perMinute:.20;
-        };
-    };
-    readonly "GET /api/admin": {
-        readonly perUser: {
-            readonly perMinute:.60;
-        };
-    };
-};
-
-readonly botDetection: {
-    readonly enabled: true;
-    readonly captchaThreshold:.50;
-    readonly blockThreshold:.85;
-    readonly honeypotEnabled: true;
-    readonly fingerprintingEnabled: true;
-    readonly behavioralAnalysisEnabled: true;
-};
-
-readonly dos: {
-    readonly enabled: true;
-    readonly globalRpsThreshold:.1000;
-    readonly perIpSpikeMultiplier:.5;
-    readonly slowlorisTimeout:.30;
-    readonly maxConcurrentPerIp:.50;
-    readonly maxRequestBodySize:.1048576;
-    readonly maxUrlLength:.2048;
-};
-
-readonly anomalyDetection: {
-    readonly enabled: true;
-    readonly impossibleTravelEnabled: true;
-    readonly impossibleTravelThresholdKm:.500;
-    readonly impossibleTravelThresholdMin:.30;
-};
-readonly unusualHoursEnabled: false;
-readonly newDeviceAlertEnabled: true;
-
-readonly autoResponse: {
-    readonly autoBlockEnabled: true;
-    readonly autoBlockDuration: 3600;
-    readonly escalationThresholds: {
-        readonly softBlock: 70;
-        readonly hardBlock: 90;
-        readonly permanentBlock: 95;
-    };
-    readonly notifyAdminOnCritical: true;
-    readonly cooldownPeriod: 300;
-};
-
-readonly headers: {
-    readonly hsts: {
+    readonly botDetection: {
         readonly enabled: true;
-        readonly maxAge: 31536000;
-        readonly includeSubDomains: true;
+        readonly captchaThreshold: 50;
+        readonly blockThreshold: 85;
+        readonly honeypotEnabled: true;
+        readonly fingerprintingEnabled: true;
+        readonly behavioralAnalysisEnabled: true;
     };
-    readonly csp: {
-        readonly defaultSrc: readonly ["'self'"];
-        readonly scriptSrc: readonly ["'self'", "'unsafe-inline'"];
-        readonly styleSrc: readonly ["'self'", "'unsafe-inline'"];
-        readonly imgSrc: readonly ["'self'", "data:", "https:"];
-        readonly connectSrc: readonly ["'self'"];
-        readonly fontSrc: readonly ["'self'", "data:"];
-        readonly frameSrc: readonly ["none"];
-        readonly objectSrc: readonly ["none"];
-        readonly baseUri: readonly ["'self'"];
+    readonly dos: {
+        readonly enabled: true;
+        readonly globalRpsThreshold: 1000;
+        readonly perIpSpikeMultiplier: 5;
+        readonly slowlorisTimeout: 30;
+        readonly maxConcurrentPerIp: 50;
+        readonly maxRequestBodySize: 1048576;
+        readonly maxUrlLength: 2048;
     };
-    readonly xFrameOptions: "DENY";
-    readonly xContentTypeOptions: "nosniff";
-    readonly referrerPolicy: "strict-origin-when-cross-origin";
-    readonly permissionsPolicy: "camera=(), microphone=(), geolocation=()";
+    readonly anomalyDetection: {
+        readonly enabled: true;
+        readonly impossibleTravelEnabled: true;
+        readonly impossibleTravelThresholdKm: 500;
+        readonly impossibleTravelThresholdMin: 30;
+        readonly unusualHoursEnabled: false;
+        readonly newDeviceAlertEnabled: true;
+    };
+    readonly autoResponse: {
+        readonly autoBlockEnabled: true;
+        readonly autoBlockDuration: 3600;
+        readonly escalationThresholds: {
+            readonly softBlock: 70;
+            readonly hardBlock: 90;
+            readonly permanentBlock: 95;
+        };
+        readonly notifyAdminOnCritical: true;
+        readonly cooldownPeriod: 300;
+    };
+    readonly headers: {
+        readonly hsts: {
+            readonly enabled: true;
+            readonly maxAge: 31536000;
+            readonly includeSubDomains: true;
+        };
+        readonly csp: {
+            readonly defaultSrc: readonly ["'self'"];
+            readonly scriptSrc: readonly ["'self'", "'unsafe-inline'"];
+            readonly styleSrc: readonly ["'self'", "'unsafe-inline'"];
+            readonly imgSrc: readonly ["'self'", "data:", "https:"];
+            readonly connectSrc: readonly ["'self'"];
+            readonly fontSrc: readonly ["'self'", "data:"];
+            readonly frameSrc: readonly ["none"];
+            readonly objectSrc: readonly ["none"];
+            readonly baseUri: readonly ["'self'"];
+        };
+        readonly xFrameOptions: "DENY";
+        readonly xContentTypeOptions: "nosniff";
+        readonly referrerPolicy: "strict-origin-when-cross-origin";
+        readonly permissionsPolicy: "camera=(), microphone=(), geolocation=()";
+    };
+    readonly lockdown: {
+        readonly enabled: false;
+        readonly enabledAt: null;
+        readonly enabledBy: null;
+        readonly reason: null;
+    };
+    readonly updatedAt: string;
+    readonly updatedBy: null;
 };
-
-readonly lockdown: {
-    readonly enabled: false;
-    readonly enabledAt: null;
-    readonly enabledBy: null;
-    readonly reason: null;
-};
-
-readonly updatedAt: string;
-readonly updatedBy: null;
-
 export declare const API_ROUTES_V15: {
     readonly CAPTCHA: {
         readonly GENERATE: "/captcha/generate";
@@ -1373,13 +1314,12 @@ export declare const API_ROUTES_V15: {
 };
 
 export declare const CRON_SCHEDULES_V15: {
-    readonly threatScoreDecay: "0.**.*.*.*";
-    readonly expiredBlocksCleanup: "*/*15.*.*.*.*";
+    readonly threatScoreDecay: "0 ** * * *";
+    readonly expiredBlocksCleanup: "*/*15 * * * *";
     readonly securityReport: "0 0 * * *";
     readonly staleSessionCleanup: "0 */6 * * *";
     readonly ipIntelligenceAggregation: "30 0 * * *";
 };
-
 export declare const RATE_LIMIT_BUCKET_TTL_SECONDS = 86400;
 export declare const USER_SESSION_RETENTION_DAYS = 30;
 /** Rate-limit windows in milliseconds, matching the perMinute/perHour/perDay keys. */
@@ -1388,7 +1328,6 @@ export declare const RATE_WINDOWS: {
     readonly perHour: 3600000;
     readonly perDay: 86400000;
 };
-
 export declare const CAPTCHA_TYPES: readonly ["math", "image", "puzzle", "pow"];
 export declare const CAPTCHA_TTL_SECONDS = 600;
 export declare const CAPTCHA_TOKEN_TTL_SECONDS = 600;
