@@ -34,7 +34,7 @@ vi.mock("./router", () => ({
 }));
 
 vi.mock("./components/ErrorBoundary", () => ({
-    default: ({ children }: { children: unknown }) => children,
+    default: ({children}: { children: unknown }) => children,
 }));
 
 vi.mock("./components/ToastContainer", () => ({
