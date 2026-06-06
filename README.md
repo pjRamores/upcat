@@ -761,7 +761,7 @@ Every API handler is wrapped in `withSecurity()`
 
 ### CAPTCHA system
 
-Four challenge types ([captcha.ts](api/src/security/captcha.ts) + [Captcha.tsx](client/src/components/Captcha.tsx)):
+Four challenge types ([captcha.ts](api/src/security/captcha.ts) + [Captcha_bk.tsx](client/src/components/Captcha_bk.tsx)):
 
 | Type | Implementation |
 |------|----------------|
