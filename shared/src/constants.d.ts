@@ -107,18 +107,15 @@ export declare const API_ROUTES: {
         readonly PROMO_VALIDATE: "/payment/promo-code/validate";
         readonly PROMO_REDEEM: "/payment/promo-code/redeem";
     };
-
     readonly FEATURES: {
         readonly ACCESS: "/features/access";
         readonly CHECK: "/features/check";
         readonly TRACK_USAGE: "/features/track-usage";
     };
-
     readonly SUBSCRIPTION: {
         readonly STATUS: "/subscription/status";
         readonly CANCEL: "/subscription/cancel";
     };
-
     readonly ADMIN: {
         readonly DASHBOARD: "/admin/dashboard/summary";
         readonly QUESTIONS: "/admin/questions";
@@ -185,19 +182,22 @@ export declare const API_ROUTES: {
         readonly DELETION_LOG: "/admin/deletion-log";
         readonly UNLOCK_ACCOUNT: (userId: string) => string;
     };
-
     readonly FLAG_QUESTION: (questionId: string) => string;
 };
-
-export declare const FLAG_REASONS: readonly [
-    { readonly value: "incorrect_answer"; readonly label: "Incorrect-answer" },
-    { readonly value: "typo"; readonly label: "Typo or grammatical error" },
-    { readonly value: "unclear"; readonly label: "Unclear / ambiguous wording" },
-    { readonly value: "other"; readonly label: "Other" }
-];
-
+export declare const FLAG_REASONS: readonly [{
+    readonly value: "incorrect_answer";
+    readonly label: "Incorrect answer";
+}, {
+    readonly value: "typo";
+    readonly label: "Typo or grammatical error";
+}, {
+    readonly value: "unclear";
+    readonly label: "Unclear / ambiguous wording";
+}, {
+    readonly value: "other";
+    readonly label: "Other";
+}];
 export declare const ANNOUNCEMENT_TYPES: readonly ["info", "warning", "maintenance"];
-
 export declare const DEFAULT_PLATFORM_SETTINGS: {
     readonly examDefaults: {
         readonly distribution: {
@@ -206,39 +206,41 @@ export declare const DEFAULT_PLATFORM_SETTINGS: {
                 readonly timeLimit: 45;
             };
         };
-        readonly Mathematics:
-readonly questions: 30;
-readonly timeLimit: 54;
-};
-readonly Science: {
-    readonly questions: 25;
-    readonly timeLimit: 45;
-};
-readonly "Reading Comprehension": {
-    readonly questions: 20;
-    readonly timeLimit: 36;
-};
-readonly difficultyMix: {
-    readonly easy: .25;
-    readonly medium: .40;
-    readonly hard: .25;
-    readonly very_hard: .10;
-};
-readonly registration: {
-    readonly isOpen: true;
-    readonly requireEmailVerification: true;
-};
-readonly leaderboard: {
-    readonly isEnabled: true;
-    readonly showFullName: false;
-};
-readonly maintenance: {
-    readonly isEnabled: false;
-    readonly message: "";
-};
-readonly contact: {
-    readonly developerEmail: "";
-    readonly maxMessagesPerHour: 3;
+        readonly Mathematics: {
+            readonly questions: 30;
+            readonly timeLimit: 54;
+        };
+        readonly Science: {
+            readonly questions: 25;
+            readonly timeLimit: 45;
+        };
+        readonly "Reading Comprehension": {
+            readonly questions: 20;
+            readonly timeLimit: 36;
+        };
+    };
+    readonly difficultyMix: {
+        readonly easy: .25;
+        readonly medium: .40;
+        readonly hard: .25;
+        readonly very_hard: .10;
+    };
+    readonly registration: {
+        readonly isOpen: true;
+        readonly requireEmailVerification: true;
+    };
+    readonly leaderboard: {
+        readonly isEnabled: true;
+        readonly showFullName: false;
+    };
+    readonly maintenance: {
+        readonly isEnabled: false;
+        readonly message: "";
+    };
+    readonly contact: {
+        readonly developerEmail: "";
+        readonly maxMessagesPerHour: 3;
+    };
 };
 export declare const DEFAULT_FEATURE_GATING: readonly [{
     readonly id: "mock_exam_access";
@@ -308,19 +310,19 @@ export declare const DEFAULT_FEATURE_GATING: readonly [{
     readonly limitPeriod: null;
 }, {
     readonly id: "difficulty_filter";
-readonly name: "Difficulty-Configuration";
-readonly description: "Customize question difficulty.";
-readonly category: "practice";
-readonly accessLevel: "all";
-readonly hasLimit: true;
-readonly limits: {
-    readonly free: 1;
-    readonly premium: -3;
-};
-readonly limitPeriod: "total";
+    readonly name: "Difficulty Configuration";
+    readonly description: "Customize question difficulty.";
+    readonly category: "practice";
+    readonly accessLevel: "all";
+    readonly hasLimit: true;
+    readonly limits: {
+        readonly free: 1;
+        readonly premium: 3;
+    };
+    readonly limitPeriod: "total";
 }, {
     readonly id: "stats_basic";
-    readonly name: "Basic-Statistics";
+    readonly name: "Basic Statistics";
     readonly description: "Core progress metrics.";
     readonly category: "analytics";
     readonly accessLevel: "all";
@@ -366,7 +368,7 @@ readonly limitPeriod: "total";
     readonly hasLimit: true;
     readonly limits: {
         readonly free: 1;
-        readonly premium: -3;
+        readonly premium: 3;
     };
     readonly limitPeriod: "total";
 }, {
@@ -411,15 +413,15 @@ readonly limitPeriod: "total";
     readonly hasLimit: false;
     readonly limits: null;
     readonly limitPeriod: null;
-}
-readonly id: "priority_support";
-readonly name: "Priority Support Tickets";
-readonly description: "Get prioritized support queue.";
-readonly category: "experience";
-readonly accessLevel: "premium";
-readonly hasLimit: false;
-readonly limits: null;
-readonly limitPeriod: null;
+}, {
+    readonly id: "priority_support";
+    readonly name: "Priority Support Tickets";
+    readonly description: "Get prioritized support queue.";
+    readonly category: "experience";
+    readonly accessLevel: "premium";
+    readonly hasLimit: false;
+    readonly limits: null;
+    readonly limitPeriod: null;
 }, {
     readonly id: "custom_presets";
     readonly name: "Saved Practice Presets";
@@ -515,29 +517,29 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
         readonly order: 2;
     }, {
         readonly id: "180_days";
-readonly duration: 180;
-readonly isLifetime: false;
-readonly price: 449;
-readonly currency: "PHP";
-readonly originalPrice: 594;
-readonly description: "Full access for 180 days";
-readonly isPopular: false;
-readonly isActive: true;
-readonly features: readonly ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"];
-readonly order: 3;
-}, {
-    readonly id: "365_days";
-    readonly name: "1 Year Premium";
-    readonly duration: 365;
-    readonly isLifetime: false;
-    readonly price: 799;
-    readonly currency: "PHP";
-    readonly originalPrice: 1188;
-    readonly description: "Full access for 365 days";
-    readonly isPopular: false;
-    readonly isActive: true;
-    readonly features: readonly ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"];
-    readonly order: 4;
+        readonly duration: 180;
+        readonly isLifetime: false;
+        readonly price: 449;
+        readonly currency: "PHP";
+        readonly originalPrice: 594;
+        readonly description: "Full access for 180 days";
+        readonly isPopular: false;
+        readonly isActive: true;
+        readonly features: readonly ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"];
+        readonly order: 3;
+    }, {
+        readonly id: "365_days";
+        readonly name: "1 Year Premium";
+        readonly duration: 365;
+        readonly isLifetime: false;
+        readonly price: 799;
+        readonly currency: "PHP";
+        readonly originalPrice: 1188;
+        readonly description: "Full access for 365 days";
+        readonly isPopular: false;
+        readonly isActive: true;
+        readonly features: readonly ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"];
+        readonly order: 4;
 }];
 readonly manual: {
     readonly processingTimeMessage: "Payment verification takes up to 12 hours";
@@ -548,7 +550,7 @@ readonly manual: {
         readonly id: "gcash";
         readonly name: "GCash";
         readonly type: "ewallet";
-        readonly icon: "(gc)";
+        readonly icon: "💳";
         readonly enabled: true;
         readonly accountName: "UPCAT Simulator";
         readonly accountNumber: "0917XXXXXX";
