@@ -210,35 +210,39 @@ body {
 }
 
 .animate-fade-in {
-    animation: fadeIn .35s ease-out both;
+    animation: fadeIn 0.35s ease-out both;
 }
 
 .animate-slide-up {
-    animation: slideUp .35s ease-out both;
+    animation: slideUp 0.35s ease-out both;
 }
 
 .animate-slide-right {
-    animation: slideRight .35s ease-out both;
+    animation: slideRight 0.35s ease-out both;
 }
 
 .animate-slide-down {
-    animation: slideDown .3s ease-out both;
+    animation: slideDown 0.3s ease-out both;
 }
 
 .animate-scale-in {
-    animation: scaleIn .18s linear infinite;
+    animation: scaleIn 0.18s linear infinite;
+}
+
+.animate-spin {
+    animation: spin 0.7s linear infinite;
 }
 
 .animate-toast-in {
-    animation: slideInRight .25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation: slideInRight 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
 
 .animate-toast-out {
-    animation: slideOutRight .2s ease-in both;
+    animation: slideOutRight 0.2s ease-in both;
 }
 
 .animate-drawer-in {
-    animation: slideInFromRight .28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation: slideInFromRight 0.28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
 
 /* --- Scroll-reeveal (used by LandingPage) -----------------------------*/
@@ -306,7 +310,7 @@ body {
 .input-error {
     @apply border-amber-400 focus:border-amber-500 focus:ring-amber-500;
 }
-```css
+
 .card {
     @apply rounded-xl border border-gray-200 bg-white p-6 shadow-sm;
 }
@@ -318,10 +322,10 @@ body {
 /* ─── Skeleton shimmer ────────────────────────────────────── */
 .skeleton {
     background: linear-gradient(
-        90deg,
-        rgba(226, 232, 240, 0.6) 0%,
-        rgba(241, 245, 249, 0.9) 50%,
-        rgba(226, 232, 240, 0.6) 100%
+            90deg,
+            rgba(226, 232, 240, 0.6) 0%,
+            rgba(241, 245, 249, 0.9) 50%,
+            rgba(226, 232, 240, 0.6) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 1.6s linear infinite;
@@ -345,7 +349,7 @@ body {
 }
 
 .legal-prose strong {
-    color: #111827; /* gray-900 */;
+    color: #111827; /* gray-900 */
     font-weight: 600;
 }
 
@@ -409,7 +413,8 @@ body {
     text-decoration: underline;
     text-underline-offset: 2px;
 }
-```prose blockquote {
+
+.prose blockquote {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-left: 4px solid #cbd5e1;
