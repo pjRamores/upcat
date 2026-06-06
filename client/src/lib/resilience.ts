@@ -1,5 +1,5 @@
 import apiClient from "@/lib/api";
-import { readPersistedToken } from "@/lib/authPersistence";
+import {readPersistedToken} from "@/lib/authPersistence";
 
 type MaintenanceData = {
     isActive: boolean;
@@ -35,7 +35,7 @@ function emit() {
 }
 
 function setState(patch: Partial<ResilienceState>) {
-    state = { ...state, ...patch };
+    state = {...state, ...patch};
     emit();
 }
 
@@ -43,7 +43,7 @@ export async function pollMaintenanceStatus() {
     try {
         const response = await apiClient.get("/maintenance/status");
         const payload = (response.data?.data ?? null) as MaintenanceData;
-        setState({ maintenance: payload });
+        setState({maintenance: payload});
     } catch {
         // Silent failure: status polling is best effort.
     }
@@ -56,7 +56,7 @@ export async function sendHeartbeat() {
             timestamp: new Date().toISOString(),
             deviceId: localStorage.getItem("upcat.deviceId") || "web",
         });
-        setState({ lastHeartbeatAt: new Date().toISOString() });
+        setState({lastHeartbeatAt: new Date().toISOString()});
     } catch {
         // Silent failure: heartbeat should never block UX.
     }
@@ -73,12 +73,13 @@ export function subscribeResilience(listener: Listener): () => void {
 export function getResilienceState(): ResilienceState {
     return state;
 }
+
 export function installGlobalResilienceHooks() {
     if (initialized || typeof window === "undefined") return;
     initialized = true;
 
-    const onOnline = () => setState({ online: true });
-    const onOffline = () => setState({ online: false });
+    const onOnline = () => setState({online: true});
+    const onOffline = () => setState({online: false});
 
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
@@ -87,26 +88,24 @@ export function installGlobalResilienceHooks() {
     // The maintenance/status check is done as a pre-flight request on dynamic pages instead.
     // Re-enable the lines below when moving to persistent-server infrastructure:
     //
-
     // void pollMaintenanceStatus();
     // void sendHeartbeat();
-
     //
-    pollTimer = setInterval(() => {
-        // void pollMaintenanceStatus();
-    }, 60_000);
+    // pollTimer = setInterval(() => {
+    //     // void pollMaintenanceStatus();
+    // }, 60_000);
     //
-
-    heartbeatTimer = setInterval(() => {
-        // void sendHeartbeat();
-    }, 30_000);
+    // heartbeatTimer = setInterval(() => {
+    //     // void sendHeartbeat();
+    // }, 30_000);
     //
+    // window.addEventListener("beforeunload", () => {
+    //     if (pollTimer) clearInterval(pollTimer);
+    //     if (heartbeatTimer) clearInterval(heartbeatTimer);
+    // });
 
-    window.addEventListener("beforeunload", () => {
-        if (pollTimer) clearInterval(pollTimer);
-        if (heartbeatTimer) clearInterval(heartbeatTimer);
 export const __resilienceTestOnly = {
-    resetState(online: boolean) {
+    resetState(online = true) {
         listeners.clear();
         initialized = false;
         if (pollTimer) clearInterval(pollTimer);
@@ -116,7 +115,7 @@ export const __resilienceTestOnly = {
         state = {
             online,
             maintenance: null,
-            lastHeartbeatAt: null
+            lastHeartbeatAt: null,
         };
-    }
+    },
 };
