@@ -1,144 +1,153 @@
 /**
  * Phase 15b — CAPTCHA component.
  *
- * Self-contained widget that requests a challenge from the backend and renders the right UI based on type:
+ * Self-contained widget that requests a challenge from the backend and
+ * renders the right UI based on type:
  * - math — plain input
  * - image — 3x3 selectable SVG grid
  * - puzzle — drag a piece across a slider track to a target X
- * - pow — invisible; runs a tight SHA-256 loop in the main thread until a valid nonce is found, then auto-submits
+ * - pow — invisible; runs a tight SHA-256 loop in the main thread
+ *          until a valid nonce is found, then auto-submits
  *
- * On success: calls `onSolved(token)` so the caller can pass that token with the gated follow-up request. The token is also armed in sessionStorage by `armCaptchaToken()` for the auto-header path.
+ * On success: calls `onSolved(token)` so the caller can pass that token
+ * with the gated follow-up request. The token is also armed in
+ * sessionStorage by `armCaptchaToken()` for the auto-header path.
  */
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {
-  type CaptchaChallengePayload,
-  type CaptchaImageChallenge,
-  type CaptchaMathChallenge,
-  type CaptchaPowChallenge,
-  type CaptchaPuzzleChallenge,
-  type CaptchaType,
+    type CaptchaChallengePayload,
+    type CaptchaImageChallenge,
+    type CaptchaMathChallenge,
+    type CaptchaPowChallenge,
+    type CaptchaPuzzleChallenge,
+    type CaptchaType,
 } from "@upcat/shared";
 import { armCaptchaToken, captchaApi } from "@/lib/captchaApi";
 
 export interface CaptchaProps {
-  /** Preferred challenge type. Defaults to "math" for visible flows. */
-  type?: CaptchaType;
-  /** If true, generation uses elevated difficulty (PoW only). */
-  elevated?: boolean;
-  /** Fired with the signed JWT once the challenge is solved. */
-  onSolved: (token: string) => void;
-  /** Optional: notify caller about state changes for UX (button disabled, etc.). */
-  onStateChange?: (state: "idle" | "loading" | "ready" | "verifying" | "solved" | "failed") => void;
-  className?: string;
+    /** Preferred challenge type. Defaults to "math" for visible flows. */
+    type?: CaptchaType;
+    /** If true, generation uses elevated difficulty (PoW only). */
+    elevated?: boolean;
+    /** Fired with the signed JWT once the challenge is solved. */
+    onSolved: (token: string) => void;
+    /** Optional: notify caller about state changes for UX (button disabled, etc.). */
+    onStateChange?: (state: "idle" | "loading" | "ready" | "verifying" | "solved" | "failed") => void;
+    className?: string;
 }
 
 export default function Captcha({
-  type = "math",
-  elevated = false,
-  onSolved,
-  onStateChange,
-  className,
-}: CaptchaProps) {
-  const [challenge, setChallenge] = useState<CaptchaChallengePayload | null>(null);
-  const [state, setState] = useState<
-    "idle" | "loading" | "ready" | "verifying" | "solved" | "failed"
-  >("idle");
-  const [error, setError] = useState<string | null>(null);
-  const startedAt = useRef<number>(0);
+                                    type = "math",
+                                    elevated = false,
+                                    onSolved,
+                                    onStateChange,
+                                    className,
+                                }: CaptchaProps) {
+    const [challenge, setChallenge] = useState<CaptchaChallengePayload | null>(null);
+    const [state, setState] = useState<
+        "idle" | "loading" | "ready" | "verifying" | "solved" | "failed"
+    >("idle");
+    const [error, setError] = useState<string | null>(null);
+    const startedAt = useRef<number>(0);
 
-  const updateState = useCallback(
-    (s: typeof state) => {
-      setState(s);
-      onStateChange?.(s);
-    },
-    [onStateChange],
-  );
-
-  const load = useCallback(async () => {
-    updateState("loading");
-    setError(null);
-    try {
-      const c = await captchaApi.generate(type, elevated);
-      setChallenge(c);
-      startedAt.current = Date.now();
-      updateState("ready");
-    } catch {
-      setError("Could not load CAPTCHA. Try again.");
-      updateState("failed");
-    }
-  }, [type, elevated, updateState]);
-
-  useEffect(() => {
-    void load();
-  }, [load]);
-
-  const verify = useCallback(
-    async (answer: unknown) => {
-      if (!challenge) return;
-      updateState("verifying");
-      setError(null);
-      const elapsed = Date.now() - startedAt.current;
-      try {
-        const result = await captchaApi.verify(challenge.captchaId, answer, elapsed);
-        if (result.valid && result.token) {
-          armCaptchaToken(result.token);
-          onSolved(result.token);
-          updateState("solved");
-        } else {
-          setError("Incorrect answer. Try a new challenge.");
-          updateState("failed");
-          await load();
-        }
-      } catch {
-        setError("Verification failed. Try a new challenge.");
-        updateState("failed");
-        await load();
-      }
-    },
-    [challenge, load, onSolved, updateState],
-  );
-}
-if (state === "loading" && !challenge) {
-    return <div className={panelClass(className)}>Loading verification...</div>;
-}
-if (state === "solved") {
-    return (
-        <div className={panelClass(className)}>
-            <p className="text-sm text-emerald-700">Verification complete.</p>
-        </div>
+    const updateState = useCallback(
+        (s: typeof state) => {
+            setState(s);
+            onStateChange?.(s);
+        },
+        [onStateChange],
     );
-}
-if (!challenge) {
+
+    const load = useCallback(async () => {
+        updateState("loading");
+        setError(null);
+        try {
+            const c = await captchaApi.generate(type, elevated);
+            setChallenge(c);
+            startedAt.current = Date.now();
+            updateState("ready");
+        } catch {
+            setError("Could not load CAPTCHA. Try again.");
+            updateState("failed");
+        }
+    }, [type, elevated, updateState]);
+
+    useEffect(() => {
+        void load();
+    }, [load]);
+
+    const verify = useCallback(
+        async (answer: unknown) => {
+            if (!challenge) return;
+            updateState("verifying");
+            setError(null);
+            const elapsed = Date.now() - startedAt.current;
+            try {
+                const result = await captchaApi.verify(challenge.captchaId, answer, elapsed);
+                if (result.valid && result.token) {
+                    armCaptchaToken(result.token);
+                    onSolved(result.token);
+                    updateState("solved");
+                } else {
+                    setError("Incorrect answer. Try a new challenge.");
+                    updateState("failed");
+                    await load();
+                }
+            } catch {
+                setError("Verification failed. Try a new challenge.");
+                updateState("failed");
+                await load();
+            }
+        },
+        [challenge, load, onSolved, updateState],
+    );
+
+    if (state === "loading" && !challenge) {
+        return <div className={panelClass(className)}>Loading verification...</div>;
+    }
+    if (state === "solved") {
+        return (
+            <div className={panelClass(className)}>
+                <p className="text-sm text-emerald-700">Verification complete.</p>
+            </div>
+        );
+    }
+    if (!challenge) {
+        return (
+            <div className={panelClass(className)}>
+                <p className="text-sm text-red-600">{error ?? "Could not load CAPTCHA."}</p>
+                <button type="button" onClick={load} className="mt-2 text-sm font-semibold text-primary-600">
+                    Try again
+                </button>
+            </div>
+        );
+    }
+
     return (
         <div className={panelClass(className)}>
-            <p className="text-sm text-red-600">{error ?? "Could not load CAPTCHA."}</p>
-            <button type="button" onClick={load} className="mt-2 text-sm font-semibold text-primary-600">
-                Try again
+            {challenge.type === "math" && (
+                <MathPrompt challenge={challenge.challenge as CaptchaMathChallenge} onSubmit={verify}
+                            disabled={state === "verifying"}/>
+            )}
+            {challenge.type === "image" && (
+                <ImagePrompt challenge={challenge.challenge as CaptchaImageChallenge} onSubmit={verify}
+                             disabled={state === "verifying"}/>
+            )}
+            {challenge.type === "puzzle" && (
+                <PuzzlePrompt challenge={challenge.challenge as CaptchaPuzzleChallenge} onSubmit={verify}
+                              disabled={state === "verifying"}/>
+            )}
+            {challenge.type === "pow" && (
+                <PowPrompt challenge={challenge.challenge as CaptchaPowChallenge} onSubmit={verify}
+                           disabled={state === "verifying"}/>
+            )}
+            {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+            <button type="button" onClick={load}
+                    className="mt-3 text-xs font-medium text-slate-500 hover:text-slate-700">
+                Get a new challenge
             </button>
         </div>
     );
-}
-
-return (
-    <div className={panelClass(className)}>
-        {challenge.type === "math" && (
-            <MathPrompt challenge={challenge.challenge as CaptchaMathChallenge} onSubmit={verify} disabled={state === "verifying"} />
-        )}
-        {challenge.type === "image" && (
-            <ImagePrompt challenge={challenge.challenge as CaptchaImageChallenge} onSubmit={verify} disabled={state === "verifying"} />
-        )}
-        {challenge.type === "puzzle" && (
-            <PuzzlePrompt challenge={challenge.challenge as CaptchaPuzzleChallenge} onSubmit={verify} disabled={state === "verifying"} />
-        )}
-        {challenge.type === "pow" && (
-            <PowPrompt challenge={challenge.challenge as CaptchaPowChallenge} onSubmit={verify} disabled={state === "verifying"} />
-        )}
-        {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
-        <button type="button" onClick={load} className="mt-3 text-xs font-medium text-slate-500 hover:text-slate-700">
-            Get a new challenge
-        </button>
-    </div>
-);
 
 function panelClass(extra?: string): string {
     return `rounded-lg border border-slate-200 bg-slate-50 p-4 ${extra ?? ""}`;
