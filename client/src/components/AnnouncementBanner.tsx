@@ -67,7 +67,7 @@ export default function AnnouncementBanner() {
                 const s = (STYLES[a.type] ?? STYLES.info)!;
                 return (
                     <div
-                        key={a._id} role="status"
+                        key={a._id}
                         role="status"
                         className={`flex items-start gap-3 rounded-lg border ${s.border} ${s.bg} ${s.text} px-4 py-3 text-sm shadow-sm`}
                     >
@@ -79,10 +79,10 @@ export default function AnnouncementBanner() {
                         <button
                             type="button"
                             onClick={() => {
-                              const next = new Set(dismissed);
-                              next.add(a._id);
-                              setDismissed(next);
-                              persistDismissed(next);
+                                const next = new Set(dismissed);
+                                next.add(a._id);
+                                setDismissed(next);
+                                persistDismissed(next);
                             }}
                             aria-label="Dismiss announcement"
                             className="rounded-md p-1 hover:bg-white/40"
