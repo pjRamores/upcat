@@ -226,7 +226,7 @@ body {
 }
 
 .animate-scale-in {
-    animation: scaleIn 0.18s linear infinite;
+    animation: scaleIn 0.18s ease-out both;
 }
 
 .animate-spin {
