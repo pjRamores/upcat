@@ -238,7 +238,7 @@ export async function flushSessionQueue(
         // Increment retry counters and drop entries that exceeded max retries
         const q = loadQueue().map((e) => {
             if (e.sessionId !== sessionId) return e;
-            return { ...e, retries: e.retries + 1};
+            return {...e, retries: e.retries + 1};
         });
         const filtered = q.filter((e) => e.sessionId !== sessionId || e.retries <= MAX_RETRIES);
         saveQueue(filtered);
@@ -264,7 +264,7 @@ export async function flushSessionActionQueue(sessionId: string): Promise<number
             sent += 1;
 
             const remaining = loadSessionActionQueue().filter((e) => e.id !== entry.id);
-            saveSessionActionQueue(remaining)
+            saveSessionActionQueue(remaining);
         } catch {
             const queue = loadSessionActionQueue().map((e) => {
                 if (e.id !== entry.id) return e;
@@ -309,13 +309,14 @@ export async function flushAllQueues(opts: { deviceId?: string } = {}): Promise<
                 ...remainingActions.map((e) => e.retries),
             ];
             const minRetries = allRetries.length > 0 ? Math.min(...allRetries) : 0;
-const delay = RETRY_DELAY_BASE_MS * Math.pow(2, Math.min(minRetries, 5));
-retryTimer = setTimeout(() => {
-    void flushAllQueues(opts);
-}, delay);
-
-} finally {
-    flushInProgress = false;
+            const delay = RETRY_DELAY_BASE_MS * Math.pow(2, Math.min(minRetries, 5));
+            retryTimer = setTimeout(() => {
+                void flushAllQueues(opts);
+            }, delay);
+        }
+    } finally {
+        flushInProgress = false;
+    }
 }
 
 // Auto-flush on online
