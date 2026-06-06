@@ -164,7 +164,7 @@ function NavItem({
         <NavLink
             to={to}
             end={exact}
-            className={(isActive) =>
+            className={({isActive}) =>
                 [
                     "relative rounded-md px-3 py-1.5 text-sm transition-colors",
                     isActive
@@ -175,14 +175,14 @@ function NavItem({
         >
             {({isActive}) => (
                 <span className="relative">
-            {children}
+        {children}
                     {isActive && (
                         <span
                             aria-hidden
                             className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-primary-600"
                         />
                     )}
-                </span>
+        </span>
             )}
         </NavLink>
     );
@@ -236,10 +236,10 @@ function UserMenu({
             >
         <span
             className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-white">
-            {initials || "?"}
+          {initials || "?"}
         </span>
                 <span className="hidden text-sm font-medium text-gray-700 sm:inline">
-            {user?.firstName ?? "Account"}
+          {user?.firstName ?? "Account"}
         </span>
                 <svg
                     viewBox="0 0 24 24"
@@ -249,7 +249,7 @@ function UserMenu({
                     className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
                     aria-hidden
                 >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.9 6.6 6.6 6"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 9 6 6 6-6"/>
                 </svg>
             </button>
 
@@ -271,7 +271,7 @@ function UserMenu({
                                     Dashboard
                                 </MenuLink>
                                 <MenuLink to="/profile" icon="👤">
-                                    Profile &amp; XP
+                                    Profile & XP
                                 </MenuLink>
                                 <MenuLink to="/leaderboard" icon="🏆">
                                     Leaderboard
@@ -308,7 +308,7 @@ function UserMenu({
                             type="button"
                             role="menuitem"
                             onClick={onLogout}
-                            className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-primary-500 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
+                            className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-primary-600 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
                         >
                             <span aria-hidden>⏎</span> Logout
                         </button>
@@ -394,134 +394,192 @@ function MobileDrawer({
             <aside
                 className="animate-drawer-in absolute right-0 top-0 flex h-full w-80 max-w-[85vw] flex-col bg-white shadow-2xl">
                 <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
-            <span className="flex items-center gap-2 font-bold text-primary-600">
-                <CapIcon className="h-5 w-5"/>
-                UPCAT Sim
-            </span>
+        <span className="flex items-center gap-2 font-bold text-primary-600">
+            <CapIcon className="h-5 w-5"/>
+            UPCAT Sim
+        </span>
                     <button
                         type="button"
                         onClick={onClose}
                         aria-label="Close menu"
                         className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
-                        <svg viewBox="0.0 0.24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.18 18.6M6.612 12"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 612 12"/>
                         </svg>
                     </button>
                 </div>
 
                 {isAuthenticated && (
                     <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-4">
-                        <span
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">{initials}</span>
-<div className="min-w-0">
-<p className="truncate text-sm font-semibold text-gray-900">{userName} {userLast}</p>
-<p className="text-xs text-gray-500">Signed in</p>
-</div>
-</div>
-)}
+            <span
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">
+              {initials}
+            </span>
+                        <div className="min-w-0">
+                            <p className="truncate text-sm font-semibold text-gray-900">
+                                {userName} {userLast}
+                            </p>
+                            <p className="text-xs text-gray-500">Signed in</p>
+                        </div>
+                    </div>
+                )}
 
-<nav className="flex-1 overflow-y-auto p-2 text-sm" aria-label="Mobile">
-<DrawerLink to="/" onClick={onClose} exact>
-<HomeIcon />
-Home
-</DrawerLink>
-{isLanding && (
-<a href="#/features" onClick={onFeaturesClick} className="block rounded-lg px-3 py-2.5 text-gray-700 hover:bg-gray-100">
-Features
-</a>
-)}
-{isAuthenticated && (!isAdmin) && (
-<>
-<DrawerLink to="/dashboard" onClick={onClose}>
-Dashboard
-</DrawerLink>
-<DrawerLink to="/profile" onClick={onClose}>
-Profile & XP
-</DrawerLink>
-<DrawerLink to="/leaderboard" onClick={onClose}>
-Leaderboard
-</DrawerLink>
-<DrawerLink to="/practice" onClick={onClose}>
-Review
-</DrawerLink>
-<DrawerLink to="/practice/stats" onClick={onClose}>
-Review Stats
-</DrawerLink>
-<DrawerLink to="/stats" onClick={onClose}>
-Stats
-</DrawerLink>
-<DrawerLink to="/settings" onClick={onClose}>
-Settings
-</DrawerLink>
-</>
-)}
-{isAdmin && (
-<NavLink to="/admin" onClick={onClose} className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-primary-700 hover:bg-primary-50">
-Admin Panel
-</NavLink>
-)}
-</nav>
-<hr className="my-2 border-gray-100" />
-<DrawerLink to="/terms" onClick={onClose}>
-Terms
-</DrawerLink>
-<DrawerLink to="/privacy" onClick={onClose}>
-Privacy
-</DrawerLink>
-<DrawerLink to="/contact" onClick={onClose}>
-Contact
-</DrawerLink>
-<DrawerLink to="/help" onClick={onClose}>
-Help
-</DrawerLink>
-</nav>
+                <nav className="flex-1 overflow-y-auto p-2 text-sm" aria-label="Mobile">
+                    <DrawerLink to="/" onClick={onClose} exact>
+                        🏠Home
+                    </DrawerLink>
+                    {isLanding && (
+                        <a
+                            href="#/features"
+                            onClick={onFeaturesClick}
+                            className="block rounded-lg px-3 py-2.5 text-gray-700 hover:bg-gray-100"
+                        >
+                            ✨Features
+                        </a>
+                    )}
+                    {isAuthenticated && (
+                        <>
+                            {!isAdmin && (
+                                <>
+                                    <DrawerLink to="/dashboard" onClick={onClose}>
+                                        Dashboard
+                                    </DrawerLink>
+                                    <DrawerLink to="/profile" onClick={onClose}>
+                                        Profile & XP
+                                    </DrawerLink>
+                                    <DrawerLink to="/leaderboard" onClick={onClose}>
+                                        Leaderboard
+                                    </DrawerLink>
+                                    <DrawerLink to="/practice" onClick={onClose}>
+                                        Review
+                                    </DrawerLink>
+                                    <DrawerLink to="/practice/stats" onClick={onClose}>
+                                        Review Stats
+                                    </DrawerLink>
+                                    <DrawerLink to="/stats" onClick={onClose}>
+                                        Stats
+                                    </DrawerLink>
+                                    <DrawerLink to="/settings" onClick={onClose}>
+                                        Settings
+                                    </DrawerLink>
+                                </>
+                            )}
+                            {isAdmin && (
+                                <NavLink
+                                    to="/admin"
+                                    onClick={onClose}
+                                    className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-primary-700 hover:bg-primary-50"
+                                >
+                                    Admin Panel
+                                </NavLink>
+                            )}
+                        </>
+                    )}
+                    <hr className="my-2 border-gray-100"/>
+                    <DrawerLink to="/terms" onClick={onClose}>
+                        📜 Terms
+                    </DrawerLink>
+                    <DrawerLink to="/privacy" onClick={onClose}>
+                        🔒 Privacy
+                    </DrawerLink>
+                    <DrawerLink to="/contact" onClick={onClose}>
+                        ✉️ Contact
+                    </DrawerLink>
+                    <DrawerLink to="/help" onClick={onClose}>
+                        💡 Help
+                    </DrawerLink>
+                </nav>
 
-<div className="border-t border-gray-100 p-4">
-{isAuthenticated ? (
-<button type="button" onClick={onLogout} className="block w-full rounded-lg bg-primary-50 px-3 py-2 text-center text-sm font-semibold text-primary-600 hover:bg-primary-100">
-Logout
-</button>
-) : (
-<div className="grid gap-2">
-<Link to="/login" onClick={onClose} className="btn-secondary w-full text-sm">
-Login
-</Link>
-<Link to="/register" onClick={onClose} className="btn-primary w-full text-sm">
+                <div className="border-t border-gray-100 p-4">
+                    {isAuthenticated ? (
+                        <button
+                            type="button"
+                            onClick={onLogout}
+                            className="block w-full rounded-lg bg-primary-50 px-3 py-2 text-center text-sm font-semibold text-primary-600 hover:bg-primary-100"
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <div className="grid gap-2">
+                            <Link
+                                to="/login"
+                                onClick={onClose}
+                                className="btn-secondary w-full text-sm"
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                to="/register"
+                                onClick={onClose}
+                                className="btn-primary w-full text-sm"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
+                    )}
+                </div>
+            </aside>
+        </div>,
+        document.body,
+    );
+}
+
 function DrawerLink({
-to,
-onClick: () => void;
-exact?: boolean;
-children: React.ReactNode;
+                        to,
+                        onClick,
+                        exact,
+                        children,
+}: {
+    to: string;
+    onClick: () => void;
+    exact?: boolean;
+    children: React.ReactNode;
 }) {
-return (
-<NavLink
-to={to}
-end={exact}
-onClick={onClick}
-className={(isActive) =>
-[
-"block rounded-lg px-3 py-2.5 text-sm transition-colors",
-isActive ? "bg-primary-50 font-semibold text-primary-700" : "text-gray-700 hover:bg-gray-100",
-].join(" ")
+    return (
+        <NavLink
+            to={to}
+            end={exact}
+            onClick={onClick}
+            className={(isActive) =>
+                [
+                    "block rounded-lg px-3 py-2.5 text-sm transition-colors",
+                    isActive
+                        ? "bg-primary-50 font-semibold text-primary-700"
+                        : "text-gray-700 hover:bg-gray-100",
+                ].join(" ")
+            }
+        >
+            {children}
+        </NavLink>
+    );
 }
->
-{children}
-</NavLink>
-);
-}
+
 
 function CapIcon({ className = "h-6 w-6" }: { className?: string }) {
-return (
-<svg
-viewBox="0 0 24 24"
-fill="none"
-aria-hidden
-className={className}
->
-<path d="M2.95 12.41L10.55 L12.15 2.95z" fill="currentColor" opacity="0.95" />
-<path d="M6 11.5v4.2c0 .9-2.7 2.3-6.2 2.3s-6-1.4-6-2.3v-4.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-<path d="M21 10v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-</svg>
-);
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+            className={className}
+        >
+            <path
+                d="M2 95 12 41L10 5.5L12 15 2 9.5z"
+                fill="currentColor"
+                opacity="0.95"
+            />
+            <path
+                d="M6 11.5v4.2c0 .9 2.7 2.3 6 2 2.3s6-1.4 6-2.3v-4.2"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+            />
+            <path d="M21 10v5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+            />
+        </svg>
+    );
 }
