@@ -1,4 +1,3 @@
-script
 @import "tailwindcss";
 
 /*
@@ -14,11 +13,11 @@ script
     --color-primary-50: #fdf2f5;
     --color-primary-100: #fbe8ee;
     --color-primary-200: #f4cfdc;
-    --color-primary-300: #e9a9bf;
+    --color-primary-300: #e9a8bf;
     --color-primary-400: #d97198;
     --color-primary-500: #c44875;
     --color-primary-600: #a62e5a;
-    --color-primary-700: #b82049;
+    --color-primary-700: #8b2049;
     --color-primary-800: #751d3f;
     --color-primary-900: #5f1a35;
 
@@ -27,10 +26,10 @@ script
     --color-maroon-200: #fbcfd9;
     --color-maroon-300: #f7a8bb;
     --color-maroon-400: #f07193;
-    --color-maroon-500: #e7ac6f;
+    --color-maroon-500: #e74c6f;
     --color-maroon-600: #d4355f;
     --color-maroon-700: #b81e47;
-    --color-maroon-800: #9db3d3;
+    --color-maroon-800: #9d1b3d;
     --color-maroon-900: #7d1831;
 
     --color-secondary-50: #f8fafc;
@@ -103,112 +102,113 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-```transform: translateY(8px);
-}
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideDown {
-from {
-    opacity: 0;
-    transform: translateY(-12px);
-}
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideUp {
-from {
-    opacity: 0;
-    transform: translateY(12px);
-}
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideRight {
-from {
-    opacity: 0;
-    transform: translateX(-16px);
-}
-to {
-    opacity: 1;
-    transform: translateX(0);
-}
+    from {
+        opacity: 0;
+        transform: translateX(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideInRight {
-from {
-    opacity: 0;
-    transform: translateX(24px);
-}
-to {
-    opacity: 1;
-    transform: translateX(0);
-}
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideOutRight {
-from {
-    opacity: 1;
-    transform: translateX(0);
-}
-to {
-    opacity: 0;
-    transform: translateX(24px);
-}
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(24px);
+    }
 }
 
 @keyframes slideInFromRight {
-from {
-    transform: translateX(100%);
-}
-to {
-    transform: translateX(0);
-}
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 @keyframes scaleIn {
-from {
-    opacity: 0;
-    transform: scale(0.95);
-}
-to {
-    opacity: 1;
-    transform: scale(1);
-}
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes spin {
-to {
-    transform: rotate(360deg);
-}
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes shimmer {
-0% {
-    background-position: -200% 0;
-}
-100% {
-    background-position: 200% 0;
-}
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 @keyframes toastProgress {
-from {
-    transform: scaleX(1);
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
 }
-to {
-    transform: scaleX(0);
-}
-```css
+
 /* --- Scroll-reveal (used by LandingPage) ----------------------------------- */
 [data-reveal] {
     opacity: 0;
