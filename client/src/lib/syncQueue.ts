@@ -1,19 +1,22 @@
 /**
  * Durable client-side sync queue for exam answers.
  *
- * Stores pending answer operations in localStorage so they survive page refreshes,
- * tab closes, and brief offline periods. When the browser comes back online,
- * the queue is automatically flushed to the server via the /api/sync/answers endpoint (last-write-wins conflict resolution).
+ * Stores pending answer operations in localStorage so they survive page
+ * refreshes, tab closes, and brief offline periods. When the browser
+ * comes back online, the queue is automatically flushed to the server via
+ * the /api/sync/answers endpoint (last-write-wins conflict resolution).
  *
- * Only exam answers are queued here; practice cards use a simpler inline retry because their server response
- * (reveal + rationale) is required before the UI can advance.
+ * Only exam answers are queued here; practice cards use a simpler inline
+ * retry because their server response (reveal + rationale) is required
+ * before the UI can advance.
  */
+
 import apiClient from "@/lib/api";
 
 const QUEUE_KEY = "upcat.syncq.v1";
 const SESSION_ACTION_QUEUE_KEY = "upcat.session-actions.v1";
 const MAX_RETRIES = 5;
-const RETRY_DELAY_BASE_MS = 2000;
+const RETRY_DELAY_BASE_MS = 2_000;
 
 export interface QueuedAnswer {
     id: string; // uuid-ish unique per entry
@@ -96,15 +99,18 @@ function saveSessionActionQueue(q: SessionActionQueueStore): void {
 function genId(): string {
     return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 }
+
+// --- Enqueue ----------------------------------------
 /**
  * Add or update an answer in the durable queue.
- * If an entry with the same sessionId+questionId already exists it is replaced (last write wins locally — answeredAt is used server-side).
+ * If an entry with the same sessionId+questionId already exists it is
+ * replaced (last write wins locally — answeredAt is used server-side).
  */
 export function enqueueAnswer(
     sessionId: string,
     questionId: string,
     answer: "A" | "B" | "C" | "D" | null,
-    timeSpent: number
+    timeSpent: number,
 ): void {
     const q = loadQueue();
     const idx = q.findIndex(
@@ -128,9 +134,7 @@ export function enqueueAnswer(
     saveQueue(q);
 }
 
-/**
- * Remove all queued answers and session actions for a given session (after successful submit).
- */
+/** Remove all queued answers and session actions for a given session (after successful submit). */
 export function clearSessionQueue(sessionId: string): void {
     const q = loadQueue().filter((e) => e.sessionId !== sessionId);
     saveQueue(q);
@@ -139,16 +143,12 @@ export function clearSessionQueue(sessionId: string): void {
     saveSessionActionQueue(actions);
 }
 
-/**
- * Return all queued entries for a session.
- */
+/** Return all queued entries for a session. */
 export function getSessionQueue(sessionId: string): QueuedAnswer[] {
     return loadQueue().filter((e) => e.sessionId === sessionId);
 }
 
-/**
- * How many sessions have pending queued answer or pause/resume actions.
- */
+/** How many sessions have pending queued answer or pause/resume actions. */
 export function pendingSessionCount(): number {
     const ids = new Set(loadQueue().map((e) => e.sessionId));
     for (const action of loadSessionActionQueue()) {
@@ -196,22 +196,21 @@ export function enqueueSessionAction(
 let flushInProgress = false;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
 
-/**
- * Cancel any pending retry timer.
- */
+/** Cancel any pending retry timer. */
 function cancelRetryTimer() {
     if (retryTimer) {
         clearTimeout(retryTimer);
         retryTimer = null;
     }
 }
+
 /**
  * Attempt to send all queued answers for a session to the server.
  * Returns the number of answers accepted by the server (0 on failure).
  */
 export async function flushSessionQueue(
     sessionId: string,
-    opts: { deviceId?: string } = {}
+    opts: { deviceId?: string } = {},
 ): Promise<number> {
     const entries = getSessionQueue(sessionId);
     if (entries.length === 0) return 0;
@@ -239,7 +238,7 @@ export async function flushSessionQueue(
         // Increment retry counters and drop entries that exceeded max retries
         const q = loadQueue().map((e) => {
             if (e.sessionId !== sessionId) return e;
-            return { ...e, retries: e.retries + 1 };
+            return { ...e, retries: e.retries + 1};
         });
         const filtered = q.filter((e) => e.sessionId !== sessionId || e.retries <= MAX_RETRIES);
         saveQueue(filtered);
@@ -261,12 +260,15 @@ export async function flushSessionActionQueue(sessionId: string): Promise<number
     let sent = 0;
     for (const entry of entries) {
         try {
-            await apiClient.post(`/exam/${sessionId}/${entry.action}`, { at: entry.at });
+            await apiClient.post(`/exam/${sessionId}/${entry.action}`, {at: entry.at});
             sent += 1;
+
+            const remaining = loadSessionActionQueue().filter((e) => e.id !== entry.id);
+            saveSessionActionQueue(remaining)
         } catch {
             const queue = loadSessionActionQueue().map((e) => {
                 if (e.id !== entry.id) return e;
-                return { ...e, retries: e.retries + 1 };
+                return {...e, retries: e.retries + 1};
             });
             const filtered = queue.filter((e) => e.id !== entry.id || e.retries <= MAX_RETRIES);
             saveSessionActionQueue(filtered);
