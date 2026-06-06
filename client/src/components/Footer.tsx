@@ -90,7 +90,7 @@ export default function Footer() {
                             Have feedback or questions? Reach out using the{" "}
                             <Link to="/contact" className="text-primary-300 hover:text-primary-200">
                                 contact form
-                            </Link>{" "}
+                            </Link>
                             . We read every message and aim to respond promptly.
                         </p>
                     </div>
@@ -121,7 +121,8 @@ function FooterLink({
         <li>
             <Link
                 to={to}
-                className="text-slate-400 transition hover:text-white">
+                className="text-slate-400 transition hover:text-white"
+            >
                 {children}
             </Link>
         </li>
