@@ -828,8 +828,8 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
             readonly limits: null;
             readonly limitPeriod: null;
         }, {
-            readonly id: "custom_presets":
-                readonly name: "Saved Practice Presets";
+            readonly id: "custom_presets";
+            readonly name: "Saved Practice Presets";
             readonly description: "Save custom practice presets.";
             readonly category: "practice";
             readonly accessLevel: "all";
@@ -931,20 +931,20 @@ export declare const LOGIN_LOCKOUT: {
 };
 export declare const SUPPORT_TICKET_TYPES: readonly ["account_recovery", "identity_dispute", "data_export", "data_deletion", "account_merge", "general_support"];
 export declare const SUPPORT_TICKET_TYPE_META: Record<(typeof SUPPORT_TICKET_TYPES)[number], {
-label: string;
-description: string;
-icon: string;
-});
-export declare const SUPPORT_TICKET_STATUSES: readonly ['open', 'in_progress', 'awaiting_user', 'resolved', 'rejected'];
-export declare const SUPPORT_TICKET_PRIORITIES: readonly ['low', 'medium', 'high', 'critical'];
+    label: string;
+    description: string;
+    icon: string;
+}>;
+export declare const SUPPORT_TICKET_STATUSES: readonly ["open", "in_progress", "awaiting_user", "resolved", "rejected"];
+export declare const SUPPORT_TICKET_PRIORITIES: readonly ["low", "medium", "high", "critical"];
 export declare const SUPPORT_TICKET_STATUS_META: Record<(typeof SUPPORT_TICKET_STATUSES)[number], {
     label: string;
     color: string;
-});
+}>;
 export declare const SUPPORT_TICKET_PRIORITY_META: Record<(typeof SUPPORT_TICKET_PRIORITIES)[number], {
     label: string;
     color: string;
-};
+}>;
 /**
  * Auto-close threshold for tickets in awaiting_user state.
  */
@@ -1028,17 +1028,17 @@ export declare const XP_REWARDS: {
     readonly PRACTICE_COMPLETED: 30;
     readonly PRACTICE_PER_CORRECT: 2;
 };
-export declare const ACHIEVEMENT_CATEGORIES: readonly ['milestone', 'performance', 'streak', 'dedication', 'mastery', 'social'];
-export declare const ACHIEVEMENT_RARITIES: readonly ['common', 'uncommon', 'rare', 'epic', 'legendary'];
+export declare const ACHIEVEMENT_CATEGORIES: readonly ["milestone", "performance", "streak", "dedication", "mastery", "social"];
+export declare const ACHIEVEMENT_RARITIES: readonly ["common", "uncommon", "rare", "epic", "legendary"];
 export declare const ACHIEVEMENT_RARITY_META: Record<(typeof ACHIEVEMENT_RARITIES)[number], {
     label: string;
     color: string;
     glow: string;
-});
+}>;
 export declare const ACHIEVEMENT_CATEGORY_META: Record<(typeof ACHIEVEMENT_CATEGORIES)[number], {
     label: string;
     icon: string;
-});
+}>;
 export declare const SRS_DEFAULT_EASE = 2.5;
 export declare const SRS_MIN_EASE = 1.3;
 export declare const SRS_MASTERY_INTERVAL_DAYS = 30;
@@ -1048,19 +1048,19 @@ export declare const PRACTICE_DEFAULTS: {
     readonly newCardsLimit: 5;
     readonly includeNew: true;
 };
-export declare const PRACTICE_MODES: readonly ['review', 'weak_areas', 'subject_focus', 'mixed', 'random'];
+export declare const PRACTICE_MODES: readonly ["review", "weak_areas", "subject_focus", "mixed", "random"];
 export declare const PWA_INSTALL_DISMISS_DAYS = 7;
 export declare const PWA_INSTALL_MIN_VISITS = -3;
 export declare const OFFLINE_PREFETCH_LIMIT_DEFAULT = 100;
-export declare const PUSH_NOTIFICATION_TYPES: readonly ['daily_reminder', 'streak_alert', 'achievement', 'weekly_challenge', 'announcement'];
+export declare const PUSH_NOTIFICATION_TYPES: readonly ["daily_reminder", "streak_alert", "achievement", "weekly_challenge", "announcement"];
 export type PushNotificationType = (typeof PUSH_NOTIFICATION_TYPES)[number];
 export declare const API_ROUTES_V12: {
     readonly GAMIFICATION: {
-        readonly PROFILE: "./gamification/profile";
-        readonly ACHIEVEMENTS: "./gamification/achievements";
-        readonly LEADERBOARD: "./gamification/leaderboard";
-        readonly WEEKLY_CHALLENGE: "./gamification/weekly-challenge";
-        readonly DISMISS_NOTIFICATIONS: "./gamification/dismiss-notifications";
+        readonly PROFILE: "/gamification/profile";
+        readonly ACHIEVEMENTS: "/gamification/achievements";
+        readonly LEADERBOARD: "/gamification/leaderboard";
+        readonly WEEKLY_CHALLENGE: "/gamification/weekly-challenge";
+        readonly DISMISS_NOTIFICATIONS: "/gamification/dismiss-notifications";
     };
     readonly PRACTICE: {
         readonly START: "/practice/start";
@@ -1088,7 +1088,7 @@ export declare const API_ROUTES_V12: {
     };
 };
 export declare const CRON_SCHEDULES_V12: {
-    readonly assignWeeklyChallenges: "0 4 * * *";
+    readonly assignWeeklyChallenges: "0 4 * * 1";
     readonly studyReminders: "0 9 * * *";
     readonly streakWarnings: "0 19 * * *";
 };
