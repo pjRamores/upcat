@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useAuthStore } from "@/stores/authStore";
+import {Link} from "react-router-dom";
+import {useAuthStore} from "@/stores/authStore";
 
 /**
  * Site-wide footer
@@ -94,10 +94,11 @@ export default function Footer() {
         </footer>
     );
 }
-function FooterLink({ 
-    to,
-    children,
-}: { 
+
+function FooterLink({
+                        to,
+                        children,
+                    }: {
     to: string;
     children: React.ReactNode;
 }) {

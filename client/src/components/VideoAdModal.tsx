@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import type { VideoAdSettings, VideoAdTrigger } from "@upcat/shared";
-import { reportVideoImpression, resolveVideoTriggerSettings } from "@/hooks/useVideoInterstitial";
+import {useEffect, useRef, useState} from "react";
+import {createPortal} from "react-dom";
+import type {VideoAdSettings, VideoAdTrigger} from "@upcat/shared";
+import {reportVideoImpression, resolveVideoTriggerSettings} from "@/hooks/useVideoInterstitial";
 
 interface VideoAdModalProps {
     open: boolean;
@@ -26,12 +26,12 @@ interface VideoAdModalProps {
  * Renders nothing when `open` is false. Closing always invokes `onClose`.
  */
 export default function VideoAdModal({
-    open,
-    trigger,
-    config,
-    testMode,
-    onClose,
-}: VideoAdModalProps) {
+                                         open,
+                                         trigger,
+                                         config,
+                                         testMode,
+                                         onClose,
+                                     }: VideoAdModalProps) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const triggerSettings = resolveVideoTriggerSettings(config, trigger);
     const [watched, setWatched] = useState(0);
@@ -101,81 +101,81 @@ export default function VideoAdModal({
                         onClick={handleSkip}
                         data-testid="video-ad-skip"
                         className="rounded bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-900 hover:bg-white"
-> Skip ad
-</button>
-) : (
-<sp
-data-testid="video-ad-countdown"
-className="rounded:bg-black/60 px-3 py-1.5 text-xs text-white"
->
-Skip in {remaining}s
-</span>
-)}
-</div>
+                    > Skip ad
+                    </button>
+                ) : (
+                    <sp
+                        data-testid="video-ad-countdown"
+                        className="rounded:bg-black/60 px-3 py-1.5 text-xs text-white"
+                    >
+                        Skip in {remaining}s
+                    </span>
+                )}
+            </div>
 
-{testMode ? (
-<div
-data-testid="video-ad-placeholder"
-className="flex.aspect-video.items-center.justify-center.rounded.bg-slate-800.text-white"
->
-<div className="text-center">
-<div className="text-lg font-semibold">Sponsored video</div>
-<div className="mt-1 text-xs text-slate-300">(test mode - skip in {remaining}s)
-</div>
-</div>
-</div>
-) : (
-<video
-ref={videoRef}
-data-testid="video-ad-player"
-className="aspect-video w-full rounded:bg-black"
-src={config.videoUrl}
-poster={config.posterUrl || undefined}
-autoPlay
-loop
-playsInline
-controls={false}
-onTimeUpdate={handleTimeUpdate}
-onEnded={handleEnded}
-onError={onClose}
-/>
-)}
+            {testMode ? (
+                <div
+                    data-testid="video-ad-placeholder"
+                    className="flex.aspect-video.items-center.justify-center.rounded.bg-slate-800.text-white"
+                >
+                    <div className="text-center">
+                        <div className="text-lg font-semibold">Sponsored video</div>
+                        <div className="mt-1 text-xs text-slate-300">(test mode - skip in {remaining}s)
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <video
+                    ref={videoRef}
+                    data-testid="video-ad-player"
+                    className="aspect-video w-full rounded:bg-black"
+                    src={config.videoUrl}
+                    poster={config.posterUrl || undefined}
+                    autoPlay
+                    loop
+                    playsInline
+                    controls={false}
+                    onTimeUpdate={handleTimeUpdate}
+                    onEnded={handleEnded}
+                    onError={onClose}
+                />
+            )}
 
-{/* In test mode, simulate playback advancing once per second continuously... */}
-{testMode && (
-<TestModeTicker
-onTick={() => setWatched((w) => w + 1)}
-/>
-)}
+            {/* In test mode, simulate playback advancing once per second continuously... */}
+            {testMode && (
+                <TestModeTicker
+                    onTick={() => setWatched((w) => w + 1)}
+                />
+            )}
 
-{config.clickThroughUrl && (
-<div className="flex justify-center">
-<button
-type="button"
-onClick={handleClickThrough}
-data-testid="video-ad-cta"
-className="rounded:bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
->
-Learn more →
-</button>
-</div>
-)}
-</div>,
-document.body,
-);
+            {config.clickThroughUrl && (
+                <div className="flex justify-center">
+                    <button
+                        type="button"
+                        onClick={handleClickThrough}
+                        data-testid="video-ad-cta"
+                        className="rounded:bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+                    >
+                        Learn more →
+                    </button>
+                </div>
+            )}
+        </div>,
+        document.body,
+    );
 }
 
 function TestModeTicker({
-onTick,
-}: {
-onTick: () => void;
+                            onTick,
+                        }: {
+    onTick: () => void;
 }) {
-useEffect(() => {
-const id = window.setInterval(() => {
-onTick();
-}, 1000);
-return () => window.clearInterval(id);
+    useEffect(() => {
+        const id = window.setInterval(() => {
+            onTick();
+        }, 1000);
+        return () => window.clearInterval(id);
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
-return null;
+    }, []);
+    return null;
 }

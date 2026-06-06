@@ -1,54 +1,54 @@
-import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Helmet} from "react-helmet-async";
+import {useLocation} from "react-router-dom";
 import {
-  canonicalUrl as buildCanonicalUrl,
-  DEFAULT_OG_IMAGE,
-  DEFAULT_SITE_URL,
-  PAGE_SEO,
-  type PageSeoConfig,
-  type SeoOverride,
+    canonicalUrl as buildCanonicalUrl,
+    DEFAULT_OG_IMAGE,
+    DEFAULT_SITE_URL,
+    PAGE_SEO,
+    type PageSeoConfig,
+    type SeoOverride,
 } from "@upcat/shared";
-import { getStaticSeoOverride, hasUsableStaticSeoOverrides, loadStaticSeoOverrides } from "@/lib/staticSeoOverrides";
+import {getStaticSeoOverride, hasUsableStaticSeoOverrides, loadStaticSeoOverrides} from "@/lib/staticSeoOverrides";
 
 const SITE_NAME = "UPCAT Simulator";
 const DEFAULT_TWITTER_HANDLE = "@upcatsim";
 
 const DEFAULT_DESCRIPTION =
-  "Practice for the UPC College Admission Test with realistic, timed mock exams across all four subject areas. Track your progress and identify weak areas.";
+    "Practice for the UPC College Admission Test with realistic, timed mock exams across all four subject areas. Track your progress and identify weak areas.";
 
 const SITE_URL =
-  (import.meta.env.VITE_SITE_URL as string | undefined) ?? DEFAULT_SITE_URL;
+    (import.meta.env.VITE_SITE_URL as string | undefined) ?? DEFAULT_SITE_URL;
 
 export interface AlternateLanguage {
-  lang: string;
-  href: string;
+    lang: string;
+    href: string;
 }
 
 export interface SEOHeadProps {
-  title: string;
-  description?: string;
-  keywords?: string[];
-  /** Override canonical URL -- by default the current path is canonicalized. */
-  canonicalUrl?: string;
-  ogType?: "website" | "article";
-  ogImage?: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  twitterCard?: "summary" | "summary_large_image";
-  /** Set <meta name="robots" content="noindex,nofollow">. */
-  noIndex?: boolean;
-  /** Backwards-compat alias for `noIndex`. */
-  noindex?: boolean;
-  /** JSON-LD object -- stringified into one or more <script type="application/ld+json"> tags. */
-  structuredData?: object | object[] | null;
-  alternateLanguages?: AlternateLanguage[] | null;
-  /** Skip the " | UPCAT Simulator" suffix on the document title. */
-  bareTitle?: boolean;
-  /** Backwards-compat alias for `bareTitle`. */
-  bare?: boolean;
-  /** Backwards-compat alias for `ogImage`. */
-  image?: string;
+    title: string;
+    description?: string;
+    keywords?: string[];
+    /** Override canonical URL -- by default the current path is canonicalized. */
+    canonicalUrl?: string;
+    ogType?: "website" | "article";
+    ogImage?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    twitterCard?: "summary" | "summary_large_image";
+    /** Set <meta name="robots" content="noindex,nofollow">. */
+    noIndex?: boolean;
+    /** Backwards-compat alias for `noIndex`. */
+    noindex?: boolean;
+    /** JSON-LD object -- stringified into one or more <script type="application/ld+json"> tags. */
+    structuredData?: object | object[] | null;
+    alternateLanguages?: AlternateLanguage[] | null;
+    /** Skip the " | UPCAT Simulator" suffix on the document title. */
+    bareTitle?: boolean;
+    /** Backwards-compat alias for `bareTitle`. */
+    bare?: boolean;
+    /** Backwards-compat alias for `ogImage`. */
+    image?: string;
 }
 
 /**
@@ -60,77 +60,78 @@ export interface SEOHeadProps {
  * `Seo` name so older callers keep working.
  */
 function SEOHeadImpl({
-  title,
-  description,
-  keywords,
-  canonicalUrl,
-  ogType = "website",
-  ogImage,
-  ogTitle,
-  ogDescription,
-  twitterCard = "summary_large_image",
-  noIndex,
-  noindex,
-  structuredData = null,
-  alternateLanguages = null,
-  bareTitle,
-  bare,
-  image,
-}: SEOHeadProps) {
-  const location = useLocation();
-  const override = useSeoOverride(location.pathname);
+                         title,
+                         description,
+                         keywords,
+                         canonicalUrl,
+                         ogType = "website",
+                         ogImage,
+                         ogTitle,
+                         ogDescription,
+                         twitterCard = "summary_large_image",
+                         noIndex,
+                         noindex,
+                         structuredData = null,
+                         alternateLanguages = null,
+                         bareTitle,
+                         bare,
+                         image,
+                     }: SEOHeadProps) {
+    const location = useLocation();
+    const override = useSeoOverride(location.pathname);
 
-  const effectiveTitle = override?.title ?? title;
-  const effectiveDescription =
-    override?.description ?? description ?? DEFAULT_DESCRIPTION;
-  const effectiveNoIndex = override?.noIndex ?? noIndex ?? noindex ?? false;
-  const effectiveKeywords =
-    override?.keywords && override.keywords.length > 0
-      ? override.keywords
-      : keywords;
+    const effectiveTitle = override?.title ?? title;
+    const effectiveDescription =
+        override?.description ?? description ?? DEFAULT_DESCRIPTION;
+    const effectiveNoIndex = override?.noIndex ?? noIndex ?? noindex ?? false;
+    const effectiveKeywords =
+        override?.keywords && override.keywords.length > 0
+            ? override.keywords
+            : keywords;
 
-  const effectiveOgImage = absoluteUrl(
-    override?.ogImage ?? ogImage ?? image ?? DEFAULT_OG_IMAGE,
-  );
-  const isBare = bareTitle ?? bare ?? false;
-  const finalTitle = isBare ? `${effectiveTitle} | ${SITE_NAME}`;
+    const effectiveOgImage = absoluteUrl(
+        override?.ogImage ?? ogImage ?? image ?? DEFAULT_OG_IMAGE,
+    );
+    const isBare = bareTitle ?? bare ?? false;
+    const finalTitle = isBare ? `${effectiveTitle} | ${SITE_NAME}`;
 
-  const fullCanonical =
-    canonicalUrl ?? buildCanonicalUrl(location.pathname + location.search, SITE_URL);
+    const fullCanonical =
+        canonicalUrl ?? buildCanonicalUrl(location.pathname + location.search, SITE_URL);
 
-  const structured = Array.isArray(structuredData)
-    ? structuredData
-    : [structuredData];
+    const structured = Array.isArray(structuredData)
+        ? structuredData
+        : [structuredData];
 }
+
 return (
     <Helmet>
         <title>{finalTitle}</title>
-        <meta name="description" content={effectiveDescription} />
+        <meta name="description" content={effectiveDescription}/>
         {effectiveKeywords && effectiveKeywords.length > 0 &&
-            <meta name="keywords" content={`${effectiveKeywords.join(", ")}`} />}
-        <meta name="robots" content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"} />
-        <link rel="canonical" href={fullCanonical} />
+            <meta name="keywords" content={`${effectiveKeywords.join(", ")}`}/>}
+        <meta name="robots" content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"}/>
+        <link rel="canonical" href={fullCanonical}/>
 
         {/* Open Graph */}
-        <meta property="og:title" content={ogTitle ?? finalTitle} />
-        <meta property="og:description" content={ogDescription ?? effectiveDescription} />
-        <meta property="og:type" content={ogType} />
-        <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:url" content={fullCanonical} />
-        <meta property="og:image" content={effectiveOgImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:title" content={ogTitle ?? finalTitle}/>
+        <meta property="og:description" content={ogDescription ?? effectiveDescription}/>
+        <meta property="og:type" content={ogType}/>
+        <meta property="og:site_name" content={SITE_NAME}/>
+        <meta property="og:url" content={fullCanonical}/>
+        <meta property="og:image" content={effectiveOgImage}/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
 
         {/* Twitter card */}
-        <meta name="twitter:card" content={twitterCard} />
-        <meta name="twitter:site" content={DEFAULT_TWITTER_HANDLE} />
-        <meta name="twitter:title" content={ogTitle ?? finalTitle} />
-        <meta name="twitter:description" content={ogDescription ?? effectiveDescription} />
-        <meta name="twitter:image" content={effectiveOgImage} />
+        <meta name="twitter:card" content={twitterCard}/>
+        <meta name="twitter:site" content={DEFAULT_TWITTER_HANDLE}/>
+        <meta name="twitter:title" content={ogTitle ?? finalTitle}/>
+        <meta name="twitter:description" content={ogDescription ?? effectiveDescription}/>
+        <meta name="twitter:image" content={effectiveOgImage}/>
 
         {/* Alternate languages */}
         {alternateLanguages?.map((alt) => (
-            <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href} />
+            <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href}/>
         ))}
     </Helmet>
 );
@@ -153,7 +154,7 @@ export default SEOHeadImpl;
 function absoluteUrl(input: string | undefined): string {
     if (!input) return SITE_URL.replace(/\/\+$/, "") + DEFAULT_OG_IMAGE;
     if (/^https?:\/\/i\.test(input)) return input;
-    const base = SITE_URL.replace(/\/\+$/, "");
+        const base = SITE_URL.replace(/\/\+$/, "");
     const path = input.startsWith("/") ? input : "/" + input;
     return base + path;
 }
@@ -204,6 +205,7 @@ function useSeoOverride(pathname: string): SeoOverride | null {
             : null;
     });
 }
+
 let cancelled = false;
 
 const cached = overrideCache.get(pathname);
@@ -227,14 +229,17 @@ if (!promise) {
 }
 
 void promise.then((value) => {
-    overrideCache.set(pathname, { value, fetchedAt: Date.now() });
+    overrideCache.set(pathname, {value, fetchedAt: Date.now()});
     if (!cancelled) setOverride(value);
 });
 
 return () => {
     cancelled = true;
 };
-}, [pathname]);
+},
+[pathname]
+)
+;
 
 return override;
 }

@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
+import {type ReactNode, useEffect, useRef} from "react";
+import {createPortal} from "react-dom";
 
 export type ModalSize = 'sm' | 'md' | 'lg';
 
@@ -36,18 +36,18 @@ const FOCUSABLE_SELECTOR =
  * - Smooth scale + fade animation
  */
 export default function Modal({
-    isOpen,
-    onClose,
-    title,
-    description,
-    children,
-    footer,
-    size = "md",
-    closeOnBackdrop = true,
-    closeOnEsc = true,
-    ariaLabel,
-    hideCloseButton = false,
-}: ModalProps) {
+                                  isOpen,
+                                  onClose,
+                                  title,
+                                  description,
+                                  children,
+                                  footer,
+                                  size = "md",
+                                  closeOnBackdrop = true,
+                                  closeOnEsc = true,
+                                  ariaLabel,
+                                  hideCloseButton = false,
+                              }: ModalProps) {
     const panelRef = useRef<HTMLDivElement>(null);
     const previouslyFocused = useRef<HTMLElement | null>(null);
 
@@ -137,7 +137,9 @@ if (e.shiftKey && active === first) {
 }
 
 document.addEventListener("keydown", onKey);
-return () => document.removeEventListener("keydown", onKey), [isOpen, onClose, closeOnEsc]);
+return () => document.removeEventListener("keydown", onKey), [isOpen, onClose, closeOnEsc]
+)
+;
 
 if (!isOpen) return null;
 if (typeof document === "undefined") return null;
@@ -156,7 +158,8 @@ return createPortal(
             aria-hidden
         />
         {/* Panel */}
-        <div ref={panelRef} tabIndex={-1} className={`${relative w-full overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 animate-scale-in}, SIZE_CLASS[size], }.join(" ")`}>
+        <div ref={panelRef} tabIndex={-1}
+             className={`${relative w-full overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 animate-scale-in}, SIZE_CLASS[size], }.join(" ")`}>
             {(title || !hideCloseButton) && (
                 <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-6 py-4">
                     <div className="min-w-0">
@@ -168,8 +171,10 @@ return createPortal(
                         )}
                     </div>
                     {!hideCloseButton && (
-                        <button type="button" onClick={onClose} aria-label="Close dialog" className="-m-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+                        <button type="button" onClick={onClose} aria-label="Close dialog"
+                                className="-m-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}
+                                 className="h-5 w-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.18 18.6M6.112 12"/>
                             </svg>
                         </button>
@@ -178,7 +183,8 @@ return createPortal(
             )}
             <div className="px-6 py-5 text-sm text-gray-700">{children}</div>
             {footer && (
-                <div className="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50 px-6 py-4 sm:flex-row sm:justify-end">
+                <div
+                    className="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50 px-6 py-4 sm:flex-row sm:justify-end">
                     {footer}
                 </div>
             )}

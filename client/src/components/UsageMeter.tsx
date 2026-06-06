@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 interface UsageMeterProps {
     label: string;
@@ -7,7 +7,7 @@ interface UsageMeterProps {
     periodLabel?: string;
 }
 
-export default function UsageMeter({ label, used, limit, periodLabel }: UsageMeterProps) {
+export default function UsageMeter({label, used, limit, periodLabel}: UsageMeterProps) {
     if (limit === null) {
         return (
             <div className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
@@ -28,11 +28,12 @@ export default function UsageMeter({ label, used, limit, periodLabel }: UsageMet
                 </span>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                <div className={`h-full ${tone} transition-all`} style={{ width: `${pct}%` }} />
+                <div className={`h-full ${tone} transition-all`} style={{width: `${pct}%`}}/>
             </div>
             {used >= limit && (
                 <p className="mt-2 text-xs text-slate-600">
-                    Limit reached. <Link to="/pricing" className="font-semibold text-primary-700 underline">Get unlimited</Link>
+                    Limit reached. <Link to="/pricing" className="font-semibold text-primary-700 underline">Get
+                    unlimited</Link>
                 </p>
             )}
         </div>

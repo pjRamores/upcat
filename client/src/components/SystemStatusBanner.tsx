@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { getResilienceState, type ResilienceState, subscribeResilience } from "@/lib/resilience";
+import {useEffect, useState} from "react";
+import {getResilienceState, type ResilienceState, subscribeResilience} from "@/lib/resilience";
 
 function formatTime(iso: string | undefined): string {
     if (!iso) return "";
     const date = new Date(iso);
     if (Number.isNaN(date.getTime())) return "";
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    return date.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 }
 
 export default function SystemStatusBanner() {

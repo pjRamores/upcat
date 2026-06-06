@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { type Toast, type ToastType, useToastStore } from "@/stores/toastStore";
+import {useEffect, useState} from "react";
+import {createPortal} from "react-dom";
+import {type Toast, type ToastType, useToastStore} from "@/stores/toastStore";
 
 /**
  * Global toast notification system
@@ -101,54 +101,59 @@ export default function ToastContainer() {
     );
 }
 
-function ToastItem({toast}: {toast: Toast}) {
-const removeToast = useToastStore((s) => s.removeToast);
-const [leaving, setLeaving] = useState(false);
-const palette = PALETTE[toast.type];
+function ToastItem({toast}: { toast: Toast }) {
+    const removeToast = useToastStore((s) => s.removeToast);
+    const [leaving, setLeaving] = useState(false);
+    const palette = PALETTE[toast.type];
 
-const dismiss = () => {
-    if (leaving) return;
-    setLeaving(true);
-    // Allow exit animation to play before removing from store.
-    setTimeout(() => removeToast(toast.id), 200);
-};
+    const dismiss = () => {
+        if (leaving) return;
+        setLeaving(true);
+        // Allow exit animation to play before removing from store.
+        setTimeout(() => removeToast(toast.id), 200);
+    };
 
 // If the toast hits its duration while we're still mounted, animate out
 // before the store removes us.
-useEffect(() => {
-    if (toast.duration <= 0) return;
-    const handle = setTimeout(() => setLeaving(true), toast.duration);
-    return () => clearTimeout(handle);
-}, [toast.duration]);
+    useEffect(() => {
+        if (toast.duration <= 0) return;
+        const handle = setTimeout(() => setLeaving(true), toast.duration);
+        return () => clearTimeout(handle);
+    }, [toast.duration]);
 
-return (
-    <div role={toast.type === "error" || toast.type === "warning" ? "alert" : "status"} className={[
-        "pointer-events-auto relative w-full max-w-sm overflow-hidden rounded-xl border shadow-lg ring-1 ring-black/5",
-        palette.border,
-        palette.bg,
-        leaving ? "animate-toast-out" : "animate-toast-in",
-    ].join(" ")}>
-        <div className="flex items-start gap-3 p-4">
-            <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${palette.iconBg} ${palette.iconColor}`}>
-                {palette.icon}
+    return (
+        <div role={toast.type === "error" || toast.type === "warning" ? "alert" : "status"} className={[
+            "pointer-events-auto relative w-full max-w-sm overflow-hidden rounded-xl border shadow-lg ring-1 ring-black/5",
+            palette.border,
+            palette.bg,
+            leaving ? "animate-toast-out" : "animate-toast-in",
+        ].join(" ")}>
+            <div className="flex items-start gap-3 p-4">
+                <div
+                    className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${palette.iconBg} ${palette.iconColor}`}>
+                    {palette.icon}
+                </div>
+                <div className="flex-1 pt-0.5">
+                    <p className="text-sm font-semibold text-gray-900">{palette.title}</p>
+                    <p className="mt-0.5 text-sm text-gray-600">{toast.message}</p>
+                </div>
             </div>
-            <div className="flex-1 pt-0.5">
-                <p className="text-sm font-semibold text-gray-900">{palette.title}</p>
-                <p className="mt-0.5 text-sm text-gray-600">{toast.message}</p>
+            <button type="button" onClick={dismiss} aria-label="Dismiss notification"
+                    className="-m-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18.18 6M6 6M6 12"/>
+                </svg>
+            </button>
+        </div>
+    {
+        toast.duration > 0 && (
+            <div className="h-1 w-full bg-gray-100">
+                <div className={`h-full origin-left ${palette.bar}`} style={{
+                    animation: `toastProgress ${toast.duration}ms linear forwards`,
+                }}/>
             </div>
-        </div>
-        <button type="button" onClick={dismiss} aria-label="Dismiss notification" className="-m-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18.18 6M6 6M6 12"/>
-            </svg>
-        </button>
-    </div>
-    {toast.duration > 0 && (
-        <div className="h-1 w-full bg-gray-100">
-            <div className={`h-full origin-left ${palette.bar}`} style={{
-                animation: `toastProgress ${toast.duration}ms linear forwards`,
-            }} />
-        </div>
-    )}
-</div>;
+        )
+    }
+</div>
+    ;
 }

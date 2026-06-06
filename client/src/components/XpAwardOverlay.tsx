@@ -3,8 +3,8 @@
  *
  * Animated count-up notification that surfaces after the API returns a GamificationReward (typically from exam submit / practice complete / login). Stacks XP rewards, then plays a level-up burst if applicable.
  */
-import { useEffect, useMemo, useState } from "react";
-import type { GamificationReward, XpAwardResult } from "@upcat/shared";
+import {useEffect, useMemo, useState} from "react";
+import type {GamificationReward, XpAwardResult} from "@upcat/shared";
 
 interface Props {
     reward: GamificationReward | null;
@@ -14,10 +14,10 @@ interface Props {
 }
 
 export default function XpAwardOverlay({
-    reward,
-    onClose,
-    durationMs = 4500,
-}: Props) {
+                                           reward,
+                                           onClose,
+                                           durationMs = 4500,
+                                       }: Props) {
     const [displayedXp, setDisplayedXp] = useState(0);
     const totalXp = useMemo(
         () => (reward?.xp ?? []).reduce((sum, r) => sum + r.awarded, 0),
@@ -69,7 +69,7 @@ export default function XpAwardOverlay({
                         aria-label="Dismiss XP award overlay"
                     >
                         <svg width={24} height={24}>
-                            <path d="M5 8h14v6H5V8zm7 3h-3V5H4v14zM9.08 9H4V5h.08l4-4 4 4z" />
+                            <path d="M5 8h14v6H5V8zm7 3h-3V5H4v14zM9.08 9H4V5h.08l4-4 4 4z"/>
                         </svg>
                     </div>
                     <div className="flex-1">
@@ -89,14 +89,15 @@ export default function XpAwardOverlay({
                         </div>
                     </div>
                 </div>
-                <button type="button" onClick={onClose} className="rounded-full bg-white/10 px-2 py-1 text-xs hover:bg-white/20">
+                <button type="button" onClick={onClose}
+                        className="rounded-full bg-white/10 px-2 py-1 text-xs hover:bg-white/20">
                     X
                 </button>
             </div>
 
             <ul className="mt-3 space-y-1 text-xs opacity-90">
                 {reward.xp.map((r, i) => (
-                    <XpBreakdownRow key={i} reward={r} />
+                    <XpBreakdownRow key={i} reward={r}/>
                 ))}
             </ul>
 
@@ -116,61 +117,62 @@ export default function XpAwardOverlay({
     );
 }
 <style>
-  @keyframes xp-in-down {
-    from { opacity: 0; transform: translateY(-1rem) scale(0.95); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .animate-in-down { animation: xp-in-down 280ms ease-out; }
+    @keyframes xp-in-down {
+    from {opacity: 0; transform: translateY(-1rem) scale(0.95);}
+    to   {opacity: 1; transform: translateY(0) scale(1);}
+}
+    .animate-in-down {animation: xp-in-down 280ms ease-out;}
 </style>
-</div>;
+</div>
+
 }
 
 function XpBreakdownRow({reward}: { reward: XpAwardResult }) {
-  if (reward.awarded <= 0) return null;
-  const isAchievement = reward.reason === "achievement_unlocked";
-  return (
-    <li className="flex justify-between">
-      <span>{labelForReason(reward)}</span>
-      <span className="font-mono">
+    if (reward.awarded <= 0) return null;
+    const isAchievement = reward.reason === "achievement_unlocked";
+    return (
+        <li className="flex justify-between">
+            <span>{labelForReason(reward)}</span>
+            <span className="font-mono">
         {reward.awarded}
-        {isAchievement && reward.multiplier > 1 &&
-          <span className="ml-1 text-amber-200">
+                {isAchievement && reward.multiplier > 1 &&
+                    <span className="ml-1 text-amber-200">
             x{reward.multiplier.toFixed(2)}
           </span>}
       </span>
-    </li>
-  );
+        </li>
+    );
 }
 
 function labelForReason(r: XpAwardResult): string {
-  switch (r.reason) {
-    case "exam_completed":
-      return "Exam completed";
-    case "exam_correct_bonus":
-      return "Correct answer bonus";
-    case "exam_score_80":
-      return "Score 80%";
-    case "exam_score_90":
-      return "Score 90%";
-    case "exam_perfect":
-      return "Perfect score!";
-    case "exam_perfect_subject":
-      return "Perfect subject";
-    case "first_exam":
-      return "First exam ever";
-    case "daily_login":
-      return "Daily login";
-    case "review_all_incorrect":
-      return "Reviewed all mistakes";
-    case "practice_completed":
-      return "Practice completed";
-    case "practice_correct":
-      return "Practice correct";
-    case "achievement_unlocked":
-      return "Achievement bonus";
-    case "weekly_challenge":
-      return "Weekly challenge";
-    case "admin_grant":
-      return "Admin grant";
-  }
+    switch (r.reason) {
+        case "exam_completed":
+            return "Exam completed";
+        case "exam_correct_bonus":
+            return "Correct answer bonus";
+        case "exam_score_80":
+            return "Score 80%";
+        case "exam_score_90":
+            return "Score 90%";
+        case "exam_perfect":
+            return "Perfect score!";
+        case "exam_perfect_subject":
+            return "Perfect subject";
+        case "first_exam":
+            return "First exam ever";
+        case "daily_login":
+            return "Daily login";
+        case "review_all_incorrect":
+            return "Reviewed all mistakes";
+        case "practice_completed":
+            return "Practice completed";
+        case "practice_correct":
+            return "Practice correct";
+        case "achievement_unlocked":
+            return "Achievement bonus";
+        case "weekly_challenge":
+            return "Weekly challenge";
+        case "admin_grant":
+            return "Admin grant";
+    }
 }

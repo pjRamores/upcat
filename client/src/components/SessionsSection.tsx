@@ -3,8 +3,8 @@
  *
  * Displayed inside SettingsPage. Lets the user revoke individual sessions (other than the current one) or every other session at once.
  */
-import { useEffect, useState } from "react";
-import { userSecurityApi, type UserSecurityEvent, type UserSessionRow } from "@/lib/securityApi";
+import {useEffect, useState} from "react";
+import {userSecurityApi, type UserSecurityEvent, type UserSessionRow} from "@/lib/securityApi";
 
 export default function SessionsSection() {
     const [sessions, setSessions] = useState<UserSessionRow[] | null>(null);
@@ -91,11 +91,13 @@ export default function SessionsSection() {
                                         )}
                                     </div>
                                     {(s.country || s.city) && (
-                                        <span className="text-xs text-gray-500">{[s.city, s.country].filter(Boolean).join(", ")}</span>
+                                        <span
+                                            className="text-xs text-gray-500">{[s.city, s.country].filter(Boolean).join(", ")}</span>
                                     )}
                                 </div>
                                 <div className="truncate text-xs text-gray-500">{s.userAgent || "Unknown device"}</div>
-                                <div className="text-xs text-gray-400">Last active: {new Date(s.lastActiveAt).toLocaleString()}</div>
+                                <div className="text-xs text-gray-400">Last
+                                    active: {new Date(s.lastActiveAt).toLocaleString()}</div>
                             </li>
                         ))}
                     </ul>
@@ -134,8 +136,8 @@ export default function SessionsSection() {
                                 e.severity === "critical" || e.severity === "high"
                                     ? "text-xs text-red-600"
                                     : e.severity === "medium"
-                                    ? "text-xs text-amber-600"
-                                    : "text-xs text-gray-500"
+                                        ? "text-xs text-amber-600"
+                                        : "text-xs text-gray-500"
                             }
                         >
                             {e.severity}

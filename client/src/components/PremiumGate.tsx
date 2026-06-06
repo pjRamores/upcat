@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { paymentApi } from "@/lib/paymentApi";
+import type {ReactNode} from "react";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {paymentApi} from "@/lib/paymentApi";
 
 interface PremiumGateProps {
     featureId: string;
@@ -11,11 +11,11 @@ interface PremiumGateProps {
 }
 
 export default function PremiumGate({
-    featureId,
-    children,
-    fallback,
-    showUpgradePrompt = true,
-}: PremiumGateProps) {
+                                        featureId,
+                                        children,
+                                        fallback,
+                                        showUpgradePrompt = true,
+                                    }: PremiumGateProps) {
     const [loading, setLoading] = useState(true);
     const [allowed, setAllowed] = useState(false);
     const [reason, setReason] = useState<string | null>(null);
@@ -43,7 +43,11 @@ export default function PremiumGate({
     return () => {
         active = false;
     };
-}, [featureId]);
+}
+,
+[featureId]
+)
+;
 
 if (loading) {
     return <div className="h-20 animate-pulse rounded-lg bg-slate-100"></div>;

@@ -2,8 +2,8 @@
  * Soft inline reminder shown to social-only users (no local password set):
  * encourages them to add one so they don't get locked out.
  */
-import { Link } from "react-router-dom";
-import { useAuthStore } from "@/stores/authStore";
+import {Link} from "react-router-dom";
+import {useAuthStore} from "@/stores/authStore";
 
 const DISMISS_KEY = "upcat:setPasswordHintDismissed";
 
@@ -29,7 +29,7 @@ export default function SetPasswordHint() {
                     // Trigger a re-render of any subscribers.
                     window.dispatchEvent(new Event("upcat:hint-dismissed"));
                 }}>
-                    <X aria-label="Dismiss" />
+                    <X aria-label="Dismiss"/>
                 </button>
             </div>
         </div>
