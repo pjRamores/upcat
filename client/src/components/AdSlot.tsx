@@ -35,7 +35,7 @@ export default function AdSlot({
                                    responsive,
                                    label,
                                }: AdSlotProps) {
-    const { config, loaded } = useAdsConfig();
+    const {config, loaded} = useAdsConfig();
     const shouldShow = useShouldShowAds();
     const pushed = useRef(false);
 
@@ -107,5 +107,5 @@ export default function AdSlot({
                 {...(slot!.layout ? {"data-ad-layout": slot!.layout} : {})}
             />
         </div>
-    )
-};
+    );
+}
