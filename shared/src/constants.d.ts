@@ -947,7 +947,7 @@ export declare const SUPPORT_TICKET_PRIORITY_META: Record<(typeof SUPPORT_TICKET
 }>;
 /** Auto-close threshold for tickets in awaiting_user state. */
 export declare const SUPPORT_AUTO_CLOSE_DAYS = 14;
-/** Guest support submission rate limit. */
+/** Guest support submission rate-limit. */
 export declare const SUPPORT_GUEST_RATE: {
     readonly limit: 2;
     readonly windowMs: number;
@@ -967,7 +967,7 @@ export declare const CRON_SCHEDULES: {
     readonly accountInactivityCheck: "0 4 * * 0";
 };
 export declare const MAX_LEVEL = 100;
-/** XP required to reach a given level (cumulative). */
+/** XP required to *reach* a given level (cumulative). */
 export declare function xpRequiredForLevel(level: number): number;
 /** Compute level + bounds + title from a raw XP total. */
 export declare function levelFromXp(xp: number): {
@@ -1260,13 +1260,13 @@ export declare const DEFAULT_SECURITY_CONFIG: {
         };
         readonly csp: {
             readonly defaultSrc: readonly ["'self'"];
-            readonly scriptSrc: readonly ["'self'", "'unsafe-inline'"];
+            readonly scriptSrc: readonly ["'self'"];
             readonly styleSrc: readonly ["'self'", "'unsafe-inline'"];
             readonly imgSrc: readonly ["'self'", "data:", "https:"];
             readonly connectSrc: readonly ["'self'"];
             readonly fontSrc: readonly ["'self'", "data:"];
-            readonly frameSrc: readonly ["none"];
-            readonly objectSrc: readonly ["none"];
+            readonly frameSrc: readonly ["'none'"];
+            readonly objectSrc: readonly ["'none'"];
             readonly baseUri: readonly ["'self'"];
         };
         readonly xFrameOptions: "DENY";
@@ -1312,10 +1312,9 @@ export declare const API_ROUTES_V15: {
         readonly REPORTS: "/admin/security/reports/attack-summary";
     };
 };
-
 export declare const CRON_SCHEDULES_V15: {
-    readonly threatScoreDecay: "0 ** * * *";
-    readonly expiredBlocksCleanup: "*/*15 * * * *";
+    readonly threatScoreDecay: "0 * * * * *";
+    readonly expiredBlocksCleanup: "*/15 * * * *";
     readonly securityReport: "0 0 * * *";
     readonly staleSessionCleanup: "0 */6 * * *";
     readonly ipIntelligenceAggregation: "30 0 * * *";
