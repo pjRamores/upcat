@@ -127,25 +127,29 @@ export default function Captcha({
         <div className={panelClass(className)}>
             {challenge.type === "math" && (
                 <MathPrompt
-                    challenge={challenge.challenge as CaptchaMathChallenge} onSubmit={verify}
+                    challenge={challenge.challenge as CaptchaMathChallenge}
+                    onSubmit={verify}
                     disabled={state === "verifying"}
                 />
             )}
             {challenge.type === "image" && (
                 <ImagePrompt
-                    challenge={challenge.challenge as CaptchaImageChallenge} onSubmit={verify}
+                    challenge={challenge.challenge as CaptchaImageChallenge}
+                    onSubmit={verify}
                     disabled={state === "verifying"}
                 />
             )}
             {challenge.type === "puzzle" && (
                 <PuzzlePrompt
-                    challenge={challenge.challenge as CaptchaPuzzleChallenge} onSubmit={verify}
+                    challenge={challenge.challenge as CaptchaPuzzleChallenge}
+                    onSubmit={verify}
                     disabled={state === "verifying"}
                 />
             )}
             {challenge.type === "pow" && (
                 <PowPrompt
-                    challenge={challenge.challenge as CaptchaPowChallenge} onSubmit={verify}
+                    challenge={challenge.challenge as CaptchaPowChallenge}
+                    onSubmit={verify}
                     disabled={state === "verifying"}
                 />
             )}
@@ -159,10 +163,11 @@ export default function Captcha({
             </button>
         </div>
     );
+}
 
-    function panelClass(extra?: string): string {
-        return `rounded-lg border border-slate-200 bg-slate-50 p-4 ${extra ?? ""}`;
-    }
+function panelClass(extra?: string): string {
+    return `rounded-lg border border-slate-200 bg-slate-50 p-4 ${extra ?? ""}`;
+}
 
 // --- Math --------------------------------------------
 
