@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import type { AdSlotId } from "@upcat/shared";
-import { useAdsConfig } from "@/hooks/useAdsConfig";
-import { useShouldShowAds } from "@/hooks/useShouldShowAds";
-import { loadAdSenseScript, pushAdSenseSlot } from "@/lib/adsense";
+import {useEffect, useRef} from "react";
+import type {AdSlotId} from "@upcat/shared";
+import {useAdsConfig} from "@/hooks/useAdsConfig";
+import {useShouldShowAds} from "@/hooks/useShouldShowAds";
+import {loadAdSenseScript, pushAdSenseSlot} from "@/lib/adsense";
 
 interface AdSlotProps {
-    /** Canonical slot id from 'AD_SLOT_IDS'. */
+    /** Canonical slot id from `AD_SLOT_IDS`. */
     slotId: AdSlotId;
     /** Optional className for the outer wrapper. */
     className?: string;
@@ -23,18 +23,18 @@ interface AdSlotProps {
  * Reserves space and renders a Google AdSense ad unit.
  *
  * Renders nothing when ads shouldn't be shown (see `useShouldShowAds`) so
- * callers don't need to wrap it in their own conditional. In 'testMode' it
+ * callers don't need to wrap it in their own conditional. In `testMode` it
  * renders a labelled placeholder box instead of pushing to AdSense, which
  * makes preview deploys + Playwright runs safe.
  */
 export default function AdSlot({
-    slotId,
-    className,
-    style,
-    format,
-    responsive,
-    label,
-}: AdSlotProps) {
+                                   slotId,
+                                   className,
+                                   style,
+                                   format,
+                                   responsive,
+                                   label,
+                               }: AdSlotProps) {
     const { config, loaded } = useAdsConfig();
     const shouldShow = useShouldShowAds();
     const pushed = useRef(false);
@@ -56,7 +56,7 @@ export default function AdSlot({
 
     if (!canRenderRealAd && !showPlaceholder) return null;
 
-    const wrapperStyle: React.CSSProperties = { display: "block", ...style };
+    const wrapperStyle: React.CSSProperties = {display: "block", ...style};
     const resolvedFormat = format ?? slot!.format ?? "auto";
     const resolvedResponsive = responsive ?? slot!.responsive ?? true;
 
@@ -87,8 +87,8 @@ export default function AdSlot({
                     ...style,
                 }}
             >
-                <div style={{ fontWeight: 600 }}>{placeholderTitle}</div>
-                <div style={{ marginTop: "0.25rem", fontSize: "0.75rem", opacity: 0.9 }}>
+                <div style={{fontWeight: 600}}>{placeholderTitle}</div>
+                <div style={{marginTop: "0.25rem", fontSize: "0.75rem", opacity: 0.9}}>
                     {placeholderHint}
                 </div>
             </div>
@@ -102,8 +102,10 @@ export default function AdSlot({
                 style={wrapperStyle}
                 data-ad-client={config.publisherId}
                 data-ad-slot={slot!.slot}
-data-ad-format={resolvedFormat}
-data-full-width-responsive={resolvedResponsive ? "true" : "false"}
-{... (slot!.layout ? {"data-ad-layout": slot!.layout} : {})}
-</div>
-});
+                data-ad-format={resolvedFormat}
+                data-full-width-responsive={resolvedResponsive ? "true" : "false"}
+                {...(slot!.layout ? {"data-ad-layout": slot!.layout} : {})}
+            />
+        </div>
+    )
+};
