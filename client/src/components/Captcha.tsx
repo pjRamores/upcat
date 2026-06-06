@@ -346,11 +346,11 @@ function PuzzlePrompt({
 // --- Proof-of-work (invisible) --------------------------------------------
 
 function PowPrompt({
-    challenge,
-    onSubmit,
-    disabled,
+                       challenge,
+                       onSubmit,
+                       disabled,
                    }: {
-    challenge: CaptchaPuzzleChallenge;
+    challenge: CaptchaPowChallenge;
     onSubmit: (answer: unknown) => void;
     disabled: boolean;
 }) {
@@ -369,7 +369,7 @@ function PowPrompt({
             while (!cancelled) {
                 for (let i = 0; i < CHUNK; i++) {
                     const candidate = nonce.toString(36);
-                    const hash = await sha256Hex(challenge.challennge + candidate);
+                    const hash = await sha256Hex(challenge.challenge + candidate);
                     if (hash.startsWith(prefix)) {
                         onSubmit(candidate);
                         return;
@@ -377,7 +377,7 @@ function PowPrompt({
                     nonce++;
                 }
                 setProgress(Math.min(99, Math.floor(((Date.now() - startedAt) / 12_000) * 100)));
-                await new Promise(r => setTimeout(r, 0));
+                await new Promise((r) => setTimeout(r, 0));
             }
         })();
 
@@ -399,7 +399,7 @@ function PowPrompt({
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 async function sha256Hex(input: string): Promise<string> {
