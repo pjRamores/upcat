@@ -46,7 +46,7 @@ const PALETTE: Record<ToastType, PaletteEntry> = {
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} className="h-5 w-5">
                 <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M12 .9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                      d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             </svg>
         ),
     },
@@ -142,30 +142,29 @@ function ToastItem({toast}: { toast: Toast }) {
                     <p className="text-sm font-semibold text-gray-900">{palette.title}</p>
                     <p className="mt-0.5 text-sm text-gray-600">{toast.message}</p>
                 </div>
+
+                <button
+                    type="button"
+                    onClick={dismiss}
+                    aria-label="Dismiss notification"
+                    className="-m-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18.18 6M6 6M6 12"/>
+                    </svg>
+                </button>
             </div>
 
-            <button
-                type="button"
-                onClick={dismiss}
-                aria-label="Dismiss notification"
-                className="-m-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
-            >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18.18 6M6 6M6 12"/>
-                </svg>
-            </button>
+            {toast.duration > 0 && (
+                <div className="h-1 w-full bg-gray-100">
+                    <div
+                        className={`h-full origin-left ${palette.bar}`}
+                        style={{
+                            animation: `toastProgress ${toast.duration}ms linear forwards`,
+                        }}
+                    />
+                </div>
+            )}
         </div>
-
-        {toast.duration > 0 && (
-            <div className="h-1 w-full bg-gray-100">
-                <div
-                    className={`h-full origin-left ${palette.bar}`}
-                    style={{
-                        animation: `toastProgress ${toast.duration}ms linear forwards`,
-                    }}
-                />
-            </div>
-        )}
-    </div>
     );
 }
