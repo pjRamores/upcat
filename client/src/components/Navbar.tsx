@@ -7,7 +7,8 @@ import {useAuthStore} from "@/stores/authStore";
  * Top navigation bar
  * - Sticky, white/blur backdrop, subtle bottom border
  * - Active link underline indicator
- * - Authenticated: avatar circle + dropdown menu (Dashboard / Stats / Settings / Logout)
+ * - Authenticated: avatar circle + dropdown menu (Dashboard / Stats /
+ *   Settings / Logout)
  * - Unauthenticated: ghost Login + filled Sign Up
  * - Mobile: hamburger button opens a slide-in drawer from the right
  * - "Features" link appears only on the landing page
@@ -15,13 +16,14 @@ import {useAuthStore} from "@/stores/authStore";
 
 export default function Navbar() {
     const {isAuthenticated, logout, user, isLoading, fetchMe} = useAuthStore();
-    const isAdmin = useAuthStore((s) => s.isAdmin);
+    const isAdmin = useAuthStore((s) => s.isAdmin());
     const navigate = useNavigate();
     const location = useLocation();
     const isLanding = location.pathname === "/";
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+
 
     useEffect(() => {
         setDrawerOpen(false);
@@ -45,7 +47,9 @@ export default function Navbar() {
         e.preventDefault();
         setDrawerOpen(false);
         if (isLanding) {
-            document.getElementById("features").scrollIntoView({behavior: "smooth", block: "start"});
+            document
+                .getElementById("features")
+                ?.scrollIntoView({behavior: "smooth", block: "start"});
         } else {
             navigate("/#features");
         }
@@ -55,17 +59,30 @@ export default function Navbar() {
         <header
             className="sticky top-0 z-40 border-b border-gray-200 bg-white/85 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/70">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-                <Link to={isAuthenticated ? (isAdmin ? "/admin" : "/dashboard") : "/"}
-                      className="group flex items-center gap-2 text-lg font-bold text-primary-600 hover:text-primary-700 transition-colors">
+                <Link
+                    to={isAuthenticated ? (isAdmin ? "/admin" : "/dashboard") : "/"}
+                    className="group flex items-center gap-2 text-lg font-bold text-primary-600 hover:text-primary-700 transition-colors"
+                >
                     <CapIcon className="h-6 w-6"/>
-                    <span className="text-gray-900">UPCAT</span>
+                    <span>
+                        UPCAT <span className="text-gray-900">SIM</span>
+                    </span>
                 </Link>
+
                 {/* Desktop navigation links */}
-                <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
-                    <NavItem to="/" exact>Home</NavItem>
+                <nav
+                    aria-label="Primary"
+                    className="hidden items-center gap-1 md:flex"
+                >
+                    <NavItem to="/" exact>
+                        Home
+                    </NavItem>
                     {isLanding && (
-                        <a href="/#features" onClick={goToFeatures}
-                           className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100 hover:text-primary-600 transition-colors">
+                        <a
+                            href="/#features"
+                            onClick={goToFeatures}
+                            className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100 hover:text-primary-600 transition-colors"
+                        >
                             Features
                         </a>
                     )}
@@ -79,107 +96,127 @@ export default function Navbar() {
                 {/* Right side: auth controls */}
                 <div className="flex items-center gap-2">
                     {isAuthenticated ? (
-                            <div className="hidden md:block">
-                                <UserMenu user={user} isAdmin={isAdmin} open={menuOpen} setOpen={setMenuOpen}>
-                                    <button onClick={handleLogout}>Logout</button>
-                                </UserMenu>
-                            </div>
-                        onLogout = {handleLogout}
+                        <div className="hidden md:block">
+                            <UserMenu
+                                user={user}
+                                isAdmin={isAdmin}
+                                open={menuOpen}
+                                setOpen={setMenuOpen}
+                                onLogout={handleLogout}
+                            />
                         </div>
-                        ): (
+                    ) : (
                         <div className="hidden items-center gap-2 md:flex">
-                        <Link to="/login" className="rounded-md px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">
-                        Login
-                        </Link>
-                        <Link to="/register" className="btn-primary !py-2 !px-4 text-xs">
-                        Sign Up
-                        </Link>
+                            <Link
+                                to="/login"
+                                className="rounded-md px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors"
+                            >
+                                Login
+                            </Link>
+                            <Link to="/register" className="btn-primary !py-2 !px-4 text-xs">
+                                Sign Up
+                            </Link>
                         </div>
-                        )}
+                    )}
+
                     {/* Mobile hamburger */}
-                    <button type="button" onClick={() => setDrawerOpen(true)} aria-label="Open menu"
-                            aria-expanded={drawerOpen} aria-controls="mobile-drawer"
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 +focus:ring-primary-500 md:hidden">
+                    <button
+                        type="button"
+                        onClick={() => setDrawerOpen(true)}
+                        aria-label="Open menu"
+                        aria-expanded={drawerOpen}
+                        aria-controls="mobile-drawer"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 +focus:ring-primary-500 md:hidden"
+                    >
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-6 w-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.616 12h16M4.616 18h16M4.616 18"/>
                         </svg>
                     </button>
                 </div>
             </div>
-            <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} isAuthenticated={isAuthenticated}
-                          isAdmin={isAdmin} userName={user?.firstName ?? null} userLast={user?.lastName ?? null}
-                          isLanding={isLanding} onFeaturesClick={goToFeatures} onLogout={handleLogout}
-        </div>
-</header>
+
+            <MobileDrawer
+                open={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+                isAuthenticated={isAuthenticated}
+                isAdmin={isAdmin}
+                userName={user?.firstName ?? null}
+                userLast={user?.lastName ?? null}
+                isLanding={isLanding}
+                onFeaturesClick={goToFeatures}
+                onLogout={handleLogout}
+            />
+        </header>
+    );
+}
 
 /**
 * Desktop nav item with active indicator
 */
 function NavItem({
-to,
-exact,
-children,
-
-}: {
-to: string;
-exact?: boolean;
-children: React.ReactNode;
+                     to,
+                     exact,
+                     children,
+                 }: {
+    to: string;
+    exact?: boolean;
+    children: React.ReactNode;
 }) {
-return (
-<NavLink to={to} end={exact} className={(isActive) => [
-"relative rounded-md px-3 py-1.5 text-sm transition-colors",
-isActive ? "font-semibold text-primary-700" : "text-gray-600 hover:bg-gray-100 hover:text-primary-600",
-].join(" ")}>
-{({isActive}) => (
-<span className="relative">
+    return (
+        <NavLink to={to} end={exact} className={(isActive) => [
+            "relative rounded-md px-3 py-1.5 text-sm transition-colors",
+            isActive ? "font-semibold text-primary-700" : "text-gray-600 hover:bg-gray-100 hover:text-primary-600",
+        ].join(" ")}>
+            {({isActive}) => (
+                <span className="relative">
 {children}
-{isActive && (
-<span aria-hidden className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-primary-600" />
-)}
+                    {isActive && (
+                        <span aria-hidden
+                              className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-primary-600"/>
+                    )}
 </span>
-)}
-</NavLink>
-);
+            )}
+        </NavLink>
+    );
 }
 
 /**
 * User dropdown (desktop)
 */
 function UserMenu({
-user,
-isAdmin,
-open,
-setOpen,
-onLogout,
-
-}: {
-user: { firstName: string; lastName: string; email: string } | null;
-isAdmin: boolean;
-open: boolean;
-setOpen: (v: boolean) => void;
-onLogout: () => void;
+                      user,
+                      isAdmin,
+                      open,
+                      setOpen,
+                      onLogout,
+                  }: {
+    user: { firstName: string; lastName: string; email: string } | null;
+    isAdmin: boolean;
+    open: boolean;
+    setOpen: (v: boolean) => void;
+    onLogout: () => void;
 }) {
-const wrapperRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 // Click outside + ESC to close.
-useEffect(() => {
-if (!open) return;
-const onClick = (e: MouseEvent) => {
-if (!wrapperRef.current?.contains(e.target as Node)) setOpen(false);
-};
-const onKey = (e: KeyboardEvent) => {
-if (e.key === "Escape") setOpen(false);
-};
-document.addEventListener("mousedown", onClick);
-document.addEventListener("keydown", onKey);
-return () => {
-document.removeEventListener("mousedown", onClick);
-document.removeEventListener("keydown", onKey);
-};
-}, [open, setOpen]);
+    useEffect(() => {
+        if (!open) return;
+        const onClick = (e: MouseEvent) => {
+            if (!wrapperRef.current?.contains(e.target as Node)) setOpen(false);
+        };
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setOpen(false);
+        };
+        document.addEventListener("mousedown", onClick);
+        document.addEventListener("keydown", onKey);
+        return () => {
+            document.removeEventListener("mousedown", onClick);
+            document.removeEventListener("keydown", onKey);
+        };
+    }, [open, setOpen]);
 
-const initials =
-(user?.firstName?.[0] ?? "").toUpperCase() +
-(user?.lastName?.[0] ?? "").toUpperCase();
+    const initials =
+        (user?.firstName?.[0] ?? "").toUpperCase() +
+        (user?.lastName?.[0] ?? "").toUpperCase();
 
 return (
 <div ref={wrapperRef} className="relative">
