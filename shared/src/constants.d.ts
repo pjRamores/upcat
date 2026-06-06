@@ -1,5 +1,5 @@
-export declare const SUBJECT_areas: readonly ["Language Proficiency", "Mathematics", "Science", "Reading Comprehension"];
-export declare const SUBJECT_META: Record<(typeof SUBJECT_areas)[number], {
+export declare const SUBJECT_AREAS: readonly ["Language Proficiency", "Mathematics", "Science", "Reading Comprehension"];
+export declare const SUBJECT_META: Record<(typeof SUBJECT_AREAS)[number], {
     label: string;
     icon: string;
     color: string;
@@ -10,23 +10,23 @@ export declare const DIFFICULTY_DESCRIPTIONS: Record<(typeof DIFFICULTIES)[numbe
 export declare const DEFAULT_EXAM_CONFIG: {
     readonly totalQuestions: 100;
     readonly distribution: {
-        readonly "Language Proficiency": .25;
-        readonly Mathematics: .30;
-        readonly Science: .25;
-        readonly "Reading Comprehension": .20;
+        readonly "Language Proficiency": 25;
+        readonly Mathematics: 30;
+        readonly Science: 25;
+        readonly "Reading Comprehension": 20;
     };
     readonly difficultyMix: {
-        readonly easy: .25;
-        readonly medium: .40;
-        readonly hard: .25;
-        readonly very_hard: .10;
+        readonly easy: 25;
+        readonly medium: 40;
+        readonly hard: 25;
+        readonly very_hard: 10;
     };
     readonly timeLimit: 180;
 };
 export declare const PASSING_PERCENTAGE = 60;
 export declare const PASSWORD_MIN_LENGTH = 8;
 export declare const VERIFICATION_TOKEN_EXPIRY_HOURS = 24;
-export declare const RESET_TOKEN_EXPIRY_HOURS = .1;
+export declare const RESET_TOKEN_EXPIRY_HOURS = 1;
 export declare const PASSWORD_RULES: {
     readonly minLength: 8;
     readonly requireUppercase: true;
@@ -102,93 +102,92 @@ export declare const API_ROUTES: {
         readonly PANGMERYENDA_STATUS: (transactionId: string) => string;
         readonly PANGMERYENDA_WEBHOOK: "/payment/pangmeryenda/webhook";
         readonly PANGMERYENDA_SUCCESS: "/payment/pangmeryenda/success";
+        readonly PANGMERYENDA_FAILED: "/payment/pangmeryenda/failed";
+        readonly PANGMERYENDA_CANCELLED: "/payment/pangmeryenda/cancelled";
+        readonly PROMO_VALIDATE: "/payment/promo-code/validate";
+        readonly PROMO_REDEEM: "/payment/promo-code/redeem";
+    };
 
-readonly PANGMERYENDA_FAILED: "/payment/pangmeryenda/failed";
-readonly PANGMERYENDA_CANCELLED: "/payment/pangmeryenda/cancelled";
-readonly PROMO_VALIDATE: "/payment/promo-code/validate";
-readonly PROMO_REDEEM: "/payment/promo-code/redeem";
+    readonly FEATURES: {
+        readonly ACCESS: "/features/access";
+        readonly CHECK: "/features/check";
+        readonly TRACK_USAGE: "/features/track-usage";
+    };
 
+    readonly SUBSCRIPTION: {
+        readonly STATUS: "/subscription/status";
+        readonly CANCEL: "/subscription/cancel";
+    };
+
+    readonly ADMIN: {
+        readonly DASHBOARD: "/admin/dashboard/summary";
+        readonly QUESTIONS: "/admin/questions";
+        readonly QUESTION: (id: string) => string;
+        readonly QUESTIONS_BULK_DELETE: "/admin/questions/bulk-delete";
+        readonly QUESTIONS_IMPORT: "/admin/questions/import";
+        readonly PASSAGES: "/admin/passages";
+        readonly PASSAGE: (id: string) => string;
+        readonly USERS: "/admin/users";
+        readonly USER: (id: string) => string;
+        readonly USER_CREATE: "/admin/users/create";
+        readonly USER_DEACTIVATE: (id: string) => string;
+        readonly USER_REACTIVATE: (id: string) => string;
+        readonly USER_RESET_PASSWORD: (id: string) => string;
+        readonly USER_VERIFY_EMAIL: (id: string) => string;
+        readonly USERS_EXPORT: "/admin/users/export";
+        readonly ANALYTICS: "/admin/analytics";
+        readonly EXAMS: "/admin/exams";
+        readonly EXAM: (id: string) => string;
+        readonly FLAGS: "/admin/content-flags";
+        readonly FLAG: (id: string) => string;
+        readonly FLAGS_SUMMARY: "/admin/content-flags/summary";
+        readonly ANNOUNCEMENTS: "/admin/announcements";
+        readonly ANNOUNCEMENT: (id: string) => string;
+        readonly SETTINGS: "/admin/settings";
+        readonly AUDIT_LOG: "/admin/audit-log";
+        readonly AUTH_PROVIDERS: "/admin/auth/providers";
+        readonly AUTH_PROVIDER: (p: string) => string;
+        readonly AUTH_PROVIDER_TEST: (p: string) => string;
+        readonly PAYMENT_CONFIG: "/admin/payment/config";
+        readonly PAYMENT_CONFIG_TYPE: "/admin/payment/config/type";
+        readonly PAYMENT_CONFIG_PLANS: "/admin/payment/config/plans";
+        readonly PAYMENT_CONFIG_MANUAL: "/admin/payment/config/manual";
+        readonly PAYMENT_CONFIG_MANUAL_CHANNEL: (channelId: string) => string;
+        readonly PAYMENT_CONFIG_MANUAL_CHANNEL_RESET: (channelId: string) => string;
+        readonly PAYMENT_CONFIG_PANGMERYENDA: "/admin/payment/config/pangmeryenda";
+        readonly PAYMENT_CONFIG_PANGMERYENDA_TEST: "/admin/payment/config/pangmeryenda/test";
+        readonly PAYMENT_SUBMISSIONS: "/admin/payment/submissions";
+        readonly PAYMENT_SUBMISSION: (submissionNumber: string) => string;
+        readonly PAYMENT_SUBMISSION_REVIEW: (submissionNumber: string) => string;
+        readonly PAYMENT_SUBMISSION_STATS: "/admin/payment/submissions/stats";
+        readonly PAYMENT_REVENUE_REPORT: "/admin/payment/revenue-report";
+        readonly FEATURES: "/admin/features";
+        readonly FEATURE: (featureId: string) => string;
+        readonly FEATURES_BULK: "/admin/features/bulk";
+        readonly FEATURES_PREVIEW: "/admin/features/preview";
+        readonly PROMO_CODES: "/admin/promo-codes";
+        readonly PROMO_CODE: (id: string) => string;
+        readonly PROMO_CODES_BATCH: "/admin/promo-codes/generate-batch";
+        readonly USER_UPGRADE: (userId: string) => string;
+        readonly USER_DOWNGRADE: (userId: string) => string;
+        readonly USER_EXTEND: (userId: string) => string;
+        readonly SUPPORT_DASHBOARD: "/admin/support/dashboard";
+        readonly SUPPORT_TICKETS: "/admin/support/tickets";
+        readonly SUPPORT_TICKET: (n: string) => string;
+        readonly SUPPORT_TICKET_MESSAGES: (n: string) => string;
+        readonly SUPPORT_TICKET_STATUS: (n: string) => string;
+        readonly SUPPORT_TICKET_VERIFY: (n: string) => string;
+        readonly SUPPORT_MERGE: "/admin/support/merge-accounts";
+        readonly DISPUTES: "/admin/support/identity-disputes";
+        readonly DISPUTE: (id: string) => string;
+        readonly DATA_REQUESTS: "/admin/data-requests";
+        readonly DATA_REQUEST: (id: string) => string;
+        readonly DELETION_LOG: "/admin/deletion-log";
+        readonly UNLOCK_ACCOUNT: (userId: string) => string;
+    };
+
+    readonly FLAG_QUESTION: (questionId: string) => string;
 };
-
-readonly FEATURES: {
-    readonly ACCESS: "/features/access";
-    readonly CHECK: "/features/check";
-    readonly TRACK_USAGE: "/features/track-usage";
-};
-
-readonly SUBSCRIPTION: {
-    readonly STATUS: "/subscription/status";
-    readonly CANCEL: "/subscription/cancel";
-};
-
-readonly ADMIN: {
-    readonly DASHBOARD: "/admin/dashboard/summary";
-    readonly QUESTIONS: "/admin/questions";
-    readonly QUESTION: (id: string) => string;
-    readonly QUESTIONS_BULK_DELETE: "/admin/questions/bulk-delete";
-    readonly QUESTIONS_IMPORT: "/admin/questions/import";
-    readonly PASSAGES: "/admin/passages";
-    readonly PASSAGE: (id: string) => string;
-    readonly USERS: "/admin/users";
-    readonly USER: (id: string) => string;
-    readonly USER_CREATE: "/admin/users/create";
-    readonly USER_DEACTIVATE: (id: string) => string;
-    readonly USER_REACTIVATE: (id: string) => string;
-    readonly USER_RESET_PASSWORD: (id: string) => string;
-    readonly USER_VERIFY_EMAIL: (id: string) => string;
-    readonly USERS_EXPORT: "/admin/users/export";
-    readonly ANALYTICS: "/admin/analytics";
-    readonly EXAMS: "/admin/exams";
-    readonly EXAM: (id: string) => string;
-    readonly FLAGS: "/admin/content-flags";
-    readonly FLAG: (id: string) => string;
-    readonly FLAGS_SUMMARY: "/admin/content-flags/summary";
-    readonly ANNOUNCEMENTS: "/admin/announcements";
-    readonly ANNOUNCEMENT: (id: string) => string;
-    readonly SETTINGS: "/admin/settings";
-    readonly AUDIT_LOG: "/admin/audit-log";
-    readonly AUTH_PROVIDERS: "/admin/auth/providers";
-    readonly AUTH_PROVIDER: (p: string) => string;
-    readonly AUTH_PROVIDER_TEST: (p: string) => string;
-    readonly PAYMENT_CONFIG: "/admin/payment/config";
-    readonly PAYMENT_CONFIG_TYPE: "/admin/payment/config/type";
-    readonly PAYMENT_CONFIG_PLANS: "/admin/payment/config/plans";
-    readonly PAYMENT_CONFIG_MANUAL: "/admin/payment/config/manual";
-    readonly PAYMENT_CONFIG_MANUAL_CHANNEL: (channelId: string) => string;
-    readonly PAYMENT_CONFIG_MANUAL_CHANNEL_RESET: (channelId: string) => string;
-    readonly PAYMENT_CONFIG_PANGMERYENDA: "/admin/payment/config/pangmeryenda";
-    readonly PAYMENT_CONFIG_PANGMERYENDA_TEST: "/admin/payment/config/pangmeryenda/test";
-    readonly PAYMENT_SUBMISSIONS: "/admin/payment/submissions";
-    readonly PAYMENT_SUBMISSION: (submissionNumber: string) => string;
-    readonly PAYMENT_SUBMISSION_REVIEW: (submissionNumber: string) => string;
-    readonly PAYMENT_SUBMISSION_STATS: "/admin/payment/submissions/stats";
-    readonly PAYMENT_REVENUE_REPORT: "/admin/payment/revenue-report";
-    readonly FEATURES: "/admin/features";
-    readonly FEATURE: (featureId: string) => string;
-    readonly FEATURES_BULK: "/admin/features/bulk";
-    readonly FEATURES_PREVIEW: "/admin/features/preview";
-    readonly PROMO_CODES: "/admin/promo-codes";
-    readonly PROMO_CODE: (id: string) => string;
-    readonly PROMO_CODES_BATCH: "/admin/promo-codes/generate-batch";
-    readonly USER_UPGRADE: (userId: string) => string;
-    readonly USER_DOWNGRADE: (userId: string) => string;
-    readonly USER_EXTEND: (userId: string) => string;
-    readonly SUPPORT_DASHBOARD: "/admin/support/dashboard";
-    readonly SUPPORT_TICKETS: "/admin/support/tickets";
-    readonly SUPPORT_TICKET: (n: string) => string;
-    readonly SUPPORT_TICKET_MESSAGES: (n: string) => string;
-    readonly SUPPORT_TICKET_STATUS: (n: string) => string;
-    readonly SUPPORT_TICKET_VERIFY: (n: string) => string;
-    readonly SUPPORT_MERGE: "/admin/support/merge-accounts";
-    readonly DISPUTES: "/admin/support/identity-disputes";
-    readonly DISPUTE: (id: string) => string;
-    readonly DATA_REQUESTS: "/admin/data-requests";
-    readonly DATA_REQUEST: (id: string) => string;
-    readonly DELETION_LOG: "/admin/deletion-log";
-    readonly UNLOCK_ACCOUNT: (userId: string) => string;
-};
-
-readonly FLAG_QUESTION: (questionId: string) => string;
 
 export declare const FLAG_REASONS: readonly [
     { readonly value: "incorrect_answer"; readonly label: "Incorrect-answer" },

@@ -41,7 +41,7 @@ export const DEFAULT_VIDEO_AD_SETTINGS = {
     clickThroughUrl: "",
     skipAfterSeconds: 5,
     minIntervalSeconds: 30 * 60,
-    frequencyCap: .3,
+    frequencyCap: 3,
     allowedTriggers: ["start_practice", "review_answers"],
 };
 export const VIDEO_AD_STORAGE_KEY = "upcat.videoAd.state.v1";
