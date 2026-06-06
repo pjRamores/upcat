@@ -249,7 +249,7 @@ function UserMenu({
                     className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
                     aria-hidden
                 >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 9 6 6 6-6"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6"/>
                 </svg>
             </button>
 
@@ -405,7 +405,7 @@ function MobileDrawer({
                         className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 612 12"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
@@ -431,7 +431,7 @@ function MobileDrawer({
                     </DrawerLink>
                     {isLanding && (
                         <a
-                            href="#/features"
+                            href="/#features"
                             onClick={onFeaturesClick}
                             className="block rounded-lg px-3 py-2.5 text-gray-700 hover:bg-gray-100"
                         >
@@ -530,7 +530,7 @@ function DrawerLink({
                         onClick,
                         exact,
                         children,
-}: {
+                    }: {
     to: string;
     onClick: () => void;
     exact?: boolean;
@@ -541,7 +541,7 @@ function DrawerLink({
             to={to}
             end={exact}
             onClick={onClick}
-            className={(isActive) =>
+            className={({isActive}) =>
                 [
                     "block rounded-lg px-3 py-2.5 text-sm transition-colors",
                     isActive
@@ -556,7 +556,7 @@ function DrawerLink({
 }
 
 
-function CapIcon({ className = "h-6 w-6" }: { className?: string }) {
+function CapIcon({className = "h-6 w-6"}: { className?: string }) {
     return (
         <svg
             viewBox="0 0 24 24"
@@ -565,20 +565,21 @@ function CapIcon({ className = "h-6 w-6" }: { className?: string }) {
             className={className}
         >
             <path
-                d="M2 95 12 41L10 5.5L12 15 2 9.5z"
+                d="M2 9.5 12 4l10 5.5L12 15 2 9.5Z"
                 fill="currentColor"
                 opacity="0.95"
             />
             <path
-                d="M6 11.5v4.2c0 .9 2.7 2.3 6 2 2.3s6-1.4 6-2.3v-4.2"
+                d="M6 11.5v4.2c0 .9 2.7 2.3 6 2.3s6-1.4 6-2.3v-4.2"
                 stroke="currentColor"
                 strokeWidth="1.6"
                 strokeLinecap="round"
             />
-            <path d="M21 10v5"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
+            <path
+                d="M21 10v5"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
             />
         </svg>
     );
