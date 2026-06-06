@@ -162,49 +162,52 @@ async function networkFirstWithTtl(request) {
 
 // ── Push handler ─
 self.addEventListener("push", (event) => {
-  if (!event.data) return;
-  let payload;
-  try {
-    payload = event.data.json();
-  } catch {
-    payload = { title: "UPCAT Simulator", body: event.data.text() };
-  }
-  const title = payload.title || "UPCAT Simulator";
-  const options = {
-    body: payload.body || "",
-    icon: payload.icon || "/icons/icon-192.png",
-    badge: payload.badge || "/icons/icon-192.png",
-    image: payload.image,
-    tag: payload.type || "general",
-    renotify: true,
-    data: {
-      url: payload.url || "/dashboard",
-      ...(payload.data || {}),
-    },
-  };
-  event.waitUntil(self.registration.showNotification(title, options));
+    if (!event.data) return;
+    let payload;
+    try {
+        payload = event.data.json();
+    } catch {
+        payload = {title: "UPCAT Simulator", body: event.data.text()};
+    }
+    const title = payload.title || "UPCAT Simulator";
+    const options = {
+        body: payload.body || "",
+        icon: payload.icon || "/icons/icon-192.png",
+        badge: payload.badge || "/icons/icon-192.png",
+        image: payload.image,
+        tag: payload.type || "general",
+        renotify: true,
+        data: {
+            url: payload.url || "/dashboard",
+            ...(payload.data || {}),
+        },
+    };
+    event.waitUntil(self.registration.showNotification(title, options));
 });
 
 self.addEventListener("notificationclick", (event) => {
-  event.notification.close();
-  const targetUrl = (event.notification.data && event.notification.data.url) || "/dashboard";
-  event.waitUntil(
-    async () => {
-      const all = await clients.matchAll({ type: "window", includeUncontrolled: true });
-      for (const client of all) {
-        try {
-          const u = new URL(client.url);
-          if (u.origin === self.location.origin) {
-            await client.focus();
-            if ("navigate" in client) await client.navigate(targetUrl);
-            return;
-          }
-        } catch {}
-      }
-      await clients.openWindow(targetUrl);
-    }(),
-  );
+    event.notification.close();
+    const targetUrl = (event.notification.data && event.notification.data.url) || "/dashboard";
+    event.waitUntil(
+        (async () => {
+            const all = await clients.matchAll({type: "window", includeUncontrolled: true});
+            for (const client of all) {
+                try {
+                    const u = new URL(client.url);
+                    if (u.origin === self.location.origin) {
+                        await client.focus();
+                        if ("navigate" in client) await client.navigate(targetUrl);
+                        return;
+                    }
+                } catch {
+                    /* ignore */
+                }
+            }
+            await clients.openWindow(targetUrl);
+        })(),
+    );
 });
+
 self.addEventListener("message", (event) => {
     if (event.data && event.data.type === "SKIP_WAITING") {
         self.skipWaiting();

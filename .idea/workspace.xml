@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3fe5f419-6c84-4fe2-b3e6-6ccf6020d545" name="Changes" comment="sync">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/manifest.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.webmanifest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <workItem from="1780071722959" duration="29120000" />
       <workItem from="1780276102570" duration="21732000" />
       <workItem from="1780568892512" duration="2169000" />
-      <workItem from="1780616325451" duration="3243000" />
+      <workItem from="1780616325451" duration="3757000" />
     </task>
     <task id="LOCAL-00001" summary="ocr code/text extract">
       <option name="closed" value="true" />
@@ -452,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780720721428</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="sync">
+      <option name="closed" value="true" />
+      <created>1780721703264</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1780721703264</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
