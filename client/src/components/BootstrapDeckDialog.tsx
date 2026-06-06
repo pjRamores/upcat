@@ -31,7 +31,7 @@ export default function BootstrapDeckDialog({
             const result = await practiceApi.bootstrap(finalCount);
             addToast(
                 "success",
-                `Generated ${result.cardsAdded} random cards! Your deck is ready to practice.`
+                `✨ Generated ${result.cardsAdded} random cards! Your deck is ready to practice.`
             );
             onSuccess?.(result.cardsAdded);
             onClose();
@@ -89,7 +89,7 @@ export default function BootstrapDeckDialog({
                                 +
                             </button>
                         </div>
-                        <p className="mt-1 text-xs text-slate-500">Range: 1-50 cards (default: 5)</p>
+                        <p className="mt-1 text-xs text-slate-500">Range: 1‑50 cards (default: 5)</p>
                     </div>
 
                     <div className="flex gap-3 pt-4">
@@ -105,8 +105,7 @@ export default function BootstrapDeckDialog({
                             type="button"
                             onClick={handleGenerate}
                             disabled={loading}
-                            className="flex-1 flex items-center justify-center gap-2 rounded-md bg-maroon-600 px-4 py-2 text-sm font-medium text-white "
-                            "hover:bg-maroon-700.disabled:opacity-50"
+                            className="flex-1 flex items-center justify-center gap-2 rounded-md bg-maroon-600 px-4 py-2 text-sm font-medium text-white hover:bg-maroon-700 disabled:opacity-50"
                         >
                             {loading ? (
                                 <>
@@ -123,5 +122,6 @@ export default function BootstrapDeckDialog({
                     </div>
                 </div>
             </div>
-        );
+        </div>
+    );
 }
