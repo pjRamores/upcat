@@ -2,12 +2,14 @@
  * Phase 15b -- Privacy-respecting device fingerprint.
  *
  * Produces a short SHA-256 hex hash of stable, non-PII browser signals.
- * The raw signals are NEVER transmitted; only the hash is sent as the 'X-Device-Fingerprint' header. Use cases:
+ * The raw signals are NEVER transmitted; only the hash is sent as the
+ * 'X-Device-Fingerprint' header. Use cases:
  * - Detecting many accounts from the same device
  * - Correlating anonymous + authenticated sessions
  * - Identifying device changes (account-takeover signal)
  *
- * The hash is regenerated per session (kept in sessionStorage) so tracking across closed browser sessions is not possible.
+ * The hash is regenerated per session (kept in sessionStorage) so
+ * tracking across closed browser sessions is not possible.
  */
 const KEY = "upcat.fp";
 
@@ -28,7 +30,6 @@ export async function getDeviceFingerprint(): Promise<string> {
     const hash = await sha256Hex(JSON.stringify(signals));
     const short = hash.slice(0, 32);
     cached = short;
-
     try {
         sessionStorage.setItem(KEY, short);
     } catch {
@@ -77,13 +78,13 @@ function canvasFingerprint(): string {
         const ctx = c.getContext("2d");
         if (!ctx) return "";
         ctx.textBaseline = "alphabetic";
-        ctx.font = "16px Arial";
+        ctx.font = "16px 'Arial'";
         ctx.fillStyle = "#f60";
         ctx.fillRect(0, 0, 100, 30);
         ctx.fillStyle = "#069";
-        ctx.fillText("UPCAT\u{1F4DA}", 4, 22);
+        ctx.fillText("UPCAT \u{1F4DA}", 4, 22);
         ctx.fillStyle = "rgba(102, 200, 0, 0.7)";
-        ctx.fillText("UPCAT\u{1F4DA}", 6, 24);
+        ctx.fillText("UPCAT \u{1F4DA}", 6, 24);
         // Just hash the data URL length + a slice -- avoids huge strings.
         const url = c.toDataURL();
         return url.length.toString(36) + ":" + url.slice(-32);
@@ -95,18 +96,20 @@ function canvasFingerprint(): string {
 function webglFingerprint(): string {
     try {
         const c = document.createElement("canvas");
-        const gl = (c.getContext("webgl") || 
+        const gl = (c.getContext("webgl") ||
             c.getContext("experimental-webgl")) as WebGLRenderingContext | null;
         if (!gl) return "";
         const dbgInfo = gl.getExtension("WEBGL_debug_renderer_info");
         const vendor = dbgInfo
             ? String(gl.getParameter(dbgInfo.UNMASKED_VENDOR_WEBGL ?? 0))
-const renderer = dbgInfo
-    ? String(gl.getParameter(dbgInfo.UNMASKED_RENDERER_WEBGL ?? 0))
-    : "";
-return `${vendor}|${renderer}`;
-} catch {
-    return "";
+            : "";
+        const renderer = dbgInfo
+            ? String(gl.getParameter(dbgInfo.UNMASKED_RENDERER_WEBGL ?? 0))
+            : "";
+        return `${vendor}|${renderer}`;
+    } catch {
+        return "";
+    }
 }
 
 const FONTS_TO_PROBE = [
@@ -126,7 +129,7 @@ const FONTS_TO_PROBE = [
 function fontFingerprint(): string {
     try {
         const baseFonts = ["monospace", "sans-serif", "serif"] as const;
-        const test = "mmMwWLliI0O";
+        const test = "mmMwWLliI0Oo";
         const sizes = new Set<string>();
         const span = document.createElement("span");
         span.style.position = "absolute";
@@ -141,26 +144,25 @@ function fontFingerprint(): string {
                 span.style.fontFamily = base;
                 sizes.add(`${base}:${span.offsetWidth}x${span.offsetHeight}`);
             }
-        } catch {}
-        const detected: string[] = [];
-        for (const f of FONTS_TO_PROBE) {
-            for (const base of baseFonts) {
-                span.style.fontFamily = `${f}, ${base}`;
-                const k = `${base}:${span.offsetWidth}x${span.offsetHeight}`;
-                if (!sizes.has(k)) {
-                    detected.push(f);
-                    break;
+            const detected: string[] = [];
+            for (const f of FONTS_TO_PROBE) {
+                for (const base of baseFonts) {
+                    span.style.fontFamily = `'${f}', ${base}`;
+                    const k = `${base}:${span.offsetWidth}x${span.offsetHeight}`;
+                    if (!sizes.has(k)) {
+                        detected.push(f);
+                        break;
+                    }
                 }
+                if (detected.length >= 6) break;
             }
+            return detected.join(",");
+        } finally {
+            document.body.removeChild(span);
         }
-        if (detected.length >= 6) break;
-        return detected.join(",");
-    } finally {
-        document.body.removeChild(span);
+    } catch {
+        return "";
     }
-} catch {
-    return "";
-}
 }
 
 async function sha256Hex(input: string): Promise<string> {
