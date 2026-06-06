@@ -209,12 +209,44 @@ body {
     }
 }
 
-/* --- Scroll-reveal (used by LandingPage) ----------------------------------- */
+.animate-fade-in {
+    animation: fadeIn .35s ease-out both;
+}
+
+.animate-slide-up {
+    animation: slideUp .35s ease-out both;
+}
+
+.animate-slide-right {
+    animation: slideRight .35s ease-out both;
+}
+
+.animate-slide-down {
+    animation: slideDown .3s ease-out both;
+}
+
+.animate-scale-in {
+    animation: scaleIn .18s linear infinite;
+}
+
+.animate-toast-in {
+    animation: slideInRight .25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.animate-toast-out {
+    animation: slideOutRight .2s ease-in both;
+}
+
+.animate-drawer-in {
+    animation: slideInFromRight .28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+/* --- Scroll-reeveal (used by LandingPage) -----------------------------*/
 [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease-out,
-                transform 0.7s ease-out;
+    transform 0.7s ease-out;
 }
 
 [data-reveal].reveal-in {
