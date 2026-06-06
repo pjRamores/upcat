@@ -1,4 +1,3 @@
-```ini
 # Cloudflare Pages + Workers configuration
 # Primary deployment target for the UPCAT Simulator
 #
@@ -94,7 +93,7 @@ preview_id = "YOUR_PREVIEW_SESSIONS_KV_NAMESPACE_ID"
 # Build Configuration
 [build]
 command = "npm ci && npm run build --workspace=api && npm run build --workspace=client"
-cwd = "."
+cwd = "./"
 watch_paths = ["api/**/*.ts", "client/src/**"]
 
 # Output directory for Pages deployment

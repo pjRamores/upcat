@@ -84,7 +84,7 @@ export default function InstallPwaCard() {
                             Not now
                         </button>
                     </div>
-            </div>
+                </div>
                 <button
                     type="button"
                     onClick={handleClose}

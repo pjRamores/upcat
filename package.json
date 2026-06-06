@@ -16,7 +16,7 @@
     "setup:indexes": "npm run setup-indexes --workspace=api",
     "seed": "npm run seed --workspace=api",
     "seed:clean": "npm run seed:clean --workspace=api",
-    "test:integration": "node --env-file-api/.env scripts/test-integration.mjs",
+    "test:integration": "node --env-file=api/.env scripts/test-integration.mjs",
     "e2e": "npm run e2e --workspace=client",
     "e2e:report": "npm run e2e:report --workspace=client",
     "deploy": "DEPLOY_TARGET=cloudflare bash scripts/deploy.sh",
