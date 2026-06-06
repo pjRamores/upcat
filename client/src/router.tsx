@@ -317,7 +317,7 @@ export const router = createBrowserRouter([
                     {path: "/review/:sessionId", element: lazyRoute(ReviewPage)},
                     {path: "/stats", element: lazyRoute(StatsPage)},
                     {path: "/profile", element: lazyRoute(ProfilePage)},
-                    {path: "/leaderboard", element: lazyRoute(LoadboardPage)},
+                    {path: "/leaderboard", element: lazyRoute(LeaderboardPage)},
                     {path: "/practice", element: lazyRoute(PracticePage)},
                     {path: "/practice-test/configure", element: lazyRoute(PracticePage)},
                     {path: "/practice/stats", element: lazyRoute(PracticeStatsPage)},
