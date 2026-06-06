@@ -219,10 +219,10 @@ export declare const DEFAULT_PLATFORM_SETTINGS: {
             };
         };
         readonly difficultyMix: {
-            readonly easy: .25;
-            readonly medium: .40;
-            readonly hard: .25;
-            readonly very_hard: .10;
+            readonly easy: 25;
+            readonly medium: 40;
+            readonly hard: 25;
+            readonly very_hard: 10;
         };
     };
     readonly registration: {
@@ -598,306 +598,302 @@ export declare const DEFAULT_PAYMENT_CONFIG: {
                     readonly lastResetMonth: "1970-01";
                 };
             };
-        readonly autoDisabled: false;
-        readonly autoDisabledReason: null;
-        readonly autoDisabledAt: null;
-        readonly additionalNotes: null;
-        readonly order: 2;
-    }, {
-        readonly id: "bdo";
-        readonly name: "BDO";
-        readonly type: "bank";
-        readonly icon: "bdo";
-        readonly enabled: true;
-        readonly accountName: "UPCAT Simulator Inc.";
-        readonly accountNumber: "1234-5678-9012";
-        readonly bankName: "BDO Unibank";
-        readonly qrCodeImage: null;
-        readonly qrCodeLabel: null;
-        readonly limits: {
-            readonly daily: {
-                readonly max: null;
-                readonly current: 0;
-                readonly lastResetDate: "1970-01-01";
+            readonly autoDisabled: false;
+            readonly autoDisabledReason: null;
+            readonly autoDisabledAt: null;
+            readonly additionalNotes: null;
+            readonly order: 2;
+        }, {
+            readonly id: "bdo";
+            readonly name: "BDO";
+            readonly type: "bank";
+            readonly icon: "bdo";
+            readonly enabled: true;
+            readonly accountName: "UPCAT Simulator Inc.";
+            readonly accountNumber: "1234-5678-9012";
+            readonly bankName: "BDO Unibank";
+            readonly qrCodeImage: null;
+            readonly qrCodeLabel: null;
+            readonly limits: {
+                readonly daily: {
+                    readonly max: null;
+                    readonly current: 0;
+                    readonly lastResetDate: "1970-01-01";
+                };
+                readonly monthly: {
+                    readonly max: null;
+                    readonly current: 0;
+                    readonly lastResetMonth: "1970-01";
+                };
             };
-readonly max: null;
-readonly current: 0;
-readonly lastResetMonth: "1970-01";
-};
-readonly autoDisabled: false;
-readonly autoDisabledReason: null;
-readonly autoDisabledAt: null;
-readonly additionalNotes: null;
-readonly order: 3;
-};
-
-readonly pangmeryenda: {
-    readonly enabled: false;
-    readonly apiBaseUrl: "https://api.pangmeryenda.com";
-    readonly apiKey: null;
-    readonly apiSecretEnc: null;
-    readonly webhookSecret: null;
-    readonly merchantId: null;
-    readonly planMapping: readonly [];
-    readonly successRedirectUrl: "/payment/success";
-    readonly failureRedirectUrl: "/payment/failed";
-    readonly cancelRedirectUrl: "/payment/cancelled";
-    readonly webhookEndpoint: "/api/payment/pangmeryenda/webhook";
-};
-
-readonly featureGating: {
-    readonly features: readonly [{
-        readonly id: "mock_exam_access";
-        readonly name: "Mock Exam Access";
-        readonly description: "Start full mock exams.";
-        readonly category: "exams";
-        readonly accessLevel: "all";
-        readonly hasLimit: true;
-        readonly limits: {
-            readonly free: 2;
-            readonly premium: null;
-        };
-        readonly limitPeriod: "monthly";
-    }, {
-        readonly id: "practice_test_access";
-        readonly name: "Practice Test Access";
-        readonly description: "Start practice sessions.";
-        readonly category: "exams";
-        readonly accessLevel: "all";
-        readonly hasLimit: true;
-        readonly limits: {
-            readonly free: 5;
-            readonly premium: null;
-        };
-        readonly limitPeriod: "daily";
-    }, {
-        readonly id: "practice_question_count";
-        readonly name: "Max Questions per Practice";
-        readonly description: "Maximum number of questions per practice session.";
-        readonly category: "exams";
-        readonly accessLevel: "all";
-        readonly hasLimit: true;
-        readonly limits: {
-            readonly free: 50;
-            readonly premium: 200;
-        };
-        readonly limitPeriod: "total";
-    }, {
-        readonly id: "immediate_feedback";
-        readonly name: "Immediate Feedback Mode";
-        readonly description: "See correctness immediately.";
-        readonly category: "practice";
-        readonly accessLevel: "all";
-        readonly hasLimit: false;
-        readonly limits: null;
-        readonly limitPeriod: null;
-    }, {
-        readonly id: "detailed_rationale";
-        readonly name: "Detailed Answer Rationale";
-        readonly description: "Read detailed explanation for answers.";
-        readonly category: "content";
-        readonly accessLevel: "all";
-        readonly hasLimit: true;
-        readonly limits: {
-            readonly free: 5;
-            readonly premium: null;
-        };
-        readonly limitPeriod: "daily";
-    }, {
-        readonly id: "subject_filter";
-        readonly name: "Subject/Topic Filtering";
-        readonly description: "Choose specific subjects and topics.";
-        readonly category: "practice";
-        readonly accessLevel: "all";
-        readonly hasLimit: false;
-        readonly limits: null;
-        readonly limitPeriod: null;
-    }, {
-        readonly id: "difficulty_filter";
-        readonly name: "Difficulty Configuration";
-        readonly description: "Customize question difficulty.";
-        readonly category: "practice";
-        readonly accessLevel: "all";
-        readonly hasLimit: true;
-        readonly limits: {
-            readonly free: 1;
-            readonly premium: 3;
-        };
-        readonly limitPeriod: "total";
-}, {
-    readonly id: "stats_basic";
-    readonly name: "Basic Statistics";
-    readonly description: "Core progress metrics.";
-    readonly category: "analytics";
-    readonly accessLevel: "all";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "stats_advanced";
-    readonly name: "Advanced Analytics & Insights";
-    readonly description: "Deep performance analytics.";
-    readonly category: "analytics";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "stats_subject_drilldown";
-    readonly name: "Subject Drilldown Analytics";
-    readonly description: "Detailed per-subject analytics.";
-    readonly category: "analytics";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "weak_area_recommendations";
-    readonly name: "Weak Area Recommendations";
-    readonly description: "Personalized weak area recommendations.";
-    readonly category: "analytics";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 5;
-        readonly premium: null;
+            readonly autoDisabled: false;
+            readonly autoDisabledReason: null;
+            readonly autoDisabledAt: null;
+            readonly additionalNotes: null;
+            readonly order: 3;
+        }];
     };
-    readonly limitPeriod: "weekly";
-}, {
-    readonly id: "leaderboard_access";
-    readonly name: "Leaderboard Access";
-    readonly description: "View and compare rank with peers.";
-    readonly category: "social";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 1;
-        readonly premium: 3;
+    readonly pangmeryenda: {
+        readonly enabled: false;
+        readonly apiBaseUrl: "https://api.pangmeryenda.com";
+        readonly apiKey: null;
+        readonly apiSecretEnc: null;
+        readonly webhookSecret: null;
+        readonly merchantId: null;
+        readonly planMapping: readonly [];
+        readonly successRedirectUrl: "/payment/success";
+        readonly failureRedirectUrl: "/payment/failed";
+        readonly cancelRedirectUrl: "/payment/cancelled";
+        readonly webhookEndpoint: "/api/payment/pangmeryenda/webhook";
     };
-    readonly limitPeriod: "total";
-}, {
-    readonly id: "spaced_repetition";
-    readonly name: "Spaced Repetition Practice";
-    readonly description: "Adaptive spaced repetition cards.";
-    readonly category: "practice";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 10;
-        readonly premium: null;
+    readonly featureGating: {
+        readonly features: readonly [{
+            readonly id: "mock_exam_access";
+            readonly name: "Mock Exam Access";
+            readonly description: "Start full mock exams.";
+            readonly category: "exams";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 2;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "monthly";
+        }, {
+            readonly id: "practice_test_access";
+            readonly name: "Practice Test Access";
+            readonly description: "Start practice sessions.";
+            readonly category: "exams";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 5;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "daily";
+        }, {
+            readonly id: "practice_question_count";
+            readonly name: "Max Questions per Practice";
+            readonly description: "Maximum number of questions per practice session.";
+            readonly category: "exams";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 50;
+                readonly premium: 200;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "immediate_feedback";
+            readonly name: "Immediate Feedback Mode";
+            readonly description: "See correctness immediately.";
+            readonly category: "practice";
+            readonly accessLevel: "all";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "detailed_rationale";
+            readonly name: "Detailed Answer Rationale";
+            readonly description: "Read detailed explanation for answers.";
+            readonly category: "content";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 5;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "daily";
+        }, {
+            readonly id: "subject_filter";
+            readonly name: "Subject/Topic Filtering";
+            readonly description: "Choose specific subjects and topics.";
+            readonly category: "practice";
+            readonly accessLevel: "all";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "difficulty_filter";
+            readonly name: "Difficulty Configuration";
+            readonly description: "Customize question difficulty.";
+            readonly category: "practice";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 1;
+                readonly premium: 3;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "stats_basic";
+            readonly name: "Basic Statistics";
+            readonly description: "Core progress metrics.";
+            readonly category: "analytics";
+            readonly accessLevel: "all";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "stats_advanced";
+            readonly name: "Advanced Analytics & Insights";
+            readonly description: "Deep performance analytics.";
+            readonly category: "analytics";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "stats_subject_drilldown";
+            readonly name: "Subject Drilldown Analytics";
+            readonly description: "Detailed per-subject analytics.";
+            readonly category: "analytics";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "weak_area_recommendations";
+            readonly name: "Weak Area Recommendations";
+            readonly description: "Personalized weak area recommendations.";
+            readonly category: "analytics";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 5;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "weekly";
+        }, {
+            readonly id: "leaderboard_access";
+            readonly name: "Leaderboard Access";
+            readonly description: "View and compare rank with peers.";
+            readonly category: "social";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 1;
+                readonly premium: 3;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "spaced_repetition";
+            readonly name: "Spaced Repetition Practice";
+            readonly description: "Adaptive spaced repetition cards.";
+            readonly category: "practice";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 10;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "daily";
+        }, {
+            readonly id: "exam_history_full";
+            readonly name: "Full Exam History";
+            readonly description: "Access full historical exam records.";
+            readonly category: "analytics";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 5;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "export_results";
+            readonly name: "Export Results (PDF/CSV)";
+            readonly description: "Export analytics and score reports.";
+            readonly category: "content";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "ad_free";
+            readonly name: "Ad-Free Experience";
+            readonly description: "Hide all ad placements.";
+            readonly category: "experience";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "priority_support";
+            readonly name: "Priority Support Tickets";
+            readonly description: "Get prioritized support queue.";
+            readonly category: "experience";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "custom_presets":
+                readonly name: "Saved Practice Presets";
+            readonly description: "Save custom practice presets.";
+            readonly category: "practice";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 2;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "review_all_questions";
+            readonly name: "Review All Exam Questions";
+            readonly description: "Review all previously answered exam questions.";
+            readonly category: "content";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 1;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "total";
+        }, {
+            readonly id: "predicted_score";
+            readonly name: "Predicted UPCAT Score";
+            readonly description: "Predicted UPCAT score analytics.";
+            readonly category: "analytics";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "percentile_ranking";
+            readonly name: "Percentile Ranking";
+            readonly description: "Percentile view on leaderboard.";
+            readonly category: "analytics";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "video_ad_skip";
+            readonly name: "Skip Video Ads";
+            readonly description: "Bypass interstitial video ads.";
+            readonly category: "experience";
+            readonly accessLevel: "premium";
+            readonly hasLimit: false;
+            readonly limits: null;
+            readonly limitPeriod: null;
+        }, {
+            readonly id: "blog_full_access";
+            readonly name: "Full Blog Article Access";
+            readonly description: "Read all blog content without monthly cap.";
+            readonly category: "content";
+            readonly accessLevel: "all";
+            readonly hasLimit: true;
+            readonly limits: {
+                readonly free: 3;
+                readonly premium: null;
+            };
+            readonly limitPeriod: "monthly";
+        }];
     };
-    readonly limitPeriod: "daily";
-}, {
-    readonly id: "exam_history_full";
-    readonly name: "Full Exam History";
-    readonly description: "Access full historical exam records.";
-    readonly category: "analytics";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 5;
-        readonly premium: null;
-    };
-    readonly limitPeriod: "total";
-}, {
-    readonly id: "export_results";
-    readonly name: "Export Results (PDF/CSV)";
-    readonly description: "Export analytics and score reports.";
-    readonly category: "content";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "ad_free";
-    readonly name: "Ad-Free Experience";
-    readonly description: "Hide all ad placements.";
-    readonly category: "experience";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "priority_support";
-    readonly name: "Priority Support Tickets";
-    readonly description: "Get prioritized support queue.";
-    readonly category: "experience";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-}, {
-    readonly id: "custom_presets":
-readonly name: "Saved-Practice-Presets";
-readonly description: "Save custom practice presets.";
-readonly category: "practice";
-readonly accessLevel: "all";
-readonly hasLimit: true;
-readonly limits: {
-    readonly free: 2;
-    readonly premium: null;
-};
-readonly limitPeriod: "total";
-
-}, {
-    readonly id: "review_all_questions";
-    readonly name: "Review All Exam Questions";
-    readonly description: "Review all previously answered exam questions.";
-    readonly category: "content";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 1;
-        readonly premium: null;
-    };
-    readonly limitPeriod: "total";
-
-}, {
-    readonly id: "predicted_score";
-    readonly name: "Predicted UPCAT Score";
-    readonly description: "Predicted UPCAT score analytics.";
-    readonly category: "analytics";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-
-}, {
-    readonly id: "percentile_ranking";
-    readonly name: "Percentile Ranking";
-    readonly description: "Percentile view on leaderboard.";
-    readonly category: "analytics";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-
-}, {
-    readonly id: "video_ad_skip";
-    readonly name: "Skip Video Ads";
-    readonly description: "Bypass interstitial video ads.";
-    readonly category: "experience";
-    readonly accessLevel: "premium";
-    readonly hasLimit: false;
-    readonly limits: null;
-    readonly limitPeriod: null;
-
-}, {
-    readonly id: "blog_full_access";
-    readonly name: "Full Blog Article Access";
-    readonly description: "Read all blog content without monthly cap.";
-    readonly category: "content";
-    readonly accessLevel: "all";
-    readonly hasLimit: true;
-    readonly limits: {
-        readonly free: 3;
-        readonly premium: null;
-    };
-    readonly limitPeriod: "monthly";
-
-}];
-readonly updatedAt: string;
-readonly updatedBy: null;
+    readonly updatedAt: string;
+    readonly updatedBy: null;
 };
 export declare const CONTACT_SUBJECTS: readonly ["General Inquiry", "Bug Report", "Feature Request", "Content Issue", "Other"];
 export type ContactSubject = (typeof CONTACT_SUBJECTS)[number];
