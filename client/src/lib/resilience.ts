@@ -103,6 +103,7 @@ export function installGlobalResilienceHooks() {
     //     if (pollTimer) clearInterval(pollTimer);
     //     if (heartbeatTimer) clearInterval(heartbeatTimer);
     // });
+}
 
 export const __resilienceTestOnly = {
     resetState(online = true) {
