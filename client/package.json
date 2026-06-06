@@ -14,7 +14,7 @@
     "e2e:report": "playwright show-report playwright-report"
   },
   "dependencies": {
-    "@uiv/react-md-editor": "^4.0.11",
+    "@uiw/react-md-editor": "^4.0.11",
     "@upcat/shared": "file:../shared",
     "axios": "^1.7.0",
     "katex": "^0.16.11",
