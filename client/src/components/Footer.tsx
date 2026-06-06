@@ -9,26 +9,36 @@ import {useAuthStore} from "@/stores/authStore";
  * Includes the mandatory non-affiliation disclaimer
  */
 
+
 export default function Footer() {
     const year = new Date().getFullYear();
     const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
     return (
-        <footer role="contentinfo" className="mt-auto bg-slate-900 text-slate-300">
+        <footer
+            role="contentinfo"
+            className="mt-auto bg-slate-900 text-slate-300"
+        >
             <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Column 1: brand + tagline + disclaimer */}
                     <div>
-                        <Link to="/" className="inline-flex items-center gap-2 text-lg font-bold text-white">
+                        <Link
+                            to="/"
+                            className="inline-flex items-center gap-2 text-lg font-bold text-white"
+                        >
+                            <span className="text-2xl">🎓</span>
                             UPCAT Simulator
                         </Link>
                         <p className="mt-3 text-sm leading-relaxed text-slate-400">
-                            A modern practice platform for UPCAT-bound students. Realistic exams, instant scoring,
-                            and analytics — built to help learners walk into exam day prepared.
+                            A modern practice platform for UPCAT-bound students. Realistic
+                            exams, instant scoring, and analytics — built to help learners
+                            walk into exam day prepared.
                         </p>
                         <p className="mt-4 rounded-md border border-slate-700/60 bg-slate-800/60 p-3 text-xs leading-relaxed text-slate-400">
-                            <strong className="text-slate-200">Disclaimer:</strong> Not affiliated with, endorsed by,
-                            or connected to the University of the Philippines or the UPCAT examination.
+                            <strong className="text-slate-200">Disclaimer:</strong> Not
+                            affiliated with, endorsed by, or connected to the University of
+                            the Philippines or the UPCAT examination.
                         </p>
                     </div>
 
@@ -62,8 +72,12 @@ export default function Footer() {
                         <ul className="mt-4 space-y-2 text-sm">
                             <FooterLink to="/subjects/mathematics">Mathematics</FooterLink>
                             <FooterLink to="/subjects/science">Science</FooterLink>
-                            <FooterLink to="/subjects/language-proficiency">Language Proficiency</FooterLink>
-                            <FooterLink to="/subjects/reading-comprehension">Reading Comprehension</FooterLink>
+                            <FooterLink to="/subjects/language-proficiency">
+                                Language Proficiency
+                            </FooterLink>
+                            <FooterLink to="/subjects/reading-comprehension">
+                                Reading Comprehension
+                            </FooterLink>
                         </ul>
                     </div>
 
@@ -77,7 +91,7 @@ export default function Footer() {
                             <Link to="/contact" className="text-primary-300 hover:text-primary-200">
                                 contact form
                             </Link>{" "}
-                            We read every message and aim to respond promptly.
+                            . We read every message and aim to respond promptly.
                         </p>
                     </div>
                 </div>
@@ -87,7 +101,8 @@ export default function Footer() {
                 <div className="flex flex-col items-center justify-between gap-3 text-xs text-slate-400 sm:flex-row">
                     <p>© {year} UPCAT Simulator. All rights reserved.</p>
                     <p className="flex items-center gap-1">
-                        Made with <span aria-hidden className="text-primary-400">❤</span> in
+                        Made with <span aria-hidden className="text-primary-400">❤️</span> in
+                        the Philippines
                     </p>
                 </div>
             </div>
@@ -104,9 +119,13 @@ function FooterLink({
 }) {
     return (
         <li>
-            <Link to={to} className="text-slate-400 transition hover:text-white">
+            <Link
+                to={to}
+                className="text-slate-400 transition hover:text-white">
                 {children}
             </Link>
         </li>
     );
 }
+
+

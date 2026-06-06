@@ -59,7 +59,7 @@ export default function FlagQuestionModal({isOpen, questionId, onSubmitted, onCl
                         {busy ? "Sending..." : "Submit report"}
                     </button>
                 </div>
-        }
+            }
         >
             <fieldset className="space-y-3">
                 <legend className="sr-only">Reason for reporting</legend>
