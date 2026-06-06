@@ -65,7 +65,7 @@ export default function Navbar() {
                 >
                     <CapIcon className="h-6 w-6"/>
                     <span>
-                        UPCAT <span className="text-gray-900">SIM</span>
+                        UPCAT <span className="text-gray-900">Sim</span>
                     </span>
                 </Link>
 
@@ -126,10 +126,10 @@ export default function Navbar() {
                         aria-label="Open menu"
                         aria-expanded={drawerOpen}
                         aria-controls="mobile-drawer"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 +focus:ring-primary-500 md:hidden"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 md:hidden"
                     >
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-6 w-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.616 12h16M4.616 18h16M4.616 18"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
                 </div>
@@ -150,9 +150,7 @@ export default function Navbar() {
     );
 }
 
-/**
-* Desktop nav item with active indicator
-*/
+/** Desktop nav item with active indicator */
 function NavItem({
                      to,
                      exact,
@@ -163,26 +161,34 @@ function NavItem({
     children: React.ReactNode;
 }) {
     return (
-        <NavLink to={to} end={exact} className={(isActive) => [
-            "relative rounded-md px-3 py-1.5 text-sm transition-colors",
-            isActive ? "font-semibold text-primary-700" : "text-gray-600 hover:bg-gray-100 hover:text-primary-600",
-        ].join(" ")}>
+        <NavLink
+            to={to}
+            end={exact}
+            className={(isActive) =>
+                [
+                    "relative rounded-md px-3 py-1.5 text-sm transition-colors",
+                    isActive
+                        ? "font-semibold text-primary-700"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-primary-600",
+                ].join(" ")
+            }
+        >
             {({isActive}) => (
                 <span className="relative">
-{children}
+            {children}
                     {isActive && (
-                        <span aria-hidden
-                              className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-primary-600"/>
+                        <span
+                            aria-hidden
+                            className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-primary-600"
+                        />
                     )}
-</span>
+                </span>
             )}
         </NavLink>
     );
 }
 
-/**
-* User dropdown (desktop)
-*/
+/** User dropdown (desktop) */
 function UserMenu({
                       user,
                       isAdmin,
@@ -197,7 +203,8 @@ function UserMenu({
     onLogout: () => void;
 }) {
     const wrapperRef = useRef<HTMLDivElement>(null);
-// Click outside + ESC to close.
+
+    // Click outside + ESC to close.
     useEffect(() => {
         if (!open) return;
         const onClick = (e: MouseEvent) => {
@@ -218,97 +225,119 @@ function UserMenu({
         (user?.firstName?.[0] ?? "").toUpperCase() +
         (user?.lastName?.[0] ?? "").toUpperCase();
 
-return (
-<div ref={wrapperRef} className="relative">
-<button
-type="button"
-onClick={() => setOpen(!open)}
-aria-haspopup="menu"
-aria-expanded={open}
-className="flex items-center gap-2 rounded-full p-0.5 pr-3 transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
->
-<span
-className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-white"
->
-{initials || "?"}
-</span>
-<span className="hidden text-sm font-medium text-gray-700 sm:inline">
-{user?.firstName ?? "Account"}
-</span>
-<svg
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-strokeWidth={2}
-className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
-aria-hidden
->
-<path strokeLinecap="round" strokeLinejoin="round" d="M6.9 6.6 6.6 6"/>
-</svg>
-</button>
+    return (
+        <div ref={wrapperRef} className="relative">
+            <button
+                type="button"
+                onClick={() => setOpen(!open)}
+                aria-haspopup="menu"
+                aria-expanded={open}
+                className="flex items-center gap-2 rounded-full p-0.5 pr-3 transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            >
+        <span
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-white"
+            {initials || "?"}
+            </span>
+            <span className="hidden text-sm font-medium text-gray-700 sm:inline">
+        {user?.firstName ?? "Account"}
+        </span>
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
+                aria-hidden
+            >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.9 6.6 6.6 6"/>
+            </svg>
+        </button>
 
-{open && (
-<div role="menu" className="animate-fade-in absolute right-0 mt-2 w-60 origin-top-right overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl ring-1 ring-black/5">
-<div className="border-b border-gray-100 px-4 py-3">
-<p className="text-sm font-semibold text-gray-900">{user?.firstName} {user?.lastName}</p>
-<p className="truncate text-xs text-gray-500">{user?.email}</p>
+    {
+        open && (
+            <div role="menu"
+                 className="animate-fade-in absolute right-0 mt-2 w-60 origin-top-right overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl ring-1 ring-black/5"
+            >
+                <div className="border-b border-gray-100 px-4 py-3">
+                    <p className="text-sm font-semibold text-gray-900">
+                        {user?.firstName} {user?.lastName}
+                    </p>
+                    <p className="truncate text-xs text-gray-500">{user?.email}</p>
+                </div>
+                <div className="py-1">
+                    {!isAdmin && (
+                        <>
+                            <MenuLink to="/dashboard" icon="⌂">
+                                Dashboard
+                            </MenuLink>
+                            <MenuLink to="/profile" icon="👤">
+                                Profile &amp; XP
+                            </MenuLink>
+                            <MenuLink to="/leaderboard" icon="🏆">
+                                Leaderboard
+                            </MenuLink>
+                            <MenuLink to="/practice" icon="✍️">
+                                Review
+                            </MenuLink>
+                            <MenuLink to="/practice/stats" icon="📊">
+                                Review Stats
+                            </MenuLink>
+                            <MenuLink to="/stats" icon="📈">
+                                My Statistics
+                            </MenuLink>
+                            <MenuLink to="/settings" icon="⚙️">
+                                Settings
+                            </MenuLink>
+                            <MenuLink to="/help" icon="❓">
+                                Help Center
+                            </MenuLink>
+                        </>
+                    )}
+                    {isAdmin && (
+                        <Link
+                            to="/admin"
+                            role="menuitem"
+                            className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
+                        >
+                            <span aria-hidden>Admin Panel</span>
+                        </Link>
+                    )}
+                </div>
+                <div className="border-t border-gray-100 py-1">
+                    <button
+                        type="button"
+                        role="menuitem"
+                        onClick={onLogout}
+                    >
+                        <span aria-hidden>⏎</span> Logout
+                    </button>
+                </div>
+            </div>
+        )
+    }
 </div>
-<div className="py-1">
-{!isAdmin && (
-<>
-<MenuLink to="/dashboard" icon="⌂">
-Dashboard
-</MenuLink>
-<MenuLink to="/profile" icon="👤">
-Profile &amp; XP
-</MenuLink>
-<MenuLink to="/leaderboard" icon="🏆">
-Leaderboard
-</MenuLink>
-<MenuLink to="/practice" icon="✍️">
-Review
-</MenuLink>
-<MenuLink to="/practice/stats" icon="📊">
-Review Stats
-</MenuLink>
-<MenuLink to="/stats" icon="📈">
-My Statistics
-</MenuLink>
-<MenuLink to="/settings" icon="⚙️">
-Settings
-</MenuLink>
-<MenuLink to="/help" icon="❓">
-Help Center
-</MenuLink>
-</>
-)}
-{isAdmin && (
-<Link role="menuitem" className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none">
-<span aria-hidden>Admin Panel</span>
-</Link>
-)}
-</div>
-<div className="border-t border-gray-100 py-1">
-<button type="button" role="menuitem"
-function MenuLink({
-to,
-icon,
-children,
-}): {
-to: string;
-icon: string;
-children: React.ReactNode;
-} {
-return (
-<Link
-to={to}
-role="menuitem"
-className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
->
-<span aria-hidden>{icon}</span>
-{children}
-</Link>
 );
+}
+
+function MenuLink({
+                      to,
+                      icon,
+                      children,
+                  }): {
+    to: string;
+    icon: string;
+    children: React.ReactNode;
+} {
+    return (
+        <Link
+            to={to}
+            role="menuitem"
+            className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+        >
+            <span aria-hidden>{icon}</span>
+            {children}
+        </Link>
+    );
 }
 
 /* ------------------- Mobile slide-in drawer ------------------- */
