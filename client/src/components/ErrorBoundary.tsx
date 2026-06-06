@@ -58,29 +58,44 @@ export default class ErrorBoundary extends Component<
         const isDev = import.meta.env.DEV;
 
         return (
-            <div role="alert" className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
+            <div
+                role="alert"
+                className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12"
+            >
                 <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg">
                     <div
-                        className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 text-3xl">⚠️
+                        className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 text-3xl">
+                        ⚠️
                     </div>
-                    <h1 className="mt-4 text-2xl font-bold text-gray-900">Something went wrong</h1>
+                    <h1 className="mt-4 text-2xl font-bold text-gray-900">
+                        Something went wrong
+                    </h1>
                     <p className="mt-2 text-sm text-gray-600">
-                        An unexpected error occurred. The team has been notified – please try again or head back home.
+                        An unexpected error occurred. The team has been notified – please
+                        try again or head back home.
                     </p>
 
                     {isDev && this.state.error && (
                         <pre
                             className="mt-4 max-h-40 overflow-auto rounded-lg bg-gray-50 p-3 text-left text-xs text-primary-700">
-              {(this.state.error.message)
-                  + (this.state.error.stack && "\n\n" + this.state.error.stack)}
+              {this.state.error.message}
+                            {this.state.error.stack && "\n\n" + this.state.error.stack}
             </pre>
                     )}
 
                     <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
-                        <button type="button" onClick={this.handleReset} className="btn-secondary text-sm">
+                        <button
+                            type="button"
+                            onClick={this.handleReset}
+                            className="btn-secondary text-sm"
+                        >
                             Try again
                         </button>
-                        <button type="button" onClick={this.handleGoHome} className="btn-primary text-sm">
+                        <button
+                            type="button"
+                            onClick={this.handleGoHome}
+                            className="btn-primary text-sm"
+                        >
                             Go Home
                         </button>
                     </div>
@@ -88,6 +103,4 @@ export default class ErrorBoundary extends Component<
             </div>
         );
     }
-}
-...
 }
