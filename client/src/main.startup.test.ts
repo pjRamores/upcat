@@ -50,7 +50,7 @@ describe("main startup", () => {
         vi.clearAllMocks();
         vi.resetModules();
         vi.stubGlobal("document", {
-            getElementById: vi.fn(() => ({ id: "root" })),
+            getElementById: vi.fn(() => ({id: "root"})),
         });
     });
 
