@@ -171,49 +171,51 @@ function panelClass(extra?: string): string {
 
 // --- Math --------------------------------------------
 
-    function MathPrompt({
-                            challenge,
-                            onSubmit,
-                            disabled
-                        }: {
-        challenge: CaptchaMathChallenge;
-        onSubmit: (answer: unknown) => void;
-        disabled: boolean;
-    }) {
-        const [value, setValue] = useState("");
-        return (
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    const n = Number(value);
-                    if (Number.isFinite(n)) onSubmit(n);
-                }}
-            >
-                <p className="text-sm font-medium text-slate-800">{challenge.question}</p>
-                <div className="mt-2 flex items-center gap-2">
-                    <input
-                        type="number"
-                        inputMode="numeric"
-                        autoComplete="off"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        className="w-28 rounded-md border border-slate-300 px-2 py-1.5 text-sm"
-                        disabled={disabled}
-                        required
-                    />
-                    <button
-                        type="submit"
-                        disabled={disabled || value === ""}
-                        className="rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-50"
-                    >
-                        Verify
-                    </button>
-                </div>
-            </form>
-        );
-    }
+function MathPrompt({
+                        challenge,
+                        onSubmit,
+                        disabled
+                    }: {
+    challenge: CaptchaMathChallenge;
+    onSubmit: (answer: unknown) => void;
+    disabled: boolean;
+}) {
+    const [value, setValue] = useState("");
+    return (
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                const n = Number(value);
+                if (Number.isFinite(n)) onSubmit(n);
+            }}
+        >
+            <p className="text-sm font-medium text-slate-800">{challenge.question}</p>
+            <div className="mt-2 flex items-center gap-2">
+                <input
+                    type="number"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    className="w-28 rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+                    disabled={disabled}
+                    required
+                />
+                <button
+                    type="submit"
+                    disabled={disabled || value === ""}
+                    className="rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-50"
+                >
+                    Verify
+                </button>
+            </div>
+        </form>
+    );
+}
 
-    function ImagePrompt({
+// --- Image grid --------------------------------------------
+
+function ImagePrompt({
                              challenge,
                              onSubmit,
                              disabled,
@@ -221,49 +223,51 @@ function panelClass(extra?: string): string {
         challenge: CaptchaImageChallenge;
         onSubmit: (answer: unknown) => void;
         disabled: boolean;
-    }) {
-        const [selected, setSelected] = useState<Set<string>>(() => new Set());
-        const toggle = (id: string) =>
-            setSelected((curr) => {
-                const next = new Set(curr);
-                if (next.has(id)) next.delete(id);
-                else next.add(id);
-                return next;
-            });
-        return (
-            <div>
-                <p className="text-sm font-medium text-slate-800">{challenge.prompt}</p>
-                <div className="mt-3 grid grid-cols-3 gap-2">
-                    {challenge.options.map((opt) => {
-                        const isOn = selected.has(opt.id);
-                        return (
-                            <button
-                                key={opt.id}
-                                type="button"
-                                onClick={() => toggle(opt.id)}
-                                disabled={disabled}
-                                className={`relative aspect-square overflow-hidden rounded-lg border-2 bg-white transition ${
-                                    isOn ? "border-primary-500 ring-2 ring-primary-200" : "border-slate-200 hover:border-slate-300"
-                                }`}
-                                aria-pressed={isOn}
-                                dangerouslySetInnerHTML={{__html: opt.svg}}
-                            />
-                        );
-                    })}
-                </div>
-                <button
-                    type="button"
-                    onClick={() => onSubmit(Array.from(selected))}
-                    disabled={disabled || selected.size === 0}
-                    className="mt-3 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-50"
-                >
-                    Verify ({selected.size})
-                </button>
+}) {
+    const [selected, setSelected] = useState<Set<string>>(() => new Set());
+    const toggle = (id: string) =>
+        setSelected((curr) => {
+            const next = new Set(curr);
+            if (next.has(id)) next.delete(id);
+            else next.add(id);
+            return next;
+        });
+    return (
+        <div>
+            <p className="text-sm font-medium text-slate-800">{challenge.prompt}</p>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+                {challenge.options.map((opt) => {
+                    const isOn = selected.has(opt.id);
+                    return (
+                        <button
+                            key={opt.id}
+                            type="button"
+                            onClick={() => toggle(opt.id)}
+                            disabled={disabled}
+                            className={`relative aspect-square overflow-hidden rounded-lg border-2 bg-white transition ${
+                                isOn ? "border-primary-500 ring-2 ring-primary-200" : "border-slate-200 hover:border-slate-300"
+                            }`}
+                            aria-pressed={isOn}
+                            dangerouslySetInnerHTML={{__html: opt.svg}}
+                        />
+                    );
+                })}
             </div>
-        );
-    }
+            <button
+                type="button"
+                onClick={() => onSubmit(Array.from(selected))}
+                disabled={disabled || selected.size === 0}
+                className="mt-3 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-50"
+            >
+                Verify ({selected.size})
+            </button>
+        </div>
+    );
+}
 
-    function PuzzlePrompt({
+// --- Puzzle slider --------------------------------------------
+
+function PuzzlePrompt({
                               challenge,
                               onSubmit,
                               disabled,
@@ -271,44 +275,44 @@ function panelClass(extra?: string): string {
         challenge: CaptchaPuzzleChallenge;
         onSubmit: (answer: unknown) => void;
         disabled: boolean;
-    }) {
-        const trackRef = useRef<HTMLDivElement>(null);
-        const [x, setX] = useState(0);
-        const dragging = useRef(false);
-        const offset = useRef(0);
+}) {
+    const trackRef = useRef<HTMLDivElement>(null);
+    const [x, setX] = useState(0);
+    const dragging = useRef(false);
+    const offset = useRef(0);
 
-        const maxX = challenge.trackWidth - challenge.pieceSize;
+    const maxX = challenge.trackWidth - challenge.pieceSize;
 
-        const setSafeX = (next: number) => {
-            setX(Math.max(0, Math.min(maxX, next)));
-        };
+    const setSafeX = (next: number) => {
+        setX(Math.max(0, Math.min(maxX, next)));
+    };
 
-        const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-            if (disabled) return;
-            dragging.current = true;
-            offset.current = e.clientX - x;
-            (e.target as HTMLElement).setPointerCapture(e.pointerId);
-        };
-        const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-            if (!dragging.current) return;
-            const rect = trackRef.current?.getBoundingClientRect();
-            if (!rect) return;
-            setSafeX(e.clientX - rect.left - challenge.pieceSize / 2);
-        };
-        const onPointerUp = () => {
-            if (!dragging.current) return;
-            dragging.current = false;
-            onSubmit({x});
-        };
+    const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+        if (disabled) return;
+        dragging.current = true;
+        offset.current = e.clientX - x;
+        (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    };
+    const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+        if (!dragging.current) return;
+        const rect = trackRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        setSafeX(e.clientX - rect.left - challenge.pieceSize / 2);
+    };
+    const onPointerUp = () => {
+        if (!dragging.current) return;
+        dragging.current = false;
+        onSubmit({x});
+    };
 
-        return (
-            <div>
-                <p className="text-sm font-medium text-slate-800">
-                    <p>Slide the piece into the highlighted slot.</p>
-                    <div ref={trackRef} className="relative mt-3 overflow-hidden rounded-lg border border-slate-300"
-                         style={{width: challenge.trackWidth, height: 160}}
-                         dangerouslySetInnerHTML={{__html: challenge.backgroundSvg}}/>
-            </div>
+    return (
+        <div>
+            <p className="text-sm font-medium text-slate-800">
+                <p>Slide the piece into the highlighted slot.</p>
+                <div ref={trackRef} className="relative mt-3 overflow-hidden rounded-lg border border-slate-300"
+                     style={{width: challenge.trackWidth, height: 160}}
+                     dangerouslySetInnerHTML={{__html: challenge.backgroundSvg}}/>
+        </div>
         <div className="relative mt-3 h-8 rounded-full bg-slate-200" style={{width: challenge.trackWidth}}>
             <div role="slider" aria-valuemin={0} aria-valuemax={maxX} aria-valuenow={x} tabIndex={0}
                  onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp}
@@ -317,5 +321,5 @@ function panelClass(extra?: string): string {
                  style={{left: x}}/>
             <p className="mt-2 text-xs text-slate-500">Slot Y: {challenge.pieceY}px · current X: {Math.round(x)}px</p>
         </div>
-    ;
-    }
+    );
+}
