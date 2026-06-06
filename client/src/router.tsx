@@ -261,34 +261,34 @@ export const router = createBrowserRouter([
 
     // --- Reviewee / public tree (Navbar + Footer Layout) ---
     {
-        element: <Layout />,
-        errorElement: <AppRouteError />,
+        element: <Layout/>,
+        errorElement: <AppRouteError/>,
         children: [
             // --- Public routes -------------------
-            { path: "/", element: lazyRoute(LandingPage) },
-            { path: "/login", element: lazyRoute(LoginPage) },
-            { path: "/register", element: lazyRoute(RegisterPage) },
-            { path: "/verify-email", element: lazyRoute(VerifyEmailPage) },
-            { path: "/maintenance", element: lazyRoute(lazy(() => import("@/pages/MaintenancePage"))) },
-            { path: "/forgot-password", element: lazyRoute(ForgotPasswordPage) },
-            { path: "/reset-password", element: lazyRoute(ResetPasswordPage) },
-            { path: "/terms", element: lazyRoute(TermsPage) },
-            { path: "/privacy", element: lazyRoute(PrivacyPage) },
-            { path: "/contact", element: lazyRoute(ContactPage) },
-            { path: "/pricing", element: lazyRoute(PricingPage) },
-            { path: "/payment/success", element: lazyRoute(PaymentSuccessPage) },
-            { path: "/payment/processing", element: lazyRoute(PaymentProcessingPage) },
-            { path: "/payment/failed", element: lazyRoute(PaymentFailedPage) },
-            { path: "/payment/cancelled", element: lazyRoute(PaymentCancelledPage) },
-            { path: "/auth/callback/:provider", element: lazyRoute(AuthCallbackPage) },
-            { path: "/recover-account", element: lazyRoute(RecoverAccountPage) },
-            { path: "/recover-account/reset", element: lazyRoute(RecoverAccountResetPage) },
-            { path: "/support/guest", element: lazyRoute(GuestSupportPage) },
-            { path: "/account/deletion/confirm", element: lazyRoute(DeletionConfirmPage) },
+            {path: "/", element: lazyRoute(LandingPage)},
+            {path: "/login", element: lazyRoute(LoginPage)},
+            {path: "/register", element: lazyRoute(RegisterPage)},
+            {path: "/verify-email", element: lazyRoute(VerifyEmailPage)},
+            {path: "/maintenance", element: lazyRoute(lazy(() => import("@/pages/MaintenancePage")))},
+            {path: "/forgot-password", element: lazyRoute(ForgotPasswordPage)},
+            {path: "/reset-password", element: lazyRoute(ResetPasswordPage)},
+            {path: "/terms", element: lazyRoute(TermsPage)},
+            {path: "/privacy", element: lazyRoute(PrivacyPage)},
+            {path: "/contact", element: lazyRoute(ContactPage)},
+            {path: "/pricing", element: lazyRoute(PricingPage)},
+            {path: "/payment/success", element: lazyRoute(PaymentSuccessPage)},
+            {path: "/payment/processing", element: lazyRoute(PaymentProcessingPage)},
+            {path: "/payment/failed", element: lazyRoute(PaymentFailedPage)},
+            {path: "/payment/cancelled", element: lazyRoute(PaymentCancelledPage)},
+            {path: "/auth/callback/:provider", element: lazyRoute(AuthCallbackPage)},
+            {path: "/recover-account", element: lazyRoute(RecoverAccountPage)},
+            {path: "/recover-account/reset", element: lazyRoute(RecoverAccountResetPage)},
+            {path: "/support/guest", element: lazyRoute(GuestSupportPage)},
+            {path: "/account/deletion/confirm", element: lazyRoute(DeletionConfirmPage)},
 
             // --- Subject area landing pages (SEO depth) ---
-            { path: "/subjects/mathematics", element: lazyRoute(SubjectMathPage) },
-            { path: "/subjects/science", element: lazyRoute(SubjectSciencePage) },
+            {path: "/subjects/mathematics", element: lazyRoute(SubjectMathPage)},
+            {path: "/subjects/science", element: lazyRoute(SubjectSciencePage)},
             {
                 path: "/subjects/language-proficiency",
                 element: lazyRoute(SubjectLanguagePage),
@@ -308,9 +308,9 @@ export const router = createBrowserRouter([
 
             // --- Protected routes -------------------
             {
-                element: <ProtectedRoute requiredRole="reviewee" />,
+                element: <ProtectedRoute requiredRole="reviewee"/>,
                 children: [
-                    {path: "/dashboard", element: lazyRoute(DashboardPage),},
+                    {path: "/dashboard", element: lazyRoute(DashboardPage)},
                     {path: "/mock-exam", element: lazyRoute(StudyPlanAnalyticsPage)},
                     {path: "/exam/:sessionId", element: lazyRoute(BatchExamPage)},
                     {path: "/results/:sessionId", element: lazyRoute(ResultsPage)},
@@ -335,8 +335,8 @@ export const router = createBrowserRouter([
                     {path: "/payment/:planId", element: lazyRoute(PaymentPage)},
                     {path: "/support", element: lazyRoute(SupportTicketsPage)},
                     {
-                      path: "/support/:ticketNumber",
-                      element: lazyRoute(SupportTicketDetailPage),
+                        path: "/support/:ticketNumber",
+                        element: lazyRoute(SupportTicketDetailPage),
                     },
                 ],
             },
