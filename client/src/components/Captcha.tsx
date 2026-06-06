@@ -216,13 +216,13 @@ function MathPrompt({
 // --- Image grid --------------------------------------------
 
 function ImagePrompt({
-                             challenge,
-                             onSubmit,
-                             disabled,
-                         }: {
-        challenge: CaptchaImageChallenge;
-        onSubmit: (answer: unknown) => void;
-        disabled: boolean;
+                         challenge,
+                         onSubmit,
+                         disabled,
+                     }: {
+    challenge: CaptchaImageChallenge;
+    onSubmit: (answer: unknown) => void;
+    disabled: boolean;
 }) {
     const [selected, setSelected] = useState<Set<string>>(() => new Set());
     const toggle = (id: string) =>
@@ -245,7 +245,9 @@ function ImagePrompt({
                             onClick={() => toggle(opt.id)}
                             disabled={disabled}
                             className={`relative aspect-square overflow-hidden rounded-lg border-2 bg-white transition ${
-                                isOn ? "border-primary-500 ring-2 ring-primary-200" : "border-slate-200 hover:border-slate-300"
+                                isOn 
+                                    ? "border-primary-500 ring-2 ring-primary-200" 
+                                    : "border-slate-200 hover:border-slate-300"
                             }`}
                             aria-pressed={isOn}
                             dangerouslySetInnerHTML={{__html: opt.svg}}
@@ -268,13 +270,13 @@ function ImagePrompt({
 // --- Puzzle slider --------------------------------------------
 
 function PuzzlePrompt({
-                              challenge,
-                              onSubmit,
-                              disabled,
-                          }: {
-        challenge: CaptchaPuzzleChallenge;
-        onSubmit: (answer: unknown) => void;
-        disabled: boolean;
+                          challenge,
+                          onSubmit,
+                          disabled,
+                      }: {
+    challenge: CaptchaPuzzleChallenge;
+    onSubmit: (answer: unknown) => void;
+    disabled: boolean;
 }) {
     const trackRef = useRef<HTMLDivElement>(null);
     const [x, setX] = useState(0);
@@ -308,18 +310,35 @@ function PuzzlePrompt({
     return (
         <div>
             <p className="text-sm font-medium text-slate-800">
-                <p>Slide the piece into the highlighted slot.</p>
-                <div ref={trackRef} className="relative mt-3 overflow-hidden rounded-lg border border-slate-300"
-                     style={{width: challenge.trackWidth, height: 160}}
-                     dangerouslySetInnerHTML={{__html: challenge.backgroundSvg}}/>
-        </div>
-        <div className="relative mt-3 h-8 rounded-full bg-slate-200" style={{width: challenge.trackWidth}}>
-            <div role="slider" aria-valuemin={0} aria-valuemax={maxX} aria-valuenow={x} tabIndex={0}
-                 onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp}
-                 onPointerCancel={onPointerUp}
-                 className="absolute top-1/2 h-10 w-10 -translate-y-1/2 cursor-grab rounded-full bg-primary-600 shadow-md active:cursor-grabbing"
-                 style={{left: x}}/>
-            <p className="mt-2 text-xs text-slate-500">Slot Y: {challenge.pieceY}px · current X: {Math.round(x)}px</p>
+                Slide the piece into the highlighted slot.
+            </p>
+            <div
+                ref={trackRef}
+                className="relative mt-3 overflow-hidden rounded-lg border border-slate-300"
+                style={{width: challenge.trackWidth, height: 160}}
+                dangerouslySetInnerHTML={{__html: challenge.backgroundSvg}}
+            />
+            <div
+                className="relative mt-3 h-8 rounded-full bg-slate-200"
+                style={{width: challenge.trackWidth}}
+            >
+                <div
+                    role="slider"
+                    aria-valuemin={0}
+                    aria-valuemax={maxX}
+                    aria-valuenow={x}
+                    tabIndex={0}
+                    onPointerDown={onPointerDown}
+                    onPointerMove={onPointerMove}
+                    onPointerUp={onPointerUp}
+                    onPointerCancel={onPointerUp}
+                    className="absolute top-1/2 h-10 w-10 -translate-y-1/2 cursor-grab rounded-full bg-primary-600 shadow-md active:cursor-grabbing"
+                    style={{left: x}}
+                />
+            </div>
+            <p className="mt-2 text-xs text-slate-500">
+                Slot Y: {challenge.pieceY}px · current X: {Math.round(x)}px
+            </p>
         </div>
     );
 }
