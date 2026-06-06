@@ -235,180 +235,185 @@ function UserMenu({
                 className="flex items-center gap-2 rounded-full p-0.5 pr-3 transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
         <span
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-white">
             {initials || "?"}
-            </span>
-            <span className="hidden text-sm font-medium text-gray-700 sm:inline">
-        {user?.firstName ?? "Account"}
         </span>
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
-                aria-hidden
-            >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.9 6.6 6.6 6"/>
-            </svg>
-        </button>
+                <span className="hidden text-sm font-medium text-gray-700 sm:inline">
+            {user?.firstName ?? "Account"}
+        </span>
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
+                    aria-hidden
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.9 6.6 6.6 6"/>
+                </svg>
+            </button>
 
-    {
-        open && (
-            <div role="menu"
-                 className="animate-fade-in absolute right-0 mt-2 w-60 origin-top-right overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl ring-1 ring-black/5"
-            >
-                <div className="border-b border-gray-100 px-4 py-3">
-                    <p className="text-sm font-semibold text-gray-900">
-                        {user?.firstName} {user?.lastName}
-                    </p>
-                    <p className="truncate text-xs text-gray-500">{user?.email}</p>
-                </div>
-                <div className="py-1">
-                    {!isAdmin && (
-                        <>
-                            <MenuLink to="/dashboard" icon="⌂">
-                                Dashboard
-                            </MenuLink>
-                            <MenuLink to="/profile" icon="👤">
-                                Profile &amp; XP
-                            </MenuLink>
-                            <MenuLink to="/leaderboard" icon="🏆">
-                                Leaderboard
-                            </MenuLink>
-                            <MenuLink to="/practice" icon="✍️">
-                                Review
-                            </MenuLink>
-                            <MenuLink to="/practice/stats" icon="📊">
-                                Review Stats
-                            </MenuLink>
-                            <MenuLink to="/stats" icon="📈">
-                                My Statistics
-                            </MenuLink>
-                            <MenuLink to="/settings" icon="⚙️">
-                                Settings
-                            </MenuLink>
-                            <MenuLink to="/help" icon="❓">
-                                Help Center
-                            </MenuLink>
-                        </>
-                    )}
-                    {isAdmin && (
-                        <Link
-                            to="/admin"
+            {open && (
+                <div
+                    role="menu"
+                    className="animate-fade-in absolute right-0 mt-2 w-60 origin-top-right overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl ring-1 ring-black/5"
+                >
+                    <div className="border-b border-gray-100 px-4 py-3">
+                        <p className="text-sm font-semibold text-gray-900">
+                            {user?.firstName} {user?.lastName}
+                        </p>
+                        <p className="truncate text-xs text-gray-500">{user?.email}</p>
+                    </div>
+                    <div className="py-1">
+                        {!isAdmin && (
+                            <>
+                                <MenuLink to="/dashboard" icon="⌂">
+                                    Dashboard
+                                </MenuLink>
+                                <MenuLink to="/profile" icon="👤">
+                                    Profile &amp; XP
+                                </MenuLink>
+                                <MenuLink to="/leaderboard" icon="🏆">
+                                    Leaderboard
+                                </MenuLink>
+                                <MenuLink to="/practice" icon="✍️">
+                                    Review
+                                </MenuLink>
+                                <MenuLink to="/practice/stats" icon="📊">
+                                    Review Stats
+                                </MenuLink>
+                                <MenuLink to="/stats" icon="📈">
+                                    My Statistics
+                                </MenuLink>
+                                <MenuLink to="/settings" icon="⚙️">
+                                    Settings
+                                </MenuLink>
+                                <MenuLink to="/help" icon="❓">
+                                    Help Center
+                                </MenuLink>
+                            </>
+                        )}
+                        {isAdmin && (
+                            <Link
+                                to="/admin"
+                                role="menuitem"
+                                className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
+                            >
+                                <span aria-hidden>🛡️</span>Admin Panel
+                            </Link>
+                        )}
+                    </div>
+                    <div className="border-t border-gray-100 py-1">
+                        <button
+                            type="button"
                             role="menuitem"
-                            className="flex items-center gap-3 border-t border-gray-100 px-4 py-2 text-sm font-semibold text-primary-700 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
+                            onClick={onLogout}
+                            className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-primary-500 hover:bg-primary-50 focus:bg-primary-50 focus:outline-none"
                         >
-                            <span aria-hidden>Admin Panel</span>
-                        </Link>
-                    )}
+                            <span aria-hidden>⏎</span> Logout
+                        </button>
+                    </div>
                 </div>
-                <div className="border-t border-gray-100 py-1">
-                    <button
-                        type="button"
-                        role="menuitem"
-                        onClick={onLogout}
-                    >
-                        <span aria-hidden>⏎</span> Logout
-                    </button>
-                </div>
-            </div>
-        )
-    }
-</div>
-);
+            )}
+        </div>
+    );
 }
 
 function MenuLink({
                       to,
                       icon,
                       children,
-                  }): {
+                  }: {
     to: string;
     icon: string;
     children: React.ReactNode;
-} {
+}) {
     return (
         <Link
             to={to}
             role="menuitem"
             className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
         >
-            <span aria-hidden>{icon}</span>
-            {children}
+            <span aria-hidden>{icon}</span> {children}
         </Link>
     );
 }
 
 /* ------------------- Mobile slide-in drawer ------------------- */
 function MobileDrawer({
-open,
-onClose,
-isAuthenticated,
-isAdmin,
-userName,
-userLast,
-isLanding,
-onFeaturesClick,
-onLogout,
-}): {
-open: boolean;
-onClose: () => void;
-isAuthenticated: boolean;
-isAdmin: boolean;
-userName: string | null;
-userLast: string | null;
-isLanding: boolean;
-onFeaturesClick: (e: React.MouseEvent) => void;
-onLogout: () => void;
-} {
-useEffect(() => {
-if (!open) return;
-const original = document.body.style.overflow;
-document.body.style.overflow = "hidden";
-const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-document.addEventListener("keydown", onKey);
-return () => {
-document.body.style.overflow = original;
-document.removeEventListener("keydown", onKey);
-};
-}, [open, onClose]);
+                          open,
+                          onClose,
+                          isAuthenticated,
+                          isAdmin,
+                          userName,
+                          userLast,
+                          isLanding,
+                          onFeaturesClick,
+                          onLogout,
+                      }: {
+    open: boolean;
+    onClose: () => void;
+    isAuthenticated: boolean;
+    isAdmin: boolean;
+    userName: string | null;
+    userLast: string | null;
+    isLanding: boolean;
+    onFeaturesClick: (e: React.MouseEvent) => void;
+    onLogout: () => void;
+}) {
+    useEffect(() => {
+        if (!open) return;
+        const original = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+        document.addEventListener("keydown", onKey);
+        return () => {
+            document.body.style.overflow = original;
+            document.removeEventListener("keydown", onKey);
+        };
+    }, [open, onClose]);
 
-if (!open || typeof document === "undefined") return null;
+    if (!open || typeof document === "undefined") return null;
 
-const initials =
-(userName?.[0] ?? "") + (userLast?.[0] ?? "")).toUpperCase() || "?";
+    const initials =
+        ((userName?.[0] ?? "") + (userLast?.[0] ?? "")).toUpperCase() || "?";
 
-return createPortal(
-<div
-id="mobile-drawer"
-role="dialog"
-aria-modal="true"
-aria-label="Mobile menu"
-className="fixed inset-0 z-[80] md:hidden"
->
-<div onClick={onClose} className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-fade-in" aria-hidden />
-<aside
-className="animate-drawer-in absolute right-0 top-0 flex h-full w-80 max-w-[85vw] flex-col bg-white shadow-2xl"
->
-<div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
-<span className="flex items-center gap-2 font-bold text-primary-600">
-<CapIcon className="h-5 w-5" />
-UPCAT Sim
-</span>
-</div>
-<button type="button" onClick={onClose} aria-label="Close menu" className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-<svg viewBox="0.0 0.24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-<path strokeLinecap="round" strokeLinejoin="round" d="M6.18 18.6M6.612 12"/>
-</svg>
-</button>
-</aside>
-</div>
-);
-}
-{ isAuthenticated && (
-<div className="flex items-center gap-3 border-b border-gray-100 px-4 py-4">
-<span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">{initials}</span>
+    return createPortal(
+        <div
+            id="mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile menu"
+            className="fixed inset-0 z-[80] md:hidden"
+        >
+            <div
+                onClick={onClose}
+                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
+                aria-hidden
+            />
+            <aside
+                className="animate-drawer-in absolute right-0 top-0 flex h-full w-80 max-w-[85vw] flex-col bg-white shadow-2xl">
+                <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+            <span className="flex items-center gap-2 font-bold text-primary-600">
+                <CapIcon className="h-5 w-5"/>
+                UPCAT Sim
+            </span>
+                    <button
+                        type="button"
+                        onClick={onClose}
+                        aria-label="Close menu"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    >
+                        <svg viewBox="0.0 0.24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.18 18.6M6.612 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                {isAuthenticated && (
+                    <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-4">
+                        <span
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">{initials}</span>
 <div className="min-w-0">
 <p className="truncate text-sm font-semibold text-gray-900">{userName} {userLast}</p>
 <p className="text-xs text-gray-500">Signed in</p>
