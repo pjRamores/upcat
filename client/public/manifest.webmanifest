@@ -3,7 +3,7 @@
   "short_name": "UPCAT",
   "description": "Practice for the UP College Admission Test with realistic, timed mock exams and spaced repetition.",
   "start_url": "/dashboard",
-  "scope": "",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f9fafb",
@@ -42,14 +42,14 @@
       "short_name": "Exam",
       "description": "Start a new timed practice exam.",
       "url": "/dashboard",
-      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Spaced repetition",
       "short_name": "Practice",
       "description": "Review due flashcards.",
       "url": "/practice",
-      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

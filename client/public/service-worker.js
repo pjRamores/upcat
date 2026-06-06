@@ -1,17 +1,15 @@
-script
-/*eslint-env serviceworker*/
-/*global self,caches,clients*/
-
+/* eslint-env serviceworker */
+/* global self, caches, clients */
 /**
- * UPCAT Simulator -- service worker.
+ * UPCAT Simulator – service worker.
  *
  * Strategies:
- *   - App shell (HTML/JS/CSS/icons): cache-first with stale-while-revalidate
+ *   · App shell (HTML/JS/CSS/icons): cache-first with stale-while-revalidate
  *     update on success. The app shell is cached on install + on first nav.
- *   - Same-origin GET /api/*: (read-only) network-first with cache fallback,
+ *   · Same-origin GET /api/*: (read-only) network-first with cache fallback,
  *     scoped to a small allow-list (questions, stats) so private/mutable
  *     responses are never cached. Cached entries are evicted with a 24h TTL.
- *   - Anything else: passthrough to the network.
+ *   · Anything else: passthrough to the network.
  *
  * Also handles `push` events, rendering a notification from the JSON payload,
  * and `notificationclick` to focus or open the in-app URL.
@@ -53,10 +51,12 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys().then((keys) =>
             Promise.all(
-                keys.filter((k) => k !== SHELL_CACHE && k !== RUNTIME_CACHE && k !== API_CACHE)
+                keys
+                    .filter((k) => k !== SHELL_CACHE && k !== RUNTIME_CACHE && k !== API_CACHE)
                     .map((k) => caches.delete(k)),
-            ).then(() => self.clients.claim()),
-        );
+            ),
+        ).then(() => self.clients.claim()),
+    );
 });
 
 self.addEventListener("fetch", (event) => {
@@ -96,68 +96,68 @@ async function navigationHandler(request) {
         if (cached) return cached;
         return new Response(
             `<!doctype html><meta charset="utf-8"><title>Offline</title>
-            <body style="font-family:system-ui;padding:2rem;text-align:center">
+        <body style="font-family:system-ui;padding:2rem;text-align:center">
             <h1>You're offline!</h1>
             <p>Reconnect to keep practicing.</p>
-            </body>`,
+        </body>`,
             {status: 503, headers: {"Content-Type": "text/html"}},
         );
     }
 }
-script
+
 async function cacheFirst(request, cacheName) {
-  const cache = await caches.open(cacheName);
-  const cached = await cache.match(request);
-  if (cached) {
-    fetch(request)
-      .then((res) => {
-        if (res && res.status === 200 && res.type !== "opaque") {
-          cache.put(request, res.clone()).catch(() => undefined);
-        }
-      })
-      .catch(() => undefined);
-    return cached;
-  }
-  try {
-    const res = await fetch(request);
-    if (res && res.status === 200 && res.type !== "opaque") {
-      cache.put(request, res.clone()).catch(() => undefined);
+    const cache = await caches.open(cacheName);
+    const cached = await cache.match(request);
+    if (cached) {
+        fetch(request)
+            .then((res) => {
+                if (res && res.status === 200 && res.type !== "opaque") {
+                    cache.put(request, res.clone()).catch(() => undefined);
+                }
+            })
+            .catch(() => undefined);
+        return cached;
     }
-    return res;
-  } catch (err) {
-    return cached || Response.error();
-  }
+    try {
+        const res = await fetch(request);
+        if (res && res.status === 200 && res.type !== "opaque") {
+            cache.put(request, res.clone()).catch(() => undefined);
+        }
+        return res;
+    } catch (err) {
+        return cached || Response.error();
+    }
 }
 
 async function networkFirstWithTtl(request) {
-  const cache = await caches.open(API_CACHE);
-  try {
-    const fresh = await fetch(request);
-    if (fresh && fresh.status === 200) {
-      const headers = new Headers(fresh.headers);
-      headers.set("x-sw-cached-at", new Date().toISOString());
-      const body = await fresh.clone().blob();
-      const cloned = new Response(body, {
-        status: fresh.status,
-        statusText: fresh.statusText,
-        headers,
-      });
-      cache.put(request, cloned).catch(() => undefined);
+    const cache = await caches.open(API_CACHE);
+    try {
+        const fresh = await fetch(request);
+        if (fresh && fresh.status === 200) {
+            const headers = new Headers(fresh.headers);
+            headers.set("x-sw-cached-at", new Date().toISOString());
+            const body = await fresh.clone().blob();
+            const cloned = new Response(body, {
+                status: fresh.status,
+                statusText: fresh.statusText,
+                headers,
+            });
+            cache.put(request, cloned).catch(() => undefined);
+        }
+        return fresh;
+    } catch {
+        const cached = await cache.match(request);
+        if (cached) {
+            const at = cached.headers.get("x-sw-cached-at");
+            if (at && Date.now() - new Date(at).getTime() < API_TTL_MS) {
+                return cached;
+            }
+        }
+        return new Response(
+            JSON.stringify({success: false, error: "Offline and no cached response available."}),
+            {status: 503, headers: {"Content-Type": "application/json"}},
+        );
     }
-    return fresh;
-  } catch {
-    const cached = await cache.match(request);
-    if (cached) {
-      const at = cached.headers.get("x-sw-cached-at");
-      if (at && Date.now() - new Date(at).getTime() < API_TTL_MS) {
-        return cached;
-      }
-    }
-    return new Response(
-      JSON.stringify({ success: false, error: "Offline and no cached response available." }),
-      { status: 503, headers: { "Content-Type": "application/json" } },
-    );
-  }
 }
 
 // ── Push handler ─
