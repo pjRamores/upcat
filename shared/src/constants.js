@@ -80,7 +80,7 @@ export const API_ROUTES = {
         TICKET: (n) => `/support/tickets/${n}`,
         TICKET_MESSAGES: (n) => `/support/tickets/${n}/messages`,
         GUEST: "/support/tickets/guest",
-        CAPTCHA: "/support/captcha"
+        CAPTCHA: "/support/captcha",
     },
     EXAM: {
         START: "/exam/start",
@@ -89,7 +89,7 @@ export const API_ROUTES = {
         ANSWER: (id) => `/exam/${id}/answer`,
         ANSWER_BULK: (id) => `/exam/${id}/answer-bulk`,
         SUBMIT: (id) => `/exam/${id}/submit`,
-        REVIEW: (id) => `/exam/${id}/review`
+        REVIEW: (id) => `/exam/${id}/review`,
     },
     STATS: {
         OVERVIEW: "/stats/overview",
@@ -99,7 +99,7 @@ export const API_ROUTES = {
         WEAK_AREAS: "/stats/weak-areas",
         LEADERBOARD: "/stats/leaderboard",
         /** @deprecated kept for the dashboard quick-stats card */
-        SUMMARY: "/stats/summary"
+        SUMMARY: "/stats/summary",
     },
     CONTACT: "/contact",
     ANNOUNCEMENTS: "/announcements",
@@ -213,12 +213,12 @@ export const DEFAULT_PLATFORM_SETTINGS = {
             Science: 25,
             "Reading Comprehension": 20,
         },
-        difficultyMix: {easy: 25, medium: 40, hard: 25, very_hard: 10},
+        difficultyMix: { easy: 25, medium: 40, hard: 25, very_hard: 10 },
     },
-    registration: {isOpen: true, requireEmailVerification: true},
-    leaderboard: {isEnabled: true, showFullName: false},
-    maintenance: {isEnabled: false, message: ""},
-    contact: {developerEmail: "", maxMessagesPerHour: 3},
+    registration: { isOpen: true, requireEmailVerification: true },
+    leaderboard: { isEnabled: true, showFullName: false },
+    maintenance: { isEnabled: false, message: "" },
+    contact: { developerEmail: "", maxMessagesPerHour: 3 },
 };
 export const DEFAULT_FEATURE_GATING = [
     {
@@ -471,53 +471,53 @@ export const DEFAULT_PAYMENT_CONFIG = {
             order: 1,
         },
         {
-          id: "90_days",
-          name: "3 Months Premium",
-          duration: 90,
-          isLifetime: false,
-          price: .249,
-          currency: "PHP",
-          originalPrice: 297,
-          description: "Full access for 90 days",
-          isPopular: false,
-          isActive: true,
-          features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
-          order: 2,
+            id: "90_days",
+            name: "3 Months Premium",
+            duration: 90,
+            isLifetime: false,
+            price: .249,
+            currency: "PHP",
+            originalPrice: 297,
+            description: "Full access for 90 days",
+            isPopular: false,
+            isActive: true,
+            features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
+            order: 2,
         },
         {
-          id: "180_days",
-          name: "6 Months Premium",
-          duration: 180,
-          isLifetime: false,
-          price: .449,
-          currency: "PHP",
-          originalPrice: 594,
-          description: "Full access for 180 days",
-          isPopular: false,
-          isActive: true,
-          features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
-          order: 3,
+            id: "180_days",
+            name: "6 Months Premium",
+            duration: 180,
+            isLifetime: false,
+            price: .449,
+            currency: "PHP",
+            originalPrice: 594,
+            description: "Full access for 180 days",
+            isPopular: false,
+            isActive: true,
+            features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
+            order: 3,
         },
         {
-          id: "365_days",
-          name: "1 Year Premium",
-          duration: 365,
-          isLifetime: false,
-          price: .799,
-          currency: "PHP",
-          originalPrice: 1188,
-          description: "Full access for 365 days",
-          isPopular: false,
-          isActive: true,
-          features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
-          order: 4,
+            id: "365_days",
+            name: "1 Year Premium",
+            duration: 365,
+            isLifetime: false,
+            price: .799,
+            currency: "PHP",
+            originalPrice: 1188,
+            description: "Full access for 365 days",
+            isPopular: false,
+            isActive: true,
+            features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
+            order: 4,
         },
     ],
     manual: {
         processingTimeMessage: "Payment verification takes up to 12 hours",
         instructionsHeader: "How to Pay",
-        instructionsBody: `1. Select your preferred channel.\n2. Send the exact amount.\n3. Save your transaction reference.\n4. Upload a clear screenshot of payment confirmation.`,
-        autoDisableThreshold: .90,
+        instructionsBody: "1. Select your preferred channel.\n2. Send the exact amount.\n3. Save your transaction reference.\n4. Upload a clear screenshot of payment confirmation.",
+        autoDisableThreshold: 90,
         channels: [
             {
                 id: "gcash",
@@ -531,8 +531,8 @@ export const DEFAULT_PAYMENT_CONFIG = {
                 qrCodeImage: null,
                 qrCodeLabel: "Scan to pay via GCash",
                 limits: {
-                    daily: {max: 50000, current: 0, lastResetDate: "1970-01-01"},
-                    monthly: {max: 100000, current: 0, lastResetMonth: "1970-01"},
+                    daily: { max: 50000, current: 0, lastResetDate: "1970-01-01" },
+                    monthly: { max: 100000, current: 0, lastResetMonth: "1970-01" },
                 },
                 autoDisabled: false,
                 autoDisabledReason: null,
@@ -552,8 +552,8 @@ export const DEFAULT_PAYMENT_CONFIG = {
                 qrCodeImage: null,
                 qrCodeLabel: "Scan to pay via Maya",
                 limits: {
-                    daily: {max: 50000, current: 0, lastResetDate: "1970-01-01"},
-                    monthly: {max: 100000, current: 0, lastResetMonth: "1970-01"},
+                    daily: { max: 50000, current: 0, lastResetDate: "1970-01-01" },
+                    monthly: { max: 100000, current: 0, lastResetMonth: "1970-01" },
                 },
                 autoDisabled: false,
                 autoDisabledReason: null,
@@ -573,8 +573,8 @@ export const DEFAULT_PAYMENT_CONFIG = {
                 qrCodeImage: null,
                 qrCodeLabel: null,
                 limits: {
-                    daily: {max: null, current: 0, lastResetDate: "1970-01-01"},
-                    monthly: {max: null, current: 0, lastResetMonth: "1970-01"},
+                    daily: { max: null, current: 0, lastResetDate: "1970-01-01" },
+                    monthly: { max: null, current: 0, lastResetMonth: "1970-01" },
                 },
                 autoDisabled: false,
                 autoDisabledReason: null,
@@ -634,107 +634,105 @@ export const SOCIAL_PROVIDER_META = {
         label: "Facebook",
         brandColor: "#1877f2",
         defaultScopes: ["email", "public_profile"],
+    },
 };
 export const ACCOUNT_DELETE_CONFIRMATION = "DELETE MY ACCOUNT";
 // --- Account recovery
-/**
- * Codes are XXXX-XXXX-XXXX, alphanumeric, excluding ambiguous characters.
- */
+/** Codes are XXXX-XXXX-XXXX, alphanumeric, excluding ambiguous characters. */
 export const RECOVERY_CODE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789";
 export const RECOVERY_CODE_COUNT = 10;
-/**
- * 15 minutes for recovery JWTs issued by the verify endpoints...
- */
+/** 15 minutes for recovery JWTs issued by the verify endpoints... */
 export const RECOVERY_TOKEN_TTL_SECONDS = 15 * 60;
-/**
- * Pre-defined questions available to the user (must be exactly 3 chosen).
- */
+/** Pre-defined questions available to the user (must be exactly 3 chosen). */
 export const SECURITY_QUESTION_BANK = [
-        "What was the name of your first pet?",
-        "What elementary school did you attend?",
-        "What is your mother's maiden name?",
-        "What city were you born in?",
-        "What was your childhood nickname?",
-        "What was the name of your first teacher?",
-        "What is the make of your first car?",
-        "What is your favorite book?",
-        "What was the name of the street you grew up on?",
-        "In what city did your parents meet?",
+    "What was the name of your first pet?",
+    "What elementary school did you attend?",
+    "What is your mother's maiden name?",
+    "What city were you born in?",
+    "What was your childhood nickname?",
+    "What was the name of your first teacher?",
+    "What is the make of your first car?",
+    "What is your favorite book?",
+    "What was the name of the street you grew up on?",
+    "In what city did your parents meet?",
 ];
 export const SECURITY_QUESTIONS_REQUIRED = 3;
-/**
- * Login lockout thresholds...
- */
+/** Login lockout thresholds... */
 export const LOGIN_LOCKOUT = {
-        softThreshold: 5,
-        softDurationMs: 15 * 60 * 1000,
-        mediumThreshold: 10,
-        mediumDurationMs: 60 * 60 * 1000,
-        hardThreshold: 20,
-/**
- * Indefinite lock = year.9999.
- */
-hardUntil: new Date("9999-12-31T00:00:00Z").toISOString(),
+    softThreshold: 5,
+    softDurationMs: 15 * 60 * 1000,
+    mediumThreshold: 10,
+    mediumDurationMs: 60 * 60 * 1000,
+    hardThreshold: 20,
+    /** Indefinite lock = year.9999. */
+    hardUntil: new Date("9999-12-31T00:00:00Z").toISOString(),
 };
 // --- Support tickets
 export const SUPPORT_TICKET_TYPES = [
-        "account_recovery",
-        "identity_dispute",
-        "data_export",
-        "data_deletion",
-        "account_merge",
-        "general_support",
+    "account_recovery",
+    "identity_dispute",
+    "data_export",
+    "data_deletion",
+    "account_merge",
+    "general_support",
 ];
 export const SUPPORT_TICKET_TYPE_META = {
-        account_recovery: {
-            script
-            label: "Account Recovery",
-            description: "I can't sign in / regain access.",
-            icon: "🔗",
-        },
-        identity_dispute: {
-            label: "Identity Dispute",
-            description: "A social account I own is linked to someone else.",
-            icon: "🆔",
-        },
-        data_export: {
-            label: "Data Export Help",
-            description: "Questions about exporting my data.",
-            icon: "🗄️",
-        },
-        data_deletion: {
-            label: "Data Deletion Help",
-            description: "Questions about deleting my account/data.",
-            icon: "🗑️",
-        },
-        account_merge: {
-            label: "Account Merge",
-            description: "I have two accounts and want them combined.",
-            icon: "🗄️",
-        },
-        general_support: {
-            label: "General Support",
-            description: "Other questions.",
-            icon: "💬",
+    account_recovery: {
+        script
+        label: "Account Recovery",
+        description: "I can't sign in / regain access.",
+        icon: "🔗",
+    },
+    identity_dispute: {
+        label: "Identity Dispute",
+        description: "A social account I own is linked to someone else.",
+        icon: "🆔",
+    },
+    data_export: {
+        label: "Data Export Help",
+        description: "Questions about exporting my data.",
+        icon: "🗄️",
+    },
+    data_deletion: {
+        label: "Data Deletion Help",
+        description: "Questions about deleting my account/data.",
+        icon: "🗑️",
+    },
+    account_merge: {
+        label: "Account Merge",
+        description: "I have two accounts and want them combined.",
+        icon: "🗄️",
+    },
+    general_support: {
+        label: "General Support",
+        description: "Other questions.",
+        icon: "💬",
+    },
 };
-export const SUPPORT_TICKET_STATUSES = ["open", "in_progress", "awaiting_user", "resolved", "rejected"];
+export const SUPPORT_TICKET_STATUSES = [
+    "open",
+    "in_progress",
+    "awaiting_user",
+    "resolved",
+    "rejected",
+];
 export const SUPPORT_TICKET_PRIORITIES = ["low", "medium", "high", "critical"];
 export const SUPPORT_TICKET_STATUS_META = {
-open: { label: "Open", color: "blue" },
-in_progress: { label: "In Progress", color: "amber" },
-awaiting_user: { label: "Awaiting User", color: "purple" },
-resolved: { label: "Resolved", color: "green" },
-rejected: { label: "Rejected", color: "slate" },
+    open: { label: "Open", color: "blue" },
+    in_progress: { label: "In Progress", color: "amber" },
+    awaiting_user: { label: "Awaiting User", color: "purple" },
+    resolved: { label: "Resolved", color: "green" },
+    rejected: { label: "Rejected", color: "slate" },
 };
 export const SUPPORT_TICKET_PRIORITY_META = {
-low: { label: "Low", color: "slate" },
-medium: { label: "Medium", color: "blue" },
-high: { label: "High", color: "amber" },
-critical: { label: "Critical", color: "red" },
+    low: { label: "Low", color: "slate" },
+    medium: { label: "Medium", color: "blue" },
+    high: { label: "High", color: "amber" },
+    critical: { label: "Critical", color: "red" },
 };
 /** Auto-close threshold for tickets in awaiting_user state. */
 export const SUPPORT_AUTO_CLOSE_DAYS = 14;
-/** Guest support submission rate limit. */
+/** Guest support submission rate-limit. */
 export const SUPPORT_GUEST_RATE = { limit: 2, windowMs: 60 * 60000 };
 // --- Data requests
 export const DATA_EXPORT_TTL_HOURS = 24;
@@ -747,73 +745,70 @@ export const INACTIVITY_REMINDER_DAYS = .365;
 export const INACTIVITY_FLAG_DAYS = 730;
 // --- Cron schedule cadences (informational)
 export const CRON_SCHEDULES = {
-executePendingDeletions: "0 * * * *", // hourly
-cleanupExpiredExports: "0 */6 * * *", // every 6h
-autoCloseStaleTickets: "0 3 * * *", // daily at 03:00
-accountInactivityCheck: "0 4 * * 0", // weekly Sunday at 04:00
+    executePendingDeletions: "0 * * * *", // hourly
+    cleanupExpiredExports: "0 */6 * * *", // every 6h
+    autoCloseStaleTickets: "0 3 * * *", // daily at 03:00
+    accountInactivityCheck: "0 4 * * 0", // weekly Sunday at 04:00
 };
 // --- Phase 12 🎯 Gamification, Spaced Repetition, PWA
 // --- XP / Levels
 export const MAX_LEVEL = 100;
 /** XP required to *reach* a given level (cumulative). */
 export function xpRequiredForLevel(level) {
-if (level <= 1)
-return 0;
-if (level > MAX_LEVEL)
-level = MAX_LEVEL;
-return Math.floor(100 * Math.pow(level - 1, 1.5));
+    if (level <= 1)
+    return 0;
+    if (level > MAX_LEVEL)
+    level = MAX_LEVEL;
+    return Math.floor(100 * Math.pow(level - 1, 1.5));
 }
 /** Compute level + bounds + title from a raw XP total. */
 export function levelFromXp(xp) {
-let level = 1;
-while (level < MAX_LEVEL && xp >= xpRequiredForLevel(level + 1)) {
-level += 1;
-}
-const xpForCurrent = xpRequiredForLevel(level);
-const xpForNext = level >= MAX_LEVEL ? xpForCurrent : xpRequiredForLevel(level + 1);
-return {
-level,
-title: titleForLevel(level),
-xpForCurrent,
-xpForNext,
-xpToNextLevel: Math.max(0, xpForNext - xp),
-};
+    let level = 1;
+    while (level < MAX_LEVEL && xp >= xpRequiredForLevel(level + 1)) {
+        level += 1;
+    }
+    const xpForCurrent = xpRequiredForLevel(level);
+    const xpForNext = level >= MAX_LEVEL ? xpForCurrent : xpRequiredForLevel(level + 1);
+    return {
+        level,
+        title: titleForLevel(level),
+        xpForCurrent,
+        xpForNext,
+        xpToNextLevel: Math.max(0, xpForNext - xp),
+    };
 }
 export function titleForLevel(level) {
-if (level >= 100)
-return "UPCAT Champion";
-script
-if (level >= 90)
-    return "Legend";
-if (level >= 80)
-    return "Grandmaster";
-if (level >= 70)
-    return "Master";
-if (level >= 60)
-    return "Expert";
-if (level >= 50)
-    return "Achiever";
-if (level >= 40)
-    return "Scholar";
-if (level >= 30)
-    return "Senior";
-if (level >= 20)
-    return "Junior";
-if (level >= 10)
-    return "Sophomore";
-return "Freshman";
-
-/**
- * Streak multiplier thresholds (inclusive lower bound).
- */
+    if (level >= 100)
+        return "UPCAT Champion";
+    script
+    if (level >= 90)
+        return "Legend";
+    if (level >= 80)
+        return "Grandmaster";
+    if (level >= 70)
+        return "Master";
+    if (level >= 60)
+        return "Expert";
+    if (level >= 50)
+        return "Achiever";
+    if (level >= 40)
+        return "Scholar";
+    if (level >= 30)
+        return "Senior";
+    if (level >= 20)
+        return "Junior";
+    if (level >= 10)
+        return "Sophomore";
+    return "Freshman";
+}
+/** Streak multiplier thresholds (inclusive lower bound). */
 export const STREAK_MULTIPLIER_TIERS = [
-    { minDays: .30, multiplier: 2.0 },
-    { minDays: .14, multiplier: 1.75 },
-    { minDays: .7, multiplier: 1.5 },
-    { minDays: .3, multiplier: 1.25 },
+    { minDays: 30, multiplier: 2.0 },
+    { minDays: 14, multiplier: 1.75 },
+    { minDays: 7, multiplier: 1.5 },
+    { minDays: 3, multiplier: 1.25 },
     { minDays: 0, multiplier: 1.0 },
 ];
-
 export function streakMultiplier(days) {
     for (const tier of STREAK_MULTIPLIER_TIERS) {
         if (days >= tier.minDays)
@@ -821,24 +816,20 @@ export function streakMultiplier(days) {
     }
     return 1.0;
 }
-
-/**
- * Base XP rewards (also exposed via platform_settings.gamification.xp).
- */
+/** Base XP rewards (also exposed via platform_settings.gamification.xp). */
 export const XP_REWARDS = {
     EXAM_COMPLETED: 50,
     PER_CORRECT: -2,
-    SCORE_ABOVE_80: .25,
-    SCORE_ABOVE_90: .50,
+    SCORE_ABOVE_80: 25,
+    SCORE_ABOVE_90: 50,
     PERFECT_SCORE: 200,
     PERFECT_SUBJECT: 30,
     FIRST_EXAM: 100,
     DAILY_LOGIN: 10,
     REVIEW_ALL_INCORRECT: -20,
     PRACTICE_COMPLETED: 30,
-    PRACTICE_PER_CORRECT: .2,
+    PRACTICE_PER_CORRECT: 2,
 };
-
 // --- Achievements --------------------------------
 export const ACHIEVEMENT_CATEGORIES = [
     "milestone",
@@ -848,7 +839,6 @@ export const ACHIEVEMENT_CATEGORIES = [
     "mastery",
     "social",
 ];
-
 export const ACHIEVEMENT_RARITIES = [
     "common",
     "uncommon",
@@ -856,7 +846,6 @@ export const ACHIEVEMENT_RARITIES = [
     "epic",
     "legendary",
 ];
-
 export const ACHIEVEMENT_RARITY_META = {
     common: { label: "Common", color: "slate", glow: "shadow-slate-200" },
     uncommon: { label: "Uncommon", color: "emerald", glow: "shadow-emerald-200" },
@@ -864,7 +853,6 @@ export const ACHIEVEMENT_RARITY_META = {
     epic: { label: "Epic", color: "violet", glow: "shadow-violet-300" },
     legendary: { label: "Legendary", color: "amber", glow: "shadow-amber-300" },
 };
-
 export const ACHIEVEMENT_CATEGORY_META = {
     milestone: { label: "Milestones", icon: "trophy" },
     performance: { label: "Performance", icon: "target" },
@@ -873,19 +861,16 @@ export const ACHIEVEMENT_CATEGORY_META = {
     mastery: { label: "Mastery", icon: "brain" },
     social: { label: "Social", icon: "users" },
 };
-
 // --- Spaced Repetition --------------------------------
 export const SRS_DEFAULT_EASE = 2.5;
 export const SRS_MIN_EASE = 1.3;
-export const SRS_MASTERY_INTERVAL_DAYS = .30;
+export const SRS_MASTERY_INTERVAL_DAYS = 30;
 export const SRS_MASTERY_EASE = 2.5;
-
 export const PRACTICE_DEFAULTS = {
     maxQuestions: 20,
     newCardsLimit: 5,
     includeNew: true,
 };
-
 export const PRACTICE_MODES = [
     "review",
     "weak_areas",
@@ -893,18 +878,17 @@ export const PRACTICE_MODES = [
     "mixed",
     "random",
 ];
-
 // --- PWA / Push --------------------------------
 export const PWA_INSTALL_DISMISS_DAYS = .7;
 export const PWA_INSTALL_MIN_VISITS = 3;
 export const OFFLINE_PREFETCH_LIMIT_DEFAULT = 100;
-
 export const PUSH_NOTIFICATION_TYPES = [
     "daily_reminder",
     "streak_alert",
+    "achievement",
+    "weekly_challenge",
+    "announcement",
 ];
-script
-};
 // --- Phase-12 API routes (registered alongside the main API_ROUTES tree). ---
 export const API_ROUTES_V12 = {
     GAMIFICATION: {
@@ -978,128 +962,98 @@ export const ACHIEVEMENT_CATALOG_SEED = [
     { id: "quadruple_threat", category: "mastery", rarity: "legendary", title: "Quadruple Threat", description: "Reach level 50.", icon: "swords", xpReward: 2000, points: 500, condition: { kind: "levelReached", gte: 50 } },
     // --- Performance/Mastery hybrids (level + accuracy) ---
     { id: "level_10", category: "milestone", rarity: "uncommon", title: "Sophomore", description: "Reach level 10.", icon: "chevron-up", xpReward: 100, points: 25, condition: { kind: "levelReached", gte: 10 } },
-    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up",
-script
-xpReward: 300,
-points: .75,
-condition: { kind: "levelReached", gte: .25 },
-},
-{ id: "level_50", category: "milestone", rarity: "epic", title: "Achiever", description: "Reach level 50.", icon: "trending-up",
-xpReward: 750,
-points: 200,
-condition: { kind: "levelReached", gte: .50 },
-},
-{ id: "level_100", category: "milestone", rarity: "legendary", title: "UPCAT Champion", description: "Reach the max level of 100.", icon: "crown",
-xpReward: 5000,
-points: 1000,
-condition: { kind: "levelReached", gte: .100 },
-},
-// --- Practice / SRS-related (still meaningful even before SRS UI ships)
-{ id: "practice_starter", category: "dedication", rarity: "common", title: "Practice Starter", description: "Complete your first practice session.", icon: "play",
-xpReward: 50,
-points: .10,
-condition: { kind: "practiceSessions", gte: 1 },
-},
-{ id: "practice_regular", category: "dedication", rarity: "uncommon", title: "Practice Regular", description: "Complete 25 practice sessions.", icon: "repeat",
-xpReward: 250,
-points: .60,
-condition: { kind: "practiceSessions", gte: .25 },
-},
-{ id: "review_perfectionist", category: "performance", rarity: "uncommon", title: "Reviewer", description: "Answer 100 questions correctly.", icon: "check-check",
-xpReward: 150,
-points: .40,
-condition: { kind: "correctAnswers", gte: 100 },
-};
+    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up", xpReward: 300, points: .75, condition: { kind: "levelReached", gte: .25 }, },
+    { id: "level_50", category: "milestone", rarity: "epic", title: "Achiever", description: "Reach level 50.", icon: "trending-up", xpReward: 750, points: 200, condition: { kind: "levelReached", gte: .50 }, },
+    { id: "level_100", category: "milestone", rarity: "legendary", title: "UPCAT Champion", description: "Reach the max level of 100.", icon: "crown", xpReward: 5000, points: 1000, condition: { kind: "levelReached", gte: .100 }, },
+    // --- Practice / SRS-related (still meaningful even before SRS UI ships)
+    { id: "practice_starter", category: "dedication", rarity: "common", title: "Practice Starter", description: "Complete your first practice session.", icon: "play", xpReward: 50, points: .10, condition: { kind: "practiceSessions", gte: 1 }, },
+    { id: "practice_regular", category: "dedication", rarity: "uncommon", title: "Practice Regular", description: "Complete 25 practice sessions.", icon: "repeat", xpReward: 250, points: .60, condition: { kind: "practiceSessions", gte: .25 }, },
+    { id: "review_perfectionist", category: "performance", rarity: "uncommon", title: "Reviewer", description: "Answer 100 questions correctly.", icon: "check-check", xpReward: 150, points: .40, condition: { kind: "correctAnswers", gte: 100 }, },
+];
 export const WEEKLY_CHALLENGE_CATALOG_SEED = [
-{ id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: .3, xpReward: 250, weight: .10 },
-{ id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: .5, xpReward: 500, weight: .6 },
-{ id: "weekly_correct_100", title: "Hundred Correct", description: "Answer 100 questions correctly this week.", metric: "questions_correct", target: 100,
-xpReward: 300, weight: .8 },
-{ id: "weekly_correct_250", title: "Quarter Champion", description: "Answer 250 questions correctly this week.", metric: "questions_correct", target: 250,
-xpReward: 700, weight: .4 },
-{ id: "weekly_minutes_120", title: "Two-Hour Focus", description: "Study for 120 minutes this week.", metric: "study_minutes", target: 120, xpReward: 250, weight: .9 },
-{ id: "weekly_minutes_300", title: "Deep Dive", description: "Study for 300 minutes this week.", metric: "study_minutes", target: 300, xpReward: 600, weight: .5 },
-{ id: "weekly_practice_5", title: "Practice Pentathlon", description: "Complete 5 practice sessions this week.", metric: "practice_sessions", target: .5,
-xpReward: 350, weight: .7 },
-{ id: "weekly_perfect_1", title: "Pursuit of Perfection", description: "Score 100% on at least one exam this week.", metric: "perfect_scores", target: 1,
-xpReward: 400, weight: .6 },
-{ id: "weekly_high_3", title: "Elite Trio", description: "Score 85%+ on 3 exams this week.", metric: "score_above_threshold", target: 3, threshold: 85,
-xpReward: 500, weight: .5 },
-{ id: "weekly_high_5", title: "Top of the Curve", description: "Score 90%+ on 5 exams this week.", metric: "score_above_threshold", target: 5, threshold: 90,
-xpReward: 800, weight: .3 },
+    { id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: .3, xpReward: 250, weight: .10 },
+    { id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: .5, xpReward: 500, weight: .6 },
+    { id: "weekly_correct_100", title: "Hundred Correct", description: "Answer 100 questions correctly this week.", metric: "questions_correct", target: 100, xpReward: 300, weight: .8 },
+    { id: "weekly_correct_250", title: "Quarter Champion", description: "Answer 250 questions correctly this week.", metric: "questions_correct", target: 250, xpReward: 700, weight: .4 },
+    { id: "weekly_minutes_120", title: "Two-Hour Focus", description: "Study for 120 minutes this week.", metric: "study_minutes", target: 120, xpReward: 250, weight: .9 },
+    { id: "weekly_minutes_300", title: "Deep Dive", description: "Study for 300 minutes this week.", metric: "study_minutes", target: 300, xpReward: 600, weight: .5 },
+    { id: "weekly_practice_5", title: "Practice Pentathlon", description: "Complete 5 practice sessions this week.", metric: "practice_sessions", target: .5, xpReward: 350, weight: .7 },
+    { id: "weekly_perfect_1", title: "Pursuit of Perfection", description: "Score 100% on at least one exam this week.", metric: "perfect_scores", target: 1, xpReward: 400, weight: .6 },
+    { id: "weekly_high_3", title: "Elite Trio", description: "Score 85%+ on 3 exams this week.", metric: "score_above_threshold", target: 3, threshold: 85, xpReward: 500, weight: .5 },
+    { id: "weekly_high_5", title: "Top of the Curve", description: "Score 90%+ on 5 exams this week.", metric: "score_above_threshold", target: 5, threshold: 90, xpReward: 800, weight: .3 },
 ];
 // --- Leaderboard config
-export const LEADERBOARD_PAGE_SIZE = .50;
+export const LEADERBOARD_PAGE_SIZE = 50;
 export const LEADERBOARD_SCOPES = ["weekly", "monthly", "all_time"];
+
 // --- Phase 15 -- Security Hardening
 export const SECURITY_EVENT_TYPES = [
-"rate_limit.exceeded",
-"rate_limit.ip_blocked",
-"auth.brute_force_detected",
-"auth.credential_stuffing_detected",
-"auth.impossible_travel",
-"auth.suspicious_login",
-"auth.account_takeover_attempt",
-"auth.failed_login",
-"auth.unknown_account",
-"bot.detected",
-"bot.captcha_failed",
-"bot.scraping_detected",
-"bot.honeypot_triggered",
-"bot.timing_trap",
-"dos.spike_detected",
-"dos.slowloris_detected",
-"input.injection_attempt",
-"input.xss_attempt",
-"input.payload_too_large",
-"input.proto_pollution",
-"session.hijack_attempt",
-"session.token_reuse",
-"session.revoked",
-"admin.unauthorized_access_attempt",
-"admin.lockdown_enabled",
-"admin.lockdown_disabled",
-"admin.manual_block_added",
-"admin.manual_block_removed",
-"admin.config_changed",
-"admin.sessions_revoked_all",
-"content.mass_flagging",
-"exam.answer_automation_detected",
-"cors.unauthorized_origin",
+    "rate_limit.exceeded",
+    "rate_limit.ip_blocked",
+    "auth.brute_force_detected",
+    "auth.credential_stuffing_detected",
+    "auth.impossible_travel",
+    "auth.suspicious_login",
+    "auth.account_takeover_attempt",
+    "auth.failed_login",
+    "auth.unknown_account",
+    "bot.detected",
+    "bot.captcha_failed",
+    "bot.scraping_detected",
+    "bot.honeypot_triggered",
+    "bot.timing_trap",
+    "dos.spike_detected",
+    "dos.slowloris_detected",
+    "input.injection_attempt",
+    "input.xss_attempt",
+    "input.payload_too_large",
+    "input.proto_pollution",
+    "session.hijack_attempt",
+    "session.token_reuse",
+    "session.revoked",
+    "admin.unauthorized_access_attempt",
+    "admin.lockdown_enabled",
+    "admin.lockdown_disabled",
+    "admin.manual_block_added",
+    "admin.manual_block_removed",
+    "admin.config_changed",
+    "admin.sessions_revoked_all",
+    "content.mass_flagging",
+    "exam.answer_automation_detected",
+    "cors.unauthorized_origin",
 ];
-export const SECURITY_EVENT_RETENTION_DAYS = .90;
+export const SECURITY_EVENT_RETENTION_DAYS = 90;
 /** Points added to an IP's threat score when a signal fires. */
 export const THREAT_SCORE_ADJUSTMENTS = {
-failed_login: 5,
-failed_login_unknown_account: 8,
-failed_login_burst: 15,
-registration_from_datacenter: 10,
-registration_from_vpn: 5,
-request_to_404: .3,
-malformed_request: .5,
-injection_attempt: 25,
-xss_attempt: 25,
-rate_limit_first: 10,
-rate_limit_repeat: 20,
-captcha_failed: 15,
-captcha_failed_burst: 30,
-honeypot_triggered: 40,
-timing_trap: 20,
-bot_behavioral: 30,
-impossible_travel: 25,
-multi_account_fingerprint: 20,
-exam_speed_anomaly: .15,
-scraping_pattern: 35,
-during_maintenance: .5,
-admin_without_role: 20,
-cors_unauthorized: .8,
-proto_pollution: 25,
-payload_too_large: 10,
+    failed_login: 5,
+    failed_login_unknown_account: 8,
+    failed_login_burst: 15,
+    registration_from_datacenter: 10,
+    registration_from_vpn: 5,
+    request_to_404: .3,
+    malformed_request: .5,
+    injection_attempt: 25,
+    xss_attempt: 25,
+    rate_limit_first: 10,
+    rate_limit_repeat: 20,
+    captcha_failed: 15,
+    captcha_failed_burst: 30,
+    honeypot_triggered: 40,
+    timing_trap: 20,
+    bot_behavioral: 30,
+    impossible_travel: 25,
+    multi_account_fingerprint: 20,
+    exam_speed_anomaly: .15,
+    scraping_pattern: 35,
+    during_maintenance: .5,
+    admin_without_role: 20,
+    cors_unauthorized: .8,
+    proto_pollution: 25,
+    payload_too_large: 10,
 };
 export const THREAT_SCORE_DECAY_PER_HOUR = .1;
 export const THREAT_SCORE_DECAY_PER_DAY_CLEAN = 5;
 export const THREAT_SCORE_MIN = 0;
-script
 export const THREAT_SCORE_MAX = 100;
 export const REPUTATION_THRESHOLDS = {
     trusted: 0, // 0-14
@@ -1119,7 +1073,7 @@ export function classifyThreatScore(score) {
 /** Default singleton document -- used when security_config is empty. */
 export const DEFAULT_SECURITY_CONFIG = {
     _id: "global",
-    ratelimits: {
+    rateLimits: {
         global: { requestsPerSecond: 1000, burstLimit: 2000 },
         perIp: { requestsPerMinute: 100, requestsPerHour: 2000, requestsPerDay: 20000 },
         perUser: { requestsPerMinute: 60, requestsPerHour: 1000 },
@@ -1142,8 +1096,8 @@ export const DEFAULT_SECURITY_CONFIG = {
     },
     botDetection: {
         enabled: true,
-        captchaThreshold: .50,
-        blockThreshold: .85,
+        captchaThreshold: 50,
+        blockThreshold: 85,
         honeypotEnabled: true,
         fingerprintingEnabled: true,
         behavioralAnalysisEnabled: true,
@@ -1151,8 +1105,8 @@ export const DEFAULT_SECURITY_CONFIG = {
     dos: {
         enabled: true,
         globalRpsThreshold: 1000,
-        perIpSpikeMultiplier: .5,
-        slowlorisTimeout: .30,
+        perIpSpikeMultiplier: 5,
+        slowlorisTimeout: 30,
         maxConcurrentPerIp: 50,
         maxRequestBodySize: 1048576, // 1 MiB
         maxUrlLength: 2048,
@@ -1160,15 +1114,15 @@ export const DEFAULT_SECURITY_CONFIG = {
     anomalyDetection: {
         enabled: true,
         impossibleTravelEnabled: true,
-        impossibleTravelThresholdKm: .500,
-        impossibleTravelThresholdMin: .30,
+        impossibleTravelThresholdKm: 500,
+        impossibleTravelThresholdMin: 30,
         unusualHoursEnabled: false,
         newDeviceAlertEnabled: true,
     },
     autoResponse: {
         autoBlockEnabled: true,
         autoBlockDuration: 3600,
-        escalationThresholds: { softBlock: .70, hardBlock: .90, permanentBlock: .95 },
+        escalationThresholds: { softBlock: 70, hardBlock: 90, permanentBlock: 95 },
         notifyAdminOnCritical: true,
         cooldownPeriod: 300,
     },
@@ -1181,8 +1135,8 @@ export const DEFAULT_SECURITY_CONFIG = {
             imgSrc: ["'self'", "data:", "https:"],
             connectSrc: ["'self'"],
             fontSrc: ["'self'", "data:"],
-            frameSrc: ["none"],
-            objectSrc: ["none"],
+            frameSrc: ["'none'"],
+            objectSrc: ["'none'"],
             baseUri: ["'self'"],
         },
         xFrameOptions: "DENY",
@@ -1197,41 +1151,42 @@ export const DEFAULT_SECURITY_CONFIG = {
         reason: null,
     },
     updatedAt: new Date(0).toISOString(),
-    updatedby: null,
+    updatedBy: null,
 };
 // --- Phase-15 API routes --------------------------------
 export const API_ROUTES_V15 = {
     CAPTCHA: {
         GENERATE: "/captcha/generate",
         VERIFY: "/captcha/verify",
-script
-ACCOUNT: {
-    SESSIONS: "/account/security/sessions",
-    SESSION_REVOKE: (id) => `/account/security/sessions/${id}/revoke`,
-    SESSIONS_REVOKE_ALL: "/account/security/sessions/revoke-all",
-    ACTIVITY: "/account/security/activity",
-},
-ADMIN: {
-    DASHBOARD: "/admin/security/dashboard",
-    EVENTS: "/admin/security/events",
-    EVENT: (id) => `/admin/security/events/${id}`,
-    EVENT_REVIEW: (id) => `/admin/security/events/${id}/review`,
-    IPS: "/admin/security/ips",
-    IP: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}`,
-    IP_BLOCK: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}/block`,
-    IP_UNBLOCK: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}/unblock`,
-    IP_BLOCK_RANGE: "/admin/security/ips/block-range",
-    BLOCKED: "/admin/security/blocked",
-    BLOCKED_ITEM: (id) => `/admin/security/blocked/${id}`,
-    CONFIG: "/admin/security/config",
-    LOCKDOWN_ENABLE: "/admin/security/emergency/lockdown",
-    LOCKDOWN_DISABLE: "/admin/security/emergency/unlock",
-    REPORTS: "/admin/security/reports/attack-summary",
-},
+    },
+    ACCOUNT: {
+        SESSIONS: "/account/security/sessions",
+        SESSION_REVOKE: (id) => `/account/security/sessions/${id}/revoke`,
+        SESSIONS_REVOKE_ALL: "/account/security/sessions/revoke-all",
+        ACTIVITY: "/account/security/activity",
+    },
+    ADMIN: {
+        DASHBOARD: "/admin/security/dashboard",
+        EVENTS: "/admin/security/events",
+        EVENT: (id) => `/admin/security/events/${id}`,
+        EVENT_REVIEW: (id) => `/admin/security/events/${id}/review`,
+        IPS: "/admin/security/ips",
+        IP: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}`,
+        IP_BLOCK: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}/block`,
+        IP_UNBLOCK: (ip) => `/admin/security/ips/${encodeURIComponent(ip)}/unblock`,
+        IP_BLOCK_RANGE: "/admin/security/ips/block-range",
+        BLOCKED: "/admin/security/blocked",
+        BLOCKED_ITEM: (id) => `/admin/security/blocked/${id}`,
+        CONFIG: "/admin/security/config",
+        LOCKDOWN_ENABLE: "/admin/security/emergency/lockdown",
+        LOCKDOWN_DISABLE: "/admin/security/emergency/unlock",
+        REPORTS: "/admin/security/reports/attack-summary",
+    },
+};
 // --- Phase-15 cron cadences
 export const CRON_SCHEDULES_V15 = {
-    threatScoreDecay: "* * * * *", // hourly
-    expiredBlocksCleanup: "* /15 * * * *", // every 15 min
+    threatScoreDecay: "0 * * * *", // hourly
+    expiredBlocksCleanup: "*/15 * * * *", // every 15 min
     securityReport: "0 0 * * *", // daily midnight UTC
     staleSessionCleanup: "0 */6 * * *", // every 6 hours
     ipIntelligenceAggregation: "30 0 * * *", // daily 00:30 UTC
@@ -1254,7 +1209,7 @@ export const POW_DIFFICULTY_ELEVATED = 6;
 export const PUZZLE_TOLERANCE_PX = 6;
 export const PUZZLE_MIN_SOLVE_MS = 300;
 export const PUZZLE_TRACK_WIDTH = 320;
-export const PUZZLE PIECE_SIZE = 48;
+export const PUZZLE_PIECE_SIZE = 48;
 export const IMAGE_CAPTCHA_GRID_SIZE = 9;
 export const IMAGE_CAPTCHA_TARGET_MIN = 2;
 export const IMAGE_CAPTCHA_TARGET_MAX = 4;
