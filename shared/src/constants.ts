@@ -830,6 +830,7 @@ export const DATA_EXPORT_TTL_HOURS = 24;
 export const DATA_DELETION_GRACE_DAYS = 7;
 /** Hours the confirm-email link stays valid. */
 export const DATA_DELETION_CONFIRM_TTL_HOURS = 48;
+
 // --- Inactivity thresholds ---
 export const INACTIVITY_REMINDER_DAYS = 365;
 export const INACTIVITY_FLAG_DAYS = 730;
@@ -1038,8 +1039,8 @@ export const API_ROUTES_V12 = {
 // --- Phase-12 cron cadences -------------------
 export const CRON_SCHEDULES_V12 = {
     assignWeeklyChallenges: "0 4 * * 1", // Mondays 04:00 UTC
-    studyReminders: "0 9 * * *", /// 09:00 UTC daily
-    streakWarnings: "0 19 * * *", /// 19:00 UTC daily
+    studyReminders: "0 9 * * *", // 09:00 UTC daily
+    streakWarnings: "0 19 * * *", // 19:00 UTC daily
 } as const;
 
 // --- Achievement catalog seed (used by api/scripts/seed.js + admin defaults) ---
@@ -1141,7 +1142,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Score 90% or higher on a practice exam.",
         icon: "award",
         xpReward: 200,
-        points: .50,
+        points: 50,
         condition: {kind: "scoreThreshold", gte: 90, count: 1}
     },
     {
@@ -1414,7 +1415,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Practice Regular",
         description: "Complete 25 practice sessions.",
         icon: "repeat",
-        xpReward: .250,
+        xpReward: 250,
         points: 60,
         condition: {kind: "practiceSessions", gte: 25}
     },
@@ -1643,9 +1644,7 @@ export function classifyThreatScore(score: number): import("./types.js").IpReput
 
 // Re-export for the helper above.
 
-/**
- * Default singleton document -- used when security_config is empty.
- */
+/** Default singleton document -- used when security_config is empty. */
 export const DEFAULT_SECURITY_CONFIG = {
     _id: "global" as const,
     rateLimits: {
