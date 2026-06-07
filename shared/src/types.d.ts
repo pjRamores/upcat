@@ -438,7 +438,7 @@ export interface QuestionChoice {
     text: string;
 }
 export interface Passage {
-    id: string;
+    _id: string;
     title: string;
     content: string;
     source: string;
@@ -1182,9 +1182,7 @@ export interface PushPreferencesResponse {
         lastUsedAt: string | null;
     }>;
 }
-/**
- * Payload pushed to the SW; the SW renders this as a Notification.
- */
+/** Payload pushed to the SW; the SW renders this as a Notification. */
 export interface PushNotificationPayload {
     title: string;
     body: string;
@@ -1205,7 +1203,7 @@ export interface PushBroadcastPayload {
     title: string;
     body: string;
     url?: string;
-    type: import("./constants.js").PushNotificationType;
+    type?: import("./constants.js").PushNotificationType;
     /** Limit broadcast to a subset of users by role. */
     role?: "admin" | "reviewee";
 }
@@ -1455,9 +1453,7 @@ export interface CaptchaVerifyResponse {
     valid: boolean;
     /** Signed JWT (10-min expiry) - pass back as `X-Captcha-Token` on the gated request. */
     token: string | null;
-    /**
-     * When invalid, optional escalated challenge for the next attempt...
-     */
+    /** When invalid, optional escalated challenge for the next attempt... */
     nextType?: CaptchaType;
 }
 export type SubscriptionTier = "free" | "premium";
@@ -1575,11 +1571,6 @@ export interface UserSubscription {
             grantedBy: string | null;
             cancelledAt: string | null;
             cancellationReason: string | null;
-        }> | null;
-        usage: Record<string, {
-            count: number;
-            period: string;
-            lastUsedAt: string;
         }>;
     } | null;
     usage: Record<string, {
