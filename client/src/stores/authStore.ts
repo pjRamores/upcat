@@ -49,7 +49,7 @@ interface AuthState {
     logout: () => void;
     fetchMe: () => Promise<void>;
     clearError: () => void;
-    /** Returns current role. (defaults to "reviewee" when unknown). */
+    /** Returns current role (defaults to "reviewee" when unknown). */
     role: () => UserRole;
     isAdmin: () => boolean;
 }
@@ -74,7 +74,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
                 }
             }>(
                 API_ROUTES.AUTH.LOGIN,
-                payload
+                payload,
             );
             const {token, user, onboarding} = data.data;
             persistAuthSession(token, user, get().rememberMe);
@@ -135,6 +135,5 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         if (roleFromUser === "admin" || roleFromUser === "reviewee") return roleFromUser;
         return decodeRoleFromToken(get().token) ?? "reviewee";
     },
-
     isAdmin: () => get().role() === "admin",
 }));

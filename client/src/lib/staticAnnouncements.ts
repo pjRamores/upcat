@@ -1,4 +1,4 @@
-import type { Announcement } from "@upcat/shared";
+import type {Announcement} from "@upcat/shared";
 
 export interface StaticAnnouncements {
     version: number;
@@ -30,11 +30,11 @@ export async function loadStaticAnnouncements(
     if (loadAttempted && loadError) return null;
     if (inFlight) return inFlight;
 
-    inFlight = async () => {
+    inFlight = (async () => {
         try {
             const res = await fetch("/data/announcements.json", {
                 cache: "no-store",
-                headers: { Accept: "application/json" },
+                headers: {Accept: "application/json"},
             });
             if (!res.ok) {
                 loadError = new Error(`HTTP ${res.status}`);
@@ -62,6 +62,7 @@ export async function loadStaticAnnouncements(
             inFlight = null;
         }
     })();
+
     return inFlight;
 }
 
@@ -79,7 +80,7 @@ export function getActiveStaticAnnouncements(
     return data.announcements.filter((a) => {
         if (!a.isActive) return false;
         const startsOk = !a.startsAt || new Date(a.startsAt).getTime() <= nowTs;
-        const expiresOk = a.expiresAt || new Date(a.expiresAt).getTime() >= nowTs;
+        const expiresOk = !a.expiresAt || new Date(a.expiresAt).getTime() >= nowTs;
         return startsOk && expiresOk;
     });
 }
