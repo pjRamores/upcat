@@ -99,41 +99,42 @@ export default function HelpFab() {
                             <button type="button" onClick={() => setOpen(false)}
                                     className="rounded p-1 text-slate-500 hover:bg-slate-100">X
                             </button>
+                        </div>
 
-                            <input
-                                value={query}
-                                onChange={(event) => setQuery(event.target.value)}
-                                placeholder="Search help articles..."
-                                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
-                            />
+                        <input
+                            value={query}
+                            onChange={(event) => setQuery(event.target.value)}
+                            placeholder="Search help articles..."
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
+                        />
 
-                            <div className="mt-3 space-y-2">
-                                {results.map((result) => (
-                                    <Link
-                                        key={result.slug}
-                                        to={`/help/article/${result.slug}`}
-                                        onClick={() => setOpen(false)}
-                                        className="block rounded-lg border border-slate-200 px-3 py-2 hover:bg-slate-50"
-                                    >
-                                        <p className="text-sm font-medium text-slate-900">{result.title}</p>
-                                        <p className="mt-0.5 line-clamp-2 text-xs text-slate-600"
-                                           dangerouslySetInnerHTML={{__html: result.excerpt}}/>
-                                    </Link>
-                                ))}
-                            </div>
+                        <div className="mt-3 space-y-2">
+                            {results.map((result) => (
+                                <Link
+                                    key={result.slug}
+                                    to={`/help/article/${result.slug}`}
+                                    onClick={() => setOpen(false)}
+                                    className="block rounded-lg border border-slate-200 px-3 py-2 hover:bg-slate-50"
+                                >
+                                    <p className="text-sm font-medium text-slate-900">{result.title}</p>
+                                    <p className="mt-0.5 line-clamp-2 text-xs text-slate-600"
+                                       dangerouslySetInnerHTML={{__html: result.excerpt}}/>
+                                </Link>
+                            ))}
+                        </div>
 
-                            <div className="mt-4 flex flex-wrap gap-3 text-sm">
-                                <Link to="/help" onClick={() => setOpen(false)}
-                                      className="font-medium text-primary-700 hover:underline">View Full
-                                    Help Center</Link>
-                                <Link to="/contact" onClick={() => setOpen(false)}
-                                      className="text-slate-700 hover:underline">Contact Support</Link>
-                                {isAuthenticated && (
-                                    <button type="button" onClick={() => void replayTour()}
-                                            className="text-slate-700 hover:underline">Replay
-                                        Tour</button>
-                                )}
-                            </div>
+                        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                            <Link to="/help" onClick={() => setOpen(false)}
+                                  className="font-medium text-primary-700 hover:underline">View Full
+                                Help Center</Link>
+                            <Link to="/contact" onClick={() => setOpen(false)}
+                                  className="text-slate-700 hover:underline">Contact Support</Link>
+                            {isAuthenticated && (
+                                <button type="button" onClick={() => void replayTour()}
+                                        className="text-slate-700 hover:underline">Replay
+                                    Tour</button>
+                            )}
+                        </div>
                     </section>
                 </div>
             )}
