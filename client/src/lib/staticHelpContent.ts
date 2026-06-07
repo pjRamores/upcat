@@ -230,7 +230,7 @@ export function getStaticArticlesByCategory(
 export function getStaticArticle(
     content: StaticHelpContent,
     slug: string
-): HelpArticle & { wordCount: number; estimatedReadingMinutes: number } | null {
+): (HelpArticle & { wordCount: number; estimatedReadingMinutes: number }) | null {
     return content.articles.find((a) => a.slug === slug) || null;
 }
 
