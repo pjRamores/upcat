@@ -1,4 +1,5 @@
 /**
+ *
  * Static Help Content Loader
  *
  * Loads help content from static assets (client/public/data/help-content.json)
@@ -9,6 +10,7 @@
  * - Offline support
  * - Reduced API pressure
  * - Deterministic content (published snapshots)
+ *
  */
 
 import type {HelpArticle, HelpCategoryInfo} from "@upcat/shared";
@@ -57,7 +59,7 @@ export async function loadStaticHelpContent(
         return null;
     }
 
-    inFlightLoad = async () => {
+    inFlightLoad = (async () => {
         try {
             const response = await fetch("/data/help-content.json", {
                 cache: "no-store",
@@ -91,7 +93,7 @@ export async function loadStaticHelpContent(
 
             return cachedContent;
         } catch (error) {
-            loadError = error instanceof Error ? new Error(String(error));
+            loadError = error instanceof Error ? error : new Error(String(error));
             loadAttempted = true;
             console.warn("[HelpContent] Failed to load static content, will use API fallback", loadError.message);
             return null;
@@ -99,8 +101,8 @@ export async function loadStaticHelpContent(
             inFlightLoad = null;
         }
     })();
-}
-return inFlightLoad;
+
+    return inFlightLoad;
 }
 
 /**
@@ -144,8 +146,7 @@ export function searchStaticArticles(
         const title = String(article.title ?? "").toLowerCase();
         const subtitle = String(article.subtitle ?? "").toLowerCase();
         const body = String(
-            (article as Record<string, unknown>).content instanceof Object &&
-                (article as Record<string, unknown>).content !== null
+            (article as Record<string, unknown>).content instanceof Object && (article as Record<string, unknown>).content !== null
                 ? ((article as Record<string, unknown>).content as Record<string, unknown>).body
                 : ""
         ).toLowerCase();
@@ -164,7 +165,7 @@ export function searchStaticArticles(
         score += Math.min(bodyMatches, 5); // Cap at 5 for very long matches
 
         if (score > 0) {
-            results.push({ article, matchScore: score });
+            results.push({article, matchScore: score});
         }
     }
 
@@ -172,10 +173,9 @@ export function searchStaticArticles(
     results.sort((a, b) => b.matchScore - a.matchScore);
 
     // Generate excerpts from body content
-    return results.slice(0, limit).map(({ article }) => {
+    return results.slice(0, limit).map(({article}) => {
         const body = String(
-            (article as Record<string, unknown>).content instanceof Object &&
-                (article as Record<string, unknown>).content !== null
+            (article as Record<string, unknown>).content instanceof Object && (article as Record<string, unknown>).content !== null
                 ? ((article as Record<string, unknown>).content as Record<string, unknown>).body
                 : ""
         );
@@ -206,57 +206,58 @@ export function getStaticArticlesByCategory(
     content: StaticHelpContent,
     categoryId: string,
     limit?: number
-): Array<HelpArticle & { "slug": string; "title": string; "subtitle": string; "category": string } & {
+): Array<
+    Pick<HelpArticle, "slug" | "title" | "subtitle" | "category"> & {
     estimatedReadingMinutes: number;
-}>
-{
-  const items = content.articles
-    .filter((a) => a.category === categoryId)
-    .map((a) => ({
-      slug: a.slug,
-      title: a.title,
-      subtitle: a.subtitle ?? null,
-      category: a.category,
-      estimatedReadingMinutes: (a as any).estimatedReadingMinutes || 1,
-    }));
-  
-  return limit ? items.slice(0, limit) : items;
+}
+> {
+    const items = content.articles
+        .filter((a) => a.category === categoryId)
+        .map((a) => ({
+            slug: a.slug,
+            title: a.title,
+            subtitle: a.subtitle ?? null,
+            category: a.category,
+            estimatedReadingMinutes: (a as any).estimatedReadingMinutes || 1,
+        }));
+
+    return limit ? items.slice(0, limit) : items;
 }
 
 /**
  * Get a single article by slug from static content
  */
 export function getStaticArticle(
-  content: StaticHelpContent,
-  slug: string
+    content: StaticHelpContent,
+    slug: string
 ): HelpArticle & { wordCount: number; estimatedReadingMinutes: number } | null {
-  return content.articles.find((a) => a.slug === slug) || null;
+    return content.articles.find((a) => a.slug === slug) || null;
 }
 
 /**
  * Get related articles from static content
  */
 export function getStaticRelatedArticles(
-  content: StaticHelpContent,
-  relatedSlugs: string[]
-): Array<HelpArticle & { "slug": string; "title": string; "subtitle": string; "category": string }> {
-  const slugSet = new Set(relatedSlugs);
-  return content.articles
-    .filter((a) => slugSet.has(a.slug))
-    .map((a) => ({
-      slug: a.slug,
-      title: a.title,
-      subtitle: a.subtitle ?? null,
-      category: a.category,
-    }));
+    content: StaticHelpContent,
+    relatedSlugs: string[]
+): Array<Pick<HelpArticle, "slug" | "title" | "subtitle" | "category">> {
+    const slugSet = new Set(relatedSlugs);
+    return content.articles
+        .filter((a) => slugSet.has(a.slug))
+        .map((a) => ({
+            slug: a.slug,
+            title: a.title,
+            subtitle: a.subtitle ?? null,
+            category: a.category,
+        }));
 }
 
 /**
  * Clear cached content (useful for testing or forced reload)
  */
 export function clearStaticHelpCache(): void {
-  cachedContent = null;
-  loadAttempted = false;
-  loadError = null;
-  inFlightLoad = null;
+    cachedContent = null;
+    loadAttempted = false;
+    loadError = null;
+    inFlightLoad = null;
 }

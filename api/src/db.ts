@@ -118,7 +118,7 @@ export async function getRawDb(): Promise<Db> {
 
     const dbName = process.env.MONGODB_DB ?? process.env.MONGODB_DB_NAME ?? undefined;
 
-    connectPromise = async () => {
+    connectPromise = (async () => {
         const client = new MongoClient(uri, {
             maxPoolSize: 10,
             minPoolSize: 1, // keep one connection warm between requests

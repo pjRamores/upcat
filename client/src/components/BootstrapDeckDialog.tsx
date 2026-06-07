@@ -24,7 +24,7 @@ export default function BootstrapDeckDialog({
     const [count, setCount] = useState(5);
     const [loading, setLoading] = useState(false);
 
-    const handleGenerate = async () => {
+    const handleGenerate = (async () => {
         const finalCount = Math.max(1, Math.min(50, Math.floor(count)));
         setLoading(true);
         try {

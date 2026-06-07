@@ -30,7 +30,7 @@ export async function loadStaticAuthProviders(
     if (loadAttempted && loadError) return null;
     if (inFlight) return inFlight;
 
-    inFlight = async () => {
+    inFlight = (async () => {
         try {
             const res = await fetch("/data/auth-providers.json", {
                 cache: "no-store",

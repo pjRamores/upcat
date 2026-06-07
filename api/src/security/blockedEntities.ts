@@ -35,7 +35,7 @@ async function loadActive(): Promise<CompiledBlock[]> {
     if (cache.length && now - loadedAt < CACHE_MS) return cache;
     if (inflight) return inflight;
 
-    inflight = async () => {
+    inflight = (async () => {
         const db = await getDb();
         const rows = (await db)
             .collection("blocked_entities")

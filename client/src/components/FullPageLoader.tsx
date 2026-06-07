@@ -7,7 +7,7 @@ import Spinner from "@/components/Spinner";
 export default function FullPageLoader({
                                            label = "Loading...",
                                        }: {
-    label?: string
+    label?: string;
 }) {
     return (
         <div
