@@ -1,4 +1,4 @@
-import {ContextualHelpPoint, OnboardingFlow,} from "@upcat/shared";
+import type {ContextualHelpPoint, OnboardingFlow,} from "@upcat/shared";
 import {API_ROUTES} from "@upcat/shared";
 import apiClient from "@/lib/api";
 import {
@@ -15,7 +15,7 @@ function hasUsableStaticContent(content: { categories?: unknown[]; articles?: un
     return categoryCount > 0 || articleCount > 0;
 }
 
-async function unwrap<T>(promise: Promise<{ data: { data:T }}>): Promise<T> {
+async function unwrap<T>(promise: Promise<{ data: { data: }}>): Promise<T> {
     const {data} = await promise;
     return data.data;
 }
@@ -230,150 +230,139 @@ export const helpApi = {
             limit,
             categories: [],
         };
+    },
 
-        /**
-         * Get article detail from static snapshot only.
-         */
-        getArticle: async (slug: string) => {
-            // Try static content first
-            const staticContent = await loadStaticHelpContent();
-            if (staticContent) {
-                try {
-                    const article = getStaticArticle(staticContent, slug);
-                    if (article) {
-                        const relatedArticles = article.relatedArticles
-                            ? getStaticRelatedArticles(staticContent, article.relatedArticles)
-                            : [];
+    /**
+     * Get article detail from static snapshot only.
+     */
+    getArticle: async (slug: string) => {
+        // Try static content first
+        const staticContent = await loadStaticHelpContent();
+        if (staticContent) {
+            try {
+                const article = getStaticArticle(staticContent, slug);
+                if (article) {
+                    const relatedArticles = article.relatedArticles
+                        ? getStaticRelatedArticles(staticContent, article.relatedArticles)
+                        : [];
 
-                        return {
-                            article,
-                            relatedArticles,
-                        };
-                    }
-                } catch (error) {
-                    console.warn("[HelpContent] Static article detail failed", error);
+                    return {
+                        article,
+                        relatedArticles,
+                    };
                 }
+            } catch (error) {
+                console.warn("[HelpContent] Static article detail failed", error);
             }
+        }
 
-            throw new Error("Static help content unavailable");
-        },
+        throw new Error("Static help content unavailable");
+    },
 
-        /**
-         * Get categories from static snapshot only.
-         */
-        categories: async () => {
-            // Try static content first
-            const staticContent = await loadStaticHelpContent();
-            if (staticContent && hasUsableStaticContent(staticContent)) {
-                try {
-                    return staticContent.categories.map((cat) => ({
-                        category: cat.category,
-                        name: cat.name,
-                        description: cat.description,
-                        icon: cat.icon,
-                    }));
-                } catch (error) {
-                    console.warn("[HelpContent] Static categories failed", error);
-                }
-            } else if (staticContent) {
-                console.info("[HelpContent] Static snapshot is empty for categories");
+    /**
+     * Get categories from static snapshot only.
+     */
+    categories: async () => {
+        // Try static content first
+        const staticContent = await loadStaticHelpContent();
+        if (staticContent && hasUsableStaticContent(staticContent)) {
+            try {
+                return staticContent.categories.map((cat) => ({
+                    category: cat.category,
+                    name: cat.name,
+                    description: cat.description,
+                    icon: cat.icon,
+                }));
+            } catch (error) {
+                console.warn("[HelpContent] Static categories failed", error);
             }
+        } else if (staticContent) {
+            console.info("[HelpContent] Static snapshot is empty for categories");
+        }
 
-            return [];
-        },
-                feedback
-        :
-            (slug: string, payload: { helpful: boolean; comment?: string }) => unwrap<{
-                recorded: true
-            }>(apiClient.post(API_ROUTES.HELP.ARTICLE_FEEDBACK(slug), payload)),
+        return [];
+    },
 
-                /**
-                 * Search static snapshot only.
-                 */
-                search
-        :
-            async (q: string) => {
-// Try static content first
-                const staticContent = await loadStaticHelpContent();
-                if (staticContent && hasUsableStaticContent(staticContent)) {
-                    try {
-                        const items = searchStaticArticles(staticContent, q);
-                        return {items};
-                    } catch (error) {
-                        console.warn("[HelpContent] Static search failed", error);
-                    }
-                } else if (staticContent) {
-                    console.info("[HelpContent] Static snapshot is empty for search");
-                }
+    feedback: (slug: string, payload: { helpful: boolean; comment?: string }) =>
+        unwrap<{ recorded: true }>(apiClient.post(API_ROUTES.HELP.ARTICLE_FEEDBACK(slug), payload)),
 
-                return {items: []};
-            },
-                contextual
-        :
-            (page: string) => unwrap<{ items: ContextualHelpPoint[]; isNewUser: boolean }>({
-                apiClient.get(API_ROUTES.HELP.CONTEXTUAL, {params: {page}}),
+    /**
+     * Search static snapshot only.
+     */
+    search: async (q: string) => {
+        // Try static content first
+        const staticContent = await loadStaticHelpContent();
+        if (staticContent && hasUsableStaticContent(staticContent)) {
+            try {
+                const items = searchStaticArticles(staticContent, q);
+                return {items};
+            } catch (error) {
+                console.warn("[HelpContent] Static search failed", error);
+            }
+        } else if (staticContent) {
+            console.info("[HelpContent] Static snapshot is empty for search");
+        }
+
+        return {items: []};
+    },
+
+    contextual: (page: string) =>
+        unwrap<{ items: ContextualHelpPoint[]; isNewUser: boolean }>(
+            apiClient.get(API_ROUTES.HELP.CONTEXTUAL, {params: {page}}),
+        ),
+
+    dismissContextual: (id: string) =>
+        unwrap<{ dismissed: true }>(apiClient.post(API_ROUTES.HELP.CONTEXTUAL_DISMISS(id))),
+
+    onboardingFlow: (flowId: string, params: { page?: string; manual?: boolean } = {}) =>
+        unwrap<{ flow: OnboardingFlow }>(
+            apiClient.get(API_ROUTES.HELP.ONBOARDING(flowId), {
+                params: {
+                    page: params.page,
+                    manual: params.manual ? "1" : undefined,
+                },
             }),
-                dismissContextual
-        :
-            (id: string) =>
-                unwrap<{ dismissed: true }>(apiClient.post(API_ROUTES.HELP.CONTEXTUAL_DISMISS(id))),
-                onboardingFlow
-        :
-            (flowId: string, params: { page?: string; manual?: boolean } = {}) => (
-                unwrap<OnboardingFlow>({
-                    apiClient.get(API_ROUTES.HELP.ONBOARDING(flowId), {
-                        params: {
-                            page: params.page,
-                            manual: params.manual ? "1" : undefined,
-                        },
-                    }),
-                ),
-                    completeOnboarding
-        :
-            (flowId: string, payload: { completed: boolean; stepsCompleted: number }) => (
-                unwrap<{ recorded: true }>(apiClient.post(API_ROUTES.HELP.ONBOARDING_COMPLETE(flowId), payload)),
-                    skipOnboarding
-        :
-            (flowId: string, payload: { stepsCompleted: number }) => (
-                unwrap<{ skipped: true }>(apiClient.post(API_ROUTES.HELP.ONBOARDING_SKIP(flowId), payload)),
-            ),
-                checkOnboarding
-        :
-            async (page: string) => {
-                const normalizedPage = normalizePage(page);
-                if (!shouldCheckOnboardingForPage(normalizedPage)) {
-                    return {items: []};
-                }
+        ),
 
-                const userId = await getCurrentUserId();
-                if (!userId) {
-                    // Skip network call on unauthenticated pages like /login.
-                    return {items: []};
-                }
+    completeOnboarding: (flowId: string, payload: { completed: boolean; stepsCompleted: number }) =>
+        unwrap<{ recorded: true }>(apiClient.post(API_ROUTES.HELP.ONBOARDING_COMPLETE(flowId), payload)),
 
-                // Check cache first
-                const cached = getCachedOnboardingCheck(userId, normalizedPage);
-                if (cached) {
-                    return cached;
-                }
+    skipOnboarding: (flowId: string, payload: { stepsCompleted: number }) =>
+        unwrap<{ skipped: true }>(apiClient.post(API_ROUTES.HELP.ONBOARDING_SKIP(flowId), payload)),
 
-                // Fetch from API
-                const response = await unwrap < items
-            :
-                Array < {flowId: string; triggerCondition: string; reason: string} >>> (
-                    apiClient.get(API_ROUTES.HELP.ONBOARDING_CHECK, {params: {page: normalizedPage}}),
-                );
+    checkOnboarding: async (page: string) => {
+        const normalizedPage = normalizePage(page);
+        if (!shouldCheckOnboardingForPage(normalizedPage)) {
+            return {items: []};
+        }
 
-                // Cache the response
-                setCachedOnboardingCheck(userId, normalizedPage, response);
+        const userId = await getCurrentUserId();
+        if (!userId) {
+            // Skip network call on unauthenticated pages like /login.
+            return {items: []};
+        }
 
-                return response;
-            },
-                updatePreferences
-        :
-            (payload: {
-                showTooltips?: boolean;
-                showOnboarding?: boolean;
-                reducedHelp?: boolean;
-                resetDismissed?: boolean;
-            }) => unwrap<{ updated: true }>(apiClient.put(API_ROUTES.HELP.PREFERENCES, payload)),
+        // Check cache first
+        const cached = getCachedOnboardingCheck(userId, normalizedPage);
+        if (cached) {
+            return cached;
+        }
+
+        // Fetch from API
+        const response = await unwrap<{ items: Array<{ flowId: string; triggerCondition: string; reason: string }> }>(
+            apiClient.get(API_ROUTES.HELP.ONBOARDING_CHECK, {params: {page: normalizedPage}}),
+        );
+
+        // Cache the response
+        setCachedOnboardingCheck(userId, normalizedPage, response);
+
+        return response;
+    },
+
+    updatePreferences: (payload: {
+        showTooltips?: boolean;
+        showOnboarding?: boolean;
+        reducedHelp?: boolean;
+        resetDismissed?: boolean;
+    }) => unwrap<{ updated: true }>(apiClient.put(API_ROUTES.HELP.PREFERENCES, payload)),
+};
