@@ -265,12 +265,12 @@ function SubjectBar({
     return (
         <div>
             <div className="mb-1 flex items-center justify-between text-sm">
-                <span className="font-medium text-gray-800">
-                    {meta.icon} {meta.label}
-                </span>
-                        <span className="text-gray-600">
-                    {(stats.correct) / (stats.total)} • <strong>{pct}%</strong>
-                </span>
+        <span className="font-medium text-gray-800">
+            {meta.icon} {meta.label}
+        </span>
+                <span className="text-gray-600">
+            {(stats.correct)/(stats.total)} • <strong>{pct}%</strong>
+        </span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
                 <div
@@ -313,7 +313,7 @@ function CircularScore({percentage, color}: { percentage: number; color: string 
                 />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-4xl font-bold text-gray-900">{percentage}</span>
+                <span className="text-4xl font-bold text-gray-900">{percentage}%</span>
                 <span className="text-xs text-gray-500">overall</span>
             </div>
         </div>
