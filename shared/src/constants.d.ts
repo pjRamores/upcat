@@ -1313,7 +1313,7 @@ export declare const API_ROUTES_V15: {
     };
 };
 export declare const CRON_SCHEDULES_V15: {
-    readonly threatScoreDecay: "0 * * * * *";
+    readonly threatScoreDecay: "0 * * * *";
     readonly expiredBlocksCleanup: "*/15 * * * *";
     readonly securityReport: "0 0 * * *";
     readonly staleSessionCleanup: "0 */6 * * *";
