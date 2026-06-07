@@ -267,7 +267,7 @@ export const DEFAULT_FEATURE_GATING = [
     { id: "priority_support", name: "Priority Support Tickets", description: "Get prioritized support queue.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
     { id: "custom_presets", name: "Saved Practice Presets", description: "Save custom practice presets.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 2, premium: null }, limitPeriod: "total" },
     { id: "review_all_questions", name: "Review All Exam Questions", description: "Review all previously answered exam questions.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: null }, limitPeriod: "total" },
-    { id: "predicted_score", name: "Predicted UPCAT Score", description: "Predicted UPCAT score analytics.", category: "analytics",  hasLimit: false, limits: null, limitPeriod: null },
+    { id: "predicted_score", name: "Predicted UPCAT Score", description: "Predicted UPCAT score analytics.", category: "analytics",  accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
     { id: "percentile_ranking", name: "Percentile Ranking", description: "Percentile view on leaderboard.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
     { id: "video_ad_skip", name: "Skip Video Ads", description: "Bypass interstitial video ads.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
     { id: "blog_full_access", name: "Full Blog Article Access", description: "Read all blog content without monthly cap.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 3, premium: null }, limitPeriod: "monthly" },
@@ -783,7 +783,7 @@ export const ACHIEVEMENT_CATALOG_SEED = [
     { id: "quadruple_threat", category: "mastery", rarity: "legendary", title: "Quadruple Threat", description: "Reach level 50.", icon: "swords", xpReward: 2000, points: 500, condition: { kind: "levelReached", gte: 50 } },
     // --- Performance/Mastery hybrids (level + accuracy) ---
     { id: "level_10", category: "milestone", rarity: "uncommon", title: "Sophomore", description: "Reach level 10.", icon: "chevron-up", xpReward: 100, points: 25, condition: { kind: "levelReached", gte: 10 } },
-    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up", xpReward: 300, points: .75, condition: { kind: "levelReached", gte: 25 } },
+    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up", xpReward: 300, points: 75, condition: { kind: "levelReached", gte: 25 } },
     { id: "level_50", category: "milestone", rarity: "epic", title: "Achiever", description: "Reach level 50.", icon: "trending-up", xpReward: 750, points: 200, condition: { kind: "levelReached", gte: 50 } },
     { id: "level_100", category: "milestone", rarity: "legendary", title: "UPCAT Champion", description: "Reach the max level of 100.", icon: "crown", xpReward: 5000, points: 1000, condition: { kind: "levelReached", gte: 100 } },
     // --- Practice / SRS-related (still meaningful even before SRS UI ships)
@@ -792,8 +792,8 @@ export const ACHIEVEMENT_CATALOG_SEED = [
     { id: "review_perfectionist", category: "performance", rarity: "uncommon", title: "Reviewer", description: "Answer 100 questions correctly.", icon: "check-check", xpReward: 150, points: 40, condition: { kind: "correctAnswers", gte: 100 } },
 ];
 export const WEEKLY_CHALLENGE_CATALOG_SEED = [
-    { id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: .3, xpReward: 250, weight: 10 },
-    { id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: .5, xpReward: 500, weight: 6 },
+    { id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: 3, xpReward: 250, weight: 10 },
+    { id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: 5, xpReward: 500, weight: 6 },
     { id: "weekly_correct_100", title: "Hundred Correct", description: "Answer 100 questions correctly this week.", metric: "questions_correct", target: 100, xpReward: 300, weight: 8 },
     { id: "weekly_correct_250", title: "Quarter Champion", description: "Answer 250 questions correctly this week.", metric: "questions_correct", target: 250, xpReward: 700, weight: 4 },
     { id: "weekly_minutes_120", title: "Two-Hour Focus", description: "Study for 120 minutes this week.", metric: "study_minutes", target: 120, xpReward: 250, weight: 9 },
