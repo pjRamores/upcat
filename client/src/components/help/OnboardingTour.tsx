@@ -119,7 +119,7 @@ export default function OnboardingTour() {
 
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) {
-            setStorageChecked(false);
+            setStorageChecked(true);
             return;
         }
 
@@ -130,11 +130,11 @@ export default function OnboardingTour() {
                     .onboardingFlow(parsed.flowId, {page: location.pathname, manual: true})
                     .then((result) => {
                         setFlow(normalizeOnboardingFlow(result.flow));
-                        setStepIndex(Math.max(0, result.stepIndex));
+                        setStepIndex(Math.max(0, parsed.stepIndex));
                         setCompletedSteps(parsed.completedSteps ?? []);
                         setStorageChecked(true);
                     })
-                    .catch((e) => {
+                    .catch(() => {
                         localStorage.removeItem(STORAGE_KEY);
                         setStorageChecked(true);
                     });
@@ -148,7 +148,7 @@ export default function OnboardingTour() {
     }, [isAuthenticated, isAdminPreview, isOwnerInstance, location.pathname]);
 
     useEffect(() => {
-        if (!isOwnerInstance || ! storageChecked) return;
+        if (!isOwnerInstance || !storageChecked) return;
         if (!isAuthenticated || (isAdmin && !isAdminPreview) || flow || hidden) return;
 
         let cancelled = false;
@@ -158,9 +158,9 @@ export default function OnboardingTour() {
                 if (cancelled || !result.items.length) return;
                 const candidate = result.items[0];
                 if (!candidate) return;
-                const data = await helpApi.onboardingFlow(candidate.flowId, {page: location.pathname})
+                const data = await helpApi.onboardingFlow(candidate.flowId, {page: location.pathname});
                 if (!cancelled) {
-                    setFlow(normalizeOnboardingFlow(result.flow));
+                    setFlow(normalizeOnboardingFlow(data.flow));
                     setStepIndex(0);
                     setCompletedSteps([]);
                 }
@@ -192,7 +192,7 @@ export default function OnboardingTour() {
             } else if (event.key === "ArrowRight") {
                 void next();
             } else if (event.key === "ArrowLeft") {
-                setStepIndex((prev) => Math.max(0, prev - 1))
+                setStepIndex((prev) => Math.max(0, prev - 1));
             }
         };
         window.addEventListener("keydown", onKey);
@@ -206,7 +206,6 @@ export default function OnboardingTour() {
 
     useEffect(() => {
         if (!step?.target.page) return;
-
         if (location.pathname !== step.target.page) {
             navigate(step.target.page);
         }
@@ -316,7 +315,6 @@ export default function OnboardingTour() {
                 await complete(true, updatedCompletedSteps.length, step.primaryAction.navigateTo);
             }
             return;
-
         }
 
         if (step.primaryAction.action === "dismiss") {
@@ -366,20 +364,22 @@ export default function OnboardingTour() {
     if (!isOwnerInstance || !flow || !step) return null;
 
     const hasSpotlight = step.target.type === "element" && spotlightRect;
-    const requiresInteraction = step.waitForInteraction && !step.target.selector;
+    const requiresInteraction = step.waitForInteraction && !!step.target.selector;
     const nextDisabled = requiresInteraction && !stepInteracted;
-    const nextLabel = flow._id === "new_user_tour" && step.primaryAction.action === "navigate"
-        ? "Finish Tour"
-        : (step.primaryAction.label || "Next");
+    const nextLabel =
+        flow._id === "new_user_tour" && step.primaryAction.action === "navigate"
+            ? "Finish Tour"
+            : (step.primaryAction.label || "Next");
 
     return createPortal(
         <div className="pointer-events-none fixed inset-0 z-[90]" role="dialog" aria-modal="true"
              aria-label={flow.name}>
             <div
                 className={`absolute inset-0 bg-black/60 ${step.waitForInteraction ? "pointer-events-none" : "pointer-events-auto"}`}>
+
             {hasSpotlight && (
                 <div
-                    className="pointer-events-none absolute rounded-xl border-2 border-primary-300 shadow-[0_0_200vmax_rgba(0,0,0,0.55)] transition-all duration-300"
+                    className="pointer-events-none absolute rounded-xl border-2 border-primary-300 shadow-[0_0_0_200vmax_rgba(0,0,0,0.55)] transition-all duration-300"
                     style={{
                         top: spotlightRect.top,
                         left: spotlightRect.left,
@@ -390,15 +390,15 @@ export default function OnboardingTour() {
             )}
 
             <div
-                className="pointer-events-auto absolute inset-x-0 bottom-0 mx-auto w-full max-w-md p-4 sm:bottom-auto sm:left-1/2 sm:right-1/2 sm:-translate-x-1/2 sm:p-0">
+                className="pointer-events-auto absolute inset-x-0 bottom-0 mx-auto w-full max-w-md p-4 sm:bottom-auto sm:left-1/2 sm:top-16 sm:-translate-x-1/2 sm:p-0">
                 <section className="rounded-xl bg-white p-4 shadow-2xl">
                     <div className="mb-2 flex items-center justify-between gap-2">
                         <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
                             Step {stepIndex + 1} of {flow.steps.length}
                         </p>
-                        <button type="button" onClick={() => void skip()}>
-                            <span
-                                className="text-xs text-slate-500 hover:underline">Skip Tour</span>
+                        <button type="button" onClick={() => void skip()}
+                                className="text-xs text-slate-500 hover:underline">
+                            Skip Tour
                         </button>
                     </div>
                     <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
@@ -421,13 +421,13 @@ export default function OnboardingTour() {
                             type="button"
                             onClick={() => void next()}
                             disabled={nextDisabled}
-                            className="rounded:bg-primary-600.px-3.py-2.text-sm.font-semibold.text-white.hover:bg-primary-700.disabled:cursor-not-allowed.disabled:bg-slate-400"
+                            className="rounded bg-primary-600 px-3 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:bg-slate-400"
                         >
                             {nextLabel}
                         </button>
                     </div>
                     {nextDisabled &&
-                        <p className="mt-2.text-right.text-xs.text-slate-600">Interact with the highlighted area
+                        <p className="mt-2 text-right text-xs text-slate-600">Interact with the highlighted area
                             to continue.</p>}
                 </section>
             </div>
@@ -435,3 +435,4 @@ export default function OnboardingTour() {
         document.body,
     );
 }
+
