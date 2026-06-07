@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import apiClient from "@lib/api";
+import apiClient from "@/lib/api";
 import API_ROUTES from "@upcat/shared";
 import Spinner from "@/components/Spinner";
 import Seo from "@/components/Seo";

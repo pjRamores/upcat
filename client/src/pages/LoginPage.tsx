@@ -1,5 +1,5 @@
 import { type FormEvent, useEffect, useState } from "react";
-import apiClient from "@lib/api";
+import apiClient from "@/lib/api";
 import { useAuthStore } from "@/stores/authStore";
 import { useToastStore } from "@/stores/toastStore";
 import { setCachedOnboardingCheck } from "@lib/helpApi";

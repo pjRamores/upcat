@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import apiClient from "@lib/api";
+import apiClient from "@/lib/api";
 import {
   checkServerStatus,
   recoverSession,

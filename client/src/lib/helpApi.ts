@@ -1,12 +1,12 @@
-import {ContextualHelpPoint, OnboardingFlow} from "@upcat/shared";
+import {ContextualHelpPoint, OnboardingFlow,} from "@upcat/shared";
 import {API_ROUTES} from "@upcat/shared";
-import apiClient from "@lib/api";
+import apiClient from "@/lib/api";
 import {
     getStaticArticle,
     getStaticCategories,
     getStaticRelatedArticles,
     loadStaticHelpContent,
-    searchStaticArticles
+    searchStaticArticles,
 } from "./staticHelpContent";
 
 function hasUsableStaticContent(content: { categories?: unknown[]; articles?: unknown[] }): boolean {
@@ -15,7 +15,7 @@ function hasUsableStaticContent(content: { categories?: unknown[]; articles?: un
     return categoryCount > 0 || articleCount > 0;
 }
 
-async function unwrap<T>(promise: Promise<{ data: T }>): Promise<T> {
+async function unwrap<T>(promise: Promise<{ data: { data:T }}>): Promise<T> {
     const {data} = await promise;
     return data.data;
 }
@@ -84,7 +84,7 @@ async function getCurrentUserId(): Promise<string | null> {
 
 function getCachedOnboardingCheck(
     userId: string,
-    page: string
+    page: string,
 ): { items: Array<{ flowId: string; triggerCondition: string; reason: string }> } | null {
     const cache = readOnboardingCheckCache();
     const normalizedPage = normalizePage(page);
@@ -102,21 +102,17 @@ function getCachedOnboardingCheck(
         if (Object.keys(userCache).length === 0) {
             delete cache[userId];
         }
+        writeOnboardingCheckCache(cache);
+        return null;
     }
 
-    return {items: entry.items};
+    return entry.data;
 }
-
-writeOnboardingCheckCache(cache);
-return null;
-}
-
-return entry.data;
 
 function setCachedOnboardingCheck(
     userId: string,
     page: string,
-    data: { items: Array<{ flowId: string; triggerCondition: string; reason: string }>; },
+    data: { items: Array<{ flowId: string; triggerCondition: string; reason: string }> },
 ): void {
     const cache = readOnboardingCheckCache();
     const normalizedPage = normalizePage(page);
@@ -173,9 +169,12 @@ export const helpApi = {
     /**
      * List articles from static snapshot only.
      */
-    listArticles: async (params: { category?: string; search?: string; page?: number; limit?: number }): Promise<{
-        items: { slug: string; title: string; subtitle: string; category: string }[]
-    }> => {
+    listArticles: async (params: {
+        category?: string;
+        search?: string;
+        page?: number;
+        limit?: number;
+    } = {}) => {
         const limit = params.limit ?? 20;
         const page = params.page ?? 1;
 
@@ -211,72 +210,77 @@ export const helpApi = {
                         faqs: (a as any).faqs || null,
                         lastUpdatedAt: (a as any).lastUpdatedAt,
                         estimatedReadingMinutes: a.estimatedReadingMinutes,
-                        total, page, limit, categories: getStaticCategories(staticContent),
-                    };
-                }
-            catch
-                (error)
-                {
-                    console.warn("[HelpContent] Static list failed", error);
-                }
+                    })),
+                    total,
+                    page,
+                    limit,
+                    categories: getStaticCategories(staticContent),
+                };
+            } catch (error) {
+                console.warn("[HelpContent] Static list failed", error);
             }
-        else
+        } else if (staticContent) {
+            console.info("[HelpContent] Static snapshot is empty for listArticles");
+        }
+
+        return {
+            items: [],
+            total: 0,
+            page,
+            limit,
+            categories: [],
+        };
+
+        /**
+         * Get article detail from static snapshot only.
+         */
+        getArticle: async (slug: string) => {
+            // Try static content first
+            const staticContent = await loadStaticHelpContent();
             if (staticContent) {
-                console.info("[HelpContent] Static snapshot is empty for listArticles");
+                try {
+                    const article = getStaticArticle(staticContent, slug);
+                    if (article) {
+                        const relatedArticles = article.relatedArticles
+                            ? getStaticRelatedArticles(staticContent, article.relatedArticles)
+                            : [];
+
+                        return {
+                            article,
+                            relatedArticles,
+                        };
+                    }
+                } catch (error) {
+                    console.warn("[HelpContent] Static article detail failed", error);
+                }
             }
 
-            return {
-                items: [], total: 0, page, limit, categories: [],
-            };
+            throw new Error("Static help content unavailable");
+        },
 
-            /**
-             * Get article detail from static snapshot only.
-             */
-            getArticle: async (slug: string) => {
-// Try static content first
-                const staticContent = await loadStaticHelpContent();
-                if (staticContent) {
-                    try {
-                        const article = getStaticArticle(staticContent, slug);
-                        if (article) {
-                            const relatedArticles = article.relatedArticles
-                                ? getStaticRelatedArticles(staticContent, article.relatedArticles)
-                                : [];
-                            return {article, relatedArticles};
-                        }
-                    } catch (error) {
-                        console.warn("[HelpContent] Static article detail failed", error);
-                    }
+        /**
+         * Get categories from static snapshot only.
+         */
+        categories: async () => {
+            // Try static content first
+            const staticContent = await loadStaticHelpContent();
+            if (staticContent && hasUsableStaticContent(staticContent)) {
+                try {
+                    return staticContent.categories.map((cat) => ({
+                        category: cat.category,
+                        name: cat.name,
+                        description: cat.description,
+                        icon: cat.icon,
+                    }));
+                } catch (error) {
+                    console.warn("[HelpContent] Static categories failed", error);
                 }
+            } else if (staticContent) {
+                console.info("[HelpContent] Static snapshot is empty for categories");
+            }
 
-                throw new Error("Static help content unavailable");
-            },
-
-                /**
-                 * Get categories from static snapshot only.
-                 */
-                categories
-        :
-            async () => {
-// Try static content first
-                const staticContent = await loadStaticHelpContent();
-                if (staticContent && hasUsableStaticContent(staticContent)) {
-                    try {
-                        return staticContent.categories.map((cat) => ({
-                            category: cat.category,
-                            name: cat.name,
-                            description: cat.description,
-                            icon: cat.icon,
-                        }));
-                    } catch (error) {
-                        console.warn("[HelpContent] Static categories failed", error);
-                    }
-                } else if (staticContent) {
-                    console.info("[HelpContent] Static snapshot is empty for categories");
-                }
-
-                return [];
-            },
+            return [];
+        },
                 feedback
         :
             (slug: string, payload: { helpful: boolean; comment?: string }) => unwrap<{
