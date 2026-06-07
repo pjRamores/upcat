@@ -1,4 +1,4 @@
-import type { PublicAdsConfig } from "@upcat/shared";
+import type {PublicAdsConfig} from "@upcat/shared";
 
 export interface StaticAdsConfig {
     version: number;
@@ -30,11 +30,11 @@ export async function loadStaticAdsConfig(
     if (loadAttempted && loadError) return null;
     if (inFlight) return inFlight;
 
-    inFlight = async () => {
+    inFlight = (async () => {
         try {
             const res = await fetch("/data/ads-config.json", {
                 cache: "no-store",
-                headers: { Accept: "application/json" },
+                headers: {Accept: "application/json"},
             });
             if (!res.ok) {
                 loadError = new Error(`HTTP ${res.status}`);
@@ -59,7 +59,7 @@ export async function loadStaticAdsConfig(
             inFlight = null;
         }
     })();
-    
+
     return inFlight;
 }
 
