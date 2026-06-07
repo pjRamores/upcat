@@ -50,7 +50,7 @@ export interface PageSeoConfig {
 
 /** ---- Page registry ---------------------------------------------------- */
 
-const SITE_SUFFIX = "| UPCAT Simulator";
+const SITE_SUFFIX = " | UPCAT Simulator";
 
 export const PAGE_SEO: Record<string, PageSeoConfig> = {
     "/": {
@@ -81,7 +81,7 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         indexable: true,
         priority: 0.5,
         changefreq: "monthly",
-        breadcrumbs: [{ name: "Home", path: "/"}, { name: "Login", path: "/login"}],
+        breadcrumbs: [{name: "Home", path: "/"}, {name: "Login", path: "/login"}],
     },
     "/register": {
         path: "/register",
@@ -195,7 +195,7 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         title: "UPCAT Science Review & Practice" + SITE_SUFFIX,
         bareTitle: true,
         description:
-            "Strengthen your UPCAT Science score with biology, chemistry, physics, and earth science practice questions and scenario problems.",
+            "Strengthen your UPCAT Science score with biology, chemistry, physics, and earth-science practice questions and scenario problems.",
         keywords: ["UPCAT science reviewer", "UPCAT biology", "UPCAT physics"],
         indexable: true,
         priority: 0.8,
@@ -215,7 +215,7 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         keywords: [
             "UPCAT language proficiency",
             "UPCAT English reviewer",
-            "UPCAT Filipino reviewer"
+            "UPCAT Filipino reviewer",
         ],
         indexable: true,
         priority: 0.8,
@@ -223,19 +223,19 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         breadcrumbs: [
             {name: "Home", path: "/"},
             {name: "Subjects", path: "/"},
-            {name: "Language Proficiency", path: "/subjects/language-proficiency"}
-        ]
+            {name: "Language Proficiency", path: "/subjects/language-proficiency"},
+        ],
     },
     "/subjects/reading-comprehension": {
         path: "/subjects/reading-comprehension",
         title: "UPCAT Reading Comprehension Review & Practice" + SITE_SUFFIX,
         bareTitle: true,
         description:
-            "Sharpen your critical reading skills for the UPCAT with long-form passages and main idea, inference, and tone questions.",
+            "Sharpen your critical-reading skills for the UPCAT with long-form passages and main-idea, inference, and tone questions.",
         keywords: [
             "UPCAT reading comprehension tips",
             "UPCAT passages",
-            "UPCAT reviewer"
+            "UPCAT reviewer",
         ],
         indexable: true,
         priority: 0.8,
@@ -243,8 +243,8 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         breadcrumbs: [
             {name: "Home", path: "/"},
             {name: "Subjects", path: "/"},
-            {name: "Reading Comprehension", path: "/subjects/reading-comprehension"}
-        ]
+            {name: "Reading Comprehension", path: "/subjects/reading-comprehension"},
+        ],
     },
 
     /* Blog index -- individual post URLs are added dynamically to the sitemap. */
@@ -260,8 +260,8 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         changefreq: "weekly",
         breadcrumbs: [
             {name: "Home", path: "/"},
-            {name: "Blog", path: "/blog"}
-        ]
+            {name: "Blog", path: "/blog"},
+        ],
     },
 
     /* Private / auth pages -- kept here so SEOHead can read defaults
@@ -312,14 +312,14 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
         path: "/results/:sessionId",
         title: "Exam Results" + SITE_SUFFIX,
         bareTitle: true,
-        description: "Your UPCAT mock exam results.",
+        description: "Your UPCAT mock-exam results.",
         indexable: false,
     },
     "/review/:sessionId": {
         path: "/review/:sessionId",
         title: "Review Exam" + SITE_SUFFIX,
         bareTitle: true,
-        description: "Review your UPCAT mock exam answers.",
+        description: "Review your UPCAT mock-exam answers.",
         indexable: false,
     },
     "/practice/:sessionId": {
@@ -387,14 +387,14 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
     },
 };
 
-/** Convenience - ordered list of indexable canonical paths (no dynamic segments). */
+/** Convenience: ordered list of indexable canonical paths (no dynamic segments). */
 export function listIndexablePaths(): PageSeoConfig[] {
     return Object.values(PAGE_SEO).filter(
         (cfg) => cfg.indexable && !cfg.path.includes(":"),
     );
 }
 
-/** ---- Canonical URL helpers ---------------------------------------------- */
+/* ---- Canonical URL helpers ---------------------------------------------- */
 
 /** URL params that should NEVER appear in canonical URLs. */
 export const TRACKING_PARAM_PREFIXES = [
@@ -441,8 +441,9 @@ export function canonicalUrl(
     return normalizedSite + path + qs;
 }
 
-/** Database-backed override redirect types */
+/* Database-backed override redirect types */
 
+/** A per-path override of the default SEO metadata. */
 export interface SeoOverride {
     /** Canonical path key, e.g. "/", "/contact". Includes leading slash, no trailing. */
     path: string;
