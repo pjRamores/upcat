@@ -9,7 +9,6 @@ export interface User {
     isVerified: boolean;
     role: UserRole;
     isActive: boolean;
-
     /**
      * Premium-tier user flag. When true, ad placements and video interstitials
      * are suppressed across the app. Currently unused until a paid tier launches,
@@ -23,18 +22,11 @@ export interface User {
     deactivatedAt?: string | null;
     deactivatedBy?: string | null;
     notes?: string | null;
-
-    /**
-     * Whether this user has set a local password (separate from social login).
-     */
+    /** Whether this user has set a local password (separate from social login). */
     hasPassword?: boolean;
-    /**
-     * True when the user signed in via a social provider on the most recent login.
-     */
+    /** True when the user signed in via a social provider on the most recent login. */
     socialOnly?: boolean;
-    /**
-     * Account security flags surfaced to the client.
-     */
+    /** Account-security flags surfaced to the client. */
     security?: {
         hasRecoveryCodes: boolean;
         recoveryCodesGeneratedAt: string | null;
@@ -42,35 +34,20 @@ export interface User {
         lastPasswordChangeAt: string | null;
         lockedUntil: string | null;
     };
-
-    /**
-     * Outstanding data export / deletion requests for the user.
-     */
+    /** Outstanding data export / deletion requests for the user. */
     dataRequests?: {
         lastExportAt: string | null;
         pendingDeletionId: string | null;
     };
-
-    /**
-     * Phase-12 gamification block (populated for every user; defaults written on first read).
-     */
+    /** Phase-12 gamification block (populated for every user; defaults written on first read). */
     gamification?: UserGamificationBlock;
-
-    /**
-     * Help center + onboarding personalization state.
-     */
+    /** Help center + onboarding personalization state. */
     help?: UserHelpBlock;
-
-    /**
-     * Email marketing / newsletter opt-in preferences.
-     */
+    /** Email marketing / newsletter opt-in preferences. */
     emailPreferences?: {
-        /**
-         * Whether the user consents to receive newsletters, promotions, feature updates, and announcements. Defaults to true on account creation.
-         */
+        /** Whether the user consents to receive newsletters, promotions, feature updates, and announcements. Defaults to true on account creation. */
         marketing: boolean;
     };
-
     createdAt: string;
     updatedAt: string;
 }
@@ -125,11 +102,11 @@ export interface HelpArticle {
     updatedBy: string | null;
     viewCount: number;
     helpfulCount: number;
+    notHelpfulCount: number;
+    seoTitle: string | null;
+    seoDescription: string | null;
+    createdAt: string;
 }
-notHelpfulCount: number;
-seoTitle: string | null;
-seoDescription: string | null;
-createdAt: string;
 
 export interface HelpCategoryInfo {
     category: HelpCategory;
@@ -226,42 +203,45 @@ export interface UserHelpBlock {
 }
 
 // ─── Gamification on the User record ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-title: string;
-streak: {
-    current: number;
-    longest: number;
-    lastActiveDate: string | null; // YYYY-MM-DD (user local-ish; stored UTC date)
-    multiplier: number;
-};
-achievements: {
-    /** Unlocked catalog ids. */
-    unlocked: string[];
-    /** Progress map for achievements that track a counter (catalogId -> currentValue). */
-    progress: Record<string, number>;
-    /** Total achievement points awarded. */
-    points: number;
-    /** Achievements unlocked but not yet acknowledged by the user (for celebration UI). */
-    pendingNotification: string[];
-};
-weeklyChallenge?: {
-    challengeId: string;
-    assignedAt: string;
-    expiresAt: string;
-    progress: number;
-    target: number;
-    completed: boolean;
-    completedAt: string | null;
-    rewardClaimed: boolean;
-} | null;
-stats: {
-    examsCompleted: number;
-    perfectScores: number;
-    questionsAnswered: number;
-    correctAnswers: number;
-    practiceSessions: number;
-    totalStudyMinutes: number;
-    lastActiveAt: string | null;
-};
+export interface UserGamificationBlock {
+    xp: number;
+    level: number;
+    title: string;
+    streak: {
+        current: number;
+        longest: number;
+        lastActiveDate: string | null; // YYYY-MM-DD (user local-ish; stored UTC date)
+        multiplier: number;
+    };
+    achievements: {
+        /** Unlocked catalog ids. */
+        unlocked: string[];
+        /** Progress map for achievements that track a counter (catalogId -> currentValue). */
+        progress: Record<string, number>;
+        /** Total achievement points awarded. */
+        points: number;
+        /** Achievements unlocked but not yet acknowledged by the user (for celebration UI). */
+        pendingNotification: string[];
+    };
+    weeklyChallenge?: {
+        challengeId: string;
+        assignedAt: string;
+        expiresAt: string;
+        progress: number;
+        target: number;
+        completed: boolean;
+        completedAt: string | null;
+        rewardClaimed: boolean;
+    } | null;
+    stats: {
+        examsCompleted: number;
+        perfectScores: number;
+        questionsAnswered: number;
+        correctAnswers: number;
+        practiceSessions: number;
+        totalStudyMinutes: number;
+        lastActiveAt: string | null;
+    };
 }
 
 // --- Social / OIDC ---
@@ -298,7 +278,7 @@ export type PublicAuthProviders = Record<SocialProvider, PublicAuthProvider>;
 
 export interface AdminAuthProviderConfig {
     enabled: boolean;
-    clientId: string; // masked when returned ("****" or empty)
+    clientId: string;
     clientSecret: string; // masked when returned ("****" or empty)
     hasSecret: boolean;
     redirectUri: string;
@@ -330,114 +310,113 @@ export interface DeleteAccountPayload {
     /** Required: user must type the exact phrase to confirm. */
     confirmation: string;
     /** Required when the user has a local password. */
-}
-password?: string;
+    password?: string;
 }
 
 // --- Account recovery -------------------
 export interface GenerateRecoveryCodesResponse {
-  codes: string[];
-  message: string;
-  generatedAt: string;
+    codes: string[];
+    message: string;
+    generatedAt: string;
 }
 
 export interface RecoveryCodesStatus {
-  hasRecoveryCodes: boolean;
-  generatedAt: string | null;
-  unusedCount: number;
-  totalCount: number;
+    hasRecoveryCodes: boolean;
+    generatedAt: string | null;
+    unusedCount: number;
+    totalCount: number;
 }
 
 export interface RecoveryVerifyPayload {
-  email: string;
-  recoveryCode: string;
+    email: string;
+    recoveryCode: string;
 }
 
 export interface RecoveryVerifyResponse {
-  recoveryToken: string;
-  expiresInSeconds: number;
+    recoveryToken: string;
+    expiresInSeconds: number;
 }
 
 export interface RecoverAccountPayload {
-  action: "reset_password" | "set_password";
-  newPassword: string;
-  confirmPassword: string;
+    action: "reset_password" | "set_password";
+    newPassword: string;
+    confirmPassword: string;
 }
 
 export interface SecurityQuestionEntry {
-  question: string;
-  answer: string;
+    question: string;
+    answer: string;
 }
 
 export interface SetSecurityQuestionsPayload {
-  questions: SecurityQuestionEntry[];
+    questions: SecurityQuestionEntry[];
 }
 
 export interface SecurityQuestionsPublicResponse {
-  /** The three questions the user picked (no answers). */
-  questions: string[];
+    /** The three questions the user picked (no answers). */
+    questions: string[];
 }
 
 export interface VerifySecurityQuestionsPayload {
-  email: string;
-  answers: { questionIndex: number; answer: string }[];
+    email: string;
+    answers: { questionIndex: number; answer: string }[];
 }
 
 // --- Support tickets -------------------
 export type SupportTicketType =
-  | "account_recovery"
-  | "identity_dispute"
-  | "data_export"
-  | "data_deletion"
-  | "account_merge"
-  | "general_support";
+    | "account_recovery"
+    | "identity_dispute"
+    | "data_export"
+    | "data_deletion"
+    | "account_merge"
+    | "general_support";
 
-export type SupportTicketStatus = 
-  | "open"
-  | "in_progress"
-  | "awaiting_user"
-  | "resolved"
-  | "rejected";
+export type SupportTicketStatus =
+    | "open"
+    | "in_progress"
+    | "awaiting_user"
+    | "resolved"
+    | "rejected";
 
 export type SupportTicketPriority = "low" | "medium" | "high" | "critical";
 
 export type SupportTicketVerificationMethod =
-  | "email_otp"
-  | "security_questions"
-  | "document_upload"
-  | "admin_override";
+    | "email_otp"
+    | "security_questions"
+    | "document_upload"
+    | "admin_override";
 
-export type SupportTicketVerificationStatus = 
-  | "pending"
-  | "verified"
-  | "failed";
+export type SupportTicketVerificationStatus =
+    | "pending"
+    | "verified"
+    | "failed";
 
 export interface SupportTicketMessage {
-  _id: string;
-  sender: "user" | "admin" | "system";
-  senderName: string;
-  content: string;
-  createdAt: string;
-  isInternal: boolean;
+    _id: string;
+    sender: "user" | "admin" | "system";
+    senderName: string;
+    content: string;
+    createdAt: string;
+    isInternal: boolean;
 }
 
 export interface SupportTicketVerification {
-  method: SupportTicketVerificationMethod;
-  status: SupportTicketVerificationStatus;
-  verifiedAt: string | null;
-  verifiedBy: string | null;
-  attempts: number;
-  evidence: {
-    type: string;
-    description: string;
-    uploadedAt: string;
-    fileRef: string | null;
-  }[];
+    method: SupportTicketVerificationMethod;
+    status: SupportTicketVerificationStatus;
+    verifiedAt: string | null;
+    verifiedBy: string | null;
+    attempts: number;
+    evidence: {
+        type: string;
+        description: string;
+        uploadedAt: string;
+        fileRef: string | null;
+    }[];
 }
 
 export interface SupportTicketResolution {
-  action: string | null;
-  notes: string | null;
+    action: string | null;
+    notes: string | null;
 }
 export interface SupportTicket {
     _id: string;
