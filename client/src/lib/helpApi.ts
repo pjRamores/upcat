@@ -15,7 +15,7 @@ function hasUsableStaticContent(content: { categories?: unknown[]; articles?: un
     return categoryCount > 0 || articleCount > 0;
 }
 
-async function unwrap<T>(promise: Promise<{ data: { data: }}>): Promise<T> {
+async function unwrap<T>(promise: Promise<{ data: { data:T }}>): Promise<T> {
     const {data} = await promise;
     return data.data;
 }
