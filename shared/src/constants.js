@@ -251,26 +251,26 @@ export const DEFAULT_FEATURE_GATING = [
         limits: { free: 50, premium: 200 },
         limitPeriod: "total",
     },
-    { id: "immediate_feedback", name: "Immediate Feedback Mode", description: "See correctness immediately.", category: "practice", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "detailed_rationale", name: "Detailed Answer Rationale", description: "Read detailed explanation for answers.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "daily", },
-    { id: "subject_filter", name: "Subject/Topic Filtering", description: "Choose specific subjects and topics.", category: "practice", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "difficulty_filter", name: "Difficulty Configuration", description: "Customize question difficulty.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: 3 }, limitPeriod: "total", },
-    { id: "stats_basic", name: "Basic Statistics", description: "Core progress metrics.", category: "analytics", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "stats_advanced", name: "Advanced Analytics & Insights", description: "Deep performance analytics.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "stats_subject_drilldown", name: "Subject Drilldown Analytics", description: "Detailed per-subject analytics.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "weak_area_recommendations", name: "Weak Area Recommendations", description: "Personalized weak area recommendations.", category: "analytics", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "weekly", },
-    { id: "leaderboard_access", name: "Leaderboard Access", description: "View and compare rank with peers.", category: "social", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: 3 }, limitPeriod: "total", },
-    { id: "spaced_repetition", name: "Spaced Repetition Practice", description: "Adaptive spaced repetition cards.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 10, premium: null }, limitPeriod: "daily", },
-    { id: "exam_history_full", name: "Full Exam History", description: "Access full historical exam records.", category: "analytics", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "total", },
-    { id: "export_results", name: "Export Results (PDF/CSV)", description: "Export analytics and score reports.", category: "content", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "ad_free", name: "Ad-Free Experience", description: "Hide all ad placements.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "priority_support", name: "Priority Support Tickets", description: "Get prioritized support queue.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "custom_presets", name: "Saved Practice Presets", description: "Save custom practice presets.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 2, premium: null }, limitPeriod: "total", },
-    { id: "review_all_questions", name: "Review All Exam Questions", description: "Review all previously answered exam questions.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: null }, limitPeriod: "total", },
-    { id: "predicted_score", name: "Predicted UPCAT Score", description: "Predicted UPCAT score analytics.", category: "analytics",  hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "percentile_ranking", name: "Percentile Ranking", description: "Percentile view on leaderboard.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "video_ad_skip", name: "Skip Video Ads", description: "Bypass interstitial video ads.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null, },
-    { id: "blog_full_access", name: "Full Blog Article Access", description: "Read all blog content without monthly cap.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 3, premium: null }, limitPeriod: "monthly", },
+    { id: "immediate_feedback", name: "Immediate Feedback Mode", description: "See correctness immediately.", category: "practice", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "detailed_rationale", name: "Detailed Answer Rationale", description: "Read detailed explanation for answers.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "daily" },
+    { id: "subject_filter", name: "Subject/Topic Filtering", description: "Choose specific subjects and topics.", category: "practice", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "difficulty_filter", name: "Difficulty Configuration", description: "Customize question difficulty.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: 3 }, limitPeriod: "total" },
+    { id: "stats_basic", name: "Basic Statistics", description: "Core progress metrics.", category: "analytics", accessLevel: "all", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "stats_advanced", name: "Advanced Analytics & Insights", description: "Deep performance analytics.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "stats_subject_drilldown", name: "Subject Drilldown Analytics", description: "Detailed per-subject analytics.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "weak_area_recommendations", name: "Weak Area Recommendations", description: "Personalized weak area recommendations.", category: "analytics", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "weekly" },
+    { id: "leaderboard_access", name: "Leaderboard Access", description: "View and compare rank with peers.", category: "social", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: 3 }, limitPeriod: "total" },
+    { id: "spaced_repetition", name: "Spaced Repetition Practice", description: "Adaptive spaced repetition cards.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 10, premium: null }, limitPeriod: "daily" },
+    { id: "exam_history_full", name: "Full Exam History", description: "Access full historical exam records.", category: "analytics", accessLevel: "all", hasLimit: true, limits: { free: 5, premium: null }, limitPeriod: "total" },
+    { id: "export_results", name: "Export Results (PDF/CSV)", description: "Export analytics and score reports.", category: "content", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "ad_free", name: "Ad-Free Experience", description: "Hide all ad placements.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "priority_support", name: "Priority Support Tickets", description: "Get prioritized support queue.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "custom_presets", name: "Saved Practice Presets", description: "Save custom practice presets.", category: "practice", accessLevel: "all", hasLimit: true, limits: { free: 2, premium: null }, limitPeriod: "total" },
+    { id: "review_all_questions", name: "Review All Exam Questions", description: "Review all previously answered exam questions.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 1, premium: null }, limitPeriod: "total" },
+    { id: "predicted_score", name: "Predicted UPCAT Score", description: "Predicted UPCAT score analytics.", category: "analytics",  hasLimit: false, limits: null, limitPeriod: null },
+    { id: "percentile_ranking", name: "Percentile Ranking", description: "Percentile view on leaderboard.", category: "analytics", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "video_ad_skip", name: "Skip Video Ads", description: "Bypass interstitial video ads.", category: "experience", accessLevel: "premium", hasLimit: false, limits: null, limitPeriod: null },
+    { id: "blog_full_access", name: "Full Blog Article Access", description: "Read all blog content without monthly cap.", category: "content", accessLevel: "all", hasLimit: true, limits: { free: 3, premium: null }, limitPeriod: "monthly" },
 ];
 export const DEFAULT_PAYMENT_CONFIG = {
     _id: "global",
@@ -295,7 +295,7 @@ export const DEFAULT_PAYMENT_CONFIG = {
             name: "3 Months Premium",
             duration: 90,
             isLifetime: false,
-            price: .249,
+            price: 249,
             currency: "PHP",
             originalPrice: 297,
             description: "Full access for 90 days",
@@ -309,7 +309,7 @@ export const DEFAULT_PAYMENT_CONFIG = {
             name: "6 Months Premium",
             duration: 180,
             isLifetime: false,
-            price: .449,
+            price: 449,
             currency: "PHP",
             originalPrice: 594,
             description: "Full access for 180 days",
@@ -323,7 +323,7 @@ export const DEFAULT_PAYMENT_CONFIG = {
             name: "1 Year Premium",
             duration: 365,
             isLifetime: false,
-            price: .799,
+            price: 799,
             currency: "PHP",
             originalPrice: 1188,
             description: "Full access for 365 days",
@@ -498,7 +498,6 @@ export const SUPPORT_TICKET_TYPES = [
 ];
 export const SUPPORT_TICKET_TYPE_META = {
     account_recovery: {
-        script
         label: "Account Recovery",
         description: "I can't sign in / regain access.",
         icon: "🔗",
@@ -555,9 +554,10 @@ export const SUPPORT_AUTO_CLOSE_DAYS = 14;
 /** Guest support submission rate-limit. */
 export const SUPPORT_GUEST_RATE = { limit: 2, windowMs: 60 * 60000 };
 // --- Data requests
+
 export const DATA_EXPORT_TTL_HOURS = 24;
 /** Days from confirmation to scheduled deletion. */
-export const DATA_DELETION_GRACE_DAYS = .7;
+export const DATA_DELETION_GRACE_DAYS = 7;
 /** Hours the confirm-email link stays valid. */
 export const DATA_DELETION_CONFIRM_TTL_HOURS = 48;
 // --- Inactivity thresholds
@@ -570,15 +570,17 @@ export const CRON_SCHEDULES = {
     autoCloseStaleTickets: "0 3 * * *", // daily at 03:00
     accountInactivityCheck: "0 4 * * 0", // weekly Sunday at 04:00
 };
+
 // --- Phase 12 🎯 Gamification, Spaced Repetition, PWA
+
 // --- XP / Levels
 export const MAX_LEVEL = 100;
 /** XP required to *reach* a given level (cumulative). */
 export function xpRequiredForLevel(level) {
     if (level <= 1)
-    return 0;
+        return 0;
     if (level > MAX_LEVEL)
-    level = MAX_LEVEL;
+        level = MAX_LEVEL;
     return Math.floor(100 * Math.pow(level - 1, 1.5));
 }
 /** Compute level + bounds + title from a raw XP total. */
@@ -600,7 +602,6 @@ export function levelFromXp(xp) {
 export function titleForLevel(level) {
     if (level >= 100)
         return "UPCAT Champion";
-    script
     if (level >= 90)
         return "Legend";
     if (level >= 80)
@@ -639,14 +640,14 @@ export function streakMultiplier(days) {
 /** Base XP rewards (also exposed via platform_settings.gamification.xp). */
 export const XP_REWARDS = {
     EXAM_COMPLETED: 50,
-    PER_CORRECT: -2,
+    PER_CORRECT: 2,
     SCORE_ABOVE_80: 25,
     SCORE_ABOVE_90: 50,
     PERFECT_SCORE: 200,
     PERFECT_SUBJECT: 30,
     FIRST_EXAM: 100,
     DAILY_LOGIN: 10,
-    REVIEW_ALL_INCORRECT: -20,
+    REVIEW_ALL_INCORRECT: 20,
     PRACTICE_COMPLETED: 30,
     PRACTICE_PER_CORRECT: 2,
 };
@@ -699,7 +700,7 @@ export const PRACTICE_MODES = [
     "random",
 ];
 // --- PWA / Push --------------------------------
-export const PWA_INSTALL_DISMISS_DAYS = .7;
+export const PWA_INSTALL_DISMISS_DAYS = 7;
 export const PWA_INSTALL_MIN_VISITS = 3;
 export const OFFLINE_PREFETCH_LIMIT_DEFAULT = 100;
 export const PUSH_NOTIFICATION_TYPES = [
@@ -782,31 +783,32 @@ export const ACHIEVEMENT_CATALOG_SEED = [
     { id: "quadruple_threat", category: "mastery", rarity: "legendary", title: "Quadruple Threat", description: "Reach level 50.", icon: "swords", xpReward: 2000, points: 500, condition: { kind: "levelReached", gte: 50 } },
     // --- Performance/Mastery hybrids (level + accuracy) ---
     { id: "level_10", category: "milestone", rarity: "uncommon", title: "Sophomore", description: "Reach level 10.", icon: "chevron-up", xpReward: 100, points: 25, condition: { kind: "levelReached", gte: 10 } },
-    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up", xpReward: 300, points: .75, condition: { kind: "levelReached", gte: .25 }, },
-    { id: "level_50", category: "milestone", rarity: "epic", title: "Achiever", description: "Reach level 50.", icon: "trending-up", xpReward: 750, points: 200, condition: { kind: "levelReached", gte: .50 }, },
-    { id: "level_100", category: "milestone", rarity: "legendary", title: "UPCAT Champion", description: "Reach the max level of 100.", icon: "crown", xpReward: 5000, points: 1000, condition: { kind: "levelReached", gte: .100 }, },
+    { id: "level_25", category: "milestone", rarity: "rare", title: "Upperclassman", description: "Reach level 25.", icon: "chevrons-up", xpReward: 300, points: .75, condition: { kind: "levelReached", gte: 25 } },
+    { id: "level_50", category: "milestone", rarity: "epic", title: "Achiever", description: "Reach level 50.", icon: "trending-up", xpReward: 750, points: 200, condition: { kind: "levelReached", gte: 50 } },
+    { id: "level_100", category: "milestone", rarity: "legendary", title: "UPCAT Champion", description: "Reach the max level of 100.", icon: "crown", xpReward: 5000, points: 1000, condition: { kind: "levelReached", gte: 100 } },
     // --- Practice / SRS-related (still meaningful even before SRS UI ships)
-    { id: "practice_starter", category: "dedication", rarity: "common", title: "Practice Starter", description: "Complete your first practice session.", icon: "play", xpReward: 50, points: .10, condition: { kind: "practiceSessions", gte: 1 }, },
-    { id: "practice_regular", category: "dedication", rarity: "uncommon", title: "Practice Regular", description: "Complete 25 practice sessions.", icon: "repeat", xpReward: 250, points: .60, condition: { kind: "practiceSessions", gte: .25 }, },
-    { id: "review_perfectionist", category: "performance", rarity: "uncommon", title: "Reviewer", description: "Answer 100 questions correctly.", icon: "check-check", xpReward: 150, points: .40, condition: { kind: "correctAnswers", gte: 100 }, },
+    { id: "practice_starter", category: "dedication", rarity: "common", title: "Practice Starter", description: "Complete your first practice session.", icon: "play", xpReward: 50, points: 10, condition: { kind: "practiceSessions", gte: 1 } },
+    { id: "practice_regular", category: "dedication", rarity: "uncommon", title: "Practice Regular", description: "Complete 25 practice sessions.", icon: "repeat", xpReward: 250, points: 60, condition: { kind: "practiceSessions", gte: 25 } },
+    { id: "review_perfectionist", category: "performance", rarity: "uncommon", title: "Reviewer", description: "Answer 100 questions correctly.", icon: "check-check", xpReward: 150, points: 40, condition: { kind: "correctAnswers", gte: 100 } },
 ];
 export const WEEKLY_CHALLENGE_CATALOG_SEED = [
-    { id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: .3, xpReward: 250, weight: .10 },
-    { id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: .5, xpReward: 500, weight: .6 },
-    { id: "weekly_correct_100", title: "Hundred Correct", description: "Answer 100 questions correctly this week.", metric: "questions_correct", target: 100, xpReward: 300, weight: .8 },
-    { id: "weekly_correct_250", title: "Quarter Champion", description: "Answer 250 questions correctly this week.", metric: "questions_correct", target: 250, xpReward: 700, weight: .4 },
-    { id: "weekly_minutes_120", title: "Two-Hour Focus", description: "Study for 120 minutes this week.", metric: "study_minutes", target: 120, xpReward: 250, weight: .9 },
-    { id: "weekly_minutes_300", title: "Deep Dive", description: "Study for 300 minutes this week.", metric: "study_minutes", target: 300, xpReward: 600, weight: .5 },
-    { id: "weekly_practice_5", title: "Practice Pentathlon", description: "Complete 5 practice sessions this week.", metric: "practice_sessions", target: .5, xpReward: 350, weight: .7 },
-    { id: "weekly_perfect_1", title: "Pursuit of Perfection", description: "Score 100% on at least one exam this week.", metric: "perfect_scores", target: 1, xpReward: 400, weight: .6 },
-    { id: "weekly_high_3", title: "Elite Trio", description: "Score 85%+ on 3 exams this week.", metric: "score_above_threshold", target: 3, threshold: 85, xpReward: 500, weight: .5 },
-    { id: "weekly_high_5", title: "Top of the Curve", description: "Score 90%+ on 5 exams this week.", metric: "score_above_threshold", target: 5, threshold: 90, xpReward: 800, weight: .3 },
+    { id: "weekly_exams_3", title: "Three-Exam Week", description: "Complete 3 practice exams this week.", metric: "exams_completed", target: .3, xpReward: 250, weight: 10 },
+    { id: "weekly_exams_5", title: "Exam Marathon", description: "Complete 5 practice exams this week.", metric: "exams_completed", target: .5, xpReward: 500, weight: 6 },
+    { id: "weekly_correct_100", title: "Hundred Correct", description: "Answer 100 questions correctly this week.", metric: "questions_correct", target: 100, xpReward: 300, weight: 8 },
+    { id: "weekly_correct_250", title: "Quarter Champion", description: "Answer 250 questions correctly this week.", metric: "questions_correct", target: 250, xpReward: 700, weight: 4 },
+    { id: "weekly_minutes_120", title: "Two-Hour Focus", description: "Study for 120 minutes this week.", metric: "study_minutes", target: 120, xpReward: 250, weight: 9 },
+    { id: "weekly_minutes_300", title: "Deep Dive", description: "Study for 300 minutes this week.", metric: "study_minutes", target: 300, xpReward: 600, weight: 5 },
+    { id: "weekly_practice_5", title: "Practice Pentathlon", description: "Complete 5 practice sessions this week.", metric: "practice_sessions", target: 5, xpReward: 350, weight: 7 },
+    { id: "weekly_perfect_1", title: "Pursuit of Perfection", description: "Score 100% on at least one exam this week.", metric: "perfect_scores", target: 1, xpReward: 400, weight: 6 },
+    { id: "weekly_high_3", title: "Elite Trio", description: "Score 85%+ on 3 exams this week.", metric: "score_above_threshold", target: 3, threshold: 85, xpReward: 500, weight: 5 },
+    { id: "weekly_high_5", title: "Top of the Curve", description: "Score 90%+ on 5 exams this week.", metric: "score_above_threshold", target: 5, threshold: 90, xpReward: 800, weight: 3 },
 ];
 // --- Leaderboard config
 export const LEADERBOARD_PAGE_SIZE = 50;
 export const LEADERBOARD_SCOPES = ["weekly", "monthly", "all_time"];
 
 // --- Phase 15 -- Security Hardening
+
 export const SECURITY_EVENT_TYPES = [
     "rate_limit.exceeded",
     "rate_limit.ip_blocked",
@@ -850,8 +852,8 @@ export const THREAT_SCORE_ADJUSTMENTS = {
     failed_login_burst: 15,
     registration_from_datacenter: 10,
     registration_from_vpn: 5,
-    request_to_404: .3,
-    malformed_request: .5,
+    request_to_404: 3,
+    malformed_request: 5,
     injection_attempt: 25,
     xss_attempt: 25,
     rate_limit_first: 10,
@@ -863,15 +865,15 @@ export const THREAT_SCORE_ADJUSTMENTS = {
     bot_behavioral: 30,
     impossible_travel: 25,
     multi_account_fingerprint: 20,
-    exam_speed_anomaly: .15,
+    exam_speed_anomaly: 15,
     scraping_pattern: 35,
-    during_maintenance: .5,
+    during_maintenance: 5,
     admin_without_role: 20,
-    cors_unauthorized: .8,
+    cors_unauthorized: 8,
     proto_pollution: 25,
     payload_too_large: 10,
 };
-export const THREAT_SCORE_DECAY_PER_HOUR = .1;
+export const THREAT_SCORE_DECAY_PER_HOUR = 1;
 export const THREAT_SCORE_DECAY_PER_DAY_CLEAN = 5;
 export const THREAT_SCORE_MIN = 0;
 export const THREAT_SCORE_MAX = 100;
