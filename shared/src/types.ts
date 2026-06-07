@@ -34,7 +34,7 @@ export interface User {
         lastPasswordChangeAt: string | null;
         lockedUntil: string | null;
     };
-    /** Outstanding data export / deletion requests for the user. */
+    /** Outstanding data-export / deletion requests for the user. */
     dataRequests?: {
         lastExportAt: string | null;
         pendingDeletionId: string | null;
@@ -216,7 +216,7 @@ export interface UserGamificationBlock {
     achievements: {
         /** Unlocked catalog ids. */
         unlocked: string[];
-        /** Progress map for achievements that track a counter (catalogId -> currentValue). */
+        /** Progress map for achievements that track a counter (catalogId -> current value). */
         progress: Record<string, number>;
         /** Total achievement points awarded. */
         points: number;
@@ -340,7 +340,7 @@ export interface RecoveryVerifyResponse {
 export interface RecoverAccountPayload {
     action: "reset_password" | "set_password";
     newPassword: string;
-    confirmPassword: string;
+    confirmNewPassword: string;
 }
 
 export interface SecurityQuestionEntry {
@@ -386,10 +386,7 @@ export type SupportTicketVerificationMethod =
     | "document_upload"
     | "admin_override";
 
-export type SupportTicketVerificationStatus =
-    | "pending"
-    | "verified"
-    | "failed";
+export type SupportTicketVerificationStatus = "pending" | "verified" | "failed";
 
 export interface SupportTicketMessage {
     _id: string;
@@ -417,11 +414,14 @@ export interface SupportTicketVerification {
 export interface SupportTicketResolution {
     action: string | null;
     notes: string | null;
+    resolvedBy: string | null;
+    resolvedAt: string | null;
 }
+
 export interface SupportTicket {
     _id: string;
     ticketNumber: string;
-    userId?: string | null;
+    userId: string | null;
     requesterEmail: string;
     type: SupportTicketType;
     status: SupportTicketStatus;
@@ -431,7 +431,7 @@ export interface SupportTicket {
     verification: SupportTicketVerification;
     resolution: SupportTicketResolution;
     messages: SupportTicketMessage[];
-    assignedTo?: string | null;
+    assignedTo: string | null;
     assignedToName?: string | null;
     createdAt: string;
     updatedAt: string;
@@ -477,7 +477,7 @@ export interface SupportDashboardSummary {
     unassigned: number;
     oldestOpenTicket: {
         ticketNumber: string;
-        createdat: string;
+        createdAt: string;
         subject: string;
     } | null;
     resolutionTrend: { date: string; opened: number; resolved: number }[];
@@ -518,6 +518,7 @@ export interface DataExportOptions {
     includePersonalInfo: boolean;
     includeActivityLog: boolean;
 }
+
 export type DeletionScope = "full" | "data_only";
 
 export interface DataRequest {
@@ -557,7 +558,7 @@ export interface CreateDeletionRequestPayload {
 }
 
 // --- Identity disputes ---
-export type IdentityDisputeStatus = 
+export type IdentityDisputeStatus =
     | "open"
     | "investigating"
     | "resolved_for_claimant"
@@ -621,70 +622,69 @@ export interface MergeAccountsResponse {
 export type DeletionType = "user_requested" | "admin_initiated" | "inactivity";
 
 export interface DeletionLogEntry {
-{
-  _id: string;
-  originalUserId: string;
-  emailHash: string;
-  deletionType: DeletionType;
-  dataRequestId: string | null;
-  executedAt: string;
-  executedBy: string | null;
-  dataDestroyed: string[];
-  dataRetained: string[];
-  ipAddress: string | null;
+    _id: string;
+    originalUserId: string;
+    emailHash: string;
+    deletionType: DeletionType;
+    dataRequestId: string | null;
+    executedAt: string;
+    executedBy: string | null;
+    dataDestroyed: string[];
+    dataRetained: string[];
+    ipAddress: string | null;
 }
 
 export interface AuthResponse {
-  token: string;
-  user: User;
-  gamification?: null | { xp?: unknown[]; achievements?: unknown[]; streakUpdated?: unknown };
-  onboarding?: { items: Array<{ flowId: string; triggerCondition: string; reason: string }>; } | null;
+    token: string;
+    user: User;
+    gamification?: null | { xp?: unknown[]; achievements?: unknown[]; streakUpdated?: unknown };
+    onboarding?: { items: Array<{ flowId: string; triggerCondition: string; reason: string }>; } | null;
 }
 
 export interface RegisterPayload {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
 }
 
 export interface LoginPayload {
-  email: string;
-  password: string;
+    email: string;
+    password: string;
 }
 
 export interface ForgotPasswordPayload {
-  email: string;
+    email: string;
 }
 
 export interface ResetPasswordPayload {
-  token: string;
-  newPassword: string;
-  confirmNewPassword: string;
+    token: string;
+    newPassword: string;
+    confirmNewPassword: string;
 }
 
 export interface VerifyEmailPayload {
-  token: string;
+    token: string;
 }
 
 // --- Password validation ---
 export type PasswordStrength = "weak" | "medium" | "strong";
 
 export interface PasswordValidation {
-  isValid: boolean;
-  strength: PasswordStrength;
-  errors: string[];
+    isValid: boolean;
+    strength: PasswordStrength;
+    errors: string[];
 }
 
 // --- Exam ---
 export type SubjectArea =
-  | "Language Proficiency"
-  | "Mathematics"
-  | "Science"
-  | "Reading Comprehension";
+    | "Language Proficiency"
+    | "Mathematics"
+    | "Science"
+    | "Reading Comprehension";
 
-export type Difficulty = "easy" | "medium" | "hard" | "very hard";
+export type Difficulty = "easy" | "medium" | "hard" | "very_hard";
 
 export type QuestionType = "multiple_choice" | "passage_based";
 export type QuestionPublicationStatus = "draft" | "in_review" | "published" | "archived";
@@ -692,39 +692,40 @@ export type QuestionPublicationStatus = "draft" | "in_review" | "published" | "a
 export type SessionStatus = "in_progress" | "completed" | "abandoned";
 
 export interface QuestionChoice {
-  label: "A" | "B" | "C" | "D";
-  text: string;
+    label: "A" | "B" | "C" | "D";
+    text: string;
 }
 
 export interface RichContentBlock {
-  id: string;
-  type: "paragraph" | "image" | "audio" | "video" | "math" | "html";
-  text?: string;
-  assetId?: string | null;
-  mimeType?: string;
-  altText?: string;
-  caption?: string;
+    id: string;
+    type: "paragraph" | "image" | "audio" | "video" | "math" | "html";
+    text?: string;
+    assetId?: string | null;
+    mimeType?: string;
+    altText?: string;
+    caption?: string;
 }
 
 export interface QuestionVersionEntry {
-  version: number;
-  editedBy: string | null;
-  editedAt: string;
-  note: string;
+    version: number;
+    editedBy: string | null;
+    editedAt: string;
+    note: string;
 }
 
 export interface QuestionMediaAsset {
-  _id: string;
-  filename: string;
-  mimeType: string;
-  size: number;
-  sha256: string;
-  kind: "image" | "audio" | "video" | "other";
-  altText?: string;
-  caption?: string;
-  createdAt: string;
-  isDeleted?: boolean;
+    _id: string;
+    filename: string;
+    mimeType: string;
+    size: number;
+    sha256: string;
+    kind: "image" | "audio" | "video" | "other";
+    altText?: string;
+    caption?: string;
+    createdAt: string;
+    isDeleted?: boolean;
 }
+
 export interface QuestionImportBatchRow {
     rowNumber: number;
     status: "valid" | "invalid" | "duplicate_exact" | "duplicate_near";
@@ -829,8 +830,7 @@ export interface SessionQuestionEntry {
 export interface SubjectScore {
     correct: number;
     total: number;
-}
-percentage: number;
+    percentage: number;
 }
 
 export interface SessionScore {
@@ -934,15 +934,21 @@ export interface QuestionFlag {
     userEmail?: string;
     reason: FlagReason;
     comment: string;
+    status: FlagStatus;
+    resolutionNote?: string;
+    resolvedBy?: string;
+    resolvedAt?: string;
+    createdAt?: string;
 }
+
 export interface Announcement {
-    id: string;
+    _id: string;
     title: string;
     message: string;
     type: AnnouncementType;
     isActive: boolean;
-    startsAt?: string;
-    expiresAt?: string;
+    startsAt: string | null;
+    expiresAt: string | null;
     createdAt: string;
     createdBy?: string;
 }
@@ -976,13 +982,13 @@ export interface PlatformSettings {
     };
     /**
      * Optional ad-system overrides. When omitted, the server returns
-     * DEFAULT_ADS_SETTINGS merged with env-derived defaults (publisher.id).
+     * `DEFAULT_ADS_SETTINGS` merged with env-derived defaults (publisher id).
      */
     ads?: import("./ads.js").AdsSettings;
 }
 
 export interface ActivityLogEntry {
-    id: string;
+    _id: string;
     actorId: string | null;
     actorRole: UserRole | "system";
     action: string;
@@ -1026,13 +1032,20 @@ export interface AdminDashboardSummary {
 }
 
 export interface AdminUserListEntry {
-    id: string;
+    _id: string;
     firstName: string;
     lastName: string;
     email: string;
     role: UserRole;
     isActive: boolean;
+    isVerified: boolean;
+    createdAt: string;
+    lastLoginAt: string | null;
+    examCount: number;
+    averageScore: number | null;
+    lastExamDate: string | null;
 }
+
 export interface AdminQuestionListEntry {
     _id: string;
     setId: string;
@@ -1129,17 +1142,17 @@ export type AchievementRarity =
 /** Declarative condition evaluated server-side against User + counters. */
 export type AchievementCondition =
     | { kind: "examCount"; gte: number; }
-| { kind: "perfectScores"; gte: number }
-| { kind: "scoreThreshold"; gte: number; count: number }
-| { kind: "streakDays"; gte: number }
-| { kind: "totalXP"; gte: number }
-| { kind: "levelReached"; gte: number }
-| { kind: "questionsAnswered"; gte: number }
-| { kind: "correctAnswers"; gte: number }
-| { kind: "practiceSessions"; gte: number }
-| { kind: "perfectSubject"; subject: string; gte: number }
-| { kind: "studyMinutes"; gte: number }
-| { kind: "consecutiveDailyLogins"; gte: number };
+    | { kind: "perfectScores"; gte: number }
+    | { kind: "scoreThreshold"; gte: number; count: number }
+    | { kind: "streakDays"; gte: number }
+    | { kind: "totalXp"; gte: number }
+    | { kind: "levelReached"; gte: number }
+    | { kind: "questionsAnswered"; gte: number }
+    | { kind: "correctAnswers"; gte: number }
+    | { kind: "practiceSessions"; gte: number }
+    | { kind: "perfectSubject"; subject: string; gte: number }
+    | { kind: "studyMinutes"; gte: number }
+    | { kind: "consecutiveDailyLogins"; gte: number };
 
 export interface AchievementDef {
     _id: string;
@@ -1183,7 +1196,7 @@ export interface WeeklyChallengeDef {
     description: string;
     metric: WeeklyChallengeMetric;
     target: number;
-    /** Optional metric threshold (e.g. score >= 0.85 for score_above_threshold). */
+    /** Optional metric threshold (e.g. score >= 85 for score_above_threshold). */
     threshold?: number;
     xpReward: number;
     isActive: boolean;
@@ -1233,125 +1246,126 @@ export interface XpAwardResult {
 }
 
 export interface AchievementUnlockEvent {
-achievementId: string;
-title: string;
-description: string;
-rarity: AchievementRarity;
-icon: string;
-xpAwarded: number;
-points: number;
-unlockedAt: string;
+    achievementId: string;
+    title: string;
+    description: string;
+    rarity: AchievementRarity;
+    icon: string;
+    xpAwarded: number;
+    points: number;
+    unlockedAt: string;
+}
 
-/**
- * Returned from exam/submit, practice/complete, and login when applicable.
- */
+/** Returned from exam/submit, practice/complete, and login when applicable. */
 export interface GamificationReward {
-  xp: XpAwardResult[];
-  achievements: AchievementUnlockEvent[];
-  weeklyChallengeProgress?: {
-    challengeId: string;
-    progress: number;
-    target: number;
-    completed: boolean;
-  } | null;
-  streakUpdated?: StreakInfo | null;
+    xp: XpAwardResult[];
+    achievements: AchievementUnlockEvent[];
+    weeklyChallengeProgress?: {
+        challengeId: string;
+        progress: number;
+        target: number;
+        completed: boolean;
+    } | null;
+    streakUpdated?: StreakInfo | null;
 }
 
 export interface LeaderboardEntry {
-  rank: number;
-  userId: string;
-  displayName: string;
-  avatarInitials: string;
-  level: number;
-  title: string;
-  xp: number;
-  streak: number;
-  achievements: number;
-  isCurrentUser: boolean;
+    rank: number;
+    userId: string;
+    displayName: string;
+    avatarInitials: string;
+    level: number;
+    title: string;
+    xp: number;
+    streak: number;
+    achievements: number;
+    isCurrentUser: boolean;
 }
 
 export interface LeaderboardResponse {
-  scope: "weekly" | "monthly" | "all_time";
-  entries: LeaderboardEntry[];
-  currentUser: LeaderboardEntry | null;
-  generatedAt: string;
+    scope: "weekly" | "monthly" | "all_time";
+    entries: LeaderboardEntry[];
+    currentUser: LeaderboardEntry | null;
+    generatedAt: string;
 }
 
 // Admin gamification
 export interface AdminGrantXpPayload {
-  userId: string;
-  amount: number;
-  reason: string;
+    userId: string;
+    amount: number;
+    reason: string;
 }
 
 export interface AdminAchievementUpsertPayload {
-  id: string;
-  category: AchievementCategory;
-  rarity: AchievementRarity;
-  title: string;
-  description: string;
-  icon: string;
-  xpReward: number;
-  points: number;
-  condition: AchievementCondition;
-  hidden?: boolean;
-  isActive?: boolean;
+    id: string;
+    category: AchievementCategory;
+    rarity: AchievementRarity;
+    title: string;
+    description: string;
+    icon: string;
+    xpReward: number;
+    points: number;
+    condition: AchievementCondition;
+    hidden?: boolean;
+    isActive?: boolean;
 }
 
 export interface AdminWeeklyChallengeUpsertPayload {
-  id: string;
-  title: string;
-  description: string;
-  metric: WeeklyChallengeMetric;
-  target: number;
-  threshold?: number;
-  xpReward: number;
-  weight?: number;
-  isActive?: boolean;
+    id: string;
+    title: string;
+    description: string;
+    metric: WeeklyChallengeMetric;
+    target: number;
+    threshold?: number;
+    xpReward: number;
+    weight?: number;
+    isActive?: boolean;
 }
 
+
 // Phase 13 - Spaced Repetition Practice Mode
+
 
 export type PracticeCardStatus = "new" | "learning" | "review" | "mastered";
 
 export type PracticeMode =
-  | "review" // due cards only
-  | "weak_areas" // cards in subjects with lowest accuracy
-  | "subject_focus" // restricted to a chosen subject
-  | "mixed" // review + new fill-in
-  | "random"; // random cards for anytime practice
+    | "review" // due cards only
+    | "weak_areas" // cards in subjects with lowest accuracy
+    | "subject_focus" // restricted to a chosen subject
+    | "mixed" // review + new fill-in
+    | "random"; // random cards for anytime practice
 
 export type PracticeRating = "again" | "hard" | "good" | "easy";
 
 export interface PracticeCard {
-  _id: string;
-  userId: string;
-  questionId: string;
-  subjectArea: string;
-  status: PracticeCardStatus;
-  /** SM-2 ease factor (start 2.5, floor 1.3). */
-  easeFactor: number;
-  /** Interval to next review, in days. */
-  intervalDays: number;
-  /** SM-2 repetition counter (resets to 0 on lapse). */
-  repetitions: number;
-  /** UTC ISO timestamp the card is next due. */
+    _id: string;
+    userId: string;
+    questionId: string;
+    subjectArea: string;
+    status: PracticeCardStatus;
+    /** SM-2 ease factor (start 2.5, floor 1.3). */
+    easeFactor: number;
+    /** Interval to next review, in days. */
+    intervalDays: number;
+    /** SM-2 repetition counter (resets to 0 on lapse). */
+    repetitions: number;
+    /** UTC ISO timestamp the card is next due. */
+    nextReviewDate: string;
+    /** Last time the user answered this card (any rating). */
+    lastReviewedAt: string | null;
+    /** Number of times this card was answered correctly across all reviews. */
+    correctCount: number;
+    /** Number of times this card was answered incorrectly across all reviews. */
+    incorrectCount: number;
+    /** Number of times the user pressed "again" (lapses). */
+    lapses: number;
+    /** Total user-rated reviews on this card. */
+    totalReviews: number;
+    /** Where the card originated. */
+    source: "exam_incorrect" | "manual" | "weak_area_seed";
+    createdAt: string;
+    updatedAt: string;
 }
-nextReviewDate: string;
-/** Last time the user answered this card (any rating). */
-lastReviewedAt: string | null;
-/** Number of times this card was answered correctly across all reviews. */
-correctCount: number;
-/** Number of times this card was answered incorrectly across all reviews. */
-incorrectCount: number;
-/** Number of times the user pressed "again" (lapses). */
-lapses: number;
-/** Total user-rated reviews on this card. */
-totalReviews: number;
-/** Where the card originated. */
-source: 'exam_incorrect' | 'manual' | 'weak_area_seed';
-createdAt: string;
-updatedAt: string;
 
 export interface PracticeStartPayload {
     mode: PracticeMode;
@@ -1400,7 +1414,7 @@ export interface PracticeSession {
         newCardsLimit: number;
     };
     cards: PracticeSessionCard[];
-    status: 'in_progress' | 'completed' | 'abandoned';
+    status: "in_progress" | "completed" | "abandoned";
     startedAt: string;
     completedAt: string | null;
     durationMs: number | null;
@@ -1439,8 +1453,8 @@ export interface PracticeStartResponse {
     }>;
     dueCount: number;
     newCount: number;
+    weakSubjects: string[];
 }
-weakSubjects: string[];
 
 export interface PracticeAnswerPayload {
     cardId: string;
@@ -1497,7 +1511,7 @@ export interface PracticeStatsResponse {
         accuracyPct: number;
         dueToday: number;
     }>;
-    upcoming: Array<{date: string; count: number}>;
+    upcoming: Array<{ date: string; count: number }>;
     recentSessions: Array<{
         sessionId: string;
         mode: PracticeMode;
@@ -1543,11 +1557,11 @@ export interface PushSubscriptionRecord {
     timezone: string | null;
     /** "HH:mm" 24-hour local time for the daily reminder. */
     reminderTime: string;
+    createdAt: string;
+    lastUsedAt: string | null;
+    /** Auto-pruned when the push service returns 404/410. */
+    failureCount: number;
 }
-createdAt: string;
-lastUsedAt: string | null;
-/** Auto-pruned when the push service returns 404/410. */
-failureCount: number;
 
 export interface PushPreferences {
     daily_reminder: boolean;
@@ -1621,7 +1635,7 @@ export interface PushBroadcastPayload {
     title: string;
     body: string;
     url?: string;
-    type: import("./constants.js").PushNotificationType;
+    type?: import("./constants.js").PushNotificationType;
     /** Limit broadcast to a subset of users by role. */
     role?: "admin" | "reviewee";
 }
@@ -1647,41 +1661,42 @@ export type BlockedEntityType =
     | "fingerprint"
     | "email_domain"
     | "user_agent_pattern";
+
 export type BlockSeverity = "soft" | "hard";
 
 export type RateLimitScope = "ip" | "user" | "global";
 
 export interface SecurityEventSource {
     ip: string;
-    userId?: string | null;
-    userAgent?: string | null;
-    fingerprint?: string | null;
-    country?: string | null;
+    userId: string | null;
+    userAgent: string | null;
+    fingerprint: string | null;
+    country: string | null;
 }
 
 export interface SecurityEventTarget {
-    type?: string | null;
-    value?: string | null;
+    type: string | null;
+    value: string | null;
 }
 
 export interface SecurityEventAction {
-    taken?: string | null;
+    taken: string | null;
     automated: boolean;
 }
 
 export interface SecurityEvent {
-    id: string;
+    _id: string;
     timestamp: string;
     type: string;
-    severity: BlockSeverity;
+    severity: SecuritySeverity;
     source: SecurityEventSource;
     target: SecurityEventTarget;
     details: Record<string, unknown>;
     action: SecurityEventAction;
     reviewed: boolean;
-    reviewedBy?: string | null;
-    reviewedAt?: string | null;
-    notes?: string | null;
+    reviewedBy: string | null;
+    reviewedAt: string | null;
+    notes: string | null;
 }
 
 export interface IpIntelligence {
@@ -1692,9 +1707,9 @@ export interface IpIntelligence {
     isKnownVPN: boolean;
     isKnownTor: boolean;
     isKnownDataCenter: boolean;
-    country?: string | null;
-    asn?: string | null;
-    asnOrg?: string | null;
+    country: string | null;
+    asn: string | null;
+    asnOrg: string | null;
     activity: {
         firstSeenAt: string;
         lastSeenAt: string;
@@ -1713,11 +1728,11 @@ export interface IpIntelligence {
     blocks: Array<{
         reason: string;
         blockedAt: string;
-        expiresAt?: string | null;
+        expiresAt: string | null;
         blockedBy: "system" | string;
         lifted: boolean;
-        liftedAt?: string | null;
-        liftedBy?: string | null;
+        liftedAt: string | null;
+        liftedBy: string | null;
     }>;
     riskFactors: string[];
     updatedAt: string;
@@ -1731,11 +1746,11 @@ export interface BlockedEntity {
     severity: BlockSeverity;
     blockedBy: "system" | string;
     blockedAt: string;
-    expiresAt?: string | null;
+    expiresAt: string | null;
     isActive: boolean;
     metadata: {
         hitCount: number;
-        lastHitAt?: string | null;
+        lastHitAt: string | null;
         associatedEvents: string[];
     };
 }
@@ -1750,73 +1765,73 @@ export interface SecurityConfig {
     rateLimits: {
         global: { requestsPerSecond: number; burstLimit: number };
         perIp: { requestsPerMinute: number; requestsPerHour: number; requestsPerDay: number };
-}
-perUser: { requestsPerMinute: number; requestsPerHour: number };
-endpoints: Record<string, EndpointLimitConfig>;
-};
-botDetection: {
-    enabled: boolean;
-    captchaThreshold: number;
-    blockThreshold: number;
-    honeypotEnabled: boolean;
-    fingerprintingEnabled: boolean;
-    behavioralAnalysisEnabled: boolean;
-};
-dos: {
-    enabled: boolean;
-    globalRpsThreshold: number;
-    perIpSpikeMultiplier: number;
-    slowlorisTimeout: number;
-    maxConcurrentPerIp: number;
-    maxRequestBodySize: number;
-    maxUrlLength: number;
-};
-anomalyDetection: {
-    enabled: boolean;
-    impossibleTravelEnabled: boolean;
-    impossibleTravelThresholdKm: number;
-    impossibleTravelThresholdMin: number;
-    unusualHoursEnabled: boolean;
-    newDeviceAlertEnabled: boolean;
-};
-autoResponse: {
-    autoBlockEnabled: boolean;
-    autoBlockDuration: number;
-    escalationThresholds: {
-        softBlock: number;
-        hardBlock: number;
-        permanentBlock: number;
+        perUser: { requestsPerMinute: number; requestsPerHour: number };
+        endpoints: Record<string, EndpointLimitConfig>;
     };
-    notifyAdminOnCritical: boolean;
-    cooldownPeriod: number;
-};
-headers: {
-    hsts: { enabled: boolean; maxAge: number; includeSubDomains: boolean };
-    csp: {
-        defaultSrc: string[];
-        scriptSrc: string[];
-        styleSrc: string[];
-        imgSrc: string[];
-        connectSrc: string[];
-        fontSrc: string[];
-        frameSrc: string[];
-        objectSrc: string[];
-        baseUri: string[];
+    botDetection: {
+        enabled: boolean;
+        captchaThreshold: number;
+        blockThreshold: number;
+        honeypotEnabled: boolean;
+        fingerprintingEnabled: boolean;
+        behavioralAnalysisEnabled: boolean;
     };
-    xFrameOptions: string;
-    xContentTypeOptions: string;
-    referrerPolicy: string;
-    permissionsPolicy: string;
-};
-lockdown: {
-    enabled: boolean;
-    enabledAt: string | null;
-    enabledBy: string | null;
-    reason: string | null;
-};
-updatedAt: string;
-updatedBy: string | null;
+    dos: {
+        enabled: boolean;
+        globalRpsThreshold: number;
+        perIpSpikeMultiplier: number;
+        slowlorisTimeout: number;
+        maxConcurrentPerIp: number;
+        maxRequestBodySize: number;
+        maxUrlLength: number;
+    };
+    anomalyDetection: {
+        enabled: boolean;
+        impossibleTravelEnabled: boolean;
+        impossibleTravelThresholdKm: number;
+        impossibleTravelThresholdMin: number;
+        unusualHoursEnabled: boolean;
+        newDeviceAlertEnabled: boolean;
+    };
+    autoResponse: {
+        autoBlockEnabled: boolean;
+        autoBlockDuration: number;
+        escalationThresholds: {
+            softBlock: number;
+            hardBlock: number;
+            permanentBlock: number;
+        };
+        notifyAdminOnCritical: boolean;
+        cooldownPeriod: number;
+    };
+    headers: {
+        hsts: { enabled: boolean; maxAge: number; includeSubDomains: boolean };
+        csp: {
+            defaultSrc: string[];
+            scriptSrc: string[];
+            styleSrc: string[];
+            imgSrc: string[];
+            connectSrc: string[];
+            fontSrc: string[];
+            frameSrc: string[];
+            objectSrc: string[];
+            baseUri: string[];
+        };
+        xFrameOptions: string;
+        xContentTypeOptions: string;
+        referrerPolicy: string;
+        permissionsPolicy: string;
+    };
+    lockdown: {
+        enabled: boolean;
+        enabledAt: string | null;
+        enabledBy: string | null;
+        reason: string | null;
+    };
+    updatedAt: string;
+    updatedBy: string | null;
 }
+
 export interface UserSession {
     _id: string;
     userId: string;
@@ -1831,28 +1846,32 @@ export interface UserSession {
     revoked: boolean;
     revokedAt: string | null;
 }
+
 // ── CAPTCHA
 export type CaptchaType = "math" | "image" | "puzzle" | "pow";
+
 export interface CaptchaImageOption {
     id: string;
     svg: string;
 }
+
 export interface CaptchaMathChallenge {
     question: string;
 }
+
 export interface CaptchaImageChallenge {
     prompt: string;
     options: CaptchaImageOption[];
 }
+
 export interface CaptchaPuzzleChallenge {
     backgroundSvg: string;
     pieceSvg: string;
     /** Y-coordinate of the puzzle slot (the user slides horizontally). */
-}
-pieceY: number;
-/** Total slider width in pixels (display sizing for the client). */
-trackWidth: number;
-pieceSize: number;
+    pieceY: number;
+    /** Total slider width in pixels (display sizing for the client). */
+    trackWidth: number;
+    pieceSize: number;
 }
 
 export interface CaptchaPowChallenge {
@@ -1882,7 +1901,7 @@ export interface CaptchaVerifyResponse {
     valid: boolean;
     /** Signed JWT (10-min expiry) - pass back as `X-Captcha-Token` on the gated request. */
     token: string | null;
-    /** When invalid, optional escalated challenge for the next attempt.. */
+    /** When invalid, optional escalated challenge for the next attempt. */
     nextType?: CaptchaType;
 }
 
@@ -1954,6 +1973,7 @@ export interface FeatureGateConfig {
     limits: { free: number | null; premium: number | null } | null;
     limitPeriod: FeatureLimitPeriod | null;
 }
+
 export interface PaymentConfig {
     _id: "global";
     activePaymentType: PaymentType;
@@ -2056,9 +2076,11 @@ export interface PaymentSubmission {
     };
     expiresAt: string;
     createdAt: string;
+    updatedAt: string;
 }
+
 export interface PangMeryendaTransaction {
-    id: string;
+    _id: string;
     userId: string;
     planId: string;
     pangmeryendaTransactionId: string;
@@ -2085,7 +2107,7 @@ export interface PangMeryendaTransaction {
 export interface PromoCode {
     _id: string;
     code: string;
-    type: 'premium_grant' | 'discount' | 'extended_trial';
+    type: "premium_grant" | "discount" | "extended_trial";
     grant: {
         planId: string | null;
         durationDays: number | null;
@@ -2106,14 +2128,17 @@ export interface PromoCode {
 
 export interface FeatureAccessResult {
     tier: SubscriptionTier;
-    features: Record<string, {
-        accessible: boolean;
-        limit: number | null;
-        used: number;
-        remaining: number | null;
-        period: string | null;
-        upgradeRequired: boolean;
-    }>;
+    features: Record<
+        string,
+        {
+            accessible: boolean;
+            limit: number | null;
+            used: number;
+            remaining: number | null;
+            period: string | null;
+            upgradeRequired: boolean;
+        }
+    >;
 }
 
 export interface SubscriptionStatusResponse {
