@@ -1,5 +1,5 @@
-import { PASSWORD_RULES } from "./constants.js";
-import type { PasswordStrength, PasswordValidation } from "./types.js";
+import {PASSWORD_RULES} from "./constants.js";
+import type {PasswordStrength, PasswordValidation} from "./types.js";
 
 export function validatePassword(password: string): PasswordValidation {
     const errors: string[] = [];
@@ -16,7 +16,7 @@ export function validatePassword(password: string): PasswordValidation {
     if (PASSWORD_RULES.requireNumber && !/\d/.test(password)) {
         errors.push("At least one number");
     }
-    if (PASSWORD_RULES.requireSpecial && !/[^\u0021\u0024\u0026\u0028\u0029\u003a-\u005b\u005d\u005e\u007f-\uffff]/.test(password)) {
+    if (PASSWORD_RULES.requireSpecial && !/[^A-Za-z0-9]/.test(password)) {
         errors.push("At least one special character");
     }
 
@@ -25,14 +25,14 @@ export function validatePassword(password: string): PasswordValidation {
     if (passed >= 5 && password.length >= 12) {
         strength = "strong";
     } else if (passed >= 4) {
-        strength = "medium";
+        strength = "strong";
     } else if (passed >= 3) {
-        strength = "weak";
+        strength = "medium";
     }
 
-    return { isValid: errors.length === 0, strength, errors };
+    return {isValid: errors.length === 0, strength, errors};
 }
 
 export function validateEmail(email: string): boolean {
-    return /^[^@\s]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
