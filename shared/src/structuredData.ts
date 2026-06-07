@@ -8,7 +8,7 @@
  * server (sitemap / SSR) and the client (Helmet inside React).
  */
 
-import { DEFAULT_SITE_URL } from "./seo.js";
+import {DEFAULT_SITE_URL} from "./seo.js";
 
 export interface OrganizationOptions {
     siteUrl?: string;
@@ -29,7 +29,7 @@ export function organizationSchema(opts: OrganizationOptions = {}): object {
         sameAs:
             opts.sameAs ?? [
                 "https://facebook.com/upcatsim",
-                "https://twitter.com/upcatsim"
+                "https://twitter.com/upcatsim",
             ],
     };
 }

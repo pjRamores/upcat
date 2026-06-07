@@ -1,30 +1,30 @@
 import type {Difficulty, SubjectArea} from "./types.js";
 
 export type StudyPlanStatus =
-    "generating"
-  | "active"
-  | "paused"
-  | "completed"
-  | "abandoned";
+    | "generating"
+    | "active"
+    | "paused"
+    | "completed"
+    | "abandoned";
 
 export type StudyPreferredTime = "morning" | "afternoon" | "evening" | "flexible";
 export type StudyLearningStyle = "visual" | "reading" | "practice" | "mixed";
 export type StudyDifficultyPreference = "gradual" | "balanced" | "aggressive";
 export type StudyDiagnosticSource =
-    "diagnostic_test"
-  | "historical_data"
-  | "self_assessment"
-  | "none";
+    | "diagnostic_test"
+    | "historical_data"
+    | "self_assessment"
+    | "none";
 
 export type StudyLevel = "beginner" | "intermediate" | "advanced";
 
 export type StudyActivityType =
-    "lesson"
-  | "review"
-  | "practice"
-  | "flashcards"
-  | "video_placeholder"
-  | "assessment";
+    | "lesson"
+    | "review"
+    | "practice"
+    | "flashcards"
+    | "video_placeholder"
+    | "assessment";
 
 export type StudyLockableStatus = "locked" | "available" | "in_progress" | "completed" | "skipped";
 
@@ -102,11 +102,11 @@ export interface StudyActivity {
         passed: boolean | null;
         attempts: number;
         bestScore: number | null;
-
-timeSpent: number | null;
-practiceSessionId: string | null;
-assessmentSessionId: string | null;
-} | null;
+        timeSpent: number | null;
+        practiceSessionId: string | null;
+        assessmentSessionId: string | null;
+    } | null;
+}
 
 export interface StudySession {
     id: string;
@@ -205,13 +205,14 @@ export interface StudyPlanProgress {
         currentLevel: StudyLevel;
     }[];
 }
+
 export type StudyPlanAdaptationType =
-    "pace_adjustment"
-  | "content_addition"
-  | "content_removal"
-  | "difficulty_change"
-  | "schedule_shift"
-  | "module_reorder";
+    | "pace_adjustment"
+    | "content_addition"
+    | "content_removal"
+    | "difficulty_change"
+    | "schedule_shift"
+    | "module_reorder";
 
 export interface StudyPlanAdaptation {
     date: string;
@@ -299,17 +300,34 @@ export interface StudyPlanTemplate {
             weekStart: number;
             weekEnd: number;
             description: string;
-        };
-        modules: {
-            subjectArea: SubjectArea;
-            subtopic: string;
-            name: string;
-            difficulty: Difficulty;
-            estimatedDays: number;
-            prerequisites: string[];
-            objectives: string[];
-            assessmentConfig: {
-                questionCount: number;
+            modules: {
+                subjectArea: SubjectArea;
+                subtopic: string;
+                name: string;
+                difficulty: Difficulty;
+                estimatedDays: number;
+                prerequisites: string[];
+                objectives: string[];
+                assessmentConfig: {
+                    questionCount: number;
+                    passsTheshold: number;
+                    maxAttempts: number;
+                };
+            }[];
+        }[];
+    };
+    adaptationRules: {
+        weakAreaExtraTime: number;
+        strongAreaReduction: number;
+        failedAssessmentAction: "repeat_module" | "add_remedial" | "slow_pace";
+        minimumModuleDays: number;
+        maximumModuleDays: number;
+    };
+    createdBy: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 export interface StudyPlanAssessment {
     _id: string;
     userId: string;
@@ -379,8 +397,10 @@ export interface DiagnosticTest {
 
 export const STUDY_PLAN_API_ROUTES = {
     DIAGNOSTIC_START: "/study-plan/diagnostic/start",
-    DIAGNOSTIC_SECTION_QUESTIONS: (diagnosticId: string) => `/study-plan/diagnostic/${diagnosticId}/questions`,
-    DIAGNOSTIC_SUBMIT_SECTION: (diagnosticId: string) => `/study-plan/diagnostic/${diagnosticId}/submit-section`,
+    DIAGNOSTIC_SECTION_QUESTIONS: (diagnosticId: string) =>
+        `/study-plan/diagnostic/${diagnosticId}/questions`,
+    DIAGNOSTIC_SUBMIT_SECTION: (diagnosticId: string) =>
+        `/study-plan/diagnostic/${diagnosticId}/submit-section`,
     DIAGNOSTIC_COMPLETE: (diagnosticId: string) => `/study-plan/diagnostic/${diagnosticId}/complete`,
     DIAGNOSTIC_SKIP: "/study-plan/diagnostic/skip",
     TEMPLATES: "/study-plan/templates",
@@ -389,33 +409,34 @@ export const STUDY_PLAN_API_ROUTES = {
     PLAN: (planId: string) => `/study-plan/${planId}`,
     TODAY: (planId: string) => `/study-plan/${planId}/today`,
     SESSION: (planId: string, sessionId: string) => `/study-plan/${planId}/session/${sessionId}`,
-    ACTIVITY_START: (planId: string, sessionId: string, activityId: string) => `/study-plan/${planId}/session/${sessionId}/activity/${activityId}/start`,
-    ACTIVITY_COMPLETE: (planId: string, sessionId: string, activityId: string) => `/study-plan/${planId}/session/${sessionId}/activity/${activityId}/complete`,
+    ACTIVITY_START: (planId: string, sessionId: string, activityId: string) =>
+        `/study-plan/${planId}/session/${sessionId}/activity/${activityId}/start`,
+    ACTIVITY_COMPLETE: (planId: string, sessionId: string, activityId: string) =>
+        `/study-plan/${planId}/session/${sessionId}/activity/${activityId}/complete`,
     SESSION_SKIP: (planId: string, sessionId: string) => `/study-plan/${planId}/session/${sessionId}/skip`,
-}
-MODULE_ASSESSMENT_START: (planId: string, moduleId: string) => 
-    `/study-plan/${planId}/module/${moduleId}/assessment/start`,
-ASSESSMENT_QUESTIONS: (assessmentSessionId: string) => 
-    `/study-plan/assessment/${assessmentSessionId}/questions`,
-ASSESSMENT_ANSWER: (assessmentSessionId: string) => 
-    `/study-plan/assessment/${assessmentSessionId}/answer`,
-ASSESSMENT_SUBMIT: (assessmentSessionId: string) => 
-    `/study-plan/assessment/${assessmentSessionId}/submit`,
-ASSESSMENT_REVIEW: (assessmentSessionId: string) => 
-    `/study-plan/assessment/${assessmentSessionId}/review`,
-ADAPT: (planId: string) => `/study-plan/${planId}/adapt`,
-RESCHEDULE: (planId: string) => `/study-plan/${planId}/reschedule`,
-PAUSE: (planId: string) => `/study-plan/${planId}/pause`,
-RESUME: (planId: string) => `/study-plan/${planId}/resume`,
-ABANDON: (planId: string) => `/study-plan/${planId}/abandon`,
-ANALYTICS: (planId: string) => `/study-plan/${planId}/analytics`,
-CALENDAR: "/study-plan/calendar",
-ADMIN_TEMPLATES: "/admin/study-plan/templates",
-ADMIN_TEMPLATE: (id: string) => `/admin/study-plan/templates/${id}`,
-ADMIN_LESSONS: "/admin/study-plan/lessons",
-ADMIN_LESSON: (id: string) => `/admin/study-plan/lessons/${id}`,
-ADMIN_ANALYTICS: "/admin/study-plan/analytics",
-ADMIN_USERS: "/admin/study-plan/users",
+    MODULE_ASSESSMENT_START: (planId: string, moduleId: string) =>
+        `/study-plan/${planId}/module/${moduleId}/assessment/start`,
+    ASSESSMENT_QUESTIONS: (assessmentSessionId: string) =>
+        `/study-plan/assessment/${assessmentSessionId}/questions`,
+    ASSESSMENT_ANSWER: (assessmentSessionId: string) =>
+        `/study-plan/assessment/${assessmentSessionId}/answer`,
+    ASSESSMENT_SUBMIT: (assessmentSessionId: string) =>
+        `/study-plan/assessment/${assessmentSessionId}/submit`,
+    ASSESSMENT_REVIEW: (assessmentSessionId: string) =>
+        `/study-plan/assessment/${assessmentSessionId}/review`,
+    ADAPT: (planId: string) => `/study-plan/${planId}/adapt`,
+    RESCHEDULE: (planId: string) => `/study-plan/${planId}/reschedule`,
+    PAUSE: (planId: string) => `/study-plan/${planId}/pause`,
+    RESUME: (planId: string) => `/study-plan/${planId}/resume`,
+    ABANDON: (planId: string) => `/study-plan/${planId}/abandon`,
+    ANALYTICS: (planId: string) => `/study-plan/${planId}/analytics`,
+    CALENDAR: "/study-plan/calendar",
+    ADMIN_TEMPLATES: "/admin/study-plan/templates",
+    ADMIN_TEMPLATE: (id: string) => `/admin/study-plan/templates/${id}`,
+    ADMIN_LESSONS: "/admin/study-plan/lessons",
+    ADMIN_LESSON: (id: string) => `/admin/study-plan/lessons/${id}`,
+    ADMIN_ANALYTICS: "/admin/study-plan/analytics",
+    ADMIN_USERS: "/admin/study-plan/users",
 } as const;
 
 export const STUDY_DIAGNOSTIC_LEVEL_THRESHOLDS = {
