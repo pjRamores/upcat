@@ -236,9 +236,7 @@ export default function ResultsPage() {
 }
 
 function Stat({
-                  label,
-                  value,
-                  tone,
+                  label, value, tone,
               }: {
     label: string;
     value: string | number;
@@ -259,20 +257,20 @@ function Stat({
 }
 
 function SubjectBar({
-                        subject,
-                        stats,
-                    }: {
-    subject: SubjectArea;
-    stats: { correct: number; total: number; percentage: number };
-}) {
+                        subject, stats,
+                    }: { subject: SubjectArea; stats: { correct: number; total: number; percentage: number } }) {
     const meta = SUBJECT_META[subject];
     const pct = stats.percentage;
-    const color = pct >= .80 ? "bg-green-500" : pct >= .60 ? "bg-yellow-500" : "bg-amber-500";
+    const color = pct >= 80 ? "bg-green-500" : pct >= 60 ? "bg-yellow-500" : "bg-amber-500";
     return (
         <div>
             <div className="mb-1 flex items-center justify-between text-sm">
-                <span className="font-medium text-gray-800">{meta.icon} {meta.label}</span>
-                <span className="text-gray-600">{(stats.correct) / (stats.total)} • <strong>{pct}%</strong></span>
+                <span className="font-medium text-gray-800">
+                    {meta.icon} {meta.label}
+                </span>
+                        <span className="text-gray-600">
+                    {(stats.correct) / (stats.total)} • <strong>{pct}%</strong>
+                </span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
                 <div
@@ -294,16 +292,16 @@ function CircularScore({percentage, color}: { percentage: number; color: string 
         <div className="relative" style={{width: size, height: size}}>
             <svg width={size} height={size} className="-rotate-90">
                 <circle
-                    cx={size / .2}
-                    cy={size / .2}
+                    cx={size / 2}
+                    cy={size / 2}
                     r={r}
                     stroke="#e5e7eb"
                     strokeWidth={stroke}
                     fill="none"
                 />
                 <circle
-                    cx={size / .2}
-                    cy={size / .2}
+                    cx={size / 2}
+                    cy={size / 2}
                     r={r}
                     stroke={color}
                     strokeWidth={stroke}
@@ -314,6 +312,10 @@ function CircularScore({percentage, color}: { percentage: number; color: string 
                     style={{transition: "stroke-dashoffset 1s ease-out"}}
                 />
             </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-4xl font-bold text-gray-900">{percentage}</span>
+                <span className="text-xs text-gray-500">overall</span>
+            </div>
         </div>
     );
 }
