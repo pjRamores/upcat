@@ -125,14 +125,18 @@ export default function HelpFab() {
 
                         <div className="mt-4 flex flex-wrap gap-3 text-sm">
                             <Link to="/help" onClick={() => setOpen(false)}
-                                  className="font-medium text-primary-700 hover:underline">View Full
-                                Help Center</Link>
+                                  className="font-medium text-primary-700 hover:underline">
+                                View Full Help Center
+                            </Link>
                             <Link to="/contact" onClick={() => setOpen(false)}
-                                  className="text-slate-700 hover:underline">Contact Support</Link>
+                                  className="text-slate-700 hover:underline">
+                                Contact Support
+                            </Link>
                             {isAuthenticated && (
                                 <button type="button" onClick={() => void replayTour()}
-                                        className="text-slate-700 hover:underline">Replay
-                                    Tour</button>
+                                        className="text-slate-700 hover:underline">
+                                    Replay Tour
+                                </button>
                             )}
                         </div>
                     </section>
