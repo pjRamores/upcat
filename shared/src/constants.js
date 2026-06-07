@@ -1,57 +1,50 @@
-script
 export const SUBJECT_AREAS = [
     "Language Proficiency",
     "Mathematics",
     "Science",
-    "Reading Comprehension"
+    "Reading Comprehension",
 ];
-
 export const SUBJECT_META = {
     "Language Proficiency": { label: "Language Proficiency", icon: "📖", color: "indigo" },
-    "Mathematics": { label: "Mathematics", icon: ""math", color: "blue" },
-    "Science": { label: "Science", icon: "🔬", color: "green" },
-    "Reading Comprehension": { label: "Reading Comprehension", icon: "📚", color: "amber" }
+    Mathematics: { label: "Mathematics", icon: "🧮", color: "blue" },
+    Science: { label: "Science", icon: "🔬", color: "green" },
+    "Reading Comprehension": { label: "Reading Comprehension", icon: "📚", color: "amber" },
 };
-
 export const DIFFICULTIES = ["easy", "medium", "hard", "very_hard"];
 export const DIFFICULTY_LABELS = {
     easy: "Easy",
     medium: "Moderate",
     hard: "Hard",
-    very_hard: "Very Hard"
+    very_hard: "Very Hard",
 };
 export const DIFFICULTY_DESCRIPTIONS = {
     easy: "Basic / Recall: definitions, facts, and simple one-step problems.",
     medium: "Application: familiar concepts with a few steps.",
     hard: "Advanced / Analysis: multi-step reasoning, topic combinations, and edge cases.",
-    very_hard: "Expert / Synthesis: novel situations, derivations, optimization, and non-routine problems."
+    very_hard: "Expert / Synthesis: novel situations, derivations, optimization, and non-routine problems.",
 };
-
 export const DEFAULT_EXAM_CONFIG = {
     totalQuestions: 100,
     distribution: {
         "Language Proficiency": 25,
         Mathematics: 30,
         Science: 25,
-        "Reading Comprehension": 20
+        "Reading Comprehension": 20,
     },
     difficultyMix: { easy: 25, medium: 40, hard: 25, very_hard: 10 },
-    timeLimit: 180 // minutes
+    timeLimit: 180, // minutes
 };
-
-export const PASSING_PERCENTAGE = .60;
+export const PASSING_PERCENTAGE = 60;
 export const PASSWORD_MIN_LENGTH = 8;
 export const VERIFICATION_TOKEN_EXPIRY_HOURS = 24;
 export const RESET_TOKEN_EXPIRY_HOURS = 1;
-
 export const PASSWORD_RULES = {
     minLength: 8,
     requireUppercase: true,
     requireLowercase: true,
     requireNumber: true,
-    requireSpecial: true
+    requireSpecial: true,
 };
-
 export const API_ROUTES = {
     AUTH: {
         REGISTER: "/auth/register",
@@ -72,7 +65,7 @@ export const API_ROUTES = {
         RECOVER_ACCOUNT: "/auth/recover-account",
         SECURITY_QUESTIONS_SET: "/auth/security-questions/set",
         SECURITY_QUESTIONS_LOOKUP: "/auth/security-questions/lookup",
-        SECURITY_QUESTIONS_VERIFY: "/auth/security-questions/verify"
+        SECURITY_QUESTIONS_VERIFY: "/auth/security-questions/verify",
     },
     ACCOUNT: "/account",
     ACCOUNT_EMAIL_PREFERENCES: "/account/email-preferences",
@@ -81,7 +74,7 @@ export const API_ROUTES = {
     ACCOUNT_DATA_EXPORT_DOWNLOAD: (id) => `/account/data-export/${id}/download`,
     ACCOUNT_DELETION_REQUEST: "/account/deletion-request",
     ACCOUNT_DELETION_REQUEST_CONFIRM: (id) => `/account/deletion-request/${id}/confirm`,
-    ACCOUNT_DELETION_REQUEST_CANCEL: (id) => `/account/deletion-request/${id}/cancel`
+    ACCOUNT_DELETION_REQUEST_CANCEL: (id) => `/account/deletion-request/${id}/cancel`,
 },
 SUPPORT: {
     TICKETS: "/support/tickets",
