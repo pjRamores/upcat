@@ -100,39 +100,38 @@ export interface VideoAdTriggerSettings {
 export interface VideoAdSettings {
     /** Master switch for video interstitials. */
     enabled: boolean;
-}
-/**
- * Direct URL to an MP4/WebM clip. Empty string disables video.
- */
-videoUrl: string;
-/**
- * Optional poster image shown before playback.
- */
-posterUrl?: string;
-/**
- * Optional click-through URL for the "Learn more" button.
- */
-clickThroughUrl?: string;
-/**
- * Seconds the user must watch before a Skip button appears.
- */
-skipAfterSeconds: number;
-/**
- * Minimum gap, in seconds, between two interstitials shown to one viewer.
- */
-minIntervalSeconds: number;
-/**
- * Show at most one interstitial per N session-finish events. 1 = every time.
- */
-frequencyCap: number;
-/**
- * Triggers this campaign is allowed to fire on.
- */
-allowedTriggers: VideoAdTrigger[];
-/**
- * Optional trigger-specific overrides for skip, interval, and cap.
- */
-triggerSettings?: Partial<Record<VideoAdTrigger, VideoAdTriggerSettings>>;
+    /**
+     * Direct URL to an MP4/WebM clip. Empty string disables video.
+     */
+    videoUrl: string;
+    /**
+     * Optional poster image shown before playback.
+     */
+    posterUrl?: string;
+    /**
+     * Optional click-through URL for the "Learn more" button.
+     */
+    clickThroughUrl?: string;
+    /**
+     * Seconds the user must watch before a Skip button appears.
+     */
+    skipAfterSeconds: number;
+    /**
+     * Minimum gap, in seconds, between two interstitials shown to one viewer.
+     */
+    minIntervalSeconds: number;
+    /**
+     * Show at most one interstitial per N session-finish events. 1 = every time.
+     */
+    frequencyCap: number;
+    /**
+     * Triggers this campaign is allowed to fire on.
+     */
+    allowedTriggers: VideoAdTrigger[];
+    /**
+     * Optional trigger-specific overrides for skip, interval, and cap.
+     */
+    triggerSettings?: Partial<Record<VideoAdTrigger, VideoAdTriggerSettings>>;
 }
 
 export const DEFAULT_VIDEO_AD_SETTINGS: VideoAdSettings = {

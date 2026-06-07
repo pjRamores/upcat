@@ -10,9 +10,9 @@ export const SUBJECT_META: Record<
     { label: string; icon: string; color: string }
 > = {
     "Language Proficiency": {label: "Language Proficiency", icon: "📖", color: "indigo"},
-    Mathematics: {label: "Mathematics", icon: ""math", color: "blue"},
+    Mathematics: {label: "Mathematics", icon: "📐", color: "blue"},
     Science: {label: "Science", icon: "🔬", color: "green"},
-    "Reading Comprehension": { label: "Reading Comprehension", icon: "📖", color: "amber"},
+    "Reading Comprehension": {label: "Reading Comprehension", icon: "📖", color: "amber"},
 };
 
 export const DIFFICULTIES = ["easy", "medium", "hard", "very_hard"] as const;
