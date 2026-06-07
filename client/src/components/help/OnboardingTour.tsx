@@ -375,7 +375,7 @@ export default function OnboardingTour() {
         <div className="pointer-events-none fixed inset-0 z-[90]" role="dialog" aria-modal="true"
              aria-label={flow.name}>
             <div
-                className={`absolute inset-0 bg-black/60 ${step.waitForInteraction ? "pointer-events-none" : "pointer-events-auto"}`}>
+                className={`absolute inset-0 bg-black/60 ${step.waitForInteraction ? "pointer-events-none" : "pointer-events-auto"}`}/>
 
             {hasSpotlight && (
                 <div
@@ -427,8 +427,8 @@ export default function OnboardingTour() {
                         </button>
                     </div>
                     {nextDisabled &&
-                        <p className="mt-2 text-right text-xs text-slate-600">Interact with the highlighted area
-                            to continue.</p>}
+                        <p className="mt-2 text-right text-xs text-slate-600">Interact with the highlighted area to
+                            continue.</p>}
                 </section>
             </div>
         </div>,
