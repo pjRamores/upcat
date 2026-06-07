@@ -1,10 +1,13 @@
 /**
  * Schema.org structured-data builders.
  *
- * Each function returns a plain object that callers JSON.stringify into a <script type="application/ld+json"> tag.
+ * Each function returns a plain object that callers JSON.stringify
+ * into a <script type="application/ld+json"> tag.
  *
- * Keep these tiny and dependency-free so they can run on both the server (sitemap / SSR) and the client (Helmet inside React).
+ * Keep these tiny and dependency-free so they can run on both the
+ * server (sitemap / SSR) and the client (Helmet inside React).
  */
+
 import { DEFAULT_SITE_URL } from "./seo.js";
 
 export interface OrganizationOptions {
@@ -21,11 +24,13 @@ export function organizationSchema(opts: OrganizationOptions = {}): object {
         name: "UPCAT Simulator",
         url: siteUrl,
         logo: opts.logoUrl ?? `${siteUrl}/icons/icon-512.png`,
-        description: "Free online practice platform for the UP College Admission Test",
-        sameAs: opts.sameAs ?? [
-            "https://facebook.com/upcatsim",
-            "https://twitter.com/upcatsim"
-        ],
+        description:
+            "Free online practice platform for the UP College Admission Test",
+        sameAs:
+            opts.sameAs ?? [
+                "https://facebook.com/upcatsim",
+                "https://twitter.com/upcatsim"
+            ],
     };
 }
 
@@ -47,13 +52,13 @@ export function webApplicationSchema(opts: WebApplicationOptions = {}): object {
         offers: {
             "@type": "Offer",
             price: "0",
-            priceCurrency: "PHP"
+            priceCurrency: "PHP",
         },
         aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: String(opts.ratingValue ?? 4.7),
-            ratingCount: String(opts.ratingCount ?? 1250)
-        }
+            ratingCount: String(opts.ratingCount ?? 1250),
+        },
     };
 }
 
@@ -71,9 +76,9 @@ export function faqSchema(items: FaqItem[]): object {
             name: it.question,
             acceptedAnswer: {
                 "@type": "Answer",
-                text: it.answer
-            }
-        }))
+                text: it.answer,
+            },
+        })),
     };
 }
 
@@ -94,10 +99,11 @@ export function breadcrumbSchema(
             "@type": "ListItem",
             position: idx + 1,
             name: it.name,
-            item: normalizedSite + it.path
-        }))
+            item: normalizedSite + it.path,
+        })),
     };
 }
+
 export interface CourseSchemaOptions {
     name: string;
     description: string;
@@ -115,7 +121,7 @@ export function courseSchema(opts: CourseSchemaOptions): object {
         provider: opts.provider ?? {
             "@type": "EducationalOrganization",
             name: "UPCAT Simulator",
-            url: DEFAULT_SITE_URL
+            url: DEFAULT_SITE_URL,
         },
     };
 }
@@ -137,10 +143,10 @@ export function blogPostingSchema(opts: BlogPostingOptions): object {
         headline: opts.title,
         description: opts.description,
         url: opts.url,
-        author: { "@type": "Person", name: opts.authorName },
+        author: {"@type": "Person", name: opts.authorName},
         datePublished: opts.datePublished,
         dateModified: opts.dateModified ?? opts.datePublished,
-        ...(opts.image ? { image: opts.image } : {}),
+        ...(opts.image ? {image: opts.image} : {}),
         publisher: {
             "@type": "Organization",
             name: "UPCAT Simulator",
