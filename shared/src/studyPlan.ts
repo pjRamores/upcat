@@ -310,7 +310,7 @@ export interface StudyPlanTemplate {
                 objectives: string[];
                 assessmentConfig: {
                     questionCount: number;
-                    passsTheshold: number;
+                    passThreshold: number;
                     maxAttempts: number;
                 };
             }[];
