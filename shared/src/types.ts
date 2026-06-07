@@ -638,7 +638,7 @@ export interface AuthResponse {
     token: string;
     user: User;
     gamification?: null | { xp?: unknown[]; achievements?: unknown[]; streakUpdated?: unknown };
-    onboarding?: { items: Array<{ flowId: string; triggerCondition: string; reason: string }>; } | null;
+    onboarding?: { items: Array<{ flowId: string; triggerCondition: string; reason: string }> } | null;
 }
 
 export interface RegisterPayload {
@@ -938,7 +938,7 @@ export interface QuestionFlag {
     resolutionNote?: string;
     resolvedBy?: string;
     resolvedAt?: string;
-    createdAt?: string;
+    createdAt: string;
 }
 
 export interface Announcement {
@@ -1141,7 +1141,7 @@ export type AchievementRarity =
 
 /** Declarative condition evaluated server-side against User + counters. */
 export type AchievementCondition =
-    | { kind: "examCount"; gte: number; }
+    | { kind: "examCount"; gte: number }
     | { kind: "perfectScores"; gte: number }
     | { kind: "scoreThreshold"; gte: number; count: number }
     | { kind: "streakDays"; gte: number }
@@ -1387,6 +1387,7 @@ export interface PracticeSessionCard {
     order: number;
     /** User's selected answer letter when answered. */
     userAnswer: string | null;
+    /** True/false set once the answer is graded. */
     isCorrect: boolean | null;
     /** Rating the user submitted (again/hard/good/easy). */
     rating: PracticeRating | null;
@@ -1848,6 +1849,7 @@ export interface UserSession {
 }
 
 // ── CAPTCHA
+
 export type CaptchaType = "math" | "image" | "puzzle" | "pow";
 
 export interface CaptchaImageOption {
