@@ -96,7 +96,7 @@ export const API_ROUTES = {
         TICKET: (n: string) => `/support/tickets/${n}`,
         TICKET_MESSAGES: (n: string) => `/support/tickets/${n}/messages`,
         GUEST: "/support/tickets/guest",
-        CAPTCHA: "/support/captcha"
+        CAPTCHA: "/support/captcha",
     },
     EXAM: {
         START: "/exam/start",
@@ -124,10 +124,13 @@ export const API_ROUTES = {
         CONFIG: "/payment/config",
         MANUAL_SUBMIT: "/payment/manual/submit",
         MANUAL_SUBMISSIONS: "/payment/manual/submissions",
-        MANUAL_SUBMISSION: (submissionNumber: string) => `/payment/manual/submissions/${submissionNumber}`,
-        MANUAL_CANCEL: (submissionNumber: string) => `/payment/manual/submissions/${submissionNumber}/cancel`,
+        MANUAL_SUBMISSION: (submissionNumber: string) =>
+            `/payment/manual/submissions/${submissionNumber}`,
+        MANUAL_CANCEL: (submissionNumber: string) =>
+            `/payment/manual/submissions/${submissionNumber}/cancel`,
         PANGMERYENDA_INITIATE: "/payment/pangmeryenda/initiate",
-        PANGMERYENDA_STATUS: (transactionid: string) => `/payment/pangmeryenda/status/${transactionId}`,
+        PANGMERYENDA_STATUS: (transactionId: string) =>
+            `/payment/pangmeryenda/status/${transactionId}`,
         PANGMERYENDA_WEBHOOK: "/payment/pangmeryenda/webhook",
         PANGMERYENDA_SUCCESS: "/payment/pangmeryenda/success",
         PANGMERYENDA_FAILED: "/payment/pangmeryenda/failed",
@@ -207,13 +210,17 @@ export const API_ROUTES = {
         PAYMENT_CONFIG_TYPE: "/admin/payment/config/type",
         PAYMENT_CONFIG_PLANS: "/admin/payment/config/plans",
         PAYMENT_CONFIG_MANUAL: "/admin/payment/config/manual",
-        PAYMENT_CONFIG_MANUAL_CHANNEL: (channelId: string) => `/admin/payment/config/manual/channels/${channelId}`,
-        PAYMENT_CONFIG_MANUAL_CHANNEL_RESET: (channelId: string) => `/admin/payment/config/manual/channels/${channelId}/reset-limits`,
+        PAYMENT_CONFIG_MANUAL_CHANNEL: (channelId: string) =>
+            `/admin/payment/config/manual/channels/${channelId}`,
+        PAYMENT_CONFIG_MANUAL_CHANNEL_RESET: (channelId: string) =>
+            `/admin/payment/config/manual/channels/${channelId}/reset-limits`,
         PAYMENT_CONFIG_PANGMERYENDA: "/admin/payment/config/pangmeryenda",
         PAYMENT_CONFIG_PANGMERYENDA_TEST: "/admin/payment/config/pangmeryenda/test",
         PAYMENT_SUBMISSIONS: "/admin/payment/submissions",
-        PAYMENT_SUBMISSION: (submissionNumber: string) => `/admin/payment/submissions/${submissionNumber}`,
-        PAYMENT_SUBMISSION_REVIEW: (submissionNumber: string) => `/admin/payment/submissions/${submissionNumber}/review`,
+        PAYMENT_SUBMISSION: (submissionNumber: string) =>
+            `/admin/payment/submissions/${submissionNumber}`,
+        PAYMENT_SUBMISSION_REVIEW: (submissionNumber: string) =>
+            `/admin/payment/submissions/${submissionNumber}/review`,
         PAYMENT_SUBMISSION_STATS: "/admin/payment/submissions/stats",
         PAYMENT_REVENUE_REPORT: "/admin/payment/revenue-report",
         FEATURES: "/admin/features",
@@ -246,7 +253,7 @@ export const API_ROUTES = {
 export const FLAG_REASONS = [
     {value: "incorrect_answer", label: "Incorrect answer"},
     {value: "typo", label: "Typo or grammatical error"},
-    {value: "unclear", label: "Unclear/ambiguous wording"},
+    {value: "unclear", label: "Unclear / ambiguous wording"},
     {value: "other", label: "Other"},
 ] as const;
 
@@ -255,10 +262,10 @@ export const ANNOUNCEMENT_TYPES = ["info", "warning", "maintenance"] as const;
 export const DEFAULT_PLATFORM_SETTINGS = {
     examDefaults: {
         distribution: {
-            Language_Proficiency: {questions: 25, timeLimit: 45},
+            "Language Proficiency": {questions: 25, timeLimit: 45},
             Mathematics: {questions: 30, timeLimit: 54},
             Science: {questions: 25, timeLimit: 45},
-            Reading_Comprehension: {questions: 20, timeLimit: 36},
+            "Reading Comprehension": {questions: 20, timeLimit: 36},
         },
         difficultyMix: {easy: 25, medium: 40, hard: 25, very_hard: 10},
     },
@@ -499,7 +506,7 @@ export const DEFAULT_FEATURE_GATING = [
         hasLimit: true,
         limits: {free: 3, premium: null},
         limitPeriod: "monthly"
-    }
+    },
 ] as const;
 
 export const DEFAULT_PAYMENT_CONFIG = {
@@ -533,7 +540,6 @@ export const DEFAULT_PAYMENT_CONFIG = {
             isActive: true,
             features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
             order: 2,
-
         },
         {
             id: "180_days",
@@ -548,7 +554,6 @@ export const DEFAULT_PAYMENT_CONFIG = {
             isActive: true,
             features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
             order: 3,
-
         },
         {
             id: "365_days",
@@ -563,15 +568,14 @@ export const DEFAULT_PAYMENT_CONFIG = {
             isActive: true,
             features: ["Unlimited mock exams", "No ads", "Advanced analytics", "Priority support"],
             order: 4,
-
         },
-],
+    ],
     manual: {
         processingTimeMessage: "Payment verification takes up to 12 hours",
         instructionsHeader: "How to Pay",
         instructionsBody:
             "1. Select your preferred channel.\n2. Send the exact amount.\n3. Save your transaction reference.\n4. Upload a clear screenshot of payment confirmation.",
-        autoDisableThreshold: .90,
+        autoDisableThreshold: 90,
         channels: [
             {
                 id: "gcash",
@@ -595,7 +599,7 @@ export const DEFAULT_PAYMENT_CONFIG = {
                 order: 1,
             },
             {
-                id: "may",
+                id: "maya",
                 name: "Maya",
                 type: "ewallet",
                 icon: "📱",
@@ -617,6 +621,7 @@ export const DEFAULT_PAYMENT_CONFIG = {
             },
             {
                 id: "bdo",
+                name: "BDO",
                 type: "bank",
                 icon: "🏦",
                 enabled: true,
@@ -721,18 +726,17 @@ export const SECURITY_QUESTION_BANK = [
     "What was the name of the street you grew up on?",
     "In what city did your parents meet?",
 ] as const;
+
 export const SECURITY_QUESTIONS_REQUIRED = 3;
 
-/**
- * Login lockout thresholds.
- */
+/** Login lockout thresholds. */
 export const LOGIN_LOCKOUT = {
     softThreshold: 5,
     softDurationMs: 15 * 60 * 1000,
     mediumThreshold: 10,
     mediumDurationMs: 60 * 60 * 1000,
     hardThreshold: 20,
-    /** Indefinite lock = year.9999 */
+    /** Indefinite lock = year 9999 */
     hardUntil: new Date("9999-12-31T00:00:00Z").toISOString(),
 } as const;
 
@@ -813,14 +817,10 @@ export const SUPPORT_TICKET_PRIORITY_META: Record<
     critical: {label: "Critical", color: "red"},
 };
 
-/**
- * Auto-close threshold for tickets in awaiting_user state.
- */
+/** Auto-close threshold for tickets in awaiting_user state. */
 export const SUPPORT_AUTO_CLOSE_DAYS = 14;
 
-/**
- * Guest support submission rate-limit.
- */
+/** Guest support submission rate-limit. */
 export const SUPPORT_GUEST_RATE = {limit: 2, windowMs: 60 * 60_000} as const;
 
 // ---- Data requests
@@ -1037,9 +1037,9 @@ export const API_ROUTES_V12 = {
 
 // --- Phase-12 cron cadences -------------------
 export const CRON_SCHEDULES_V12 = {
-    assignWeeklyChallenges: "0-4.*.*.1", // Mondays 04:00 UTC
-    studyReminders: "0-9.*.*.*", /// 09:00 UTC daily
-    streakWarnings: "0-19.*.*.*", /// 19:00 UTC daily
+    assignWeeklyChallenges: "0 4 * * 1", // Mondays 04:00 UTC
+    studyReminders: "0 9 * * *", /// 09:00 UTC daily
+    streakWarnings: "0 19 * * *", /// 19:00 UTC daily
 } as const;
 
 // --- Achievement catalog seed (used by api/scripts/seed.js + admin defaults) ---
@@ -1120,6 +1120,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         points: 250,
         condition: {kind: "examCount", gte: 250}
     },
+
     // --- Performance ---
     {
         id: "high_scorer",
@@ -1130,7 +1131,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         icon: "trophy",
         xpReward: 100,
         points: 25,
-        condition: { kind: "scoreThreshold", gte: 80, count: 1 }
+        condition: {kind: "scoreThreshold", gte: 80, count: 1}
     },
     {
         id: "top_of_class",
@@ -1150,7 +1151,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Flawless Victory",
         description: "Achieve a perfect 100% on a practice exam.",
         icon: "crown",
-        xpReward: .500,
+        xpReward: 500,
         points: 200,
         condition: {kind: "perfectScores", gte: 1}
     },
@@ -1172,7 +1173,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Consistent Excellence",
         description: "Score 90%+ on 10 different exams.",
         icon: "shield-check",
-        xpReward: .750,
+        xpReward: 750,
         points: 200,
         condition: {kind: "scoreThreshold", gte: 90, count: 10}
     },
@@ -1185,7 +1186,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Warming Up",
         description: "Maintain a 3-day study streak.",
         icon: "flame",
-        xpReward: .50,
+        xpReward: 50,
         points: 15,
         condition: {kind: "streakDays", gte: 3}
     },
@@ -1196,7 +1197,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "On Fire",
         description: "Maintain a 7-day study streak.",
         icon: "flame",
-        xpReward: .150,
+        xpReward: 150,
         points: 40,
         condition: {kind: "streakDays", gte: 7}
     },
@@ -1207,7 +1208,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Fortnight Focus",
         description: "Maintain a 14-day study streak.",
         icon: "calendar-days",
-        xpReward: .300,
+        xpReward: 300,
         points: 75,
         condition: {kind: "streakDays", gte: 14}
     },
@@ -1218,7 +1219,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Unstoppable",
         description: "Maintain a 30-day study streak.",
         icon: "zap",
-        xpReward: .750,
+        xpReward: 750,
         points: 200,
         condition: {kind: "streakDays", gte: 30}
     },
@@ -1229,7 +1230,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Legendary Dedication",
         description: "Maintain a 100-day study streak.",
         icon: "star",
-        xpReward: .2500,
+        xpReward: 2500,
         points: 500,
         condition: {kind: "streakDays", gte: 100}
     },
@@ -1242,7 +1243,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         title: "Early Bird",
         description: "Answer 100 questions in total.",
         icon: "sunrise",
-        xpReward: .75,
+        xpReward: 75,
         points: 20,
         condition: {kind: "questionsAnswered", gte: 100}
     },
@@ -1357,7 +1358,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Reach level 10.",
         icon: "chevron-up",
         xpReward: 100,
-        points: .25,
+        points: 25,
         condition: {kind: "levelReached", gte: 10}
     },
     {
@@ -1368,7 +1369,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Reach level 25.",
         icon: "chevrons-up",
         xpReward: 300,
-        points: .75,
+        points: 75,
         condition: {kind: "levelReached", gte: 25}
     },
     {
@@ -1379,7 +1380,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Reach level 50.",
         icon: "trending-up",
         xpReward: 750,
-        points: .200,
+        points: 200,
         condition: {kind: "levelReached", gte: 50}
     },
     {
@@ -1390,7 +1391,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Reach the max level of 100.",
         icon: "crown",
         xpReward: 5000,
-        points: .1000,
+        points: 1000,
         condition: {kind: "levelReached", gte: 100}
     },
 
@@ -1403,7 +1404,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Complete your first practice session.",
         icon: "play",
         xpReward: 50,
-        points: .10,
+        points: 10,
         condition: {kind: "practiceSessions", gte: 1}
     },
     {
@@ -1414,7 +1415,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Complete 25 practice sessions.",
         icon: "repeat",
         xpReward: .250,
-        points: .60,
+        points: 60,
         condition: {kind: "practiceSessions", gte: 25}
     },
     {
@@ -1425,7 +1426,7 @@ export const ACHIEVEMENT_CATALOG_SEED: AchievementCatalogSeed[] = [
         description: "Answer 100 questions correctly.",
         icon: "check-check",
         xpReward: 150,
-        points: .40,
+        points: 40,
         condition: {kind: "correctAnswers", gte: 100}
     },
 ];
@@ -1536,11 +1537,11 @@ export const WEEKLY_CHALLENGE_CATALOG_SEED: WeeklyChallengeCatalogSeed[] = [
         title: "Top of the Curve",
         description: "Score 90%+ on 5 exams this week.",
         metric: "score_above_threshold",
-        target: .5,
+        target: 5,
         threshold: 90,
         xpReward: 800,
         weight: 3
-    }
+    },
 ];
 
 // --- Leaderboard config -------------------
@@ -1567,8 +1568,8 @@ export const SECURITY_EVENT_TYPES = [
     "bot.scraping_detected",
     "bot.honeypot_triggered",
     "bot.timing_trap",
-    "dos_spike_detected",
-    "dos_slowloris_detected",
+    "dos.spike_detected",
+    "dos.slowloris_detected",
     "input.injection_attempt",
     "input.xss_attempt",
     "input.payload_too_large",
@@ -1592,9 +1593,7 @@ export type SecurityEventType = (typeof SECURITY_EVENT_TYPES)[number];
 
 export const SECURITY_EVENT_RETENTION_DAYS = 90;
 
-/**
- * Points added to an IP's threat score when a signal fires.
- */
+/** Points added to an IP's threat score when a signal fires. */
 export const THREAT_SCORE_ADJUSTMENTS: Record<string, number> = {
     failed_login: 5,
     failed_login_unknown_account: 8,
@@ -1664,16 +1663,16 @@ export const DEFAULT_SECURITY_CONFIG = {
             "POST /api/exam/answer": {perUser: {perMinute: 60}},
             "POST /api/exam/answer-bulk": {perUser: {perMinute: 10}},
             "POST /api/support/tickets/guest": {perIp: {perMinute: 1, perHour: 3}},
-            "POST:/api/contact": {perIp: {perMinute: 1, perHour: 3}},
-            "POST:/api/auth/social/start": {perIp: {perMinute: 10, perHour: 30}},
-            "GET:/api/stats": {perUser: {perMinute: 20}},
-            "GET:/api/admin": {perUser: {perMinute: 60}},
+            "POST /api/contact": {perIp: {perMinute: 1, perHour: 3}},
+            "POST /api/auth/social/start": {perIp: {perMinute: 10, perHour: 30}},
+            "GET /api/stats": {perUser: {perMinute: 20}},
+            "GET /api/admin": {perUser: {perMinute: 60}},
         },
     },
     botDetection: {
         enabled: true,
-        captchaThreshold: .50,
-        blockThreshold: .85,
+        captchaThreshold: 50,
+        blockThreshold: 85,
         honeypotEnabled: true,
         fingerprintingEnabled: true,
         behavioralAnalysisEnabled: true,
@@ -1698,7 +1697,7 @@ export const DEFAULT_SECURITY_CONFIG = {
     autoResponse: {
         autoBlockEnabled: true,
         autoBlockDuration: 3600,
-        escalationThresholds: {softBlock: .70, hardBlock: .90, permanentBlock: .95},
+        escalationThresholds: {softBlock: 70, hardBlock: 90, permanentBlock: 95},
         notifyAdminOnCritical: true,
         cooldownPeriod: 300,
     },
@@ -1766,7 +1765,7 @@ export const CRON_SCHEDULES_V15 = {
     threatScoreDecay: "0 * * * *", // hourly
     expiredBlocksCleanup: "*/15 * * * *", // every 15 min
     securityReport: "0 0 * * *", // daily midnight UTC
-    staleSessionCleanup: "*/*6 * * *", // every 6 hours
+    staleSessionCleanup: "0 */6 * * *", // every 6 hours
     ipIntelligenceAggregation: "30 0 * * *", // daily 00:30 UTC
 } as const;
 
@@ -1795,3 +1794,4 @@ export const PUZZLE_PIECE_SIZE = 48;
 export const IMAGE_CAPTCHA_GRID_SIZE = 9;
 export const IMAGE_CAPTCHA_TARGET_MIN = 2;
 export const IMAGE_CAPTCHA_TARGET_MAX = 4;
+
