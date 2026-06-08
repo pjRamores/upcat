@@ -99,10 +99,12 @@ export default function TermsPage() {
                         data storage. These platforms provide the underlying infrastructure
                         for availability, security, and performance. See our{" "}
                         <Link
-                            to="/privacy" className="font-medium text-primary-600 underline-offset-2 hover:underline"
+                            to="/privacy"
+                            className="font-medium text-primary-600 underline-offset-2 hover:underline"
                         >
                             Privacy Policy
-                        </Link>
+                        </Link>{" "}
+                        for more details on how your data is handled.
                     </p>
                     <p>
                         <strong>
@@ -116,7 +118,7 @@ export default function TermsPage() {
                     <p>
                         <strong>No Guarantee of Performance.</strong> The Operator makes
                         no representations, warranties, or guarantees, express or
-                        implied, regarding any User's performance on the actual
+                        implied, regarding any User&rsquo;s performance on the actual
                         UPCAT examination or admission to any academic institution. Use
                         of the Service does not guarantee any particular score, outcome,
                         or result.
@@ -124,42 +126,72 @@ export default function TermsPage() {
                 </Section>
 
                 <Section id="accounts" title="3. User Accounts">
-                    <p>To access certain features of the Service, you must register for an account. By creating an
-                        account, you represent and warrant that:</p>
+                    <p>
+                        To access certain features of the Service, you must register for
+                        an account. By creating an account, you represent and warrant
+                        that:
+                    </p>
                     <ul>
-                        <li>All information provided is true, accurate, current, and complete;</li>
+                        <li>
+                            All information provided is true, accurate, current, and
+                            complete;
+                        </li>
                         <li>You will maintain and promptly update such information;</li>
-                        <li>If you are a minor, you have obtained the consent of a parent or legal guardian;</li>
-                        <li>You will register and maintain only one (1) account per individual.</li>
+                        <li>
+                            If you are a minor, you have obtained the consent of a parent
+                            or legal guardian;
+                        </li>
+                        <li>
+                            You will register and maintain only{" "}
+                            <strong>one (1) account per individual</strong>.
+                        </li>
                     </ul>
-                    <p>You are solely responsible for safeguarding the credentials used to access your account and for
-                        any activity occurring under your account, whether or not authorized. You agree to notify the
-                        Operator immediately of any unauthorized use of your account or any other breach of
-                        security.</p>
+                    <p>
+                        You are solely responsible for safeguarding the credentials used
+                        to access your account and for any activity occurring under your
+                        account, whether or not authorized. You agree to notify the
+                        Operator immediately of any unauthorized use of your account or
+                        any other breach of security.
+                    </p>
                 </Section>
 
                 <Section id="use" title="4. Acceptable Use">
                     <p>You agree NOT to engage in any of the following activities:</p>
                     <ul>
-                        <li>Sharing your account credentials with any other person or permitting another person to
-                            access the Service through your account;
+                        <li>
+                            Sharing your account credentials with any other person or
+                            permitting another person to access the Service through your
+                            account;
                         </li>
-                        <li>Scraping, harvesting, or otherwise extracting questions, passages, rationales, or other
-                            content from the Service through automated means or otherwise;
+                        <li>
+                            Scraping, harvesting, or otherwise extracting questions,
+                            passages, rationales, or other content from the Service through
+                            automated means or otherwise;
                         </li>
-                        <li>Using the Service or any content obtained therefrom for any commercial purpose, including
-                            but not limited to reselling, redistributing, or incorporating such content into competing
+                        <li>
+                            Using the Service or any content obtained therefrom for any
+                            commercial purpose, including but not limited to reselling,
+                            redistributing, or incorporating such content into competing
                             products;
                         </li>
-                        <li>Reverse-engineering, decompiling, or attempting to derive the source code of the Service;
+                        <li>
+                            Reverse-engineering, decompiling, or attempting to derive the
+                            source code of the Service;
                         </li>
-                        <li>Interfering with, disrupting, or attempting to gain unauthorized access to the Service, its
-                            servers, or related systems;
+                        <li>
+                            Interfering with, disrupting, or attempting to gain
+                            unauthorized access to the Service, its servers, or related
+                            systems;
                         </li>
-                        <li>Using the Service to engage in any unlawful, fraudulent, or harmful conduct.</li>
+                        <li>
+                            Using the Service to engage in any unlawful, fraudulent, or
+                            harmful conduct.
+                        </li>
                     </ul>
-                    <p>Violation of any provision of this Section may result in immediate suspension or termination of
-                        your account.</p>
+                    <p>
+                        Violation of any provision of this Section may result in
+                        immediate suspension or termination of your account.
+                    </p>
                 </Section>
 
                 <Section id="ip" title="5. Intellectual Property">
