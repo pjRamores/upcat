@@ -227,12 +227,10 @@ function useSeoOverride(pathname: string): SeoOverride | null {
             inflight.set(pathname, promise);
             void promise.finally(() => inflight.delete(pathname));
         }
-
         void promise.then((value) => {
             overrideCache.set(pathname, {value, fetchedAt: Date.now()});
             if (!cancelled) setOverride(value);
         });
-
         return () => {
             cancelled = true;
         };
