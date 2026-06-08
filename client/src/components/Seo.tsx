@@ -102,15 +102,18 @@ function SEOHeadImpl({
         : structuredData
             ? [structuredData]
             : [];
-}
 
     return (
         <Helmet>
             <title>{finalTitle}</title>
             <meta name="description" content={effectiveDescription}/>
-            {effectiveKeywords && effectiveKeywords.length > 0 &&
-                <meta name="keywords" content={`${effectiveKeywords.join(", ")}`}/>}
-            <meta name="robots" content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"}/>
+            {effectiveKeywords && effectiveKeywords.length > 0 && (
+                <meta name="keywords" content={effectiveKeywords.join(", ")}/>
+            )}
+            <meta
+                name="robots"
+                content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"}
+            />
             <link rel="canonical" href={fullCanonical}/>
 
             {/* Open Graph */}
@@ -134,12 +137,18 @@ function SEOHeadImpl({
             {alternateLanguages?.map((alt) => (
                 <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href}/>
             ))}
+
+            {/* JSON-LD structure data - one <script> per object */}
+            {structured.map((data, idx) => (
+                <script key={`ld-${idx}`} type="application/ld+json">
+                    {JSON.stringify(data)}
+                </script>
+            ))}
         </Helmet>
     );
+}
 
-/**
- * Named alias -- preferred name in new code.
- */
+/** Named alias -- preferred name in new code. */
 export const SEOHead = SEOHeadImpl;
 /** Backwards-compat name kept for callers that did `import Seo from ...` */
 export const Seo = SEOHeadImpl;
@@ -149,13 +158,11 @@ export default SEOHeadImpl;
  * Helpers
  */
 
-/**
- * Resolve a possibly-relative URL against the site origin.
- */
+/** Resolve a possibly-relative URL against the site origin. */
 function absoluteUrl(input: string | undefined): string {
     if (!input) return SITE_URL.replace(/\/\+$/, "") + DEFAULT_OG_IMAGE;
-    if (/^https?:\/\/i\.test(input)) return input;
-        const base = SITE_URL.replace(/\/\+$/, "");
+    if (/^https?:\/\//i.test(input)) return input;
+    const base = SITE_URL.replace(/\/\+$/, "");
     const path = input.startsWith("/") ? input : "/" + input;
     return base + path;
 }
