@@ -138,7 +138,7 @@ function SEOHeadImpl({
                 <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href}/>
             ))}
 
-            {/* JSON-LD structure data - one <script> per object */}
+            {/* JSON-LD structured data - one <script> per object */}
             {structured.map((data, idx) => (
                 <script key={`ld-${idx}`} type="application/ld+json">
                     {JSON.stringify(data)}
@@ -154,22 +154,18 @@ export const SEOHead = SEOHeadImpl;
 export const Seo = SEOHeadImpl;
 export default SEOHeadImpl;
 
-/**
- * Helpers
- */
+/** Helpers */
 
 /** Resolve a possibly-relative URL against the site origin. */
 function absoluteUrl(input: string | undefined): string {
-    if (!input) return SITE_URL.replace(/\/\+$/, "") + DEFAULT_OG_IMAGE;
+    if (!input) return SITE_URL.replace(/\/+$/, "") + DEFAULT_OG_IMAGE;
     if (/^https?:\/\//i.test(input)) return input;
-    const base = SITE_URL.replace(/\/\+$/, "");
+    const base = SITE_URL.replace(/\/+$/, "");
     const path = input.startsWith("/") ? input : "/" + input;
     return base + path;
 }
 
-/**
- * Look up the matching page config (literal or dynamic-pattern match).
- */
+/** Look up the matching page config (literal or dynamic-pattern match). */
 export function getPageSeo(pathname: string): PageSeoConfig | null {
     if (PAGE_SEO[pathname]) return PAGE_SEO[pathname];
     for (const cfg of Object.values(PAGE_SEO)) {
@@ -180,9 +176,7 @@ export function getPageSeo(pathname: string): PageSeoConfig | null {
     return null;
 }
 
-/**
- * Admin override fetcher
- */
+/** Admin override fetcher */
 
 interface OverrideCacheEntry {
     value: SeoOverride | null;
@@ -193,9 +187,7 @@ const OVERRIDE_TTL_MS = 5 * 60 * 1000;
 const overrideCache = new Map<string, OverrideCacheEntry>();
 const inflight = new Map<string, Promise<SeoOverride | null>>();
 
-/**
- * Warm the static snapshot once on first use (singleton fetch).
- */
+/** Warm the static snapshot once on first use (singleton fetch). */
 let staticSnapshotReady: Promise<void> | null = null;
 
 function warmStaticSnapshot(): Promise<void> {
@@ -212,42 +204,39 @@ function useSeoOverride(pathname: string): SeoOverride | null {
             ? cached.value
             : null;
     });
-}
 
-let cancelled = false;
+    useEffect(() => {
+        let cancelled = false;
 
-const cached = overrideCache.get(pathname);
-if (cached && Date.now() - cached.fetchedAt < OVERRIDE_TTL_MS) {
-    setOverride(cached.value);
-    return;
-}
-
-let promise = inflight.get(pathname);
-if (!promise) {
-    promise = warmStaticSnapshot().then(async () => {
-        // Try static snapshot first
-        const snapshot = await loadStaticSeoOverrides();
-        if (hasUsableStaticSeoOverrides(snapshot)) {
-            return getStaticSeoOverride(snapshot, pathname);
+        const cached = overrideCache.get(pathname);
+        if (cached && Date.now() - cached.fetchedAt < OVERRIDE_TTL_MS) {
+            setOverride(cached.value);
+            return;
         }
-        return null;
-    });
-    inflight.set(pathname, promise);
-    void promise.finally(() => inflight.delete(pathname));
-}
 
-void promise.then((value) => {
-    overrideCache.set(pathname, {value, fetchedAt: Date.now()});
-    if (!cancelled) setOverride(value);
-});
+        let promise = inflight.get(pathname);
+        if (!promise) {
+            promise = warmStaticSnapshot().then(async () => {
+                // Try static snapshot first
+                const snapshot = await loadStaticSeoOverrides();
+                if (hasUsableStaticSeoOverrides(snapshot)) {
+                    return getStaticSeoOverride(snapshot, pathname);
+                }
+                return null;
+            });
+            inflight.set(pathname, promise);
+            void promise.finally(() => inflight.delete(pathname));
+        }
 
-return () => {
-    cancelled = true;
-};
-},
-[pathname]
-)
-;
+        void promise.then((value) => {
+            overrideCache.set(pathname, {value, fetchedAt: Date.now()});
+            if (!cancelled) setOverride(value);
+        });
 
-return override;
+        return () => {
+            cancelled = true;
+        };
+    }, [pathname]);
+
+    return override;
 }
