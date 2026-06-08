@@ -568,15 +568,15 @@ function Faq({items}: { items: FaqItem[] }) {
                         <details
                             key={it.question}
                             data-reveal
-                            style={{transitionDelay: `${i * 60}ms`}}
+                            style={{transitionDelay: `${i * 40}ms`}}
                             className="group py-5"
                         >
                             <summary
-                                className="flex cursor-pointer list-none items-center  justify-between gap-4 text-base font-semibold text-gray-900 outline-none focus-visible:ring-primary-500">
+                                className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-gray-900 outline-none focus-visible:ring-2 focus-visible:ring-primary-500">
                                 <dt>{it.question}</dt>
                                 <span
                                     aria-hidden
-                                    className="ml-2 inline-flex h-7 w-7  shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700 transition-transform group-open:rotate-45"
+                                    className="ml-2 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700 transition-transform group-open:rotate-45"
                                 >
                                     <svg
                                         width="14"
@@ -607,7 +607,9 @@ function FinalCta() {
     return (
         <section className="bg-white py-20 sm:py-24">
             <div
-                className="mx-auto max-w-3xl rounded-3xl border border-primary-100 bg-gradient-to-br from-primary-50.to-white p-10 text-center shadow-sm sm:p-14 data-reveal">
+                className="mx-auto max-w-3xl rounded-3xl border border-primary-100 bg-gradient-to-br from-primary-50.to-white p-10 text-center shadow-sm sm:p-14 data-reveal"
+                data-reveal
+            >
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Ready to start prepping?
                 </h2>
