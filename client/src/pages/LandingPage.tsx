@@ -426,7 +426,7 @@ function HowItWorks() {
                                 >
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path
-                                            d="M5 12h14m-6l6 6-6 6"
+                                            d="M5 12h14m-6-6l6 6-6 6"
                                             stroke="currentColor"
                                             strokeWidth="2"
                                             strokeLinecap="round"
@@ -455,7 +455,7 @@ const SUBJECT_DESCRIPTIONS: Record<(typeof SUBJECT_AREAS)[number], string> = {
         "Long-form passages with inference, main-idea, and tone questions to sharpen critical reading.",
 };
 
-const SUBJECT_BG: Record<string, string > = {
+const SUBJECT_BG: Record<string, string> = {
     indigo: "from-primary-50 to-primary-100 text-primary-700 ring-primary-200",
     blue: "from-blue-50 to-blue-100 text-blue-700 ring-blue-200",
     green: "from-green-50 to-green-100 text-green-700 ring-green-200",
@@ -483,8 +483,9 @@ function Subjects() {
                         return (
                             <div
                                 key={subject}
-                                data-reveal style={{transitionDelay: `${i * 60}ms`}}
-                                 className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg"
+                                data-reveal
+                                style={{transitionDelay: `${i * 60}ms`}}
+                                className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg"
                             >
                                 <div
                                     className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br text-3xl ring-1 ${palette}`}
@@ -525,6 +526,12 @@ function SocialProof() {
                     UPCAT Simulator to sharpen their skills and walk into exam day with
                     confidence.
                 </p>
+
+                <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-4 text-center">
+                    <ProofStat value="10,000+" label="Active learners"/>
+                    <ProofStat value="500,000+" label="Questions answered"/>
+                    <ProofStat value="4.8⭐️" label="Average rating"/>
+                </div>
             </div>
         </section>
     );
