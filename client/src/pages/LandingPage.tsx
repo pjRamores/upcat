@@ -159,11 +159,11 @@ function Hero() {
             />
             <div
                 aria-hidden
-                className="absolute top-40 right-24 h-80 w-80 rounded-full bg-amber-100/60 blur-3xl"
+                className="absolute top-40 -right-24 h-80 w-80 rounded-full bg-amber-100/60 blur-3xl"
             />
             <div
                 aria-hidden
-                className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%]"
+                className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"
             />
 
             <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-12">
@@ -245,40 +245,46 @@ function StudentIllustration() {
                     <span className="font-mono">f(2)</span>.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm">
-                    [{letter: "A", text: "9", state: "default"},
-                    {letter: "B", text: "13", state: "selected"},
-                    {letter: "C", text: "15", state: "default"},
-                    {letter: "D", text: "17", state: "default"}].map((opt) => (
-                    <li
-                        key={opt.letter}
-                        className={[
-                            "flex items-center gap-3 rounded-lg border px-3 py-2 transition",
-                            opt.state === "selected" ? "border-primary-500 bg-primary-50 text-primary-900" : "border-gray-200 text-gray-700"
-                        ].join(" ")}
-                    >
-                            <span
-                                className={[
-                                    "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
-                                    opt.state === "selected" ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"
-                                ].join(" ")}
-                            >
-                                {opt.letter}
-                            </span>
+                    {[
+                        {letter: "A", text: "9", state: "default"},
+                        {letter: "B", text: "13", state: "selected"},
+                        {letter: "C", text: "15", state: "default"},
+                        {letter: "D", text: "17", state: "default"},
+                    ].map((opt) => (
+                        <li
+                            key={opt.letter}
+                            className={[
+                                "flex items-center gap-3 rounded-lg border px-3 py-2 transition",
+                                opt.state === "selected"
+                                    ? "border-primary-500 bg-primary-50 text-primary-900"
+                                    : "border-gray-200 text-gray-700",
+                            ].join(" ")}
+                        >
+            <span
+                className={[
+                    "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
+                    opt.state === "selected"
+                        ? "bg-primary-600 text-white"
+                        : "bg-gray-100 text-gray-600"
+                ].join(" ")}
+            >
+              {opt.letter}
+            </span>
                         {opt.text}
                     </li>
                     ))}
                 </ul>
             </div>
-                <div
-                    className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg">
-                        🎯
-                    </div>
+            <div
+                className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg">
+                    🎯
                 </div>
-                <div className="text-xs text-gray-500">Avg. score</div>
-                <div className="text-lg font-bold text-gray-900">+18%</div>
+                <div>
+                    <div className="text-xs text-gray-500">Avg. score</div>
+                    <div className="text-lg font-bold text-gray-900">+18%</div>
+                </div>
             </div>
-        </div>
     );
 }
 
