@@ -9,13 +9,13 @@ import {
     type PageSeoConfig,
     type SeoOverride,
 } from "@upcat/shared";
-import {getStaticSeoOverride, hasUsableStaticSeoOverrides, loadStaticSeoOverrides} from "@/lib/staticSeoOverrides";
+import {getStaticSeoOverride, hasUsableStaticSeoOverrides, loadStaticSeoOverrides,} from "@/lib/staticSeoOverrides";
 
 const SITE_NAME = "UPCAT Simulator";
 const DEFAULT_TWITTER_HANDLE = "@upcatsim";
 
 const DEFAULT_DESCRIPTION =
-    "Practice for the UPC College Admission Test with realistic, timed mock exams across all four subject areas. Track your progress and identify weak areas.";
+    "Practice for the UP College Admission Test with realistic, timed mock exams across all four subject areas. Track your progress and identify weak areas.";
 
 const SITE_URL =
     (import.meta.env.VITE_SITE_URL as string | undefined) ?? DEFAULT_SITE_URL;
@@ -88,53 +88,54 @@ function SEOHeadImpl({
         override?.keywords && override.keywords.length > 0
             ? override.keywords
             : keywords;
-
     const effectiveOgImage = absoluteUrl(
         override?.ogImage ?? ogImage ?? image ?? DEFAULT_OG_IMAGE,
     );
     const isBare = bareTitle ?? bare ?? false;
-    const finalTitle = isBare ? `${effectiveTitle} | ${SITE_NAME}`;
+    const finalTitle = isBare ? effectiveTitle : `${effectiveTitle} | ${SITE_NAME}`;
 
     const fullCanonical =
         canonicalUrl ?? buildCanonicalUrl(location.pathname + location.search, SITE_URL);
 
     const structured = Array.isArray(structuredData)
         ? structuredData
-        : [structuredData];
+        : structuredData
+            ? [structuredData]
+            : [];
 }
 
-return (
-    <Helmet>
-        <title>{finalTitle}</title>
-        <meta name="description" content={effectiveDescription}/>
-        {effectiveKeywords && effectiveKeywords.length > 0 &&
-            <meta name="keywords" content={`${effectiveKeywords.join(", ")}`}/>}
-        <meta name="robots" content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"}/>
-        <link rel="canonical" href={fullCanonical}/>
+    return (
+        <Helmet>
+            <title>{finalTitle}</title>
+            <meta name="description" content={effectiveDescription}/>
+            {effectiveKeywords && effectiveKeywords.length > 0 &&
+                <meta name="keywords" content={`${effectiveKeywords.join(", ")}`}/>}
+            <meta name="robots" content={effectiveNoIndex ? "noindex, nofollow" : "index, follow"}/>
+            <link rel="canonical" href={fullCanonical}/>
 
-        {/* Open Graph */}
-        <meta property="og:title" content={ogTitle ?? finalTitle}/>
-        <meta property="og:description" content={ogDescription ?? effectiveDescription}/>
-        <meta property="og:type" content={ogType}/>
-        <meta property="og:site_name" content={SITE_NAME}/>
-        <meta property="og:url" content={fullCanonical}/>
-        <meta property="og:image" content={effectiveOgImage}/>
-        <meta property="og:image:width" content="1200"/>
-        <meta property="og:image:height" content="630"/>
+            {/* Open Graph */}
+            <meta property="og:title" content={ogTitle ?? finalTitle}/>
+            <meta property="og:description" content={ogDescription ?? effectiveDescription}/>
+            <meta property="og:type" content={ogType}/>
+            <meta property="og:site_name" content={SITE_NAME}/>
+            <meta property="og:url" content={fullCanonical}/>
+            <meta property="og:image" content={effectiveOgImage}/>
+            <meta property="og:image:width" content="1200"/>
+            <meta property="og:image:height" content="630"/>
 
-        {/* Twitter card */}
-        <meta name="twitter:card" content={twitterCard}/>
-        <meta name="twitter:site" content={DEFAULT_TWITTER_HANDLE}/>
-        <meta name="twitter:title" content={ogTitle ?? finalTitle}/>
-        <meta name="twitter:description" content={ogDescription ?? effectiveDescription}/>
-        <meta name="twitter:image" content={effectiveOgImage}/>
+            {/* Twitter card */}
+            <meta name="twitter:card" content={twitterCard}/>
+            <meta name="twitter:site" content={DEFAULT_TWITTER_HANDLE}/>
+            <meta name="twitter:title" content={ogTitle ?? finalTitle}/>
+            <meta name="twitter:description" content={ogDescription ?? effectiveDescription}/>
+            <meta name="twitter:image" content={effectiveOgImage}/>
 
-        {/* Alternate languages */}
-        {alternateLanguages?.map((alt) => (
-            <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href}/>
-        ))}
-    </Helmet>
-);
+            {/* Alternate languages */}
+            {alternateLanguages?.map((alt) => (
+                <link key={alt.lang} rel="alternate" hrefLang={alt.lang} href={alt.href}/>
+            ))}
+        </Helmet>
+    );
 
 /**
  * Named alias -- preferred name in new code.
