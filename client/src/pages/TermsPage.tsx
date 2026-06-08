@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
-import Seo from "@components/Seo";
+import Seo from "@/components/Seo";
 
 /**
  * Terms and Conditions
- * Note: This document is provided for general informational purposes only and does not constitute legal advice.
+ * Note: This document is provided for general informational
+ * purposes only and does not constitute legal advice.
  */
 
 const LAST_UPDATED = "May 11, 2026";
@@ -28,20 +29,37 @@ export default function TermsPage() {
             <Seo
                 title="Terms and Conditions | UPCAT Simulator"
                 description="Read the terms and conditions for using UPCAT Simulator, our UPCAT practice platform."
+                bare
             />
             <header className="border-b border-gray-200 pb-6">
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary-600">Legal</p>
-                <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">Terms and Conditions</h1>
-                <p className="mt-3 text-sm text-gray-500">Last updated: <time>{LAST_UPDATED}</time></p>
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary-600">
+                    Legal
+                </p>
+                <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">
+                    Terms and Conditions
+                </h1>
+                <p className="mt-3 text-sm text-gray-500">
+                    Last updated: <time>{LAST_UPDATED}</time>
+                </p>
             </header>
+
             {/* Table of Contents */}
-            <nav aria-label="Table of contents" className="mt-8 rounded-2xl border border-gray-200 bg-white p-6">
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Contents</h2>
+            <nav
+                aria-label="Table of contents"
+                className="mt-8 rounded-2xl border border-gray-200 bg-white p-6"
+            >
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Contents
+                </h2>
                 <ol className="mt-3 grid gap-2 sm:grid-cols-2">
                     {SECTIONS.map((s) => (
                         <li key={s.id}>
-                            <a href={`#${s.id}`}
-                               className="block rounded-md px-2 py-1 text-sm text-primary-600 hover:bg-primary-50 hover:text-primary-700 transition-colors">{s.title}</a>
+                            <a
+                                href={`#${s.id}`}
+                                className="block rounded-md px-2 py-1 text-sm text-primary-600 hover:bg-primary-50 hover:text-primary-700 transition-colors"
+                            >
+                                {s.title}
+                            </a>
                         </li>
                     ))}
                 </ol>
@@ -50,13 +68,20 @@ export default function TermsPage() {
             {/* Body */}
             <article className="legal-prose mt-10 space-y-12 text-gray-800">
                 <Section id="acceptance" title="1. Acceptance of Terms">
-                    <p>By accessing or using the UPCAT Simulator service (the &ldquo;Service&rdquo;), you
-                        (&ldquo;User&rdquo;) acknowledge that you have read, understood, and agree to be bound by these
-                        Terms and Conditions (&ldquo;Terms&rdquo;). If you do not agree to any portion of these Terms,
-                        you must discontinue use of the Service immediately.</p>
-                    <p>These Terms constitute a legally binding agreement between you and the operator of the Service.
-                        Your continued use of the Service following any modification to these Terms shall constitute
-                        acceptance of such modifications.</p>
+                    <p>
+                        By accessing or using the UPCAT Simulator service (the
+                        &ldquo;Service&rdquo;), you (&ldquo;User&rdquo;) acknowledge that
+                        you have read, understood, and agree to be bound by these Terms
+                        and Conditions (&ldquo;Terms&rdquo;). If you do not agree to any
+                        portion of these Terms, you must discontinue use of the Service
+                        immediately.
+                    </p>
+                    <p>
+                        These Terms constitute a legally binding agreement between you
+                        and the operator of the Service. Your continued use of the
+                        Service following any modification to these Terms shall
+                        constitute acceptance of such modifications.
+                    </p>
                 </Section>
 
                 <Section id="service" title="2. Description of Service">
