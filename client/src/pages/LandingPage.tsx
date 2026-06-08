@@ -3,12 +3,11 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuthStore} from "@/stores/authStore";
 import SEOHead from "@/components/Seo";
 import AdSlot from "@/components/AdSlot";
-
 import {
     type FaqItem,
     faqSchema,
     organizationSchema,
-    SUBJECT_areas,
+    SUBJECT_AREAS,
     SUBJECT_META,
     webApplicationSchema
 } from "@upcat/shared";
@@ -16,32 +15,39 @@ import {
 const LANDING_FAQ: FaqItem[] = [
     {
         question: "What is the UPCAT?",
-        answer: "The UPCAT (University of the Philippines College Admission Test) is the entrance examination administered by the University of the Philippines to applicants seeking admission to its undergraduate programs. It assesses aptitude in Language Proficiency, Mathematics, Science, and Reading Comprehension."
+        answer:
+            "The UPCAT (University of the Philippines College Admission Test) is the entrance examination administered by the University of the Philippines to applicants seeking admission to its undergraduate programs. It assesses aptitude in Language Proficiency, Mathematics, Science, and Reading Comprehension."
     },
     {
         question: "How many questions are on the UPCAT?",
-        answer: "The UPCAT consists of roughly 200 multiple-choice questions distributed across four subtests. Each subtest is timed independently and contributes to the composite University Predicted Grade (UPG) used in admissions."
+        answer:
+            "The UPCAT consists of roughly 200 multiple-choice questions distributed across four subtests. Each subtest is timed independently and contributes to the composite University Predicted Grade (UPG) used in admissions."
     },
     {
         question: "What subjects does the UPCAT cover?",
-        answer: "The exam covers four subject areas: Language Proficiency (English and Filipino grammar and usage), Mathematics (arithmetic through trigonometry), Science (biology, chemistry, physics, and earth science), and Reading Comprehension (long-form passages with inference and main-idea questions)."
+        answer:
+            "The exam covers four subject areas: Language Proficiency (English and Filipino grammar and usage), Mathematics (arithmetic through trigonometry), Science (biology, chemistry, physics, and earth science), and Reading Comprehension (long-form passages with inference and main-idea questions)."
     },
     {
         question: "How can I prepare for the UPCAT?",
-        answer: "The most effective preparation combines spaced practice with realistic, timed simulations. Use UPCAT Simulator to take full-length mock exams under exam conditions, then drill weak subtopics with the practice mode and review explanations for every question you missed."
+        answer:
+            "The most effective preparation combines spaced practice with realistic, timed simulations. Use UPCAT Simulator to take full-length mock exams under exam conditions, then drill weak subtopics with the practice mode and review explanations for every question you missed."
     },
     {
         question: "How do I get started with UPCAT Simulator?",
-        answer: "Create an account in under a minute to access practice questions, mock exams, analytics, and review tools. You can begin with a quick setup and start practicing right away."
+        answer:
+            "Create an account in under a minute to access practice questions, mock exams, analytics, and review tools. You can begin with a quick setup and start practicing right away."
     },
     {
         question: "How is the score calculated?",
-        answer: "Each mock exam reports raw correct/incorrect counts per subject area and an overall percentage. Your dashboard tracks accuracy trends, time-per-question, and subtopic mastery so you can target your weakest areas."
+        answer:
+            "Each mock exam reports raw correct/incorrect counts per subject area and an overall percentage. Your dashboard tracks accuracy trends, time-per-question, and subtopic mastery so you can target your weakest areas."
     },
     {
         question: "Is this affiliated with the University of the Philippines?",
-        answer: "No. UPCAT Simulator is an independent study tool. It is not affiliated with, endorsed by, or connected to the University of the Philippines or the official UPCAT examination."
-    }
+        answer:
+            "No. UPCAT Simulator is an independent study tool. It is not affiliated with, endorsed by, or connected to the University of the Philippines or the official UPCAT examination."
+    },
 ];
 
 /**
@@ -50,6 +56,7 @@ const LANDING_FAQ: FaqItem[] = [
  * Single-page scroll with hero / features / how-it-works /
  * subjects / social proof / footer-CTA
  * Sections fade in via IntersectionObserver
+ *
  */
 export default function LandingPage() {
     const navigate = useNavigate();
@@ -88,67 +95,71 @@ export default function LandingPage() {
                     "UPCAT reviewer online",
                     "UP admission test reviewer",
                 ]}
+                bareTitle
+                structuredData={[
+                    organizationSchema(),
+                    webApplicationSchema(),
+                    faqSchema(LANDING_FAQ),
+                ]}
             />
-            structuredData={[
-            organizationSchema(),
-            webApplicationSchema(),
-            faqSchema(LANDING_FAQ),
-        ]}
-        </>
-    <Hero/>
-    <Features/>
-    <HowItWorks/>
-    <Subjects/>
-    <div className="mx-auto w-full max-w-5xl px-4 py-6">
-        <AdSlot slotId="landing_in_content"/>
-    </div>
-    <SocialProof/>
-    <Faq items={LANDING_FAQ}/>
-    <FinalCta/>
-</div>
+            <Hero/>
+            <Features/>
+            <HowItWorks/>
+            <Subjects/>
+            <div className="mx-auto w-full max-w-5xl px-4 py-6">
+                <AdSlot slotId="landing_in_content"/>
+            </div>
+            <SocialProof/>
+            <Faq items={LANDING_FAQ}/>
+            <FinalCta/>
+        </div>
+    );
+}
 
-    function useScrollReveal() {
-        useEffect(() => {
-            const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
-            if (elements.length === 0) return;
 
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("reveal-in");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                {threshold: 0.12, rootMargin: "0px 0px -40px 0px"},
-            );
+function useScrollReveal() {
+    useEffect(() => {
+        const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+        if (elements.length === 0) return;
 
-            elements.forEach((el) => observer.observe(el));
-            return () => observer.disconnect();
-        }, []);
-    }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("reveal-in");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {threshold: 0.12, rootMargin: "0px 0px -40px 0px"},
+        );
 
-    function Hero() {
-        const heroRef = useRef<HTMLDivElement>(null);
+        elements.forEach((el) => observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
+}
 
-        const scrollToFeatures = () => {
-            document.getElementById("features")
-                ?.scrollIntoView({behavior: "smooth", block: "start"});
-        };
 
-        return (
-            <section
-                ref={heroRef}
-                className="relative isolate overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white"
-            >
-                <div aria-hidden
-                     className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary-200/40 blur-3xl"/>
-                <div aria-hidden className="absolute top-40 right-24 h-80 w-80 rounded-full bg-amber-100/60 blur-3xl"/>
-                <div aria-hidden
-                     className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%]"/>
-                <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-12">
-                    <div className="lg:col-span-7" data-reveal>
+function Hero() {
+    const heroRef = useRef<HTMLDivElement>(null);
+
+    const scrollToFeatures = () => {
+        document.getElementById("features")
+            ?.scrollIntoView({behavior: "smooth", block: "start"});
+    };
+
+    return (
+        <section
+            ref={heroRef}
+            className="relative isolate overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white"
+        >
+            <div aria-hidden
+                 className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary-200/40 blur-3xl"/>
+            <div aria-hidden className="absolute top-40 right-24 h-80 w-80 rounded-full bg-amber-100/60 blur-3xl"/>
+            <div aria-hidden
+                 className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%]"/>
+            <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-12">
+                <div className="lg:col-span-7" data-reveal>
                     <span
                         className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold text-primary-700"
                     >
@@ -156,33 +167,33 @@ export default function LandingPage() {
                         Built for serious UPCAT prep
                     </span>
 
-                        <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                            Ace the{" "}
-                            <span
-                                className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
-                            >
+                    <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                        Ace the{" "}
+                        <span
+                            className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
+                        >
                             UPCAT
                         </span>{" "}
-                            with Realistic Practice Exams
-                        </h1>
-                        <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
-                            Thousands of questions across all subject areas. Track your progress. Know your strengths
-                            and weaknesses.
-                        </p>
+                        with Realistic Practice Exams
+                    </h1>
+                    <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
+                        Thousands of questions across all subject areas. Track your progress. Know your strengths
+                        and weaknesses.
+                    </p>
 
-                        <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-                            <Link to="/register" className="btn-primary text-base !px-6 !py-3">
-                                Get Started →
-                            </Link>
-                            <button onClick={scrollToFeatures} className="btn-secondary text-base !px-6 !py-3">
-                                Learn More
-                            </button>
-                        </div>
+                    <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                        <Link to="/register" className="btn-primary text-base !px-6 !py-3">
+                            Get Started →
+                        </Link>
+                        <button onClick={scrollToFeatures} className="btn-secondary text-base !px-6 !py-3">
+                            Learn More
+                        </button>
                     </div>
                 </div>
-            </section>
-        );
-    }
+            </div>
+        </section>
+    );
+}
 
 </div>
     <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 text-sm">
