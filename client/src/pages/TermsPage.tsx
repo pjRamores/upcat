@@ -85,36 +85,41 @@ export default function TermsPage() {
                 </Section>
 
                 <Section id="service" title="2. Description of Service">
-                    <p>UPCAT Simulator is an independent online practice platform designed to help users prepare for the
-                        University of the Philippines College Admission Test (UPCAT). The Service provides simulated
-                        practice examinations, performance analytics, and review materials for educational purposes
-                        only.</p>
-                    <p>The Service is hosted on cloud computing infrastructure and uses a managed cloud database service
-                        for data storage. These platforms provide the underlying infrastructure for availability,
-                        security, and performance. See our{" "}
-                        <Link to="/privacy" className="font-medium text-primary-600 underline-offset-2 hover:underline">Privacy
-                            Policy</Link>
+                    <p>
+                        UPCAT Simulator is an{" "}
+                        <strong>independent online practice platform</strong> designed to
+                        help users prepare for the University of the Philippines College
+                        Admission Test (UPCAT). The Service provides simulated practice
+                        examinations, performance analytics, and review materials for
+                        educational purposes only.
                     </p>
                     <p>
-                        Privacy Policy
-                        for more details on how your data is handled.
+                        The Service is hosted on <strong>cloud computing infrastructure</strong>
+                        and uses a <strong>managed cloud database service</strong> for
+                        data storage. These platforms provide the underlying infrastructure
+                        for availability, security, and performance. See our{" "}
+                        <Link
+                            to="/privacy" className="font-medium text-primary-600 underline-offset-2 hover:underline"
+                        >
+                            Privacy Policy
+                        </Link>
                     </p>
                     <p>
-                        The Service is not the actual UPCAT examination
-                        and does not in any way replicate or reproduce official UPCAT content. All questions, passages,
-                        and
-                        materials provided through the Service are original works or items inspired by public-domain
-                        educational
-                        resources.
+                        <strong>
+                            The Service is not the actual UPCAT examination
+                        </strong>{" "}
+                        and does not in any way replicate or reproduce official UPCAT
+                        content. All questions, passages, and materials provided through
+                        the Service are original works or items inspired by public-domain
+                        educational resources.
                     </p>
                     <p>
-                        <strong>No Guarantee of Performance.</strong> The Operator makes no representations, warranties,
-                        or
-                        guarantees, express or implied, regarding any User's performance on the actual UPCAT examination
-                        or
-                        admission to any academic institution. Use of the Service does not guarantee any particular
-                        score,
-                        outcome, or result.
+                        <strong>No Guarantee of Performance.</strong> The Operator makes
+                        no representations, warranties, or guarantees, express or
+                        implied, regarding any User's performance on the actual
+                        UPCAT examination or admission to any academic institution. Use
+                        of the Service does not guarantee any particular score, outcome,
+                        or result.
                     </p>
                 </Section>
 
