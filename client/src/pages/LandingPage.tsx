@@ -607,7 +607,7 @@ function FinalCta() {
     return (
         <section className="bg-white py-20 sm:py-24">
             <div
-                className="mx-auto max-w-3xl rounded-3xl border border-primary-100 bg-gradient-to-br from-primary-50.to-white p-10 text-center shadow-sm sm:p-14 data-reveal"
+                className="mx-auto max-w-3xl rounded-3xl border border-primary-100 bg-gradient-to-br from-primary-50 to-white p-10 text-center shadow-sm sm:p-14"
                 data-reveal
             >
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
