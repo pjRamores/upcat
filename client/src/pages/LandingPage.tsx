@@ -161,24 +161,24 @@ function Hero() {
                 aria-hidden
                 className="absolute top-40 right-24 h-80 w-80 rounded-full bg-amber-100/60 blur-3xl"
             />
-            <div aria-hidden
-                 className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%]"
+            <div
+                aria-hidden
+                className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%]"
             />
 
             <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-12">
                 <div className="lg:col-span-7" data-reveal>
-        <span
-            className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold text-primary-700"
-        >
+          <span
+              className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold text-primary-700">
             <span className="h-2 w-2 rounded-full bg-primary-500"/>
             Built for serious UPCAT prep
-        </span>
+          </span>
 
                     <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
                         Ace the{" "}
                         <span
                             className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-                UPCAT
+              UPCAT
             </span>{" "}
                         with Realistic Practice Exams
                     </h1>
@@ -199,16 +199,17 @@ function Hero() {
                             Learn More
                         </button>
                     </div>
-                </div>
-                <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 text-sm">
-                    <Stat label="Subjects" value="4"/>
-                    <Stat label="Questions" value="1,000+"/>
-                    <Stat label="Practice Modes" value="2+"/>
-                </dl>
-            </div>
 
-            <div className="lg:col-span-5" data-reveal>
-                <StudentIllustration/>
+                    <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 text-sm">
+                        <Stat label="Subjects" value="4"/>
+                        <Stat label="Questions" value="1,000+"/>
+                        <Stat label="Practice Modes" value="2+"/>
+                    </dl>
+                </div>
+
+                <div className="lg:col-span-5" data-reveal>
+                    <StudentIllustration/>
+                </div>
             </div>
         </section>
     );
@@ -228,46 +229,46 @@ function StudentIllustration() {
     return (
         <div className="relative mx-auto aspect-square w-full max-w-md">
             <div
-                className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-2xl shadow-primary-200"
-            >
-                <div className="absolute left-6 right-6 top-6 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-black/5">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-primary-600">
-                            Question 42 / 100
-                        </span>
-                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-700">
-                            1:24:08
-                        </span>
-                    </div>
-                    <p className="mt-4 text-sm font-medium leading-snug text-gray-800">
-                        If <span className="font-mono">f(x) = 3x² - 2x + 5</span>, find{" "}
-                        <span className="font-mono">f(2)</span>.
-                    </p>
-                    <ul className="mt-4 space-y-2 text-sm">
-                        [{letter: "A", text: "9", state: "default"},
-                        {letter: "B", text: "13", state: "selected"},
-                        {letter: "C", text: "15", state: "default"},
-                        {letter: "D", text: "17", state: "default"}].map((opt) => (
-                        <li
-                            key={opt.letter}
-                            className={[
-                                "flex items-center gap-3 rounded-lg border px-3 py-2 transition",
-                                opt.state === "selected" ? "border-primary-500 bg-primary-50 text-primary-900" : "border-gray-200 text-gray-700"
-                            ].join(" ")}
-                        >
-                                <span
-                                    className={[
-                                        "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
-                                        opt.state === "selected" ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"
-                                    ].join(" ")}
-                                >
-                                    {opt.letter}
-                                </span>
-                            {opt.text}
-                        </li>
-                        ))}
-                    </ul>
+                className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-2xl shadow-primary-200"/>
+
+            <div className="absolute left-6 right-6 top-6 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-black/5">
+                <div className="flex items-center justify-between">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+            Question 42 / 100
+          </span>
+                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-700">
+            ⌚️1:24:08
+          </span>
                 </div>
+                <p className="mt-4 text-sm font-medium leading-snug text-gray-800">
+                    If <span className="font-mono">f(x) = 3x² - 2x + 5</span>, find{" "}
+                    <span className="font-mono">f(2)</span>.
+                </p>
+                <ul className="mt-4 space-y-2 text-sm">
+                    [{letter: "A", text: "9", state: "default"},
+                    {letter: "B", text: "13", state: "selected"},
+                    {letter: "C", text: "15", state: "default"},
+                    {letter: "D", text: "17", state: "default"}].map((opt) => (
+                    <li
+                        key={opt.letter}
+                        className={[
+                            "flex items-center gap-3 rounded-lg border px-3 py-2 transition",
+                            opt.state === "selected" ? "border-primary-500 bg-primary-50 text-primary-900" : "border-gray-200 text-gray-700"
+                        ].join(" ")}
+                    >
+                            <span
+                                className={[
+                                    "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
+                                    opt.state === "selected" ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"
+                                ].join(" ")}
+                            >
+                                {opt.letter}
+                            </span>
+                        {opt.text}
+                    </li>
+                    ))}
+                </ul>
+            </div>
                 <div
                     className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg">
