@@ -277,7 +277,7 @@ function StudentIllustration() {
             </div>
 
             <div
-                className="absolute bottom-4 -left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
+                className="absolute -bottom-4 -left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg">
                     📈
                 </div>
@@ -289,7 +289,7 @@ function StudentIllustration() {
 
             <div
                 className="absolute -right-2 top-1/2 flex items-center gap-2 rounded-full bg-white py-2 pl-2 pr-4 shadow-xl ring-1 ring-black/5">
-                <span className="text-sl">🔥</span>
+                <span className="text-xl">🔥</span>
                 <span className="text-sm font-bold text-gray-900">7-day streak</span>
             </div>
         </div>
@@ -343,9 +343,7 @@ function Features() {
                             className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg"
                         >
                             <div
-                                className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl ring-1 ring-primary-100 transition-colors group-hover:bg-primary-100"
-                                onClick={() => console.log(f.icon)}
-                            >
+                                className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl ring-1 ring-primary-100 transition-colors group-hover:bg-primary-100">
                                 {f.icon}
                             </div>
                             <h3 className="mt-5 text-lg font-semibold text-gray-900">
@@ -396,19 +394,29 @@ function HowItWorks() {
                         Three simple steps from sign-up to score improvement.
                     </p>
                 </div>
+
                 <ol className="mt-14 grid gap-8 md:grid-cols-3">
                     {STEPS.map((step, idx) => (
-                        <li key={step.number} data-reveal style={{transitionDelay: `${idx * 80}ms`}}>
+                        <li
+                            key={step.number}
+                            data-reveal
+                            style={{transitionDelay: `${idx * 80}ms`}}
+                            className="relative"
+                        >
                             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
                                 <div className="flex items-center gap-4">
-    <span
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white shadow-lg shadow-primary-200"
-    >{step.number}</span>
-                                    <div>
-                                        <span className="text-xl">{step.icon}</span>
-                                    </div>
-                                    <h3 className="mt-5 text-lg font-semibold text-gray-900">{step.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-gray-600">{step.desc}</p>
+                <span
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white shadow-lg shadow-primary-200">
+                  {step.number}
+                </span>
+                                    <span className="text-3xl">{step.icon}</span>
+                                </div>
+                                    <h3 className="mt-5 text-lg font-semibold text-gray-900">
+                                        {step.title}
+                                    </h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                                        {step.desc}
+                                    </p>
                                 </div>
 
                                 {idx < STEPS.length - 1 && (
@@ -418,7 +426,7 @@ function HowItWorks() {
                                     >
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path
-                                                d="M5.12h14m-6l6.6-6.6"
+                                                d="M5 12h14m-6l6 6-6 6"
                                                 stroke="currentColor"
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
@@ -428,20 +436,24 @@ function HowItWorks() {
                                     </div>
                                 )}
                         </li>
-                        </ol>
-                        </div>
-                        </section>
-                    }
+                    ))}
+                </ol>
+            </div>
+        </section>
+    );
+}
 
-                    /* ---- SUBJECT AREAS ------------------------------------------ */
-                    const SUBJECT_DESCRIPTIONS: Record
-                    <typeof SUBJECT_areas
-                    [number], string> = {
-                    "Language Proficiency": "Vocabulary, grammar, and usage across Filipino and English - the building blocks of every UPCAT section.",
-                    Mathematics: "Arithmetic, algebra, geometry, and basic trigonometry. Practice problem-solving under realistic time pressure.",
-                    Science: "Biology, chemistry, physics, and earth science fundamentals - applied through scenario and analysis questions.",
-                    Reading Comprehension: "Long-form passages with inference, main-idea, and tone questions to sharpen critical reading.",
-                };
+/* ---- SUBJECT AREAS ------------------------------------------ */
+const SUBJECT_DESCRIPTIONS: Record<(typeof SUBJECT_AREAS)[number], string> = {
+    "Language Proficiency":
+        "Vocabulary, grammar, and usage across Filipino and English - the building blocks of every UPCAT section.",
+    Mathematics:
+        "Arithmetic, algebra, geometry, and basic trigonometry. Practice problem-solving under realistic time pressure.",
+    Science:
+        "Biology, chemistry, physics, and earth science fundamentals - applied through scenario and analysis questions.",
+    "Reading Comprehension":
+        "Long-form passages with inference, main-idea, and tone questions to sharpen critical reading.",
+};
 
                     const SUBJECT_BG: Record
                     <string
