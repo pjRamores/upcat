@@ -422,7 +422,7 @@ function HowItWorks() {
                             {idx < STEPS.length - 1 && (
                                 <div
                                     aria-hidden
-                                    className="absolute right-[22px] top-1/2 hidden translate-y-1/2 text-primary-300 md:block"
+                                    className="absolute right-[-22px] top-1/2 hidden -translate-y-1/2 text-primary-300 md:block"
                                 >
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path
@@ -468,7 +468,7 @@ function Subjects() {
             <div className="mx-auto max-w-6xl px-4">
                 <div className="mx-auto max-w-2xl text-center" data-reveal>
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        All four UPCAT subjects covered.
+                        All four UPCAT subjects, covered.
                     </h2>
                     <p className="mt-3 text-lg text-gray-600">
                         Every subject area on the UPCAT has its own carefully curated
@@ -485,7 +485,7 @@ function Subjects() {
                                 key={subject}
                                 data-reveal
                                 style={{transitionDelay: `${i * 60}ms`}}
-                                className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg"
+                                className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
                             >
                                 <div
                                     className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br text-3xl ring-1 ${palette}`}
@@ -553,26 +553,50 @@ function Faq({items}: { items: FaqItem[] }) {
     return (
         <section id="faq" className="scroll-mt-24 bg-white py-20 sm:py-24">
             <div className="mx-auto max-w-3xl px-4">
-                <div className="text-center data-reveal">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Frequently asked
-                        questions</h2>
-                    <p className="mt-3 text-lg text-gray-600">Everything you need to know about the UPCAT and how to
-                        prepare with UPCAT Simulator.</p>
+                <div className="text-center" data-reveal>
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Ready to start prepping?
+                        Frequently asked questions
                     </h2>
                     <p className="mt-3 text-lg text-gray-600">
-                        Create your account and take your first practice exam today.
+                        Everything you need to know about the UPCAT and how to prepare with
+                        UPCAT Simulator.
                     </p>
-                    <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                        <Link to="/register" className="btn-primary text-base !px-6 !py-3">
-                            Get Started
-                        </Link>
-                        <Link to="/login" className="btn-secondary text-base !px-6 !py-3">
-                            I already have an account
-                        </Link>
-                    </div>
                 </div>
+
+                <dl className="mt-12 divide-y divide-gray-200 border-t border-b border-gray-200">
+                    {items.map((it, i) => (
+                        <details
+                            key={it.question}
+                            data-reveal
+                            style={{transitionDelay: `${i * 60}ms`}}
+                            className="group py-5"
+                        >
+                            <summary
+                                className="flex cursor-pointer list-none items-center  justify-between gap-4 text-base font-semibold text-gray-900 outline-none focus-visible:ring-primary-500">
+                                <dt>{it.question}</dt>
+                                <span
+                                    aria-hidden
+                                    className="ml-2 inline-flex h-7 w-7  shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700 transition-transform group-open:rotate-45"
+                                >
+                                    <svg
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2.5"
+                                        strokeLinecap="round"
+                                    >
+                                        <path d="M12 5v14M5 12h14"/>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <dd className="mt-3 pr-9 text-sm leading-relaxed text-gray-600">
+                                {it.answer}
+                            </dd>
+                        </details>
+                    ))}
+                </dl>
             </div>
         </section>
     );
@@ -584,9 +608,20 @@ function FinalCta() {
         <section className="bg-white py-20 sm:py-24">
             <div
                 className="mx-auto max-w-3xl rounded-3xl border border-primary-100 bg-gradient-to-br from-primary-50.to-white p-10 text-center shadow-sm sm:p-14 data-reveal">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Join the community</h2>
-                <p className="mt-3 text-lg text-gray-600">Everything you need to know about the UPCAT and how to prepare
-                    with UPCAT Simulator.</p>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    Ready to start prepping?
+                </h2>
+                <p className="mt-3 text-lg text-gray-600">
+                    Create your account and take your first practice exam today.
+                </p>
+                <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <Link to="/register" className="btn-primary text-base !px-6 !py-3">
+                        Get Started
+                    </Link>
+                    <Link to="/login" className="btn-secondary text-base !px-6 !py-3">
+                        I already have an account
+                    </Link>
+                </div>
             </div>
         </section>
     );
