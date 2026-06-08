@@ -260,43 +260,51 @@ function StudentIllustration() {
                                     : "border-gray-200 text-gray-700",
                             ].join(" ")}
                         >
-            <span
-                className={[
-                    "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
-                    opt.state === "selected"
-                        ? "bg-primary-600 text-white"
-                        : "bg-gray-100 text-gray-600"
-                ].join(" ")}
-            >
-              {opt.letter}
-            </span>
-                        {opt.text}
-                    </li>
+                <span
+                    className={[
+                        "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
+                        opt.state === "selected"
+                            ? "bg-primary-600 text-white"
+                            : "bg-gray-100 text-gray-600"
+                    ].join(" ")}
+                >
+                  {opt.letter}
+                </span>
+                            {opt.text}
+                        </li>
                     ))}
                 </ul>
             </div>
+
             <div
-                className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
+                className="absolute bottom-4 -left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg">
-                    🎯
+                    📈
                 </div>
                 <div>
                     <div className="text-xs text-gray-500">Avg. score</div>
                     <div className="text-lg font-bold text-gray-900">+18%</div>
                 </div>
             </div>
+
+            <div
+                className="absolute -right-2 top-1/2 flex items-center gap-2 rounded-full bg-white py-2 pl-2 pr-4 shadow-xl ring-1 ring-black/5">
+                <span className="text-sl">🔥</span>
+                <span className="text-sm font-bold text-gray-900">7-day streak</span>
+            </div>
+        </div>
     );
 }
 
 /* FEATURES */
 const FEATURES = [
     {
-        icon: "🎯",
+        icon: "📝",
         title: "Realistic Exam Simulation",
         desc: "Timed, randomized practice exams that cover every UPCAT subject area, just like the real test.",
     },
     {
-        icon: "⏰",
+        icon: "⚡️",
         title: "Instant Scoring & Review",
         desc: "See your score the moment you submit. Review every answer with detailed rationale and explanations.",
     },
@@ -306,10 +314,11 @@ const FEATURES = [
         desc: "Track your performance over time. Identify weak areas and watch your accuracy climb week after week.",
     },
     {
-        icon: "🔄",
+        icon: "🎲",
         title: "Fresh Questions Every Time",
         desc: "A unique exam is generated each session — no memorization shortcuts, no copy-paste cramming.",
-    };
+    },
+];
 
 function Features() {
     return (
@@ -320,14 +329,21 @@ function Features() {
                         Everything you need to prepare.
                     </h2>
                     <p className="mt-3 text-lg text-gray-600">
-                        Built by students, for students. A focused toolkit for serious UPCAT prep.
+                        Built by students, for students. A focused toolkit for serious
+                        UPCAT prep.
                     </p>
                 </div>
+
                 <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {FEATURES.map((f, i) => (
-                        <div key={f.title} data-reveal style={{transitionDelay: `${i * 60}ms`}}>
+                        <div
+                            key={f.title}
+                            data-reveal
+                            style={{transitionDelay: `${i * 60}ms`}}
+                            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg"
+                        >
                             <div
-                                className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl ring-1 ring-primary-100 transition-colors"
+                                className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl ring-1 ring-primary-100 transition-colors group-hover:bg-primary-100"
                                 onClick={() => console.log(f.icon)}
                             >
                                 {f.icon}
@@ -364,7 +380,7 @@ const STEPS = [
         number: "3",
         title: "Review your results and improve",
         desc: "Read explanations, study your weak subtopics, and try again.",
-        icon: "🔄",
+        icon: "🚀",
     },
 ];
 
