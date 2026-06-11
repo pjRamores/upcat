@@ -102,118 +102,118 @@ export class Logger {
   child(additionalContext: Partial<LoggerContext>): Logger {
     return new Logger({ ...this.context, ...additionalContext });
   }
-}
-debug(message: string, data?: Record<string, unknown>) {
-    this.write({level: "debug", message, data});
-}
 
-info(message: string, data?: Record<string, unknown>) {
-    this.write({level: "info", message, data});
-}
+  debug(message: string, data?: Record<string, unknown>) {
+    this.write({ level: "debug", message, data });
+  }
 
-warn(message: string, data?: Record<string, unknown>) {
-    this.write({level: "warn", message, data});
-}
+  info(message: string, data?: Record<string, unknown>) {
+    this.write({ level: "info", message, data });
+  }
 
-error(message: string, error?: Error | null, data?: Record<string, unknown>) {
-    this.write({level: "error", message, error: error ?? null, data});
-}
+  warn(message: string, data?: Record<string, unknown>) {
+    this.write({ level: "warn", message, data });
+  }
 
-fatal(message: string, error?: Error | null, data?: Record<string, unknown>) {
-    this.write({level: "fatal", message, error: error ?? null, data});
-}
+  error(message: string, error?: Error | null, data?: Record<string, unknown>) {
+    this.write({ level: "error", message, error: error ?? null, data });
+  }
 
-event(eventName: string, data: Record<string, unknown>) {
-    this.info(eventName, {eventName, ...data});
-}
+  fatal(message: string, error?: Error | null, data?: Record<string, unknown>) {
+    this.write({ level: "fatal", message, error: error ?? null, data });
+  }
 
-metric(name: string, value: number, dimensions: Record<string, string | number | boolean | null> = {}) {
+  event(eventName: string, data: Record<string, unknown>) {
+    this.info(eventName, { eventName, ...data });
+  }
+
+  metric(name: string, value: number, dimensions: Record<string, string | number | boolean | null> = {}) {
     metricsCollector.histogram(name, value, dimensions);
-}
+  }
 
-startTimer(label: string) {
+  startTimer(label: string) {
     const start = process.hrtime.bigint();
     return () => {
-        const ms = Number(process.hrtime.bigint() - start) / 1_000_000;
-        this.metric("app.timer", ms, {label, service: this.context.service});
-        return ms;
+      const ms = Number(process.hrtime.bigint() - start) / 1_000_000;
+      this.metric("app.timer", ms, { label, service: this.context.service });
+      return ms;
     };
-}
+  }
 
-private async shouldLog(level: LogLevel, db?: Db): Promise<boolean> {
+  private async shouldLog(level: LogLevel, db?: Db): Promise<boolean> {
     const cfg = await getMonitoringConfig(db);
     const base = cfg.logging.defaultLevel;
     const key = [this.context.service, requestFromContext(this.context)?.path]
-        .filter(Boolean)
-        .join(".")
-        .toLowerCase();
+      .filter(Boolean)
+      .join(".")
+      .toLowerCase();
     const override = cfg.logging.levelOverrides[key];
     const required = LEVEL_PRIORITY[override ?? base];
     if (LEVEL_PRIORITY[level] < required) return false;
     const sample = cfg.logging.sampleRate[level] ?? 1;
     return Math.random() <= sample;
-}
+  }
 
-private toLogDoc(input: LoggerWriteInput, cfg: Awaited<ReturnType<typeof getMonitoringConfig>>): ApplicationLogEntry {
+  private toLogDoc(input: LoggerWriteInput, cfg: Awaited<ReturnType<typeof getMonitoringConfig>>): ApplicationLogEntry {
     const request = requestFromContext(this.context);
     const sanitizedData = sanitizeValue(
-        safeSerialize(input.data ?? null),
-        cfg.logging.sensitiveFields,
-        cfg.logging.maxLogSize,
+      safeSerialize(input.data ?? null),
+      cfg.logging.sensitiveFields,
+      cfg.logging.maxLogSize,
     ) as Record<string, unknown> | null;
 
     const err = input.error
-        ? {
-            name: input.error.name,
-            message: truncateString(input.error.message || "Unknown error", cfg.logging.maxLogSize),
-            stack: input.error.stack ? truncateString(input.error.stack, cfg.logging.maxLogSize) : null,
-            code: ((input.error as Error & {code?: string}).code ?? null) as string | null,
-            originalError: sanitizeValue(
-                safeSerialize(input.error),
-                cfg.logging.sensitiveFields,
-                cfg.logging.maxLogSize,
-            ) as Record<string, unknown> | null,
+      ? {
+          name: input.error.name,
+          message: truncateString(input.error.message || "Unknown error", cfg.logging.maxLogSize),
+          stack: input.error.stack ? truncateString(input.error.stack, cfg.logging.maxLogSize) : null,
+          code: ((input.error as Error & { code?: string }).code ?? null) as string | null,
+          originalError: sanitizeValue(
+            safeSerialize(input.error),
+            cfg.logging.sensitiveFields,
+            cfg.logging.maxLogSize,
+          ) as Record<string, unknown> | null,
         }
-        : null;
+      : null;
 
     return {
-        timestamp: new Date(),
-        level: input.level,
-        message: truncateString(input.message, cfg.logging.maxLogSize),
-        context: {
-            service: this.context.service,
-            environment: this.context.environment,
-            version: this.context.version,
-            instance: this.context.instance,
-            region: this.context.region,
-        },
-        request,
-        error: err,
-        data: sanitizedData,
-        tags: Array.isArray(input.tags) ? input.tags.slice(0, 20) : [],
-        performance: input.performance
-            ? {
-                cpuTime: input.performance.cpuTime ?? null,
-                memoryUsed: input.performance.memoryUsed ?? null,
-                dbQueries: input.performance.dbQueries ?? null,
-                dbQueryTime: input.performance.dbQueryTime ?? null,
-                externalCalls: input.performance.externalCalls ?? null,
-                externalCallTime: input.performance.externalCallTime ?? null,
-            }
-            : null,
-        trace: this.context.trace ??
-        {
-            traceId: request?.traceId ?? null,
-            spanId: request?.spanId ?? null,
-            parentSpanId: request?.parentSpanId ?? null,
-        },
+      timestamp: new Date(),
+      level: input.level,
+      message: truncateString(input.message, cfg.logging.maxLogSize),
+      context: {
+        service: this.context.service,
+        environment: this.context.environment,
+        version: this.context.version,
+        instance: this.context.instance,
+        region: this.context.region,
+      },
+      request,
+      error: err,
+      data: sanitizedData,
+      tags: Array.isArray(input.tags) ? input.tags.slice(0, 20) : [],
+      performance: input.performance
+        ? {
+            cpuTime: input.performance.cpuTime ?? null,
+            memoryUsed: input.performance.memoryUsed ?? null,
+            dbQueries: input.performance.dbQueries ?? null,
+            dbQueryTime: input.performance.dbQueryTime ?? null,
+            externalCalls: input.performance.externalCalls ?? null,
+            externalCallTime: input.performance.externalCallTime ?? null,
+          }
+        : null,
+      trace: this.context.trace ?? {
+        traceId: request?.traceId ?? null,
+        spanId: request?.spanId ?? null,
+        parentSpanId: request?.parentSpanId ?? null,
+      },
     };
-}
-private write(input: LoggerWriteInput) {
-    void this.persist(input);
-}
+  }
 
-private async persist(input: LoggerWriteInput) {
+  private write(input: LoggerWriteInput) {
+    void this.persist(input);
+  }
+
+  private async persist(input: LoggerWriteInput) {
     const db = await getRawDb();
     const cfg = await getMonitoringConfig(db);
     if (!(await this.shouldLog(input.level, db))) return;
@@ -221,33 +221,33 @@ private async persist(input: LoggerWriteInput) {
     const doc = this.toLogDoc(input, cfg);
 
     if (process.env.LOG_STDOUT !== "false") {
-        const stdoutLine = {
-            ts: doc.timestamp.toISOString(),
-            level: doc.level,
-            message: doc.message,
-            service: doc.context.service,
-            requestId: doc.request?.requestId ?? null,
-            traceId: doc.trace?.traceId ?? null,
-        };
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(stdoutLine));
+      const stdoutLine = {
+        ts: doc.timestamp.toISOString(),
+        level: doc.level,
+        message: doc.message,
+        service: doc.context.service,
+        requestId: doc.request?.requestId ?? null,
+        traceId: doc.trace?.traceId ?? null,
+      };
+      console.log(JSON.stringify(stdoutLine));
     }
 
     try {
-        await db.collection<ApplicationLogEntry>("application_logs").insertOne(doc);
+      await db.collection<ApplicationLogEntry>("application_logs").insertOne(doc);
     } catch {
-        // eslint-disable-next-line no-console
-        console.error("[monitoring] failed to persist log entry");
+      console.error("[monitoring] failed to persist log entry");
     }
 
     if (doc.level === "error" || doc.level === "fatal") {
-        metricsCollector.counter("api.request.error", 1, {
-            service: doc.context.service,
-            endpoint: doc.request?.path ?? null,
-            errorCode: doc.error?.code ?? null,
-        });
+      metricsCollector.counter("api.request.error", 1, {
+        service: doc.context.service,
+        endpoint: doc.request?.path ?? null,
+        errorCode: doc.error?.code ?? null,
+      });
     }
+  }
 }
+
 
 export function createLogger(service: string, request?: Partial<MonitoringRequestContext>): Logger {
     const req: MonitoringRequestContext | null = request

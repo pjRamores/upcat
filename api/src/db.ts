@@ -38,8 +38,9 @@ function makeMonitoredDb(db: Db): Db {
                             "deleteMany",
                             "aggregate",
                             "countDocuments",
-                            "findoneAndUpdate",
+                            "findOneAndUpdate",
                         ]);
+
 
                         if (!monitoredOps.has(String(collProp))) {
                             return value.bind(collTarget);
