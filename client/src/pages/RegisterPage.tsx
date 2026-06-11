@@ -1,9 +1,9 @@
 import { type FormEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apiClient from "@/lib/api";
 import { useAuthStore } from "@/stores/authStore";
 import { useToastStore } from "@/stores/toastStore";
-import { validateEmail, validatePassword } from "@/upcat/shared";
+import { validateEmail, validatePassword } from "@upcat/shared";
 import PasswordStrengthBar from "@/components/PasswordStrengthBar";
 import Spinner from "@/components/Spinner";
 import Seo from "@/components/Seo";
@@ -59,7 +59,7 @@ export default function RegisterPage() {
             cancelled = true;
         };
     }, [navigate]);
-    const { register, isLoading } = useAuthStore();
+    const { register } = useAuthStore();
     const addToast = useToastStore((s) => s.addToast);
 
     const [form, setForm] = useState({
@@ -103,15 +103,13 @@ export default function RegisterPage() {
             const pw = validatePassword(form.password);
             if (!pw.isValid) newErrors.password = pw.errors[0] ?? "Invalid password.";
         }
+        if (field === "confirmPassword") {
+            if (form.confirmPassword && form.confirmPassword !== form.password) {
+                newErrors.confirmPassword = "Passwords do not match.";
+            }
+        }
+        setErrors((e) => ({...e, ...newErrors}));
     };
-if (field === "confirmPassword") {
-    if (form.confirmPassword && form.confirmPassword !== form.password) {
-        newErrors.confirmPassword = "Passwords do not match.";
-    }
-}
-
-setErrors((e) => ({...e, ...newErrors}));
-};
 
 const validateAll = (): boolean => {
     const e: FieldErrors = {};
@@ -153,9 +151,8 @@ const handleSubmit = async (e: FormEvent) => {
     }
 };
 
-const fieldClass = <T extends keyof FieldErrors> => ({
-    inputField mt-1 $[touched[T] && errors[T]] ? "input-error" : ""
-});
+const fieldClass = (field: keyof FieldErrors) =>
+    `input-field mt-1 ${touched[field] && errors[field] ? "input-error" : ""}`;
 
 if (checkingStatus) {
     return (
@@ -208,118 +205,112 @@ return (
                                 <p className="mt-1 text-xs text-amber-500">{errors.firstName}</p>
                             )}
                         </div>
-</div>
-<div>
-    <label className="block text-sm font-medium text-gray-700">Last name</label>
-    <input
-        required
-        className={fieldClass("lastName")}
-        value={form.lastName}
-        onChange={(e) => update("lastName", e.target.value)}
-        onBlur={() => markTouched("lastName")}
-        placeholder="Dela Cruz"
-    />
-    {touched.lastName && errors.lastName &&
-      <p className="mt-1 text-xs text-amber-500">{errors.lastName}</p>
-    }
-</div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Last name</label>
+                            <input
+                                required
+                                className={fieldClass("lastName")}
+                                value={form.lastName}
+                                onChange={(e) => update("lastName", e.target.value)}
+                                onBlur={() => markTouched("lastName")}
+                                placeholder="Dela Cruz"
+                            />
+                            {touched.lastName && errors.lastName && (
+                                <p className="mt-1 text-xs text-amber-500">{errors.lastName}</p>
+                            )}
+                        </div>
+                    </div>
 
-{/* Email */}
-<div>
-    <label className="block text-sm font-medium text-gray-700">Email</label>
-    <input
-        type="email"
-        required
-        className={fieldClass("email")}
-        value={form.email}
-        onChange={(e) => update("email", e.target.value)}
-        onBlur={() => markTouched("email")}
-        placeholder="juan@example.com"
-    />
-    {touched.email && errors.email &&
-      <p className="mt-1 text-xs text-amber-500">{errors.email}</p>
-    }
-</div>
+                    {/* Email */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <input
+                            type="email"
+                            required
+                            className={fieldClass("email")}
+                            value={form.email}
+                            onChange={(e) => update("email", e.target.value)}
+                            onBlur={() => markTouched("email")}
+                            placeholder="juan@example.com"
+                        />
+                        {touched.email && errors.email && (
+                            <p className="mt-1 text-xs text-amber-500">{errors.email}</p>
+                        )}
+                    </div>
 
-{/* Password */}
-<div>
-    <label className="block text-sm font-medium text-gray-700">Password</label>
-    <div className="relative mt-1">
-        <input
-            type={showPassword ? "text" : "password"}
-            required
-            className={`${fieldClass("password")} pr-10`}
-            value={form.password}
-            onChange={(e) => update("password", e.target.value)}
-            onBlur={() => markTouched("password")}
-            placeholder="********"
-        />
-        <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            tabIndex={-1}
-        >
-          {showPassword ? (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112.19c-5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343A9.97 9.97 0 0112+5c5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343L3.3m3.343 3.343l2.829 2.829M17.657 17.657L21+21m-3.343-3.343l-2.829-2.829M9.878 9.878a3 3 0 00.004.243 .4.243"/>
-          </svg>
-        ) : (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.12a3 3 0 116.037 1c-1.89 1.89-3.7 3.7-5.4 5.4s-3.7-3.7-5.4-5.4A3 3 0 012.4 16.5V13a2 2 0 012-2h8c0 .99-.31 1.9-.88 2.8m-1.72 0a1 1 0 01-1.72 1v4.65M11.38 2.03a.79.79 0 00-1.5.03m-.76 3.36h-.02A.79.79 0 009.38 14H4a.79.79 0 000 1.58v4.65M2.5 12.5l.02-1.5h1.58"/>
-            </svg>
-        )}
-        <button
-          type="button"
-          onClick={() => setShowConfirm(!showConfirm)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-          tabIndex={-1}
-        >
-          {showConfirm ? (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112.19c-5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343A9.97 9.97 0 0112+5c5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343L3.3m3.343 3.343l2.829 2.829M9.878 9.878a3 3 0 00.004.243 .4.243"/>
-            </svg>
-          ) : (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.12a3 3 0 116.037 1c-1.89 1.89-3.7 3.7-5.4 5.4s-3.7-3.7-5.4-5.4A3 3 0 012.4 16.5V13a2 2 0 012-2h8c0 .99-.31 1.9-.88 2.8m-1.72 0a1 1 0 01-1.72 1v4.65M11.38 2.03a.79.79 0 00-1.5.03m-.76 3.36h-.02A.79.79 0 009.38 14H4a.79.79 0 000 1.58v4.65M2.5 12.5l.02-1.5h1.58"/>
-            </svg>
-          )}
-        </button>
-      <PasswordStrengthBar password={form.password} />
+                    {/* Password */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Password</label>
+                        <div className="relative mt-1">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                required
+                                className={`${fieldClass("password")} pr-10`}
+                                value={form.password}
+                                onChange={(e) => update("password", e.target.value)}
+                                onBlur={() => markTouched("password")}
+                                placeholder="••••••••"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                tabIndex={-1}
+                            >
+                                {showPassword ? "Hide" : "Show"}
+                            </button>
+                        </div>
+                        <PasswordStrengthBar password={form.password} />
+                        {touched.password && errors.password && (
+                            <p className="mt-1 text-xs text-amber-500">{errors.password}</p>
+                        )}
+                    </div>
+
+                    {/* Confirm password */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Confirm password</label>
+                        <div className="relative mt-1">
+                            <input
+                                type={showConfirm ? "text" : "password"}
+                                required
+                                className={`${fieldClass("confirmPassword")} pr-10`}
+                                value={form.confirmPassword}
+                                onChange={(e) => update("confirmPassword", e.target.value)}
+                                onBlur={() => markTouched("confirmPassword")}
+                                placeholder="••••••••"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirm(!showConfirm)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                tabIndex={-1}
+                            >
+                                {showConfirm ? "Hide" : "Show"}
+                            </button>
+                        </div>
+                        {touched.confirmPassword && errors.confirmPassword && (
+                            <p className="mt-1 text-xs text-amber-500">{errors.confirmPassword}</p>
+                        )}
+                    </div>
+
+                    {/* Submit */}
+                    <button type="submit" className="btn-primary w-full mt-6">
+                        Create account
+                    </button>
+                </form>
+            ) : (
+                <div className="mt-8 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
+                    Email sign-up is temporarily disabled. Please sign in with social providers above.
+                </div>
+            )}
+
+            <SocialLoginButtons purpose="link" />
+
+            <p className="mt-6 text-center text-sm text-gray-500">
+                Already have an account?{" "}
+                <a href="/login" className="font-medium text-primary-600 hover:underline">Sign in</a>
+            </p>
+        </div>
     </div>
-</div>
-
-{/* Confirm password */}
-<div>
-    <label className="block text-sm font-medium text-gray-700">Confirm password</label>
-    <div className="relative mt-1">
-        <input
-            type={showConfirm ? "text" : "password"}
-            required
-            className={`${fieldClass("confirmPassword")} pr-10`}
-            value={form.confirmPassword}
-            onChange={(e) => update("confirmPassword", e.target.value)}
-            onBlur={() => markTouched("confirmPassword")}
-            placeholder="********"
-        />
-        <button
-            type="button"
-            onClick={() => setShowConfirm(!showConfirm)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            tabIndex={-1}
-        >
-          {showConfirm ? (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112.19c-5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343A9.97 9.97 0 0112+5c5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343L3.3m3.343 3.343l2.829 2.829M9.878 9.878a3 3 0 00.004.243 .4.243"/>
-            </svg>
-          ) : (
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.12a3 3 0 116.037 1c-1.89 1.89-3.7 3.7-5.4 5.4s-3.7-3.7-5.4-5.4A3 3 0 012.4 16.5V13a2 2 0 012-2h8c0 .99-.31 1.9-.88 2.8m-1.72 0a1 1 0 01-1.72 1v4.65M11.38 2.03a.79.79 0 00-1.5.03m-.76 3.36h-.02A.79.79 0 009.38 14H4a.79.79 0 000 1.58v4.65M2.5 12.5l.02-1.5h1.58"/>
-            </svg>
-          )}
-        </button>
-      <PasswordStrengthBar password={form.password} />
-    </div>
-</div>
 );
 }

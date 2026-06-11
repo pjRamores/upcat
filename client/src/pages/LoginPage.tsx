@@ -2,7 +2,7 @@ import { type FormEvent, useEffect, useState } from "react";
 import apiClient from "@/lib/api";
 import { useAuthStore } from "@/stores/authStore";
 import { useToastStore } from "@/stores/toastStore";
-import { setCachedOnboardingCheck } from "@lib/helpApi";
+import { setCachedOnboardingCheck } from "@/lib/helpApi";
 import Spinner from "@/components/Spinner";
 import Seo from "@/components/Seo";
 import SocialLoginButtons from "@/components/SocialLoginButtons";
@@ -108,11 +108,8 @@ export default function LoginPage() {
             Sign in to continue your UPCAT practice.
           </p>
         </div>
-      </div>
-    </div>
-  );
-}
-<form onSubmit={handleSubmit} className="mt-8 space-y-5">
+
+        <form onSubmit={handleSubmit} className="mt-8 space-y-5">
     {/* Email */}
     <div>
         <label className="block text-sm font-medium text-gray-700">Email</label>
@@ -151,11 +148,13 @@ export default function LoginPage() {
                 ) : (
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.836 17.374a7.93 7.93 0 01-1.477-.316A8.052 8.052 0 011.48 9h1.18c.037.043.12.175.433.405a9.863 9.863 0 01-3.278 3.644m11.52 0a9.763 9.763 0 00-3.278 3.644m11.52 0A8.052 8.052 0 0022.58 9h-.001c-.037-.043-.12-.175-.433-.405a7.93 7.93 0 01-1.477-.316m11.52 0A7.93 7.93 0 0131 18.17M12 6v15h-1V6zm0 0h1v15H0z" />
+                    </svg>
                 )}
             </button>
         </div>
+    </div>
 
-    {/* Remember me + Forgot password */}
+        {/* Remember me + Forgot password */}
     <div className="space-y-3">
         {/* Remember me checkbox */}
         <label
@@ -182,27 +181,25 @@ export default function LoginPage() {
         </a>
     </div>
 
-    {/* Submit */}
-    <button type="submit" disabled={isLoading || redirecting} className="btn-primary w-full mt-6">
-        {isLoading || redirecting ? (
+        {/* Submit */}
+        <button type="submit" disabled={isLoading || redirecting} className="btn-primary w-full mt-6">
+          {isLoading || redirecting ? (
             <span className="flex items-center gap-2">
-                <Spinner className="h-4 w-4 text-white" /> {redirecting ? "Redirecting..." : "Signing in..."}
+              <Spinner className="h-4 w-4 text-white" /> {redirecting ? "Redirecting..." : "Signing in..."}
             </span>
-        ) : (
+          ) : (
             "Sign in"
-        )}
-    </button>
-</form>
+          )}
+        </button>
+        </form>
 
-<SocialLoginButtons purpose="login" redirectPath={from} />
+        <SocialLoginButtons purpose="login" redirectPath={from} />
 
-<p className="mt-6 text-center text-sm text-gray-500">
-    Don't have an account?{" "}
-    <a href="/register" className="font-medium text-primary-600 hover:underline">Register</a>
-</p>
-</a>
-</p>
-</div>
-</div>
-});
+        <p className="mt-6 text-center text-sm text-gray-500">
+          Don't have an account?{" "}
+          <a href="/register" className="font-medium text-primary-600 hover:underline">Register</a>
+        </p>
+      </div>
+    </div>
+  );
 } 
