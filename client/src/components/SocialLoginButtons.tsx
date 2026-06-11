@@ -7,7 +7,7 @@ import {oidcApi} from "@/lib/oidcApi";
 import {useToastStore} from "@/stores/toastStore";
 import Spinner from "@/components/Spinner";
 
-const ICONS: Record<SocialProvider, React.ReactNode> = {
+const ICONS: Record<SocialProvider, JSX.Element> = {
     google: (
         <svg viewBox="0.0 48 48" className="h-4 w-4 aria-hidden">
             <path fill="#FFC107"
@@ -93,33 +93,34 @@ export default function SocialLoginButtons({
             setLoadingProvider(null);
         }
     };
-}
-return (
-    <div className={className}>
-        {divider && (
-            <div className="my-4 flex items-center gap-3 text-xs uppercase tracking-wide text-gray-400">
-                <span className="h-px flex-1 bg-gray-200"></span>
-                {divider}
-                <span className="h-px flex-1 bg-gray-200"></span>
+
+    return (
+        <div className={className}>
+            {divider && (
+                <div className="my-4 flex items-center gap-3 text-xs uppercase tracking-wide text-gray-400">
+                    <span className="h-px flex-1 bg-gray-200"></span>
+                    {divider}
+                    <span className="h-px flex-1 bg-gray-200"></span>
+                </div>
+            )}
+            <div className="grid gap-2">
+                {enabledList.map((p) => (
+                    <button
+                        key={p}
+                        type="button"
+                        disabled={loadingProvider !== null}
+                        onClick={() => start(p)}
+                        className="flex w-full items-center justify-center gap-3 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-60"
+                    >
+                        {loadingProvider === p ? (
+                            <Spinner className="h-4 w-4"></Spinner>
+                        ) : (
+                            <span className="flex h-4 w-4 items-center justify-center">{ICONS[p]}</span>
+                        )}
+                        {purpose === "link" ? "Link" : "Continue with"} {SOCIAL_PROVIDER_META[p].label}
+                    </button>
+                ))}
             </div>
-        )}
-        <div className="grid gap-2">
-            {enabledList.map((p) => (
-                <button
-                    key={p}
-                    type="button"
-                    disabled={loadingProvider !== null}
-                    onClick={() => start(p)}
-                    className="flex w-full items-center justify-center gap-3 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-60"
-                >
-                    {loadingProvider === p ? (
-                        <Spinner className="h-4 w-4"></Spinner>
-                    ) : (
-                        <span className="flex h-4 w-4 items-center justify-center">{ICONS[p]}</span>
-                    )}
-                    {purpose === "link" ? "Link" : "Continue with"} {SOCIAL_PROVIDER_META[p].label}
-                </button>
-            ))}
         </div>
-    </div>
-);
+    );
+}
