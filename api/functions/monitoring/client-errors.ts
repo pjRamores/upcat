@@ -1,39 +1,51 @@
-import { type } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ObjectId } from "mongodb";
-import { extractToken } from "../src/auth.js";
+import { extractToken } from "../../src/auth.js";
 import { getDb } from "../../src/db.js";
-import { createLogger } from "../../../src/monitoring/logger.js";
+import { createLogger } from "../../src/monitoring/logger.js";
 
 const logger = createLogger("client");
+
+type ClientErrorBody = {
+  message?: unknown;
+  stack?: unknown;
+  componentStack?: unknown;
+  url?: unknown;
+  userAgent?: unknown;
+  tags?: unknown;
+  metadata?: unknown;
+  severity?: unknown;
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const body = { req.body ?? {} } as {
-    message?: unknown;
-    stack?: unknown;
-    componentStack?: unknown;
-    url?: unknown;
-    userAgent?: unknown;
-    tags?: unknown;
-    metadata?: unknown;
-    severity?: unknown;
-  };
+  const body = (req.body ?? {}) as ClientErrorBody;
 
-  const message = typeof body.message === "string" ? body.message.slice(0, 500) : "Client error";
+  const message =
+    typeof body.message === "string" ? body.message.slice(0, 500) : "Client error";
   const stack = typeof body.stack === "string" ? body.stack.slice(0, 4000) : null;
-  const componentStack = typeof body.componentStack === "string" ? body.componentStack.slice(0, 2000) : null;
+  const componentStack =
+    typeof body.componentStack === "string" ? body.componentStack.slice(0, 2000) : null;
   const url = typeof body.url === "string" ? body.url.slice(0, 1000) : null;
-  const userAgent = typeof body.userAgent === "string" ? body.userAgent.slice(0, 500) : null;
+  const userAgent =
+    typeof body.userAgent === "string" ? body.userAgent.slice(0, 500) : null;
   const severity = body.severity === "warn" ? "warn" : "error";
+
   const tags = Array.isArray(body.tags)
     ? body.tags.filter((tag): tag is string => typeof tag === "string").slice(0, 10)
     : [];
 
+  const metadata =
+    typeof body.metadata === "object" && body.metadata !== null
+      ? (body.metadata as Record<string, unknown>)
+      : null;
+
   const token = extractToken(req);
-  const userId = token?.userId && ObjectId.isValid(token.userId) ? token.userId : null;
+  const userId =
+    token?.userId && ObjectId.isValid(token.userId) ? new ObjectId(token.userId) : null;
 
   try {
     const payload = {
@@ -42,13 +54,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       userAgent,
       stack,
       componentStack,
-      metadata: typeof body.metadata === "object" && body.metadata ? body.metadata as Record<string, unknown> : null,
+      metadata,
       tags,
       origin: "browser",
-      userId,
+      userId: userId?.toString() ?? null,
     };
-    if (severity === "warn") logger.warn("client.error", payload);
-    else logger.error("client.error", null, payload);
+
+    if (severity === "warn") {
+      logger.warn("client.error", payload);
+    } else {
+      logger.error("client.error", null, payload);
+    }
+
+    const forwardedFor = req.headers["x-forwarded-for"];
+    const ip = Array.isArray(forwardedFor) ? forwardedFor : forwardedFor ?? null;
 
     const db = await getDb();
     await db.collection("application_logs").insertOne({
@@ -69,7 +88,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         parentSpanId: null,
         method: null,
         path: url,
-        ip: req.headers["x-forwarded-for"] || null,
+        ip,
         userAgent,
         userId,
         sessionId: null,
@@ -83,7 +102,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         code: null,
         originalError: componentStack ? { componentStack } : null,
       },
-      data: typeof body.metadata === "object" && body.metadata ? body.metadata : null,
+      data: metadata,
       tags: ["client-error", ...tags],
       performance: null,
       trace: null,

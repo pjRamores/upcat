@@ -48,6 +48,9 @@
 
 ## Getting started
 
+docker run -d --name mongodb -p 27017:27017 -v mongodb_data:/Users/pjramores/projects/mongodb/upcat -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secret123 mongo:latest
+
+
 ```bash
 # 1. Clone
 git clone https://github.com/your-org/upcat-simulator.git
@@ -256,7 +259,7 @@ All routes are mounted under `/api`. Auth-protected routes expect `Authorization
 | Method | Path | Auth | Description |
 |--------|------|------|--------------|
 | POST   | `/start` | √ | Create a new exam session (mode: "full" \| "subject") |
-| GET    | `/sessions` | √ | List user's exam sessions |
+| GET    | `/sessions` | √ | List user\'s exam sessions |
 | GET    | `/:sessionId/questions` | √ | Fetch questions for a session |
 | POST   | `/:sessionId/answer` | √ | Record a single answer |
 | POST   | `/:sessionId/answer-bulk` | √ | Record many answers in one round-trip |

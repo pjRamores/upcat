@@ -1,4 +1,3 @@
-script
 /*eslint-disable no-console*/
 import { ObjectId } from "mongodb";
 
@@ -9,7 +8,7 @@ export async function seedQuestionRichSamples(db, options = {}) {
 
   const existing = await questions.countDocuments({ tags: "rich-media-sample" });
   if (existing > 0) {
-    console.log(`Rich media samples already exist (${existing}), skipping.`);
+    console.log(`Rich media samples already exist (\${existing}), skipping.`);
     return;
   }
 
@@ -101,7 +100,6 @@ export async function seedQuestionRichSamples(db, options = {}) {
       updatedAt: now,
     },
   ]);
+
+  console.log("✓ Seeded rich media question samples (2 questions, 1 passage)");
 }
-script
-console.log(`\u2022 Seeded rich media question samples (2 questions, 1 passage)`);
-}`

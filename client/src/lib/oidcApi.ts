@@ -3,30 +3,38 @@
  * password setup, and account deletion.
  */
 import apiClient from "@/lib/api";
+import { loadStaticAuthProviders } from "@/lib/staticAuthProviders";
 import {
   API_ROUTES,
+  SOCIAL_PROVIDERS,
   type AuthResponse,
   type LinkedAccount,
   type PublicAuthProviders,
-  SOCIAL_PROVIDERS,
   type SocialCallbackLinkResponse,
   type SocialProvider,
   type SocialStartResponse,
 } from "@upcat/shared";
-import { hasUsableStaticAuthProvider, loadStaticAuthProviders } from "@/lib/staticAuthProviders";
 
 async function unwrap<T>(promise: Promise<{ data: { data: T } }>): Promise<T> {
   const { data } = await promise;
   return data.data;
 }
 
+function hasUsableStaticAuthProvider(
+  snapshot: { providers?: PublicAuthProviders | null } | null | undefined,
+): snapshot is { providers: PublicAuthProviders } {
+  return !!snapshot?.providers;
+}
+
 export const oidcApi = {
   /** Public - used by Login/Register to render only enabled buttons. */
-  providers: async () => {
+  providers: async (): Promise<PublicAuthProviders> => {
     const snapshot = await loadStaticAuthProviders();
+
     if (hasUsableStaticAuthProvider(snapshot)) {
       return snapshot.providers;
     }
+
     return SOCIAL_PROVIDERS.reduce((acc, provider) => {
       acc[provider] = { enabled: false };
       return acc;
@@ -48,7 +56,11 @@ export const oidcApi = {
     body: { code: string; state: string },
   ) =>
     unwrap<
-      | (AuthResponse & { linkedProvider: SocialProvider; newAccount: boolean; redirectPath: string | null })
+      | (AuthResponse & {
+          linkedProvider: SocialProvider;
+          newAccount: boolean;
+          redirectPath: string | null;
+        })
       | SocialCallbackLinkResponse
     >(apiClient.post(API_ROUTES.AUTH.SOCIAL_CALLBACK(provider), body)),
 
@@ -69,8 +81,7 @@ export const oidcApi = {
     newPassword: string;
     confirmPassword: string;
     currentPassword?: string;
-  }) =>
-    unwrap<{ ok: true }>(apiClient.post(API_ROUTES.AUTH.SET_PASSWORD, body)),
+  }) => unwrap<{ ok: true }>(apiClient.post(API_ROUTES.AUTH.SET_PASSWORD, body)),
 
   /** Auth required - permanently delete the current user's account. */
   deleteAccount: (body: { confirmation: string; password?: string }) =>

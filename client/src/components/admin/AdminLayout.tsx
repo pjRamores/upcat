@@ -301,35 +301,4 @@ focus="outline-none focus:ring-2 focus:ring-primary-100"
   className="rounded-md p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
   aria-label="Open menu"
 >
-function buildCrumbs(pathname: string) {
-  const segs = pathname.split("/").filter(Boolean);
-  const crumbs: { label: string; path: string }[] = [];
-  let acc = "";
-  for (const s of segs) {
-    acc += `/${s}`;
-    crumbs.push({ label: TITLE_MAP[acc] ?? prettify(s), path: acc });
-  }
-  return crumbs.length ? crumbs : [{ label: "Admin", path: "/admin" }];
-}
-
-function isNavItemActive(item: { to: string; end?: boolean }, pathname: string) {
-  if (item.end) return pathname === item.to;
-  return pathname === item.to || pathname.startsWith(`${item.to}/`);
-}
-
-function slugify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^+|-+$/g, "");
-}
-
-function prettify(s: string) {
-  if (/^[a-f0-9]{24}$/i.test(s)) return "Detail";
-  return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ".");
-}
-
-function ShieldIcon({ className = "h-6 w-6" }: { className?: string }) {
-  return (
-    <svg viewBox="0.0 24.24" className={className} fill="currentColor" aria-hidden>
-      <path d="M12 2.4v6c0 5.3 4.9 9.7 8.1 11.4-1.3 0-6.8-11.5-8.3z"/>
-    </svg>
-  );
-}
+``
