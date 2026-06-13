@@ -72,12 +72,12 @@ function lockedUntil(failedCount: number): Date | null {
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
     if (req.method !== "POST") {
-        return res.status(405).json({ success: false, error: "Method not allowed" });
+        return res.status(405).json({success: false, error: "Method not allowed"});
     }
 
-    const { email, password } = req.body ?? {};
+    const {email, password} = req.body ?? {};
     if (!email || !password) {
-     return res.status(400).json({ success: false, error: "Email and password are required." });
+     return res.status(400).json({success: false, error: "Email and password are required."});
     }
 
     const db = await getDb();
@@ -86,106 +86,93 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     if (!user) {
         return res.status(401).json({success: false, error: "Invalid credentials."});
     }
-
-  if (user.isActive === false) {
-    res.status(403).json({
-      success: false,
-      error: "Your account has been deactivated. Please contact support.",
-    });
-    return;
-  }
-
-  const existingLock = user.security?.loginAttempts?.lockedUntil as | Date | string | null | undefined;
-  if (existingLock && new Date(existingLock).getTime() > Date.now()) {
-    const isHard =
-      new Date(existingLock).getTime() >=
-      new Date(LOGIN_LOCKOUT.hardUntil).getTime() - 1000;
-
-    return res.status(423).json({
-      success: false,
-      error: isHard
-        ? "Account locked. Use account recovery to regain access."
-        : `Too many failed attempts. Try again after ${new Date(existingLock).toUTCString()}`,
-    });
-  }
-
-  if (!user.isVerified) {
-    return res
-      .status(403)
-      .json({ success: false, error: "Please verify your email before logging in." });
-  }
-
-  const storedHash: string | null =
-    user.auth?.passwordHash ?? user.passwordHash ?? null;
-
-  if (!storedHash) {
-    return res.status(401).json({
-      success: false,
-      error:
-        'This account has no password set. Sign in with your linked social provider, or use "Forgot password" to set one.',
-    });
-  }
-
-  const valid = await bcrypt.verify(String(password), storedHash);
-
-  if (!valid) {
-    const prevCount = Number(user.security?.loginAttempts?.count ?? 0);
-    const nextCount = prevCount + 1;
-    const newLock = lockedUntil(nextCount);
-
-    await db.collection("users").updateOne(
-      { _id: user._id },
-      {
-        $set: {
-          "security.loginAttempts.count": nextCount,
-          "security.loginAttempts.lastAttemptAt": new Date(),
-          "security.loginAttempts.lockedUntil": newLock,
-        },
-      }
-    );
-
-    if (
-      prevCount < LOGIN_LOCKOUT.mediumThreshold &&
-      nextCount >= LOGIN_LOCKOUT.mediumThreshold &&
-      newLock
-    ) {
-      const minutes = Math.max(
-        1,
-        Math.round((newLock.getTime() - Date.now()) / 60_000)
-      );
-
-      await sendAccountLockedEmail(String(user.email), {
-        unlockMinutes: minutes,
-        recoverUrl: `${APP_URL}/recover-account`,
-      }).catch(() => undefined);
+    if (user.isActive === false) {
+        res.status(403).json({
+            success: false,
+            error: "Your account has been deactivated. Please contact support.",
+        });
+        return;
     }
 
-    return res.status(401).json({
-      success: false,
-      error: newLock
-        ? "Account temporarily locked due to too many failed attempts."
-        : "Invalid credentials.",
-    });
-  }
+    const existingLock = user.security?.loginAttempts?.lockedUntil as | Date | string | null | undefined;
+    if (existingLock && new Date(existingLock).getTime() > Date.now()) {
+        const isHard =
+            new Date(existingLock).getTime() >=
+            new Date(LOGIN_LOCKOUT.hardUntil).getTime() - 1000;
+        return res.status(423).json({
+            success: false,
+            error: isHard
+                ? "Account locked. Use account recovery to regain access."
+                : `Too many failed attempts. Try again after ${new Date(existingLock).toUTCString()}`,
+        });
+    }
 
-  const role = (user.role as "admin" | "reviewee" | undefined) ?? "reviewee";
-  const now = new Date();
+    if (!user.isVerified) {
+        return res
+            .status(403)
+            .json({ success: false, error: "Please verify your email before logging in." });
+    }
 
-  void db
-    .collection("users")
-    .updateOne(
-      { _id: user._id },
-      {
-        $set: {
-          lastLoginAt: now,
-          updatedAt: now,
-          "security.loginAttempts.count": 0,
-          "security.loginAttempts.lockedUntil": null,
+    const storedHash: string | null =
+        user.auth?.passwordHash ?? user.passwordHash ?? null;
+
+    if (!storedHash) {
+        return res.status(401).json({
+            success: false,
+            error:
+                'This account has no password set. Sign in with your linked social provider, or use "Forgot password" to set one.',
+        });
+    }
+
+    const valid = await bcrypt.verify(String(password), storedHash);
+    if (!valid) {
+        const prevCount = Number(user.security?.loginAttempts?.count ?? 0);
+        const nextCount = prevCount + 1;
+        const newLock = lockedUntil(nextCount);
+        await db.collection("users").updateOne(
+            { _id: user._id },
+            {
+                $set: {
+                    "security.loginAttempts.count": nextCount,
+                    "security.loginAttempts.lastAttemptAt": new Date(),
+                    "security.loginAttempts.lockedUntil": newLock,
+                },
+            },
+        );
+        if (
+            prevCount < LOGIN_LOCKOUT.mediumThreshold &&
+            nextCount >= LOGIN_LOCKOUT.mediumThreshold &&
+            newLock
+        ) {
+            const minutes = Math.max(1, Math.round((newLock.getTime() - Date.now()) / 60_000));
+            await sendAccountLockedEmail(String(user.email), {
+                unlockMinutes: minutes,
+                recoverUrl: `${APP_URL}/recover-account`,
+            }).catch(() => undefined);
+        }
+        return res.status(401).json({
+            success: false,
+            error: newLock
+                ? "Account temporarily locked due to too many failed attempts."
+                : "Invalid credentials.",
+        });
+    }
+
+    const role = (user.role as "admin" | "reviewee" | undefined) ?? "reviewee";
+    const now = new Date();
+
+    void db.collection("users").updateOne(
+        { _id: user._id },
+        {
+            $set: {
+                lastLoginAt: now,
+                updatedAt: now,
+                "security.loginAttempts.count": 0,
+                "security.loginAttempts.lockedUntil": null,
+            },
+            $inc: {loginCount: 1},
         },
-        $inc: { loginCount: 1 },
-      }
-    )
-    .catch(() => undefined);
+    ).catch(() => undefined);
 
   void logActivity(db, {
     actorId: user._id,
