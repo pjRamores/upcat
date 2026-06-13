@@ -220,7 +220,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     ]);
 
     const subscription = normalizeSubscription(user as Record<string, unknown>);
-
     return res.status(200).json({
         success: true,
         data: {
@@ -235,7 +234,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
                 isActive: user.isActive ?? true,
                 hasPassword: true,
                 socialOnly: false,
-                subscription,
+                subscription: subscription,
                 premium: isPremiumActive(subscription),
                 lastLoginAt: now.toISOString(),
                 loginCount: Number(user.loginCount ?? 0) + 1,
