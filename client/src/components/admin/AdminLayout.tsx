@@ -126,7 +126,7 @@ const TITLE_MAP: Record<string, string> = {
     "/admin/blog/new": "New Blog Post",
     "/admin/study-plans/templates": "Study Plan Templates",
     "/admin/study-plans/lessons": "Study Plan Lessons",
-    "/admin/study-plans/analytics": "Study Plan Analytics"
+    "/admin/study-plans/analytics": "Study Plan Analytics",
 };
 
 export default function AdminLayout() {
@@ -181,11 +181,13 @@ export default function AdminLayout() {
         <div className="flex min-h-screen bg-slate-50">
             {/* Sidebar */}
             <aside
-                className={`fixed inset-y-0 left-0 z-40 w-64 transform border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"} `}
+                className={`fixed inset-y-0 left-0 z-40 w-64 transform border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 ${
+                    open ? "translate-x-0" : "-translate-x-full"
+                } `}
             >
                 <div className="flex h-16 items-center justify-between border-b border-slate-200 px-5">
                     <Link to="/admin" className="flex items-center gap-2 text-primary-700">
-                        <ShieldIcon className="h-6 w-6" />
+                        <ShieldIcon className="h-6 w-6"/>
                         <span className="font-bold">Admin</span>
                     </Link>
                     <button
@@ -208,102 +210,178 @@ export default function AdminLayout() {
                             value={menuQuery}
                             onChange={(e) => setMenuQuery(e.target.value)}
                             placeholder="Search menu..."
-                            className="w-full rounded-md border border-slate-300 px-3 py-2 pr-8 text-sm text-slate-700 placeholder:text-slate-400 focus:border-primary-400"
+                            className="w-full rounded-md border border-slate-300 px-3 py-2 pr-8 text-sm text-slate-700 placeholder:text-slate-400 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-100"
                         />
                         {menuQuery && (
-                        <button
-                            type="button"
-                            onClick={() => setMenuQuery("")}
-                            aria-label="Clear menu search"
-                            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
-                        >
-                            X
-                        </button>
-                    )}
-                </div>
-            </div>
-            <nav className="space-y-6 px-3 py-5">
-                {filteredNav.map((section) => (
-                    <div key={section.heading}>
-                        {!hasMenuQuery && (
                             <button
                                 type="button"
-                                className="mb-2 flex w-full items-center justify-between rounded-md px-2 py-1 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 hover:bg-slate-100"
-                                onClick={() => {
-                                    setCollapsedSections((prev) => {
-                                        const isCurrentlyOpen = !prev[section.heading];
-                                        const next = NAV.reduce<SectionCollapseState>((acc, navSection) => {
-                                            acc[navSection.heading] = true;
-                                            return acc;
-                                        }, {});
-                                    if (!isCurrentlyOpen) next[section.heading] = false;
-                                    return next;
-                                });
-                            }}
-                            aria-expanded={!collapsedSections[section.heading]}
-                            aria-controls={`admin-nav-group-${slugify(section.heading)}`}
-                        >
-                            <span>{section.heading}</span>
-                            <span aria-hidden className="text-[10px] text-slate-500">
-            {collapsedSections[section.heading] ? "□" : "□"}
-        </span>
-                        </button>
-                    )}
-                    {hasMenuQuery && (
-                        <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-                            {section.heading}
-                        </p>
-                    )}
-                    {(hasMenuQuery || !collapsedSections[section.heading]) && (
-                      <ul
-                        id={`admin-nav-group-${slugify(section.heading)}`}
-                        className="space-y-1"
-                      >
-                        {section.items.map((item) => (
-                            <li key={item.to}>
-                                <NavLink
-                                    to={item.to}
-                                    end={item.end}
-                                    className={({isActive}) =>
-                                        [
-                                          "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
-                                          isActive
-                                            ? "bg-primary-50 font-semibold text-primary-700"
-                                            : "text-slate-700 hover:bg-slate-100",
-                                        .join(" ")
-                                    }
+                                onClick={() => setMenuQuery("")}
+                                aria-label="Clear menu search"
+                                className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                            >
+                            X
+                            </button>
+                        )}
+                    </div>
+                </div>
+                <nav className="space-y-6 px-3 py-5">
+                    {filteredNav.map((section) => (
+                        <div key={section.heading}>
+                            {!hasMenuQuery && (
+                                <button
+                                    type="button"
+                                    className="mb-2 flex w-full items-center justify-between rounded-md px-2 py-1 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 hover:bg-slate-100"
+                                    onClick={() => {
+                                        setCollapsedSections((prev) => {
+                                            const isCurrentlyOpen = !prev[section.heading];
+                                            const next = NAV.reduce<SectionCollapseState>((acc, navSection) => {
+                                                acc[navSection.heading] = true;
+                                                return acc;
+                                            }, {});
+                                            if (!isCurrentlyOpen) next[section.heading] = false;
+                                            return next;
+                                        });
+                                    }}
+                                    aria-expanded={!collapsedSections[section.heading]}
+                                    aria-controls={`admin-nav-group-${slugify(section.heading)}`}
                                 >
-                                    <span aria-hidden>{item.icon}</span>
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-        ))}
-        {hasMenuQuery && filteredNav.length === 0 && (
-            <p className="px-2 text-sm text-slate-500">No menu items found.</p>
-        )}
-    </nav>
-</aside>
-{open && (
-  <div
-    className="fixed inset-0 z-30 bg-slate-900/40 lg:hidden"
-    onClick={() => setOpen(false)}
-    aria-hidden
-  />
-)}
+                                    <span>{section.heading}</span>
+                                    <span aria-hidden className="text-[10px] text-slate-500">
+                    {collapsedSections[section.heading] ? "□" : "□"}
+                    </span>
+                                </button>
+                            )}
+                            {hasMenuQuery && (
+                                <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                                    {section.heading}
+                                </p>
+                            )}
+                            {(hasMenuQuery || !collapsedSections[section.heading]) && (
+                                <ul
+                                    id={`admin-nav-group-${slugify(section.heading)}`}
+                                    className="space-y-1"
+                                >
+                                    {section.items.map((item) => (
+                                        <li key={item.to}>
+                                            <NavLink
+                                                to={item.to}
+                                                end={item.end}
+                                                className={({isActive}) =>
+                                                    [
+                                                      "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                                                      isActive
+                                                        ? "bg-primary-50 font-semibold text-primary-700"
+                                                        : "text-slate-700 hover:bg-slate-100",
+                                                    ].join(" ")
+                                                }
+                                            >
+                                                <span aria-hidden>{item.icon}</span>
+                                                <span>{item.label}</span>
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    ))}
+                    {hasMenuQuery && filteredNav.length === 0 && (
+                        <p className="px-2 text-sm text-slate-500">No menu items found.</p>
+                    )}
+                </nav>
+            </aside>
 
-{/* Main */}
-<div className="flex min-w-0 flex-1 flex-col">
-<header
-  className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-slate-200 bg-white px-4 shadow-sm lg:px-8"
->
-<button
-  type="button"
-  onClick={() => setOpen(true)}
-  className="rounded-md p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
-  aria-label="Open menu"
->
-``
+            {open && (
+              <div
+                className="fixed inset-0 z-30 bg-slate-900/40 lg:hidden"
+                onClick={() => setOpen(false)}
+                aria-hidden
+              />
+            )}
+
+            {/* Main */}
+            <div className="flex min-w-0 flex-1 flex-col">
+            <header
+              className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-slate-200 bg-white px-4 shadow-sm lg:px-8"
+            >
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="rounded-md p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+              aria-label="Open menu"
+            >
+
+            </button>
+            <div className="min-w-0 flex-1">
+                <p className="truncate text-sx text-slate-500">
+                    {breadcrumbs.map((c, i) => (
+                        <span key={c.path}>
+            {i > 0 && <span className="mx-1">/</span>}
+                        {i === breadcrumbs.length - 1 ? (
+                            <span className="font-medium text-slate-700">{c.label}</span>
+                        ) : (
+                            <Link to={c.path} className="hover:text-primary-700">{c.label}</Link>
+                        )}
+            </span>
+                    ))}
+                </p>
+                <h1 className="truncate text-lg font-bold text-slate-900">
+                    {breadcrumbs[breadcrumbs.length - 1]?.label ?? "Admin"}
+                </h1>
+            </div>
+            <div className="flex items-center gap-3">
+                <span className="hidden text-sm text-slate-600 md:inline">
+                    {user?.firstName} {user?.lastName}
+                </span>
+                <span
+                    className="rounded-full bg-primary-100 px-2 py-0.5 text-xs font-semibold text-primary-700">
+                    ADMIN
+                </span>
+                <button
+                    type="button"
+                    onClick={logout}
+                    className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                >
+                    Logout
+                </button>
+            </div>
+        </header>
+        <main className="min-w-0 flex-1 px-4 py-6 lg:px-8">
+            <Outlet/>
+        </main>
+    </div>
+</div>
+);
+}
+
+function buildCrumbs(pathname: string) {
+    const segs = pathname.sprint("/").filter(Boolean);
+    const crumbs: { label: string; path: string }[] = [];
+    let acc = "";
+    for (const s of segs) {
+        acc += `/${s}`;
+        crumbs.push({label: TITLE_MAP[acc] ?? prettify(s), path: acc});
+    }
+    return crumbs.length ? crumbs : [{label: "Admin", path: "/admin"}];
+}
+
+function isNavItemActive(item: { to: string; end?: boolean }, pathname: string) {
+    if (item.end) return pathname === item.to;
+    return pathname === item.to || pathname.startsWith(`${item.to}/`);
+}
+
+function slugify(value: string) {
+    return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+function prettify(s: string) {
+    if (/^[a-f0-9]{24}$/i.test(s)) return "Detail";
+    return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, " ");
+}
+
+function ShieldIcon({className = "h-6 w6"}: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+            <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11C5l-8-3Z"/>
+        </svg>
+    );
+}
