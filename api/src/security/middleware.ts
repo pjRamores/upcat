@@ -115,7 +115,7 @@ export function withSecurity(opts: WithSecurityOptions = {}) {
       }
 
       // Always attach response headers before returning any response.
-      applySecurityHeaders(res);
+      applySecurityHeaders(res, cfg);
 
       // Health checks are exempt from everything below.
       if (isHealthEndpoint(url) || opts.bypass) {
@@ -277,7 +277,7 @@ export function withSecurity(opts: WithSecurityOptions = {}) {
 function pickHeader(req: VercelRequest, name: string): string | null {
   const v = req.headers[name];
   if (!v) return null;
-  return Array.isArray(v) ? v ?? null : v;
+  return Array.isArray(v) ? v[0] ?? null : v;
 }
 
 function isAdminBearer(req: VercelRequest): boolean {
