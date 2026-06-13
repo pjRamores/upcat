@@ -91,9 +91,8 @@ export interface RateLimitOptions {
 }
 
 function clientIp(req: VercelRequest): string {
-  const fwd = req.headers["x-forwarded-for"];
-  const forwarded = Array.isArray(fwd) ? fwd : fwd ?? "";
-  return forwarded.split(",")?.trim() || req.socket?.remoteAddress || "unknown";
+  const fwd = (req.headers["x-forwarded-for"] as string | undefined) ?? "";
+  return fwd.split(",")[0]?.trim() || (req.socket?.remoteAddress ?? "unknown");
 }
 
 /**
@@ -146,7 +145,7 @@ export async function rateLimit(
   const recent = (doc?.hits ?? []).filter((t) => t > windowStart);
 
   if (recent.length > opts.limit) {
-    const retryAfter = Math.ceil((recent! + opts.windowMs - now) / 1000);
+    const retryAfter = Math.ceil((recent[0]! + opts.windowMs - now) / 1000);
     res.setHeader("Retry-After", String(Math.max(retryAfter, 1)));
     res.setHeader("X-RateLimit-Limit", String(opts.limit));
     res.setHeader("X-RateLimit-Remaining", "0");
