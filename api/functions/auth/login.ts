@@ -70,33 +70,22 @@ function lockedUntil(failedCount: number): Date | null {
   return null;
 }
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-): Promise<void> {
-  if (req.method !== "POST") {
-    res.status(405).json({ success: false, error: "Method not allowed" });
-    return;
-  }
+export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
+    if (req.method !== "POST") {
+        return res.status(405).json({ success: false, error: "Method not allowed" });
+    }
 
-  const { email, password } = req.body ?? {};
+    const { email, password } = req.body ?? {};
+    if (!email || !password) {
+     return res.status(400).json({ success: false, error: "Email and password are required." });
+    }
 
-  if (!email || !password) {
-    res
-      .status(400)
-      .json({ success: false, error: "Email and password are required." });
-    return;
-  }
-
-  const db = await getDb();
-  const normalizedEmail = String(email).toLowerCase().trim();
-
-  const user = await db.collection("users").findOne({ email: normalizedEmail });
-
-  if (!user) {
-    res.status(401).json({ success: false, error: "Invalid credentials." });
-    return;
-  }
+    const db = await getDb();
+    const normalizedEmail = String(email).toLowerCase().trim();
+    const user = await db.collection("users").findOne({ email: normalizedEmail });
+    if (!user) {
+        return res.status(401).json({success: false, error: "Invalid credentials."});
+    }
 
   if (user.isActive === false) {
     res.status(403).json({
@@ -106,43 +95,35 @@ export default async function handler(
     return;
   }
 
-  const existingLock = user.security?.loginAttempts?.lockedUntil as
-    | Date
-    | string
-    | null
-    | undefined;
-
+  const existingLock = user.security?.loginAttempts?.lockedUntil as | Date | string | null | undefined;
   if (existingLock && new Date(existingLock).getTime() > Date.now()) {
     const isHard =
       new Date(existingLock).getTime() >=
       new Date(LOGIN_LOCKOUT.hardUntil).getTime() - 1000;
 
-    res.status(423).json({
+    return res.status(423).json({
       success: false,
       error: isHard
         ? "Account locked. Use account recovery to regain access."
         : `Too many failed attempts. Try again after ${new Date(existingLock).toUTCString()}`,
     });
-    return;
   }
 
   if (!user.isVerified) {
-    res
+    return res
       .status(403)
       .json({ success: false, error: "Please verify your email before logging in." });
-    return;
   }
 
   const storedHash: string | null =
     user.auth?.passwordHash ?? user.passwordHash ?? null;
 
   if (!storedHash) {
-    res.status(401).json({
+    return res.status(401).json({
       success: false,
       error:
         'This account has no password set. Sign in with your linked social provider, or use "Forgot password" to set one.',
     });
-    return;
   }
 
   const valid = await bcrypt.verify(String(password), storedHash);
@@ -179,13 +160,12 @@ export default async function handler(
       }).catch(() => undefined);
     }
 
-    res.status(401).json({
+    return res.status(401).json({
       success: false,
       error: newLock
         ? "Account temporarily locked due to too many failed attempts."
         : "Invalid credentials.",
     });
-    return;
   }
 
   const role = (user.role as "admin" | "reviewee" | undefined) ?? "reviewee";
@@ -273,7 +253,7 @@ export default async function handler(
 
   const subscription = normalizeSubscription(user as Record<string, unknown>);
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     data: {
       token,
