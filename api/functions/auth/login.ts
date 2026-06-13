@@ -32,42 +32,35 @@ type OnboardingResult = {
   }>;
 };
 
-async function buildLoginGamification(
-  db: Db,
-  userId: ObjectId
-): Promise<LoginGamification> {
-  const { info, firstOfDay } = await updateDailyStreak(db, userId);
-
-  if (!firstOfDay) {
-    return { xp: [], achievements: [], streakUpdated: info };
-  }
-
-  const award = await awardXp(db, userId, {
-    reason: "daily_login",
-    baseAmount: XP_REWARDS.DAILY_LOGIN,
-    skipMultiplier: false,
-  });
-
-  const achievements = await evaluateAchievements(db, userId);
-
-  return {
-    xp: [award],
-    achievements: Array.isArray(achievements) ? achievements : [],
-    streakUpdated: info,
-  };
+async function buildLoginGamification(db: Db, userId: ObjectId): Promise<LoginGamification> {
+    const { info, firstOfDay } = await updateDailyStreak(db, userId);
+    if (!firstOfDay) {
+        return { xp: [], achievements: [], streakUpdated: info };
+    }
+    const award = await awardXp(db, userId, {
+        reason: "daily_login",
+        baseAmount: XP_REWARDS.DAILY_LOGIN,
+        skipMultiplier: false,
+    });
+    const achievements = await evaluateAchievements(db, userId);
+    return {
+        xp: [award],
+        achievements: Array.isArray(achievements) ? achievements : [],
+        streakUpdated: info,
+    };
 }
 
 function lockedUntil(failedCount: number): Date | null {
-  if (failedCount >= LOGIN_LOCKOUT.hardThreshold) {
-    return new Date(LOGIN_LOCKOUT.hardUntil);
-  }
-  if (failedCount >= LOGIN_LOCKOUT.mediumThreshold) {
-    return new Date(Date.now() + LOGIN_LOCKOUT.mediumDurationMs);
-  }
-  if (failedCount >= LOGIN_LOCKOUT.softThreshold) {
-    return new Date(Date.now() + LOGIN_LOCKOUT.softDurationMs);
-  }
-  return null;
+    if (failedCount >= LOGIN_LOCKOUT.hardThreshold) {
+        return new Date(LOGIN_LOCKOUT.hardUntil);
+    }
+    if (failedCount >= LOGIN_LOCKOUT.mediumThreshold) {
+        return new Date(Date.now() + LOGIN_LOCKOUT.mediumDurationMs);
+    }
+    if (failedCount >= LOGIN_LOCKOUT.softThreshold) {
+        return new Date(Date.now() + LOGIN_LOCKOUT.softDurationMs);
+    }
+    return null;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
@@ -109,7 +102,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     if (!user.isVerified) {
         return res
             .status(403)
-            .json({ success: false, error: "Please verify your email before logging in."});
+            .json({success: false, error: "Please verify your email before logging in."});
     }
 
     const storedHash: string | null =
@@ -178,7 +171,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         action: "user.login",
         targetType: "user",
         targetId: String(user._id),
-        metadata: { email: user.email },
+        metadata: {email: user.email},
     }).catch(() => undefined);
 
     const [{token}, gamification, onboarding] = await Promise.all([
@@ -203,14 +196,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
                 const page = normalizeContextualPage(targetPage);
                 const userHelpNormalized = normalizeUserHelp((user as { help?: unknown }).help);
                 if (userHelpNormalized.helpPreferences.showOnboarding === false) {
-                    return { items: [] };
+                    return {items: []};
                 }
                 const suggested: OnboardingResult["items"] = [];
                 const conventional = checkOnboardingTriggers(
                     user as unknown as {
                         help?: unknown;
                         gamification?: { xp?: number };
-                        createdAt?: Date | string | null;
+                        createdAt?: Date | string | null
                     },
                     page,
                 );
