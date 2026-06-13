@@ -247,7 +247,7 @@ export default function AdminLayout() {
                                 >
                                     <span>{section.heading}</span>
                                     <span aria-hidden className="text-[10px] text-slate-500">
-                    {collapsedSections[section.heading] ? "□" : "□"}
+                    {collapsedSections[section.heading] ? "˰" : "˯"}
                     </span>
                                 </button>
                             )}
@@ -312,7 +312,7 @@ export default function AdminLayout() {
 
             </button>
             <div className="min-w-0 flex-1">
-                <p className="truncate text-sx text-slate-500">
+                <p className="truncate text-xs text-slate-500">
                     {breadcrumbs.map((c, i) => (
                         <span key={c.path}>
             {i > 0 && <span className="mx-1">/</span>}
@@ -354,7 +354,7 @@ export default function AdminLayout() {
 }
 
 function buildCrumbs(pathname: string) {
-    const segs = pathname.sprint("/").filter(Boolean);
+    const segs = pathname.split("/").filter(Boolean);
     const crumbs: { label: string; path: string }[] = [];
     let acc = "";
     for (const s of segs) {
@@ -378,10 +378,10 @@ function prettify(s: string) {
     return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, " ");
 }
 
-function ShieldIcon({className = "h-6 w6"}: { className?: string }) {
+function ShieldIcon({className = "h-6 w-6"}: { className?: string }) {
     return (
         <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
-            <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11C5l-8-3Z"/>
+            <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z"/>
         </svg>
     );
 }

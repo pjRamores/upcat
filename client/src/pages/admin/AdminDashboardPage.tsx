@@ -63,8 +63,8 @@ export default function AdminDashboardPage() {
           <ul className="space-y-2">
             {Object.entries(summary.questions.bySubject ?? {}).map(([k, v]) => (
               <BarRow key={k} label={k} value={v as number}
-                      max={Math.max(...Object.values(summary.questions.bySubject ?? {}).map((x) => x as number), 1)}/>)
-          })}
+                      max={Math.max(...Object.values(summary.questions.bySubject ?? {}).map((x) => x as number), 1)}/>
+          ))}
         </ul>
       </section>
       <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -72,7 +72,7 @@ export default function AdminDashboardPage() {
         <ul className="space-y-2">
           {Object.entries(summary.questions.byDifficulty ?? {}).map(([k, v]) => (
             <BarRow key={k} label={k} value={v as number}
-                    max={Math.max(...Object.values(summary.questions.byDifficulty ?? {}).map((x) => x as number), 1)}/>)
+                    max={Math.max(...Object.values(summary.questions.byDifficulty ?? {}).map((x) => x as number), 1)}/>
           ))}
         </ul>
       </section>
@@ -89,6 +89,21 @@ export default function AdminDashboardPage() {
         <ul className="divide-y divide-slate-100 text-sm">
           {activity.slice(0, 25).map((a) => (
             <li key={a._id} className="flex items-center justify-between gap-3 py-2">
+              <div className="min-w-0">
+                <p className="truncate font-medium text-slate-700">{a.action}</p>
+                <p className="truncate text-xs text-slate-500">{new Date(a.createdAt).toLocaleString()}</p>
+              </div>
+              <div className="flex-shrink-0 text-xs text-slate-500">
+                {a.actorRole === "admin" ? "👑" : "👤"} {a.actorId}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 function BarRow({label, value, max}: { label: string; value: number; max: number }) {
     const pct = max > 0 ? (value / max) * 100 : 0;
     return (
