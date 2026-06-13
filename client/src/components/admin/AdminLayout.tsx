@@ -102,8 +102,6 @@ const TITLE_MAP: Record<string, string> = {
     "/admin/content-flags": "Reported Issues",
     "/admin/users": "Users",
     "/admin/users/new": "New User",
-};
-const NAV = {
     "/admin/exams": "Exam Sessions",
     "/admin/practice-sessions": "Practice Sessions",
     "/admin/announcements": "Announcements",
@@ -159,9 +157,8 @@ export default function AdminLayout() {
             const activeSection = NAV.find((section) =>
                 section.items.some((item) => isNavItemActive(item, location.pathname))
             );
-            if (activeSection && !next[activeSection.heading]) {
-                return next;
-            }
+            if (activeSection) next[activeSection.heading] = false;
+            return next;
         });
     }, [location.pathname]);
 
@@ -207,80 +204,88 @@ export default function AdminLayout() {
                     <div className="relative">
                         <input
                             id="admin-menu-search"
-type="search"
-value={menuQuery}
-onChange={(e) => setMenuQuery(e.target.value)}
-placeholder="Search menu..."
-className="w-full rounded-md border border-slate-300 px-3 py-2 pr-8 text-sm text-slate-700 placeholder:text-slate-400 focus:border-primary-400"
-focus="outline-none focus:ring-2 focus:ring-primary-100"
-/>
-{menuQuery && (
-  <button
-    type="button"
-    onClick={() => setMenuQuery("")}
-    aria-label="Clear menu search"
-    className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
-  >
-    X
-  </button>
-)}
-</div>
-<nav className="space-y-6 px-3 py-5">
-{filteredNav.map((section) => (
-  <div key={section.heading}>
-    {!hasMenuQuery && (
-      <button
-        type="button"
-        mb-2 flex w-full items-center justify-between rounded-md px-2 py-1 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 hover:bg-slate-100
-        onClick={() => {
-          setCollapsedSections((prev) => {
-            const isCurrentlyOpen = !prev[section.heading];
-            const next = NAV.reduce<SectionCollapseState>((acc, navSection) => {
-              acc[navSection.heading] = true;
-              return acc;
-            }, {});
-            if (!isCurrentlyOpen) next[section.heading] = false;
-            return next;
-          });
-        }}
-        aria-expanded={!collapsedSections[section.heading]}
-        aria-controls={`admin-nav-group-${slugify(section.heading)}}
-        >
-          <span>{section.heading}</span>
-          <span aria-hidden className="text-[10px] text-slate-500">{collapsedSections[section.heading] ? "□" : "□"}</span>
-        </button>
-    )}
-    {hasMenuQuery && (
-      <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-        {section.heading}
-      </p>
-    )}
-    {(hasMenuQuery || !collapsedSections[section.heading]) && (
-      <ul
-        id={`admin-nav-group-${slugify(section.heading)}}
-        className="space-y-1"
-      >
-        {section.items.map((item) => (
-          <li key={item.to}>
-            <NavLink to={item.to} end={item.end} className={(isActive) =>
-              "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
-              isActive
-                ? "bg-primary-50 font-semibold text-primary-700"
-                : "text-slate-700 hover:bg-slate-100",
-            ].join(" .")
-          >
-            <span aria-hidden>{item.icon}</span>
-            <span>{item.label}</span>
-          </NavLink>
+                            type="search"
+                            value={menuQuery}
+                            onChange={(e) => setMenuQuery(e.target.value)}
+                            placeholder="Search menu..."
+                            className="w-full rounded-md border border-slate-300 px-3 py-2 pr-8 text-sm text-slate-700 placeholder:text-slate-400 focus:border-primary-400"
+                        />
+                        {menuQuery && (
+                        <button
+                            type="button"
+                            onClick={() => setMenuQuery("")}
+                            aria-label="Clear menu search"
+                            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                        >
+                            X
+                        </button>
+                    )}
+                </div>
+            </div>
+            <nav className="space-y-6 px-3 py-5">
+                {filteredNav.map((section) => (
+                    <div key={section.heading}>
+                        {!hasMenuQuery && (
+                            <button
+                                type="button"
+                                className="mb-2 flex w-full items-center justify-between rounded-md px-2 py-1 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 hover:bg-slate-100"
+                                onClick={() => {
+                                    setCollapsedSections((prev) => {
+                                        const isCurrentlyOpen = !prev[section.heading];
+                                        const next = NAV.reduce<SectionCollapseState>((acc, navSection) => {
+                                            acc[navSection.heading] = true;
+                                            return acc;
+                                        }, {});
+                                    if (!isCurrentlyOpen) next[section.heading] = false;
+                                    return next;
+                                });
+                            }}
+                            aria-expanded={!collapsedSections[section.heading]}
+                            aria-controls={`admin-nav-group-${slugify(section.heading)}`}
+                        >
+                            <span>{section.heading}</span>
+                            <span aria-hidden className="text-[10px] text-slate-500">
+            {collapsedSections[section.heading] ? "□" : "□"}
+        </span>
+                        </button>
+                    )}
+                    {hasMenuQuery && (
+                        <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                            {section.heading}
+                        </p>
+                    )}
+                    {(hasMenuQuery || !collapsedSections[section.heading]) && (
+                      <ul
+                        id={`admin-nav-group-${slugify(section.heading)}`}
+                        className="space-y-1"
+                      >
+                        {section.items.map((item) => (
+                            <li key={item.to}>
+                                <NavLink
+                                    to={item.to}
+                                    end={item.end}
+                                    className={({isActive}) =>
+                                        [
+                                          "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                                          isActive
+                                            ? "bg-primary-50 font-semibold text-primary-700"
+                                            : "text-slate-700 hover:bg-slate-100",
+                                        .join(" ")
+                                    }
+                                >
+                                    <span aria-hidden>{item.icon}</span>
+                                    <span>{item.label}</span>
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         ))}
-      </ul>
-    )}
-  </div>
-))}
-{hasMenuQuery && filteredNav.length === 0 && (
-  <p className="px-2 text-sm text-slate-500">No menu items found.</p>
-)}
-</nav>
+        {hasMenuQuery && filteredNav.length === 0 && (
+            <p className="px-2 text-sm text-slate-500">No menu items found.</p>
+        )}
+    </nav>
 </aside>
 {open && (
   <div
