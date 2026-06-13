@@ -11,28 +11,48 @@ import { getPaymentConfig } from "./paymentConfig.js";
 
 const DEFAULT_USAGE: UserSubscription["usage"] = {};
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function planDurationDays(plan: PremiumPlan): number {
+  if ("duration" in plan && typeof plan.duration === "number") {
+    return plan.duration;
+  }
+  throw new Error(`Plan "${plan.id}" does not have a valid duration`);
+}
+
 export function defaultSubscription(): UserSubscription {
   return {
     tier: "free",
     premium: null,
-    usage: {...DEFAULT_USAGE},
+    usage: { ...DEFAULT_USAGE },
   };
 }
 
 export function normalizeSubscription(doc: Record<string, unknown>): UserSubscription {
-  const existing = doc.subscription as UserSubscription | undefined;
-  if (!existing) return defaultSubscription();
+  const existing = doc.subscription;
+
+  if (!existing || !isRecord(existing)) {
+    return defaultSubscription();
+  }
+
   return {
     tier: existing.tier === "premium" ? "premium" : "free",
-    premium: existing.premium ?? null,
-    usage: existing.usage ?? {},
+    premium: (existing.premium as UserSubscription["premium"]) ?? null,
+    usage: (existing.usage as UserSubscription["usage"]) ?? {},
   };
 }
 
-export function isPremiumActive(subscription: UserSubscription, now: Date = new Date()): boolean {
+export function isPremiumActive(
+  subscription: UserSubscription,
+  now: Date = new Date(),
+): boolean {
   if (subscription.tier !== "premium" || !subscription.premium) return false;
-  if (!subscription.premium.isLifetime) return true;
+
+  if (subscription.premium.isLifetime) return true;
   if (!subscription.premium.endDate) return false;
+
   return new Date(subscription.premium.endDate).getTime() > now.getTime();
 }
 
@@ -40,33 +60,52 @@ export function toPremiumFlag(subscription: UserSubscription): boolean {
   return isPremiumActive(subscription);
 }
 
-export function remainingDays(subscription: UserSubscription, now: Date = new Date()): number | null {
+export function remainingDays(
+  subscription: UserSubscription,
+  now: Date = new Date(),
+): number | null {
   if (!isPremiumActive(subscription, now) || !subscription.premium || subscription.premium.isLifetime) {
     return null;
   }
+
   if (!subscription.premium.endDate) return null;
-  return Math.max(0, Math.ceil((new Date(subscription.premium.endDate).getTime() - now.getTime()) / 86_400_000));
+
+  return Math.max(
+    0,
+    Math.ceil(
+      (new Date(subscription.premium.endDate).getTime() - now.getTime()) / 86_400_000,
+    ),
+  );
 }
 
-export async function ensureSubscriptionCurrent(db: Db, userId: ObjectId): Promise<UserSubscription> {
-  const user = (await db.collection("users").findOne({_id: userId})) as WithId<Document> | null;
+export async function ensureSubscriptionCurrent(
+  db: Db,
+  userId: ObjectId,
+): Promise<UserSubscription> {
+  const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
   if (!user) throw new Error("User not found");
+
   const sub = normalizeSubscription(user as Record<string, unknown>);
   if (!isPremiumActive(sub) && sub.tier === "premium") {
-    const updated = {
+    const updated: UserSubscription = {
       ...sub,
-      tier: "free" as const,
+      tier: "free",
     };
+
     await db.collection("users").updateOne(
-      {_id: userId},
-      {$set: {
-        subscription: updated,
-        premium: false,
-        updatedAt: new Date(),
-      }},
+      { _id: userId },
+      {
+        $set: {
+          subscription: updated,
+          premium: false,
+          updatedAt: new Date(),
+        },
+      },
     );
+
     return updated;
   }
+
   return sub;
 }
 
@@ -79,329 +118,399 @@ export interface GrantPremiumInput {
   now?: Date;
 }
 
-export async function grantPremium(db: Db, input: GrantPremiumInput): Promise<UserSubscription> {
+export async function grantPremium(
+  db: Db,
+  input: GrantPremiumInput,
+): Promise<UserSubscription> {
   const now = input.now ?? new Date();
-  const user = (await db.collection("users").findOne({_id: input.userId})) as WithId<Document> | null;
+  const user = (await db.collection("users").findOne({ _id: input.userId })) as WithId<Document> | null;
   if (!user) throw new Error("User not found");
+
   const current = normalizeSubscription(user as Record<string, unknown>);
+  const currentPremium = current.premium;
 
-  const baseStart = isPremiumActive(current, now) && current.premium?.endDate
-    ? new Date(current.premium.endDate)
-    : now;
+  const baseStart =
+    isPremiumActive(current, now) && currentPremium?.endDate
+      ? new Date(currentPremium.endDate)
+      : now;
 
-  const startDate = isPremiumActive(current, now) && current.premium?.startDate
-    ? current.premium.startDate
-    : now.toISOString();
+  const startDate =
+    isPremiumActive(current, now) && currentPremium?.startDate
+      ? currentPremium.startDate
+      : now.toISOString();
 
   const isLifetime = input.plan.isLifetime;
-  const endDate = isLifetime ? null : new Date(baseStart.getTime() + input.plan.duration * 86_400_000).toISOString();
+  const endDate = isLifetime
+    ? null
+    : new Date(baseStart.getTime() + planDurationDays(input.plan) * 86_400_000).toISOString();
 
-  const history = [...(current.premium?.history ?? [])];
+  const history = [...(currentPremium?.history ?? [])];
   history.push({
     startDate: baseStart.toISOString(),
     endDate,
-planId: input.plan.id,
-source: input.source,
-paymentId: input.paymentId ? input.paymentId.toHexString() : null,
-grantedBy: input.grantedBy ? input.grantedBy.toHexString() : null,
-cancellationReason: null,
-});
+    planId: input.plan.id,
+    source: input.source,
+    paymentId: input.paymentId ? input.paymentId.toHexString() : null,
+    grantedBy: input.grantedBy ? input.grantedBy.toHexString() : null,
+    cancellationReason: null,
+  } as (typeof history)[number]);
 
-const updated: UserSubscription = {
-tier: "premium",
-premium: {
-startDate,
-endDate,
-isLifetime,
-planId: input.plan.id,
-source: input.source,
-grantedBy: input.grantedBy ? input.grantedBy.toHexString() : null,
-autoRenew: false,
-history,
-},
-usage: current.usage ?? {},
-};
+  const updated: UserSubscription = {
+    tier: "premium",
+    premium: {
+      startDate,
+      endDate,
+      isLifetime,
+      planId: input.plan.id,
+      source: input.source,
+      grantedBy: input.grantedBy ? input.grantedBy.toHexString() : null,
+      autoRenew: false,
+      history,
+    },
+    usage: current.usage ?? {},
+  };
 
-await db.collection("users").updateOne(
-{ id: input.userId },
-{
-$set: {
-subscription: updated,
-premium: true,
-updatedAt: now,
-}
-});
+  await db.collection("users").updateOne(
+    { _id: input.userId },
+    {
+      $set: {
+        subscription: updated,
+        premium: true,
+        updatedAt: now,
+      },
+    },
+  );
 
-return updated;
+  return updated;
 }
 
 export async function downgradeUser(
-db: Db,
-userId: ObjectId,
-reason: string,
-immediate: boolean,
+  db: Db,
+  userId: ObjectId,
+  reason: string,
+  immediate: boolean,
 ): Promise<UserSubscription> {
-const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
-if (!user) throw new Error("User not found");
-const current = normalizeSubscription(user as Record<string, unknown>);
-if (!current.premium) return current;
+  const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
+  if (!user) throw new Error("User not found");
 
-const now = new Date();
-const targetEnd = immediate ? now.toISOString() : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999).toISOString();
+  const current = normalizeSubscription(user as Record<string, unknown>);
+  if (!current.premium) return current;
 
-const history = [...(current.premium.history ?? [])];
-if (history.length > 0) {
-history[history.length - 1] = {
-...history[history.length - 1]!,
-cancelledAt: now.toISOString(),
-cancellationReason: reason,
-endDate: targetEnd,
-};
-}
+  const now = new Date();
+  const targetEnd = immediate
+    ? now.toISOString()
+    : new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        23,
+        59,
+        59,
+        999,
+      ).toISOString();
 
-const downgraded: UserSubscription = {
-tier: immediate ? "free" : current.tier,
-premium: {
-...current.premium,
-endDate: targetEnd,
-autoRenew: false,
-history,
-},
-usage: current.usage,
-};
+  const history = [...(current.premium.history ?? [])];
+  if (history.length > 0) {
+    history[history.length - 1] = {
+      ...history[history.length - 1]!,
+      cancelledAt: now.toISOString(),
+      cancellationReason: reason,
+      endDate: targetEnd,
+    } as (typeof history)[number];
+  }
 
-await db.collection("users").updateOne(
-{ id: userId },
-{
-$set: {
-subscription: downgraded,
-premium: immediate ? false : true,
-updatedAt: now,
-}
-});
+  const downgraded: UserSubscription = {
+    tier: immediate ? "free" : current.tier,
+    premium: immediate
+      ? null
+      : {
+          ...current.premium,
+          endDate: targetEnd,
+          autoRenew: false,
+          history,
+        },
+    usage: current.usage ?? {},
+  };
 
-return downgraded;
+  await db.collection("users").updateOne(
+    { _id: userId },
+    {
+      $set: {
+        subscription: downgraded,
+        premium: !immediate,
+        updatedAt: now,
+      },
+    },
+  );
+
+  return downgraded;
 }
 
 export async function extendPremium(
-db: Db,
-userId: ObjectId,
-days: number,
+  db: Db,
+  userId: ObjectId,
+  days: number,
 ): Promise<UserSubscription> {
-const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
-if (!user) throw new Error("User not found");
-const current = normalizeSubscription(user as Record<string, unknown>);
-if (!current.premium || !isPremiumActive(current)) {
-throw new Error("User is not currently premium");
-}
-if (current.premium.isLifetime || !current.premium.endDate) return current;
+  const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
+  if (!user) throw new Error("User not found");
 
-const end = new Date(current.premium.endDate);
-const nextEnd = new Date(end.getTime() + days * 86_400_000).toISOString();
-const updated: UserSubscription = {
-premium: { ...current.premium, endDate: nextEnd },
-};
+  const current = normalizeSubscription(user as Record<string, unknown>);
+  if (!current.premium || !isPremiumActive(current)) {
+    throw new Error("User is not currently premium");
+  }
 
-await db.collection("users").updateOne(
-    {_id: userId},
-    {$set: {subscription: updated, premium: true, updatedAt: new Date()}});
-return updated;
+  if (current.premium.isLifetime || !current.premium.endDate) return current;
+
+  const end = new Date(current.premium.endDate);
+  const nextEnd = new Date(end.getTime() + days * 86_400_000).toISOString();
+
+  const updated: UserSubscription = {
+    ...current,
+    premium: {
+      ...current.premium,
+      endDate: nextEnd,
+    },
+  };
+
+  await db.collection("users").updateOne(
+    { _id: userId },
+    {
+      $set: {
+        subscription: updated,
+        premium: true,
+        updatedAt: new Date(),
+      },
+    },
+  );
+
+  return updated;
 }
 
 export function periodToken(period: FeatureLimitPeriod, now: Date = new Date()): string {
-    const yyyy = now.getUTCFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, "0");
-    const dd = String(now.getDate()).padStart(2, "0");
-    if (period === "daily") return `${yyyy}-${mm}-${dd}`;
-    if (period === "monthly") return `${yyyy}-${mm}`;
-    if (period === "weekly") {
-        const d = new Date(Date.UTC(now.getUTCFullYear(), now.getMonth(), now.getDate()));
-        const day = d.getDay() || 7;
-        d.setDate(d.getDate() + 4 - day);
-        const yearStart = new Date(Date.UTC(d.getFullYear(), 0, 1));
-        const week = Math.ceil((((d.getTime() - yearStart.getTime()) / 86_400_000) + 1) / 7);
-        return `${d.getUTCFullYear()}-${String(week).padStart(2, "0")}`;
-    }
-    return "all-time";
+  const yyyy = now.getUTCFullYear();
+  const mm = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(now.getUTCDate()).padStart(2, "0");
+
+  if (period === "daily") return `${yyyy}-${mm}-${dd}`;
+  if (period === "monthly") return `${yyyy}-${mm}`;
+
+  if (period === "weekly") {
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    const day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const week = Math.ceil(((d.getTime() - yearStart.getTime()) / 86_400_000 + 1) / 7);
+    return `${d.getUTCFullYear()}-${String(week).padStart(2, "0")}`;
+  }
+
+  return "all-time";
 }
 
 export function getUsageCount(
-    subscription: UserSubscription,
-    featureId: string,
-    featurePeriod: FeatureLimitPeriod,
-    now: Date = new Date(),
+  subscription: UserSubscription,
+  featureId: string,
+  featurePeriod: FeatureLimitPeriod,
+  now: Date = new Date(),
 ): number {
-    const usage = subscription.usage?.[featureId];
-    if (!usage) return 0;
-    if (usage.period !== periodToken(featurePeriod, now)) return 0;
-    return usage.count;
+  const usage = subscription.usage?.[featureId];
+  if (!usage) return 0;
+  if (usage.period !== periodToken(featurePeriod, now)) return 0;
+  return usage.count;
 }
 
 export async function trackFeatureUsage(
-    db: Db,
-    userId: ObjectId,
-    featureId: string,
-    featurePeriod: FeatureLimitPeriod,
+  db: Db,
+  userId: ObjectId,
+  featureId: string,
+  featurePeriod: FeatureLimitPeriod,
 ): Promise<number> {
-    const user = (await db.collection("users").findOne({_id: userId})) as WithId<Document> | null;
-    if (!user) throw new Error("User not found");
-    const sub = normalizeSubscription(user as Record<string, unknown>);
-    const token = periodToken(featurePeriod);
-    const prev = sub.usage?.[featureId];
-    const nextCount = prev && prev.period === token ? prev.count + 1 : 1;
+  const user = (await db.collection("users").findOne({ _id: userId })) as WithId<Document> | null;
+  if (!user) throw new Error("User not found");
 
-    await db.collection("users").updateOne(
-        {_id: userId},
-        {
-            $set: {
-                [`${subscription.usage}.${featureId}`]: {
-                    count: nextCount,
-                    period: token,
-                    lastUsedAt: new Date().toISOString(),
-                },
-                updatedAt: new Date(),
-            },
+  const sub = normalizeSubscription(user as Record<string, unknown>);
+  const token = periodToken(featurePeriod);
+  const prev = sub.usage?.[featureId];
+  const nextCount = prev && prev.period === token ? prev.count + 1 : 1;
+
+  await db.collection("users").updateOne(
+    { _id: userId },
+    {
+      $set: {
+        [`subscription.usage.${featureId}`]: {
+          count: nextCount,
+          period: token,
+          lastUsedAt: new Date().toISOString(),
         },
-    );
-    return nextCount;
+        updatedAt: new Date(),
+      },
+    },
+  );
+
+  return nextCount;
 }
 
 export class PaywallError extends Error {
-    featureId: string;
+  featureId: string;
 
-    constructor(featureId: string, message = "Premium feature") {
-        super(message);
-        this.featureId = featureId;
-    }
+  constructor(featureId: string, message = "Premium feature") {
+    super(message);
+    this.featureId = featureId;
+  }
 }
 
 export class LimitReachedError extends Error {
-    featureId: string;
-    used: number;
-    limit: number;
-    period: FeatureLimitPeriod;
+  featureId: string;
+  used: number;
+  limit: number;
+  period: FeatureLimitPeriod;
 
-    constructor(featureId: string, used: number, limit: number, period: FeatureLimitPeriod) {
-        super("Feature usage limit reached");
-        this.featureId = featureId;
-        this.used = used;
-        this.limit = limit;
-        this.period = period;
-    }
+  constructor(featureId: string, used: number, limit: number, period: FeatureLimitPeriod) {
+    super("Feature usage limit reached");
+    this.featureId = featureId;
+    this.used = used;
+    this.limit = limit;
+    this.period = period;
+  }
 }
 
-export async function requireFeature(db: Db, userId: ObjectId, featureId: string): Promise<void> {
-    const [config, user] = await Promise.all([
-        getPaymentConfig(db),
-        db.collection("users").findOne({_id: userId}),
-    ]);
-    if (!user) throw new Error("User not found");
-    const feature = config.featureGating.features.find((f => f.id === featureId);
-    if (!feature) throw new Error("Unknown feature");
-    // "free" payment mode means subscription is disabled; bypass all feature restrictions.
-    if (config.activePaymentType === "free") return;
-}
-if (feature.accessLevel === "disabled") throw new Error("Feature disabled");
+export async function requireFeature(
+  db: Db,
+  userId: ObjectId,
+  featureId: string,
+): Promise<void> {
+  const [config, user] = await Promise.all([
+    getPaymentConfig(db),
+    db.collection("users").findOne({ _id: userId }),
+  ]);
 
-const sub = normalizeSubscription(user as Record<string, unknown>);
-const tier: SubscriptionTier = isPremiumActive(sub) ? "premium" : "free";
+  if (!user) throw new Error("User not found");
 
-if (feature.accessLevel === "premium" && tier !== "premium") {
+  const feature = config.featureGating.features.find((f) => f.id === featureId);
+  if (!feature) throw new Error("Unknown feature");
+
+  if (config.activePaymentType === "free") return;
+  if (feature.accessLevel === "disabled") throw new Error("Feature disabled");
+
+  const sub = normalizeSubscription(user as Record<string, unknown>);
+  const tier: SubscriptionTier = isPremiumActive(sub) ? "premium" : "free";
+
+  if (feature.accessLevel === "premium" && tier !== "premium") {
     throw new PaywallError(featureId, "Premium feature");
-}
+  }
 
-if (feature.hasLimit && feature.limits && feature.limitPeriod) {
+  if (feature.hasLimit && feature.limits && feature.limitPeriod) {
     const limit = feature.limits[tier];
     if (limit !== null) {
-        const used = getUsageCount(sub, featureId, feature.limitPeriod);
-        if (used >= limit) {
-            throw new LimitReachedError(featureId, used, limit, feature.limitPeriod);
-        }
+      const used = getUsageCount(sub, featureId, feature.limitPeriod);
+      if (used >= limit) {
+        throw new LimitReachedError(featureId, used, limit, feature.limitPeriod);
+      }
     }
+  }
 }
 
-export async function computeFeatureAccess(db: Db, userId: ObjectId): Promise<FeatureAccessResult> {
-    const [config, user] = await Promise.all([
-        getPaymentConfig(db),
-        db.collection("users").findOne({ _id: userId }),
-    ]);
-    if (!user) throw new Error("User not found");
-    const sub = normalizeSubscription(user as Record<string, unknown>);
-    const tier: SubscriptionTier = isPremiumActive(sub) ? "premium" : "free";
-    const subscriptionEnabled = config.activePaymentType !== "free";
+export async function computeFeatureAccess(
+  db: Db,
+  userId: ObjectId,
+): Promise<FeatureAccessResult> {
+  const [config, user] = await Promise.all([
+    getPaymentConfig(db),
+    db.collection("users").findOne({ _id: userId }),
+  ]);
 
-    const features: FeatureAccessResult["features"] = {};
-    for (const feature of config.featureGating.features) {
-        if (!subscriptionEnabled) {
-            features[feature.id] = {
-                accessible: true,
-                limit: null,
-                used: 0,
-                remaining: null,
-                period: null,
-                upgradeRequired: false,
-            };
-            continue;
-        }
+  if (!user) throw new Error("User not found");
 
-        let accessible = feature.accessLevel !== "disabled";
-        let upgradeRequired = false;
-        if (feature.accessLevel === "premium" && tier !== "premium") {
-            accessible = false;
-            upgradeRequired = true;
-        }
+  const sub = normalizeSubscription(user as Record<string, unknown>);
+  const tier: SubscriptionTier = isPremiumActive(sub) ? "premium" : "free";
+  const subscriptionEnabled = config.activePaymentType !== "free";
 
-        let limit: number | null = null;
-        let used = 0;
-        let remaining: number | null = null;
-        let period: string | null = null;
+  const features: FeatureAccessResult["features"] = {};
 
-        if (feature.hasLimit && feature.limits && feature.limitPeriod) {
-            limit = feature.limits[tier];
-            period = feature.limitPeriod;
-            used = getUsageCount(sub, feature.id, feature.limitPeriod);
-            if (limit !== null) {
-                remaining = Math.max(0, limit - used);
-                if (used >= limit) {
-                    accessible = false;
-                    if (tier !== "premium") upgradeRequired = true;
-                }
-            }
-        }
-
-        features[feature.id] = { accessible, limit, used, remaining, period, upgradeRequired };
+  for (const feature of config.featureGating.features) {
+    if (!subscriptionEnabled) {
+      features[feature.id] = {
+        accessible: true,
+        limit: null,
+        used: 0,
+        remaining: null,
+        period: null,
+        upgradeRequired: false,
+      };
+      continue;
     }
-    return { tier, features };
+
+    let accessible = feature.accessLevel !== "disabled";
+    let upgradeRequired = false;
+
+    if (feature.accessLevel === "premium" && tier !== "premium") {
+      accessible = false;
+      upgradeRequired = true;
+    }
+
+    let limit: number | null = null;
+    let used = 0;
+    let remaining: number | null = null;
+    let period: string | null = null;
+
+    if (feature.hasLimit && feature.limits && feature.limitPeriod) {
+      limit = feature.limits[tier];
+      period = feature.limitPeriod;
+      used = getUsageCount(sub, feature.id, feature.limitPeriod);
+
+      if (limit !== null) {
+        remaining = Math.max(0, limit - used);
+        if (used >= limit) {
+          accessible = false;
+          if (tier !== "premium") upgradeRequired = true;
+        }
+      }
+    }
+
+    features[feature.id] = {
+      accessible,
+      limit,
+      used,
+      remaining,
+      period,
+      upgradeRequired,
+    };
+  }
+
+  return { tier, features };
 }
 
 export function currentSubscriptionSummary(
-    subscription: UserSubscription,
-    plans: PremiumPlan[],
+  subscription: UserSubscription,
+  plans: PremiumPlan[],
 ): {
-    tier: SubscriptionTier;
-    endDate: string | null;
-    daysRemaining: number | null;
-    isLifetime: boolean;
-    planName: string | null;
-    source: string | null;
+  tier: SubscriptionTier;
+  endDate: string | null;
+  daysRemaining: number | null;
+  isLifetime: boolean;
+  planName: string | null;
+  source: PaymentSource | null;
 } {
-    const premiumActive = isPremiumActive(subscription);
-    if (!premiumActive || !subscription.premium) {
-        return {
-            tier: "free",
-            endDate: null,
-            daysRemaining: null,
-            isLifetime: false,
-            planName: null,
-            source: null,
-        };
-    }
-    const planName = plans.find((p) => p.id === subscription.premium?.planId)?.name ?? null;
+  const premiumActive = isPremiumActive(subscription);
+
+  if (!premiumActive || !subscription.premium) {
     return {
-        tier: "premium",
-        endDate: subscription.premium.endDate,
-        daysRemaining: remainingDays(subscription),
-        isLifetime: subscription.premium.isLifetime,
-        planName,
-source: subscription.premium.source,
-});
+      tier: "free",
+      endDate: null,
+      daysRemaining: null,
+      isLifetime: false,
+      planName: null,
+      source: null,
+    };
+  }
+
+  const planName = plans.find((p) => p.id === subscription.premium.planId)?.name ?? null;
+
+  return {
+    tier: "premium",
+    endDate: subscription.premium.endDate,
+    daysRemaining: remainingDays(subscription),
+    isLifetime: subscription.premium.isLifetime,
+    planName,
+    source: subscription.premium.source,
+  };
+}

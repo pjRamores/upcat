@@ -652,7 +652,7 @@ async function seed() {
     await seedPaymentAndSubscriptionDefaults(db);
     await seedMonitoringDefaults(db);
     await seedStudyPlanContent(db);
-    await seedQuestionRichSamples(db, { setId: PREDEFINED_SET_ID });
+    // await seedQuestionRichSamples(db, { setId: PREDEFINED_SET_ID });
     await seedHelpSystem(db);
     await seedGamificationCatalogs(db);
   } finally {
@@ -1470,7 +1470,6 @@ async function seedMonitoringDefaults(db) {
 
   const monitoringConfig = {
     _id: "global",
-    id: "global",
     logging: {
       defaultLevel: process.env.LOG_LEVEL || "info",
       levelOverrides: { "api.auth": "debug", scheduler: "info" },
@@ -1536,13 +1535,13 @@ async function seedMonitoringDefaults(db) {
         },
         slack: { enabled: false, webhookUrl: null },
       },
-    },
-    quietHours: {
-      enabled: false,
-      startTime: "22:00",
-      endTime: "07:00",
-      timezone: "Asia/Manila",
-      suppressSeverities: ["info", "warning"],
+        quietHours: {
+        enabled: false,
+        startTime: "22:00",
+        endTime: "07:00",
+        timezone: "Asia/Manila",
+        suppressSeverities: ["info", "warning"],
+        },
     },
     dashboards: {
       refreshInterval: 30,
@@ -1689,7 +1688,9 @@ for (const rule of rules) {
 
 console.log(`Monitoring defaults: ${configResult.upsertedCount > 0 ? "config seeded" : "config exists"}, ${checksInserted} health checks inserted, ${rulesInserted} alert rules inserted.`);
 
+};
+
 seed().catch((err) => {
     console.error("\nSeed failed:", err);
     process.exit(1);
-})};
+});

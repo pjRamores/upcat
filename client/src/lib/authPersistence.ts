@@ -1,75 +1,118 @@
-import type {User} from "@upcat/shared";
+import type { User } from "@upcat/shared";
 
 const TOKEN_STORAGE_KEY = "token";
 const USER_STORAGE_KEY = "upcat.auth.user";
 
+function getLocalStorage(): Storage | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+function getSessionStorage(): Storage | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
 function localToken(): string | null {
-    return localStorage.getItem(TOKEN_STORAGE_KEY);
+  return getLocalStorage()?.getItem(TOKEN_STORAGE_KEY) ?? null;
 }
 
 function sessionToken(): string | null {
-    return sessionStorage.getItem(TOKEN_STORAGE_KEY);
+  return getSessionStorage()?.getItem(TOKEN_STORAGE_KEY) ?? null;
+}
+
+function isUser(value: unknown): value is User {
+  if (!value || typeof value !== "object") return false;
+
+  const candidate = value as Partial<User>;
+
+  return (
+    typeof candidate.id === "string" &&
+    typeof candidate.email === "string" &&
+    typeof candidate.firstName === "string" &&
+    typeof candidate.lastName === "string" &&
+    (candidate.role === "admin" || candidate.role === "reviewee")
+  );
 }
 
 export function readPersistedToken(): string | null {
-    return localToken() || sessionToken();
+  return localToken() || sessionToken();
 }
 
 export function getActiveAuthStorage(): Storage | null {
-    if (localToken()) return localStorage;
-    if (sessionToken()) return sessionStorage;
-    return null;
+  const local = getLocalStorage();
+  const session = getSessionStorage();
+
+  if (local?.getItem(TOKEN_STORAGE_KEY)) return local;
+  if (session?.getItem(TOKEN_STORAGE_KEY)) return session;
+
+  return null;
 }
 
 export function readPersistedUser(): User | null {
-    const storage = getActiveAuthStorage();
-    if (!storage) return null;
+  const storage = getActiveAuthStorage();
+  if (!storage) return null;
 
-    const raw = storage.getItem(USER_STORAGE_KEY);
-    if (!raw) return null;
+  const raw = storage.getItem(USER_STORAGE_KEY);
+  if (!raw) return null;
 
-    try {
-        const parsed = JSON.parse(raw) as Partial<User>;
-        if (
-            typeof parsed.id === "string" &&
-            typeof parsed.email === "string" &&
-            typeof parsed.firstName === "string" &&
-            typeof parsed.lastName === "string" &&
-            (parsed.role === "admin" || parsed.role === "reviewee")
-        ) {
-            return parsed as User;
-        }
-    } catch {
-        // Ignore malformed persisted user payloads.
+  try {
+    const parsed: unknown = JSON.parse(raw);
+
+    if (isUser(parsed)) {
+      return parsed;
     }
+  } catch {
+    // Ignore malformed persisted user payloads.
+  }
 
-    storage.removeItem(USER_STORAGE_KEY);
-    return null;
+  storage.removeItem(USER_STORAGE_KEY);
+  return null;
 }
 
 export function persistAuthSession(
-    token: string,
-    user: User,
-    rememberMe: boolean
+  token: string,
+  user: User,
+  rememberMe: boolean
 ): void {
-    const storage = rememberMe ? localStorage : sessionStorage;
-    const otherStorage = rememberMe ? sessionStorage : localStorage;
+  const local = getLocalStorage();
+  const session = getSessionStorage();
 
-    otherStorage.removeItem(TOKEN_STORAGE_KEY);
-    otherStorage.removeItem(USER_STORAGE_KEY);
-    storage.setItem(TOKEN_STORAGE_KEY, token);
-    storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  const storage = rememberMe ? local : session;
+  const otherStorage = rememberMe ? session : local;
+
+  otherStorage?.removeItem(TOKEN_STORAGE_KEY);
+  otherStorage?.removeItem(USER_STORAGE_KEY);
+
+  if (!storage) return;
+
+  storage.setItem(TOKEN_STORAGE_KEY, token);
+  storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
 }
 
 export function persistUserForCurrentSession(user: User): void {
-    const storage = getActiveAuthStorage();
-    if (!storage) return;
-    storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  const storage = getActiveAuthStorage();
+  if (!storage) return;
+
+  storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
 }
 
 export function clearPersistedAuth(): void {
-    localStorage.removeItem(TOKEN_STORAGE_KEY);
-    localStorage.removeItem(USER_STORAGE_KEY);
-    sessionStorage.removeItem(TOKEN_STORAGE_KEY);
-    sessionStorage.removeItem(USER_STORAGE_KEY);
+  const local = getLocalStorage();
+  const session = getSessionStorage();
+
+  local?.removeItem(TOKEN_STORAGE_KEY);
+  local?.removeItem(USER_STORAGE_KEY);
+  session?.removeItem(TOKEN_STORAGE_KEY);
+  session?.removeItem(USER_STORAGE_KEY);
 }

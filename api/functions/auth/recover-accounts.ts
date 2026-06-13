@@ -10,21 +10,26 @@ import * as bcrypt from "node-rs/bcrypt";
 import { ObjectId } from "mongodb";
 import { validatePassword } from "@upcat/shared";
 import { getDb } from "../../src/db.js";
-import { verifyRecoveryToken } from "../../../../src/recovery.js";
-import { logActivity } from "../../../../src/activityLog.js";
+import { verifyRecoveryToken } from "../../src/recovery.js";
+import { logActivity } from "../../src/activityLog.js";
+
+type RecoveryClaims = {
+  userId: string;
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const authHeader = (req.headers.authorization ?? "").toString();
+  const authHeader = String(req.headers.authorization ?? "");
   if (!authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ success: false, error: "Missing recovery token." });
   }
-  let claims;
+
+  let claims: RecoveryClaims;
   try {
-    claims = verifyRecoveryToken(authHeader.slice(7));
+    claims = verifyRecoveryToken(authHeader.slice(7)) as RecoveryClaims;
   } catch {
     return res
       .status(401)
@@ -36,14 +41,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     newPassword?: string;
     confirmNewPassword?: string;
   };
+
   if (action !== "reset_password" && action !== "set_password") {
     return res.status(400).json({ success: false, error: "Invalid action." });
   }
-  if (!newPassword || !confirmNewPassword || newPassword !== confirmNewPassword) {
-    return res
-      .status(400)
-      .json({ success: false, error: "Passwords do not match." });
+
+  if (
+    typeof newPassword !== "string" ||
+    typeof confirmNewPassword !== "string" ||
+    newPassword !== confirmNewPassword
+  ) {
+    return res.status(400).json({ success: false, error: "Passwords do not match." });
   }
+
   const check = validatePassword(newPassword);
   if (!check.isValid) {
     return res.status(400).json({
@@ -52,15 +62,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   }
 
+  if (!ObjectId.isValid(claims.userId)) {
+    return res.status(400).json({ success: false, error: "Invalid recovery token." });
+  }
+
   const db = await getDb();
   const userId = new ObjectId(claims.userId);
   const user = await db.collection("users").findOne({ _id: userId });
+
   if (!user) {
     return res.status(404).json({ success: false, error: "Account not found." });
   }
 
   const passwordHash = await bcrypt.hash(newPassword, 12);
   const now = new Date();
+
   await db.collection("users").updateOne(
     { _id: userId },
     {
@@ -71,7 +87,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         "security.lastPasswordChangeAt": now,
         "security.loginAttempts.count": 0,
         "security.loginAttempts.lockedUntil": null,
-        tokenInvalidatedat: now,
+        tokenInvalidatedAt: now,
         updatedAt: now,
       },
     }
@@ -88,6 +104,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   return res.status(200).json({
     success: true,
-    data: { success: true, message: "Password set. You can now log in." },
+    data: {
+      success: true,
+      message: "Password set. You can now log in.",
+    },
   });
 }

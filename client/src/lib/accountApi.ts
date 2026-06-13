@@ -18,7 +18,7 @@ import {
   type VerifySecurityQuestionsPayload,
 } from "@upcat/shared";
 
-async function unwrap<T>(p: Promise<{ data: { [T] } }>): Promise<T> {
+async function unwrap<T>(p: Promise<{ data: { data: T } }>): Promise<T> {
   const { data } = await p;
   return data.data;
 }
@@ -28,55 +28,66 @@ export const recoveryApi = {
     unwrap<GenerateRecoveryCodesResponse>(
       apiClient.post(API_ROUTES.AUTH.RECOVERY_CODES_GENERATE),
     ),
+
   status: () =>
     unwrap<RecoveryCodesStatus>(
       apiClient.get(API_ROUTES.AUTH.RECOVERY_CODES_STATUS),
     ),
+
   verifyCode: (body: RecoveryVerifyPayload) =>
     unwrap<RecoveryVerifyResponse>(
       apiClient.post(API_ROUTES.AUTH.RECOVERY_CODES_VERIFY, body),
     ),
+
   setSecurityQuestions: (body: SetSecurityQuestionsPayload) =>
-    unwrap<{ ok: true }>({
+    unwrap<{ ok: true }>(
       apiClient.post(API_ROUTES.AUTH.SECURITY_QUESTIONS_SET, body),
-    }),
+    ),
+
   lookupSecurityQuestions: (email: string) =>
     unwrap<SecurityQuestionsPublicResponse>(
       apiClient.post(API_ROUTES.AUTH.SECURITY_QUESTIONS_LOOKUP, { email }),
     ),
+
   verifySecurityQuestions: (body: VerifySecurityQuestionsPayload) =>
     unwrap<RecoveryVerifyResponse>(
       apiClient.post(API_ROUTES.AUTH.SECURITY_QUESTIONS_VERIFY, body),
     ),
-};
 
-/**
- * Public - completes the recovery flow with a recovery token.
- */
-recoverAccount: (recoveryToken: string, body: RecoverAccountPayload) =>
-  unwrap<{ ok: true }>({
-    apiClient.post(API_ROUTES.AUTH.RECOVER_ACCOUNT, body, {
-      headers: { Authorization: `Bearer ${recoveryToken}` },
-    }),
-  });
+  /**
+   * Public - completes the recovery flow with a recovery token.
+   */
+  recoverAccount: (recoveryToken: string, body: RecoverAccountPayload) =>
+    unwrap<{ ok: true }>(
+      apiClient.post(API_ROUTES.AUTH.RECOVER_ACCOUNT, body, {
+        headers: { Authorization: `Bearer ${recoveryToken}` },
+      }),
+    ),
+};
 
 export const dataExportApi = {
   create: (options: DataExportOptions) =>
     unwrap<DataRequest>(
       apiClient.post(API_ROUTES.ACCOUNT_DATA_EXPORT, options),
     ),
+
   list: () =>
-    unwrap<{ requests: DataRequest[] }>({
+    unwrap<{ requests: DataRequest[] }>(
       apiClient.get(API_ROUTES.ACCOUNT_DATA_EXPORT),
-    }),
+    ),
+
   get: (id: string) =>
     unwrap<DataRequest>(
       apiClient.get(API_ROUTES.ACCOUNT_DATA_EXPORT_ID(id)),
     ),
+
   download: async (id: string): Promise<Blob> => {
-    const res = await apiClient.get(API_ROUTES.ACCOUNT_DATA_EXPORT_DOWNLOAD(id), {
-      responseType: "blob",
-    });
+    const res = await apiClient.get(
+      API_ROUTES.ACCOUNT_DATA_EXPORT_DOWNLOAD(id),
+      {
+        responseType: "blob",
+      },
+    );
     return res.data as Blob;
   },
 };
@@ -86,26 +97,31 @@ export const deletionApi = {
     unwrap<DataRequest>(
       apiClient.post(API_ROUTES.ACCOUNT_DELETION_REQUEST, body),
     ),
+
   current: () =>
-    unwrap<{ request: DataRequest | null }>({
+    unwrap<{ request: DataRequest | null }>(
       apiClient.get(API_ROUTES.ACCOUNT_DELETION_REQUEST),
-    }),
+    ),
+
   confirm: (id: string, token: string) =>
-    unwrap<{ confirmed: true }>({
+    unwrap<{ confirmed: true }>(
       apiClient.post(API_ROUTES.ACCOUNT_DELETION_REQUEST_CONFIRM(id), { token }),
-    }),
+    ),
+
   cancel: (id: string) =>
-    unwrap<{ cancelled: true }>({
+    unwrap<{ cancelled: true }>(
       apiClient.post(API_ROUTES.ACCOUNT_DELETION_REQUEST_CANCEL(id)),
-    }),
+    ),
 };
+
 export const emailPreferencesApi = {
-    get: () =>
-        unwrap<{ emailPreferences: { marketing: boolean } }>(
-            apiClient.get(API_ROUTES.ACCOUNT_EMAIL_PREFERENCES),
-        ),
-    update: (prefs: { marketing: boolean }) =>
-        unwrap<{ emailPreferences: { marketing: boolean } }>(
-            apiClient.patch(API_ROUTES.ACCOUNT_EMAIL_PREFERENCES, prefs),
-        ),
+  get: () =>
+    unwrap<{ emailPreferences: { marketing: boolean } }>(
+      apiClient.get(API_ROUTES.ACCOUNT_EMAIL_PREFERENCES),
+    ),
+
+  update: (prefs: { marketing: boolean }) =>
+    unwrap<{ emailPreferences: { marketing: boolean } }>(
+      apiClient.patch(API_ROUTES.ACCOUNT_EMAIL_PREFERENCES, prefs),
+    ),
 };

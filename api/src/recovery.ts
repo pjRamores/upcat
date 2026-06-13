@@ -73,23 +73,28 @@ export async function consumeRecoveryCode(
   if (!doc) return false;
 
   const normalized = normalizeCode(submitted);
+
   for (let i = 0; i < doc.codes.length; i++) {
     const entry = doc.codes[i]!;
     if (entry.usedAt) continue;
+
     // bcrypt.compare returns true only for the matching hash.
     // We hash the *normalized* candidate against each stored hash.
     // eslint-disable-next-line no-await-in-loop
     const ok = await bcrypt.verify(normalized, entry.code);
+
     if (!ok) {
-      return false;
+      continue;
     }
+
+    await db.collection<RecoveryCodesDoc>("recovery_codes").updateOne(
+      { _id: doc._id },
+      { $set: { [`codes.${i}.usedAt`]: new Date() } }
+    );
+    return true;
   }
 
-  await db.collection<RecoveryCodesDoc>("recovery_codes").updateOne(
-    { _id: doc._id },
-    {$set:{[`codes.${i}.usedAt`]: new Date()}},
-  );
-  return true;
+  return false;
 }
 
 export async function countUnusedRecoveryCodes(
@@ -97,12 +102,14 @@ export async function countUnusedRecoveryCodes(
   userId: ObjectId
 ): Promise<{ total: number; unused: number; generatedAt: Date | null }> {
   const doc = await db.collection<RecoveryCodesDoc>("recovery_codes").findOne({ userId });
-  if (!doc) return {total:0, unused:0, generatedAt: null};
-return {
-  total: doc.codes.length,
-  unused: doc.codes.filter((c) => !c.usedAt).length,
-  generatedAt: doc.generatedAt,
-};
+  if (!doc) return { total: 0, unused: 0, generatedAt: null };
+
+  return {
+    total: doc.codes.length,
+    unused: doc.codes.filter((c) => !c.usedAt).length,
+    generatedAt: doc.generatedAt,
+  };
+}
 
 // --- Security questions ------------------------------
 
@@ -116,33 +123,42 @@ export function normalizeAnswer(answer: string): string {
 }
 
 export async function hashSecurityAnswers(
-  entries: { question: string; answer: string }[],
+  entries: { question: string; answer: string }[]
 ): Promise<StoredSecurityQuestion[]> {
   if (entries.length !== SECURITY_QUESTIONS_REQUIRED) {
     throw new Error(`Exactly ${SECURITY_QUESTIONS_REQUIRED} security questions are required.`);
   }
+
   return Promise.all(
     entries.map(async (e) => ({
       question: e.question,
       answerHash: await bcrypt.hash(normalizeAnswer(e.answer), 10),
-    })),
+    }))
   );
 }
 
 export async function verifySecurityAnswers(
   stored: StoredSecurityQuestion[],
-  submitted: { questionIndex: number; answer: string }[],
+  submitted: { questionIndex: number; answer: string }[]
 ): Promise<boolean> {
   if (submitted.length !== stored.length) return false;
+
   // Require an answer for *each* stored question, irrespective of order.
   const seen = new Set<number>();
+
   for (const s of submitted) {
     if (s.questionIndex < 0 || s.questionIndex >= stored.length) return false;
     if (seen.has(s.questionIndex)) return false;
+    seen.add(s.questionIndex);
+
     // eslint-disable-next-line no-await-in-loop
-    const ok = await bcrypt.verify(normalizeAnswer(s.answer), stored[s.questionIndex]!.answerHash);
+    const ok = await bcrypt.verify(
+      normalizeAnswer(s.answer),
+      stored[s.questionIndex]!.answerHash
+    );
     if (!ok) return false;
   }
+
   return seen.size === stored.length;
 }
 
@@ -152,7 +168,7 @@ export function signRecoveryToken(user: { _id: ObjectId; email: string }): strin
   return jwt.sign(
     { userId: user._id.toString(), email: user.email, scope: "recovery" },
     JWT_SECRET,
-    { expiresIn: RECOVERY_TOKEN_TTL_SECONDS },
+    { expiresIn: RECOVERY_TOKEN_TTL_SECONDS }
   );
 }
 
@@ -179,6 +195,7 @@ export function tryGetUserSecurity(user: WithId<Record<string, unknown>>): {
     lastPasswordChangeAt?: Date | null;
     loginAttempts?: { count?: number; lockedUntil?: Date | null };
   };
+
   return {
     hasRecoveryCodes: !!sec.hasRecoveryCodes,
     recoveryCodesGeneratedAt: sec.recoveryCodesGeneratedAt ?? null,
