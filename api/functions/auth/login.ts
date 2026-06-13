@@ -77,7 +77,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
     const {email, password} = req.body ?? {};
     if (!email || !password) {
-     return res.status(400).json({success: false, error: "Email and password are required."});
+        return res.status(400).json({success: false, error: "Email and password are required."});
     }
 
     const db = await getDb();
@@ -87,11 +87,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         return res.status(401).json({success: false, error: "Invalid credentials."});
     }
     if (user.isActive === false) {
-        res.status(403).json({
+        return res.status(403).json({
             success: false,
             error: "Your account has been deactivated. Please contact support.",
         });
-        return;
     }
 
     const existingLock = user.security?.loginAttempts?.lockedUntil as | Date | string | null | undefined;
@@ -110,12 +109,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     if (!user.isVerified) {
         return res
             .status(403)
-            .json({ success: false, error: "Please verify your email before logging in." });
+            .json({ success: false, error: "Please verify your email before logging in."});
     }
 
     const storedHash: string | null =
         user.auth?.passwordHash ?? user.passwordHash ?? null;
-
     if (!storedHash) {
         return res.status(401).json({
             success: false,
@@ -130,7 +128,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         const nextCount = prevCount + 1;
         const newLock = lockedUntil(nextCount);
         await db.collection("users").updateOne(
-            { _id: user._id },
+            {_id: user._id},
             {
                 $set: {
                     "security.loginAttempts.count": nextCount,
@@ -162,7 +160,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     const now = new Date();
 
     void db.collection("users").updateOne(
-        { _id: user._id },
+        {_id: user._id},
         {
             $set: {
                 lastLoginAt: now,
@@ -174,95 +172,85 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         },
     ).catch(() => undefined);
 
-  void logActivity(db, {
-    actorId: user._id,
-    actorRole: role,
-    action: "user.login",
-    targetType: "user",
-    targetId: String(user._id),
-    metadata: { email: user.email },
-  }).catch(() => undefined);
+    void logActivity(db, {
+        actorId: user._id,
+        actorRole: role,
+        action: "user.login",
+        targetType: "user",
+        targetId: String(user._id),
+        metadata: { email: user.email },
+    }).catch(() => undefined);
 
-  const [{ token }, gamification, onboarding] = await Promise.all([
-    signTokenWithSession({
-      userId: user._id,
-      email: user.email,
-      role,
-      ip: extractClientIp(req),
-      userAgent: (req.headers["user-agent"] as string | undefined) ?? null,
-      fingerprint:
-        (req.headers["x-device-fingerprint"] as string | undefined) ?? null,
-    }),
-    buildLoginGamification(db, user._id).catch((err) => {
-      // eslint-disable-next-line no-console
-      console.error("[auth/login] gamification update failed", err);
-      return null;
-    }),
-    (async (): Promise<OnboardingResult> => {
-      try {
-        const targetPage = role === "admin" ? "/admin" : "/dashboard";
-        const page = normalizeContextualPage(targetPage);
-        const userHelpNormalized = normalizeUserHelp(
-          (user as { help?: unknown }).help
-        );
+    const [{token}, gamification, onboarding] = await Promise.all([
+        signTokenWithSession({
+            userId: user._id,
+            email: user.email,
+            role,
+            ip: extractClientIp(req),
+            userAgent: (req.headers["user-agent"] as string | undefined) ?? null,
+            fingerprint: (req.headers["x-device-fingerprint"] as string | undefined) ?? null,
+        }),
 
-        if (userHelpNormalized.helpPreferences.showOnboarding === false) {
-          return { items: [] };
-        }
+        buildLoginGamification(db, user._id).catch((err) => {
+            // eslint-disable-next-line no-console
+            console.error("[auth/login] gamification update failed", err);
+            return null;
+        }),
 
-        const suggested: OnboardingResult["items"] = [];
+        (async (): Promise<OnboardingResult> => {
+            try {
+                const targetPage = role === "admin" ? "/admin" : "/dashboard";
+                const page = normalizeContextualPage(targetPage);
+                const userHelpNormalized = normalizeUserHelp((user as { help?: unknown }).help);
+                if (userHelpNormalized.helpPreferences.showOnboarding === false) {
+                    return { items: [] };
+                }
+                const suggested: OnboardingResult["items"] = [];
+                const conventional = checkOnboardingTriggers(
+                    user as unknown as {
+                        help?: unknown;
+                        gamification?: { xp?: number };
+                        createdAt?: Date | string | null;
+                    },
+                    page,
+                );
+                if (conventional) {
+                    suggested.push({flowId: conventional, triggerCondition: "policy", reason: "rule_match"});
+                }
+                return {items: suggested};
+            } catch (err) {
+                // eslint-disable-next-line no-console
+                console.error("[auth/login] onboarding check failed", err);
+                return {items: []};
+            }
+        })(),
+    ]);
 
-        const conventional = checkOnboardingTriggers(
-          user as unknown as {
-            help?: unknown;
-            gamification?: { xp?: number };
-            createdAt?: Date | string | null;
-          },
-          page
-        );
+    const subscription = normalizeSubscription(user as Record<string, unknown>);
 
-        if (conventional) {
-          suggested.push({
-            flowId: conventional,
-            triggerCondition: "policy",
-            reason: "rule_match",
-          });
-        }
-
-        return { items: suggested };
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error("[auth/login] onboarding check failed", err);
-        return { items: [] };
-      }
-    })(),
-  ]);
-
-  const subscription = normalizeSubscription(user as Record<string, unknown>);
-
-  return res.status(200).json({
-    success: true,
-    data: {
-      token,
-      user: {
-        _id: user._id.toString(),
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        isVerified: user.isVerified,
-        role,
-        isActive: user.isActive ?? true,
-        hasPassword: true,
-        socialOnly: false,
-        subscription,
-        premium: isPremiumActive(subscription),
-        lastLoginAt: now.toISOString(),
-        loginCount: Number(user.loginCount ?? 0) + 1,
-        createdAt: user.createdAt,
-        updatedAt: now,
-      },
-      gamification,
-      onboarding,
-    },
-  });
+    return res.status(200).json({
+        success: true,
+        data: {
+            token,
+            user: {
+                _id: user._id.toString(),
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                isVerified: user.isVerified,
+                role,
+                isActive: user.isActive ?? true,
+                hasPassword: true,
+                socialOnly: false,
+                subscription,
+                premium: isPremiumActive(subscription),
+                lastLoginAt: now.toISOString(),
+                loginCount: Number(user.loginCount ?? 0) + 1,
+                createdAt: user.createdAt,
+                updatedAt: now,
+            },
+            gamification,
+            onboarding,
+        },
+    });
 }
