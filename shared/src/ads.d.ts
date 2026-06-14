@@ -26,7 +26,18 @@ export interface ConsentRecord {
 }
 export declare const DEFAULT_CONSENT: ConsentRecord;
 /** Canonical slot ids the client may render. Keep stable; admins map ids → AdSense slot codes. */
-export declare const AD_SLOT_IDS: readonly ["landing_in_content", "practice_sidebar", "mock_exam_sidebar", "review_answers_sidebar", "subject_in_content", "blog_in_content"];
+export declare export const AD_SLOT_IDS = [
+    "landing_in_content",
+    "practice_sidebar",
+    "mock_exam_sidebar",
+    "review_answers_sidebar",
+    "subject_in_content",
+    "blog_in_content",
+    "review_inline",
+    "review_in_content",
+    "practice_in_content",
+    "blog_in_content"
+];
 export type AdSlotId = (typeof AD_SLOT_IDS)[number];
 export type AdSlotFormat = "auto" | "rectangle" | "horizontal" | "vertical" | "fluid";
 export interface AdSlotConfig {

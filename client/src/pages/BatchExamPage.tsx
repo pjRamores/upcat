@@ -332,13 +332,10 @@ export default function BatchExamPage() {
     const nextBatch = subjectBatches[next];
     if (!nextBatch || nextBatch.indices.length === 0) return;
 
-    const firstNextIndex = nextBatch.indices;
+    const firstNextIndex = nextBatch.indices[0];
     if (typeof firstNextIndex !== "number") return;
 
-    setSpentByBatch((prev) => ({
-      ...prev,
-      [next]: prev[next] ?? 0,
-    }));
+    setSpentByBatch((prev) => ({...prev, [next]: 0}));
     setCurrentBatchIdx(next);
     setCurrent(firstNextIndex);
   }, [currentBatch, isLastBatch, currentBatchIdx, subjectBatches, setCurrent]);
@@ -784,9 +781,9 @@ function QuestionCard({
 
       {(question as any).passage && (
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
-          {/* <Seq> */}
+          {/* <Seo> */}
             <MathText>{String((question as any).passage?.content ?? "")}</MathText>
-          {/* </Seq> */}
+          {/* </Seo> */}
         </div>
       )}
 
@@ -819,7 +816,7 @@ function QuestionCard({
           {state.flagged ? "Unmark review" : "Mark for review"}
         </button>
 
-        <AdSlot slot="exam_inline" />
+        <AdSlot slotId="mock_exam_sidebar" />
       </div>
     </div>
   );

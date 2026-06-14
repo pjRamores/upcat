@@ -136,7 +136,7 @@ export default function ReviewPage() {
   useEffect(() => {
     setJumpSubject((prev) => {
       if (prev && availableSubjects.includes(prev)) return prev;
-      return availableSubjects ?? null;
+      return availableSubjects[0] ?? null;
     });
   }, [availableSubjects]);
 
@@ -223,7 +223,7 @@ export default function ReviewPage() {
           )}
 
           <div className="mt-4">
-            <AdSlot slot="review_inline" />
+            <AdSlot slotId="review_answers_sidebar" />
           </div>
         </div>
 
@@ -340,7 +340,7 @@ export default function ReviewPage() {
       </div>
 
       <FlagQuestionModal
-        open={Boolean(reportingId)}
+        isOpen={Boolean(reportingId)}
         questionId={reportingId}
         onClose={() => setReportingId(null)}
         onSubmitted={() => {
@@ -500,7 +500,7 @@ function QuestionCard({
       )}
 
       <div className="mt-4 flex items-center justify-between gap-3">
-        <AdSlot slot="review_inline" />
+        <AdSlot slotId="review_answers_sidebar" />
         <button
           type="button"
           onClick={onReport}

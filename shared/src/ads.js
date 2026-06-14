@@ -30,6 +30,10 @@ export const AD_SLOT_IDS = [
     "review_answers_sidebar",
     "subject_in_content",
     "blog_in_content",
+    "review_inline",
+    "review_in_content",
+    "practice_in_content",
+    "blog_in_content"
 ];
 // ├── Video interstitials
 /** Where a video interstitial may be triggered from. Stable strings used by the client and server analytics..*/
