@@ -77,7 +77,7 @@ export default async function handler(
   const ctx = await requireSessionAccess(req, res);
   if (!ctx) return;
 
-  const { db, sessionOid, userOid } = ctx;
+  const { db, sessionId, userId } = ctx;
 
   const subjectFilter = req.query.subjectArea as string | undefined;
   if (subjectFilter && !SUBJECT_AREAS.includes(subjectFilter as SubjectArea)) {
@@ -86,8 +86,8 @@ export default async function handler(
   }
 
   const session = (await db.collection("exam_sessions").findOne({
-    _id: sessionOid,
-    userId: userOid,
+    _id: new ObjectId(sessionId),
+    userId: new ObjectId(userId),
   })) as ExamSessionDoc | null;
 
   if (!session) {
@@ -174,7 +174,7 @@ export default async function handler(
     success: true,
     data: {
       session: {
-        _id: sessionOid.toString(),
+        _id: sessionId.toString(),
         status: session.status,
         config: session.config,
         score: session.score,
