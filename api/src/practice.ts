@@ -107,6 +107,7 @@ export function defaultCard(
   userId: ObjectId,
   questionId: ObjectId,
   subjectArea: SubjectArea,
+  source: PracticeCard["source"] = "exam_incorrect"
 ): Omit<PracticeCard, "_id"> {
   const now = new Date();
 
@@ -119,12 +120,14 @@ export function defaultCard(
     intervalDays: 0,
     repetitions: 0,
     nextReviewDate: now,
-    totalReviews: 0,
+    lastReviewedAt: null,
     correctCount: 0,
     incorrectCount: 0,
+    lapses: 0,
+    totalReviews: 0,
+    source,
     createdAt: now,
     updatedAt: now,
-    lastReviewedAt: null,
   };
 }
 
@@ -138,20 +141,20 @@ export async function addCardsForQuestions(
     entries: Array<{ questionId: ObjectId; subjectArea: SubjectArea }>,
     source: PracticeCard["source"] = "exam_incorrect",
 ): Promise<{ created: number; existing: number }> {
-    if (entries.length === 0) return { created: 0, existing: 0 };
+    if (entries.length === 0) return {created: 0, existing: 0};
     const col = db.collection("practice_cards");
     const ids = entries.map((e) => e.questionId);
     const existing = await col
-        .find({ userId, questionId: { $in: ids } })
-        .project({ questionId: 1 })
+        .find({ userId, questionId: {$in: ids}})
+        .project({questionId: 1})
         .toArray();
-    const existingSet = new Set(existing.map((e) => e.questionId.toString()));
+    const existingSet = new Set(existing.map((d) => d.questionId.toString()));
     const toInsert = entries
         .filter((e) => !existingSet.has(e.questionId.toString()))
-        .map((e) => ({ ...e, source: source }));
+        .map((e) => defaultCard(userId, e.questionId, e.subjectArea, source));
     if (toInsert.length === 0) return { created: 0, existing: existing.length };
-    await col.insertMany(toInsert.map((e) => defaultCard(userId, e.questionId, e.subjectArea)));
-    return { created: toInsert.length, existing: existing.length };
+    await col.insertMany(toInsert);
+    return {created: toInsert.length, existing: existing.length};
 }
 
 
