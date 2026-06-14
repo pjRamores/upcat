@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import {getDb} from "../src/db.js";
+import {getDb} from "../../src/db.js";
 import {getPublicAdsConfig} from "../../src/ads.js";
 
 /**
