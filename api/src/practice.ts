@@ -133,28 +133,25 @@ export function defaultCard(
  * Existing cards are left untouched. Returns how many were newly created.
  */
 export async function addCardsForQuestions(
-  db: Db,
-  userId: ObjectId,
-  entries: Array<{ questionId: ObjectId; subjectArea: SubjectArea }>,
-  reason: PracticeCard["source"] = "exam_incorrect",
+    db: Db,
+    userId: ObjectId,
+    entries: Array<{ questionId: ObjectId; subjectArea: SubjectArea }>,
+    source: PracticeCard["source"] = "exam_incorrect",
 ): Promise<{ created: number; existing: number }> {
-  if (entries.length === 0) return { created: 0, existing: 0 };
-
-  const col = db.collection("practice_cards");
-  const ids = entries.map((e) => e.questionId);
-  const existing = await col
-    .find({ userId, questionId: { $in: ids } })
-    .project({ questionId: 1 })
-    .toArray();
-  const existingIds = new Set(existing.map((e) => e.questionId.toString()));
-  const toInsert = entries
-    .filter((e) => !existingIds.has(e.questionId.toString()))
-    .map((e) => ({ ...e, source: reason }));
-
-  if (toInsert.length === 0) return { created: 0, existing: existingIds.size };
-
-  await col.insertMany(toInsert.map((e) => defaultCard(userId, e.questionId, e.subjectArea)));
-  return { created: toInsert.length, existing: existingIds.size };
+    if (entries.length === 0) return { created: 0, existing: 0 };
+    const col = db.collection("practice_cards");
+    const ids = entries.map((e) => e.questionId);
+    const existing = await col
+        .find({ userId, questionId: { $in: ids } })
+        .project({ questionId: 1 })
+        .toArray();
+    const existingSet = new Set(existing.map((e) => e.questionId.toString()));
+    const toInsert = entries
+        .filter((e) => !existingSet.has(e.questionId.toString()))
+        .map((e) => ({ ...e, source: source }));
+    if (toInsert.length === 0) return { created: 0, existing: existing.length };
+    await col.insertMany(toInsert.map((e) => defaultCard(userId, e.questionId, e.subjectArea)));
+    return { created: toInsert.length, existing: existing.length };
 }
 
 
