@@ -204,7 +204,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
 
     try {
       const { data } = await apiClient.get(
-        `\${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=1&limit=\${PAGE_SIZE}`,
+        `${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=1&limit=${PAGE_SIZE}`,
       );
 
       const payload = data.data as {
@@ -323,7 +323,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
     if (!sessionId) return;
 
     const { data } = await apiClient.get(
-      `\${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=\${page}&limit=\${PAGE_SIZE}`,
+      `${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=${page}&limit=${PAGE_SIZE}`,
     );
 
     const payload = data.data as { questions: LoadedQuestion[] };
@@ -449,7 +449,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
 
     const eventAtIso = new Date().toISOString();
     try {
-      const { data } = await apiClient.post(`/exam/\${sessionId}/pause`, { at: eventAtIso });
+      const { data } = await apiClient.post(`/exam/${sessionId}/pause`, { at: eventAtIso });
       const payload = (data?.data ?? {}) as {
         paused?: boolean;
         pausedAt?: string | null;
@@ -489,7 +489,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
     const eventAtIso = new Date(eventAt).toISOString();
 
     try {
-      const { data } = await apiClient.post(`/exam/\${sessionId}/resume`, { at: eventAtIso });
+      const { data } = await apiClient.post(`/exam/${sessionId}/resume`, { at: eventAtIso });
       const payload = (data?.data ?? {}) as {
         paused?: boolean;
         pausedAt?: string | null;
@@ -551,7 +551,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
       if (gamification && sessionId) {
         try {
           sessionStorage.setItem(
-            `upcat.gamification.\${sessionId}`,
+            `upcat.gamification.${sessionId}`,
             JSON.stringify(gamification),
           );
         } catch {

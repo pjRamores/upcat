@@ -3,10 +3,9 @@ import { flushSync } from "react-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SUBJECT_META, type SubjectArea } from "@upcat/shared";
 import MathText from "@/components/MathText";
-import Seq from "@/components/Seq";
+import Seo from "@/components/Seo";
 import AdSlot from "@/components/AdSlot";
 import Spinner from "@/components/Spinner";
-import Seo from "@/components/Seo";
 import {
   type AnswerLetter,
   type LoadedQuestion,
@@ -740,9 +739,7 @@ export default function BatchExamPage() {
             <p>Current subject questions: {currentBatch.indices.length}</p>
             <p>
               Answered in this subject:{" "}
-              {
-                currentBatch.indices.filter((idx) => Boolean(states[idx]?.answer)).length
-              }
+              {currentBatch.indices.filter((idx) => Boolean(states[idx]?.answer)).length}
             </p>
           </div>
         </aside>
@@ -782,14 +779,14 @@ function QuestionCard({
       </div>
 
       <div className="text-base font-medium text-slate-900">
-        <MathText text={String((question as any).questionText ?? "")} />
+        <MathText>{String((question as any).questionText ?? "")}</MathText>
       </div>
 
       {(question as any).passage && (
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
-          <Seq>
-            <MathText text={String((question as any).passage?.content ?? "")} />
-          </Seq>
+          {/* <Seq> */}
+            <MathText>{String((question as any).passage?.content ?? "")}</MathText>
+          {/* </Seq> */}
         </div>
       )}
 
@@ -807,7 +804,7 @@ function QuestionCard({
             } disabled:cursor-not-allowed disabled:opacity-60`}
           >
             <span className="font-semibold">{choice.label}.</span>{" "}
-            <MathText text={choice.text} />
+            <MathText>{choice.text}</MathText>
           </button>
         ))}
       </div>

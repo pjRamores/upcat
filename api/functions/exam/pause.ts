@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { requireSessionAccess } from "../../src/examHelpers.js";
+import { ObjectId } from "mongodb";
 
 type SessionTimerState = {
   pausedAt?: Date | string | null;
@@ -51,10 +52,10 @@ export default async function handler(
   const ctx = await requireSessionAccess(req, res);
   if (!ctx) return;
 
-  const { db, sessionOid, userOid } = ctx;
+  const { db, sessionId, userId } = ctx;
 
   const session = (await db.collection("exam_sessions").findOne(
-    { _id: sessionOid, userId: userOid },
+    { _id: new ObjectId(sessionId), userId: new ObjectId(userId) },
     { projection: { status: 1, timerState: 1 } },
   )) as ExamSessionDoc | null;
 
@@ -98,7 +99,7 @@ export default async function handler(
     }
 
     await db.collection("exam_sessions").updateOne(
-      { _id: sessionOid, userId: userOid },
+      { _id: new ObjectId(sessionId), userId: new ObjectId(userId) },
       {
         $set: {
           "timerState.pausedAt": eventAt,
@@ -136,7 +137,7 @@ export default async function handler(
   const nextTotalPausedMs = currentTotalPausedMs + additionalPausedMs;
 
   await db.collection("exam_sessions").updateOne(
-    { _id: sessionOid, userId: userOid },
+    { _id: new ObjectId(sessionId), userId: new ObjectId(userId) },
     {
       $set: {
         "timerState.pausedAt": null,

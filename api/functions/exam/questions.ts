@@ -70,7 +70,7 @@ export default async function handler(
   const ctx = await requireSessionAccess(req, res);
   if (!ctx) return;
 
-  const { db, sessionOid, userOid } = ctx;
+  const { db, userId, sessionId } = ctx;
 
   const page = Math.max(1, parseInt((req.query.page as string) ?? "1", 10) || 1);
   const limit = Math.max(
@@ -79,8 +79,8 @@ export default async function handler(
   );
 
   const session = (await db.collection("exam_sessions").findOne({
-    _id: sessionOid,
-    userId: userOid,
+    _id: new ObjectId(sessionId),
+    userId: new ObjectId(userId),
   })) as ExamSessionDoc | null;
 
   if (!session) {
@@ -192,7 +192,7 @@ export default async function handler(
       totalPages,
       totalQuestions,
       session: {
-        _id: sessionOid.toString(),
+        _id: session._id.toString(),
         status: session.status,
         timeLimit: session.config?.timeLimit ?? 0,
         startedAt: toIso(session.startedAt) || null,

@@ -38,7 +38,7 @@ export default async function handler(
   const ctx = await requireSessionAccess(req, res);
   if (!ctx) return;
 
-  const { db, sessionOid, userOid } = ctx;
+  const { db, sessionId, userId } = ctx;
 
   const { answers } = (req.body ?? {}) as BulkBody;
   if (!Array.isArray(answers)) {
@@ -66,7 +66,7 @@ export default async function handler(
   }
 
   const session = await db.collection("exam_sessions").findOne(
-    { _id: sessionOid, userId: userOid },
+    { _id: new ObjectId(sessionId), userId: new ObjectId(userId) },
     { projection: { status: 1, "timerState.pausedAt": 1 } },
   );
 
@@ -107,7 +107,7 @@ export default async function handler(
   const ops: AnyBulkWriteOperation[] = validAnswers.map((a) => ({
     updateOne: {
       filter: {
-        _id: sessionOid,
+        _id: new ObjectId(sessionId),
         "questions.questionId": new ObjectId(a.questionId),
       },
       update: {
