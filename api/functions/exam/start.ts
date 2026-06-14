@@ -153,7 +153,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (totalQuestions <= 0 || totalTimeLimit <= 0) {
     return res.status(400).json({
       success: false,
-      error: `Question set '${questionSet.setID}' has invalid configuration.`,
+      error: `Question set '${questionSet.setId}' has invalid configuration.`,
     });
   }
 
@@ -164,8 +164,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     very_hard: Number(questionSet.difficultyMix.very_hard ?? 0),
   };
 
-  const config: SessionConfig & { setID: string } = {
-    setID: questionSet.setID,
+  const config: SessionConfig & { setId: string } = {
+    setId: questionSet.setId,
     totalQuestions,
     distribution,
     difficultyMix,
@@ -233,7 +233,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const sampledQuestionDocs = await db
     .collection("questions")
     .find({
-      setID: questionSet.setID,
+      setId: questionSet.setId,
       isDeleted: { $ne: true },
       publicationStatus: "published",
     })
@@ -254,7 +254,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (sampledMeta.length === 0) {
     return res.status(503).json({
       success: false,
-      error: `No eligible questions found for set ${questionSet.setID}. Assign questions to this set or activate a set with published questions.`,
+      error: `No eligible questions found for set ${questionSet.setId}. Assign questions to this set or activate a set with published questions.`,
     });
   }
 
@@ -295,7 +295,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const now = new Date();
   const sessionDoc = {
     userId,
-    setId: questionSet.setID,
+    setId: questionSet.setId,
     status: "in_progress" as const,
     config,
     questions: sampledMeta.map((q, idx) => ({
@@ -319,7 +319,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const result = await db.collection("exam_sessions").insertOne(sessionDoc);
 
-  await registerQuestionSetAssignment(db, userId, questionSet.setID, result.insertedId);
+  await registerQuestionSetAssignment(db, userId, questionSet.setId, result.insertedId);
 
   if (userExists) {
     await trackFeatureUsage(db, userId, "mock_exam_access", "monthly");
@@ -329,7 +329,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     success: true,
     data: {
       sessionId: result.insertedId.toString(),
-      setId: questionSet.setID,
+      setId: questionSet.setId,
       totalQuestions: sessionQuestions.length,
       timeLimit: config.timeLimit,
       startedAt: now.toISOString(),
