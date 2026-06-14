@@ -31,9 +31,18 @@ export function resolveVideoTriggerSettings(
 ): ResolvedVideoTriggerSettings {
   const override = video.triggerSettings?.[trigger];
   return {
-    skipAfterSeconds: Math.max(0, Math.floor(override?.skipAfterSeconds ?? video.skipAfterSeconds)),
-    minIntervalSeconds: Math.max(0, Math.floor(override?.minIntervalSeconds ?? video.minIntervalSeconds)),
-    frequencyCap: Math.max(1, Math.floor(override?.frequencyCap ?? video.frequencyCap)),
+    skipAfterSeconds: Math.max(
+      0,
+      Math.floor(override?.skipAfterSeconds ?? video.skipAfterSeconds ?? 0),
+    ),
+    minIntervalSeconds: Math.max(
+      0,
+      Math.floor(override?.minIntervalSeconds ?? video.minIntervalSeconds ?? 0),
+    ),
+    frequencyCap: Math.max(
+      1,
+      Math.floor(override?.frequencyCap ?? video.frequencyCap ?? 1),
+    ),
   };
 }
 
@@ -56,10 +65,11 @@ export function useVideoInterstitial(): VideoAdDecision {
     const shouldShow = (trigger: VideoAdTrigger): boolean => {
       const v = config.video;
       const baseAllowed = config.testMode ? config.enabled : adsAllowed;
+
       if (!baseAllowed) return false;
       if (!v?.enabled) return false;
       if (!config.testMode && !v.videoUrl) return false;
-      if (!v.allowedTriggers.includes(trigger)) return false;
+      if (!v.allowedTriggers?.includes(trigger)) return false;
 
       const triggerSettings = resolveVideoTriggerSettings(v, trigger);
 
@@ -80,7 +90,7 @@ export function useVideoInterstitial(): VideoAdDecision {
     };
 
     return { shouldShow, markShown };
-  }, [adsAllowed, config.testMode, config.video]);
+  }, [adsAllowed, config]);
 
   return decision;
 }
@@ -102,23 +112,25 @@ export function reportVideoImpression(
   watchedSeconds = 0,
 ): void {
   if (typeof fetch === "undefined") return;
+
   const url = "/api/ads/video/impression";
   const body = JSON.stringify({ trigger, event, watchedSeconds });
+
   try {
     // Prefer sendBeacon when available. (survives page navigations).
-if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
-    const blob = new Blob([body], { type: "application/json"});
-    navigator.sendBeacon(url, blob);
-    return;
-}
+    if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+      const blob = new Blob([body], { type: "application/json" });
+      navigator.sendBeacon(url, blob);
+      return;
+    }
 
-void fetch(url, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body,
-    keepalive: true,
-}).catch(() => undefined);
-
-} catch {
+    void fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+    }).catch(() => undefined);
+  } catch {
     // ignore
+  }
 }
