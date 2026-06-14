@@ -37,7 +37,7 @@ function isUser(value: unknown): value is User {
   const candidate = value as Partial<User>;
 
   return (
-    typeof candidate.id === "string" &&
+    typeof candidate._id === "string" &&
     typeof candidate.email === "string" &&
     typeof candidate.firstName === "string" &&
     typeof candidate.lastName === "string" &&

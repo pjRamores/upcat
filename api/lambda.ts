@@ -18,13 +18,15 @@ function adapt(handler: Handler) {
   return (req: Request, res: Response) => {
     const startedAt = Date.now();
 
-    console.log("[lambda] request:start", {
-      method: req.method,
-      path: req.path,
-      url: req.originalUrl ?? req.url,
-      query: req.query,
-      params: req.params,
-    });
+    if (req.path.startsWith("/api/auth/login")) {
+        console.log("[lambda] request:start", {
+            method: req.method,
+            path: req.path,
+            url: req.originalUrl ?? req.url,
+            query: req.query,
+            params: req.params,
+        });
+    }
 
     // Merge path params into query so handlers can read e.g. req.query.id
     const expressReq = req as Request & { params?: Record<string, string> };
@@ -33,35 +35,36 @@ function adapt(handler: Handler) {
     }
 
     res.on("finish", () => {
-      console.log("[lambda] request:end", {
-        method: req.method,
-        path: req.path,
-        url: req.originalUrl ?? req.url,
-        statusCode: res.statusCode,
-        durationMs: Date.now() - startedAt,
-      });
+        if (req.path.startsWith("/api/auth/login")) {
+            console.log("[lambda] request:end", {
+                method: req.method,
+                path: req.path,
+                url: req.originalUrl ?? req.url,
+                statusCode: res.statusCode,
+                durationMs: Date.now() - startedAt,
+            });
+        }
     });
 
-    return Promise.resolve(
-      handler(req as unknown as VercelRequest, res as unknown as VercelResponse),
-    ).catch((err) => {
-      console.error("[lambda] unhandled handler error", {
-        method: req.method,
-        path: req.path,
-        url: req.originalUrl ?? req.url,
-        error:
-          err instanceof Error
-            ? {
-                name: err.name,
-                message: err.message,
-                stack: err.stack,
-              }
-            : err,
-      });
+    return Promise.resolve(handler(req as unknown as VercelRequest, res as unknown as VercelResponse))
+        .catch((err) => {
+            console.error("[lambda] unhandled handler error", {
+                method: req.method,
+                path: req.path,
+                url: req.originalUrl ?? req.url,
+                error:
+                err instanceof Error
+                    ? {
+                        name: err.name,
+                        message: err.message,
+                        stack: err.stack,
+                    }
+                    : err,
+            });
 
-      if (!res.headersSent) {
-        res.status(500).json({ error: "Internal server error" });
-      }
+        if (!res.headersSent) {
+            res.status(500).json({ error: "Internal server error" });
+        }
     });
   };
 }

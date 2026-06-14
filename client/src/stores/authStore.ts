@@ -76,6 +76,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
                 API_ROUTES.AUTH.LOGIN,
                 payload,
             );
+            console.log(JSON.stringify(data));
             const {token, user, onboarding} = data.data;
             persistAuthSession(token, user, get().rememberMe);
             set({

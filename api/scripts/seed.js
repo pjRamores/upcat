@@ -819,7 +819,7 @@ async function seedDefaultUsers(db) {
       lastName: "Admin",
       email: "admin@upcatsimulator.com",
       role: "admin",
-      plainPassword: "admin",
+      plainPassword: "MNS{YXELEs]h(Hx0",
       notes: "Default seed admin",
     },
     {
@@ -827,7 +827,7 @@ async function seedDefaultUsers(db) {
       lastName: "One",
       email: "reviewee1@upcatsimulator.com",
       role: "reviewee",
-      plainPassword: "reviewee1",
+      plainPassword: "uh}SvP}G6+)om;V]",
       notes: "Default seed reviewee",
     },
     {
@@ -835,7 +835,7 @@ async function seedDefaultUsers(db) {
       lastName: "Two",
       email: "reviewee2@upcatsimulator.com",
       role: "reviewee",
-      plainPassword: "reviewee2",
+      plainPassword: "VJL*G1;dUR5TxU?}",
       notes: "Default seed reviewee",
     },
     {
