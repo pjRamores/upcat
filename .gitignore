@@ -1,3 +1,23 @@
 /.idea/
 node_modules/
 shared/dist/
+api/functions/.DS_Store
+api/functions/admin/.DS_Store
+api/src/.DS_Store
+client/.DS_Store
+.gitignore
+.gitignore
+.idea/vcs.xml
+.idea/workspace.xml
+client/src/pages/.DS_Store
+client/src/components/.DS_Store
+client/src/.DS_Store
+api/.DS_Store
+.idea/workspace.xml
+.claude/settings.local.json
+client/.claude/settings.local.json
+.idea/shelf/Uncommitted_changes_before_Update_at_30_5_26,_7_53 PM_\[Changes]/shelved.patch
+.idea/shelf/Uncommitted_changes_before_Update_at_30_5_26__7_53PM__Changes_.xml
+.idea/workspace.xml
+.idea/vcs.xml
+.DS_Store

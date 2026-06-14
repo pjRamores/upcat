@@ -61,7 +61,7 @@ export default function DashboardPage() {
 
     void (async () => {
       try {
-        const { data } = await apiClient.get(API_ROUTES.EXAM_SESSIONS);
+        const { data } = await apiClient.get(API_ROUTES.EXAM.SESSIONS);
         if (cancelled) return;
         setSessions(data.data.sessions ?? []);
         setStats(data.data.stats ?? { totalExams: 0, averageScore: 0, bestScore: 0 });

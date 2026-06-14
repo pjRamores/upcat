@@ -1,7 +1,7 @@
 import { type Db, type Document, ObjectId } from "mongodb";
 import type { VercelRequest } from "@vercel/node";
 
-import {
+import type {
   Difficulty,
   StudyActivity,
   StudyDiagnosticResults,
@@ -13,9 +13,9 @@ import {
   StudyPlanParameters,
   StudyPlanTemplate,
   StudySession,
-  SUBJECT_AREAS,
   SubjectArea,
 } from "@upcat/shared";
+import { SUBJECT_AREAS } from "@upcat/shared";
 
 const MS_DAY = 24 * 60 * 60 * 1000;
 
@@ -39,7 +39,11 @@ export interface SubjectNeed {
   strongSubtopics: string[];
 }
 
-export interface DbStudyPlan extends Omit<StudyPlan, "_id" | "userId" | "createdAt" | "updatedAt" | "completedAt" | "abandonedAt"> {
+export interface DbStudyPlan
+  extends Omit<
+    StudyPlan,
+    "_id" | "userId" | "createdAt" | "updatedAt" | "completedAt" | "abandonedAt"
+  > {
   _id: ObjectId;
   userId: ObjectId;
   meta?: {
@@ -67,14 +71,12 @@ export interface DbDiagnosticTest {
       subtopic: string;
       tags: string[];
     }[];
-  };
-  score: number | null;
-  assessedLevel: StudyLevel | null;
-}[];
-
-result: StudyDiagnosticResults | null;
-startedAt: Date;
-completedAt: Date | null;
+    score: number | null;
+    assessedLevel: StudyLevel | null;
+  }[];
+  result: StudyDiagnosticResults | null;
+  startedAt: Date;
+  completedAt: Date | null;
 }
 
 export function getStudyPlanConfig() {
@@ -85,7 +87,9 @@ export function getStudyPlanConfig() {
   };
 }
 
-export function normalizeStudyPlanParameters(input: Partial<StudyPlanParameters>): StudyPlanParameters {
+export function normalizeStudyPlanParameters(
+  input: Partial<StudyPlanParameters>,
+): StudyPlanParameters {
   const startDate = parseDate(input.startDate ?? null) ?? startOfDay(new Date());
   const examDate = parseDate(input.targetExamDate ?? null);
 
@@ -106,1108 +110,1303 @@ export function normalizeStudyPlanParameters(input: Partial<StudyPlanParameters>
         : null,
   };
 }
+
 export function validateStudyPlanParameters(parameters: StudyPlanParameters): string[] {
-    const errors: string[] = [];
-    if (parameters.availableHoursPerDay < 0.5 || parameters.availableHoursPerDay > 8) {
-        errors.push("availableHoursPerDay must be between 0.5 and 8");
+  const errors: string[] = [];
+
+  if (parameters.availableHoursPerDay < 0.5 || parameters.availableHoursPerDay > 8) {
+    errors.push("availableHoursPerDay must be between 0.5 and 8");
+  }
+
+  if (!parameters.studyDaysPerWeek.length) {
+    errors.push("Select at least one study day");
+  }
+
+  if (parameters.targetExamDate) {
+    const target = new Date(parameters.targetExamDate);
+    if (target.getTime() <= Date.now()) {
+      errors.push("targetExamDate must be in the future");
     }
-    if (!parameters.studyDaysPerWeek.length) {
-        errors.push("Select at least one study day");
-    }
-    if (parameters.targetExamDate) {
-        const target = new Date(parameters.targetExamDate);
-        if (target.getTime() <= Date.now()) {
-            errors.push("targetExamDate must be in the future");
-        }
-    }
-    return errors;
+  }
+
+  return errors;
 }
 
 export async function getActivePlan(db: Db, userId: ObjectId): Promise<DbStudyPlan | null> {
-    return db.collection<DbStudyPlan>("study_plans").findOne({userId, status: {$in: ["active", "paused"]}});
+  return db
+    .collection<DbStudyPlan>("study_plans")
+    .findOne({ userId, status: { $in: ["active", "paused"] } });
 }
 
 export function calculateStudyDays(parameters: StudyPlanParameters): Date[] {
-    const startDate = new Date(parameters.startDate);
-    const targetDate = parameters.targetExamDate
-        ? new Date(parameters.targetExamDate)
-        : new Date(startDate.getTime() + 12 * 7 * MS_DAY);
-    const endDate = startOfDay(targetDate);
+  const startDate = new Date(parameters.startDate);
+  const targetDate = parameters.targetExamDate
+    ? new Date(parameters.targetExamDate)
+    : new Date(startDate.getTime() + 12 * 7 * MS_DAY);
 
-    const studyDays: Date[] = [];
-    let cursor = startOfDay(startDate);
-    let learnedDays = 0;
+  const endDate = startOfDay(targetDate);
 
-    while (cursor.getTime() <= endDate.getTime()) {
-        const jsDay = cursor.getDay();
-        const day = jsDay === 0 ? 7 : jsDay;
-        const isStudyDay = parameters.studyDaysPerWeek.includes(day);
+  const studyDays: Date[] = [];
+  let cursor = startOfDay(startDate);
+  let learnedDays = 0;
 
-        if (isStudyDay) {
-            learnedDays += 1;
-            const shouldBreak = parameters.includeBreakDays && parameters.breakFrequency && learnedDays % parameters.breakFrequency === 0;
-            if (!shouldBreak) {
-                studyDays.push(new Date(cursor));
-            }
-        }
+  while (cursor.getTime() <= endDate.getTime()) {
+    const jsDay = cursor.getUTCDay();
+    const day = jsDay === 0 ? 7 : jsDay;
+    const isStudyDay = parameters.studyDaysPerWeek.includes(day);
 
-        cursor = new Date(cursor.getTime() + MS_DAY);
+    if (isStudyDay) {
+      learnedDays += 1;
+      const shouldBreak =
+        parameters.includeBreakDays &&
+        parameters.breakFrequency &&
+        learnedDays % parameters.breakFrequency === 0;
+
+      if (!shouldBreak) {
+        studyDays.push(new Date(cursor));
+      }
     }
-    return studyDays;
+
+    cursor = new Date(cursor.getTime() + MS_DAY);
+  }
+
+  return studyDays;
 }
 
 export function assessSubjectNeeds(
-    diagnostic: StudyDiagnosticResults | null,
-    parameters: StudyPlanParameters
+  diagnostic: StudyDiagnosticResults | null,
+  parameters: StudyPlanParameters,
 ): SubjectNeed[] {
-    const excluded = new Set(parameters.excludeSubjects ?? []);
-    const priority = new Set(parameters.prioritySubjects ?? []);
+  const excluded = new Set(parameters.excludeSubjects ?? []);
+  const priority = new Set(parameters.prioritySubjects ?? []);
 
-    const baseNeeds = SUBJECT_AREAS.filter((subject) => !excluded.has(subject)).map((subject) => {
-        const found = diagnostic?.bySubject.find((d) => d.subjectArea === subject);
-        const score = found ? score : 0;
-        const inferredLevel: StudyLevel = found ? level : (score >= 71 ? "advanced" : score >= 41 ? "intermediate" : "beginner");
-        const base = 100 - score;
-        const priorityBoost = priority.has(subject) ? 15 : 0;
-        const weight = Math.max(5, base + priorityBoost);
+  const baseNeeds = SUBJECT_AREAS.filter((subject) => !excluded.has(subject)).map((subject) => {
+    const found = diagnostic?.bySubject.find((d) => d.subjectArea === subject);
+    const score = found ? found.score : 0;
+    const inferredLevel: StudyLevel = found
+      ? found.level
+      : score >= 71
+        ? "advanced"
+        : score >= 41
+          ? "intermediate"
+          : "beginner";
 
-        return {
-            subjectArea: subject,
-            level: inferredLevel,
-            rawWeight: weight,
-            weakSubtopics: found?.weakSubtopics ?? [],
-            strongSubtopics: found?.strongSubtopics ?? []
-        };
-    });
+    const base = 100 - score;
+    const priorityBoost = priority.has(subject) ? 15 : 0;
+    const weight = Math.max(5, base + priorityBoost);
 
-    const totalWeight = baseNeeds.reduce((acc, cur) => acc + cur.rawWeight, 0);
-    return baseNeeds.map((n) => ({
-        subjectArea: n.subjectArea,
-        level: n.level,
-        timeAllocation: totalWeight > 0 ? n.rawWeight / totalWeight : 1 / baseNeeds.length,
-        priority: n.rawWeight,
-        weakSubtopics: n.weakSubtopics,
-        strongSubtopics: n.strongSubtopics
-    }));
+    return {
+      subjectArea: subject,
+      level: inferredLevel,
+      rawWeight: weight,
+      weakSubtopics: found?.weakSubtopics ?? [],
+      strongSubtopics: found?.strongSubtopics ?? [],
+    };
+  });
+
+  const totalWeight = baseNeeds.reduce((acc, cur) => acc + cur.rawWeight, 0);
+
+  return baseNeeds.map((n) => ({
+    subjectArea: n.subjectArea,
+    level: n.level,
+    timeAllocation: totalWeight > 0 ? n.rawWeight / totalWeight : 1 / baseNeeds.length,
+    priority: n.rawWeight,
+    weakSubtopics: n.weakSubtopics,
+    strongSubtopics: n.strongSubtopics,
+  }));
 }
 
 export function buildModuleSequence(
-    template: StudyPlanTemplate,
-    subjectNeeds: SubjectNeed[],
-    parameters: StudyPlanParameters
+  template: StudyPlanTemplate,
+  subjectNeeds: SubjectNeed[],
+  parameters: StudyPlanParameters,
 ): StudyModule[] {
-    const needsBySubject = new Map(subjectNeeds.map((s) => [s.subjectArea, s]));
-    const excluded = new Set(parameters.excludeSubjects ?? []);
+  const needsBySubject = new Map(subjectNeeds.map((s) => [s.subjectArea, s]));
+  const excluded = new Set(parameters.excludeSubjects ?? []);
 
-    const modules: StudyModule[] = [];
-    let order = 1;
+  const modules: StudyModule[] = [];
+  let order = 1;
 
-    for (const phase of template.structure.phases) {
-        for (const mod of phase.modules) {
-            if (excluded.has(mod.subjectArea)) continue;
-const need = needsBySubject.get(mod.subjectArea);
-if (!need) continue;
+  for (const phase of template.structure.phases) {
+    for (const mod of phase.modules) {
+      if (excluded.has(mod.subjectArea)) continue;
 
-modules.push({
-    id: moduleId(phase.name, mod.name, order),
-    name: mod.name,
-    subjectArea: mod.subjectArea,
-    subtopic: mod.subtopic,
-    description: `${mod.name} module aligned to ${phase.name}.`,
-    order,
-    estimatedHours: mod.estimatedDays * parameters.availableHoursPerDay,
-    difficulty: mod.difficulty,
-    status: "locked",
-    prerequisites: [],
-    objectives: mod.objectives,
-    sessions: [],
-    assessment: {
-        id: `assessment_${slug(mod.name)}_${order}`,
-        title: `Test Your Knowledge: ${mod.name}`,
-        description: `Assessment for ${mod.name}`,
-        questionCount: mod.assessmentConfig.questionCount,
-        subtopics: [mod.subtopic, ...need.weakSubtopics.slice(0, 2)],
+      const need = needsBySubject.get(mod.subjectArea);
+      if (!need) continue;
+
+      modules.push({
+        id: moduleId(phase.name, mod.name, order),
+        name: mod.name,
+        subjectArea: mod.subjectArea,
+        subtopic: mod.subtopic,
+        description: `${mod.name} module aligned to ${phase.name}.`,
+        order,
+        estimatedHours: mod.estimatedDays * parameters.availableHoursPerDay,
         difficulty: mod.difficulty,
-        passThreshold: mod.assessmentConfig.passThreshold,
-        maxAttempts: mod.assessmentConfig.maxAttempts,
-        isGating: true,
         status: "locked",
-        attempts: [],
-        bestScore: null,
-        passedAt: null
-    }
-});
-order += 1;
-}
+        prerequisites: [],
+        objectives: mod.objectives,
+        sessions: [],
+        assessment: {
+          id: `assessment_${slug(mod.name)}_${order}`,
+          title: `Test Your Knowledge: ${mod.name}`,
+          description: `Assessment for ${mod.name}`,
+          questionCount: mod.assessmentConfig.questionCount,
+          subtopics: [mod.subtopic, ...need.weakSubtopics.slice(0, 2)],
+          difficulty: mod.difficulty,
+          passThreshold: mod.assessmentConfig.passThreshold,
+          maxAttempts: mod.assessmentConfig.maxAttempts,
+          isGating: true,
+          status: "locked",
+          attempts: [],
+          bestScore: null,
+          passedAt: null,
+        },
+      });
 
-const bySubject = new Map<SubjectArea, StudyModule[]>();
-for (const m of modules) {
+      order += 1;
+    }
+  }
+
+  const bySubject = new Map<SubjectArea, StudyModule[]>();
+  for (const m of modules) {
     if (!bySubject.has(m.subjectArea)) bySubject.set(m.subjectArea, []);
     bySubject.get(m.subjectArea)?.push(m);
-}
+  }
 
-const rankedSubjects = [...subjectNeeds]
-.sort((a, b) => b.priority - a.priority)
-.map((n) => n.subjectArea);
+  const rankedSubjects = [...subjectNeeds]
+    .sort((a, b) => b.priority - a.priority)
+    .map((n) => n.subjectArea);
 
-const interleaved: StudyModule[] = [];
-let keepGoing = true;
-while (keepGoing) {
+  const interleaved: StudyModule[] = [];
+  let keepGoing = true;
+
+  while (keepGoing) {
     keepGoing = false;
     for (const subject of rankedSubjects) {
-        const queue = bySubject.get(subject);
-        if (queue && queue.length) {
-            const mod = queue.shift();
-            if (mod) {
-                keepGoing = true;
-                interleaved.push(mod);
-            }
+      const queue = bySubject.get(subject);
+      if (queue && queue.length) {
+        const mod = queue.shift();
+        if (mod) {
+          keepGoing = true;
+          interleaved.push(mod);
         }
+      }
     }
-}
+  }
 
-interleaved.forEach((m, idx) => {
+  interleaved.forEach((m, idx) => {
     m.order = idx + 1;
     if (idx === 0) {
-        m.status = "active";
-        m.assessment.status = "available";
+      m.status = "active";
+      m.assessment.status = "available";
     } else {
-        m.prerequisites = [interleaved[idx - 1].id];
+      m.prerequisites = [interleaved[idx - 1].id];
     }
-});
+  });
 
-return interleaved;
+  return interleaved;
+}
 
 export function allocateModuleDays(
-    modules: StudyModule[],
-    studyDays: Date[],
-    subjectNeeds: SubjectNeed[],
-    template: StudyPlanTemplate,
+  modules: StudyModule[],
+  studyDays: Date[],
+  subjectNeeds: SubjectNeed[],
+  template: StudyPlanTemplate,
 ): Array<StudyModule & { allocatedDays: Date[] }> {
-    if (!modules.length || !studyDays.length) return [];
-    const needMap = new Map(subjectNeeds.map((n) => [n.subjectArea, n]));
+  if (!modules.length || !studyDays.length) return [];
 
-    const weighted = modules.map((module) => {
-        const need = needMap.get(module.subjectArea);
-        const difficultyWeight = module.difficulty === "hard" ? 1.3 : module.difficulty === "medium" ? 1.1 : 1;
-        const levelWeight = need?.level === "beginner" ? 1.2 : need?.level === "intermediate" ? 1 : 0.85;
-        const subjectWeight = need?.timeAllocation ?? 0.25;
+  const needMap = new Map(subjectNeeds.map((n) => [n.subjectArea, n]));
 
-        return {
-            module,
-            raw: Math.max(1, difficultyWeight * levelWeight * (1 + subjectWeight)),
-        };
-    });
+  const weighted = modules.map((module) => {
+    const need = needMap.get(module.subjectArea);
+    const difficultyWeight =
+      module.difficulty === "hard" ? 1.3 : module.difficulty === "medium" ? 1.1 : 1;
+    const levelWeight =
+      need?.level === "beginner" ? 1.2 : need?.level === "intermediate" ? 1 : 0.85;
+    const subjectWeight = need?.timeAllocation ?? 0.25;
 
-    const sum = weighted.reduce((acc, cur) => acc + cur.raw, 0);
-    const minDays = template.adaptationRules.minimumModuleDays;
-    const maxDays = template.adaptationRules.maximumModuleDays;
+    return {
+      module,
+      raw: Math.max(1, difficultyWeight * levelWeight * (1 + subjectWeight)),
+    };
+  });
 
-    const allocatedCounts = weighted.map((w) => {
-        const exact = Math.max(minDays, Math.round(w.raw / sum) * studyDays.length));
-        return Math.min(maxDays, exact);
-});
-let currentTotal = allocatedCounts.reduce((acc, cur) => acc + cur, 0);
-while (currentTotal > studyDays.length) {
-    const idx = allocatedCounts.findIndex((d) => d < minDays);
+  const sum = weighted.reduce((acc, cur) => acc + cur.raw, 0);
+  const minDays = template.adaptationRules.minimumModuleDays;
+  const maxDays = template.adaptationRules.maximumModuleDays;
+
+  const allocatedCounts = weighted.map((w) => {
+    const exact = Math.max(minDays, Math.round((w.raw / sum) * studyDays.length));
+    return Math.min(maxDays, exact);
+  });
+
+  let currentTotal = allocatedCounts.reduce((acc, cur) => acc + cur, 0);
+
+  while (currentTotal > studyDays.length) {
+    const idx = allocatedCounts.findIndex((d) => d > minDays);
     if (idx === -1) break;
-    allocatedCounts[idx] += 1;
+    allocatedCounts[idx] -= 1;
     currentTotal -= 1;
-}
-while (currentTotal < studyDays.length) {
+  }
+
+  while (currentTotal < studyDays.length) {
     const idx = allocatedCounts.findIndex((d) => d < maxDays);
     if (idx === -1) break;
     allocatedCounts[idx] += 1;
     currentTotal += 1;
-}
+  }
 
-let dayCursor = 0;
-return modules.map((m, index) => {
+  let dayCursor = 0;
+  return modules.map((m, index) => {
     const count = allocatedCounts[index] ?? minDays;
     const allocated = studyDays.slice(dayCursor, dayCursor + count);
     dayCursor += count;
     return { ...m, allocatedDays: allocated };
-});
+  });
 }
 
 export async function assignLessonsToActivities(
-    db: Db,
-    modules: Array<StudyModule & { allocatedDays: Date[] }>,
+  db: Db,
+  modules: Array<StudyModule & { allocatedDays: Date[] }>,
 ): Promise<Array<StudyModule & { allocatedDays: Date[] }>> {
-    const lessons = await db
-        .collection("study_lessons")
-        .find({ status: "published" })
-        .project({ _id: 1, subjectArea: 1, subtopic: 1, title: 1 })
-        .toArray();
+  const lessons = await db
+    .collection("study_lessons")
+    .find({ status: "published" })
+    .project({ _id: 1, subjectArea: 1, subtopic: 1, title: 1 })
+    .toArray();
 
-    return modules.map((module) => {
-        const lesson = lessons.find(
-            (l) => l.subjectArea === module.subjectArea &&
-                  (module.subtopic.toLowerCase().includes(String(l.subtopic).toLowerCase()) ||
-                   String(l.subtopic).toLowerCase().includes(module.subtopic.toLowerCase())),
-        ) ?? lessons.find((l) => l.subjectArea === module.subjectArea);
+  return modules.map((module) => {
+    const lesson =
+      lessons.find(
+        (l) =>
+          l.subjectArea === module.subjectArea &&
+          (module.subtopic.toLowerCase().includes(String(l.subtopic).toLowerCase()) ||
+            String(l.subtopic).toLowerCase().includes(module.subtopic.toLowerCase())),
+      ) ?? lessons.find((l) => l.subjectArea === module.subjectArea);
 
-        const dayCount = Math.max(2, module.allocatedDays.length);
-        const sessions = module.allocatedDays.map((date, idx) => buildSession(module, lesson?.id.toString() ?? null, date, idx + 1, dayCount));
+    const dayCount = Math.max(2, module.allocatedDays.length);
+    const sessions = module.allocatedDays.map((date, idx) =>
+      buildSession(module, lesson ? String(lesson._id) : null, date, idx + 1, dayCount),
+    );
 
-        return {
-            ...module,
-            sessions,
-            assessment: {
-                ...module.assessment,
-                subtopics: [module.subtopic],
-            },
-        };
-    });
+    return {
+      ...module,
+      sessions,
+      assessment: {
+        ...module.assessment,
+        subtopics: [module.subtopic],
+      },
+    };
+  });
 }
 
 function buildSession(
-    module: StudyModule,
-    lessonId: string | null,
-    date: Date,
-    sessionIndex: number,
-    totalSessions: number,
+  module: StudyModule,
+  lessonId: string | null,
+  date: Date,
+  sessionIndex: number,
+  totalSessions: number,
 ): StudySession {
-    const isAssessmentDay = sessionIndex === totalSessions;
-    const baseId = `session_day_${sessionIndex}_${slug(module.id)}`;
+  const isAssessmentDay = sessionIndex === totalSessions;
+  const baseId = `session_day_${sessionIndex}_${slug(module.id)}`;
 
-    const activities: StudyActivity[] = [];
-    let order = 1;
+  const activities: StudyActivity[] = [];
+  let order = 1;
 
-    if (sessionIndex === 1) {
-        activities.push(activityLesson(baseId, order++, lessonId, module));
-        activities.push(activityReview(baseId, order++, module, 8));
-    } else if (sessionIndex === 2) {
-        activities.push(activityReview(baseId, order++, module, 10));
-        activities.push(activityPractice(baseId, order++, module, 14, "easy", 60));
-    } else if (isAssessmentDay) {
-        activities.push(activityReview(baseId, order++, module, 12));
-        activities.push(activityAssessment(baseId, order++, module));
-    } else {
-        activities.push(activityPractice(baseId, order++, module, 18, "medium", 70));
-        activities.push(activityFlashcards(baseId, order++, module));
-    }
+  if (sessionIndex === 1) {
+    activities.push(activityLesson(baseId, order++, lessonId, module));
+    activities.push(activityReview(baseId, order++, module, 8));
+  } else if (sessionIndex === 2) {
+    activities.push(activityReview(baseId, order++, module, 10));
+    activities.push(activityPractice(baseId, order++, module, 14, "easy", 60));
+  } else if (isAssessmentDay) {
+    activities.push(activityReview(baseId, order++, module, 12));
+    activities.push(activityAssessment(baseId, order++, module));
+  } else {
+    activities.push(activityPractice(baseId, order++, module, 18, "medium", 70));
+    activities.push(activityFlashcards(baseId, order++, module));
+  }
 
-    return {
-        id: baseId,
-        dayNumber: 0,
-        scheduledDate: date.toISOString(),
-        title: `Day ${sessionIndex}: ${module.name}`,
-        estimatedMinutes: activities.reduce((acc, cur) => acc + cur.estimatedMinutes, 0),
-        status: sessionIndex === 1 ? "available" : "locked",
-        completedAt: null,
-        activities,
-    };
+  return {
+    id: baseId,
+    dayNumber: 0,
+    scheduledDate: date.toISOString(),
+    title: `Day ${sessionIndex}: ${module.name}`,
+    estimatedMinutes: activities.reduce((acc, cur) => acc + cur.estimatedMinutes, 0),
+    status: sessionIndex === 1 ? "available" : "locked",
+    completedAt: null,
+    activities,
+  };
 }
 
-function activityLesson(baseId: string, order: number, lessonId: string | null, module: StudyModule): StudyActivity {
-    return {
-        id: `${baseId}_lesson_${order}`,
-        type: "lesson",
-        title: `Lesson: ${module.name}`,
-        description: `Study core lesson content for ${module.subtopic}`,
-        estimatedMinutes: 25,
-        order,
-        status: "available",
-completedAt: null,
-content: {
-    lessonId,
-    practiceConfig: null,
-    assessmentConfig: null,
-    reviewTopics: null,
-    flashcardCount: null,
-    flashcardSubtopics: null,
-},
-result: null,
-};
+function activityLesson(
+  baseId: string,
+  order: number,
+  lessonId: string | null,
+  module: StudyModule,
+): StudyActivity {
+  return {
+    id: `${baseId}_lesson_${order}`,
+    type: "lesson",
+    title: `Lesson: ${module.name}`,
+    description: `Study core lesson content for ${module.subtopic}`,
+    estimatedMinutes: 25,
+    order,
+    status: "available",
+    completedAt: null,
+    content: {
+      lessonId,
+      practiceConfig: null,
+      assessmentConfig: null,
+      reviewTopics: null,
+      flashcardCount: null,
+      flashcardSubtopics: null,
+    },
+    result: null,
+  };
+}
 
-function activityReview(baseId: string, order: number, module: StudyModule, minutes: number): StudyActivity {
-    return {
-        id: `${baseId}_review_${order}`,
-        type: "review",
-        title: `Review: ${module.subtopic}`,
-        description: "Revisit key concepts and formulas before practice.",
-        estimatedMinutes: minutes,
-        order,
-        status: "available",
-        completedAt: null,
-        content: {
-            lessonId: null,
-            practiceConfig: null,
-            assessmentConfig: null,
-            reviewTopics: [module.subtopic],
-            flashcardCount: null,
-            flashcardSubtopics: null,
-        },
-        result: null,
-    };
+function activityReview(
+  baseId: string,
+  order: number,
+  module: StudyModule,
+  minutes: number,
+): StudyActivity {
+  return {
+    id: `${baseId}_review_${order}`,
+    type: "review",
+    title: `Review: ${module.subtopic}`,
+    description: "Revisit key concepts and formulas before practice.",
+    estimatedMinutes: minutes,
+    order,
+    status: "available",
+    completedAt: null,
+    content: {
+      lessonId: null,
+      practiceConfig: null,
+      assessmentConfig: null,
+      reviewTopics: [module.subtopic],
+      flashcardCount: null,
+      flashcardSubtopics: null,
+    },
+    result: null,
+  };
 }
 
 function activityPractice(
-    baseId: string,
-    order: number,
-    module: StudyModule,
-    questionCount: number,
-    difficulty: Difficulty,
-    passThreshold: number,
+  baseId: string,
+  order: number,
+  module: StudyModule,
+  questionCount: number,
+  difficulty: Difficulty,
+  passThreshold: number,
 ): StudyActivity {
-    return {
-        id: `${baseId}_practice_${order}`,
-        type: "practice",
-        title: `Practice: ${module.subtopic}`,
-        description: `Targeted practice to strengthen ${module.subtopic}.`,
-        estimatedMinutes: 20,
-        order,
-        status: "available",
-        completedAt: null,
-        content: {
-            lessonId: null,
-            practiceConfig: {
-                questionCount,
-                subtopics: [module.subtopic],
-                difficulty,
-                passThreshold,
-            },
-            assessmentConfig: null,
-            reviewTopics: null,
-            flashcardCount: null,
-            flashcardSubtopics: null,
-        },
-        result: {
-            score: null,
-            passed: null,
-            attempts: 0,
-            bestScore: null,
-            timeSpent: null,
-            practiceSessionId: null,
-            assessmentSessionId: null,
-        },
-    };
+  return {
+    id: `${baseId}_practice_${order}`,
+    type: "practice",
+    title: `Practice: ${module.subtopic}`,
+    description: `Targeted practice to strengthen ${module.subtopic}.`,
+    estimatedMinutes: 20,
+    order,
+    status: "available",
+    completedAt: null,
+    content: {
+      lessonId: null,
+      practiceConfig: {
+        questionCount,
+        subtopics: [module.subtopic],
+        difficulty,
+        passThreshold,
+      },
+      assessmentConfig: null,
+      reviewTopics: null,
+      flashcardCount: null,
+      flashcardSubtopics: null,
+    },
+    result: {
+      score: null,
+      passed: null,
+      attempts: 0,
+      bestScore: null,
+      timeSpent: null,
+      practiceSessionId: null,
+      assessmentSessionId: null,
+    },
+  };
 }
 
-function activityFlashcards(baseId: string, order: number, module: StudyModule): StudyActivity {
-    return {
-        id: `${baseId}_flashcards_${order}`,
-        type: "flashcards",
-        title: `Flashcards: ${module.subtopic}`,
-        description: "Spaced repetition cards for recent concepts.",
-        estimatedMinutes: 12,
-        order,
-        status: "available",
-        completedAt: null,
-        content: {
-            lessonId: null,
-            practiceConfig: null,
-            assessmentConfig: null,
-            reviewTopics: null,
-            flashcardCount: 15,
-            flashcardSubtopics: [module.subtopic],
-        },
-        result: null,
-    };
+function activityFlashcards(
+  baseId: string,
+  order: number,
+  module: StudyModule,
+): StudyActivity {
+  return {
+    id: `${baseId}_flashcards_${order}`,
+    type: "flashcards",
+    title: `Flashcards: ${module.subtopic}`,
+    description: "Spaced repetition cards for recent concepts.",
+    estimatedMinutes: 12,
+    order,
+    status: "available",
+    completedAt: null,
+    content: {
+      lessonId: null,
+      practiceConfig: null,
+      assessmentConfig: null,
+      reviewTopics: null,
+      flashcardCount: 15,
+      flashcardSubtopics: [module.subtopic],
+    },
+    result: null,
+  };
 }
 
-function activityAssessment(baseId: string, order: number, module: StudyModule): StudyActivity {
-    return {
-        id: `${baseId}_assessment_${order}`,
-        type: "assessment",
-        title: `Test Your Knowledge: ${module.name}`,
-description: `Module-end assessment for ${module.name}.`,
-estimatedMinutes: 35,
-order,
-status: "available",
-completedAt: null,
-content: {
-    lessonId: null,
-    practiceConfig: null,
-    assessmentConfig: {
+function activityAssessment(
+  baseId: string,
+  order: number,
+  module: StudyModule,
+): StudyActivity {
+  return {
+    id: `${baseId}_assessment_${order}`,
+    type: "assessment",
+    title: `Test Your Knowledge: ${module.name}`,
+    description: `Module-end assessment for ${module.name}.`,
+    estimatedMinutes: 35,
+    order,
+    status: "available",
+    completedAt: null,
+    content: {
+      lessonId: null,
+      practiceConfig: null,
+      assessmentConfig: {
         questionCount: module.assessment.questionCount,
         subtopics: [module.subtopic],
         difficulty: module.assessment.difficulty,
         passThreshold: module.assessment.passThreshold,
         maxAttempts: module.assessment.maxAttempts,
         isModuleGate: true,
+      },
+      reviewTopics: null,
+      flashcardCount: null,
+      flashcardSubtopics: null,
     },
-    reviewTopics: null,
-    flashcardCount: null,
-    flashcardSubtopics: null,
-},
-result: {
-    score: null,
-    passed: null,
-    attempts: 0,
-    bestScore: null,
-    timeSpent: null,
-    practiceSessionId: null,
-    assessmentSessionId: null,
+    result: {
+      score: null,
+      passed: null,
+      attempts: 0,
+      bestScore: null,
+      timeSpent: null,
+      practiceSessionId: null,
+      assessmentSessionId: null,
+    },
+  };
 }
-};
 
 export function organizeIntoPhases(
-    template: StudyPlanTemplate,
-    modules: Array<StudyModule & { allocatedDays: Date[] }>,
-    parameters: StudyPlanParameters,
+  template: StudyPlanTemplate,
+  modules: Array<StudyModule & { allocatedDays: Date[] }>,
+  parameters: StudyPlanParameters,
 ): StudyPlan["curriculum"] {
-    const totalHours = modules.reduce((acc, m) => acc + m.allocatedDays.length * parameters.availableHoursPerDay, 0);
-    let dayCursor = 1;
-    const phaseModules = [...modules];
+  const totalHours = modules.reduce(
+    (acc, m) => acc + m.allocatedDays.length * parameters.availableHoursPerDay,
+    0,
+  );
 
-    const phases: StudyPlan["curriculum"]["phases"] = template.structure.phases.map((phase, phaseIndex) => {
-        const take = phase.modules.length;
-        const assigned = phaseModules.splice(0, take);
+  let dayCursor = 1;
+  const phaseModules = [...modules];
 
-        const startDay = dayCursor;
-        for (const module of assigned) {
-            for (const session of module.sessions) {
-                session.dayNumber = dayCursor;
-                dayCursor += 1;
-            }
+  const phases: StudyPlan["curriculum"]["phases"] = template.structure.phases.map(
+    (phase, phaseIndex) => {
+      const take = phase.modules.length;
+      const assigned = phaseModules.splice(0, take);
+
+      const startDay = dayCursor;
+      for (const module of assigned) {
+        for (const session of module.sessions) {
+          session.dayNumber = dayCursor;
+          dayCursor += 1;
         }
+      }
 
-        const endDay = Math.max(startDay, dayCursor - 1);
+      const endDay = Math.max(startDay, dayCursor - 1);
 
-        return {
-            id: `phase_${phaseIndex + 1}_${slug(phase.name)}`,
-            name: `Phase ${phaseIndex + 1}: ${phase.name}`,
-            description: phase.description,
-            order: phaseIndex + 1,
-            startDay,
-            endDay,
-            status: phaseIndex === 0 ? "active" : "locked",
-            modules: assigned,
-        };
-    });
+      return {
+        id: `phase_${phaseIndex + 1}_${slug(phase.name)}`,
+        name: `Phase ${phaseIndex + 1}: ${phase.name}`,
+        description: phase.description,
+        order: phaseIndex + 1,
+        startDay,
+        endDay,
+        status: phaseIndex === 0 ? "active" : "locked",
+        modules: assigned,
+      };
+    },
+  );
 
-    return {
-        totalDays: Math.max(0, dayCursor - 1),
-        totalHours,
-        phases,
-    };
+  return {
+    totalDays: Math.max(0, dayCursor - 1),
+    totalHours,
+    phases,
+  };
 }
 
-export function createInitialProgress(curriculum: StudyPlan["curriculum"]): StudyPlan["progress"] {
-    const modules = curriculum.phases.flatMap((p) => p.modules);
-    const currentModule = modules.find((m) => m.status === "active") ?? modules[0];
-    const firstSession = currentModule?.sessions[0] ?? null;
+export function createInitialProgress(
+  curriculum: StudyPlan["curriculum"],
+): StudyPlan["progress"] {
+  const modules = curriculum.phases.flatMap((p) => p.modules);
+  const currentModule = modules.find((m) => m.status === "active") ?? modules;
+  const firstSession = currentModule?.sessions ?? null;
 
-    return {
-        currentPhase: 0,
-        currentModule: currentModule?.id ?? "",
-        currentDay: firstSession?.dayNumber ?? 1,
-        currentSession: firstSession?.id ?? null,
-        completedDays: 0,
-        totalDays: curriculum.totalDays,
-        completedModules: 0,
-        totalModules: modules.length,
-        completedAssessments: 0,
-        passedAssessments: 0,
-        overallProgress: 0,
-        studyStreak: {
-            current: 0,
-            longest: 0,
-            lastStudyDate: "",
-        },
-        totalTimeSpent: 0,
-        averageTimePerDay: 0,
-        averageAssessmentScore: 0,
-        subjectProgress: SUBJECT_AREAS.map((subjectArea) => ({
-            subjectArea,
-            modulesCompleted: 0,
-            modulesTotal: modules.filter((m) => m.subjectArea === subjectArea).length,
-            averageScore: 0,
-currentLevel: "beginner",
-});
+  return {
+    currentPhase: 0,
+    currentModule: currentModule?.id ?? "",
+    currentDay: firstSession?.dayNumber ?? 1,
+    currentSession: firstSession?.id ?? null,
+    completedDays: 0,
+    totalDays: curriculum.totalDays,
+    completedModules: 0,
+    totalModules: modules.length,
+    completedAssessments: 0,
+    passedAssessments: 0,
+    overallProgress: 0,
+    studyStreak: {
+      current: 0,
+      longest: 0,
+      lastStudyDate: "",
+    },
+    totalTimeSpent: 0,
+    averageTimePerDay: 0,
+    averageAssessmentScore: 0,
+    subjectProgress: SUBJECT_AREAS.map((subjectArea) => ({
+      subjectArea,
+      modulesCompleted: 0,
+      modulesTotal: modules.filter((m) => m.subjectArea === subjectArea).length,
+      averageScore: 0,
+      currentLevel: "beginner" as StudyLevel,
+    })),
+  };
+}
 
-export function createInitialSchedule(parameters: StudyPlanParameters, curriculum: StudyPlan["curriculum"]): StudyPlan["schedule"] {
-    const sessions = curriculum.phases.flatMap((p) => p.modules.flatMap((m) => m.sessions));
-    const first = sessions[0];
-    const last = sessions[sessions.length - 1];
-    const estimated = last?.scheduledDate ?? parameters.startDate;
-    return {
-        nextSessionDate: first?.scheduledDate ?? null,
-        nextSessionId: first?.id ?? null,
-        isOnTrack: true,
-        daysAhead: 0,
-        estimatedCompletionDate: estimated,
-        originalCompletionDate: estimated
-    };
+export function createInitialSchedule(
+  parameters: StudyPlanParameters,
+  curriculum: StudyPlan["curriculum"],
+): StudyPlan["schedule"] {
+  const sessions = curriculum.phases.flatMap((p) => p.modules.flatMap((m) => m.sessions));
+  const first = sessions;
+  const last = sessions[sessions.length - 1];
+  const estimated = last?.scheduledDate ?? parameters.startDate;
+
+  return {
+    nextSessionDate: first?.scheduledDate ?? null,
+    nextSessionId: first?.id ?? null,
+    isOnTrack: true,
+    daysAhead: 0,
+    estimatedCompletionDate: estimated,
+    originalCompletionDate: estimated,
+  };
 }
 
 export function toApiStudyPlan(doc: DbStudyPlan): StudyPlan {
-    return {
-        ...doc,
-        id: doc._id.toString(),
-        userId: doc.userId.toString(),
-        createdAt: toIso(doc.createdAt),
-        updatedAt: toIso(doc.updatedAt),
-        completedAt: doc.completedAt ? toIso(doc.completedAt) : null,
-        abandonedAt: doc.abandonedAt ? toIso(doc.abandonedAt) : null
-    };
+  return {
+    ...doc,
+    _id: doc._id.toString(),
+    userId: doc.userId.toString(),
+    createdAt: toIso(doc.createdAt),
+    updatedAt: toIso(doc.updatedAt),
+    completedAt: doc.completedAt ? toIso(doc.completedAt) : null,
+    abandonedAt: doc.abandonedAt ? toIso(doc.abandonedAt) : null,
+  } as StudyPlan;
 }
 
 export async function generatePersonalizedStudyPlan(
-    db: Db,
-    userId: ObjectId,
-    parameters: StudyPlanParameters,
-    diagnosticResults: StudyDiagnosticResults | null,
-    template: StudyPlanTemplate,
+  db: Db,
+  userId: ObjectId,
+  parameters: StudyPlanParameters,
+  diagnosticResults: StudyDiagnosticResults | null,
+  template: StudyPlanTemplate,
 ): Promise<DbStudyPlan> {
-    const studyDays = calculateStudyDays(parameters);
-    const subjectNeeds = assessSubjectNeeds(diagnosticResults, parameters);
-    const modules = buildModuleSequence(template, subjectNeeds, parameters);
-    const allocated = allocateModuleDays(modules, studyDays, subjectNeeds, template);
-    const enriched = await assignLessonsToActivities(db, allocated);
-    const curriculum = organizeIntoPhases(template, enriched, parameters);
+  const studyDays = calculateStudyDays(parameters);
+  const subjectNeeds = assessSubjectNeeds(diagnosticResults, parameters);
+  const modules = buildModuleSequence(template, subjectNeeds, parameters);
+  const allocated = allocateModuleDays(modules, studyDays, subjectNeeds, template);
+  const enriched = await assignLessonsToActivities(db, allocated);
+  const curriculum = organizeIntoPhases(template, enriched, parameters);
 
-    const now = new Date();
-    const progress = createInitialProgress(curriculum);
-    const schedule = createInitialSchedule(parameters, curriculum);
+  const now = new Date();
+  const progress = createInitialProgress(curriculum);
+  const schedule = createInitialSchedule(parameters, curriculum);
 
-    const payload: Omit<DbStudyPlan, "_id"> = {
-        userId,
-        status: "active",
-        parameters,
-        diagnostic: {
-            source: diagnosticResults ? "diagnostic_test" : "none",
-            diagnosticTestId: null,
-            assessedAt: diagnosticResults ? now.toISOString() : null,
-            results: diagnosticResults
-        },
-        curriculum,
-        progress,
-        adaptations: [],
-        schedule,
-        meta: {
-            templateId: template._id,
-            templateName: template.name,
-        },
-        createdAt: now,
-        updatedAt: now,
-        completedAt: null,
-        abandonedAt: null,
-    };
+  const payload: Omit<DbStudyPlan, "_id"> = {
+    userId,
+    status: "active",
+    parameters,
+    diagnostic: {
+      source: diagnosticResults ? "diagnostic_test" : "none",
+      diagnosticTestId: null,
+      assessedAt: diagnosticResults ? now.toISOString() : null,
+      results: diagnosticResults,
+    },
+    curriculum,
+    progress,
+    adaptations: [],
+    schedule,
+    meta: {
+      templateId: String((template as unknown as { _id?: unknown })._id ?? ""),
+      templateName: template.name,
+    },
+    createdAt: now,
+    updatedAt: now,
+    completedAt: null,
+    abandonedAt: null,
+  };
 
-    const result = await db.collection<DbStudyPlan>("study_plans").insertOne(payload as DbStudyPlan);
-    const created = await db.collection<DbStudyPlan>("study_plans").findOne({ _id: result.insertedId });
-    if (!created) throw new Error("Failed to load created study plan");
-    return created;
+  const result = await db
+    .collection<DbStudyPlan>("study_plans")
+    .insertOne(payload as DbStudyPlan);
+
+  const created = await db
+    .collection<DbStudyPlan>("study_plans")
+    .findOne({ _id: result.insertedId });
+
+  if (!created) throw new Error("Failed to load created study plan");
+  return created;
 }
 
-export function getTemplateSummary(template: StudyPlanTemplate): {
-    id: template._id,
+export function getTemplateSummary(template: StudyPlanTemplate) {
+  return {
+    id: String((template as unknown as { _id?: unknown })._id ?? ""),
     name: template.name,
     description: template.description,
     targetDuration: template.targetDuration,
-    targetHoursPerDay: template.targetHoursPerDay
-};
+    targetHoursPerDay: template.targetHoursPerDay,
+  };
+}
 
 export function determineLevel(score: number): StudyLevel {
-    if (score <= 40) return "beginner";
-    if (score <= 70) return "intermediate";
-    return "advanced";
+  if (score <= 40) return "beginner";
+  if (score <= 70) return "intermediate";
+  return "advanced";
 }
 
-export async function buildHistoricalDiagnostic(db: Db, userId: ObjectId): Promise<StudyDiagnosticResults> {
-    const sessions = await db
-        .collection("exam_sessions")
-        .find({userId, status: "completed"})
-        .project({score: 1, answers: 1})
-        .sort({createdAt: -1})
-        .limit(20)
-        .toArray();
-}
-if (!sessions.length) {
+export async function buildHistoricalDiagnostic(
+  db: Db,
+  userId: ObjectId,
+): Promise<StudyDiagnosticResults> {
+  const sessions = await db
+    .collection("exam_sessions")
+    .find({ userId, status: "completed" })
+    .project({ score: 1, answers: 1 })
+    .sort({ createdAt: -1 })
+    .limit(20)
+    .toArray();
+
+  if (!sessions.length) {
     return {
-        overall: 0,
-        bySubject: SUBJECT_AREAS.map((subjectArea) => ({
-            subjectArea,
-            score: 0,
-            level: "beginner",
-            weakSubtopics: [],
-            strongSubtopics: [],
-        })),
-        recommendedPlanDuration: 10,
-        recommendedDailyHours: 2,
-    };
-}
-
-const subjectAgg = new Map<SubjectArea, { total: number; count: number }>();
-for (const s of SUBJECT_AREAS) subjectAgg.set(s, {total: 0, count: 0});
-let overall = 0;
-
-for (const session of sessions) {
-    overall += Number(session.score?.percentage ?? 0);
-    const bySubject = session.score?.bySubject ?? [];
-    for (const row of bySubject) {
-        const subject = row.subjectArea as SubjectArea;
-        const entry = subjectAgg.get(subject);
-        if (entry) {
-            entry.total += Number(row.percentage ?? 0);
-            entry.count += 1;
-        }
-    }
-}
-
-const bySubject = SUBJECT_AREAS.map((subjectArea) => {
-    const agg = subjectAgg.get(subjectArea) ?? {total: 0, count: 0};
-    const score = agg.count ? Math.round(agg.total / agg.count) : 0;
-    return {
+      overall: 0,
+      bySubject: SUBJECT_AREAS.map((subjectArea) => ({
         subjectArea,
-        score,
-        level: determineLevel(score),
+        score: 0,
+        level: "beginner" as StudyLevel,
         weakSubtopics: [],
         strongSubtopics: [],
+      })),
+      recommendedPlanDuration: 10,
+      recommendedDailyHours: 2,
     };
-});
+  }
 
-const avg = Math.round(overall / sessions.length);
-return {
+  const subjectAgg = new Map<SubjectArea, { total: number; count: number }>();
+  for (const s of SUBJECT_AREAS) {
+    subjectAgg.set(s, { total: 0, count: 0 });
+  }
+
+  let overall = 0;
+
+  for (const session of sessions) {
+    overall += Number((session as any).score?.percentage ?? 0);
+    const bySubject = (session as any).score?.bySubject ?? [];
+    for (const row of bySubject) {
+      const subject = row.subjectArea as SubjectArea;
+      const entry = subjectAgg.get(subject);
+      if (entry) {
+        entry.total += Number(row.percentage ?? 0);
+        entry.count += 1;
+      }
+    }
+  }
+
+  const bySubject = SUBJECT_AREAS.map((subjectArea) => {
+    const agg = subjectAgg.get(subjectArea) ?? { total: 0, count: 0 };
+    const score = agg.count ? Math.round(agg.total / agg.count) : 0;
+    return {
+      subjectArea,
+      score,
+      level: determineLevel(score),
+      weakSubtopics: [],
+      strongSubtopics: [],
+    };
+  });
+
+  const avg = Math.round(overall / sessions.length);
+
+  return {
     overall: avg,
     bySubject,
-    recommendedPlanDuration: avg >= .75 ? 6 : avg >= .50 ? 8 : 10,
-    recommendedDailyHours: avg >= .75 ? 1.5 : avg >= .50 ? 2 : 2.5,
-};
+    recommendedPlanDuration: avg >= 75 ? 6 : avg >= 50 ? 8 : 10,
+    recommendedDailyHours: avg >= 75 ? 1.5 : avg >= 50 ? 2 : 2.5,
+  };
 }
 
 export function buildSelfAssessmentDiagnostic(
-    rows: { subjectArea: SubjectArea; level: StudyLevel }[],
+  rows: { subjectArea: SubjectArea; level: StudyLevel }[],
 ): StudyDiagnosticResults {
-    const map = new Map(rows.map((r) => [r.subjectArea, r.level]));
-    const bySubject = SUBJECT_AREAS.map((subjectArea) => {
-        const level = map.get(subjectArea) ?? "beginner";
-        const score = level === "advanced" ? 85 : level === "intermediate" ? 60 : 30;
-        return {
-            subjectArea,
-            score,
-            level,
-            weakSubtopics: [],
-            strongSubtopics: [],
-        };
-    });
-    const overall = Math.round(bySubject.reduce((acc, cur) => acc + cur.score, 0) / bySubject.length);
+  const map = new Map(rows.map((r) => [r.subjectArea, r.level]));
+
+  const bySubject = SUBJECT_AREAS.map((subjectArea) => {
+    const level = map.get(subjectArea) ?? "beginner";
+    const score = level === "advanced" ? 85 : level === "intermediate" ? 60 : 30;
     return {
-        overall,
-        bySubject,
-        recommendedPlanDuration: overall >= .70 ? 6 : overall >= .50 ? 8 : 10,
-        recommendedDailyHours: overall >= .70 ? 1.5 : 2,
+      subjectArea,
+      score,
+      level,
+      weakSubtopics: [],
+      strongSubtopics: [],
     };
+  });
+
+  const overall = Math.round(
+    bySubject.reduce((acc, cur) => acc + cur.score, 0) / bySubject.length,
+  );
+
+  return {
+    overall,
+    bySubject,
+    recommendedPlanDuration: overall >= 70 ? 6 : overall >= 50 ? 8 : 10,
+    recommendedDailyHours: overall >= 70 ? 1.5 : 2,
+  };
 }
 
 export async function startDiagnostic(db: Db, userId: ObjectId) {
-    const existing = await db.collection<DbDiagnosticTest>("diagnostic_tests").findOne({userId, status: "in_progress"});
-    if (existing) return existing;
+  const existing = await db
+    .collection<DbDiagnosticTest>("diagnostic_tests")
+    .findOne({ userId, status: "in_progress" });
 
-    const sections: DbDiagnosticTest["sections"] = [];
-    for (const subjectArea of SUBJECT_AREAS) {
-        const questions = await selectDiagnosticQuestions(db, subjectArea);
-        sections.push({
+  if (existing) return existing;
+
+  const sections: DbDiagnosticTest["sections"] = [];
+  for (const subjectArea of SUBJECT_AREAS) {
+    const questions = await selectDiagnosticQuestions(db, subjectArea);
+    sections.push({
+      subjectArea,
+      questions,
+      score: null,
+      assessedLevel: null,
+    });
+  }
+
+  const now = new Date();
+  const doc: Omit<DbDiagnosticTest, "_id"> = {
+    userId,
+    status: "in_progress",
+    sections,
+    result: null,
+    startedAt: now,
+    completedAt: null,
+  };
+
+  const ins = await db
+    .collection<DbDiagnosticTest>("diagnostic_tests")
+    .insertOne(doc as DbDiagnosticTest);
+
+  const created = await db
+    .collection<DbDiagnosticTest>("diagnostic_tests")
+    .findOne({ _id: ins.insertedId });
+
+  if (!created) throw new Error("Failed to create diagnostic");
+  return created;
+}
+
+async function selectDiagnosticQuestions(db: Db, subjectArea: SubjectArea) {
+  const easy = await db
+    .collection("questions")
+    .aggregate([
+      {
+        $match: {
+          subjectArea,
+          difficulty: "easy",
+          isDeleted: { $ne: true },
+          publicationStatus: "published",
+        },
+      },
+      { $sample: { size: 3 } },
+    ])
+    .toArray();
+
+  const medium = await db
+    .collection("questions")
+    .aggregate([
+      {
+        $match: {
+          subjectArea,
+          difficulty: "medium",
+          isDeleted: { $ne: true },
+          publicationStatus: "published",
+        },
+      },
+      { $sample: { size: 4 } },
+    ])
+    .toArray();
+
+  const hard = await db
+    .collection("questions")
+    .aggregate([
+      {
+        $match: {
+          subjectArea,
+          difficulty: "hard",
+          isDeleted: { $ne: true },
+          publicationStatus: "published",
+        },
+      },
+      { $sample: { size: 3 } },
+    ])
+    .toArray();
+
+  const all = [...easy, ...medium, ...hard];
+
+  if (all.length < 10) {
+    const more = await db
+      .collection("questions")
+      .aggregate([
+        {
+          $match: {
             subjectArea,
-            questions,
-            score: null,
-            assessedLevel: null,
-        });
-    }
+            isDeleted: { $ne: true },
+            publicationStatus: "published",
+          },
+        },
+        { $sample: { size: 10 - all.length } },
+      ])
+      .toArray();
 
-    const now = new Date();
-    const doc: Omit<DbDiagnosticTest, "_id"> = {
-        userId,
-        status: "in_progress",
-        sections,
-        result: null,
-        startedat: now,
-        completedAt: null,
-    };
-    const ins = await db.collection<DbDiagnosticTest>("diagnostic_tests").insertOne(doc as DbDiagnosticTest);
-    const created = await db.collection<DbDiagnosticTest>("diagnostic_tests").findOne({_id: ins.insertedId});
-}
-if (!created) throw new Error("Failed to create diagnostic");
-return created;
-}
+    all.push(...more);
+  }
 
-async function selectDiagnosticQuestions(db: Db, subjectArea: SubjectArea): {
-    const easy = await db.collection("questions").aggregate([
-        {$match: {subjectArea, difficulty: "easy", isDeleted: {$ne: true}, publicationStatus: "published"}},
-        {$sample: {size: 3}},
-    ]).toArray();
-    const medium = await db.collection("questions").aggregate([
-        {$match: {subjectArea, difficulty: "medium", isDeleted: {$ne: true}, publicationStatus: "published"}},
-        {$sample: {size: 4}},
-    ]).toArray();
-    const hard = await db.collection("questions").aggregate([
-        {$match: {subjectArea, difficulty: "hard", isDeleted: {$ne: true}, publicationStatus: "published"}},
-        {$sample: {size: 3}},
-    ]).toArray();
-
-    const all = [...easy, ...medium, ...hard];
-    if (all.length < 10) {
-        const more = await db.collection("questions").aggregate([
-            {$match: {subjectArea, isDeleted: {$ne: true}, publicationStatus: "published"}},
-            {$sample: {size: 10 - all.length}},
-        ]).toArray();
-        all.push(...more);
-    }
-
-    return all.slice(0, 10).map((q) => ({
-        questionId: q._id as ObjectId,
-        difficulty: q.difficulty as Difficulty,
-        userAnswer: null,
-        isCorrect: null,
-        timeSpent: null,
-        subtopic: String(q.subtopic ?? "General"),
-        tags: Array.isArray(q.tags) ? (q.tags as string[]) : [],
-    }));
+  return all.slice(0, 10).map((q) => ({
+    questionId: q._id as ObjectId,
+    difficulty: q.difficulty as Difficulty,
+    userAnswer: null,
+    isCorrect: null,
+    timeSpent: null,
+    subtopic: String(q.subtopic ?? "General"),
+    tags: Array.isArray(q.tags) ? (q.tags as string[]) : [],
+  }));
 }
 
-export function toApiDiagnostic(diagnostic: DbDiagnosticTest): {
-    return {
-        ...diagnostic,
-        _id: diagnostic._id.toString(),
-        userId: diagnostic.userId.toString(),
-        startedAt: toIso(diagnostic.startedAt),
-        completedAt: diagnostic.completedAt ? toIso(diagnostic.completedAt) : null,
-        sections: diagnostic.sections.map((s) => ({
-            ...s,
-            questions: s.questions.map((q) => ({
-                ...q,
-                questionId: q.questionId.toString(),
-            })),
-        }));
+export function toApiDiagnostic(diagnostic: DbDiagnosticTest) {
+  return {
+    ...diagnostic,
+    _id: diagnostic._id.toString(),
+    userId: diagnostic.userId.toString(),
+    startedAt: toIso(diagnostic.startedAt),
+    completedAt: diagnostic.completedAt ? toIso(diagnostic.completedAt) : null,
+    sections: diagnostic.sections.map((s) => ({
+      ...s,
+      questions: s.questions.map((q) => ({
+        ...q,
+        questionId: q.questionId.toString(),
+      })),
+    })),
+  };
 }
 
 export function calculateSectionInsights(
-    questions: DbDiagnosticTest["sections"][number]["questions"],
+  questions: DbDiagnosticTest["sections"][number]["questions"],
 ): {
-    score: number;
-    level: StudyLevel;
-    weakSubtopics: string[];
-    strongSubtopics: string[];
+  score: number;
+  level: StudyLevel;
+  weakSubtopics: string[];
+  strongSubtopics: string[];
 } {
-    const answered = questions.filter((q) => q.userAnswer !== null);
-    const correct = answered.filter((q) => q.isCorrect).length;
-    const score = answered.length ? Math.round((correct / answered.length) * 100) : 0;
+  const answered = questions.filter((q) => q.userAnswer !== null);
+  const correct = answered.filter((q) => q.isCorrect).length;
+  const score = answered.length ? Math.round((correct / answered.length) * 100) : 0;
 
-    const bySubtopic = new Map<string, { total: number; correct: number }>();
-    for (const q of questions) {
-        if (!bySubtopic.has(q.subtopic)) bySubtopic.set(q.subtopic, {total: 0, correct: 0});
-        const row = bySubtopic.get(q.subtopic);
-        if (!row) continue;
-        row.total += 1;
-        if (q.isCorrect) row.correct += 1;
+  const bySubtopic = new Map<string, { total: number; correct: number }>();
+  for (const q of questions) {
+    if (!bySubtopic.has(q.subtopic)) {
+      bySubtopic.set(q.subtopic, { total: 0, correct: 0 });
     }
+    const row = bySubtopic.get(q.subtopic);
+    if (!row) continue;
+    row.total += 1;
+    if (q.isCorrect) row.correct += 1;
+  }
 
-    const weakSubtopics: string[] = [];
-    const strongSubtopics: string[] = [];
-    for (const [subtopic, agg] of bySubtopic.entries()) {
-        const pct = Math.round((agg.correct / Math.max(1, agg.total)) * 100);
-        if (pct <= 45) weakSubtopics.push(subtopic);
-        if (pct >= 80) strongSubtopics.push(subtopic);
-    }
+  const weakSubtopics: string[] = [];
+  const strongSubtopics: string[] = [];
+  for (const [subtopic, agg] of bySubtopic.entries()) {
+    const pct = Math.round((agg.correct / Math.max(1, agg.total)) * 100);
+    if (pct <= 45) weakSubtopics.push(subtopic);
+    if (pct >= 80) strongSubtopics.push(subtopic);
+  }
 
-    return {
-        score,
-        level: determineLevel(score),
-        weakSubtopics,
-        strongSubtopics,
-    };
+  return {
+    score,
+    level: determineLevel(score),
+    weakSubtopics,
+    strongSubtopics,
+  };
 }
 
-export function summaryFromPlan(plan: StudyPlan): {
-    const modules = plan.curriculum.phases.flatMap((p) => p.modules);
-    return {
-        totalDays: plan.curriculum.totalDays,
-        totalModules: modules.length,
-        estimatedCompletion: plan.schedule.estimatedCompletionDate,
-        phases: plan.curriculum.phases.map((phase) => ({
-            id: phase.id,
-            name: phase.name,
-            startDay: phase.startDay,
-            endDay: phase.endDay,
-            modules: phase.modules.length,
-        })),
-    };
+export function summaryFromPlan(plan: StudyPlan) {
+  const modules = plan.curriculum.phases.flatMap((p) => p.modules);
+  return {
+    totalDays: plan.curriculum.totalDays,
+    totalModules: modules.length,
+    estimatedCompletion: plan.schedule.estimatedCompletionDate,
+    phases: plan.curriculum.phases.map((phase) => ({
+      id: phase.id,
+      name: phase.name,
+      startDay: phase.startDay,
+      endDay: phase.endDay,
+      modules: phase.modules.length,
+    })),
+  };
 }
 
-export function findSession(plan: StudyPlan, sessionId: string): {
-for (const phase of plan.curriculum.phases) {
+export function findSession(plan: StudyPlan, sessionId: string) {
+  for (const phase of plan.curriculum.phases) {
     for (const module of phase.modules) {
-        const session = module.sessions.find((s) => s.id === sessionId);
-        if (session) return {phase, module, session};
+      const session = module.sessions.find((s) => s.id === sessionId);
+      if (session) return { phase, module, session };
     }
-}
-return null;
+  }
+  return null;
 }
 
-export function findModule(plan: StudyPlan, moduleId: string): {
-    phase?: string,
-    module?: string
-} | null {
-    for (const phase of plan.curriculum.phases) {
-        const module = phase.modules.find((m) => m.id === moduleId);
-        if (module) return {phase, module};
-    }
-    return null;
+export function findModule(plan: StudyPlan, moduleId: string) {
+  for (const phase of plan.curriculum.phases) {
+    const module = phase.modules.find((m) => m.id === moduleId);
+    if (module) return { phase, module };
+  }
+  return null;
 }
 
 export function recalculatePlanProgress(plan: StudyPlan): StudyPlan["progress"] {
-    const phases = plan.curriculum.phases;
-    const modules = phases.flatMap((p) => p.modules);
-    const sessions = modules.flatMap((m) => m.sessions);
+  const phases = plan.curriculum.phases;
+  const modules = phases.flatMap((p) => p.modules);
+  const sessions = modules.flatMap((m) => m.sessions);
 
-    const completedDays = sessions.filter((s) => s.status === "completed").length;
-    const completedModules = modules.filter((m) => m.status === "completed").length;
-    const assessments = modules.map((m) => m.assessment);
-    const completedAssessments = assessments.filter((a) => a.status === "passed" || a.status === "failed").length;
-    const passedAssessments = assessments.filter((a) => a.status === "passed").length;
+  const completedDays = sessions.filter((s) => s.status === "completed").length;
+  const completedModules = modules.filter((m) => m.status === "completed").length;
 
-    const currentPhase = phases.findIndex((p) => p.status === "active");
-    const currentModule = modules.find((m) => m.status === "active") ?? modules[modules.length - 1];
-    const currentSession = currentModule?.sessions.find((s) => s.status === "available") ?? null;
+  const assessments = modules.map((m) => m.assessment);
+  const completedAssessments = assessments.filter(
+    (a) => a.status === "passed" || a.status === "failed",
+  ).length;
+  const passedAssessments = assessments.filter((a) => a.status === "passed").length;
 
-    const avgAssessmentScore = average(
-        assessments.flatMap((a) => a.attempts.map((at) => at.score)),
-    );
+  const currentPhase = phases.findIndex((p) => p.status === "active");
+  const currentModule = modules.find((m) => m.status === "active") ?? modules[modules.length - 1];
+  const currentSession =
+    currentModule?.sessions.find((s) => s.status === "available") ?? null;
 
-    const subjectProgress = SUBJECT_AREAS.map((subjectArea) => {
-        const subjectModules = modules.filter((m) => m.subjectArea === subjectArea);
-        const done = subjectModules.filter((m) => m.status === "completed").length;
-        const scores = subjectModules
-            .flatMap((m) => m.assessment.attempts.map((a) => a.score));
-        const avgScore = average(scores);
+  const avgAssessmentScore = average(
+    assessments.flatMap((a) => a.attempts.map((at) => at.score)),
+  );
 
-        const currentLevel: StudyLevel = avgScore >= 75 ? "advanced" : avgScore >= 50 ? "intermediate" : "beginner";
-        return {
-            subjectArea,
-            modulesCompleted: done,
-            modulesTotal: subjectModules.length,
-            averageScore: avgScore,
-            currentLevel,
-        };
-    });
+  const subjectProgress = SUBJECT_AREAS.map((subjectArea) => {
+    const subjectModules = modules.filter((m) => m.subjectArea === subjectArea);
+    const done = subjectModules.filter((m) => m.status === "completed").length;
+    const scores = subjectModules.flatMap((m) => m.assessment.attempts.map((a) => a.score));
+    const avgScore = average(scores);
 
-    const totalTimeSpent = modules
-        .flatMap((m) => m.sessions)
-        .flatMap((s) => s.activities)
-        .reduce((acc, activity) => acc + Number(activity.result?.timeSpent ?? 0), 0);
+    const currentLevel: StudyLevel =
+      avgScore >= 75 ? "advanced" : avgScore >= 50 ? "intermediate" : "beginner";
 
     return {
-        ...plan.progress,
-        currentPhase: currentPhase >= 0 ? currentPhase : 0,
-        currentModule: currentModule?.id ?? "",
-        currentDay: currentSession?.dayNumber ?? plan.progress.currentDay,
-        currentSession: currentSession?.id ?? null,
-        completedDays,
-        totalDays: plan.curriculum.totalDays,
-        completedModules,
-        totalModules: modules.length,
-        completedAssessments,
-        passedAssessments,
-        overallProgress: Math.round((completedDays / Math.max(1, plan.curriculum.totalDays)) * 100),
-        totalTimeSpent,
-        averageTimePerDay: completedDays ? Math.round(totalTimeSpent / completedDays) : 0,
-        averageAssessmentScore: avgAssessmentScore,
-        subjectProgress,
+      subjectArea,
+      modulesCompleted: done,
+      modulesTotal: subjectModules.length,
+      averageScore: avgScore,
+      currentLevel,
     };
+  });
+
+  const totalTimeSpent = modules
+    .flatMap((m) => m.sessions)
+    .flatMap((s) => s.activities)
+    .reduce((acc, activity) => acc + Number(activity.result?.timeSpent ?? 0), 0);
+
+  return {
+    ...plan.progress,
+    currentPhase: currentPhase >= 0 ? currentPhase : 0,
+    currentModule: currentModule?.id ?? "",
+    currentDay: currentSession?.dayNumber ?? plan.progress.currentDay,
+    currentSession: currentSession?.id ?? null,
+    completedDays,
+    totalDays: plan.curriculum.totalDays,
+    completedModules,
+    totalModules: modules.length,
+    completedAssessments,
+    passedAssessments,
+    overallProgress: Math.round(
+      (completedDays / Math.max(1, plan.curriculum.totalDays)) * 100,
+    ),
+    totalTimeSpent,
+    averageTimePerDay: completedDays ? Math.round(totalTimeSpent / completedDays) : 0,
+    averageAssessmentScore: avgAssessmentScore,
+    subjectProgress,
+  };
 }
 
 export function computeSchedule(plan: StudyPlan): StudyPlan["schedule"] {
-    const sessions = plan.curriculum.phases.flatMap((p) => p.modules.flatMap((m) => m.sessions));
-    const next = sessions.find((s) => s.status === "available" || s.status === "in_progress") ?? null;
-    const completed = sessions.filter((s) => s.status === "completed").length;
-    const today = startOfDay(new Date());
-    const plannedByNow = sessions.filter((s) => new Date(s.scheduledDate).getTime() <= today.getTime()).length;
-    const daysAhead = completed - plannedByNow;
+  const sessions = plan.curriculum.phases.flatMap((p) =>
+    p.modules.flatMap((m) => m.sessions),
+  );
 
-    return {
-        ...plan.schedule,
-        nextSessionDate: next?.scheduledDate ?? null,
-        nextSessionId: next?.id ?? null,
-        isOnTrack: daysAhead >= 0,
-        daysAhead,
-    };
+  const next =
+    sessions.find((s) => s.status === "available" || s.status === "in_progress") ?? null;
+
+  const completed = sessions.filter((s) => s.status === "completed").length;
+  const today = startOfDay(new Date());
+
+  const plannedByNow = sessions.filter(
+    (s) => new Date(s.scheduledDate).getTime() <= today.getTime(),
+  ).length;
+
+  const daysAhead = completed - plannedByNow;
+
+  return {
+    ...plan.schedule,
+    nextSessionDate: next?.scheduledDate ?? null,
+    nextSessionId: next?.id ?? null,
+    isOnTrack: daysAhead >= 0,
+    daysAhead,
+  };
 }
 
-export function applyAdaptation(plan: StudyPlan, reason: string): { plan: StudyPlan; changes: string[] } {
-    const changes: string[] = [];
+export function applyAdaptation(
+  plan: StudyPlan,
+  reason: string,
+): { plan: StudyPlan; changes: string[] } {
+  const changes: string[] = [];
 
-    if (plan.progress.averageAssessmentScore >= 90) {
-        const upcoming = plan.curriculum.phases
-            .flatMap((p) => p.modules)
-            .filter((m) => m.status === "locked")
-            .slice(0, 2);
-for (const module of upcoming) {
-    if (module.sessions.length > 2) {
+  if (plan.progress.averageAssessmentScore >= 90) {
+    const upcoming = plan.curriculum.phases
+      .flatMap((p) => p.modules)
+      .filter((m) => m.status === "locked")
+      .slice(0, 2);
+
+    for (const module of upcoming) {
+      if (module.sessions.length > 2) {
         module.sessions.pop();
         changes.push(`Shortened ${module.name} by one day due to strong performance`);
+      }
     }
-}
+  }
 
-if (plan.progress.averageAssessmentScore > 0 && plan.progress.averageAssessmentScore < 60) {
-    const active = plan.curriculum.phases.flatMap((p) => p.modules).find((m) => m.status === "active");
+  if (plan.progress.averageAssessmentScore > 0 && plan.progress.averageAssessmentScore < 60) {
+    const active = plan.curriculum.phases
+      .flatMap((p) => p.modules)
+      .find((m) => m.status === "active");
+
     if (active) {
-        const extraDate = new Date(active.sessions[active.sessions.length - 1]?.scheduledDate ?? new Date());
-        extraDate.setDate(extraDate.getDate() + 1);
-        active.sessions.push(buildSession(active, null, extraDate, active.sessions.length + 1, active.sessions.length + 1));
-        changes.push(`Added remedial day to ${active.name} after low assessment results`);
+      const extraDate = new Date(
+        active.sessions[active.sessions.length - 1]?.scheduledDate ?? new Date(),
+      );
+      extraDate.setDate(extraDate.getDate() + 1);
+      active.sessions.push(
+        buildSession(active, null, extraDate, active.sessions.length + 1, active.sessions.length + 1),
+      );
+      changes.push(`Added remedial day to ${active.name} after low assessment results`);
     }
-}
+  }
 
-const adaptation: StudyPlanAdaptation = {
+  const adaptation: StudyPlanAdaptation = {
     date: new Date().toISOString(),
     type: "pace_adjustment",
     reason,
     details: {
-        averageAssessmentScore: plan.progress.averageAssessmentScore,
-        daysAhead: plan.schedule.daysAhead,
+      averageAssessmentScore: plan.progress.averageAssessmentScore,
+      daysAhead: plan.schedule.daysAhead,
     },
     appliedAutomatically: true,
-};
+  };
 
-plan.adaptations.push(adaptation);
-plan.progress = recalculatePlanProgress(plan);
-plan.schedule = computeSchedule(plan);
+  plan.adaptations.push(adaptation);
+  plan.progress = recalculatePlanProgress(plan);
+  plan.schedule = computeSchedule(plan);
 
-return { plan, changes };
+  return { plan, changes };
 }
 
 export function pickTodaySession(plan: StudyPlan) {
-    const sessions = plan.curriculum.phases.flatMap((p) => p.modules.flatMap((m) => m.sessions));
-    const todayIso = startOfDay(new Date()).toISOString().slice(0, 10);
+  const sessions = plan.curriculum.phases.flatMap((p) =>
+    p.modules.flatMap((m) => m.sessions),
+  );
+  const todayIso = startOfDay(new Date()).toISOString().slice(0, 10);
 
-    const todaySession = sessions.find(
-        (s) => s.scheduledDate.slice(0, 10) === todayIso && s.status !== "completed" && s.status !== "skipped",
-    );
+  const todaySession = sessions.find(
+    (s) =>
+      s.scheduledDate.slice(0, 10) === todayIso &&
+      s.status !== "completed" &&
+      s.status !== "skipped",
+  );
 
-    if (todaySession) return { session: todaySession, isRestDay: false };
+  if (todaySession) return { session: todaySession, isRestDay: false };
 
-    const next = sessions.find((s) => s.status === "available" || s.status === "in_progress" || s.status === "locked");
-    if (next) return { session: next, isRestDay: true };
+  const next = sessions.find(
+    (s) => s.status === "available" || s.status === "in_progress" || s.status === "locked",
+  );
+  if (next) return { session: next, isRestDay: true };
 
-    return { session: null, isRestDay: false };
+  return { session: null, isRestDay: false };
 }
 
 export async function selectAssessmentQuestions(
-    db: Db,
-    module: StudyModule,
-    excludedQuestionIds: string[],
+  db: Db,
+  module: StudyModule,
+  excludedQuestionIds: string[],
 ): Promise<Document[]> {
-    const match: Record<string, unknown> = {
-        subjectArea: module.subjectArea,
-        subtopic: {$regex: escapeRegex(module.subtopic), $options: "i"},
-        isDeleted: {$ne: true},
-        publicationStatus: "published",
+  const match: Record<string, unknown> = {
+    subjectArea: module.subjectArea,
+    subtopic: { $regex: escapeRegex(module.subtopic), $options: "i" },
+    isDeleted: { $ne: true },
+    publicationStatus: "published",
+  };
+
+  if (excludedQuestionIds.length) {
+    match._id = {
+      $nin: excludedQuestionIds
+        .filter((id) => ObjectId.isValid(id))
+        .map((id) => new ObjectId(id)),
     };
-    if (excludedQuestionIds.length) {
-        match._id = {
-            $nin: excludedQuestionIds
-                .filter(id => ObjectId.isValid(id))
-                .map((id) => new ObjectId(id)),
-        };
-    }
+  }
 
-    const rows = await db.collection("questions").aggregate([
-        {$match: match},
-        {$sample: {size: module.assessment.questionCount}},
-    ]).toArray();
+  const rows = await db
+    .collection("questions")
+    .aggregate([{ $match: match }, { $sample: { size: module.assessment.questionCount } }])
+    .toArray();
 
-    if (rows.length >= module.assessment.questionCount) return rows;
+  if (rows.length >= module.assessment.questionCount) return rows;
 
-    const topUp = await db.collection("questions").aggregate([
-        {$match: {subjectArea: module.subjectArea, isDeleted: {$ne: true}, publicationStatus: "published"}},
-        {$sample: {size: module.assessment.questionCount - rows.length}},
-    ]).toArray();
-    return [...rows, ...topUp];
+  const topUp = await db
+    .collection("questions")
+    .aggregate([
+      {
+        $match: {
+          subjectArea: module.subjectArea,
+          isDeleted: { $ne: true },
+          publicationStatus: "published",
+        },
+      },
+      { $sample: { size: module.assessment.questionCount - rows.length } },
+    ])
+    .toArray();
+
+  return [...rows, ...topUp];
 }
 
 export function sanitizeQuestionForClient(question: Document) {
-    return {
-        _id: String(question._id),
-        subjectArea: question.subjectArea,
-        subtopic: question.subtopic,
-        difficulty: question.difficulty,
-        type: question.type,
-        questionText: question.questionText,
-        choices: question.choices,
-        passageId: question.passageId ? String(question.passageId) : null,
-        tags: Array.isArray(question.tags) ? question.tags : [],
-    };
+  return {
+    _id: String(question._id),
+    subjectArea: question.subjectArea,
+    subtopic: question.subtopic,
+    difficulty: question.difficulty,
+    type: question.type,
+    questionText: question.questionText,
+    choices: question.choices,
+    passageId: question.passageId ? String(question.passageId) : null,
+    tags: Array.isArray(question.tags) ? question.tags : [],
+  };
 }
 
 export function extractQuestionId(req: VercelRequest): string | null {
-    const direct = typeof req.query.id === "string" ? req.query.id : null;
-    if (direct) return direct;
-    const sid = typeof req.query.sessionId === "string" ? req.query.sessionId : null;
-    return sid;
+  const direct = typeof req.query.id === "string" ? req.query.id : null;
+  if (direct) return direct;
+  const sid = typeof req.query.sessionId === "string" ? req.query.sessionId : null;
+  return sid;
 }
+
 export function normalizeLesson(doc: Document): StudyLesson {
-    return {
-        _id: String(doc._id),
-        subjectArea: doc.subjectArea as SubjectArea,
-        subtopic: String(doc.subtopic ?? ""),
-        title: String(doc.title ?? ""),
-        content: doc.content as StudyLesson["content"],
-        keyTakeaways: Array.isArray(doc.keyTakeaways) ? doc.keyTakeaways as string[] : [],
-        quickReference: Array.isArray(doc.quickReference) ? doc.quickReference as StudyLesson["quickReference"] : [],
-        difficulty: (doc.difficulty ?? "medium") as Difficulty,
-        estimatedReadingMinutes: Number(doc.estimatedReadingMinutes ?? 10),
-        prerequisites: Array.isArray(doc.prerequisites) ? doc.prerequisites.map((x: unknown) => String(x)) : [],
-        relatedQuestionTags: Array.isArray(doc.relatedQuestionTags) ? doc.relatedQuestionTags as string[] : [],
-        status: (doc.status ?? "draft") as "draft" | "published",
-        createdBy: String(doc.createdBy ?? "system"),
-        createdAt: String(doc.createdAt ?? new Date().toISOString()),
-        updatedAt: String(doc.updatedAt ?? new Date().toISOString()),
-    };
+  return {
+    _id: String(doc._id),
+    subjectArea: doc.subjectArea as SubjectArea,
+    subtopic: String(doc.subtopic ?? ""),
+    title: String(doc.title ?? ""),
+    content: doc.content as StudyLesson["content"],
+    keyTakeaways: Array.isArray(doc.keyTakeaways) ? (doc.keyTakeaways as string[]) : [],
+    quickReference: Array.isArray(doc.quickReference)
+      ? (doc.quickReference as StudyLesson["quickReference"])
+      : [],
+    difficulty: (doc.difficulty ?? "medium") as Difficulty,
+    estimatedReadingMinutes: Number(doc.estimatedReadingMinutes ?? 10),
+    prerequisites: Array.isArray(doc.prerequisites)
+      ? doc.prerequisites.map((x: unknown) => String(x))
+      : [],
+    relatedQuestionTags: Array.isArray(doc.relatedQuestionTags)
+      ? (doc.relatedQuestionTags as string[])
+      : [],
+    status: (doc.status ?? "draft") as "draft" | "published",
+    createdBy: String(doc.createdBy ?? "system"),
+    createdAt: String(doc.createdAt ?? new Date().toISOString()),
+    updatedAt: String(doc.updatedAt ?? new Date().toISOString()),
+  };
 }
 
 function normalizeStudyDays(input: number[] | undefined): number[] {
-    const source = Array.isArray(input) && input.length ? input : [1, 2, 3, 4, 5];
-    const dedupe = [...new Set(source.map((d) => Math.max(1, Math.min(7, Math.floor(d)))))];
-    return dedupe.sort((a, b) => a - b);
+  const source = Array.isArray(input) && input.length ? input : [1, 2, 3, 4, 5];
+  const dedupe = [...new Set(source.map((d) => Math.max(1, Math.min(7, Math.floor(d)))))];
+  return dedupe.sort((a, b) => a - b);
 }
 
 function normalizeSubjects(input: SubjectArea[] | null | undefined): SubjectArea[] | null {
-    if (!Array.isArray(input) || !input.length) return null;
-    const accepted = new Set(SUBJECT_AREAS);
-    const rows = [...new Set(input.filter((s) => accepted.has(s)))];
-    return rows.length ? rows : null;
+  if (!Array.isArray(input) || !input.length) return null;
+  const accepted = new Set(SUBJECT_AREAS);
+  const rows = [...new Set(input.filter((s) => accepted.has(s)))];
+  return rows.length ? rows : null;
 }
 
 function parseDate(value: string | null): Date | null {
-    if (!value) return null;
-    const parsed = new Date(value);
-    if (Number.isNaN(parsed.getTime())) return null;
-    return startOfDay(parsed);
+  if (!value) return null;
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return startOfDay(parsed);
 }
 
 function startOfDay(date: Date): Date {
-    return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
 }
 
 function moduleId(phaseName: string, moduleName: string, order: number): string {
-    return `mod_${slug(phaseName)}_${slug(moduleName)}_${order}`;
+  return `mod_${slug(phaseName)}_${slug(moduleName)}_${order}`;
 }
 
 function slug(input: string): string {
-    return input
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "_")
-        .replace(/^+|_+$/, "")
-        .slice(0, 48);
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+\$/g, "")
+    .slice(0, 48);
 }
 
 function clamp(value: number, min: number, max: number): number {
-    if (!Number.isFinite(value)) return min;
-    return Math.max(min, Math.min(max, value));
+  if (!Number.isFinite(value)) return min;
+  return Math.max(min, Math.min(max, value));
 }
 
 function toIso(value: Date | string): string {
-    return value instanceof Date ? value.toISOString() : new Date(value).toISOString();
+  return value instanceof Date ? value.toISOString() : new Date(value).toISOString();
 }
 
 function average(values: number[]): number {
-    if (!values.length) return 0;
-    return Math.round((values.reduce((acc, cur) => acc + cur, 0) / values.length) * 100) / 100;
+  if (!values.length) return 0;
+  return Math.round((values.reduce((acc, cur) => acc + cur, 0) / values.length) * 100) / 100;
 }
 
 function escapeRegex(value: string): string {
-    return value.replace(/[\.*+?^${}()|\\]/g, "\\\\");
+  return value.replace(/[.*+?^\${}()|[\]\\]/g, "\\\__CODE_25__");
 }

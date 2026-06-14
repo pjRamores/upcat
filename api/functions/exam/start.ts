@@ -11,12 +11,22 @@ import {
   SUBJECT_AREAS,
   type SubjectArea,
 } from "@upcat/shared";
-import { pickQuestionSetForUser, type QuestionSetConfigDoc, registerQuestionSetAssignment } from "../../src/examSets.js";
-import { LimitReachedError, PaywallError, requireFeature, trackFeatureUsage } from "../../src/subscription.js";
+import {
+  pickQuestionSetForUser,
+  type QuestionSetConfigDoc,
+  registerQuestionSetAssignment,
+} from "../../src/examSets.js";
+import {
+  LimitReachedError,
+  PaywallError,
+  requireFeature,
+  trackFeatureUsage,
+} from "../../src/subscription.js";
 
 type ExamDifficulty = "easy" | "medium" | "hard" | "very_hard";
+
 const EXAM_DIFFICULTIES: readonly ExamDifficulty[] = Array.from(
-  new Set<ExamDifficulty>([...{ DIFFICULTIES as readonly ExamDifficulty[] }, "very_hard"])
+  new Set<ExamDifficulty>([...(DIFFICULTIES as readonly ExamDifficulty[]), "very_hard"]),
 );
 
 type QuestionSamplingDoc = {
@@ -42,9 +52,15 @@ function normalizeExamConfigFromSet(setConfig: QuestionSetConfigDoc): {
     const questions = Number(cfg.questions ?? 0);
     const timeLimitForSubject = Number(cfg.timeLimit ?? 0);
 
-    distribution[subject] = Math.max(0, Number.isFinite(questions) ? Math.floor(questions) : 0);
+    distribution[subject] = Math.max(
+      0,
+      Number.isFinite(questions) ? Math.floor(questions) : 0,
+    );
     totalQuestions += distribution[subject];
-    totalTimeLimit += Math.max(0, Number.isFinite(timeLimitForSubject) ? Math.floor(timeLimitForSubject) : 0);
+    totalTimeLimit += Math.max(
+      0,
+      Number.isFinite(timeLimitForSubject) ? Math.floor(timeLimitForSubject) : 0,
+    );
   }
 
   return { distribution, totalQuestions, totalTimeLimit };
@@ -57,7 +73,9 @@ function compareQuestionOrder(a: QuestionSamplingDoc, b: QuestionSamplingDoc): n
   return a._id.toString().localeCompare(b._id.toString());
 }
 
-function buildOrderedQuestionMeta(allQuestions: QuestionSamplingDoc[]): { _id: ObjectId; subjectArea: SubjectArea }[] {
+function buildOrderedQuestionMeta(
+  allQuestions: QuestionSamplingDoc[],
+): { _id: ObjectId; subjectArea: SubjectArea }[] {
   const subjectBuckets = new Map<SubjectArea, QuestionSamplingDoc[]>();
 
   for (const q of allQuestions) {
@@ -68,6 +86,7 @@ function buildOrderedQuestionMeta(allQuestions: QuestionSamplingDoc[]): { _id: O
 
   const ordered: { _id: ObjectId; subjectArea: SubjectArea }[] = [];
   const orderedSubjects: SubjectArea[] = [...SUBJECT_AREAS];
+
   for (const subject of subjectBuckets.keys()) {
     if (!orderedSubjects.includes(subject)) {
       orderedSubjects.push(subject);
@@ -103,13 +122,17 @@ function buildOrderedQuestionMeta(allQuestions: QuestionSamplingDoc[]): { _id: O
     }
 
     shuffle(units);
+
     for (const unit of units) {
-      ordered.push({ _id: q._id, subjectArea: q.subjectArea });
+      for (const q of unit) {
+        ordered.push({ _id: q._id, subjectArea: q.subjectArea });
+      }
     }
   }
 
   return ordered;
 }
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -146,23 +169,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     totalQuestions,
     distribution,
     difficultyMix,
-    timelimit: totalTimeLimit,
+    timeLimit: totalTimeLimit,
   };
 
-  // One active mock exam at a time require resume of existing in-progress session.
   const existingInProgress = await db.collection("exam_sessions").findOne(
-    { userID: userId, status: "in_progress" },
-    { projection: {_id: 1} }
+    { userId, status: "in_progress" },
+    { projection: { _id: 1 } },
   );
+
   if (existingInProgress?._id) {
     return res.status(409).json({
       success: false,
-      error: `You already have an in-progress mock exam. Resume it before starting a new one.`,
+      error: "You already have an in-progress mock exam. Resume it before starting a new one.",
       sessionId: existingInProgress._id.toString(),
     });
   }
 
-  const userExists = await db.collection("users").findOne({ _id: userId }, { projection: {_id: 1} });
+  const userExists = await db
+    .collection("users")
+    .findOne({ _id: userId }, { projection: { _id: 1 } });
 
   if (userExists) {
     try {
@@ -171,119 +196,143 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (err instanceof PaywallError) {
         return res.status(403).json({
           success: false,
-          error: `This feature requires Premium.`,
-          featureID: err.featureID,
+          error: "This feature requires Premium.",
+          featureId: err.featureId,
           upgradeUrl: "/pricing",
         });
       }
+
       if (err instanceof LimitReachedError) {
-        const periodPhrase = err.period === "daily" ? "today" : err.period === "weekly" ? "this week" : err.period === "monthly" ? "this month" : "in total";
+        const periodPhrase =
+          err.period === "daily"
+            ? "today"
+            : err.period === "weekly"
+              ? "this week"
+              : err.period === "monthly"
+                ? "this month"
+                : "in total";
+
         return res.status(429).json({
           success: false,
-          error: `You've used ${err.used} of ${err.limit} mock exams. ${periodPhrase}. Upgrade to Premium for unlimited access.`,
-          featureID: err.featureID,
+          error: `You've used ${err.used} of ${err.limit} mock exams ${periodPhrase}. Upgrade to Premium for unlimited access.`,
+          featureId: err.featureId,
           used: err.used,
           limit: err.limit,
           period: err.period,
           upgradeUrl: "/pricing",
         });
       }
-      return res.status(403).json({ success: false, error: (err as Error).message });
+
+      return res.status(403).json({
+        success: false,
+        error: (err as Error).message,
+      });
     }
   }
 
-  // Include all published questions from the assigned set.
-  const sampledQuestionDocs = await db.collection("questions").find({
-    setID: questionSet.setID,
-    isDeleted: {$ne: true},
-    publicationStatus: "published",
-  })
-.project<QuestionSamplingDoc>({
-    _id: 1,
-    subjectArea: 1,
-    passageId: 1,
-    createdAt: 1,
-    choices: 1,
-    correctAnswer: 1,
-})
-.toArray();
+  const sampledQuestionDocs = await db
+    .collection("questions")
+    .find({
+      setID: questionSet.setID,
+      isDeleted: { $ne: true },
+      publicationStatus: "published",
+    })
+    .project<QuestionSamplingDoc>({
+      _id: 1,
+      subjectArea: 1,
+      passageId: 1,
+      createdAt: 1,
+      choices: 1,
+      correctAnswer: 1,
+    })
+    .toArray();
 
-const sampledMeta = buildOrderedQuestionMeta(sampledQuestionDocs);
+  const sampledMeta = buildOrderedQuestionMeta(sampledQuestionDocs);
 
-// Keep config aligned with the actual session question count.
-config.totalQuestions = sampledMeta.length;
+  config.totalQuestions = sampledMeta.length;
 
-if (sampledMeta.length === 0) {
+  if (sampledMeta.length === 0) {
     return res.status(503).json({
-        success: false,
-        error: 'No eligible questions found for set ${questionSet.setId}. Assign questions to this set or activate a set with published questions.'
+      success: false,
+      error: `No eligible questions found for set ${questionSet.setID}. Assign questions to this set or activate a set with published questions.`,
     });
-}
+  }
 
-const randomizedById = new Map(
+  const randomizedById = new Map(
     sampledQuestionDocs
-        .map((doc) => {
-            const randomized = randomizeChoicesForSession(
-                (doc.choices ?? []) as QuestionChoice[],
-                (doc.correctAnswer as "A" | "B" | "C" | "D") ?? "A",
-            );
-            if (randomized.choices.length === 0) return null;
-            return [doc._id.toString(), randomized] as const;
-        })
-        .filter((entry): entry is readonly [string, {
-            choices: QuestionChoice[];
-            correctAnswer: "A" | "B" | "C" | "D"
-        }] => Boolean(entry)),
-);
+      .map((doc) => {
+        const randomized = randomizeChoicesForSession(
+          (doc.choices ?? []) as QuestionChoice[],
+          (doc.correctAnswer as "A" | "B" | "C" | "D") ?? "A",
+        );
 
-const sessionQuestions: SessionQuestionEntry[] = sampledMeta.map((q, idx) => ({
+        if (randomized.choices.length === 0) return null;
+
+        return [doc._id.toString(), randomized] as const;
+      })
+      .filter(
+        (
+          entry,
+        ): entry is readonly [
+          string,
+          {
+            choices: QuestionChoice[];
+            correctAnswer: "A" | "B" | "C" | "D";
+          },
+        ] => Boolean(entry),
+      ),
+  );
+
+  const sessionQuestions: SessionQuestionEntry[] = sampledMeta.map((q, idx) => ({
     questionId: q._id.toString(),
     orderIndex: idx,
     userAnswer: null,
     isCorrect: null,
     answeredAt: null,
     timeSpent: null,
-}));
+  }));
 
-const now = new Date();
-const sessionDoc = {
-    userId: userOid,
-    setId: questionSet.setId,
+  const now = new Date();
+  const sessionDoc = {
+    userId,
+    setId: questionSet.setID,
     status: "in_progress" as const,
     config,
     questions: sampledMeta.map((q, idx) => ({
-        ...(randomizedById.get(q._id.toString()) ?? {}),
-        questionId: q._id,
-        orderIndex: idx,
-        userAnswer: null as string | null,
-        isCorrect: null as boolean | null,
-        answeredAt: null as Date | null,
-        timeSpent: null as number | null,
+      ...(randomizedById.get(q._id.toString()) ?? {}),
+      questionId: q._id,
+      orderIndex: idx,
+      userAnswer: null as string | null,
+      isCorrect: null as boolean | null,
+      answeredAt: null as Date | null,
+      timeSpent: null as number | null,
     })),
     score: null,
     timerState: {
-        totalPausedMs: 0,
-        pausedAt: null as Date | null,
+      totalPausedMs: 0,
+      pausedAt: null as Date | null,
     },
     startedAt: now,
     completedAt: null as Date | null,
     createdAt: now,
-};
+  };
 
-const result = await db.collection("exam_sessions").insertOne(sessionDoc);
-await registerQuestionSetAssignment(db, userOid, questionSet.setId, result.insertedId);
-if (userExists) {
-    await trackFeatureUsage(db, userOid, "mock_exam_access", "monthly");
-}
+  const result = await db.collection("exam_sessions").insertOne(sessionDoc);
 
-return res.status(201).json({
+  await registerQuestionSetAssignment(db, userId, questionSet.setID, result.insertedId);
+
+  if (userExists) {
+    await trackFeatureUsage(db, userId, "mock_exam_access", "monthly");
+  }
+
+  return res.status(201).json({
     success: true,
     data: {
-        sessionId: result.insertedId.toString(),
-        setId: questionSet.setId,
-        totalQuestions: sessionQuestions.length,
-        timeLimit: config.timeLimit,
-        startedAt: now.toISOString(),
+      sessionId: result.insertedId.toString(),
+      setId: questionSet.setID,
+      totalQuestions: sessionQuestions.length,
+      timeLimit: config.timeLimit,
+      startedAt: now.toISOString(),
     },
-});
+  });
 }

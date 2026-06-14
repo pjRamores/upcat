@@ -95,6 +95,9 @@ export function persistAuthSession(
   otherStorage?.removeItem(USER_STORAGE_KEY);
 
   if (!storage) return;
+  console.log("rememberMe: ", rememberMe);
+  console.log("token: ", token);
+  console.log("user: ", JSON.stringify(user));
 
   storage.setItem(TOKEN_STORAGE_KEY, token);
   storage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
@@ -110,6 +113,7 @@ export function persistUserForCurrentSession(user: User): void {
 export function clearPersistedAuth(): void {
   const local = getLocalStorage();
   const session = getSessionStorage();
+  console.log("Clearing persisted auth");
 
   local?.removeItem(TOKEN_STORAGE_KEY);
   local?.removeItem(USER_STORAGE_KEY);

@@ -9,6 +9,9 @@
  */
 import apiClient from "@/lib/api";
 
+export { API_ROUTES } from "@upcat/shared";
+
+
 const SNAPSHOT_THROTTLE_MS = 30_000; // save to server at most every 30s
 const DEVICE_ID_KEY = "upcat.deviceId";
 

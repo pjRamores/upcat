@@ -3,7 +3,7 @@ import { ObjectId } from "mongodb";
 import type { SubjectArea } from "@upcat/shared";
 import { SUBJECT_AREAS } from "@upcat/shared";
 import { requireUser } from "../../src/auth.js";
-import {getDb} from "../../../../src/db.js";
+import { getDb } from "../../src/db.js";
 
 import {
   buildHistoricalDiagnostic,
@@ -14,7 +14,7 @@ import {
   sanitizeQuestionForClient,
   startDiagnostic,
   toApiDiagnostic,
-} from "../../../src/studyPlan.js";
+} from "../../src/studyPlan.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const user = await requireUser(req, res);
@@ -43,6 +43,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (!ObjectId.isValid(id)) {
         return res.status(400).json({ success: false, error: "Invalid diagnostic id" });
       }
+
       const sectionParam = String(req.query.section ?? "") as SubjectArea;
       if (!SUBJECT_AREAS.includes(sectionParam)) {
         return res.status(400).json({ success: false, error: "Invalid section" });
@@ -50,7 +51,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const diagnostic = await db
         .collection<DbDiagnosticTest>("diagnostic_tests")
-        .findOne({ _id: new ObjectId(id), userId: user._id });
+        .findOne({ _id: new ObjectId(id) as never, userId: user._id });
+
       if (!diagnostic) {
         return res.status(404).json({ success: false, error: "Diagnostic not found" });
       }
@@ -63,8 +65,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const questionIds = section.questions.map((q) => q.questionId);
       const questions = await db
         .collection("questions")
-        .find({_id: {$in: questionIds}})
+        .find({ _id: { $in: questionIds } })
         .toArray();
+
       const byId = new Map(questions.map((q) => [String(q._id), q]));
 
       return res.status(200).json({
@@ -83,6 +86,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (!ObjectId.isValid(id)) {
         return res.status(400).json({ success: false, error: "Invalid diagnostic id" });
       }
+
       const body = (req.body ?? {}) as {
         subjectArea?: SubjectArea;
         answers?: { questionId: string; answer: string; timeSpent?: number }[];
@@ -95,178 +99,173 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const diagnostic = await db
         .collection<DbDiagnosticTest>("diagnostic_tests")
-        .findOne({ _id: new ObjectId(id), userId: user._id });
+        .findOne({ _id: new ObjectId(id) as never, userId: user._id });
+
       if (!diagnostic) {
         return res.status(404).json({ success: false, error: "Diagnostic not found" });
       }
+
       if (diagnostic.status !== "in_progress") {
-        return res.status(400).json({ success: false, error: "Diagnostic already completed" });
+        return res.status(400).json({
+          success: false,
+          error: "Diagnostic already completed",
+        });
       }
 
-      const answers = body.answers ?? [];
-      diagnostic.answers.push(...answers);
-      await db
-        .collection<DbDiagnosticTest>("diagnostic_tests")
-        .updateOne(
-          { _id: new ObjectId(id), userId: user._id },
-          {
-            $set: {
-              status: "in_progress",
-              answers: [...diagnostic.answers],
-            },
-          }
-        );
+      const sectionIndex = diagnostic.sections.findIndex((s) => s.subjectArea === subjectArea);
+      if (sectionIndex === -1) {
+        return res.status(404).json({ success: false, error: "Section not found" });
+      }
+
+      const answers = Array.isArray(body.answers) ? body.answers : [];
+      const answersMap = new Map(answers.map((a) => [String(a.questionId), a]));
+
+      const section = diagnostic.sections[sectionIndex];
+      const questionDocs = await db
+        .collection("questions")
+        .find({ _id: { $in: section.questions.map((q) => q.questionId) } })
+        .project({ _id: 1, correctAnswer: 1 })
+        .toArray();
+
+      const byQ = new Map(questionDocs.map((q) => [String(q._id), String(q.correctAnswer)]));
+
+      section.questions = section.questions.map((q) => {
+        const answer = answersMap.get(q.questionId.toString());
+        const userAnswer = answer ? answer.answer ?? null : null;
+        const isCorrect = userAnswer === byQ.get(q.questionId.toString());
+        return {
+          ...q,
+          userAnswer,
+          isCorrect,
+          timeSpent: Number(answer?.timeSpent ?? 0),
+        };
+      });
+
+      const insights = calculateSectionInsights(section.questions);
+      section.score = insights.score;
+      section.assessedLevel = determineLevel(insights.score);
+
+      const updatePath = `sections.${sectionIndex}`;
+      await db.collection("diagnostic_tests").updateOne(
+        { _id: diagnostic._id as never },
+        {
+          $set: {
+            [updatePath]: section,
+          },
+        },
+      );
+
+      const sectionsRemaining = diagnostic.sections.filter(
+        (s, idx) => idx !== sectionIndex && s.score === null,
+      ).length;
+
       return res.status(200).json({
         success: true,
         data: {
-          diagnosticId: id.toString(),
-          subjectArea: subjectArea,
-          answers: answers.map((a) => ({
-            questionId: a.questionId,
-            answer: a.answer,
-            timeSpent: a.timeSpent ?? 0,
-          })),
+          sectionCompleted: true,
+          sectionsRemaining,
+          score: section.score,
+          level: section.assessedLevel,
         },
       });
     }
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ success: false, error: "Internal server error" });
-  }
 
-  return res.status(405).json({ success: false, error: "Method not allowed" });
-}
-const sectionIndex = diagnostic.sections.findIndex((s) => s.subjectArea === subjectArea);
-if (sectionIndex === -1) {
-    return res.status(404).json({ success: false, error: "Section not found" });
-}
-
-const answers = Array.isArray(body.answers) ? body.answers : [];
-const answersMap = new Map(answers.map((a) => [String(a.questionId), a]));
-
-const section = diagnostic.sections[sectionIndex];
-const questionDocs = await db
-    .collection("questions")
-    .find({ _id: { $in: section.questions.map(q => q.questionId) } })
-    .project({_id: 1, correctAnswer: 1})
-    .toArray();
-const byQ = new Map(questionDocs.map((q) => [String(q._id), String(q.correctAnswer)]));
-
-section.questions = section.questions.map((q) => {
-    const answer = answersMap.get(q.questionId.toString());
-    const userAnswer = answer ? answer.answer ?? null;
-    const isCorrect = userAnswer === byQ.get(q.questionId.toString()) ? true : false;
-    return {
-        ...q,
-        userAnswer,
-        isCorrect,
-        timeSpent: Number(answer?.timeSpent ?? 0),
-    };
-});
-
-const insights = calculateSectionInsights(section.questions);
-section.score = insights.score;
-section.assessedLevel = determineLevel(insights.score);
-
-const updatePath = `sections.${sectionIndex}`;
-await db.collection("diagnostic_tests").updateOne(
-    {_id: diagnostic._id},
-    {
-        $set: {
-            [updatePath]: section,
-        },
-    },
-);
-
-const sectionsRemaining = diagnostic.sections.filter((s, idx) => idx !== sectionIndex && s.score === null).length;
-return res.status(200).json({
-    success: true,
-    data: {
-        sectionCompleted: true,
-        sectionsRemaining,
-        score: section.score,
-        level: section.assessedLevel,
-    },
-});
-
-if (req.method === "POST" && id && action === "complete") {
-    if (!ObjectId.isValid(id)) {
+    if (req.method === "POST" && id && action === "complete") {
+      if (!ObjectId.isValid(id)) {
         return res.status(400).json({ success: false, error: "Invalid diagnostic id" });
-    }
+      }
 
-    const diagnostic = await db
+      const diagnostic = await db
         .collection<DbDiagnosticTest>("diagnostic_tests")
-        .findOne({_id: new ObjectId(id), userId: user._id});
-    if (!diagnostic) {
-        return res.status(404).json({ success: false, error: "Diagnostic not found" });
-    }
+        .findOne({ _id: new ObjectId(id) as never, userId: user._id });
 
-    const bySubject = diagnostic.sections.map((section) => {
+      if (!diagnostic) {
+        return res.status(404).json({ success: false, error: "Diagnostic not found" });
+      }
+
+      const bySubject = diagnostic.sections.map((section) => {
         const insights = calculateSectionInsights(section.questions);
         return {
-            subjectArea: section.subjectArea,
-            score: insights.score,
-            level: insights.level,
-            weakSubtopics: insights.weakSubtopics,
-            strongSubtopics: insights.strongSubtopics,
+          subjectArea: section.subjectArea,
+          score: insights.score,
+          level: insights.level,
+          weakSubtopics: insights.weakSubtopics,
+          strongSubtopics: insights.strongSubtopics,
         };
-    });
+      });
 
-    const overall = Math.round(bySubject.reduce((acc, cur) => acc + cur.score, 0) / bySubject.length);
-    const result = {
+      const overall = bySubject.length
+        ? Math.round(bySubject.reduce((acc, cur) => acc + cur.score, 0) / bySubject.length)
+        : 0;
+
+      const result = {
         overall,
         bySubject,
-        recommendedPlanDuration: overall >= .75 ? 6 : overall >= .55 ? 8 : 10,
-        recommendedDailyHours: overall >= .75 ? 1.5 : overall >= .55 ? 2 : 2.5,
-    };
+        recommendedPlanDuration: overall >= 75 ? 6 : overall >= 55 ? 8 : 10,
+        recommendedDailyHours: overall >= 75 ? 1.5 : overall >= 55 ? 2 : 2.5,
+      };
 
-    await db.collection("diagnostic_tests").updateOne(
-        {_id: diagnostic._id},
+      await db.collection("diagnostic_tests").updateOne(
+        { _id: diagnostic._id as never },
         {
-            $set: {
-                status: "completed",
-                result,
-                completedAt: new Date(),
-            },
+          $set: {
+            status: "completed",
+            result,
+            completedAt: new Date(),
+          },
         },
-    );
-    return res.status(200).json({ success: true, data: {result} });
-}
+      );
 
-if (req.method === "POST" && action === "skip") {
-    const body = (req.body ?? {}) as {
+      return res.status(200).json({ success: true, data: { result } });
+    }
+
+    if (req.method === "POST" && action === "skip") {
+      const body = (req.body ?? {}) as {
         method?: "historical" | "self_assessment";
-        selfAssessment?: { subjectArea: SubjectArea; level: "beginner" | "intermediate" | "advanced" }[];
-    };
-}
-let diagnosticResults;
-if (body.method === "historical") {
-    diagnosticResults = await buildHistoricalDiagnostic(db, user._id);
-} else if (body.method === "self_assessment") {
-    diagnosticResults = buildSelfAssessmentDiagnostic(body.selfAssessment ?? []);
-} else {
-    diagnosticResults = buildSelfAssessmentDiagnostic([]);
-}
+        selfAssessment?: {
+          subjectArea: SubjectArea;
+          level: "beginner" | "intermediate" | "advanced";
+        }[];
+      };
 
-return res.status(200).json({success: true, data: {diagnosticResults}});
-}
+      let diagnosticResults;
+      if (body.method === "historical") {
+        diagnosticResults = await buildHistoricalDiagnostic(db, user._id);
+      } else if (body.method === "self_assessment") {
+        diagnosticResults = buildSelfAssessmentDiagnostic(body.selfAssessment ?? []);
+      } else {
+        diagnosticResults = buildSelfAssessmentDiagnostic([]);
+      }
 
-if (req.method === "GET" && id && action === "detail") {
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).json({success: false, error: "Invalid diagnostic id"});
+      return res.status(200).json({
+        success: true,
+        data: { diagnosticResults },
+      });
     }
-    const diagnostic = await db
+
+    if (req.method === "GET" && id && action === "detail") {
+      if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ success: false, error: "Invalid diagnostic id" });
+      }
+
+      const diagnostic = await db
         .collection<DbDiagnosticTest>("diagnostic_tests")
-        .findOne({_id: new ObjectId(id), userId: user._id});
-    if (!diagnostic) {
-        return res.status(404).json({success: false, error: "Diagnostic not found"});
-    }
-    return res.status(200).json({success: true, data: toApiDiagnostic(diagnostic)});
-}
+        .findOne({ _id: new ObjectId(id) as never, userId: user._id });
 
-res.setHeader("Allow", "GET, POST");
-return res.status(405).json({success: false, error: "Method not allowed"});
-} catch (error) {
+      if (!diagnostic) {
+        return res.status(404).json({ success: false, error: "Diagnostic not found" });
+      }
+
+      return res.status(200).json({
+        success: true,
+        data: toApiDiagnostic(diagnostic),
+      });
+    }
+
+    res.setHeader("Allow", "GET, POST");
+    return res.status(405).json({ success: false, error: "Method not allowed" });
+  } catch (error) {
     console.error("[study-plan/diagnostic] failed", error);
-    return res.status(500).json({success: false, error: "Internal server error"});
+    return res.status(500).json({ success: false, error: "Internal server error" });
+  }
 }
