@@ -24,11 +24,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const ctx = await requireSessionAccess(req, res);
   if (!ctx) return;
 
-  const { db, sessionOid, userOid } = ctx;
+  const { db, sessionId, userId } = ctx;
 
   const session = await db.collection("exam_sessions").findOne({
-    _id: sessionOid,
-    userId: userOid,
+    _id: sessionId,
+    userId: userId,
   });
 
   if (!session) {
@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({
       success: true,
       data: {
-        sessionId: sessionOid.toString(),
+        sessionId: sessionId.toString(),
         score: session.score,
         alreadyScored: true,
       },
@@ -115,7 +115,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const completedAt = new Date();
 
   await db.collection("exam_sessions").updateOne(
-    { _id: sessionOid },
+    { _id: sessionId },
     {
       $set: {
         status: "completed",
@@ -127,7 +127,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   );
 
   // --- Gamification: streak + XP + achievements ---
-  const userDoc = await db.collection("users").findOne({ _id: userOid });
+  const userDoc = await db.collection("users").findOne({ _id: userId });
   const canApplyGamification = Boolean(userDoc);
   const wasFirstExam = !userDoc?.gamification?.stats?.examsCompleted;
 
@@ -141,10 +141,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     null;
 
   if (canApplyGamification) {
-    const streak = await updateDailyStreak(db, userOid);
+    const streak = await updateDailyStreak(db, userId);
     streakInfo = streak.info;
 
-    await bumpStats(db, userOid, {
+    await bumpStats(db, userId, {
       examsCompleted: 1,
       perfectScores: score.percentage >= 100 ? 1 : 0,
       questionsAnswered: score.total,
@@ -154,7 +154,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const thresholds: number[] = [];
     if (score.percentage >= 80) thresholds.push(80);
     if (score.percentage >= 90) thresholds.push(90);
-    await bumpScoreThresholdCounters(db, userOid, thresholds);
+    await bumpScoreThresholdCounters(db, userId, thresholds);
 
     const rewards: RewardContext[] = [
       { reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED },
@@ -201,10 +201,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    gamification = await applyRewards(db, userOid, rewards);
+    gamification = await applyRewards(db, userId, rewards);
 
     try {
-      weeklyChallengeProgress = await updateWeeklyChallengeProgress(db, userOid, {
+      weeklyChallengeProgress = await updateWeeklyChallengeProgress(db, userId, {
         examsCompleted: 1,
         questionsCorrect: score.correct,
         perfectScores: score.percentage >= 100 ? 1 : 0,
@@ -235,7 +235,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       );
 
     if (flaggedEntries.length > 0) {
-      const created = await addCardsForQuestions(db, userOid, flaggedEntries, "manual");
+      const created = await addCardsForQuestions(db, userId, flaggedEntries, "manual");
       practiceCardsAdded += created;
     }
 
@@ -254,7 +254,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (incorrectEntries.length > 0) {
       const created = await addCardsForQuestions(
         db,
-        userOid,
+        userId,
         incorrectEntries,
         "exam_incorrect",
       );
@@ -270,7 +270,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   return res.status(200).json({
     success: true,
     data: {
-      sessionId: sessionOid.toString(),
+      sessionId: sessionId.toString(),
       score,
       completedAt: completedAt.toISOString(),
       practiceCardsAdded,

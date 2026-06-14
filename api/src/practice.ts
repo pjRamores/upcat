@@ -128,6 +128,36 @@ export function defaultCard(
   };
 }
 
+/**
+ * Idempotently add a list of question ids to a user's practice deck.
+ * Existing cards are left untouched. Returns how many were newly created.
+ */
+export async function addCardsForQuestions(
+  db: Db,
+  userId: ObjectId,
+  entries: Array<{ questionId: ObjectId; subjectArea: SubjectArea }>,
+  reason: PracticeCard["source"] = "exam_incorrect",
+): Promise<{ created: number; existing: number }> {
+  if (entries.length === 0) return { created: 0, existing: 0 };
+
+  const col = db.collection("practice_cards");
+  const ids = entries.map((e) => e.questionId);
+  const existing = await col
+    .find({ userId, questionId: { $in: ids } })
+    .project({ questionId: 1 })
+    .toArray();
+  const existingIds = new Set(existing.map((e) => e.questionId.toString()));
+  const toInsert = entries
+    .filter((e) => !existingIds.has(e.questionId.toString()))
+    .map((e) => ({ ...e, source: reason }));
+
+  if (toInsert.length === 0) return { created: 0, existing: existingIds.size };
+
+  await col.insertMany(toInsert.map((e) => defaultCard(userId, e.questionId, e.subjectArea)));
+  return { created: toInsert.length, existing: existingIds.size };
+}
+
+
 export async function pickPracticeCards(
   db: Db,
   userId: ObjectId,
@@ -189,7 +219,6 @@ export async function pickPracticeCards(
     }
   }
 
-  // Due cards (review mode honours this regardless).
   const dueCards = await col
     .find({
       ...baseFilter,
@@ -200,7 +229,6 @@ export async function pickPracticeCards(
     .limit(opts.maxQuestions)
     .toArray();
 
-  // New cards -- only if mode includes them.
   const wantNew =
     opts.mode === "mixed" ||
     opts.mode === "weak_areas" ||
@@ -378,7 +406,7 @@ export async function computePracticeStats(
   }
 
   const retention =
-    retentionAgg.length > 0 && Number(retentionAgg.total) > 0
+    retentionAgg.length > 0 && Number(retentionAgg?.total ?? 0) > 0
       ? (Number(retentionAgg.correct) / Number(retentionAgg.total)) * 100
       : 0;
 
