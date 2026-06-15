@@ -29,10 +29,10 @@ export function useSetFilter() {
         .filter((s) => s.isActive !== false)
         .map((s) => ({
           ...s,
-          id: String(s.id),
+          id: String(s._id),
         }));
 
-      const ids = new Set(sets.map((s) => s.id).filter(Boolean));
+      const ids = new Set(sets.map((s) => s._id).filter(Boolean));
 
       setSetOptions(sets);
 
@@ -42,7 +42,7 @@ export function useSetFilter() {
           ? requestedSetId
           : selectedSetId && ids.has(selectedSetId)
             ? selectedSetId
-            : sets?.id ?? "";
+            : sets[0]?._id ?? "";
 
       setSelectedSetId(nextSelectedSetId);
     } catch (e) {

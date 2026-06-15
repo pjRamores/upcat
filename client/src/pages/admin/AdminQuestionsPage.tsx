@@ -156,11 +156,8 @@ export default function AdminQuestionsPage() {
       header: "Question",
       render: (r) => (
         <div className="min-w-0">
-          <Link
-            to={`/admin/questions/\${r._id}`}
-            onClick={(e) => e.stopPropagation()}
-            className="hover:underline"
-          >
+          <Link to={`/admin/questions/${r._id}`}
+                className="line-clamp-2 font-medium text-slate-800 hover:text-primary-700">
             <span>{r.questionTextPreview}</span>
           </Link>
           <p className="text-xs text-slate-500">{r.subtopic}</p>
@@ -207,11 +204,8 @@ export default function AdminQuestionsPage() {
       header: "Flags",
       sortable: true,
       render: (r) =>
-        r.flagCount > 0 ? (
-          <Badge variant="danger">{r.flagCount}</Badge>
-        ) : (
-          <span className="text-xs text-slate-400">0</span>
-        ),
+        (r.flagCount > 0 ? <Badge variant="danger">{r.flagCount}</Badge> :
+          <span className="text-xs text-slate-400">0</span>),
     },
     {
       key: "isDeleted",
@@ -238,11 +232,10 @@ export default function AdminQuestionsPage() {
       header: "",
       className: "text-right",
       render: (r) => (
-        <div
-          className="flex justify-end gap-1"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <Link to={`/admin/questions/\${r._id}`}>
+        <div className="flex justify-end gap-1">
+          <Link to={`/admin/questions/${r._id}`}
+                className="rounded-md border border-slate-200 px-2 py-1 text-xs text-primary-600 hover:bg-slate-50"
+          >
             <button
               type="button"
               className="rounded-md border border-slate-200 px-2 py-1 text-xs text-primary-600 hover:bg-primary-50"
@@ -431,7 +424,7 @@ export default function AdminQuestionsPage() {
         onSort={onSort}
         sortBy={sortBy}
         sortOrder={sortOrder}
-        onRowClick={(r) => navigate(`/admin/questions/\${r._id}`)}
+        onRowClick={(r) => navigate(`/admin/questions/${r._id}`)}
       />
 
       <Pagination
@@ -444,7 +437,7 @@ export default function AdminQuestionsPage() {
       <ConfirmDialog
         isOpen={confirmBulk}
         title="Delete selected questions?"
-        message={`This will soft-delete \${selected.size} question(s).`}
+        message={`This will soft-delete ${selected.size} question(s).`}
         confirmText="DELETE"
         confirmLabel="Delete"
         variant="danger"

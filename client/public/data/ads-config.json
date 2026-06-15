@@ -28,7 +28,7 @@
       }
     },
     "video": {
-      "enabled": true,
+      "enabled": false,
       "videoUrl": "",
       "posterUrl": "",
       "clickThroughUrl": "",
