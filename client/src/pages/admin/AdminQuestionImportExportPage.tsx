@@ -53,7 +53,7 @@ type SetOption = {
 
 export default function AdminQuestionImportExportPage() {
   const addToast = useToastStore((s) => s.addToast);
-  const { selectedSetId, setSelectedId, setSelectedSetId, setOptions } = useSetFilter();
+  const {setOptions, selectedSetId, setSelectedSetId} = useSetFilter();
 
   const [format, setFormat] = useState<"json" | "csv">("json");
   const [rawData, setRawData] = useState("");
@@ -91,7 +91,7 @@ export default function AdminQuestionImportExportPage() {
       if (
         parsed &&
         typeof parsed === "object" &&
-        Array.isArray((parsed as { questions?: unknown }).questions)
+        Array.isArray((parsed as { questions?: unknown[] }).questions)
       ) {
         return parsed as {
           passages?: Record<string, unknown>[];
@@ -107,13 +107,13 @@ export default function AdminQuestionImportExportPage() {
 
   const topSubjects = useMemo(() => {
     return Object.entries(datasetInfo?.bySubject ?? {})
-      .sort((a, b) => b - a)
+      .sort((a, b) => b[1] - a[1])
       .slice(0, 5);
   }, [datasetInfo?.bySubject]);
 
   const topDifficulties = useMemo(() => {
     return Object.entries(datasetInfo?.byDifficulty ?? {})
-      .sort((a, b) => b - a)
+      .sort((a, b) => b[1] - a[1])
       .slice(0, 5);
   }, [datasetInfo?.byDifficulty]);
 
@@ -124,10 +124,11 @@ export default function AdminQuestionImportExportPage() {
     }
 
     setLoadingPreview(true);
+    console.log(`parsedData: ${JSON.stringify(parsedData)}`);
     try {
       const result = await adminApi.previewQuestionImport(
         format,
-        parsedData as string | Record<string, unknown>[] | Record<string, unknown>,
+        parsedData as string | Record<string, unknown>[],
         selectedSetId
       );
 
@@ -192,7 +193,6 @@ export default function AdminQuestionImportExportPage() {
 
   const downloadFile = async (kind: "json" | "csv") => {
     setLoadingExport(kind);
-
     try {
       const result = await adminApi.exportQuestions({
         format: kind,
@@ -309,7 +309,6 @@ export default function AdminQuestionImportExportPage() {
             value={selectedSetId ?? ""}
             onChange={(e) => {
               setSelectedSetId(e.target.value);
-              setSelectedId?.(e.target.value);
             }}
             className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
           >

@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ObjectId } from "mongodb";
-import { requireAdmin } from "../../src/auth.js";
-import { getDb } from "../../src/db.js";
-import { logActivity } from "../../src/activityLog.js";
-import { inferDuplicateTier } from "../../src/questionManagement.js";
+import { requireAdmin } from "../../../src/auth.js";
+import { getDb } from "../../../src/db.js";
+import { logActivity } from "../../../src/activityLog.js";
+import { inferDuplicateTier } from "../../../src/questionManagement.js";
 import { validateQuestionPayload } from "./index.js";
 
 interface ImportBatchRow {
@@ -694,81 +694,56 @@ function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {
 }
 
 function parseCsv(text: string): Record<string, unknown>[] {
-  const rowsRaw = parseCsvRows(text);
-  if (rowsRaw.length < 2) return [];
+    const lines = text.replace(/\r\n/g, "\n").split("\n").filter((l) => l.length > 0);
+    if (lines.length < 2) return [];
+    const headers = parseCsvRow(lines[0]).map(h => h.trim());
+    const rows: Record<string, unknown>[] = [];
 
-  const headers = rowsRaw.map((h) => h.trim());
-  const rows: Record<string, unknown>[] = [];
+    for (let i = 1; i < lines.length; i++) {
+        const cells = parseCsvRow(lines[i]);
+        const row: Record<string, unknown> = {};
+        headers.forEach((h, idx) => {
+            if (CSV_HEADERS.includes(h as typeof CSV_HEADERS[number]) || h.length > 0) {
+                row[h] = cells[idx] ?? "";
+            }
+        });
+        rows.push(row);
+    }
 
-  for (let i = 1; i < rowsRaw.length; i++) {
-    const cells = rowsRaw[i];
-    const row: Record<string, unknown> = {};
-
-    headers.forEach((h, idx) => {
-      if (CSV_HEADERS.includes(h as (typeof CSV_HEADERS)[number]) || h.length > 0) {
-        row[h] = cells[idx] ?? "";
-      }
-    });
-
-    rows.push(row);
-  }
-
-  return rows;
+    return rows;
 }
 
-function parseCsvRows(text: string): string[][] {
-  const rows: string[][] = [];
-  let currentRow: string[] = [];
-  let currentCell = "";
-  let inQuotes = false;
+function parseCsvRow(line: string): string[] {
+    const out: string[] = [];
+    let cur = "";
+    let inQuotes = false;
 
-  const normalized = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (inQuotes) {
+            if (ch === '"' && line[i + 1] === '"') {
+                cur += '"';
+                i += 1;
+            } else if (ch === '"') {
+                inQuotes = false;
+            } else {
+                cur += ch;
+            }
+            continue;
+        }
 
-  for (let i = 0; i < normalized.length; i++) {
-    const ch = normalized[i];
-
-    if (inQuotes) {
-      if (ch === '"' && normalized[i + 1] === '"') {
-        currentCell += '"';
-        i += 1;
-      } else if (ch === '"') {
-        inQuotes = false;
-      } else {
-        currentCell += ch;
-      }
-      continue;
+        if (ch === '"') {
+            inQuotes = true;
+            continue;
+        }
+        if (ch === ",") {
+            out.push(cur);
+            cur = "";
+            continue;
+        }
+        cur += ch;
     }
 
-    if (ch === '"') {
-      inQuotes = true;
-      continue;
-    }
-
-    if (ch === ",") {
-      currentRow.push(currentCell);
-      currentCell = "";
-      continue;
-    }
-
-    if (ch === "\n") {
-      currentRow.push(currentCell);
-      const isNonEmptyRow = currentRow.some((cell) => cell.length > 0);
-      if (isNonEmptyRow) {
-        rows.push(currentRow);
-      }
-      currentRow = [];
-      currentCell = "";
-      continue;
-    }
-
-    currentCell += ch;
-  }
-
-  currentRow.push(currentCell);
-  const isNonEmptyRow = currentRow.some((cell) => cell.length > 0);
-  if (isNonEmptyRow) {
-    rows.push(currentRow);
-  }
-
-  return rows;
+    out.push(cur);
+    return out;
 }
