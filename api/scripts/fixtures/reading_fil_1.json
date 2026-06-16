@@ -1,0 +1,1341 @@
+{
+  "passages": [
+    {
+      "_id": "p1_tula",
+      "title": "Alingawngaw ng Lungsod",
+      "subjectArea": "Reading Comprehension",
+      "source": "Koleksyon ng mga Orihinal na Tula",
+      "content": "Sa gubat ng semento at bakal,\nMga puno'y nagtataasang gusali.\nAng ilog ay kalsadang maitim,\nLumalagaslas ang sasakyan, hindi humihinto.\n\nUmuungol ang hangin, ngunit walang dahon na umiindak,\nTanging usok ng tambutso ang yumayakap sa balat.\nHinahanap ko ang himig ng maya,\nNgunit busina ang sumisira sa payapang umaga.\n\nSaan nagtago ang luntiang paraiso?\nNilamon na yata ng nagmamadaling aspalto.\nAng dating amoy ng hamog at lupa,\nNgayo'y pinalitan ng kalawang at makina."
+    },
+    {
+      "_id": "p2_artikulo",
+      "title": "Pagsasaka ng Kape sa Cordillera: Isang Pagsusuri",
+      "subjectArea": "Reading Comprehension",
+      "source": "Lokal na Ulat Agrikultural (Mock)",
+      "content": "Ang kape ay isa sa mga pangunahing produktong agrikultural ng rehiyon ng Cordillera. Dahil sa malamig na klima at mataas na elebasyon, paborito itong taniman ng uri ng kapeng Arabica. Ngunit nitong nakaraang dekada, unti-unting bumababa ang produksyon dahil sa pagbabago ng klima at kakulangan ng suporta sa mga magsasaka.\n\nAyon sa datos ng lokal na kooperatiba, makikita ang ani ng tatlong pangunahing uri ng kape mula 2020 hanggang 2022:\n\n| Uri ng Kape | Ani noong 2020 (kilo) | Ani noong 2021 (kilo) | Ani noong 2022 (kilo) | Presyo bawat Kilo (Php) |\n|---|---|---|---|---|\n| Arabica | 5,000 | 4,200 | 3,500 | 250 |\n| Robusta | 3,000 | 3,100 | 3,200 | 150 |\n| Excelsa | 1,500 | 1,400 | 1,200 | 180 |\n\nKapansin-pansin ang patuloy na pagbaba ng ani ng Arabica, na itinuturing na \"ginto\" ng mga magsasaka dahil sa mataas na halaga nito sa merkado. Upang matugunan ito, naglunsad ang pamahalaan ng \"Oplan Kape-yapaan\" na layuning magbigay ng libreng pataba at pagsasanay sa mga kinauukulan. Sinasabi ng ilang eksperto na kung walang sapat na irigasyon, bale-wala ang mga patabang ito. Kailangang magising ang gobyerno—ang pagsasaka ay hindi natatapos sa pagtatanim; nangangailangan ito ng patuloy na pag-aalaga hanggang sa pag-aani."
+    },
+    {
+      "_id": "p3_paired",
+      "title": "Ang Isyu ng 'Four-Day Workweek' sa Pilipinas",
+      "subjectArea": "Reading Comprehension",
+      "source": "Serye ng mga Editoryal",
+      "content": "Teksto A: Manipesto ng isang Unyon ng mga Manggagawa\nPanahon na upang ipatupad ang 'four-day workweek' sa buong bansa. Ang araw-araw na pag-commute sa trapik ng Metro Manila ay kumikitil hindi lamang sa oras ng mga manggagawa, kundi pati na rin sa kanilang kalusugang pisikal at mental. Kapag nabawasan ang araw ng pasok, tataas ang moral at pagiging produktibo ng mga empleyado dahil mayroon silang sapat na oras para magpahinga at makasama ang pamilya. Hindi ang dami ng araw ang batayan ng sipag, kundi ang kalidad ng trabahong nailalabas.\n\nTeksto B: Pahayag ng Pangulo ng Samahan ng mga Negosyante\nAng mungkahing 'four-day workweek' ay isang ilusyon ng ginhawa na lilikha lamang ng mas malaking problema. Para sa mga industriyang nakadepende sa araw-araw na operasyon tulad ng pabrika, pamilihan, at serbisyo publiko, ang pagbabawas ng araw ng paggawa ay nangangahulugan ng pagkalugi o pagtaas ng presyo ng bilihin na ipapasa rin sa mga mamimili. Bukod pa rito, ang pagpipilit sa kinakailangang oras ng trabaho sa loob lamang ng apat na araw ay magdudulot ng 'burnout' at sobrang pagod dahil mas mahabang oras kada araw ang tatrabahuhin ng isang empleyado. Kailangan nating maging praktikal at huwag magpadala sa mga uso na hindi angkop sa ekonomiya ng isang papaunlad na bansa."
+    },
+    {
+      "_id": "p4_kwento",
+      "title": "Ang Pamana ni Lola Basyang",
+      "subjectArea": "Reading Comprehension",
+      "source": "Maikling Kwento",
+      "content": "Mula pagkabata, paborito na ni Elara na pagmasdan ang kanyang Lola na naghahabi ng banig sa ilalim ng puno ng mangga. Ang mga daliri ng matanda ay tila sumasayaw, mabilis at tiyak, sa pag-ipit ng mga hibla ng buri. \"Apo,\" sabi ng kanyang Lola habang ipinapakita ang isang masalimuot na disenyo ng bituin, \"ang bawat banig ay kwento ng ating pamilya. Hindi ito ginagawa para lamang higaan; ito ay binubuo upang magbigkis sa atin.\"\n\nNang pumanaw ang kanyang Lola, iniwan nito ang isang hindi tapos na banig. Sinubukan ni Elara na ipagpatuloy ito, ngunit laging nababali ang mga hibla kapag hinihila niya nang madiin at puno ng panggigigil. Isang hapon, naalala niya ang bilin ng matanda: \"Huwag mong pilitin ang buri. Sabayan mo ang lambot nito. Ang tibay ng banig ay wala sa higpit ng pagkakahawak, kundi sa pasensya ng naghahabi.\"\n\nSa pagbabago ng kanyang diskarte, naging banayad ang paghabi ni Elara. Unti-unting nabuo ang pattern na naiwan. Napagtanto niya na ang pamanang iniwan sa kanya ay hindi ang mismong banig, kundi ang aral kung paano harapin ang buhay—may sapat na lambot upang umangkop sa sitwasyon, ngunit hindi bumibigay sa mga pagsubok."
+    },
+    {
+      "_id": "p5_editoryal",
+      "title": "Ang Timbang ng Pagsulong",
+      "subjectArea": "Reading Comprehension",
+      "source": "Opinyon ng Pahayagan",
+      "content": "Pinupuri ngayon ng marami ang planong modernisasyon ng sistema ng edukasyon na naglalayong gawing digital ang bawat silid-aralan sa bansa. \"Laptop para sa bawat bata, Internet sa bawat paaralan,\" ito ang matamis na pangako ng Kagawaran. Sa unang tingin, sino nga ba ang aayaw sa ganitong pag-unlad? Ang teknolohiya ay isang mahalagang kasangkapan upang makasabay tayo sa globalisasyon.\n\nNgunit sa likod ng makintab na plano ay isang madilim na realidad.\n\n[Paglalarawan ng Editorial Cartoon: Isang batang mag-aaral na nakayapak at suot ang sira-sirang uniporme ang naglalakad sa tulay na kawayan patawid sa rumaragasang ilog. Sa kabilang dulo ng tulay ay may isang malaking robot na nag-aabot ng isang mamahaling laptop, ngunit ang tulay mismo ay unti-unting gumuho dahil sa bigat ng robot.]\n\nAng pagbuhos ng bilyon-bilyong piso para sa mga gadyet—ayon sa isang ulat, ang P1.5 Bilyon na badyet ay ilalaan pambili ng mga laptop na nagkakahalaga ng P30,000 bawat isa—habang ang mga paaralan sa probinsya ay wala man lang sapat na upuan, maayos na bubong, o kuryente ay isang pagpapakita ng maling prayoridad. Ayon sa pinakahuling datos, mahigit 3,000 paaralan sa mga liblib na lugar ang walang koneksyon sa kuryente. Paano magagamit ang isang laptop kung wala itong masaksakan? Ang tunay na pag-unlad ay nag-uumpisa sa pagpapatibay ng pundasyon. Hindi tayo makakatalon papunta sa digital na panahon kung ang mismong tinutungtungan natin ay bulok."
+    }
+  ],
+  "questions": [
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 1,
+      "questionText": "Ano ang pangunahing kaisipan o tema ng tula?",
+      "choices": {
+        "A": "Ang mabilis na pag-unlad ng ekonomiya sa lungsod.",
+        "B": "Ang pagkawala ng kalikasan dahil sa modernisasyon at urbanisasyon.",
+        "C": "Ang kagandahan ng mga matataas na gusali kumpara sa mga puno.",
+        "D": "Ang kahalagahan ng paggawa ng mas maraming kalsada."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ipinapakita ng tula ang pagpapalit ng mga elemento ng kalikasan (puno, ilog, himig ng maya) ng mga artipisyal na estruktura (gusali, aspalto, busina), na nagpapahiwatig ng pagkasira o pagkawala ng kalikasan dahil sa urbanisasyon.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Figures of Speech",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 2,
+      "questionText": "Ang linyang 'Ang ilog ay kalsadang maitim' ay isang halimbawa ng anong tayutay?",
+      "choices": {
+        "A": "Pagtutulad (Simile)",
+        "B": "Pagwawangis (Metaphor)",
+        "C": "Pagsasatao (Personification)",
+        "D": "Pagmamalabis (Hyperbole)"
+      },
+      "correctAnswer": "B",
+      "rationale": "Direktang inihambing ang 'ilog' sa 'kalsadang maitim' nang hindi gumagamit ng mga salitang panulad tulad ng 'tila', 'parang', o 'kawangis', kaya ito ay pagwawangis o metaphor.",
+      "objectives": [
+        "identify and interpret figures of speech"
+      ],
+      "tags": [
+        "figures-of-speech",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 3,
+      "questionText": "Anong damdamin o tono ang pinangingibabaw ng may-akda sa tula?",
+      "choices": {
+        "A": "Galit at paghihiganti",
+        "B": "Panghihinayang at kalungkutan",
+        "C": "Kagalakan at pag-asa",
+        "D": "Pagkabalisa at takot"
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang paggamit ng mga pariralang 'Hinahanap ko', 'Ngunit busina ang sumisira', at 'Saan nagtago ang luntiang paraiso?' ay nagpapakita ng kalungkutan at panghihinayang sa nawalang kalikasan.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 4,
+      "questionText": "Batay sa tula, ano ang kinahihinatnan ng 'luntiang paraiso'?",
+      "choices": {
+        "A": "Ito ay inilipat sa mga probinsya.",
+        "B": "Ito ay sinunog ng mga negosyante.",
+        "C": "Ito ay tuluyang natabunan ng mga sementadong imprastruktura.",
+        "D": "Ito ay naging isang pampublikong parke sa lungsod."
+      },
+      "correctAnswer": "C",
+      "rationale": "Sa linyang 'Saan nagtago ang luntiang paraiso? Nilamon na yata ng nagmamadaling aspalto', mahihinuhang ang kalikasan ay pinalitan o natabunan na ng semento at aspalto.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 5,
+      "questionText": "Sa konteksto ng tula, ano ang kahulugan ng salitang 'lumalagaslas' na ginamit upang ilarawan ang mga sasakyan?",
+      "choices": {
+        "A": "Walang humpay at tuloy-tuloy na pagdami o paggalaw",
+        "B": "Unti-unting pagkaubos ng tubig",
+        "C": "Pagbuhos ng malakas na ulan",
+        "D": "Pagsabog ng makina ng sasakyan"
+      },
+      "correctAnswer": "A",
+      "rationale": "Ang 'lumalagaslas' ay karaniwang ginagamit sa tubig na tuloy-tuloy ang agos. Sa paglalarawan sa sasakyan ('lumalagaslas ang sasakyan, hindi humihinto'), nangangahulugan ito ng walang patid na paggalaw at pagdami nila sa kalsada.",
+      "objectives": [
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "easy",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Criticism",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 6,
+      "questionText": "Paano ginamit ng may-akda ang konseptwal na balangkas ng kalikasan (hal. gubat, ilog) upang ilarawan ang lungsod?",
+      "choices": {
+        "A": "Ginamit niya ito upang patunayan na ang mga lungsod at probinsya ay magkapareho lamang.",
+        "B": "Ginamit niya ito upang lumikha ng ironiya (irony) na nagpapakita kung gaano ka-artipisyal at kawalan ng buhay ang urbanisasyon.",
+        "C": "Ginamit niya ito bilang literal na gabay kung saan matatagpuan ang natitirang mga puno sa siyudad.",
+        "D": "Ginamit niya ito upang ipagtanggol ang mga pagbabago bilang natural na ebolusyon ng lipunan."
+      },
+      "correctAnswer": "B",
+      "rationale": "Sa pamamagitan ng paggamit ng mga salitang pang-kalikasan para sa mga semento at aspalto (hal. 'gubat ng semento', 'ilog ay kalsada'), nililikha ng tula ang ironiya o pagkabalintunaan na nagbibigay-diin sa hindi likas (unnatural) na estado ng lungsod.",
+      "objectives": [
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-criticism",
+        "hard",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 7,
+      "questionText": "Ano ang maaaring ipagpalagay (conclude) tungkol sa kinikimkim na pagnanasa ng persona sa tula?",
+      "choices": {
+        "A": "Nais niyang bumili ng bagong sasakyan.",
+        "B": "Nagnanais siyang manirahan sa pinakamataas na gusali.",
+        "C": "Nananabik siyang maranasan muli ang kapayapaan at natural na kapaligiran.",
+        "D": "Gusto niyang tumulong sa paggawa ng mas maraming kalsada."
+      },
+      "correctAnswer": "C",
+      "rationale": "Sinasabi niyang 'Hinahanap ko ang himig ng maya' at nagtataka 'Saan nagtago ang luntiang paraiso?', na malinaw na nagpapahiwatig ng kanyang pananabik sa dating tahimik at natural na kapaligiran.",
+      "objectives": [
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "conclusion",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Point of View",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 8,
+      "questionText": "Mula sa anong panauhan o pananaw (point of view) isinulat ang tula?",
+      "choices": {
+        "A": "Unang panauhan",
+        "B": "Ikalawang panauhan",
+        "C": "Ikatlong panauhan (Omniscient)",
+        "D": "Ikatlong panauhan (Limited)"
+      },
+      "correctAnswer": "A",
+      "rationale": "Gumagamit ang persona ng panghalip na 'ko' ('Hinahanap ko ang himig ng maya'), na nagpapahiwatig na ang tula ay nasa unang panauhan (first-person point of view).",
+      "objectives": [
+        "identify the author’s point of view"
+      ],
+      "tags": [
+        "point-of-view",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Figures of Speech",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 9,
+      "questionText": "Ang katagang 'Umuungol ang hangin' ay nagtataglay ng anong tayutay?",
+      "choices": {
+        "A": "Pagmamalabis (Hyperbole)",
+        "B": "Pagwawangis (Metaphor)",
+        "C": "Pagsasatao (Personification)",
+        "D": "Pagtutulad (Simile)"
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang 'umuungol' ay isang katangian o aksyon ng tao o hayop. Ang paglalagay nito bilang aksyon ng walang buhay na 'hangin' ay isang halimbawa ng pagsasatao o personification.",
+      "objectives": [
+        "identify and interpret figures of speech"
+      ],
+      "tags": [
+        "figures-of-speech",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_tula",
+      "questionNumber": 10,
+      "questionText": "Kung papalitan ang pamagat ng tula, ano ang pinakaangkop na ipalit dito?",
+      "choices": {
+        "A": "Ang Kinabukasan ng Teknolohiya",
+        "B": "Panaghoy ng Kalikasan sa Siyudad",
+        "C": "Buhay sa Matataas na Gusali",
+        "D": "Ang Kagandahan ng Semento"
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang tula ay nagpapahayag ng pagdadalamhati o panaghoy sa pagkawala ng kalikasan sa loob ng urbanisadong lungsod, kaya angkop ang 'Panaghoy ng Kalikasan sa Siyudad'.",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 11,
+      "questionText": "Ano ang pangunahing paksa ng artikulo?",
+      "choices": {
+        "A": "Ang pamamaraan ng paggawa ng kapeng Arabica.",
+        "B": "Ang kalagayan, hamon, at produksyon ng pagsasaka ng kape sa Cordillera.",
+        "C": "Ang tunggalian ng pamahalaan at ng mga eksperto sa agrikultura.",
+        "D": "Ang pag-export ng kape mula sa Cordillera patungong ibang bansa."
+      },
+      "correctAnswer": "B",
+      "rationale": "Tinalakay ng artikulo ang kabuuang kalagayan ng industriya ng kape sa Cordillera, ang mga hamon nito tulad ng climate change at kakulangan sa irigasyon, at ang datos ng produksyon.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 12,
+      "questionText": "Ayon sa talahanayan, aling uri ng kape ang nagtala ng pinakamataas na ani noong taong 2022?",
+      "choices": {
+        "A": "Arabica",
+        "B": "Robusta",
+        "C": "Excelsa",
+        "D": "Wala sa nabanggit dahil pantay-pantay ang lahat."
+      },
+      "correctAnswer": "A",
+      "rationale": "Base sa talahanayan sa hanay ng 2022, ang Arabica ay may 3,500 kilo, Robusta ay 3,200 kilo, at Excelsa ay 1,200 kilo. Pinakamataas ang Arabica.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 13,
+      "questionText": "Kung mabebenta ang lahat ng inaning kapeng Arabica noong 2021, magkano ang kabuuang halaga (gross revenue) na kikitain mula rito?",
+      "choices": {
+        "A": "Php 875,000",
+        "B": "Php 1,000,000",
+        "C": "Php 1,050,000",
+        "D": "Php 1,250,000"
+      },
+      "correctAnswer": "C",
+      "rationale": "Noong 2021, ang ani ng Arabica ay 4,200 kilo. Ang presyo nito kada kilo ay Php 250. 4,200 x 250 = 1,050,000. Ang tamang sagot ay Php 1,050,000.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "medium",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 14,
+      "questionText": "Ano ang kabuuang diperensya (difference) sa pinagsama-samang ani ng Robusta at Excelsa sa loob ng tatlong taon (2020-2022)?",
+      "choices": {
+        "A": "3,100 kilo",
+        "B": "4,100 kilo",
+        "C": "5,200 kilo",
+        "D": "9,300 kilo"
+      },
+      "correctAnswer": "C",
+      "rationale": "Kabuuang ani ng Robusta (3 yrs) = 3,000 + 3,100 + 3,200 = 9,300 kilo. Kabuuang ani ng Excelsa (3 yrs) = 1,500 + 1,400 + 1,200 = 4,100 kilo. Diperensya = 9,300 - 4,100 = 5,200 kilo.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Skimming and Scanning",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 15,
+      "questionText": "Sa anong taon naitala ang pinakamababang dami ng ani para sa kapeng Excelsa?",
+      "choices": {
+        "A": "2020",
+        "B": "2021",
+        "C": "2022",
+        "D": "Lahat ng taon ay pantay-pantay."
+      },
+      "correctAnswer": "C",
+      "rationale": "Sa mabilis na pagtingin (scanning) sa hanay ng Excelsa, makikita na ang ani ay 1,500 noong 2020, 1,400 noong 2021, at pinakamababa na 1,200 noong 2022.",
+      "objectives": [
+        "use skimming and scanning strategies effectively"
+      ],
+      "tags": [
+        "skimming",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 16,
+      "questionText": "Alin sa mga sumusunod ang maituturing na opinyon mula sa teksto?",
+      "choices": {
+        "A": "Ang presyo ng kapeng Arabica ay Php 250 kada kilo.",
+        "B": "Ang ani ng Robusta noong 2020 ay 3,000 kilo.",
+        "C": "Sinasabi ng ilang eksperto na kung walang sapat na irigasyon, bale-wala ang mga patabang ito.",
+        "D": "Ang kape ay tinatanim sa rehiyon ng Cordillera."
+      },
+      "correctAnswer": "C",
+      "rationale": "Bagamat galing sa eksperto, ang pahayag na 'bale-wala ang pataba kung walang irigasyon' ay isang pagtatasa (evaluation) o opinyon na ginagamit upang palawigin ang argumento ng artikulo, kumpara sa mga purong estatistika o katotohanang heograpikal.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-opinion",
+        "medium",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Assumptions",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 17,
+      "questionText": "Batay sa paglunsad ng pamahalaan ng 'Oplan Kape-yapaan', ano ang ipinagpalagay (assumed) ng mga opisyal na magiging pangunahing solusyon sa pagbaba ng ani?",
+      "choices": {
+        "A": "Ang kakulangan sa tubig ang pinakamalaking problema ng mga magsasaka.",
+        "B": "Sapat na ang pagbibigay ng libreng pataba at pagsasanay upang maibangon ang produksyon ng kape.",
+        "C": "Hindi na kailangang magtanim ng Arabica at dapat lumipat na sa Robusta.",
+        "D": "Kasalanan ng mga magsasaka kung bakit bumababa ang ani."
+      },
+      "correctAnswer": "B",
+      "rationale": "Inilunsad ng pamahalaan ang programa (pataba at pagsasanay) upang 'matugunan ito' (ang pagbaba ng ani). Pinapakita nito ang palagay nilang ang mga interbensyong ito ay magiging sapat, na siya namang tinutulan ng mga eksperto sa susunod na pangungusap.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "hard",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 18,
+      "questionText": "Ano ang tinutukoy ng salitang 'kinauukulan' sa loob ng teksto?",
+      "choices": {
+        "A": "Mga turista na bumibisita sa Cordillera",
+        "B": "Mga pangkaraniwang mamimili sa palengke",
+        "C": "Mga awtoridad, opisyal, o mga taong may pananagutan",
+        "D": "Mga nagtitinda ng kape sa ibang bansa"
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang 'kinauukulan' ay nangangahulugang mga taong may katungkulan o awtoridad na may kinalaman sa isang isyu, tulad ng gobyerno o ahensya ng agrikultura.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 19,
+      "questionText": "Ilang porsyento (percentage) ang naging pagbaba ng inaning kapeng Arabica mula taong 2020 hanggang 2022?",
+      "choices": {
+        "A": "15%",
+        "B": "20%",
+        "C": "30%",
+        "D": "42%"
+      },
+      "correctAnswer": "C",
+      "rationale": "Formula para sa percentage decrease: ((Old Value - New Value) / Old Value) x 100. (5000 - 3500) / 5000 = 1500 / 5000 = 0.30 o 30%.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "very_hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_artikulo",
+      "questionNumber": 20,
+      "questionText": "Bakit maituturing na 'ginto' ang kapeng Arabica para sa mga magsasaka?",
+      "choices": {
+        "A": "Dahil ang kulay ng butil nito ay kumikinang na dilaw.",
+        "B": "Dahil ito lamang ang uri ng kape na tumutubo sa Pilipinas.",
+        "C": "Dahil nagbibigay ito ng pinakamalaking kita kada kilo kumpara sa ibang uri.",
+        "D": "Dahil ang mga eksperto lamang ang nakakaalam kung paano ito itanim."
+      },
+      "correctAnswer": "C",
+      "rationale": "Batay sa talahanayan at sa mismong teksto ('dahil sa mataas na halaga nito sa merkado'), ang Arabica ay nagkakahalaga ng Php 250/kilo (pinakamataas sa tatlo), kung kaya't maituturing itong 'ginto' o napakahalaga para sa kabuhayan ng mga magsasaka.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 21,
+      "questionText": "Ano ang pinakasentrong argumento ng Teksto A?",
+      "choices": {
+        "A": "Ang apat na araw na pasok ay magpapabagal sa ekonomiya.",
+        "B": "Dapat ipatupad ang 'four-day workweek' dahil mapapabuti nito ang kapakanan at produktibidad ng mga manggagawa.",
+        "C": "Dapat ipagbawal ang pagbili ng mga sasakyan sa Metro Manila para mabawasan ang trapik.",
+        "D": "Ang dami ng oras ng trabaho ay ang tanging batayan ng kasipagan ng isang empleyado."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang Teksto A ay nagtataguyod na dapat nang ipatupad ang 4-day workweek upang bigyan ng sapat na pahinga ang manggagawa at tuloy mapataas ang kalidad ng kanilang trabaho.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 22,
+      "questionText": "Ano ang pangunahing babala na ipinaparating ng Teksto B?",
+      "choices": {
+        "A": "Lahat ng empleyado ay magkakasakit kapag hindi binawasan ang trabaho.",
+        "B": "Ang 4-day workweek ay magdudulot ng kalugihan sa negosyo, pagtaas ng presyo, at pagkapagod ng manggagawa.",
+        "C": "Walang kakayahan ang Pilipinas na magpatayo ng karagdagang pabrika.",
+        "D": "Ang pamilya ay mas mahalaga kaysa sa anumang halaga ng pera."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang Teksto B ay malinaw na tumututol sa polisiyang ito, na nagbababala na lilikha ito ng 'mas malaking problema' tulad ng kalugihan at 'burnout'.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesize and Compare",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 23,
+      "questionText": "Saang aspeto pangunahing nagkakaiba ng pananaw ang dalawang teksto?",
+      "choices": {
+        "A": "Kung paano nakaaapekto ang bilang ng araw ng paggawa sa kalagayan at output ng manggagawa.",
+        "B": "Kung ilang oras ang pamantayan para sa batas paggawa sa Pilipinas.",
+        "C": "Kung sino ang dapat maging Pangulo ng samahan ng mga negosyante.",
+        "D": "Kung dapat bang gumamit ng pribadong sasakyan ang mga empleyado."
+      },
+      "correctAnswer": "A",
+      "rationale": "Ang Teksto A ay naniniwalang magdudulot ng pahinga at mataas na produktibidad ang patakaran, samantalang ang Teksto B ay naniniwalang magdudulot ito ng 'burnout' at kalugihan.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesize",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 24,
+      "questionText": "Paano pinangatwiranan sa Teksto A na tataas ang pagiging produktibo ng empleyado sa pamamagitan ng apat na araw na trabaho?",
+      "choices": {
+        "A": "Dahil tataas ang kanilang sweldo nang doble.",
+        "B": "Dahil mas madalas na babantayan ng mga manager ang kanilang ginagawa.",
+        "C": "Dahil magkakaroon sila ng sapat na oras upang makapagpahinga at mag-recover mula sa stress.",
+        "D": "Dahil gagamit sila ng mga mas modernong computer sa pagtatrabaho."
+      },
+      "correctAnswer": "C",
+      "rationale": "Ipinahayag ng Teksto A na kapag nabawasan ang araw ng pasok, magkakaroon ang manggagawa ng 'sapat na oras para magpahinga at makasama ang pamilya' na magreresulta sa pagtaas ng moral at produktibidad.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 25,
+      "questionText": "Ayon sa Teksto B, anong kadahilanan ang magdudulot ng 'burnout' sa mga empleyado sa ilalim ng 4-day workweek?",
+      "choices": {
+        "A": "Mas matagal at pinahabang oras ng trabaho bawat araw upang mabuo ang kinakailangang oras linggo-linggo.",
+        "B": "Laging siksikan ang sasakyan kapag apat na araw lang ang pasok.",
+        "C": "Hindi na babayaran ang kanilang overtime pay.",
+        "D": "Matatanggal sila sa trabaho anumang oras."
+      },
+      "correctAnswer": "A",
+      "rationale": "Pinapanindigan ng Teksto B na ang 'pagpipilit sa kinakailangang oras ng trabaho sa loob lamang ng apat na araw' (ibig sabihin, mas mahabang oras araw-araw) ang siyang magdudulot ng sobrang pagod o burnout.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesize and Compare",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 26,
+      "questionText": "Kung sasagutin ng may-akda ng Teksto A ang sentimyento ng Teksto B tungkol sa 'pagkalugi' ng negosyo, ano ang pinakamalamang niyang sasabihin batay sa kanyang naunang pahayag?",
+      "choices": {
+        "A": "Ang pamahalaan na ang dapat magbayad sa lahat ng lugi ng mga negosyante.",
+        "B": "Walang pakialam ang unyon kung malugi man ang mga mayayaman.",
+        "C": "Ang de-kalidad at nakapokus na output mula sa nakapagpahingang manggagawa ay mas mahalaga at sapat upang maiwasan ang pagkalugi kaysa sa bilang ng araw.",
+        "D": "Dapat taasan ang presyo ng lahat ng bilihin para pambayad sa araw ng pahinga."
+      },
+      "correctAnswer": "C",
+      "rationale": "Idiniin ng Teksto A na 'Hindi ang dami ng araw ang batayan ng sipag, kundi ang kalidad ng trabaho.' Kung gayon, igigiit niya na ang mataas na kalidad ng trabaho mula sa pahingadong empleyado ang magpapasigla sa negosyo, hindi basta dami ng oras.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesize",
+        "hard",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 27,
+      "questionText": "Ano ang ibig sabihin ng pariralang 'ilusyon ng ginhawa' gaya ng pagkakagamit sa Teksto B?",
+      "choices": {
+        "A": "Isang pangarap na natupad na",
+        "B": "Isang bagay na mukhang paborable at nakakaluwag ngunit sa katotohanan ay hindi",
+        "C": "Isang magic trick na ginagamit sa mga pabrika",
+        "D": "Isang uri ng gamot para mapawi ang pagod"
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang 'ilusyon' ay nangangahulugang huwad o panandaliang pagpapakita. Ipinapahiwatig nitong akala ng mga tao ay maginhawa ang 4-day workweek, ngunit sa huli ay pahirap pala ito.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Analysis",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 28,
+      "questionText": "Kung ang isang empleyado ay nagtatrabaho ng 8 oras kada araw sa loob ng 6 na araw (lumang sistema), at ililipat siya sa 'four-day workweek' kung saan magtatrabaho siya ng 10 oras kada araw, ano ang kabuuang pagbabago sa kanyang lingguhang oras ng trabaho?",
+      "choices": {
+        "A": "Dadami ang kanyang oras ng paggawa nang 2 oras.",
+        "B": "Mababawasan ang kanyang kabuuang oras nang 8 oras.",
+        "C": "Dadami ang kanyang kabuuang oras nang 8 oras.",
+        "D": "Walang pagbabago sa kabuuang oras ng paggawa."
+      },
+      "correctAnswer": "B",
+      "rationale": "Lumang sistema: 8 oras x 6 araw = 48 oras linggo-linggo. Bagong sistema: 10 oras x 4 araw = 40 oras linggo-linggo. Ang pagbabago ay 48 - 40 = 8 oras na pagbawas.",
+      "objectives": [
+        "make valid inferences"
+      ],
+      "tags": [
+        "logic",
+        "medium",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 29,
+      "questionText": "Ano ang pangunahing layunin ng may-akda sa Teksto B?",
+      "choices": {
+        "A": "Uudyukan ang pamahalaan na taasan ang sahod ng mga empleyado.",
+        "B": "Turuan ang mga pabrika kung paano magpatakbo ng makinarya.",
+        "C": "Manghikayat na tutulan ang 4-day workweek dahil sa praktikal na epekto nito sa negosyo at ekonomiya.",
+        "D": "Kumbinsihin ang mga tao na mag-rally laban sa Pangulo."
+      },
+      "correctAnswer": "C",
+      "rationale": "Sa pamamagitan ng pagbibigay ng babala sa kalugihan, pagtaas ng presyo, at burnout, malinaw na layon ng sumulat na tutulan at ibasura ang pagpapatupad ng panukalang 4-day workweek.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Point of View",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 30,
+      "questionText": "Mula sa anong pananaw o bias nagmumula ang argumento ng Teksto B?",
+      "choices": {
+        "A": "Pananaw ng isang inang inaalala ang edukasyon ng mga anak.",
+        "B": "Pananaw ng mga korporasyon at negosyanteng inaalala ang kakayahang kumita (profitability) at pagpapatuloy ng operasyon.",
+        "C": "Pananaw ng isang ordinaryong pasahero ng jeep na pagod na sa trapik.",
+        "D": "Pananaw ng isang doktor na nakatutok sa kalusugan ng isip."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang Teksto B ay nagmula sa 'Pangulo ng Samahan ng mga Negosyante' at nakapokus sa epekto ng polisiya sa 'pabrika, pamilihan, pagkalugi, at presyo ng bilihin,' na nagpapahiwatig ng bias tungo sa interes ng mga negosyo at kapital.",
+      "objectives": [
+        "identify the author’s point of view"
+      ],
+      "tags": [
+        "point-of-view",
+        "hard",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 31,
+      "questionText": "Ano ang pangunahing mensahe ng kwento tungkol kay Elara at sa banig?",
+      "choices": {
+        "A": "Ang paggawa ng banig ay isang laos na tradisyon na dapat kalimutan.",
+        "B": "Mas mabilis matapos ang trabaho kapag ginagamitan ito ng galit at gigil.",
+        "C": "Ang pamana ng isang magulang/nakatatanda ay madalas makikita sa mga aral ng pagiging pasensyoso at marunong umangkop sa buhay.",
+        "D": "Ang mga bituin sa langit ay mahirap ilagay bilang disenyo sa banig."
+      },
+      "correctAnswer": "C",
+      "rationale": "Natutunan ni Elara na ang tunay na pamana ay hindi lamang materyal na banig, kundi ang leksyon sa paghabi nito—ang lambot, pasensya, at katatagan sa pagharap sa mga pagsubok sa buhay.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 32,
+      "questionText": "Bakit nababali ang mga hibla ng buri noong una itong subukang habihin ni Elara?",
+      "choices": {
+        "A": "Dahil marupok at bulok na ang materyales na naiwan ng kanyang Lola.",
+        "B": "Dahil ginamitan niya ito ng sobrang higpit, panggigigil, at kawalan ng pasensya.",
+        "C": "Dahil gumamit siya ng gunting sa halip na mga daliri.",
+        "D": "Dahil ang pattern ng bituin ay imposibleng tapusin."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ayon sa teksto, 'laging nababali ang mga hibla kapag hinihila niya nang madiin at puno ng panggigigil.'",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 33,
+      "questionText": "Anong tono ang mapapansin sa boses ng Lola habang kinakausap niya ang kanyang apo?",
+      "choices": {
+        "A": "Mahigpit at mapanumbat",
+        "B": "Nagmamadali at kinakabahan",
+        "C": "Mahinahon at mapag-aruga",
+        "D": "Mapang-inis at sarkastiko"
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang paraan ng pagpapaliwanag ng Lola ukol sa banig ('Apo... ang bawat banig ay kwento...') at ang kanyang mga bilin na naghihikayat ng pasensya ay nagpapahiwatig ng tonong kalmado at mapag-aruga.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Criticism",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 34,
+      "questionText": "Sa konteksto ng pagsusuring pampanitikan, ano ang pinakamalalim na sinisimbolo ng 'hindi tapos na banig' na naiwan ng Lola?",
+      "choices": {
+        "A": "Ang katamaran ng nakatatandang henerasyon na tapusin ang kanilang mga gawain.",
+        "B": "Ang hindi inaasahang kamatayan na pumipigil sa mga pangarap.",
+        "C": "Ang tradisyon, kultura, at responsibilidad na kailangang ipagpatuloy at tapusin ng susunod na henerasyon.",
+        "D": "Ang mga sikreto ng pamilya na hindi dapat ibunyag sa iba."
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang naiwang banig na pinilit tapusin ni Elara ay sumisimbolo sa pag-ako ng baton o pagpapatuloy ng tradisyon at katatagan na ipinamana ng kanyang lola sa kanya bilang bahagi ng susunod na henerasyon.",
+      "objectives": [
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-criticism",
+        "hard",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 35,
+      "questionText": "Ano ang ibig sabihin ng salitang 'masalimuot' batay sa pagkakagamit nito sa unang talata?",
+      "choices": {
+        "A": "Pangit at hindi maayos tignan",
+        "B": "Kumplikado at maraming detalye",
+        "C": "Simpleng-simple at mabilis gawin",
+        "D": "Puno ng dumi o putik"
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang disenyong bituin ay 'masalimuot', ibig sabihin ito ay komplikado o intricately designed at mahirap gawin, kaya nangangailangan ng 'mabilis at tiyak' na mga daliri.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Supporting Details",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 36,
+      "questionText": "Ayon sa kwento, anong materyales ang ginagamit sa paghabi ng banig na inilarawan?",
+      "choices": {
+        "A": "Rattan",
+        "B": "Kawayan",
+        "C": "Buri",
+        "D": "Abaca"
+      },
+      "correctAnswer": "C",
+      "rationale": "Tahusang binanggit sa teksto ang 'pag-ipit ng mga hibla ng buri'.",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "supporting-details",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Implied Meaning",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 37,
+      "questionText": "Ano ang ipinapahiwatig ng bilin na 'Sabayan mo ang lambot nito' sa pamumuhay ng isang tao?",
+      "choices": {
+        "A": "Maging mahina at hayaang iba ang magdesisyon para sa iyo.",
+        "B": "Matutong umangkop sa takbo ng sitwasyon sa halip na palaging labanan at ipilit ang sariling gusto.",
+        "C": "Laging umiwas sa mahihirap na responsibilidad.",
+        "D": "Maging malambot ang katawan sa pamamagitan ng ehersisyo."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang 'lambot' dito ay isang metapora para sa kakayahang umangkop (flexibility o adaptability). Ibig sabihin, hindi idinadaan sa pwersa o galit ang problema, kundi pinapakiramdaman at iniaakma ang sarili sa sitwasyon.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "implied-meaning",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Assumptions",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 38,
+      "questionText": "Bago niya inalala ang bilin ng kanyang Lola, ano ang maling palagay (false assumption) na nagdikta sa mga kilos ni Elara sa paghabi?",
+      "choices": {
+        "A": "Inakala niyang ang banig ay para lamang sa mga mahihirap.",
+        "B": "Ipinalagay niya na ang paggamit ng lakas at labis na diin ay magbubunga ng mas matibay at mabilis na resulta.",
+        "C": "Inisip niyang magagalit ang kanyang Lola kapag hindi niya tapusin ang banig.",
+        "D": "Naniwala siya na ang ibang materyales ay mas maganda kaysa sa buri."
+      },
+      "correctAnswer": "B",
+      "rationale": "Dahil 'hinihila niya nang madiin at puno ng panggigigil' bago niya natutunang maging banayad, nagpapakita ito ng maling pag-aakala na ang pwersa o higpit ay katumbas ng tagumpay o tibay.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "hard",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 39,
+      "questionText": "Kung papalitan ang pamagat ng teksto, alin sa mga sumusunod ang pinakaangkop na magbubuod sa talinghaga ng kwento?",
+      "choices": {
+        "A": "Ang Puno ng Mangga sa Likod-Bahay",
+        "B": "Mga Paraan sa Paggawa ng Banig",
+        "C": "Ang Hibla ng Katatagan",
+        "D": "Ang Buhay Dalaga ni Elara"
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang 'Ang Hibla ng Katatagan' ay gumagamit ng elementong literal sa kwento (hibla) ngunit iniuugnay sa pinakamalaking aral ng teksto, ang pagkakaroon ng katatagan o resilience (hindi bumibigay).",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Mathematics",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "p4_kwento",
+      "questionNumber": 40,
+      "questionText": "Ipagpalagay natin na nang nabubuhay pa ang Lola ni Elara, nakakagawa siya ng 1 masalimuot na disenyong bituin kada 3 oras. Kung ang isang buong banig ay nangangailangan ng 12 bituin upang makumpleto, at ang Lola ay naghahabi lamang ng eksaktong 4 na oras kada araw, ilang araw ang aabutin bago niya makumpleto ang isang buong banig?",
+      "choices": {
+        "A": "6 araw",
+        "B": "8 araw",
+        "C": "9 araw",
+        "D": "12 araw"
+      },
+      "correctAnswer": "C",
+      "rationale": "Kabuuan ng oras na kailangan: 12 bituin x 3 oras kada bituin = 36 na oras kabuuan. Oras na ginugugol kada araw: 4 oras. Kabuuang araw: 36 oras / 4 oras kada araw = 9 na araw.",
+      "objectives": [
+        "make valid inferences"
+      ],
+      "tags": [
+        "logic",
+        "very_hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 41,
+      "questionText": "Ano ang pangunahing posisyon ng editoryal?",
+      "choices": {
+        "A": "Dapat bigyan ng dalawang laptop ang bawat bata upang makasabay sa globalisasyon.",
+        "B": "Ang teknolohiya ang pinakamahalagang aspeto ng pag-aaral ng mga kabataan ngayon.",
+        "C": "Mali ang pamamahagi ng pondo; dapat unahin ng pamahalaan ang mga batayang pangangailangan sa paaralan bago ang digitalisasyon.",
+        "D": "Dapat ipasara ang mga paaralang walang kuryente sa mga liblib na lugar."
+      },
+      "correctAnswer": "C",
+      "rationale": "Paulit-ulit na iginiit ng may-akda na 'maling prayoridad' ang pagbili ng gadgets habang sira ang mga pasilidad at walang kuryente. 'Ang tunay na pag-unlad ay nag-uumpisa sa pagpapatibay ng pundasyon.'",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Cartoon",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 42,
+      "questionText": "Sa paglalarawan ng Editorial Cartoon, ano ang isinisimbolo ng 'malaking robot na nag-aabot ng isang mamahaling laptop'?",
+      "choices": {
+        "A": "Ang pananakop ng mga dayuhang korporasyon sa bansa.",
+        "B": "Ang programang modernisasyon at marangyang pangako ng gobyerno hinggil sa teknolohiya.",
+        "C": "Ang guro na nagsisikap turuan ang bata kahit walang gamit.",
+        "D": "Ang katamaran ng mga mag-aaral na umaasa sa teknolohiya upang pumasa."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang robot ay kinatawan ng mataas na teknolohiya na inilalako ng Kagawaran ('Laptop para sa bawat bata'), na pilit ipinapasok sa sistema ng edukasyon (inaabot sa bata).",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "cartoon-interpretation",
+        "hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Cartoon",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 43,
+      "questionText": "Ano ang ibig pakahulugan ng unti-unting pagguho ng tulay na kawayan dahil sa bigat ng robot?",
+      "choices": {
+        "A": "Ang kasalukuyang mahinang imprastruktura ay hindi sapat o handa para suportahan ang mga modernong programa.",
+        "B": "Giniba ng robot ang tulay para hindi na makauwi ang bata.",
+        "C": "Ang tulay na kawayan ay mas matibay kaysa sa tulay na semento.",
+        "D": "May paparating na bagyo na sumira sa kalikasan."
+      },
+      "correctAnswer": "A",
+      "rationale": "Ang 'tulay na kawayan' ay kumakatawan sa kasalukuyang (at mahinang) basikong pasilidad ng bansa. Ang pagguho nito ay nangangahulugang guguho ang sistema kung pilit papatawan ng 'mabigat' at hindi angkop na modernisasyon nang walang pundasyon.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "cartoon-interpretation",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 44,
+      "questionText": "Alin sa mga sumusunod na pahayag mula sa teksto ang naglalaman ng matinding opinyon (paninindigan) sa halip na simpleng datos?",
+      "choices": {
+        "A": "Ayon sa ulat, P1.5 Bilyon ang badyet para sa mga laptop.",
+        "B": "Ang tunay na pag-unlad ay nag-uumpisa sa pagpapatibay ng pundasyon.",
+        "C": "Mahigit 3,000 paaralan sa mga liblib na lugar ang walang koneksyon sa kuryente.",
+        "D": "Ang halaga ng isang laptop ay P30,000 bawat isa."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang letrang B ay isang normatibong paninindigan o paniniwala ng may-akda tungkol sa kung ano ang pamantayan ng 'tunay na pag-unlad', habang ang ibang pagpipilian ay gumagamit ng nabibigyang-katwirang estadistika o presyo.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-opinion",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 45,
+      "questionText": "Paano isinuporta ng may-akda ang kanyang paratang na ang inisyatiba ng Kagawaran ay isang 'maling prayoridad'?",
+      "choices": {
+        "A": "Itinuro niya na ang lahat ng mga guro ay tamad magturo gamit ang computer.",
+        "B": "Ibinida niya na ang mga laptop na bibilhin ay sira-sira at galing sa black market.",
+        "C": "Ipinakita niya ang lohikal na kontradiksyon ng pagbili ng laptop sa mga paaralang walang upuan, bubong, o kuryente.",
+        "D": "Sinabi niyang ang pagbasa ng libro ay mas mabisa pa rin kaysa sa internet."
+      },
+      "correctAnswer": "C",
+      "rationale": "Binigyang-diin ng may-akda ang kawalan ng saysay (ilogical) ng pagbili ng gadgets para sa mga paaralang wala man lang basic needs tulad ng kuryente ('Paano magagamit ang laptop kung walang masaksakan?').",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Skimming and Scanning",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 46,
+      "questionText": "Ilang mga paaralan ang natukoy ng huling datos na walang koneksyon sa kuryente?",
+      "choices": {
+        "A": "1,500 paaralan",
+        "B": "Mahigit 3,000 paaralan",
+        "C": "Eksaktong 30,000 paaralan",
+        "D": "Mahigit 10,000 paaralan"
+      },
+      "correctAnswer": "B",
+      "rationale": "Mabilis na makikita sa teksto ang eksaktong datos: 'mahigit 3,000 paaralan sa mga liblib na lugar ang walang koneksyon sa kuryente.'",
+      "objectives": [
+        "use skimming and scanning strategies effectively"
+      ],
+      "tags": [
+        "skimming",
+        "easy",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 47,
+      "questionText": "Sa pariralang 'makintab na plano', ano ang kahulugan ng 'makintab' sa konteksto ng pangungusap?",
+      "choices": {
+        "A": "Nilagyan ng wax para magmukhang bago.",
+        "B": "Isang plano na sadyang inilimbag sa mamahaling papel.",
+        "C": "Magandang pakinggan at kaakit-akit sa labas, ngunit posibleng hungkag sa reyalidad.",
+        "D": "Isang teknolohikal na aparato na umiilaw sa dilim."
+      },
+      "correctAnswer": "C",
+      "rationale": "Ginamit ang salitang 'makintab' upang isalarawan ang programa na maganda ang imahe o presentasyon ('laptop para sa bawat bata'), ngunit nang sundan ng salitang 'madilim na realidad', ipinakita itong nakapanlilinlang o hungkag sa substansya.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Mathematics",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 48,
+      "questionText": "Ayon sa isiningit na datos tungkol sa badyet, kung may kabuuang P1.5 Bilyon (P1,500,000,000) na ilalaan at ang bawat laptop ay nagkakahalaga ng P30,000, ilang piraso ng laptop ang mabibili mula sa badyet na ito?",
+      "choices": {
+        "A": "5,000",
+        "B": "15,000",
+        "C": "30,000",
+        "D": "50,000"
+      },
+      "correctAnswer": "D",
+      "rationale": "Hatiin ang kabuuang badyet sa presyo ng bawat isa: 1,500,000,000 ÷ 30,000. Pagkansela ng apat na zero: 150,000 ÷ 3 = 50,000. 50,000 na laptop ang mabibili.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "logic",
+        "hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 49,
+      "questionText": "Anong saloobin ang ipinapakita ng may-akda patungkol sa 'Kagawaran' na binanggit sa talata?",
+      "choices": {
+        "A": "Puno ng tiwala at pag-asa sa kakayahan nilang lutasin ang problema.",
+        "B": "Sarkastiko, kritikal, at nagdududa sa ganda ng kanilang mga pangako.",
+        "C": "Natatakot at nakikiusap na huwag ituloy ang programa.",
+        "D": "Naiinggit dahil hindi siya bahagi ng pamahalaan."
+      },
+      "correctAnswer": "B",
+      "rationale": "Ang paggamit ng mga katagang 'matamis na pangako' at pagbunyag na ang plano ay may 'madilim na realidad' ay nagpapakita ng sarkasmo at kritikal na pagsusuri laban sa pamamahala at prayoridad ng Kagawaran.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_editoryal",
+      "questionNumber": 50,
+      "questionText": "Batay sa huling pangungusap ng editoryal, ano ang nais isulong na unang hakbang bago tuluyang tumawid sa digitalisasyon?",
+      "choices": {
+        "A": "Mag-imbita ng mas maraming robot sa loob ng mga silid-aralan.",
+        "B": "Turuan ang mga estudyante kung paano gumawa ng laptop.",
+        "C": "Siguraduhing sapat at matibay muna ang mga pangunahing pasilidad tulad ng upuan, bubong, at kuryente.",
+        "D": "Tanggapin na lang natin na laging huli ang Pilipinas pagdating sa teknolohiya."
+      },
+      "correctAnswer": "C",
+      "rationale": "Ang konklusyon na 'Hindi tayo makakatalon papunta sa digital na panahon kung ang mismong tinutungtungan natin ay bulok' ay malinaw na panawagan na kumpunihin at patibayin muna ang mga basic na imprastruktura (pundasyon).",
+      "objectives": [
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "conclusion",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    }
+  ]
+}

@@ -1,0 +1,1502 @@
+[
+  {
+    "subjectArea": "Science",
+    "subtopic": "Cell Structure and Function",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "A cell biologist treats a mammalian cell culture with a drug that selectively inhibits the function of the cis-Golgi network. Which of the following cellular processes will be most directly and immediately disrupted?",
+    "choices": {
+      "A": "Synthesis of ribosomal RNA subunits within the nucleolus",
+      "B": "Modification and sorting of proteins arriving from the rough endoplasmic reticulum",
+      "C": "Hydrolytic degradation of phagocytosed macromolecules within lysosomes",
+      "D": "The generation of transmembrane proton gradients across the inner mitochondrial membrane"
+    },
+    "correctAnswer": "B",
+    "rationale": "The cis-Golgi network is the receiving face of the Golgi apparatus. It directly accepts transport vesicles containing newly synthesized proteins coming from the rough endoplasmic reticulum (RER). Inhibiting this section primarily disrupts the modification (such as glycosylation) and subsequent sorting of these proteins.",
+    "objectives": [
+      "cell structure and function"
+    ],
+    "tags": [
+      "biology",
+      "cell-biology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biomolecules",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "Biomolecules are broken down or synthesized via specific biochemical reactions. Which of the following correctly pairs a macromolecule polymer with its constituent monomer and the type of linkage holding the monomers together?",
+    "choices": {
+      "A": "Glycogen → Glucose → Peptide bond",
+      "B": "DNA → Nucleotide → Phosphodiester bond",
+      "C": "Triglyceride → Glycerol → Glycosidic linkage",
+      "D": "Hemoglobin → Amino acid → Ester bond"
+    },
+    "correctAnswer": "B",
+    "rationale": "DNA is a nucleic acid polymer made up of nucleotide monomers joined by phosphodiester bonds. Glycogen is made of glucose held by glycosidic bonds. Triglycerides contain fatty acids and glycerol held by ester bonds. Hemoglobin is a protein made of amino acids held by peptide bonds.",
+    "objectives": [
+      "biomolecules"
+    ],
+    "tags": [
+      "biology",
+      "biomolecules",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Metabolism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "During strenuous exercise, human skeletal muscle cells experience oxygen deprivation and switch from aerobic respiration to lactic acid fermentation. What is the primary evolutionary and metabolic purpose of converting pyruvate to lactate under anaerobic conditions?",
+    "choices": {
+      "A": "To regenerate $NAD^+$ from $NADH$, allowing glycolysis to continue producing ATP",
+      "B": "To synthesize extra molecules of cyclic AMP to accelerate glycogen breakdown",
+      "C": "To neutralize the metabolic alkalosis caused by increased cellular carbon dioxide levels",
+      "D": "To directly drive the transport of protons into the intermembrane space of mitochondria"
+    },
+    "correctAnswer": "A",
+    "rationale": "Glycolysis requires $NAD^+$ to convert glyceraldehyde-3-phosphate into 1,3-bisphosphoglycerate. In the absence of oxygen, the electron transport chain cannot oxidize $NADH$ back to $NAD^+$. Lactic acid fermentation reduces pyruvate to lactate, which simultaneously oxidizes $NADH$ back to $NAD^+$, keeping glycolysis operational to yield a net production of 2 ATP per glucose molecule.",
+    "objectives": [
+      "metabolism"
+    ],
+    "tags": [
+      "biology",
+      "metabolism",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics and Heredity",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "In a certain species of flowering plant, red petal color ($R$) is completely dominant over white petal color ($r$), and tall stems ($T$) are completely dominant over short stems ($t$). A dihybrid tall red plant ($RrTt$) is self-fertilized. Assuming independent assortment, what fraction of the resulting offspring is expected to display a phenotype of tall stems with white petals?",
+    "choices": {
+      "A": "9/16",
+      "B": "3/16",
+      "C": "1/16",
+      "D": "1/4"
+    },
+    "correctAnswer": "B",
+    "rationale": "This follows a standard Mendelian dihybrid cross ($RrTt \times RrTt$). The phenotypic ratio for independent assortment is 9:3:3:1. The categories represent: 9 Tall Red ($R\\_T\\_$), 3 Tall White ($rrT\\_$), 3 Short Red ($R\\_tt$), and 1 Short White ($rrtt$). Therefore, the proportion of tall plants with white petals is 3/16.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "biology",
+      "genetics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Evolution",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "According to the modern synthetic theory of evolution, which of the following scenarios best demonstrates the concept of directional selection operating on a population?",
+    "choices": {
+      "A": "A volcanic eruption randomly eliminates 90% of an island insect population regardless of their traits.",
+      "B": "An environment changes such that both small and large seed sizes become abundant, favoring birds with either very small or very large beaks over those with medium beaks.",
+      "C": "Widespread application of antibiotics kills susceptible bacteria, causing the allele frequency for antibiotic resistance to steadily shift toward 100% over several generations.",
+      "D": "Human infants with intermediate birth weights exhibit higher survival rates than infants who are born significantly underweight or overweight."
+    },
+    "correctAnswer": "C",
+    "rationale": "Directional selection occurs when natural selection favors one of the extreme variations of a trait, shifting the population's phenotypic distribution along a single direction. Antibiotic resistance is a classic example of this. Choice A is genetic drift (bottleneck effect), Choice B is disruptive selection, and Choice D is stabilizing selection.",
+    "objectives": [
+      "evolution"
+    ],
+    "tags": [
+      "biology",
+      "evolution",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Ecology",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 6,
+    "questionText": "An ecological study evaluates a pristine tropical rainforest ecosystem. If the total net primary productivity (NPP) of the primary producers (plants) is measured at $20,000\text{ kcal/m}^2\text{/year}$, approximately how much energy would typically be incorporated into the biomass of the secondary consumers (carnivores that eat herbivores) per square meter per year within this community?",
+    "choices": {
+      "A": "20,000 kcal",
+      "B": "2,000 kcal",
+      "C": "200 kcal",
+      "D": "20 kcal"
+    },
+    "correctAnswer": "C",
+    "rationale": "Lindeman's Rule of Trophic Efficiency states that approximately 10% of the energy available at one trophic level is transferred and incorporated into the next higher level. Primary producers ($20,000\text{ kcal}$) → Primary consumers/herbivores (10% of $20,000 = 2,000\text{ kcal}$) → Secondary consumers/carnivores (10% of $2,000 = 200\text{ kcal}$).",
+    "objectives": [
+      "ecology"
+    ],
+    "tags": [
+      "biology",
+      "ecology",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Reproduction",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "Which of the following biological descriptions accurately characterizes a fundamental difference between oogenesis and spermatogenesis in human gametogenesis?",
+    "choices": {
+      "A": "Spermatogenesis produces four functional haploid gametes from one primary spermatocyte, whereas oogenesis yields only one functional haploid ovum and non-functional polar bodies from one primary oocyte.",
+      "B": "Spermatogenesis undergoes mitosis only, while oogenesis relies exclusively on consecutive rounds of meiosis.",
+      "C": "Spermatogenesis ceases entirely at puberty, while oogenesis initiates only after a woman reaches reproductive maturity.",
+      "D": "Oogenesis occurs continuously throughout a female's life without pause, while spermatogenesis is arrested during prophase I in utero."
+    },
+    "correctAnswer": "A",
+    "rationale": "Spermatogenesis involves symmetrical meiotic divisions leading to four mature, viable sperm cells. Oogenesis involves highly asymmetrical cytokinesis, shifting almost all cytoplasm into a single cell that becomes the functional ovum, while the remaining genetic material is discarded in small, non-functional cells called polar bodies.",
+    "objectives": [
+      "reproduction"
+    ],
+    "tags": [
+      "biology",
+      "reproduction",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Taxonomy and Classification",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "According to the modern rules of Linnaean taxonomic hierarchy, which taxonomic level encompasses the greatest biological diversity and contains all the other levels listed among the choices?",
+    "choices": {
+      "A": "Order",
+      "B": "Family",
+      "C": "Phylum",
+      "D": "Class"
+    },
+    "correctAnswer": "C",
+    "rationale": "The taxonomic hierarchy from broadest to most specific is: Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species. Among the given options, Phylum is the highest, most inclusive ranking and therefore possesses the greatest diversity of organisms.",
+    "objectives": [
+      "taxonomy and classification"
+    ],
+    "tags": [
+      "biology",
+      "taxonomy",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biodiversity",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "In conservation biology, an area is designated as a 'biodiversity hotspot' if it features exceptional levels of habitat loss alongside a remarkably high concentration of endemic species. What is an endemic species?",
+    "choices": {
+      "A": "A species that acts as a reservoir for highly infectious viral outbreaks.",
+      "B": "A species found naturally only within a single, distinct geographical region and nowhere else on Earth.",
+      "C": "An exotic species introduced by human activity that aggressively outcompetes native flora and fauna.",
+      "D": "A keystone species whose metabolic activities physically alter the structural layout of an entire ecosystem."
+    },
+    "correctAnswer": "B",
+    "rationale": "Endemism refers to the ecological state of a species being unique to a defined geographic location, such as an island, nation, or specific habitat type. Endemic species are highly vulnerable to extinction if their localized habitats are altered or destroyed.",
+    "objectives": [
+      "biodiversity"
+    ],
+    "tags": [
+      "biology",
+      "biodiversity",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Viruses",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "Bacteriophages are viruses that parasitize bacteria. During the lysogenic cycle of a temperate bacteriophage, what happens to the viral genetic material inside the host bacterium?",
+    "choices": {
+      "A": "It immediately transcribes viral capsomeres, builds new virions, and ruptures the cell wall.",
+      "B": "It degrades the host chromosome into individual nucleotides to use as raw building blocks.",
+      "C": "It integrates directly into the host bacterium's genome, becoming a dormant prophage that replicates along with the host cell.",
+      "D": "It transforms into a catalytic ribozyme that permanently stops transcription of bacterial operons."
+    },
+    "correctAnswer": "C",
+    "rationale": "In the lysogenic cycle, the viral DNA does not immediately take over or destroy the host cell. Instead, it integrates into the bacterial chromosome, where it is called a prophage. It stays dormant and is replicated passively whenever the bacterium divides, until environmental triggers induce it to enter the lytic cycle.",
+    "objectives": [
+      "viruses"
+    ],
+    "tags": [
+      "biology",
+      "viruses",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Characteristics of Major Plant and Animal Groups",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "A student encounters a botanical specimen featuring prominent green fronds, clear vascular bundles containing xylem and phloem, and conspicuous clusters of sporangia called sori located on the undersides of its leaves. This plant lacks seeds and flowers entirely. To which plant group does it belong?",
+    "choices": {
+      "A": "Bryophytes",
+      "B": "Pteridophytes",
+      "C": "Gymnosperms",
+      "D": "Angiosperms",
+    },
+    "correctAnswer": "B",
+    "rationale": "Pteridophytes are vascular, seedless plants. Ferns are classic examples; they have fronds and reproduce via spores formed in structures called sori. Bryophytes are non-vascular (mosses). Gymnosperms are vascular but produce naked seeds (conifers). Angiosperms produce seeds enclosed within fruits/flowers.",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "biology",
+      "botany",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Characteristics of Major Plant and Animal Groups",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "An organism exhibits bilateral symmetry, a true coelom, segmented body units, a complete digestive tract, and specialized excretory structures known as metanephridia. To which invertebrate phylum does this animal belong?",
+    "choices": {
+      "A": "Cnidaria",
+      "B": "Nematoda",
+      "C": "Annelida",
+      "D": "Platyhelminthes"
+    },
+    "correctAnswer": "C",
+    "rationale": "Annelids (segmented worms) are coelomate, bilaterally symmetrical animals characterized by distinct body segmentation and metanephridia for excretion. Cnidarians are radially symmetrical and acoelomate. Platyhelminthes are acoelomate unsegmented flatworms. Nematodes are pseudocoelomate unsegmented roundworms.",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "biology",
+      "zoology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Matter and Its Properties",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "An intensive property of matter is independent of the amount of substance present, while an extensive property depends directly on the sample size. Which of the following lists contains ONLY intensive properties?",
+    "choices": {
+      "A": "Mass, Volume, Length",
+      "B": "Density, Boiling Point, Melting Point",
+      "C": "Total Heat Content, Flammability, Weight",
+      "D": "Volume, Electrical Resistance, Density"
+    },
+    "correctAnswer": "B",
+    "rationale": "Density, boiling point, and melting point are intensive properties because they do not change when the amount of matter changes. Mass, volume, length, total heat content, and weight are extensive properties because they scale with the quantity of substance present.",
+    "objectives": [
+      "matter and its properties"
+    ],
+    "tags": [
+      "chemistry",
+      "matter",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Bonding",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "The molecular geometry and net dipole moment of a covalent molecule depend heavily on the arrangement of bonding and non-bonding electron pairs around the central atom. What are the molecular geometry and overall polarity of a sulfur dioxide ($SO_2$) molecule?",
+    "choices": {
+      "A": "Linear and Nonpolar",
+      "B": "Linear and Polar",
+      "C": "Bent and Polar",
+      "D": "Trigonal Planar and Nonpolar"
+    },
+    "correctAnswer": "C",
+    "rationale": "The central sulfur atom in $SO_2$ has three electron domains: two bonding domains (bonds to oxygen atoms) and one lone pair. According to VSEPR theory, this configuration results in a bent molecular geometry. Because sulfur and oxygen differ in electronegativity and the geometry is asymmetric, the dipole moments do not cancel, making the molecule polar.",
+    "objectives": [
+      "chemical bonding"
+    ],
+    "tags": [
+      "chemistry",
+      "bonding",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Compounds and Chemical Nomenclature",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "What is the correct systematic IUPAC name for the chemical compound represented by the formula $Fe_2(SO_4)_3$?",
+    "choices": {
+      "A": "Iron(II) sulfate",
+      "B": "Diiron trisulfate",
+      "C": "Iron(III) trisulfate",
+      "D": "Iron(III) sulfate"
+    },
+    "correctAnswer": "D",
+    "rationale": "The sulfate ion is a polyatomic anion with a charge of $-2$ ($SO_4^{2-}$). Since there are three sulfate ions, the total negative charge is $-6$. To achieve electrical neutrality, the two iron ions must share a total positive charge of $+6$, meaning each iron ion has a charge of $+3$ ($Fe^{3+}$). Using the Stock system for transition metals, this is named iron(III) sulfate.",
+    "objectives": [
+      "compounds and chemical nomenclature"
+    ],
+    "tags": [
+      "chemistry",
+      "nomenclature",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Reactions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Consider the following unbalanced chemical equation representing the combustion of liquid ethanol:\n$$\text{C}*2\text{H}*5\text{OH}(l) + \text{O}*2(g) \rightarrow \text{CO}*2(g) + \text{H}*2\text{O}(g)$$\nWhen this chemical equation is completely balanced with the lowest possible whole-number coefficients, what is the stoichiometric coefficient in front of oxygen gas ($\text{O}_2$)?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "7"
+    },
+    "correctAnswer": "B",
+    "rationale": "Let's balance the atoms sequentially. Carbon: 2 carbons on the left mean we need a coefficient of 2 for $\text{CO}_2$ ($2\text{CO}_2$). Hydrogen: 6 hydrogens on the left mean we need a coefficient of 3 for $\text{H}_2\text{O}$ ($3\text{H}_2\text{O}$). Now count the oxygen atoms on the right: $(2 \times 2) + (3 \times 1) = 7$ oxygen atoms. On the left side, ethanol supplies 1 oxygen atom. The remaining 6 oxygen atoms must come from the $\text{O}_2$ gas, which means we need $3\text{O}_2$. The balanced equation is $\text{C}_2\text{H}_5\text{OH} + 3\text{O}_2 \rightarrow 2\text{CO}_2 + 3\text{H}_2\text{O}$.",
+    "objectives": [
+      "chemical reactions"
+    ],
+    "tags": [
+      "chemistry",
+      "reactions",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solutions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "A student prepares a standard laboratory solution by dissolving exactly $11.7\text{ g}$ of sodium chloride ($\text{NaCl}$, molar mass = $58.5\text{ g/mol}$) into enough distilled water to yield a final solution volume of exactly $500\text{ mL}$. What is the molarity ($M$) of this solution?",
+    "choices": {
+      "A": "0.10 M",
+      "B": "0.20 M",
+      "C": "0.40 M",
+      "D": "2.34 M"
+    },
+    "correctAnswer": "C",
+    "rationale": "First, calculate the number of moles of solute: $\text{moles of NaCl} = \frac{11.7\text{ g}}{58.5\text{ g/mol}} = 0.20\text{ moles}$. Next, convert the volume of the solution from milliliters to liters: $500\text{ mL} = 0.50\text{ L}$. Molarity is defined as moles of solute divided by liters of solution: $\text{Molarity} = \frac{0.20\text{ moles}}{0.50\text{ L}} = 0.40\text{ M}$.",
+    "objectives": [
+      "solutions"
+    ],
+    "tags": [
+      "chemistry",
+      "solutions",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Acids and Bases",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "An aqueous solution of a strong monoprotic acid is measured to have a hydronium ion concentration $[H_3O^+]$ of $1.0 \times 10^{-3}\text{ M}$. If this solution is diluted with pure water to exactly 10 times its original volume, what will be the pH of the newly formed solution?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "rationale": "The initial concentration $[H_3O^+] = 1.0 \times 10^{-3}\text{ M}$, which corresponds to an initial pH of $3$ ($-\log[1.0 \times 10^{-3}] = 3$). Diluting the solution to 10 times its original volume drops the concentration of the acid by a factor of 10. The new hydronium concentration is $1.0 \times 10^{-4}\text{ M}$. Taking the negative logarithm gives a final pH of $4$.",
+    "objectives": [
+      "acids and bases"
+    ],
+    "tags": [
+      "chemistry",
+      "acids-bases",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Gas Laws",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "An ideal gas is confined in a rigid container with a fixed, unchangeable volume. If the absolute temperature of the gas is precisely doubled from $300\text{ K}$ to $600\text{ K}$, what will happen to the pressure exerted by the gas against the walls of the container?",
+    "choices": {
+      "A": "The pressure will drop to one-half of its original value.",
+      "B": "The pressure will remain exactly the same.",
+      "C": "The pressure will double in magnitude.",
+      "D": "The pressure will quadruple in magnitude."
+    },
+    "correctAnswer": "C",
+    "rationale": "According to Gay-Lussac's Law, the pressure of a given mass of gas is directly proportional to its absolute temperature when the volume is held constant ($\frac{P_1}{T_1} = \frac{P_2}{T_2}$). If the absolute temperature in Kelvin is doubled, the pressure must also double.",
+    "objectives": [
+      "gas laws"
+    ],
+    "tags": [
+      "chemistry",
+      "gas-laws",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Thermodynamics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "The Gibbs free energy change ($\n\Delta G$) determines the spontaneity of a chemical process at constant temperature and pressure according to the relationship $\Delta G = \Delta H - T\Delta S$. For a particular chemical reaction, the enthalpy change is positive ($\Delta H > 0$) and the entropy change is positive ($\Delta S > 0$). Under what conditions will this reaction be spontaneous?",
+    "choices": {
+      "A": "The reaction will be spontaneous at all temperatures.",
+      "B": "The reaction will be spontaneous only at high temperatures.",
+      "C": "The reaction will be spontaneous only at low temperatures.",
+      "D": "The reaction will never be spontaneous at any temperature."
+    },
+    "correctAnswer": "B",
+    "rationale": "For spontaneity, $\Delta G$ must be negative ($\Delta G < 0$). Here, $\Delta H$ is positive (unfavorable) and $\Delta S$ is positive (favorable). In the equation $\Delta G = \Delta H - T\Delta S$, the negative term $-T\Delta S$ grows larger in magnitude as the temperature $T$ increases. Therefore, at high temperatures, $T\Delta S$ will exceed $\Delta H$, driving $\Delta G$ below zero and making the reaction spontaneous.",
+    "objectives": [
+      "thermodynamics"
+    ],
+    "tags": [
+      "chemistry",
+      "thermodynamics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Organic Chemistry",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "Functional groups dictate the chemical reactivity and chemical properties of organic compounds. Which of the following correctly matches the molecular structure or formula of a functional group with its corresponding class name?",
+    "choices": {
+      "A": "$-OH$ → Ester",
+      "B": "$-CHO$ → Aldehyde",
+      "C": "$-COOH$ → Ether",
+      "D": "$-C=O$ bonded to two carbons → Carboxylic acid"
+    },
+    "correctAnswer": "B",
+    "rationale": "The formula $-CHO$ represents a carbonyl group bonded to a hydrogen atom, which characterizes an aldehyde. $-OH$ is a hydroxyl group (alcohol), $-COOH$ is a carboxyl group (carboxylic acid), and a $-C=O$ group flanked by two carbon chains is a ketone.",
+    "objectives": [
+      "organic chemistry"
+    ],
+    "tags": [
+      "chemistry",
+      "organic-chemistry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth's Structure",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "The interior of the Earth is divided into distinct structural and compositional layers. Which layer is characterized as being completely liquid and is primarily composed of molten iron and nickel, generating Earth's geomagnetic field?",
+    "choices": {
+      "A": "Crust",
+      "B": "Asthenosphere",
+      "C": "Outer Core",
+      "D": "Inner Core"
+    },
+    "correctAnswer": "C",
+    "rationale": "The Earth's outer core is a fluid layer about $2,260\text{ km}$ thick, composed mainly of iron and nickel. Convection currents within this liquid metal outer core, driven by heat loss and Earth's rotation, generate the planet's magnetic field via the dynamo mechanism. The inner core is solid due to intense pressure.",
+    "objectives": [
+      "Earth\u2019s structure"
+    ],
+    "tags": [
+      "earth-science",
+      "geology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Origin of Earth",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "The solar nebula hypothesis is widely accepted as the scientific model explaining the origin of the Earth and the rest of our solar system. According to this model, how did the terrestrial planets, including Earth, form?",
+    "choices": {
+      "A": "From the rapid gravitational collapse of high-density hydrogen gas fields captured from passing stars.",
+      "B": "Through the gradual accretion of solid cosmic dust particles and planetesimals within the hot inner disk of the solar nebula.",
+      "C": "From the fragmentation of the early Sun due to an imbalance in internal nuclear fusion forces.",
+      "D": "Through the accumulation of icy cometary debris pushed inward by powerful interstellar stellar winds."
+    },
+    "correctAnswer": "B",
+    "rationale": "The solar nebula hypothesis states that as the solar nebula spun and flattened into a disk, materials in the inner disk were exposed to high temperatures, leaving behind metals and rocky silicates. These solid particles collided and merged over millions of years through accretion, building up planetesimals that eventually formed the rocky terrestrial planets.",
+    "objectives": [
+      "origin of Earth"
+    ],
+    "tags": [
+      "earth-science",
+      "astronomy",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth Processes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "Chemical weathering involves the chemical transformation of rock minerals into new substances. Which specific process involves a chemical reaction between water molecules and minerals, directly leading to the decomposition of original minerals like feldspar into clay minerals?",
+    "choices": {
+      "A": "Frost wedging",
+      "B": "Oxidation",
+      "C": "Hydrolysis",
+      "D": "Exfoliation"
+    },
+    "correctAnswer": "C",
+    "rationale": "Hydrolysis is a chemical weathering mechanism where $H^+$ and $OH^-$ ions in water react chemically with mineral ions to break down the rock's crystal structure, turning silicate minerals like feldspar into clays. Frost wedging and exfoliation are mechanical weathering processes, while oxidation involves a reaction with oxygen.",
+    "objectives": [
+      "Earth processes"
+    ],
+    "tags": [
+      "earth-science",
+      "geology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Plate Tectonics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "The point of contact where two tectonic plates slide horizontally past one another without constructing or destroying lithospheric crust is known as what type of plate boundary?",
+    "choices": {
+      "A": "Convergent boundary",
+      "B": "Divergent boundary",
+      "C": "Transform fault boundary",
+      "D": "Subduction zone"
+    },
+    "correctAnswer": "C",
+    "rationale": "Transform fault boundaries occur where plates slide past each other horizontally. Crust is neither created (as it is at divergent boundaries) nor destroyed (as it is at convergent/subduction boundaries). A classic example is the San Andreas Fault.",
+    "objectives": [
+      "plate tectonics"
+    ],
+    "tags": [
+      "earth-science",
+      "tectonics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earthquakes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "Seismic waves radiate outwards from an earthquake's origin. Which of the following statements correctly compares the properties of primary (P) waves and secondary (S) waves?",
+    "choices": {
+      "A": "P waves are longitudinal waves that travel faster and can propagate through solids and liquids, while S waves are transverse waves that travel slower and can only propagate through solids.",
+      "B": "S waves are longitudinal waves that move at higher velocities than P waves, but are stopped completely by gas fields.",
+      "C": "P waves travel exclusively along the Earth's surface, causing violent structural damage, while S waves travel through the deep interior core only.",
+      "D": "Both P and S waves are transverse waves, but P waves are restricted to fluid layers while S waves travel through solid boundaries."
+    },
+    "correctAnswer": "A",
+    "rationale": "Primary (P) waves are compressional/longitudinal body waves that move quickly through solids, liquids, and gases. Secondary (S) waves are shear/transverse body waves that travel slower and cannot propagate through fluids because fluids do not support shear stress.",
+    "objectives": [
+      "earthquakes"
+    ],
+    "tags": [
+      "earth-science",
+      "seismology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Volcanoes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "The explosive behavior of a volcanic eruption depends on the physical properties of its magma. Which combination of magma characteristics will lead to the most violent and explosive volcanic eruption?",
+    "choices": {
+      "A": "Low silica content, low viscosity, low dissolved gas content",
+      "B": "High silica content, low viscosity, high dissolved gas content",
+      "C": "Low silica content, high viscosity, low dissolved gas content",
+      "D": "High silica content, high viscosity, high dissolved gas content"
+    },
+    "correctAnswer": "D",
+    "rationale": "Highly explosive eruptions require high-viscosity magma, which traps escaping gases. High silica content increases magma viscosity by forming long chains of silicate tetrahedra. When the magma contains high amounts of dissolved gases, these gases expand violently as the magma reaches the surface, tearing the viscous magma apart into explosive ash and pyroclastic debris.",
+    "objectives": [
+      "volcanoes"
+    ],
+    "tags": [
+      "earth-science",
+      "volcanology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Rocks and the Rock Cycle",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "A geologist collects a rock sample that shows distinct layers of compacted and cemented mineral fragments alongside small fossil imprints. What class of rock does this sample represent?",
+    "choices": {
+      "A": "Intrusive Igneous rock",
+      "B": "Extrusive Igneous rock",
+      "C": "Sedimentary rock",
+      "D": "Metamorphic rock"
+    },
+    "correctAnswer": "C",
+    "rationale": "Sedimentary rocks form from the accumulation, compaction, and cementation of mineral particles or organic matter (clastic or chemical processes). Because they form at relatively low temperatures and pressures on Earth's surface, they frequently preserve distinct layers (strata) and fossils, unlike igneous or metamorphic rocks.",
+    "objectives": [
+      "rocks and the rock cycle"
+    ],
+    "tags": [
+      "earth-science",
+      "geology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fossils",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "An index fossil is highly valuable to geologists for the relative dating and correlation of rock layers across different geographic regions. What properties must a fossil possess to be classified as an ideal index fossil?",
+    "choices": {
+      "A": "Geographically widespread, restricted to a short period of geologic time, and easily identifiable.",
+      "B": "Highly localized to a single cave network, surviving continuously across multiple geologic eras, and difficult to isolate.",
+      "C": "Composed exclusively of soft tissues, very rare in occurrence, and restricted to deep marine environments.",
+      "D": "Lacking distinct structural features, enduring minimal evolutionary modifications, and appearing in all rock types."
+    },
+    "correctAnswer": "A",
+    "rationale": "An effective index fossil must be widespread geographically so it can connect distant rock formations. It must also have existed for only a brief period of geologic time, allowing geologists to pinpoint a narrow age for the rock layer in which it is found. Finally, it must be abundant and easy to identify.",
+    "objectives": [
+      "fossils"
+    ],
+    "tags": [
+      "earth-science",
+      "paleontology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Atmosphere",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "The atmospheric layer closest to the Earth's surface is the troposphere, followed by the stratosphere. Why does temperature experience an inversion and start rising with increasing altitude within the stratosphere?",
+    "choices": {
+      "A": "Because the stratosphere is heated directly by convective thermal energy rising from the Earth's molten core.",
+      "B": "Due to the high concentration of greenhouse gases like methane trapping infrared radiation from space.",
+      "C": "Because the ozone layer absorbs high-energy solar ultraviolet (UV) radiation, converting it into thermal energy.",
+      "D": "Due to frictional heating caused by meteors decelerating as they enter the Earth's upper atmospheric boundaries."
+    },
+    "correctAnswer": "C",
+    "rationale": "The stratosphere contains the ozone layer ($O_3$). Ozone molecules absorb harmful ultraviolet (UV) radiation from the Sun. This absorption of energy warms the upper stratosphere, creating a temperature profile where temperature increases with altitude, opposite to the trend in the troposphere.",
+    "objectives": [
+      "atmosphere"
+    ],
+    "tags": [
+      "earth-science",
+      "meteorology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Climate",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "The Milankovitch cycles describe the long-term variations in Earth's orbital parameters that influence global climate patterns over tens of thousands of years. Which orbital parameter refers to the gradual change in the shape of Earth's orbit, shifting between a near-perfect circle and a more elongated ellipse?",
+    "choices": {
+      "A": "Obliquity",
+      "B": "Precession",
+      "C": "Eccentricity",
+      "D": "Albedo"
+    },
+    "correctAnswer": "C",
+    "rationale": "Eccentricity measures the variation in the shape of Earth's orbit around the Sun from nearly circular to mildly elliptical over a cycle of roughly $100,000\text{ years}$. Obliquity is the change in the tilt of Earth's axis, and precession is the wobbling of Earth's rotational axis. Albedo is the reflectivity of Earth's surface.",
+    "objectives": [
+      "climate"
+    ],
+    "tags": [
+      "earth-science",
+      "climate",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Geologic History",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "The Principle of Cross-Cutting Relationships is a fundamental tenet of relative dating in geology. If an igneous intrusion cuts completely through a sequence of flat-lying sedimentary rock layers, what can a geologist conclude about their relative ages?",
+    "choices": {
+      "A": "The igneous intrusion is older than the sedimentary rock layers it cuts through.",
+      "B": "The igneous intrusion is younger than the sedimentary rock layers it cuts through.",
+      "C": "Both the igneous intrusion and the sedimentary rock layers formed simultaneously.",
+      "D": "The relative ages cannot be determined without measuring radioactive isotopes within the sedimentary layers."
+    },
+    "correctAnswer": "B",
+    "rationale": "The Principle of Cross-Cutting Relationships states that any geologic feature (such as an igneous intrusion, fault line, or fracture) that cuts across another rock body must be younger than the rock layer it disrupts. The target rock layers had to exist first before they could be cut into.",
+    "objectives": [
+      "geologic history"
+    ],
+    "tags": [
+      "earth-science",
+      "geology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "The Solar System",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "The solar system contains distinct regions of small celestial bodies. Which region is located between the orbits of Mars and Jupiter, housing thousands of rocky and metallic objects left over from the early formation of our planetary system?",
+    "choices": {
+      "A": "Kuiper Belt",
+      "B": "Oort Cloud",
+      "C": "Asteroid Belt",
+      "D": "Van Allen Belt"
+    },
+    "correctAnswer": "C",
+    "rationale": "The Asteroid Belt is a torus-shaped region located roughly between the orbits of Mars and Jupiter. It contains the majority of the solar system's asteroids. The Kuiper Belt and Oort Cloud lie far beyond the orbit of Neptune, and the Van Allen Belts are zones of radiation trapped by Earth's magnetosphere.",
+    "objectives": [
+      "the solar system"
+    ],
+    "tags": [
+      "general-science",
+      "astronomy",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Measurement",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "A physics laboratory group measures the mass of a metal cylinder four separate times using an electronic balance. They record the following data values: $25.12\text{ g}$, $25.13\text{ g}$, $25.11\text{ g}$, and $25.12\text{ g}$. The actual true mass of the cylinder is officially certified to be $30.00\text{ g}$. How would you describe the measurements taken by the students?",
+    "choices": {
+      "A": "Highly precise and highly accurate",
+      "B": "Highly precise but inaccurate",
+      "C": "Accurate but imprecise",
+      "D": "Inaccurate and imprecise"
+    },
+    "correctAnswer": "B",
+    "rationale": "Precision refers to the repeatability or closeness of a set of measurements to each other. Because the values ($25.12, 25.13, 25.11, 25.12$) are very close together, they are precise. Accuracy refers to how close a measurement is to the true value ($30.00\text{ g}$). Since the measured values are far from $30.00\text{ g}$, they are inaccurate.",
+    "objectives": [
+      "measurement"
+    ],
+    "tags": [
+      "general-science",
+      "measurement",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "The Scientific Method",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "An agricultural scientist wants to design an experiment to test the effect of different concentrations of a new liquid fertilizer on the growth rate of corn plants. Which of the following setups correctly identifies the independent variable and a crucial controlled variable for this scientific experiment?",
+    "choices": {
+      "A": "Independent variable: growth rate of corn; Controlled variable: concentration of fertilizer",
+      "B": "Independent variable: concentration of fertilizer; Controlled variable: amount of sunlight and water given to each plant",
+      "C": "Independent variable: type of soil used; Controlled variable: final height of the corn stalks",
+      "D": "Independent variable: amount of water; Controlled variable: concentration of fertilizer",
+    },
+    "correctAnswer": "B",
+    "rationale": "The independent variable is the factor intentionally manipulated by the experimenter (fertilizer concentration). The dependent variable is what is measured in response (growth rate). Controlled variables are all other factors that must be kept constant across test groups (sunlight, water, soil type) to ensure any observed changes are due solely to the independent variable.",
+    "objectives": [
+      "the scientific method"
+    ],
+    "tags": [
+      "general-science",
+      "methodology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Astronomy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "Our Sun is currently classified as a main-sequence star. What primary nuclear process occurs within the core of the Sun to generate its immense luminosity and prevent gravitational collapse?",
+    "choices": {
+      "A": "Nuclear fission of uranium into lighter barium and krypton isotopes",
+      "B": "Nuclear fusion of hydrogen nuclei into helium nuclei",
+      "C": "Exothermic combustion of methane gas with compressed oxygen",
+      "D": "Radioactive alpha decay of heavy thorium elements"
+    },
+    "correctAnswer": "B",
+    "rationale": "Main-sequence stars generate energy via the nuclear fusion of hydrogen nuclei (protons) into helium nuclei inside their high-temperature, high-pressure cores. This process releases massive amounts of energy (via $E=mc^2$), providing the outward thermal pressure necessary to balance the inward pull of gravity.",
+    "objectives": [
+      "astronomy"
+    ],
+    "tags": [
+      "general-science",
+      "astronomy",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Geology",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "The Mohs hardness scale is a qualitative scale used in mineralogy to determine the relative scratch resistance of various minerals. According to this scale, which mineral is assigned a hardness rating of 10, making it the hardest naturally occurring mineral?",
+    "choices": {
+      "A": "Talc",
+      "B": "Quartz",
+      "C": "Corundum",
+      "D": "Diamond"
+    },
+    "correctAnswer": "D",
+    "rationale": "The Mohs hardness scale ranges from 1 (softest, which is talc) to 10 (hardest, which is diamond). A mineral with a higher rating can scratch any mineral with a lower or equal rating.",
+    "objectives": [
+      "geology"
+    ],
+    "tags": [
+      "general-science",
+      "geology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Meteorology",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "The Coriolis effect is a phenomenon that influences global wind and weather patterns. Which planetary characteristic is directly responsible for generating the Coriolis effect?",
+    "choices": {
+      "A": "The tilt of the Earth's axis relative to its orbital plane",
+      "B": "The rotation of the Earth around its own axis",
+      "C": "The gravitational pull of the Moon on Earth's oceans",
+      "D": "The varying distance between the Earth and the Sun during the year"
+    },
+    "correctAnswer": "B",
+    "rationale": "The Coriolis effect is an apparent deflection of moving objects (like air masses) caused by the rotation of the frame of reference—in this case, the Earth spinning on its axis. Moving objects deflect to the right in the Northern Hemisphere and to the left in the Southern Hemisphere.",
+    "objectives": [
+      "meteorology"
+    ],
+    "tags": [
+      "general-science",
+      "meteorology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Principles of Light",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "A beam of white light passes through a glass prism and separates into a spectrum of distinct colors ranging from red to violet. What wave behavior is responsible for this separation?",
+    "choices": {
+      "A": "Reflection, because different wavelengths bounce off the front surface at different angles.",
+      "B": "Dispersion, because different frequencies of light travel at different speeds in glass, causing them to refract at slightly different angles.",
+      "C": "Diffraction, because the light waves bend around the sharp corners of the prism.",
+      "D": "Polarization, because the prism filters out light waves oscillating in horizontal directions."
+    },
+    "correctAnswer": "B",
+    "rationale": "Dispersion is the phenomenon where the phase velocity of a wave depends on its frequency. When white light enters a glass prism, shorter wavelengths (like violet) slow down more and refract (bend) at sharper angles than longer wavelengths (like red), spreading the light out into a rainbow spectrum.",
+    "objectives": [
+      "principles of light"
+    ],
+    "tags": [
+      "general-science",
+      "physics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Motion",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "An automobile starts completely from rest and accelerates uniformly in a straight line along a horizontal highway at a rate of $4.0\text{ m/s}^2$. How far will the automobile have traveled by the time it reaches a final velocity of $20.0\text{ m/s}$?",
+    "choices": {
+      "A": "5.0 meters",
+      "B": "25.0 meters",
+      "C": "50.0 meters",
+      "D": "80.0 meters"
+    },
+    "correctAnswer": "C",
+    "rationale": "We can use the kinematic equation that relates velocity, acceleration, and distance without explicitly using time: $v_f^2 = v_i^2 + 2ax$. Given that $v_i = 0$ (starts from rest), $v_f = 20.0\text{ m/s}$, and $a = 4.0\text{ m/s}^2$, we plug in the numbers:\n$20^2 = 0^2 + 2(4)x \Rightarrow 400 = 8x \Rightarrow x = \frac{400}{8} = 50\text{ meters}$.",
+    "objectives": [
+      "motion"
+    ],
+    "tags": [
+      "physics",
+      "kinematics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Forces",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "According to Newton's Third Law of Motion, every action force is accompanied by an equal and opposite reaction force. If a heavy truck collides head-on with a small, lightweight compact car, how does the magnitude of the force exerted by the truck on the car compare to the magnitude of the force exerted by the car on the truck?",
+    "choices": {
+      "A": "The truck exerts a significantly larger force on the car because it has more mass.",
+      "B": "The car exerts a larger force on the truck because it undergoes a greater deceleration.",
+      "C": "The forces are exactly equal in magnitude but opposite in direction.",
+      "D": "No forces are exchanged because the kinetic energies cancel each other out during impact."
+    },
+    "correctAnswer": "C",
+    "rationale": "Newton's Third Law states that forces always occur in matched action-reaction pairs. The force that Object A exerts on Object B is equal in magnitude and opposite in direction to the force that Object B exerts on Object A, regardless of their differences in mass or velocity. The car experiences more damage and deceleration simply because it has less mass to resist that force ($a = F/m$).",
+    "objectives": [
+      "forces"
+    ],
+    "tags": [
+      "physics",
+      "forces",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Energy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "A $2.0\text{-kg}$ block is released from rest at the top of a frictionless inclined ramp that stands at a vertical height of $5.0\text{ meters}$ above the ground. Using $g = 10\text{ m/s}^2$ for the acceleration due to gravity, what will be the kinetic energy of the block when it reaches the bottom of the ramp?",
+    "choices": {
+      "A": "10 Joules",
+      "B": "20 Joules",
+      "C": "50 Joules",
+      "D": "100 Joules"
+    },
+    "correctAnswer": "D",
+    "rationale": "By the Law of Conservation of Energy, since there is no friction, the total mechanical energy is conserved. The gravitational potential energy at the top of the ramp converts completely into kinetic energy at the bottom. $\text{Potential Energy (top)} = mgh = (2.0\text{ kg}) \times (10\text{ m/s}^2) \times (5.0\text{ m}) = 100\text{ Joules}$. Therefore, the kinetic energy at the bottom is $100\text{ Joules}$.",
+    "objectives": [
+      "energy"
+    ],
+    "tags": [
+      "physics",
+      "energy",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Momentum",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "A $3.0\text{-kg}$ toy cart moving to the right with a velocity of $4.0\text{ m/s}$ collides head-on with a $2.0\text{-kg}$ toy cart that is completely stationary ($v = 0$). After the collision, the two carts lock together and move forward as a single combined unit. What is the final velocity of the combined carts immediately after impact?",
+    "choices": {
+      "A": "1.2 m/s",
+      "B": "2.0 m/s",
+      "C": "2.4 m/s",
+      "D": "4.0 m/s"
+    },
+    "correctAnswer": "C",
+    "rationale": "This is a perfectly inelastic collision, where momentum is conserved: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Substitute the given values: $(3.0)(4.0) + (2.0)(0) = (3.0 + 2.0)v_f \Rightarrow 12 = 5v_f \Rightarrow v_f = \frac{12}{5} = 2.4\text{ m/s}$.",
+    "objectives": [
+      "momentum"
+    ],
+    "tags": [
+      "physics",
+      "momentum",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Vectors and Scalars",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "Physical quantities are categorized as either scalar quantities or vector quantities. Which of the following selections contains ONLY vector quantities?",
+    "choices": {
+      "A": "Distance, Speed, Time",
+      "B": "Displacement, Velocity, Acceleration",
+      "C": "Mass, Force, Kinetic Energy",
+      "D": "Work, Momentum, Temperature"
+    },
+    "correctAnswer": "B",
+    "rationale": "Vector quantities require both a numerical magnitude and a specific direction. Displacement, velocity, and acceleration are all vectors. Distance, speed, time, mass, kinetic energy, work, and temperature are scalar quantities because they are fully described by magnitude alone.",
+    "objectives": [
+      "vectors and scalars"
+    ],
+    "tags": [
+      "physics",
+      "vectors",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fluid Mechanics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "Archimedes' Principle describes the buoyant force acting on objects submerged in fluid. An object is placed into a large tank filled with water. If the object floats with exactly 30% of its volume submerged beneath the water's surface, what is the density of the object? (Assume the density of water is $1.00\text{ g/cm}^3$).",
+    "choices": {
+      "A": "0.30 g/cm³",
+      "B": "0.70 g/cm³",
+      "C": "1.00 g/cm³",
+      "D": "1.30 g/cm³"
+    },
+    "correctAnswer": "A",
+    "rationale": "For a floating object, the fraction of the object submerged is equal to the ratio of the density of the object to the density of the fluid: $\text{Fraction submerged} = \frac{\rho*{\text{object}}}{\rho*{\text{fluid}}}$. Here, $0.30 = \frac{\rho*{\text{object}}}{1.00\text{ g/cm}^3}$, which means $\rho*{\text{object}} = 0.30\text{ g/cm}^3$.",
+    "objectives": [
+      "fluid mechanics"
+    ],
+    "tags": [
+      "physics",
+      "fluids",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Pressure",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "Hydrostatic pressure inside a fluid depends on depth. If a scuba diver descends from the surface of a freshwater lake down to a depth of exactly $20\text{ meters}$, what happens to the total hydrostatic pressure exerted on the diver compared to the pressure at the surface? (Take the density of water as $1000\text{ kg/m}^3$, $g = 10\text{ m/s}^2$, and atmospheric pressure $P*{\text{atm}} = 1.0 \times 10^5\text{ Pa}$).",
+    "choices": {
+      "A": "The hydrostatic pressure drops to zero.",
+      "B": "The pressure increases by exactly $2.0 \times 10^5\text{ Pa}$.",
+      "C": "The pressure stays constant because water is incompressible.",
+      "D": "The pressure decreases by $1.0 \times 10^5\text{ Pa}$ due to buoyancy."
+    },
+    "correctAnswer": "B",
+    "rationale": "The gauge pressure added by the water column is calculated using $\Delta P = \rho gh$. Plugging in the values: $\Delta P = (1000\text{ kg/m}^3) \times (10\text{ m/s}^2) \times (20\text{ m}) = 200,000\text{ Pa} = 2.0 \times 10^5\text{ Pa}$. Thus, the total pressure increases by this amount relative to the surface pressure.",
+    "objectives": [
+      "pressure"
+    ],
+    "tags": [
+      "physics",
+      "pressure",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Friction",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "A heavy wooden crate rests on a rough horizontal concrete floor. A worker applies a gradually increasing horizontal pushing force to the crate. The crate remains completely stationary until the pushing force reaches $150\text{ N}$, at which point the crate breaks free and begins to slide. Why does it require less force to keep the crate moving at a constant velocity once it is already sliding?",
+    "choices": {
+      "A": "Because the coefficient of kinetic friction is typically less than the coefficient of maximum static friction.",
+      "B": "Because sliding eliminates the normal force acting on the crate.",
+      "C": "Because the mass of the crate decreases as it accelerates.",
+      "D": "Because gravity stops pulling downward on moving objects."
+    },
+    "correctAnswer": "A",
+    "rationale": "Static friction acts on an object before it moves, and its maximum value must be overcome to start motion. Kinetic friction acts once the object is sliding. For almost all material interfaces, the coefficient of kinetic friction ($\mu_k$) is smaller than the coefficient of static friction ($\mu_s$), meaning less force is needed to maintain motion than to start it.",
+    "objectives": [
+      "friction"
+    ],
+    "tags": [
+      "physics",
+      "friction",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "A simple electrical circuit consists of a ideal $12\text{-V}$ DC voltage source connected in series with two resistors, whose resistances are $2.0\text{ }\Omega$ and $4.0\text{ }\Omega$ respectively. What is the total electric current flowing out of the power source?",
+    "choices": {
+      "A": "2.0 Amperes",
+      "B": "3.0 Amperes",
+      "C": "6.0 Amperes",
+      "D": "8.0 Amperes"
+    },
+    "correctAnswer": "A",
+    "rationale": "For a series circuit, the total equivalent resistance is the sum of the individual resistances: $R_{\text{eq}} = R_1 + R_2 = 2.0\text{ }\Omega + 4.0\text{ }\Omega = 6.0\text{ }\Omega$. Using Ohm's Law ($V = IR$), we solve for current: $I = \frac{V}{R_{\text{eq}}} = \frac{12\text{ V}}{6.0\text{ }\Omega} = 2.0\text{ Amperes}$.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "physics",
+      "electricity",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Magnetism",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "A positively charged alpha particle enters a uniform magnetic field directed straight down into the page. If the particle is traveling horizontally from left to right when it enters the field, in which direction will the magnetic force deflect the particle?",
+    "choices": {
+      "A": "Up toward the top of the page",
+      "B": "Down toward the bottom of the page",
+      "C": "Straight out of the page",
+      "D": "In a straight line with zero deflection"
+    },
+    "correctAnswer": "A",
+    "rationale": "Using the Right-Hand Rule for magnetic force on a moving positive charge ($F = qv \times B$): point your fingers/index in the direction of the velocity vector (left to right), curl them in the direction of the magnetic field (into the page). Your thumb points in the direction of the resulting force, which is upward toward the top of the page.",
+    "objectives": [
+      "magnetism"
+    ],
+    "tags": [
+      "physics",
+      "magnetism",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Waves",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "A mechanical wave is traveling through a stretched string. If the frequency of this wave is doubled while the tension of the string remains perfectly constant, what happens to the wavelength of the wave?",
+    "choices": {
+      "A": "The wavelength doubles in size.",
+      "B": "The wavelength remains completely unchanged.",
+      "C": "The wavelength drops to one-half of its original value.",
+      "D": "The wavelength quadruples in size."
+    },
+    "correctAnswer": "C",
+    "rationale": "The wave speed on a string is determined solely by the properties of the medium (tension and linear density). Since the tension is constant, the wave speed ($v$) stays constant. Based on the wave equation $v = f\lambda$, frequency ($f$) and wavelength ($\lambda$) are inversely proportional. Doubling the frequency requires the wavelength to be cut in half.",
+    "objectives": [
+      "waves"
+    ],
+    "tags": [
+      "physics",
+      "waves",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Optics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "An object is placed at a distance of $30\text{ cm}$ in front of a thin converging (convex) lens. If the focal length of this lens is exactly $10\text{ cm}$, at what distance behind the lens will the real image be focused?",
+    "choices": {
+      "A": "7.5 cm",
+      "B": "15.0 cm",
+      "C": "20.0 cm",
+      "D": "30.0 cm"
+    },
+    "correctAnswer": "B",
+    "rationale": "We use the thin lens equation: $\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}$. Given $f = 10\text{ cm}$ and $d_o = 30\text{ cm}$, we substitute to solve for image distance $d_i$:\n$\frac{1}{10} = \frac{1}{30} + \frac{1}{d_i} \Rightarrow \frac{1}{d_i} = \frac{1}{10} - \frac{1}{30} = \frac{3}{30} - \frac{1}{30} = \frac{2}{30} \Rightarrow d_i = \frac{30}{2} = 15\text{ cm}$.",
+    "objectives": [
+      "optics"
+    ],
+    "tags": [
+      "physics",
+      "optics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Circular Motion",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "A toy model airplane travels in a horizontal circular path of radius $2.0\text{ meters}$ at a constant speed of $4.0\text{ m/s}$. What is the magnitude of the centripetal acceleration experienced by the model airplane?",
+    "choices": {
+      "A": "2.0 m/s\u00b2",
+      "B": "4.0 m/s\u00b2",
+      "C": "8.0 m/s\u00b2",
+      "D": "16.0 m/s\u00b2"
+    },
+    "correctAnswer": "C",
+    "rationale": "Centripetal acceleration is given by the formula $a_c = \frac{v^2}{r}$. Substituting the given values: $a_c = \frac{4.0^2}{2.0} = \frac{16.0}{2.0} = 8.0\text{ m/s}^2$.",
+    "objectives": [
+      "circular motion"
+    ],
+    "tags": [
+      "physics",
+      "mechanics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics and Heredity",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "Meselson and Stahl utilized heavy isotope nitrogen ($^{15}N$) tracing techniques to establish the mechanism of DNA replication. Which mode of replication did their experiments prove, showing that a replicated double helix consists of one intact parental strand and one newly synthesized strand?",
+    "choices": {
+      "A": "Conservative replication",
+      "B": "Semiconservative replication",
+      "C": "Dispersive replication",
+      "D": "Rolling-circle replication"
+    },
+    "correctAnswer": "B",
+    "rationale": "The Meselson-Stahl experiment demonstrated that DNA replication is semiconservative. When DNA replicates, the two strands unzip, and each serves as a template for a new strand. The resulting DNA molecules consist of one original strand and one new strand.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "biology",
+      "genetics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Bonding",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "Intermolecular forces hold molecules together in a liquid or solid phase. Which type of intermolecular force is exclusively responsible for water's unusually high boiling point, high surface tension, and low density in its solid crystalline phase (ice)?",
+    "choices": {
+      "A": "London dispersion forces",
+      "B": "Ion-dipole forces",
+      "C": "Hydrogen bonding",
+      "D": "Van der Waals forces"
+    },
+    "correctAnswer": "C",
+    "rationale": "Hydrogen bonding is a strong type of dipole-dipole attraction that occurs when hydrogen is covalently bonded to highly electronegative atoms (N, O, or F). In water, extensive hydrogen bonding holds the molecules together tightly in the liquid phase, requiring more energy to boil, and forms an open hexagonal lattice in ice, making it less dense than liquid water.",
+    "objectives": [
+      "chemical bonding"
+    ],
+    "tags": [
+      "chemistry",
+      "intermolecular-forces",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Ecology",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "An island ecosystem experiences a sudden influx of a non-native predatory snake species. Over time, this invasive predator decimates the population of native insectivorous birds, causing a massive, unchecked explosion in the population of herbivorous insects. This ecological cascade is an example of what phenomenon?",
+    "choices": {
+      "A": "Competitive exclusion",
+      "B": "Trophic cascade",
+      "C": "Symbiotic mutualism",
+      "D": "Eutrophication"
+    },
+    "correctAnswer": "B",
+    "rationale": "A trophic cascade occurs when predators in a food web suppress the abundance or alter the behavior of their prey, thereby releasing the next lower trophic level from predation. Here, adding a top predator removes the birds, which indirectly allows the insect population to boom.",
+    "objectives": [
+      "ecology"
+    ],
+    "tags": [
+      "biology",
+      "ecology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Matter and Its Properties",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "The heating curve of a pure crystalline solid substance is monitored at a constant pressure. During a phase change, such as from solid to liquid, heat energy is continuously added to the system, yet the measured thermometer temperature remains perfectly constant. What explains this observation?",
+    "choices": {
+      "A": "The added heat is entirely converted into kinetic energy of the bulk liquid molecules.",
+      "B": "The heat energy is utilized exclusively to break or loosen the intermolecular attractive forces holding the solid lattice together.",
+      "C": "The substance undergoes a nuclear reaction that absorbs the extra thermal energy.",
+      "D": "The thermometer fails because phase transitions violate the laws of classical thermodynamics."
+    },
+    "correctAnswer": "B",
+    "rationale": "During a phase transition, the added heat energy is absorbed as latent heat. Instead of increasing the average kinetic energy of the molecules (which would raise the temperature), the energy is used to break the bonds or attractive forces holding the molecules fixed in the solid crystal lattice.",
+    "objectives": [
+      "matter and its properties"
+    ],
+    "tags": [
+      "chemistry",
+      "thermodynamics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Acids and Bases",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "A chemistry student performs a titration by adding a strong base ($NaOH$) to a weak acid ($CH_3COOH$). At the exact equivalence point of this chemical reaction, the measured pH of the resulting solution is found to be significantly greater than 7.00. What chemical process accounts for this basic pH at the equivalence point?",
+    "choices": {
+      "A": "Excess unreacted hydronium ions remain in the beaker.",
+      "B": "The conjugate base ($CH_3COO^-$) undergoes hydrolysis with water molecules to produce hydroxide ($OH^-$) ions.",
+      "C": "Sodium ions ($Na^+$) react with water to form a strong acidic solution.",
+      "D": "The salt completely precipitates out of solution, leaving behind pure hydronium."
+    },
+    "correctAnswer": "B",
+    "rationale": "At the equivalence point of a weak acid-strong base titration, all the original weak acid is converted into its conjugate base ($CH_3COO^-$). This conjugate base is strong enough to react with water (hydrolysis): $CH_3COO^- + H_2O \rightleftharpoons CH_3COOH + OH^-$. The generation of these hydroxide ions drives the pH above 7.00.",
+    "objectives": [
+      "acids and bases"
+    ],
+    "tags": [
+      "chemistry",
+      "acids-bases",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Motion",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "A projectile is launched from flat ground with an initial velocity $v_0$ at an elevation angle of exactly $45^\circ$ above the horizontal. If air resistance is assumed to be negligible, what is the ratio of the projectile's maximum vertical height ($H$) to its total horizontal range ($R$)?",
+    "choices": {
+      "A": "1:1",
+      "B": "1:2",
+      "C": "1:4",
+      "D": "1:8"
+    },
+    "correctAnswer": "C",
+    "rationale": "The formula for maximum height is $H = \frac{v_0^2 \sin^2\theta}{2g}$ and the formula for horizontal range is $R = \frac{v_0^2 \sin(2\theta)}{g}$. Taking their ratio gives $\frac{H}{R} = \frac{\sin^2\theta}{2 \sin(2\theta)} = \frac{\sin^2\theta}{4 \sin\theta \cos\theta} = \frac{\tan\theta}{4}$. For a launch angle of $\theta = 45^\circ$, $\tan(45^\circ) = 1$, so $\frac{H}{R} = \frac{1}{4}$. Thus, the ratio is 1:4.",
+    "objectives": [
+      "motion"
+    ],
+    "tags": [
+      "physics",
+      "kinematics",
+      "very_hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "Two point charges, $Q_1 = +2.0\text{ }\mu\text{C}$ and $Q_2 = +8.0\text{ }\mu\text{C}$, are fixed at a distance of $30\text{ cm}$ apart along a straight horizontal line. A third positive point charge, $q$, is placed somewhere on the line segment connecting them. At what distance from $Q_1$ should charge $q$ be positioned so that the net electrostatic force acting on it is exactly zero?",
+    "choices": {
+      "A": "10 cm",
+      "B": "15 cm",
+      "C": "20 cm",
+      "D": "25 cm"
+    },
+    "correctAnswer": "A",
+    "rationale": "By Coulomb's Law, the force from $Q_1$ is $F_1 = \frac{kQ_1q}{x^2}$ and from $Q_2$ is $F_2 = \frac{kQ_2q}{(30-x)^2}$. Set them equal for a net force of zero:\n$\frac{k(2)q}{x^2} = \frac{k(8)q}{(30-x)^2} \Rightarrow \frac{2}{x^2} = \frac{8}{(30-x)^2} \Rightarrow \frac{1}{x^2} = \frac{4}{(30-x)^2}$. Take the square root of both sides:\n$\frac{1}{x} = \frac{2}{30-x} \Rightarrow 30 - x = 2x \Rightarrow 30 = 3x \Rightarrow x = 10\text{ cm}$.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "physics",
+      "electrostatics",
+      "very_hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Evolution",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "In a large population of beetles that matches all assumptions of the Hardy-Weinberg equilibrium, a single gene locus controls wing color. The dominant allele ($B$) yields black wings, while the recessive allele ($b$) yields grey wings. If a genetic survey reveals that exactly 16% of the population displays grey wings, what is the frequency of heterozygous ($Bb$) genotypes within this beetle population?",
+    "choices": {
+      "A": "0.16",
+      "B": "0.32",
+      "C": "0.48",
+      "D": "0.84"
+    },
+    "correctAnswer": "C",
+    "rationale": "Let $p$ be the frequency of $B$ and $q$ be the frequency of $b$. Grey-winged beetles are homozygous recessive ($bb$), so $q^2 = 0.16$. Taking the square root gives $q = 0.40$. Since $p + q = 1$, we find $p = 1 - 0.40 = 0.60$. The frequency of the heterozygous genotype ($Bb$) is given by $2pq = 2(0.60)(0.40) = 0.48$ or 48%.",
+    "objectives": [
+      "evolution"
+    ],
+    "tags": [
+      "biology",
+      "genetics",
+      "hard"
+    ],
+    "isWordProblem": true
+  }
+]

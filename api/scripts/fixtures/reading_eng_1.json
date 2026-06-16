@@ -1,0 +1,1608 @@
+{
+  "passages": [
+    {
+      "_id": "p1_poem",
+      "title": "The Loom of the Night",
+      "subjectArea": "Reading Comprehension",
+      "source": "Original Collection",
+      "content": "She sits upon the mountain's crest,\nA silent watcher in the west.\nHer hands, a blur of silver light,\nBegin to weave the looming night.\n\nA blanket of obsidian spun,\nTo cool the embers of the sun.\nWith gossamer of comet tails,\nShe patches up the astral sails.\n\nAnd when the mortals weep or mourn,\nShe takes the threads that they have torn,\nAnd knits them into shooting stars,\nTo hide the universe's scars."
+    },
+    {
+      "_id": "p2_article",
+      "title": "Mangrove Restoration in Visayas",
+      "subjectArea": "Reading Comprehension",
+      "source": "Mock Science & Environment Digest",
+      "content": "Coastal erosion and severe typhoons have long plagued the Visayas region. In response, a massive mangrove restoration project was launched in 2021. Mangroves act as natural buffers against storm surges, their complex root systems dissipating wave energy. Beyond protection, they serve as critical nurseries for marine life, boosting local fishery yields.\n\nHowever, initial efforts saw mixed results due to improper species selection. The table below details the survival rates of three species planted in the Panay area after two years.\n\n| Species | Planted | Survived | Growth Rate (cm/year) |\n|---|---|---|---|\n| Rhizophora | 5,000 | 4,200 | 15 |\n| Avicennia | 3,000 | 1,800 | 25 |\n| Sonneratia | 2,000 | 1,500 | 20 |\n\nThe project learned that planting Avicennia in the seaward zones, despite its lower survival rate here, is essential due to its high resistance to salinity and inundation. Community involvement has been the true linchpin. Local fisherfolk, who initially viewed the mangroves as obstacles to boat navigation, are now the primary caretakers, realizing that the temporary inconvenience is far outweighed by long-term ecological and economic benefits."
+    },
+    {
+      "_id": "p3_paired",
+      "title": "The Digital Divide: Two Perspectives on AI in Education",
+      "subjectArea": "Reading Comprehension",
+      "source": "Original Editorials",
+      "content": "Passage 3A: Speech by a Technology Advocate\nThe integration of artificial intelligence in Philippine classrooms is not merely a luxury; it is an imperative. As the global economy shifts toward automation, our students must be digitally fluent. AI-driven adaptive learning software allows for personalized education, tailoring lessons to a student's pace and identifying knowledge gaps in real time. This level of efficiency cannot be achieved by a single teacher managing a class of fifty. Opponents argue that technology diminishes the human element, but we must ask: isn't preparing our youth for the realities of the 21st century the most profoundly human service we can offer?\n\nPassage 3B: Essay by a Veteran Educator\nWe are rushing headlong into a digitized classroom, blinded by the shiny promise of efficiency. While AI can certainly deliver facts and grade multiple-choice tests, education is not simply data transfer. It is character formation. A machine cannot detect the nuance of a student's sudden silence, nor can it inspire a child through genuine empathy. Furthermore, framing AI as an educational panacea ignores the glaring infrastructural deficits in our rural schools. We are at risk of widening the digital divide, creating a two-tiered system where the privileged converse with algorithms, while the marginalized remain disconnected."
+    },
+    {
+      "_id": "p4_story",
+      "title": "The Approaching Storm",
+      "subjectArea": "Reading Comprehension",
+      "source": "Original Short Story",
+      "content": "The radio crackled with static, a telltale sign that Signal No. 3 was imminent. Lolo Tasyo did not flinch; his eyes, calloused not just by age but by countless tempests, simply surveyed the tin roof of their modest home. \"Hurry, Nene,\" he instructed his granddaughter, handing her a bundle of thick nylon ropes. \"The wind is like a hungry dog. If you give it an edge to bite, it will tear the whole roof off.\"\n\nNene nodded, her hands trembling as she tied the ropes to the sturdy concrete pillars, anchoring the corrugated sheets. She had always dreaded the monsoons, but watching her grandfather move with methodical calm offered a strange comfort. He wasn't fighting the storm; he was preparing to endure it. \"We don't conquer the rain, Nene,\" Lolo Tasyo murmured, pulling a knot tight. \"We just make sure our foundation is stronger than its anger.\""
+    },
+    {
+      "_id": "p5_procedure",
+      "title": "How to Weave a Traditional Banig",
+      "subjectArea": "Reading Comprehension",
+      "source": "Cultural Heritage Guide",
+      "content": "The traditional Filipino banig (sleeping mat) is a testament to patience and artistry. While materials vary by region, the fundamental procedure remains consistent.\n\nStep 1: Harvesting. Mature leaves are carefully cut to avoid damaging the main plant.\nStep 2: Stripping and Sun-drying. The thorny edges are removed, and the leaves are stripped into uniform widths. They are laid out in the sun for two to three days until they turn a light brown hue.\nStep 3: Dyeing. The dried strips are boiled in pots with vibrant chemical or natural dyes to create colors like magenta, green, and yellow.\nStep 4: Flattening. Once dyed and dried again, the strips are flattened using a piece of smooth hardwood.\nStep 5: Weaving. The artisan weaves the strips using intricate geometric patterns.\n\n| Mat Size | Prep Time | Weaving Time | Total Time |\n|---|---|---|---|\n| Single | 3 days | 2 days | 5 days |\n| Double | 3 days | 4 days | 7 days |\n| Family | 4 days | 6 days | 10 days |\n\nThe meticulous process ensures that the banig is not only functional but also a durable family heirloom, mitigating the effects of hot tropical nights through its breathable weave. This craft is entirely reliant on human hands; no machine can replicate the tight, custom tension of an expert weaver."
+    },
+    {
+      "_id": "p6_editorial",
+      "title": "The Cost of Moving Forward",
+      "subjectArea": "Reading Comprehension",
+      "source": "Opinion Section, Mock Daily",
+      "content": "The push for the Public Utility Vehicle (PUV) Modernization Program has sparked fiery debates across the archipelago. The central argument of the state is environmental and safety-driven: replacing the ubiquitous, smoke-belching traditional jeepneys with Euro-4 compliant or electric vehicles. This is an undeniable ecological necessity.\n\nHowever, the transition demands a critical look at economic equity. A modern jeepney costs upwards of 2,500,000 pesos. Even with a government equity subsidy of 160,000 pesos, the financial burden placed on a single operator is staggering.\n\n[Editorial Cartoon Description: A small, exhausted jeepney driver in tattered clothes is depicted carrying a massive, incredibly heavy modern minibus on his back, his knees buckling. A giant government official in a sharp suit stands comfortably nearby, smiling brightly and dropping a single tiny coin labeled 'Subsidy' into a tin cup held by the driver.]\n\nIf we mandate modernization without providing a commercially viable transition plan, we are essentially punishing the poor for a systemic failure. Progress cannot be genuinely called progress if it leaves the most vulnerable sectors in the dust. We must rethink the financial structuring of this program before the backbone of our public transport snaps."
+    }
+  ],
+  "questions": [
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 1,
+      "questionText": "What is the central theme of 'The Loom of the Night'?",
+      "choices": {
+        "A": "The destructive power of natural disasters.",
+        "B": "A mythological explanation for the arrival of night and stars.",
+        "C": "The harsh reality of mountain living.",
+        "D": "A scientific description of how stars are formed."
+      },
+      "correctAnswer": "B",
+      "rationale": "The poem describes a mythical figure weaving the night sky, cooling the sun, and creating shooting stars from human sorrow, serving as a mythological or poetic explanation of nightfall.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Figures of Speech",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 2,
+      "questionText": "The phrase 'A blanket of obsidian spun' is an example of which figure of speech?",
+      "choices": {
+        "A": "Simile",
+        "B": "Personification",
+        "C": "Metaphor",
+        "D": "Hyperbole"
+      },
+      "correctAnswer": "C",
+      "rationale": "The night sky is directly compared to a spun 'blanket of obsidian' without using 'like' or 'as', making it a metaphor.",
+      "objectives": [
+        "identify and interpret figures of speech"
+      ],
+      "tags": [
+        "figures-of-speech",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 3,
+      "questionText": "Which word best describes the tone of the poem?",
+      "choices": {
+        "A": "Angry",
+        "B": "Humorous",
+        "C": "Soothing",
+        "D": "Terrifying"
+      },
+      "correctAnswer": "C",
+      "rationale": "The poem uses comforting imagery such as 'cool the embers', 'patches up', and 'hide the universe's scars', evoking a soothing and gentle tone.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "easy",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 4,
+      "questionText": "Based on the third stanza, what do the 'torn threads' symbolize?",
+      "choices": {
+        "A": "Actual clothes torn by the wind.",
+        "B": "Human grief and emotional pain.",
+        "C": "The remnants of dying stars.",
+        "D": "The physical scars of the mountain."
+      },
+      "correctAnswer": "B",
+      "rationale": "The poem states 'when the mortals weep or mourn, She takes the threads that they have torn,' implying that the threads are a metaphor for human sorrow and emotional pain.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 5,
+      "questionText": "In the context of the poem, what does the word 'gossamer' most likely mean?",
+      "choices": {
+        "A": "A heavy, unbreakable iron chain.",
+        "B": "A dark, impenetrable fog.",
+        "C": "A delicate, sheer, and fragile material.",
+        "D": "A sharp, jagged rock."
+      },
+      "correctAnswer": "C",
+      "rationale": "Gossamer refers to something very light, thin, and delicate, which fits the imagery of 'comet tails' used to patch 'astral sails'.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Point of View",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 6,
+      "questionText": "From which point of view is the poem written?",
+      "choices": {
+        "A": "First person",
+        "B": "Second person",
+        "C": "Third person",
+        "D": "First person plural"
+      },
+      "correctAnswer": "C",
+      "rationale": "The poem uses pronouns like 'She' and 'Her' to describe the weaver, indicating it is written from a third-person perspective.",
+      "objectives": [
+        "identify the author’s point of view"
+      ],
+      "tags": [
+        "point-of-view",
+        "easy",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 7,
+      "questionText": "What conclusion can be drawn about the relationship between the weaver and humanity?",
+      "choices": {
+        "A": "The weaver is indifferent to human suffering.",
+        "B": "The weaver punishes humans by bringing the darkness of night.",
+        "C": "The weaver acts as a comforting force that transforms human pain into beauty.",
+        "D": "The weaver relies on human worship to maintain the stars."
+      },
+      "correctAnswer": "C",
+      "rationale": "The weaver takes the 'threads' of human mourning and 'knits them into shooting stars', demonstrating a compassionate transformation of sorrow into cosmic beauty.",
+      "objectives": [
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "conclusion",
+        "hard",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Criticism",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 8,
+      "questionText": "How does the author use the imagery of weaving to develop the poem's theme?",
+      "choices": {
+        "A": "By contrasting the slow process of weaving with the rapid speed of comets.",
+        "B": "By illustrating the universe as a carefully crafted and mended tapestry.",
+        "C": "By showing that nature is bound by restrictive threads.",
+        "D": "By emphasizing the physical labor required to live in the mountains."
+      },
+      "correctAnswer": "B",
+      "rationale": "The act of weaving, patching sails, and knitting threads portrays the universe not as random space, but as an intentional, cared-for tapestry.",
+      "objectives": [
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-criticism",
+        "hard",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 9,
+      "questionText": "Which alternative title best captures the essence of the poem?",
+      "choices": {
+        "A": "The Science of Shooting Stars",
+        "B": "The Mountain's Shadow",
+        "C": "The Seamstress of the Cosmos",
+        "D": "Tears of the Mortals"
+      },
+      "correctAnswer": "C",
+      "rationale": "The poem focuses heavily on a female figure who 'weaves', 'patches', and 'knits' the elements of the night sky, making 'The Seamstress of the Cosmos' highly appropriate.",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "easy",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Implied Meaning",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p1_poem",
+      "questionNumber": 10,
+      "questionText": "What is the implied meaning of 'hide the universe's scars'?",
+      "choices": {
+        "A": "To cover up the fact that stars are actually burning out.",
+        "B": "To bring visual beauty to areas of space that are empty.",
+        "C": "To provide comfort by overlaying the world's tragedies with celestial beauty.",
+        "D": "To physically repair damage done to the sky by the sun."
+      },
+      "correctAnswer": "C",
+      "rationale": "The 'scars' metaphorically represent the pain, tragedy, and suffering in the world ('mortals weep'). The weaver covers these conceptual scars with the beauty of shooting stars.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "implied-meaning",
+        "medium",
+        "poetry"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 11,
+      "questionText": "What is the main topic of the article?",
+      "choices": {
+        "A": "The financial cost of planting mangroves in the Visayas.",
+        "B": "The challenges and successes of a mangrove restoration project in the Visayas.",
+        "C": "A scientific comparison of three mangrove species' growth rates.",
+        "D": "The stubbornness of local fisherfolk regarding ecological programs."
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage discusses the launch of a restoration project, its initial mixed results regarding species survival, and its ultimate success through community involvement.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 12,
+      "questionText": "According to the table, which mangrove species had the highest number of surviving plants?",
+      "choices": {
+        "A": "Rhizophora",
+        "B": "Avicennia",
+        "C": "Sonneratia",
+        "D": "They all had the same number of surviving plants."
+      },
+      "correctAnswer": "A",
+      "rationale": "The table explicitly states that Rhizophora had 4,200 surviving plants, which is higher than Avicennia (1,800) and Sonneratia (1,500).",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "easy",
+        "table"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 13,
+      "questionText": "If an NGO decides to plant an additional 1,000 Rhizophora using the exact same survival rate shown in the table, how many of these new mangroves are expected to survive?",
+      "choices": {
+        "A": "750",
+        "B": "800",
+        "C": "840",
+        "D": "900"
+      },
+      "correctAnswer": "C",
+      "rationale": "From the table, Rhizophora survival rate is 4,200 / 5,000 = 0.84 or 84%. 84% of 1,000 is 840.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "medium",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 14,
+      "questionText": "What can be inferred about the Avicennia species based on the text and the table?",
+      "choices": {
+        "A": "It is the most popular species among local fisherfolk.",
+        "B": "It grows the slowest among the three species listed.",
+        "C": "Despite its lower survival rate, it possesses vital traits for specific harsh coastal zones.",
+        "D": "It is completely immune to destruction by severe typhoons."
+      },
+      "correctAnswer": "C",
+      "rationale": "The text states that planting Avicennia is 'essential due to its high resistance to salinity and inundation' in seaward zones, despite the table showing it has a lower survival count/rate overall.",
+      "objectives": [
+        "make valid inferences"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 15,
+      "questionText": "In the context of the passage, what does the word 'inundation' mean?",
+      "choices": {
+        "A": "Exposure to extreme heat",
+        "B": "Flooding or being covered by water",
+        "C": "Lack of adequate nutrients in the soil",
+        "D": "Infestation by marine parasites"
+      },
+      "correctAnswer": "B",
+      "rationale": "Mangroves are in seaward zones affected by tides and storm surges. 'Inundation' refers to being submerged or flooded by water.",
+      "objectives": [
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 16,
+      "questionText": "Which best describes the author's primary purpose in the final paragraph?",
+      "choices": {
+        "A": "To criticize the local fisherfolk for their initial resistance.",
+        "B": "To argue that mangroves should only be planted in inland areas.",
+        "C": "To highlight that community engagement was crucial to the project's success.",
+        "D": "To explain the biological growth stages of the Avicennia species."
+      },
+      "correctAnswer": "C",
+      "rationale": "The final paragraph explicitly calls community involvement 'the true linchpin' and explains how fisherfolk became the primary caretakers, ensuring the project's success.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Assumptions",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 17,
+      "questionText": "Which of the following is an underlying assumption made by the author regarding the local fisherfolk?",
+      "choices": {
+        "A": "They possess formal degrees in marine biology.",
+        "B": "They are capable of shifting their perspectives when presented with tangible long-term benefits.",
+        "C": "They only care about ecological preservation, ignoring their own economic needs.",
+        "D": "They intentionally sabotage conservation efforts that interfere with their daily routines."
+      },
+      "correctAnswer": "B",
+      "rationale": "The author notes that fisherfolk initially saw mangroves as obstacles but are now caretakers because they realize the long-term benefits outweigh temporary inconveniences. This assumes they are adaptable and rational when benefits become clear.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "hard",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Supporting Details",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 18,
+      "questionText": "According to the passage, how do mangroves physically protect coastal areas from storm surges?",
+      "choices": {
+        "A": "By completely blocking the wind with their high canopies.",
+        "B": "By absorbing excess rainwater into their leaves.",
+        "C": "By dissipating wave energy through their complex root systems.",
+        "D": "By altering the chemical composition of the seawater."
+      },
+      "correctAnswer": "C",
+      "rationale": "The first paragraph explicitly states: 'Mangroves act as natural buffers against storm surges, their complex root systems dissipating wave energy.'",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "supporting-details",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 19,
+      "questionText": "Based on the table, if an Avicennia and a Sonneratia are planted at the exact same time and both survive, how much taller in centimeters will the Avicennia be than the Sonneratia after exactly 4 years of growth?",
+      "choices": {
+        "A": "5 cm",
+        "B": "10 cm",
+        "C": "20 cm",
+        "D": "25 cm"
+      },
+      "correctAnswer": "C",
+      "rationale": "Avicennia grows at 25 cm/year; over 4 years it grows 100 cm. Sonneratia grows at 20 cm/year; over 4 years it grows 80 cm. The difference is 100 - 80 = 20 cm.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Skimming and Scanning",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p2_article",
+      "questionNumber": 20,
+      "questionText": "In which paragraph does the author discuss the impact of mangroves on local fishery yields?",
+      "choices": {
+        "A": "Paragraph 1",
+        "B": "Paragraph 2",
+        "C": "Paragraph 3",
+        "D": "The author does not mention fishery yields."
+      },
+      "correctAnswer": "A",
+      "rationale": "The first paragraph contains the sentence: 'Beyond protection, they serve as critical nurseries for marine life, boosting local fishery yields.'",
+      "objectives": [
+        "use skimming and scanning strategies effectively"
+      ],
+      "tags": [
+        "skimming",
+        "easy",
+        "article"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 21,
+      "questionText": "What is the central claim of Passage 3A?",
+      "choices": {
+        "A": "AI should completely replace human teachers to improve efficiency.",
+        "B": "Integrating AI in education is essential to prepare students for the future.",
+        "C": "The global economy will collapse without the use of artificial intelligence.",
+        "D": "Technology is diminishing the human element in classrooms."
+      },
+      "correctAnswer": "B",
+      "rationale": "The author explicitly states that AI integration 'is not merely a luxury; it is an imperative' to ensure students are digitally fluent for the automation-driven global economy.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 22,
+      "questionText": "What is the primary concern raised by the author of Passage 3B?",
+      "choices": {
+        "A": "AI will make standardized testing too difficult for students.",
+        "B": "Rural schools have better infrastructure than urban schools.",
+        "C": "Over-reliance on AI risks losing the human aspect of education and widening social inequalities.",
+        "D": "Teachers are not adequately trained to use AI software."
+      },
+      "correctAnswer": "C",
+      "rationale": "Passage 3B argues that education requires empathy ('character formation') and that pushing AI ignores 'infrastructural deficits,' creating a 'two-tiered system' (inequality).",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesize and Compare",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 23,
+      "questionText": "How would the author of Passage 3B most likely respond to the claim in Passage 3A that AI provides 'efficiency cannot be achieved by a single teacher'?",
+      "choices": {
+        "A": "By agreeing enthusiastically, acknowledging that efficiency is the ultimate goal of education.",
+        "B": "By countering that efficiency in data transfer does not equate to genuine character formation or empathy.",
+        "C": "By denying that AI is faster than a human teacher at grading papers.",
+        "D": "By arguing that teachers should manage classes of one hundred instead of fifty."
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage 3B directly criticizes being 'blinded by the shiny promise of efficiency' and argues that education 'is not simply data transfer. It is character formation.'",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesize",
+        "hard",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesize and Compare",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 24,
+      "questionText": "On which of the following points do both authors implicitly agree?",
+      "choices": {
+        "A": "AI is capable of delivering facts and recognizing knowledge gaps.",
+        "B": "Rural schools lack the internet infrastructure for AI.",
+        "C": "Automation is the most important factor in the global economy.",
+        "D": "Empathy is an outdated concept in modern education."
+      },
+      "correctAnswer": "A",
+      "rationale": "Author 3A praises AI for 'identifying knowledge gaps' and personalizing lessons. Author 3B concedes that 'AI can certainly deliver facts and grade multiple-choice tests.' Both acknowledge AI's mechanical capabilities.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesize",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 25,
+      "questionText": "In Passage 3B, the word 'panacea' most nearly means:",
+      "choices": {
+        "A": "A dangerous virus",
+        "B": "A universal cure or solution",
+        "C": "A technological device",
+        "D": "An unnecessary luxury"
+      },
+      "correctAnswer": "B",
+      "rationale": "The phrase 'framing AI as an educational panacea' implies viewing AI as a magical cure-all that solves all educational problems, which the author argues is a false framing.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 26,
+      "questionText": "How does the author of Passage 3A structure their argument against opponents of AI?",
+      "choices": {
+        "A": "By citing statistical data showing AI's superiority over human teachers.",
+        "B": "By attacking the personal credentials of traditional educators.",
+        "C": "By reframing the integration of technology as a fundamentally human act of preparation.",
+        "D": "By ignoring the opponents' claims entirely and focusing on rural schools."
+      },
+      "correctAnswer": "C",
+      "rationale": "Passage 3A anticipates the counterargument ('Opponents argue that technology diminishes the human element') and reframes it rhetorically: 'isn't preparing our youth... the most profoundly human service we can offer?'",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 27,
+      "questionText": "Which of the following statements from Passage 3A represents a subjective opinion rather than an objective fact?",
+      "choices": {
+        "A": "AI-driven software can tailor lessons to a student's pace.",
+        "B": "A single teacher manages a class of fifty.",
+        "C": "The integration of artificial intelligence is an imperative.",
+        "D": "The global economy is shifting toward automation."
+      },
+      "correctAnswer": "C",
+      "rationale": "Calling AI integration an 'imperative' (a necessity) is an evaluative judgment or opinion of the author, not a strictly verifiable empirical fact.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-opinion",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 28,
+      "questionText": "The tone of Passage 3B can best be described as:",
+      "choices": {
+        "A": "Apathetic and resigned",
+        "B": "Cautionary and critical",
+        "C": "Overly optimistic and cheerful",
+        "D": "Satirical and mocking"
+      },
+      "correctAnswer": "B",
+      "rationale": "The author uses phrases like 'rushing headlong', 'blinded by the shiny promise', and 'We are at risk', indicating a tone that warns against and critiques the unbridled adoption of AI.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Point of View",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 29,
+      "questionText": "From whose perspective is Passage 3B written?",
+      "choices": {
+        "A": "A software engineer",
+        "B": "A rural school student",
+        "C": "An experienced educator concerned with holistic learning",
+        "D": "A government policymaker"
+      },
+      "correctAnswer": "C",
+      "rationale": "The source description says 'Essay by a Veteran Educator', and the text focuses on 'character formation', student nuances, and empathy—priorities typical of an experienced, holistic teacher.",
+      "objectives": [
+        "identify the author’s point of view"
+      ],
+      "tags": [
+        "point-of-view",
+        "easy",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 30,
+      "questionText": "Based on Passage 3B, what does the author imply will happen if AI is implemented without addressing 'infrastructural deficits'?",
+      "choices": {
+        "A": "AI systems will frequently crash and fail to grade tests.",
+        "B": "Urban students will lose their empathy.",
+        "C": "Socioeconomic inequality will worsen because only well-funded schools will benefit.",
+        "D": "Teachers in rural areas will be replaced by robots."
+      },
+      "correctAnswer": "C",
+      "rationale": "The author warns that ignoring these deficits risks 'widening the digital divide' and creating a 'two-tiered system' where the marginalized remain disconnected, implying worsened inequality.",
+      "objectives": [
+        "make valid inferences"
+      ],
+      "tags": [
+        "inference",
+        "hard",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 31,
+      "questionText": "If a school board read both passages, what unified conclusion might they reasonably draw to balance both perspectives?",
+      "choices": {
+        "A": "AI should be banned entirely to protect the character of students.",
+        "B": "AI should replace human teachers to maximize global competitiveness.",
+        "C": "AI should be used to assist with data delivery, but human teachers must be retained to foster empathy and character.",
+        "D": "Funding should be withdrawn from rural schools since they cannot support AI."
+      },
+      "correctAnswer": "C",
+      "rationale": "Passage 3A highlights AI's efficiency in delivering personalized data, while 3B emphasizes that human teachers are needed for character and empathy. A balanced conclusion integrates AI for efficiency while keeping humans for emotional support.",
+      "objectives": [
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "conclusion",
+        "medium",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Assumptions",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "p3_paired",
+      "questionNumber": 32,
+      "questionText": "Which logical assumption is essential for the argument in Passage 3A to hold true?",
+      "choices": {
+        "A": "Empathy and character formation are irrelevant to the 21st-century global economy.",
+        "B": "Digital fluency achieved through AI translates directly into success in an automated global economy.",
+        "C": "Human teachers actively prevent students from achieving personalized learning.",
+        "D": "Opponents of AI do not care about the realities of the 21st century."
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage 3A argues that because the economy is shifting to automation, we *must* use AI to make students digitally fluent. This argument requires the assumption that the digital fluency gained via AI actually causes or enables economic success.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "very_hard",
+        "paired"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 33,
+      "questionText": "What is the primary event occurring in the story?",
+      "choices": {
+        "A": "A grandfather and granddaughter are repairing a roof after a typhoon.",
+        "B": "A grandfather is teaching his granddaughter how to secure their house before a storm hits.",
+        "C": "A young girl is listening to the radio while her grandfather sleeps.",
+        "D": "A family is evacuating their home due to a hungry dog."
+      },
+      "correctAnswer": "B",
+      "rationale": "The narrative details Lolo Tasyo and Nene tying down their tin roof with nylon ropes in preparation for an incoming Signal No. 3 storm.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Figures of Speech",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 34,
+      "questionText": "The phrase 'The wind is like a hungry dog' is an example of which literary device?",
+      "choices": {
+        "A": "Metaphor",
+        "B": "Personification",
+        "C": "Simile",
+        "D": "Onomatopoeia"
+      },
+      "correctAnswer": "C",
+      "rationale": "The explicit use of the word 'like' to compare the wind to a hungry dog makes it a simile.",
+      "objectives": [
+        "identify and interpret figures of speech"
+      ],
+      "tags": [
+        "figures-of-speech",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Implied Meaning",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 35,
+      "questionText": "What does Lolo Tasyo mean when he says, 'We don't conquer the rain... We just make sure our foundation is stronger than its anger'?",
+      "choices": {
+        "A": "Humans should try to control the weather using advanced technology.",
+        "B": "Nature is a sentient being that actively hates humanity.",
+        "C": "We cannot stop natural forces, but we can build resilience to survive them.",
+        "D": "Building houses entirely underground is the only way to survive typhoons."
+      },
+      "correctAnswer": "C",
+      "rationale": "The quote reflects a philosophy of acceptance and preparation: acknowledging the unstoppable force of nature ('don't conquer') while emphasizing human resilience and preparedness ('foundation is stronger').",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "implied-meaning",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 36,
+      "questionText": "How would you describe Lolo Tasyo's demeanor throughout the passage?",
+      "choices": {
+        "A": "Panicked and erratic",
+        "B": "Methodical and resolute",
+        "C": "Angry and bitter",
+        "D": "Joyful and careless"
+      },
+      "correctAnswer": "B",
+      "rationale": "The text states he 'did not flinch' and moved with 'methodical calm,' demonstrating a steady, resolute approach to the danger.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "tone",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Criticism",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 37,
+      "questionText": "How does the author use the contrast between Nene and Lolo Tasyo to enhance the story's theme?",
+      "choices": {
+        "A": "It shows that the younger generation is too weak to survive in the provinces.",
+        "B": "It highlights how physical strength decreases with age.",
+        "C": "It emphasizes the value of generational wisdom in overcoming fear and facing adversity.",
+        "D": "It proves that nature targets the young and inexperienced."
+      },
+      "correctAnswer": "C",
+      "rationale": "Nene's fear ('hands trembling', 'dreaded the monsoons') contrasts with Lolo Tasyo's calm experience. His guidance provides her 'strange comfort', illustrating the transfer of generational wisdom and resilience.",
+      "objectives": [
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-criticism",
+        "hard",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 38,
+      "questionText": "In the passage, the word 'calloused' is used to describe Lolo Tasyo's eyes. In this context, what does 'calloused' imply?",
+      "choices": {
+        "A": "Physically covered in thick, rough skin.",
+        "B": "Hardened and emotionally experienced due to facing many past hardships.",
+        "C": "Blind and unable to see the storm approaching.",
+        "D": "Infected by debris from a previous storm."
+      },
+      "correctAnswer": "B",
+      "rationale": "While 'calloused' literally means rough skin, describing eyes as 'calloused... by countless tempests' is a metaphor meaning he has seen so many storms he is emotionally hardened and used to them.",
+      "objectives": [
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 39,
+      "questionText": "Lolo Tasyo and Nene are securing the roof. If Lolo Tasyo uses 4 nylon ropes per concrete pillar, and their house has 6 pillars, and each rope requires 2 sturdy knots, how many knots did Lolo Tasyo and Nene tie in total to secure the entire roof?",
+      "choices": {
+        "A": "12 knots",
+        "B": "24 knots",
+        "C": "36 knots",
+        "D": "48 knots"
+      },
+      "correctAnswer": "D",
+      "rationale": "4 ropes/pillar x 6 pillars = 24 ropes total. 24 ropes x 2 knots/rope = 48 knots.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "word-problem",
+        "medium",
+        "logic"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Skimming and Scanning",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 40,
+      "questionText": "What material is Lolo Tasyo's roof made of?",
+      "choices": {
+        "A": "Nipa palm",
+        "B": "Corrugated tin sheets",
+        "C": "Concrete slabs",
+        "D": "Wooden planks"
+      },
+      "correctAnswer": "B",
+      "rationale": "The text refers to Lolo surveying the 'tin roof' and Nene anchoring the 'corrugated sheets'.",
+      "objectives": [
+        "use skimming and scanning strategies effectively"
+      ],
+      "tags": [
+        "skimming",
+        "easy",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 41,
+      "questionText": "Which alternate title emphasizes the story's core message rather than its plot?",
+      "choices": {
+        "A": "Tying the Roof",
+        "B": "Signal Number 3",
+        "C": "The Architecture of Resilience",
+        "D": "The Hungry Dog"
+      },
+      "correctAnswer": "C",
+      "rationale": "While A and B describe the literal plot, 'The Architecture of Resilience' captures the deeper thematic message of Lolo Tasyo's quote about making foundations stronger than the storm.",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p4_story",
+      "questionNumber": 42,
+      "questionText": "What is the author's primary purpose in writing this narrative?",
+      "choices": {
+        "A": "To provide a manual on how to tie specific knots.",
+        "B": "To depict the quiet dignity and preparedness of Filipinos facing natural disasters.",
+        "C": "To argue that modern houses should not use tin roofs.",
+        "D": "To scare readers about the dangers of Philippine typhoons."
+      },
+      "correctAnswer": "B",
+      "rationale": "The narrative honors Lolo Tasyo's calm endurance and wisdom, serving to depict the dignity, resilience, and preparedness of individuals in the face of inevitable natural disasters.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium",
+        "story"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Skimming and Scanning",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 43,
+      "questionText": "According to the procedure, what must be done to the leaves immediately after the thorny edges are removed?",
+      "choices": {
+        "A": "They are boiled in dyes.",
+        "B": "They are flattened with hardwood.",
+        "C": "They are woven into geometric patterns.",
+        "D": "They are stripped into uniform widths and sun-dried."
+      },
+      "correctAnswer": "D",
+      "rationale": "Step 2 explicitly states: 'The thorny edges are removed, and the leaves are stripped into uniform widths. They are laid out in the sun...'",
+      "objectives": [
+        "use skimming and scanning strategies effectively"
+      ],
+      "tags": [
+        "skimming",
+        "easy",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 44,
+      "questionText": "Why must the leaves be 'carefully cut' in Step 1?",
+      "choices": {
+        "A": "To ensure the dyes absorb properly later.",
+        "B": "To avoid injury from the thorny edges.",
+        "C": "To allow the main plant to survive and produce more leaves.",
+        "D": "To keep the leaves perfectly flat."
+      },
+      "correctAnswer": "C",
+      "rationale": "Step 1 says 'Mature leaves are carefully cut to avoid damaging the main plant.' This implies the goal is preservation of the plant so it continues to live.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "medium",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 45,
+      "questionText": "What is the primary message of the final paragraph regarding the banig?",
+      "choices": {
+        "A": "The banig is an obsolete item that is being replaced by mattresses.",
+        "B": "The value of the banig lies in both its practical function and its irreplaceable handmade artistry.",
+        "C": "The banig is only useful during hot tropical nights.",
+        "D": "Machines will eventually learn to replicate the expert weaver's tension."
+      },
+      "correctAnswer": "B",
+      "rationale": "The paragraph praises it as 'functional', a 'durable family heirloom', and states that 'no machine can replicate' the human artistry involved.",
+      "objectives": [
+        "locate the main idea or topic sentence"
+      ],
+      "tags": [
+        "main-idea",
+        "medium",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 46,
+      "questionText": "A local cooperative receives an order for 2 Single mats and 1 Family mat. Assuming they have 3 weavers and each weaver works on exactly one mat from start to finish (prep and weaving), how many total days of labor (the sum of all individual days worked by the 3 weavers) will it take to fulfill this order based on the table?",
+      "choices": {
+        "A": "15 days",
+        "B": "20 days",
+        "C": "22 days",
+        "D": "24 days"
+      },
+      "correctAnswer": "B",
+      "rationale": "From the table, a Single mat takes 5 total days. A Family mat takes 10 total days. Two Single mats = 5 + 5 = 10 days. One Family mat = 10 days. Total days of labor = 10 + 10 = 20 days.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 47,
+      "questionText": "In the final paragraph, what does 'mitigating' mean?",
+      "choices": {
+        "A": "Worsening or aggravating",
+        "B": "Enhancing or increasing",
+        "C": "Lessening the severity of",
+        "D": "Completely preventing"
+      },
+      "correctAnswer": "C",
+      "rationale": "The text says the mat is 'mitigating the effects of hot tropical nights through its breathable weave', meaning it lessens the discomfort of the heat.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 48,
+      "questionText": "According to the table, how much longer does it take to weave a Family mat compared to prepping it?",
+      "choices": {
+        "A": "1 day",
+        "B": "2 days",
+        "C": "3 days",
+        "D": "4 days"
+      },
+      "correctAnswer": "B",
+      "rationale": "The table shows that for a Family mat, Prep Time is 4 days and Weaving Time is 6 days. 6 - 4 = 2 days.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "medium",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 49,
+      "questionText": "Which of the following statements from the passage is an opinion?",
+      "choices": {
+        "A": "The traditional Filipino banig is a testament to patience and artistry.",
+        "B": "Mature leaves are carefully cut to avoid damaging the main plant.",
+        "C": "The dried strips are boiled in pots with chemical or natural dyes.",
+        "D": "A Single mat requires 3 days of prep time."
+      },
+      "correctAnswer": "A",
+      "rationale": "Calling the banig a 'testament to patience and artistry' is a subjective qualitative evaluation, whereas the other choices describe factual procedures or data.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-opinion",
+        "medium",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Drawing Conclusions",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p5_procedure",
+      "questionNumber": 50,
+      "questionText": "What conclusion can be drawn about the relationship between the size of the mat and its production process?",
+      "choices": {
+        "A": "Prep time increases significantly more than weaving time as the mat gets larger.",
+        "B": "The larger the mat, the greater the proportion of total time spent on weaving compared to prep time.",
+        "C": "Mat size has no effect on prep time.",
+        "D": "A Double mat requires twice as much total time as a Single mat."
+      },
+      "correctAnswer": "B",
+      "rationale": "For a Single mat, prep is longer than weaving (3 vs 2). For a Double, weaving is longer (4 vs 3). For a Family, weaving is even longer (6 vs 4). Thus, as size increases, weaving time accounts for a greater proportion of the total time.",
+      "objectives": [
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "conclusion",
+        "hard",
+        "procedure"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 51,
+      "questionText": "What is the central claim of the editorial?",
+      "choices": {
+        "A": "Traditional jeepneys are better for the environment than modern minibuses.",
+        "B": "The government should entirely abandon the PUV Modernization Program.",
+        "C": "While modernization is ecologically necessary, its current financial structure is unjust to poor operators.",
+        "D": "The government subsidy is overly generous and strains the national budget."
+      },
+      "correctAnswer": "C",
+      "rationale": "The author explicitly states that replacing old jeepneys is an 'undeniable ecological necessity' but argues that the 'transition demands a critical look at economic equity' because it punishes the poor.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 52,
+      "questionText": "What is the author's attitude toward traditional jeepney drivers?",
+      "choices": {
+        "A": "Sympathetic and protective",
+        "B": "Indifferent and cold",
+        "C": "Critical and accusatory",
+        "D": "Condescending and mocking"
+      },
+      "correctAnswer": "A",
+      "rationale": "The author defends the drivers, stating the program is 'punishing the poor' and refers to them as the 'most vulnerable sectors', showing deep sympathy and protectiveness.",
+      "objectives": [
+        "determine tone, purpose, and author’s attitude"
+      ],
+      "tags": [
+        "attitude",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 53,
+      "questionText": "Which paragraph contains the author's concession to the opposing argument?",
+      "choices": {
+        "A": "Paragraph 1",
+        "B": "Paragraph 2",
+        "C": "Paragraph 3 (Cartoon Description)",
+        "D": "Paragraph 4"
+      },
+      "correctAnswer": "A",
+      "rationale": "In Paragraph 1, the author concedes the state's argument by acknowledging that replacing smoke-belching jeepneys 'is an undeniable ecological necessity.'",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Analyze Logic",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 54,
+      "questionText": "Which piece of evidence does the author use to support the claim that the financial burden on operators is 'staggering'?",
+      "choices": {
+        "A": "The fact that modern vehicles are Euro-4 compliant.",
+        "B": "The disparity between the 2,500,000-peso vehicle cost and the 160,000-peso subsidy.",
+        "C": "The depiction of the small driver in the editorial cartoon.",
+        "D": "The ecological damage caused by traditional jeepneys."
+      },
+      "correctAnswer": "B",
+      "rationale": "The author contrasts the high cost of the vehicle (2.5 million) with the relatively low government subsidy (160,000) to mathematically demonstrate the immense remaining financial burden.",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "evidence",
+        "hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Analyze Logic",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 55,
+      "questionText": "An operator wants to purchase a modern jeepney costing exactly 2,500,000 pesos. The government provides the 160,000-peso subsidy which is deducted from the principal. If the bank requires the operator to pay a 10% downpayment on the remaining balance out of pocket, how much is the required downpayment?",
+      "choices": {
+        "A": "234,000 pesos",
+        "B": "250,000 pesos",
+        "C": "160,000 pesos",
+        "D": "2,340,000 pesos"
+      },
+      "correctAnswer": "A",
+      "rationale": "Cost = 2,500,000. Less subsidy (160,000) = 2,340,000 remaining balance. 10% of 2,340,000 = 234,000 pesos.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "logic",
+        "very_hard",
+        "word-problem"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Interpreting Embedded Data",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 56,
+      "questionText": "What does the 'tiny coin' given by the 'giant government official' in the editorial cartoon symbolize?",
+      "choices": {
+        "A": "The corruption of the drivers who pocket passenger fares.",
+        "B": "The inadequacy of the government subsidy relative to the massive cost of modernization.",
+        "C": "The low cost of modern jeepneys.",
+        "D": "The ecological benefits of the Euro-4 engine."
+      },
+      "correctAnswer": "B",
+      "rationale": "The tiny coin labeled 'Subsidy' compared to the 'massive, incredibly heavy' minibus the driver carries symbolizes how small and insufficient the government financial help is compared to the huge burden of the transition.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "cartoon-interpretation",
+        "hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Vocabulary in Context",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 57,
+      "questionText": "In the first paragraph, what does 'ubiquitous' mean?",
+      "choices": {
+        "A": "Dangerous and illegal",
+        "B": "Found everywhere",
+        "C": "Expensive to maintain",
+        "D": "Rare and hard to find"
+      },
+      "correctAnswer": "B",
+      "rationale": "Traditional jeepneys are a very common sight in the Philippines; 'ubiquitous' means present, appearing, or found everywhere.",
+      "objectives": [
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "easy",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 58,
+      "questionText": "What does the author imply will happen if the modernization program proceeds without a 'commercially viable transition plan'?",
+      "choices": {
+        "A": "The public transport system will experience a severe crisis or collapse.",
+        "B": "The environment will immediately recover from pollution.",
+        "C": "Government officials will be forced to drive the modern minibuses themselves.",
+        "D": "Jeepney drivers will become extremely wealthy."
+      },
+      "correctAnswer": "A",
+      "rationale": "The author warns that we must rethink the financial structuring 'before the backbone of our public transport snaps', implying a collapse of the transport system if operators are forced out by debt.",
+      "objectives": [
+        "make valid inferences"
+      ],
+      "tags": [
+        "inference",
+        "hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Logic and Assumptions",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 59,
+      "questionText": "The argument that the modernization program is 'punishing the poor for a systemic failure' relies on which underlying assumption?",
+      "choices": {
+        "A": "Poor drivers intentionally choose to drive polluting vehicles to save money.",
+        "B": "The government has historically provided excellent public transport infrastructure.",
+        "C": "The environmental degradation caused by old jeepneys is the fault of the passengers.",
+        "D": "The lack of green, modern transport is a structural issue that individual, impoverished drivers should not have to pay to fix out of pocket."
+      },
+      "correctAnswer": "D",
+      "rationale": "The phrase 'systemic failure' implies a broader societal or governmental shortcoming. Assuming it is unjust to make the 'poor' pay for it means the author believes structural/national problems shouldn't be fixed by financially breaking the lowest earners.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "very_hard",
+        "editorial"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Topic Sentence / Summary",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "p6_editorial",
+      "questionNumber": 60,
+      "questionText": "Which sentence from the final paragraph functions as its main conclusion?",
+      "choices": {
+        "A": "If we mandate modernization without providing a commercially viable transition plan, we are essentially punishing the poor for a systemic failure.",
+        "B": "Progress cannot be genuinely called progress if it leaves the most vulnerable sectors in the dust.",
+        "C": "We must rethink the financial structuring of this program before the backbone of our public transport snaps.",
+        "D": "There is no concluding sentence in the final paragraph."
+      },
+      "correctAnswer": "C",
+      "rationale": "Sentence C is the actionable thesis and ultimate conclusion of the essay, calling for a policy rethink ('We must rethink...') based on the premises established in the earlier sentences.",
+      "objectives": [
+        "locate the main idea or topic sentence"
+      ],
+      "tags": [
+        "topic-sentence",
+        "medium",
+        "editorial"
+      ],
+      "isWordProblem": false
+    }
+  ]
+}
