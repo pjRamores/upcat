@@ -117,38 +117,38 @@ SAMPLE JSON STRUCTURE
 ]
 ```
 
-
 REQUIRED JSON STRUCTURE
 Return a JSON array containing exactly 60 question objects.
 
 Each question object MUST follow this structure:
 ```json
-{
-  "subjectArea": "Mathematics",
-  "subtopic": "string",
-  "difficulty": "easy | medium | hard | very_hard",
-  "type": "multiple_choice",
-  "questionNumber": 1,
-  "questionText": "string",
-  "choices": {
-    "A": "string",
-    "B": "string",
-    "C": "string",
-    "D": "string"
-  },
-  "correctAnswer": "A | B | C | D",
-  "rationale": "Concise but complete explanation or step-by-step solution",
-  "objectives": [
-    "Objective text from the required objective list"
-  ],
-  "tags": [
-    "topic tag",
-    "difficulty tag"
-  ],
-  "isWordProblem": true
-}
+[
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "string",
+    "difficulty": "easy | medium | hard | very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "string",
+    "choices": {
+      "A": "string",
+      "B": "string",
+      "C": "string",
+      "D": "string"
+    },
+    "correctAnswer": "A | B | C | D",
+    "rationale": "Concise but complete explanation or step-by-step solution",
+    "objectives": [
+      "Objective text from the required objective list"
+    ],
+    "tags": [
+      "topic tag",
+      "difficulty tag"
+    ],
+    "isWordProblem": true
+  }
+]
 ```
-
 
 RULES FOR JSON GENERATION
 - Ensure the JSON is syntactically valid.
@@ -186,7 +186,7 @@ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check that Markdown syntax does not break JSON formatting.
 
 FINAL OUTPUT REQUIREMENT
-Return ONLY the final JSON array.
-No markdown code fences.
-No commentary.
-No additional explanations outside the JSON.
+- Return ONLY the final JSON array.
+- No markdown code fences.
+- No commentary.
+- No additional explanations outside the JSON.
