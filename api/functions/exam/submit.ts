@@ -6,14 +6,14 @@ import {scoreSessionEntries, type SessionScoreEntry} from "../../src/examScoring
 import {getPlatformSettings} from "../../src/platformSettings.js";
 import type {RewardContext} from "../../src/gamification.js";
 import {applyRewards, bumpStats, ensureGamification, updateDailyStreak,} from "../../src/gamification.js";
-import { bumpScoreThresholdCounters } from "../../src/achievements.js";
-import { updateWeeklyChallengeProgress } from "../../src/weeklyChallenge.js";
-import { addCardsForQuestions } from "../../src/practice.js";
+import {bumpScoreThresholdCounters} from "../../src/achievements.js";
+import {updateWeeklyChallengeProgress} from "../../src/weeklyChallenge.js";
+import {addCardsForQuestions} from "../../src/practice.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== "POST") {
         res.setHeader("Allow", "POST");
-        return res.status(405).json({ success: false, error: "Method not allowed" });
+        return res.status(405).json({ success: false, error: "Method not allowed"});
     }
 
     const ctx = await requireSessionAccess(req, res);
@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         userId: userId,
     });
     if (!session) {
-        return res.status(404).json({ success: false, error: "Session not found" });
+        return res.status(404).json({ success: false, error: "Session not found"});
     }
     if (session.status === "completed" && session.score) {
         return res.status(200).json({
@@ -38,15 +38,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
     }
     if (session.status === "abandoned") {
-        return res.status(400).json({ success: false, error: "Session was abandoned" });
+        return res.status(400).json({ success: false, error: "Session was abandoned"});
     }
 
-    const entries = (session.questions ?? []).map((e) => ({
-        questionId: e.questionId,
-        userAnswer: e.userAnswer,
-        timeSpent: e.timeSpent,
-        flagged: e.flagged ?? false,
-        correctAnswer: e.correctAnswer,
+    const entries = (session.questions ?? []) as {
+        questionId: ObjectId,
+        userAnswer: string | null,
+        timeSpent: number | null,
+        flagged?: boolean,
+        correctAnswer?: "A" | "B" | "C" | "D",
     }));
 
     const flaggedQuestionIds = Array.isArray(req.body?.flaggedQuestionIds)
@@ -58,8 +58,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const questionIds = entries.map((e) => e.questionId);
     const questionDocs = await db
         .collection("questions")
-        .find({ _id: { $in: questionIds } })
-        .project({ correctAnswer: 1, subjectArea: 1 })
+        .find({_id: { $in: questionIds }})
+        .project({correctAnswer: 1, subjectArea: 1})
         .toArray();
 
     const byId = new Map(
