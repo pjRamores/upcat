@@ -77,7 +77,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const platformSettings = await getPlatformSettings(db);
 
-    const { updatedEntries: scoredEntries, score } = scoreSessionEntries(
+    const {updatedEntries: scoredEntries, score} = scoreSessionEntries(
         normalizedEntries,
         byId,
         platformSettings.scoring,
@@ -95,7 +95,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const completedAt = new Date();
     await db.collection("exam_sessions").updateOne(
-        {_id: sessionId },
+        {_id: sessionId},
         {
             $set: {
                 status: "completed",
@@ -107,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     );
 
     // --- Gamification: streak + XP + achievements ---
-    const userDoc = await db.collection("users").findOne({ _id: userId });
+    const userDoc = await db.collection("users").findOne({_id: userId});
     const canApplyGamification = Boolean(userDoc);
     const wasFirstExam = !userDoc?.gamification?.stats?.examsCompleted;
     if (userDoc) ensureGamification(userDoc);
@@ -117,151 +117,153 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     let weeklyChallengeProgress: Awaited<ReturnType<typeof updateWeeklyChallengeProgress>> | null = null;
 
     if (canApplyGamification) {
-        const streak = await updateDailyStreak(db, userId);
-        streakInfo = streak.info;
+        // Gamification should never block core exam submission.
+        try {
+            const streak = await updateDailyStreak(db, userId);
+            streakInfo = streak.info;
 
-        await bumpStats(db, userId, {
-            examsCompleted: 1,
-            perfectScores: score.percentage >= 100 ? 1 : 0,
-            questionsAnswered: score.total,
-            correctAnswers: score.correct,
-        });
-
-        const thresholds: number[] = [];
-        if (score.percentage >= 80) thresholds.push(80);
-        if (score.percentage >= 90) thresholds.push(90);
-        await bumpScoreThresholdCounters(db, userId, thresholds);
-
-        const rewards: RewardContext[] = [
-            { reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED },
-            {
-                reason: "exam_correct_bonus",
-                baseAmount: score.correct * XP_REWARDS.PER_CORRECT,
-                description: `${score.correct} correct answers`,
-            },
-        ];
-
-        if (wasFirstExam) {
-            rewards.push({
-                reason: "first_exam",
-                baseAmount: XP_REWARDS.FIRST_EXAM,
-                skipMultiplier: true,
+            await bumpStats(db, userId, {
+                examsCompleted: 1,
+                perfectScores: score.percentage >= 100 ? 1 : 0,
+                questionsAnswered: score.total,
+                correctAnswers: score.correct,
             });
+
+            const thresholds: number[] = [];
+            if (score.percentage >= 80) thresholds.push(80);
+            if (score.percentage >= 90) thresholds.push(90);
+            await bumpScoreThresholdCounters(db, userId, thresholds);
+
+            const rewards: RewardContext[] = [
+                { reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED },
+                {
+                    reason: "exam_correct_bonus",
+                    baseAmount: score.correct * XP_REWARDS.PER_CORRECT,
+                    description: `${score.correct} correct answers`,
+                },
+            ];
+
+            if (wasFirstExam) {
+                rewards.push({
+                    reason: "first_exam",
+                    baseAmount: XP_REWARDS.FIRST_EXAM,
+                    skipMultiplier: true,
+                });
+            }
+
+            if (score.percentage >= 100) {
+                rewards.push({
+                    reason: "exam_perfect",
+                    baseAmount: XP_REWARDS.PERFECT_SCORE,
+                });
+            } else if (score.percentage >= 90) {
+                rewards.push({
+                    reason: "exam_score_90",
+                    baseAmount: XP_REWARDS.SCORE_ABOVE_90,
+                });
+            } else if (score.percentage >= 80) {
+                rewards.push({
+                    reason: "exam_score_80",
+                    baseAmount: XP_REWARDS.SCORE_ABOVE_80,
+                });
+            }
+
+            for (const [subj, stat] of Object.entries(score.bySubject)) {
+                if ((stat.total ?? 0) > 0 && (stat.percentage ?? 0) >= 100) {
+                    rewards.push({
+                        reason: "exam_perfect_subject",
+                        baseAmount: XP_REWARDS.PERFECT_SUBJECT,
+                        description: `Perfect ${subj}`,
+                        metadata: { subject: subj },
+                    });
+                }
+            }
+
+            gamification = await applyRewards(db, userId, rewards);
+
+            try {
+                weeklyChallengeProgress = await updateWeeklyChallengeProgress(db, userId, {
+                    examsCompleted: 1,
+                    questionsCorrect: score.correct,
+                    perfectScores: score.percentage >= 100 ? 1 : 0,
+                    scoreAchieved: score.percentage,
+                });
+            } catch (err) {
+                if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
+                    // eslint-disable-next-line no-console
+                    console.error("[exam/submit] weekly challenge update failed", err);
+                }
+            }
+        } catch (err) {
+            if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
+                // eslint-disable-next-line no-console
+                console.error("[exam/submit] gamification update failed", err);
+            }
         }
+  }
 
-        if (score.percentage >= 100) {
-            rewards.push({
-                reason: "exam_perfect",
-                baseAmount: XP_REWARDS.PERFECT_SCORE,
-            });
-        } else if (score.percentage >= 90) {
-            rewards.push({
-                reason: "exam_score_90",
-                baseAmount: XP_REWARDS.SCORE_ABOVE_90,
-            });
-        } else if (score.percentage >= 80) {
-            rewards.push({
-                reason: "exam_score_80",
-                baseAmount: XP_REWARDS.SCORE_ABOVE_80,
-            });
-        }
-
-    for (const [subj, stat] of Object.entries(score.bySubject)) {
-      if ((stat.total ?? 0) > 0 && (stat.percentage ?? 0) >= 100) {
-        rewards.push({
-          reason: "exam_perfect_subject",
-          baseAmount: XP_REWARDS.PERFECT_SUBJECT,
-          description: `Perfect ${subj}`,
-          metadata: { subject: subj },
-        });
-      }
-    }
-
-    gamification = await applyRewards(db, userId, rewards);
-
+    // 7) Phase 13: auto-enroll flagged + incorrect questions into practice deck ---
+    let practiceCardsAdded = 0;
     try {
-      weeklyChallengeProgress = await updateWeeklyChallengeProgress(db, userId, {
-        examsCompleted: 1,
-        questionsCorrect: score.correct,
-        perfectScores: score.percentage >= 100 ? 1 : 0,
-        scoreAchieved: score.percentage,
-      });
+        const flaggedEntries = updatedEntries
+            .filter((entry) => entry.flagged)
+            .map((e) => {
+                const meta = byId.get(e.questionId.toString());
+                return meta
+                    ? { questionId: e.questionId, subjectArea: meta.subjectArea }
+                    : null;
+            })
+            .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
+        if (flaggedEntries.length > 0) {
+            const created = await addCardsForQuestions(db, userId, flaggedEntries, "manual");
+            practiceCardsAdded += created;
+        }
+
+        const incorrectEntries = scoredEntries
+            .filter((entry) => entry.isCorrect === false && !flaggedSet.has(entry.questionId))
+            .map((entry) => {
+                const meta = byId.get(entry.questionId);
+                return meta
+                    ? { questionId: new ObjectId(entry.questionId), subjectArea: meta.subjectArea }
+                    : null;
+                })
+            .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
+
+        if (incorrectEntries.length > 0) {
+            const created = await addCardsForQuestions(
+                db,
+                userId,
+                incorrectEntries,
+                "exam_incorrect",
+            );
+            practiceCardsAdded += created;
+        }
     } catch (err) {
-      if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
-        // eslint-disable-next-line no-console
-        console.error("[exam/submit] weekly challenge update failed", err);
-      }
-    }
-  }
-
-  // --- Phase 13: auto-enroll flagged + incorrect questions into practice deck ---
-  let practiceCardsAdded = 0;
-
-  try {
-    const flaggedEntries = updatedEntries
-      .filter((entry) => entry.flagged)
-      .map((e) => {
-        const meta = byId.get(e.questionId.toString());
-        return meta
-          ? { questionId: e.questionId, subjectArea: meta.subjectArea }
-          : null;
-      })
-      .filter(
-        (x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null,
-      );
-
-    if (flaggedEntries.length > 0) {
-      const created = await addCardsForQuestions(db, userId, flaggedEntries, "manual");
-      practiceCardsAdded += created;
+        if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
+            // eslint-disable-next-line no-console
+            console.error("[exam/submit] practice deck enrollment failed", err);
+        }
     }
 
-    const incorrectEntries = scoredEntries
-      .filter((entry) => entry.isCorrect === false && !flaggedSet.has(entry.questionId))
-      .map((entry) => {
-        const meta = byId.get(entry.questionId);
-        return meta
-          ? { questionId: new ObjectId(entry.questionId), subjectArea: meta.subjectArea }
-          : null;
-      })
-      .filter(
-        (x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null,
-      );
-
-    if (incorrectEntries.length > 0) {
-      const created = await addCardsForQuestions(
-        db,
-        userId,
-        incorrectEntries,
-        "exam_incorrect",
-      );
-      practiceCardsAdded += created;
-    }
-  } catch (err) {
-    if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
-      // eslint-disable-next-line no-console
-      console.error("[exam/submit] practice deck enrollment failed", err);
-    }
-  }
-
-  return res.status(200).json({
-    success: true,
-    data: {
-      sessionId: sessionId.toString(),
-      score,
-      completedAt: completedAt.toISOString(),
-      practiceCardsAdded,
-      gamification: {
-        ...(gamification ?? {
-          xp: { gained: 0, total: 0 },
-          level: null,
-          multiplier: 1,
-          appliedRewards: [],
-          skippedRewards: [],
-          unlocked: { achievements: [], badges: [] },
-        }),
-        streakUpdated: streakInfo,
-        weeklyChallengeProgress,
-      },
-    },
-  });
+    return res.status(200).json({
+        success: true,
+        data: {
+            sessionId: sessionId.toString(),
+            score,
+            completedAt: completedAt.toISOString(),
+            practiceCardsAdded,
+            gamification: {
+                ...(gamification ?? {
+                    xp: { gained: 0, total: 0 },
+                    level: null,
+                    multiplier: 1,
+                    appliedRewards: [],
+                    skippedRewards: [],
+                    unlocked: { achievements: [], badges: [] },
+                }),
+                streakUpdated: streakInfo,
+                weeklyChallengeProgress,
+            },
+        },
+    });
 }
