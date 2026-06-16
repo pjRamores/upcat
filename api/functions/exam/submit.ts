@@ -107,6 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     );
 
     // --- Gamification: streak + XP + achievements ---
+    // 1) Look up the user to know if this is their first exam (for the bonus).
     const userDoc = await db.collection("users").findOne({_id: userId});
     const canApplyGamification = Boolean(userDoc);
     const wasFirstExam = !userDoc?.gamification?.stats?.examsCompleted;
@@ -114,11 +115,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     let gamification: Awaited<ReturnType<typeof applyRewards>> | null = null;
     let streakInfo: Awaited<ReturnType<typeof updateDailyStreak>>["info"] | null = null;
-    let weeklyChallengeProgress: Awaited<ReturnType<typeof updateWeeklyChallengeProgress>> | null = null;
+    let weeklyChallengeProgress: Awaited<ReturnType<typeof updateWeeklyChallengeProgress>> = null;
 
     if (canApplyGamification) {
         // Gamification should never block core exam submission.
         try {
+            // 2) Bump stats (examsCompleted, perfectScores, questions answered/correct)
             const streak = await updateDailyStreak(db, userId);
             streakInfo = streak.info;
 
@@ -129,43 +131,31 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 correctAnswers: score.correct,
             });
 
+            // 4) Bump score-threshold counters before achievement evaluation
             const thresholds: number[] = [];
             if (score.percentage >= 80) thresholds.push(80);
             if (score.percentage >= 90) thresholds.push(90);
             await bumpScoreThresholdCounters(db, userId, thresholds);
 
+            // 5) Build the stacked reward list and apply with multiplier
             const rewards: RewardContext[] = [
-                { reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED },
+                {reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED},
                 {
                     reason: "exam_correct_bonus",
                     baseAmount: score.correct * XP_REWARDS.PER_CORRECT,
                     description: `${score.correct} correct answers`,
                 },
             ];
-
             if (wasFirstExam) {
-                rewards.push({
-                    reason: "first_exam",
-                    baseAmount: XP_REWARDS.FIRST_EXAM,
-                    skipMultiplier: true,
-                });
+                rewards.push({reason: "first_exam", baseAmount: XP_REWARDS.FIRST_EXAM, skipMultiplier: true});
             }
 
             if (score.percentage >= 100) {
-                rewards.push({
-                    reason: "exam_perfect",
-                    baseAmount: XP_REWARDS.PERFECT_SCORE,
-                });
+                rewards.push({reason: "exam_perfect", baseAmount: XP_REWARDS.PERFECT_SCORE});
             } else if (score.percentage >= 90) {
-                rewards.push({
-                    reason: "exam_score_90",
-                    baseAmount: XP_REWARDS.SCORE_ABOVE_90,
-                });
+                rewards.push({reason: "exam_score_90", baseAmount: XP_REWARDS.SCORE_ABOVE_90});
             } else if (score.percentage >= 80) {
-                rewards.push({
-                    reason: "exam_score_80",
-                    baseAmount: XP_REWARDS.SCORE_ABOVE_80,
-                });
+                rewards.push({reason: "exam_score_80", baseAmount: XP_REWARDS.SCORE_ABOVE_80});
             }
 
             for (const [subj, stat] of Object.entries(score.bySubject)) {
@@ -174,13 +164,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                         reason: "exam_perfect_subject",
                         baseAmount: XP_REWARDS.PERFECT_SUBJECT,
                         description: `Perfect ${subj}`,
-                        metadata: { subject: subj },
+                        metadata: {subject: subj},
                     });
                 }
             }
 
             gamification = await applyRewards(db, userId, rewards);
 
+            // 6) Weekly-challenge progress (best-effort; never fails the exam submit).
             try {
                 weeklyChallengeProgress = await updateWeeklyChallengeProgress(db, userId, {
                     examsCompleted: 1,
@@ -200,9 +191,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 console.error("[exam/submit] gamification update failed", err);
             }
         }
-  }
+    }
 
-    // 7) Phase 13: auto-enroll flagged + incorrect questions into practice deck ---
+    // 7) Phase 13: auto-enroll flagged + incorrect questions into the practice deck.
     let practiceCardsAdded = 0;
     try {
         const flaggedEntries = updatedEntries
@@ -210,12 +201,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             .map((e) => {
                 const meta = byId.get(e.questionId.toString());
                 return meta
-                    ? { questionId: e.questionId, subjectArea: meta.subjectArea }
+                    ? {questionId: e.questionId, subjectArea: meta.subjectArea}
                     : null;
             })
             .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
+
         if (flaggedEntries.length > 0) {
-            const created = await addCardsForQuestions(db, userId, flaggedEntries, "manual");
+            const created = await addCardsForQuestions(
+                db,
+                userId,
+                flaggedEntries,
+                "manual"
+            );
             practiceCardsAdded += created;
         }
 
@@ -224,18 +221,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             .map((entry) => {
                 const meta = byId.get(entry.questionId);
                 return meta
-                    ? { questionId: new ObjectId(entry.questionId), subjectArea: meta.subjectArea }
+                    ? {questionId: new ObjectId(entry.questionId), subjectArea: meta.subjectArea}
                     : null;
-                })
+            })
             .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
-
         if (incorrectEntries.length > 0) {
-            const created = await addCardsForQuestions(
-                db,
-                userId,
-                incorrectEntries,
-                "exam_incorrect",
-            );
+            const created = await addCardsForQuestions(db, userId, incorrectEntries, "exam_incorrect");
             practiceCardsAdded += created;
         }
     } catch (err) {
@@ -254,12 +245,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             practiceCardsAdded,
             gamification: {
                 ...(gamification ?? {
-                    xp: { gained: 0, total: 0 },
+                    xp: {gained: 0, total: 0},
                     level: null,
                     multiplier: 1,
                     appliedRewards: [],
                     skippedRewards: [],
-                    unlocked: { achievements: [], badges: [] },
+                    unlocked: {achievements: [], badges: []},
                 }),
                 streakUpdated: streakInfo,
                 weeklyChallengeProgress,
