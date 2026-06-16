@@ -1,95 +1,83 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { ObjectId } from "mongodb";
-import { requireSessionAccess } from "../../src/examHelpers.js";
-import { type SubjectArea, XP_REWARDS } from "@upcat/shared";
-import { scoreSessionEntries, type SessionScoreEntry } from "../../src/examScoring.js";
-import { getPlatformSettings } from "../../src/platformSettings.js";
-import type { RewardContext } from "../../src/gamification.js";
-import {
-  applyRewards,
-  bumpStats,
-  ensureGamification,
-  updateDailyStreak,
-} from "../../src/gamification.js";
+import type {VercelRequest, VercelResponse} from "@vercel/node";
+import {ObjectId} from "mongodb";
+import {requireSessionAccess} from "../../src/examHelpers.js";
+import {type SubjectArea, XP_REWARDS} from "@upcat/shared";
+import {scoreSessionEntries, type SessionScoreEntry} from "../../src/examScoring.js";
+import {getPlatformSettings} from "../../src/platformSettings.js";
+import type {RewardContext} from "../../src/gamification.js";
+import {applyRewards, bumpStats, ensureGamification, updateDailyStreak,} from "../../src/gamification.js";
 import { bumpScoreThresholdCounters } from "../../src/achievements.js";
 import { updateWeeklyChallengeProgress } from "../../src/weeklyChallenge.js";
 import { addCardsForQuestions } from "../../src/practice.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
-    return res.status(405).json({ success: false, error: "Method not allowed" });
-  }
+    if (req.method !== "POST") {
+        res.setHeader("Allow", "POST");
+        return res.status(405).json({ success: false, error: "Method not allowed" });
+    }
 
-  const ctx = await requireSessionAccess(req, res);
-  if (!ctx) return;
+    const ctx = await requireSessionAccess(req, res);
+    if (!ctx) return;
+    const { db, sessionId, userId } = ctx;
 
-  const { db, sessionId, userId } = ctx;
-
-  const session = await db.collection("exam_sessions").findOne({
-    _id: sessionId,
-    userId: userId,
-  });
-
-  if (!session) {
-    return res.status(404).json({ success: false, error: "Session not found" });
-  }
-
-  if (session.status === "completed" && session.score) {
-    return res.status(200).json({
-      success: true,
-      data: {
-        sessionId: sessionId.toString(),
-        score: session.score,
-        alreadyScored: true,
-      },
+    const session = await db.collection("exam_sessions").findOne({
+        _id: sessionId,
+        userId: userId,
     });
-  }
+    if (!session) {
+        return res.status(404).json({ success: false, error: "Session not found" });
+    }
+    if (session.status === "completed" && session.score) {
+        return res.status(200).json({
+            success: true,
+            data: {
+                sessionId: sessionId.toString(),
+                score: session.score,
+                alreadyScored: true,
+            },
+        });
+    }
+    if (session.status === "abandoned") {
+        return res.status(400).json({ success: false, error: "Session was abandoned" });
+    }
 
-  if (session.status === "abandoned") {
-    return res.status(400).json({ success: false, error: "Session was abandoned" });
-  }
+    const entries = (session.questions ?? []).map((e) => ({
+        questionId: e.questionId,
+        userAnswer: e.userAnswer,
+        timeSpent: e.timeSpent,
+        flagged: e.flagged ?? false,
+        correctAnswer: e.correctAnswer,
+    }));
 
-  const entries = (session.questions ?? []).map((e) => ({
-    questionId: e.questionId,
-    userAnswer: e.userAnswer,
-    timeSpent: e.timeSpent,
-    flagged: e.flagged ?? false,
-    correctAnswer: e.correctAnswer,
-  }));
+    const flaggedQuestionIds = Array.isArray(req.body?.flaggedQuestionIds)
+        ? (req.body.flaggedQuestionIds as unknown[])
+            .filter((id): id is string => typeof id === "string" && ObjectId.isValid(id))
+        : [];
+    const flaggedSet = new Set(flaggedQuestionIds);
 
-  const flaggedQuestionIds = Array.isArray(req.body?.flaggedQuestionIds)
-    ? (req.body.flaggedQuestionIds as unknown[]).filter(
-        (id): id is string => typeof id === "string" && ObjectId.isValid(id),
-      )
-    : [];
+    const questionIds = entries.map((e) => e.questionId);
+    const questionDocs = await db
+        .collection("questions")
+        .find({ _id: { $in: questionIds } })
+        .project({ correctAnswer: 1, subjectArea: 1 })
+        .toArray();
 
-  const flaggedSet = new Set(flaggedQuestionIds);
+    const byId = new Map(
+        questionDocs.map((q) => [
+            q._id.toString(),
+            {
+                correctAnswer: q.correctAnswer as "A" | "B" | "C" | "D",
+                subjectArea: q.subjectArea as SubjectArea,
+            },
+        ]),
+    );
 
-  const questionIds = entries.map((e) => e.questionId);
-
-  const questionDocs = await db
-    .collection("questions")
-    .find({ _id: { $in: questionIds } })
-    .project({ correctAnswer: 1, subjectArea: 1 })
-    .toArray();
-
-  const byId = new Map(
-    questionDocs.map((q) => [
-      q._id.toString(),
-      {
-        correctAnswer: q.correctAnswer as "A" | "B" | "C" | "D",
-        subjectArea: q.subjectArea as SubjectArea,
-      },
-    ]),
-  );
-
-  const normalizedEntries: SessionScoreEntry[] = entries.map((entry) => ({
-    questionId: entry.questionId.toString(),
-    userAnswer: entry.userAnswer,
-    timeSpent: entry.timeSpent,
-    correctAnswer: entry.correctAnswer,
-  }));
+    const normalizedEntries: SessionScoreEntry[] = entries.map((entry) => ({
+        questionId: entry.questionId.toString(),
+        userAnswer: entry.userAnswer,
+        timeSpent: entry.timeSpent,
+        correctAnswer: entry.correctAnswer,
+    }));
 
   const platformSettings = await getPlatformSettings(db);
 
