@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from "react";
+import {Fragment, type ReactNode} from "react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
@@ -9,33 +9,33 @@ import "katex/dist/katex.min.css";
  * Plain text segments preserve newlines via <br/>.
  */
 export default function MathText({
-  children,
-  className,
-}: {
-  children: string;
-  className?: string;
+                                    children,
+                                    className,
+                                }: {
+    children: string;
+    className?: string;
 }) {
-  return <span className={className}>{parse(children)}</span>;
+    return <span className={className}>{parse(children)}</span>;
 }
 
 function renderMath(tex: string, displayMode: boolean, key: string): ReactNode {
-  let html: string;
-  try {
-    html = katex.renderToString(normalizeMath(tex), {
-      displayMode,
-      throwOnError: false,
-      errorColor: "#dc2626",
-    });
-  } catch {
-    html = `<span style="color:#dc2626">${escapeHtml(tex)}</span>`;
-  }
-  return (
-    <span
-      key={key}
-      style={displayMode ? { display: "block", margin: "0.5em 0" } : undefined}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
+    let html: string;
+    try {
+        html = katex.renderToString(normalizeMath(tex), {
+            displayMode,
+            throwOnError: false,
+            errorColor: "#dc2626",
+        });
+    } catch {
+        html = `<span style="color:#dc2626">${escapeHtml(tex)}</span>`;
+    }
+    return (
+        <span
+            key={key}
+            style={displayMode ? { display: "block", margin: "0.5em 0" } : undefined}
+            dangerouslySetInnerHTML={{ __html: html }}
+        />
+    );
 }
 
 function normalizeMath(source: string): string {
@@ -59,10 +59,10 @@ function normalizeMath(source: string): string {
 }
 
 function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    return s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
 }
 
 function parse(text: string): ReactNode[] {
@@ -96,7 +96,7 @@ function parse(text: string): ReactNode[] {
     return parts;
 }
 
-function normalizedText(input: string): string {
+function normalizeText(input: string): string {
     const trimmed = input.trim();
     if (trimmed.length === 0) return input;
 
@@ -199,16 +199,16 @@ function isEscaped(value: string, index: number): boolean {
 }
 
 function renderPlain(text: string, key: number): ReactNode {
-  const lines = text.split(/\n/);
+    const lines = text.split(/\n/);
 
-  return (
-    <Fragment key={`t-${key}`}>
-      {lines.map((line, i) => (
-        <Fragment key={i}>
-          {line}
-          {i < lines.length - 1 && <br />}
+    return (
+        <Fragment key={`t-${key}`}>
+            {lines.map((line, i) => (
+                <Fragment key={i}>
+                    {line}
+                    {i < lines.length - 1 && <br/>}
+                </Fragment>
+            ))}
         </Fragment>
-      ))}
-    </Fragment>
-  );
+    );
 }
