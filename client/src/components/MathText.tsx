@@ -32,8 +32,8 @@ function renderMath(tex: string, displayMode: boolean, key: string): ReactNode {
     return (
         <span
             key={key}
-            style={displayMode ? { display: "block", margin: "0.5em 0" } : undefined}
-            dangerouslySetInnerHTML={{ __html: html }}
+            style={displayMode ? {display: "block", margin: "0.5em 0"} : undefined}
+            dangerouslySetInnerHTML={{__html: html}}
         />
     );
 }
@@ -41,7 +41,7 @@ function renderMath(tex: string, displayMode: boolean, key: string): ReactNode {
 function normalizeMath(source: string): string {
     return source
         .trim()
-    // Threat \P inside \text{...} as peso marker from imported fixtures.
+    // Treat \P inside \text{...} as peso marker from imported fixtures.
     .replace(/\\text\{\\\\P\}/g, "\\text{₱}")
         // Convert common escaped delimiters to plain delimiters inside math segments.
         .replace(/\\\[/g, "[")
@@ -50,7 +50,7 @@ function normalizeMath(source: string): string {
         .replace(/\\\)/g, ")")
     // If uploaded content is double-escaped (e.g. \\frac), normalize command slashes.
     .replace(/\\\\([a-z]+)/g, "\\$1")
-        // Normalize escaped braces from fixture payload (e.g. \\{1,2\\} -> \{1,2\}).
+        // Normalize escaped braces from fixture payloads (e.g. \\{1,2\\} -> \{1,2\}).
         .replace(/\\\\([{}])/g, "\\$1")
             // Normalize common symbol escapes from fixtures (e.g. \\% -> \%).
             .replace(/\\\\([%#$&_])/g, "\\$1")
@@ -200,7 +200,6 @@ function isEscaped(value: string, index: number): boolean {
 
 function renderPlain(text: string, key: number): ReactNode {
     const lines = text.split(/\n/);
-
     return (
         <Fragment key={`t-${key}`}>
             {lines.map((line, i) => (
