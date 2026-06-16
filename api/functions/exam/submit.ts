@@ -120,10 +120,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (canApplyGamification) {
         // Gamification should never block core exam submission.
         try {
-            // 2) Bump stats (examsCompleted, perfectScores, questions answered/correct)
+            // 2) Update daily-activity streak (idempotent within a UTC day).
             const streak = await updateDailyStreak(db, userId);
             streakInfo = streak.info;
 
+            // 3) Bump stats (examsCompleted, perfectScores, questions answered/correct).
             await bumpStats(db, userId, {
                 examsCompleted: 1,
                 perfectScores: score.percentage >= 100 ? 1 : 0,
@@ -131,13 +132,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 correctAnswers: score.correct,
             });
 
-            // 4) Bump score-threshold counters before achievement evaluation
+            // 4) Bump score-threshold counters before achievement evaluation.
             const thresholds: number[] = [];
             if (score.percentage >= 80) thresholds.push(80);
             if (score.percentage >= 90) thresholds.push(90);
             await bumpScoreThresholdCounters(db, userId, thresholds);
 
-            // 5) Build the stacked reward list and apply with multiplier
+            // 5) Build the stacked reward list and apply with multiplier.
             const rewards: RewardContext[] = [
                 {reason: "exam_completed", baseAmount: XP_REWARDS.EXAM_COMPLETED},
                 {
@@ -149,7 +150,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             if (wasFirstExam) {
                 rewards.push({reason: "first_exam", baseAmount: XP_REWARDS.FIRST_EXAM, skipMultiplier: true});
             }
-
             if (score.percentage >= 100) {
                 rewards.push({reason: "exam_perfect", baseAmount: XP_REWARDS.PERFECT_SCORE});
             } else if (score.percentage >= 90) {
@@ -157,7 +157,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             } else if (score.percentage >= 80) {
                 rewards.push({reason: "exam_score_80", baseAmount: XP_REWARDS.SCORE_ABOVE_80});
             }
-
             for (const [subj, stat] of Object.entries(score.bySubject)) {
                 if ((stat.total ?? 0) > 0 && (stat.percentage ?? 0) >= 100) {
                     rewards.push({
@@ -193,7 +192,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
     }
 
-    // 7) Phase 13: auto-enroll flagged + incorrect questions into the practice deck.
+    // 7) Phase 13: auto-enroll + incorrect questions into the practice deck.
     let practiceCardsAdded = 0;
     try {
         const flaggedEntries = updatedEntries
@@ -207,11 +206,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
 
         if (flaggedEntries.length > 0) {
-            const created = await addCardsForQuestions(
+            const {created} = await addCardsForQuestions(
                 db,
                 userId,
                 flaggedEntries,
-                "manual"
+                "manual",
             );
             practiceCardsAdded += created;
         }
@@ -226,7 +225,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             })
             .filter((x): x is { questionId: ObjectId; subjectArea: SubjectArea } => x !== null);
         if (incorrectEntries.length > 0) {
-            const created = await addCardsForQuestions(db, userId, incorrectEntries, "exam_incorrect");
+            const {created} = await addCardsForQuestions(db, userId, incorrectEntries, "exam_incorrect");
             practiceCardsAdded += created;
         }
     } catch (err) {
