@@ -1,16 +1,16 @@
 import MDEditor from "@uiw/react-md-editor";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import"@uiw/react-md-editor/markdown-editor.css";
-import"@uiw/react-markdown-preview/markdown.css";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 
 export interface FormattedTextareaProps {
-    value: string;
-    onChange: (nextValue: string) => void;
-    rows?: number;
-    required?: boolean;
-    placeholder?: string;
-    className?: string;
+                                            value: string;
+                                            onChange: (nextValue: string) => void;
+                                            rows?: number;
+                                            required?: boolean;
+                                            placeholder?: string;
+                                            className?: string;
 }
 
 export default function FormattedTextareaEditor({
@@ -43,7 +43,8 @@ export default function FormattedTextareaEditor({
                 />
             </div>
             <p className="text-xs text-slate-500">
-                Markdown toolbar includes headings, emphasis, links, images, and lists. Math works with <code>$...$</code> and <code>$$...$$</code>.
+                Markdown toolbar includes headings, emphasis, links, images, and lists. Math works
+                with <code>$...$</code> and <code>$$...$$</code>.
             </p>
         </div>
     );
