@@ -40,17 +40,36 @@ export default function AdminPassagesPage() {
   };
 
   useEffect(() => {
-    refresh(); //eslint-disable-line
+    refresh(); // eslint-disable-line
   }, [page, subjectArea, selectedSetId]);
 
   const columns: DataTableColumn<Row>[] = [
-    { key: "title", header: "Title", render: (r) => <Link to={`/admin/passages/${r.id}`} className="font-medium text-slate-800 hover:text-primary-700">{r.title}</Link> },
-    { key: "subjectArea", header: "Subject", render: (r) => <span className="text-xs">{r.subjectArea}</span> },
-    { key: "questionCount", header: "Questions", render: (r) => <span className="text-xs">{r.questionCount}</span> },
+    {
+      key: "title",
+      header: "Title",
+      render: (r) => (
+        <Link
+          to={`/admin/passages/${r.id}`}
+          className="font-medium text-slate-800 hover:text-primary-700"
+        >
+          {r.title}
+        </Link>
+      ),
+    },
+    {
+      key: "subjectArea",
+      header: "Subject",
+      render: (r) => <span className="text-xs">{r.subjectArea}</span>,
+    },
+    {
+      key: "questionCount",
+      header: "Questions",
+      render: (r) => <span className="text-xs">{r.questionCount}</span>,
+    },
     {
       key: "source",
       header: "Source",
-      render: (r) => <span className="text-xs text-slate-500">{r.source ?? "-"}</span>
+      render: (r) => <span className="text-xs text-slate-500">{r.source ?? "-"}</span>,
     },
     {
       key: "actions",
@@ -58,8 +77,19 @@ export default function AdminPassagesPage() {
       className: "text-right",
       render: (r) => (
         <div className="flex justify-end gap-1">
-          <Link to={`/admin/passages/${r.id}`} className="rounded-md border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50">Edit</Link>
-          <button type="button" onClick={() => setConfirmRow(r.id)} className="rounded-md border border-primary-200 px-2 py-1 text-xs text-primary-600 hover:bg-primary-50">Delete</button>
+          <Link
+            to={`/admin/passages/${r.id}`}
+            className="rounded-md border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50"
+          >
+            Edit
+          </Link>
+          <button
+            type="button"
+            onClick={() => setConfirmRow(r.id)}
+            className="rounded-md border border-primary-200 px-2 py-1 text-xs text-primary-600 hover:bg-primary-50"
+          >
+            Delete
+          </button>
         </div>
       ),
     },
@@ -69,14 +99,31 @@ export default function AdminPassagesPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-2">
-          <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => e.key === "Enter" && refresh()} placeholder="Search title..." className="rounded-md border border-slate-300 px-3 py-1.5 text-sm"/>
-          <select value={subjectArea} onChange={(e) => {
-            setSubjectArea(e.target.value as SubjectArea | "");
-            setPage(1);
-          }} className="rounded-md border border-slate-300 px-2 py-1.5 text-sm">
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && refresh()}
+            placeholder="Search title..."
+            className="rounded-md border border-slate-300 px-3 py-1.5 text-sm"
+          />
+
+          <select
+            value={subjectArea}
+            onChange={(e) => {
+              setSubjectArea(e.target.value as SubjectArea | "");
+              setPage(1);
+            }}
+            className="rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+          >
             <option value="">All subjects</option>
-            {SUBJECT_AREAS.map((s) => <option key={s}>{s}</option>)}
+            {SUBJECT_AREAS.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
           </select>
+
           <select
             required
             value={selectedSetId}
@@ -89,9 +136,15 @@ export default function AdminPassagesPage() {
             {setOptions.length === 0 ? (
               <option value="">No sets available</option>
             ) : (
-              setOptions.map((s) => {
-                <option key={s._id} value={s._id}>{s.name}</option>
-              })
+              setOptions.map((s) => (
+                <option key={s._id} value={s._id}>
+                  {s.name}
+                </option>
+              ))
             )}
-);
+          </select>
+        </div>
+      </div>
+    </div>
+  );
 }
