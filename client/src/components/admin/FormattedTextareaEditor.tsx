@@ -1,6 +1,6 @@
 import MDEditor from "@uiw/react-md-editor";
 import remarkMath from "remark-math";
-importrehypeKatexfrom"rehype-katex";
+import rehypeKatex from "rehype-katex";
 import"@uiw/react-md-editor/markdown-editor.css";
 import"@uiw/react-markdown-preview/markdown.css";
 
