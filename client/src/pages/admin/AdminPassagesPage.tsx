@@ -106,36 +106,35 @@ export default function AdminPassagesPage() {
                     </select>
                 </div>
                 <Link to="/admin/passages/new"
-                      className="">+
-                  New Passage</Link>
-                </div>
-
-                <DataTable columns={columns} rows={data?.items ?? []} getRowId={(r) => r._id} isLoading={loading}
-                            onRowClick={(r) => navigate(`/admin/passages/${r._id}`)}/>
-                <Pagination page={page} totalPages={data?.totalPages ?? 1} total={data?.total ?? 0} onPageChange={setPage}/>
-
-                <ConfirmDialog
-                    isOpen={confirmRow !== null}
-                    title="Delete passage?"
-                    message="If any active questions reference this passage, the delete will be blocked."
-                    confirmLabel="Delete"
-                    variant="danger"
-                    onClose={() => setConfirmRow(null)}
-                    onConfirm={async () => {
-                        if (!confirmRow) return;
-                        try {
-                            await adminApi.deletePassage(confirmRow);
-                            addToast("success", "Passage deleted.");
-                            setConfirmRow(null);
-                            refresh();
-                        } catch (e) {
-                            const msg = (e as { response?: { data?: { error?: string } } }).response?.data?.error;
-                            addToast("error", msg ?? "Delete failed.");
-                            setConfirmRow(null);
-                        }
-                    }}
-                />
+                      className="rounded-md bg-primary-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-primary-700">+
+                    New Passage</Link>
             </div>
-        );
+
+            <DataTable columns={columns} rows={data?.items ?? []} getRowId={(r) => r._id} isLoading={loading}
+                       onRowClick={(r) => navigate(`/admin/passages/${r._id}`)}/>
+            <Pagination page={page} totalPages={data?.totalPages ?? 1} total={data?.total ?? 0} onPageChange={setPage}/>
+
+            <ConfirmDialog
+                isOpen={confirmRow !== null}
+                title="Delete passage?"
+                message="If any active questions reference this passage, the delete will be blocked."
+                confirmLabel="Delete"
+                variant="danger"
+                onClose={() => setConfirmRow(null)}
+                onConfirm={async () => {
+                    if (!confirmRow) return;
+                    try {
+                        await adminApi.deletePassage(confirmRow);
+                        addToast("success", "Passage deleted.");
+                        setConfirmRow(null);
+                        refresh();
+                    } catch (e) {
+                        const msg = (e as { response?: { data?: { error?: string } } }).response?.data?.error;
+                        addToast("error", msg ?? "Delete failed.");
+                        setConfirmRow(null);
+                    }
+                }}
+            />
+        </div>
     );
 }
