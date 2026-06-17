@@ -42,7 +42,7 @@ function normalizeMath(source: string): string {
     return source
         .trim()
     // Treat \P inside \text{...} as peso marker from imported fixtures.
-    .replace(/\\text\{\\\\P\}/g, "\\text{₱}")
+    .replace(/\\text\{\\\\P\}/g, "\\text{PHP}")
         // Convert common escaped delimiters to plain delimiters inside math segments.
         .replace(/\\\[/g, "[")
         .replace(/\\\]/g, "]")
