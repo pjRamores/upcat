@@ -16,7 +16,7 @@ interface FormState {
 const EMPTY: FormState = {title: "", content: "", source: "", subjectArea: "Reading Comprehension"};
 
 export default function AdminPassageEditPage() {
-    const { id } = useParams<{ id: string }>();
+    const {id} = useParams<{ id: string }>();
     const isNew = !id || id === "new";
     const navigate = useNavigate();
     const addToast = useToastStore((s) => s.addToast);
@@ -30,13 +30,13 @@ export default function AdminPassageEditPage() {
         let cancelled = false;
         (async () => {
             try {
-                const { passage, questions } = await adminApi.getPassage(id!);
+                const {passage, questions} = await adminApi.getPassage(id!);
                 if (cancelled) return;
                 setForm({
                     title: passage.title,
                     content: passage.content,
                     source: passage.source ?? "",
-                    subjectArea: passage.subjectArea
+                    subjectArea: passage.subjectArea,
                 });
                 setLinked(questions ?? []);
             } catch (e) {
@@ -72,23 +72,23 @@ export default function AdminPassageEditPage() {
         }
     };
 
-    if (loading) return <div className="flex justify-center py-20"><Spinner/></div>
+    if (loading) return <div className="flex justify-center py-20"><Spinner/></div>;
 
     return (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <form className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm lg:col-span-2"
                   onSubmit={(e) => {
-                    e.preventDefault();
-                    save();
+                        e.preventDefault();
+                        save();
                   }}>
                 <Field label="Title">
                     <input type="text" required value={form.title}
-                           onChange={(e) => setForm({ ...form, title: e.target.value })}
+                           onChange={(e) => setForm({ ...form, title: e.target.value})}
                            className="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm"/>
                 </Field>
                 <Field label="Subject">
                     <select value={form.subjectArea}
-                            onChange={(e) => setForm({ ...form, subjectArea: e.target.value as SubjectArea })}
+                            onChange={(e) => setForm({ ...form, subjectArea: e.target.value as SubjectArea})}
                             className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
                         {SUBJECT_AREAS.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
@@ -100,7 +100,7 @@ export default function AdminPassageEditPage() {
                 <Field label="Content">
                     <FormattedTextarea
                         value={form.content}
-                        onChange={(content) => setForm({ ...form, content })}
+                        onChange={(content) => setForm({ ...form, content})}
                         rows={14}
                         required
                     />
