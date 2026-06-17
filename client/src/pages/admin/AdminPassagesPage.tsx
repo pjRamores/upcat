@@ -64,7 +64,7 @@ export default function AdminPassagesPage() {
             render: (r) => (
                 <div className="flex justify-end gap-1">
                     <Link to={`/admin/passages/${r._id}`}
-                           className="rounded-md border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50">Edit</Link>
+                          className="rounded-md border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50">Edit</Link>
                     <button type="button" onClick={() => setConfirmRow(r._id)}
                             className="rounded-md border border-primary-200 px-2 py-1 text-xs text-primary-600 hover:bg-primary-50">Delete
                     </button>
