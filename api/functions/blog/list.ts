@@ -1,6 +1,6 @@
-import { type { VercelRequest, VercelResponse } from "@vercel/node";
-import {getDb} from "../src/db.js";
-import {listBlogPosts} from "../src/blog.js";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import {getDb} from "../../src/db.js";
+import {listBlogPosts} from "../../src/blog.js";
 import {BLOG_LIST_PAGE_SIZE} from "@upcat/shared";
 
 /**

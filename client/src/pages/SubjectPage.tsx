@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/Seo";
 import AdSlot from "@/components/AdSlot";
 import { useAuthStore } from "@/stores/authStore";
-import { breadcrumbSchema, courseSchema, DEFAULT_SITE_URL, SUBJECT_META, type SubjectArea } from "@upcat/shared";
+import {
+  breadcrumbSchema,
+  courseSchema,
+  DEFAULT_SITE_URL,
+  SUBJECT_META,
+  type SubjectArea,
+} from "@upcat/shared";
 
 const SITE_URL =
   (import.meta.env.VITE_SITE_URL as string | undefined) ?? DEFAULT_SITE_URL;
@@ -25,7 +31,7 @@ export interface SubjectPageProps {
     explanation: string;
   };
   /** Approximate stats shown as social proof on the page. */
-  stats: { questionCount: string; subtopicCount: string; };
+  stats: { questionCount: string; subtopicCount: string };
   /** Pre-filtered practice URL the CTA points at. */
   practiceCtaHref: string;
 }
@@ -37,9 +43,10 @@ export interface SubjectPageProps {
 export default function SubjectPage(props: SubjectPageProps) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const meta = SUBJECT_META[props.subject];
+
   const breadcrumbs = [
     { name: "Home", path: "/" },
-    { name: "Subjects", path: "/" },
+    { name: "Subjects", path: "/subjects" },
     { name: meta.label, path: props.path },
   ];
 
@@ -55,7 +62,7 @@ export default function SubjectPage(props: SubjectPageProps) {
           courseSchema({
             name: props.title,
             description: props.description,
-            url: SITE_URL.replace(/\/+$/, "") + props.path,
+            url: SITE_URL.replace(/\/+\$/, "") + props.path,
           }),
         ]}
       />
@@ -70,11 +77,11 @@ export default function SubjectPage(props: SubjectPageProps) {
               <Link to="/" className="hover:text-primary-700">
                 Home
               </Link>
-              <span aria-hidden></span>
-              <Link to="/" className="hover:text-primary-700">
+              <span aria-hidden>/</span>
+              <Link to="/subjects" className="hover:text-primary-700">
                 Subjects
               </Link>
-              <span aria-hidden></span>
+              <span aria-hidden>/</span>
               <span className="text-gray-700">{meta.label}</span>
             </nav>
 
@@ -82,9 +89,11 @@ export default function SubjectPage(props: SubjectPageProps) {
               <span className="text-2xl">{meta.icon}</span>
               <span>UPCAT Subject</span>
             </div>
+
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
               UPCAT {meta.label} Review & Practice
             </h1>
+
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-600">
               {props.intro}
             </p>
@@ -98,92 +107,121 @@ export default function SubjectPage(props: SubjectPageProps) {
                   {props.stats.questionCount}
                 </dd>
               </div>
+
               <div>
                 <dt className="text-xs uppercase tracking-wide text-gray-500">
                   Subtopics
-</dt>
-<dd className="mt-1 text-2xl font-bold text-gray-900">
-  {props.stats.subtopicCount}
-</dd>
-</div>
-</dl>
+                </dt>
+                <dd className="mt-1 text-2xl font-bold text-gray-900">
+                  {props.stats.subtopicCount}
+                </dd>
+              </div>
+            </dl>
 
-<div className="mt-8 flex flex-wrap gap-3">
-<Link to={props.practiceCtaHref} className="btn-primary text-base !px-6 !py-3">
-  Start Practicing {meta.label} →
-</Link>
-{!isAuthenticated && (
-  <Link to="/register" className="btn-secondary text-base !px-6 !py-3">
-    Create Account
-  </Link>
-)}
-</div>
-</header>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to={props.practiceCtaHref} className="btn-primary text-base !px-6 !py-3">
+                Start Practicing {meta.label} →
+              </Link>
 
-<section className="mx-auto max-w-4xl px-4 py-12">
-<h2 className="text-2xl font-bold tracking-tight text-gray-900">
-  What's covered
-</h2>
-<ul className="mt-6 grid gap-3 sm:grid-cols-2">
-  {props.topics.map((t) => (
-    <li key={t}>
-      <div className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <span aria-hidden>
-          <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M16.753 1.001L1.41-7.7a1 1 0 011.408-1.4l3.392 6.3a1 1 0 01-1.408 1.4l-5.7 5.7a1 1 0 01-1.408-1.4L1.408 10.6A1 1 0 010 9.2V3.4a1 1 0 011.408-1.4l5.7 5.7z" clipRule="evenodd" />
-          </svg>
-        </span>
-        <span className="text-sm text-gray-700">{t}</span>
-      </div>
-    </li>
-  ))}
-</ul>
-</section>
+              {!isAuthenticated && (
+                <Link to="/register" className="btn-secondary text-base !px-6 !py-3">
+                  Create Account
+                </Link>
+              )}
+            </div>
+          </div>
+        </header>
 
-<section className="bg-slate-50 py-12">
-<div className="mx-auto max-w-4xl px-4">
-<h2 className="text-2xl font-bold tracking-tight text-gray-900">
-  Sample question
-</h2>
-<div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-<p className="text-sm font-medium leading-relaxed text-gray-800">{props.sampleQuestion.prompt}</p>
-<ul className="mt-4 space-y-2 text-sm">
-  {props.sampleQuestion.choices.map((c) => (
-    <li key={c.letter} className={[ "flex items-center gap-3 rounded-lg border px-3 py-2", c.letter === props.sampleQuestion.answerLetter ? "border-green-300 bg-green-50 text-green-900" : "border-gray-200 text-gray-700", ].join(" ")}>
-      <span className={[ "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold", c.letter === props.sampleQuestion.answerLetter ? "bg-green-600 text-white" : "bg-gray-100 text-gray-600", ].join(" ")}>
-        {c.letter}
-      </span>
-      <p className="text-sm">{c.text}</p>
-    </li>
-  ))}
-</ul>
-<div className="mt-5 rounded-md border border-green-200 bg-green-50/50 p-3 text-xs leading-relaxed text-green-900">
-  <strong className="font-semibold">Answer: {props.sampleQuestion.answerLetter}.</strong>
-  {props.sampleQuestion.explanation}
-</div>
-</div>
-</div>
-</section>
+        <section className="mx-auto max-w-4xl px-4 py-12">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            What's covered
+          </h2>
 
-<div className="mx-auto max-w-4xl px-4 pb-6">
-<AdsSlot slotId="subject_in_content"/>
-</div>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {props.topics.map((t) => (
+              <li key={t}>
+                <div className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <span aria-hidden className="mt-0.5 text-primary-700">
+                    ✓
+                  </span>
+                  <span className="text-sm text-gray-700">{t}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-<section className="mx-auto max-w-4xl px-4 py-14 text-center">
-<h2 className="text-2xl font-bold tracking-tight text-gray-900">
-  Ready to drill {meta.label.toLowerCase()}?
-</h2>
-<p className="mt-3 text-base text-gray-600">
-  Start a focused practice session — instant scoring, full explanations, and analytics so you can watch your accuracy climb.
-</p>
-<div className="mt-6 flex flex-wrap justify-center gap-3">
-  <Link to={props.practiceCtaHref} className="btn-primary text-base !px-6 !py-3">
-    Start Practicing Now →
-  </Link>
-  <Link to="/" className="btn-secondary text-base !px-6 !py-3">
-    ← Back to Home
-  </Link>
-</div>
-</section>
-</article>
-```
+        <section className="bg-slate-50 py-12">
+          <div className="mx-auto max-w-4xl px-4">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+              Sample question
+            </h2>
+
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+              <p className="text-sm font-medium leading-relaxed text-gray-800">
+                {props.sampleQuestion.prompt}
+              </p>
+
+              <ul className="mt-4 space-y-2 text-sm">
+                {props.sampleQuestion.choices.map((c) => (
+                  <li
+                    key={c.letter}
+                    className={[
+                      "flex items-center gap-3 rounded-lg border px-3 py-2",
+                      c.letter === props.sampleQuestion.answerLetter
+                        ? "border-green-300 bg-green-50 text-green-900"
+                        : "border-gray-200 text-gray-700",
+                    ].join(" ")}
+                  >
+                    <span
+                      className={[
+                        "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold",
+                        c.letter === props.sampleQuestion.answerLetter
+                          ? "bg-green-600 text-white"
+                          : "bg-gray-100 text-gray-600",
+                      ].join(" ")}
+                    >
+                      {c.letter}
+                    </span>
+                    <p className="text-sm">{c.text}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-5 rounded-md border border-green-200 bg-green-50/50 p-3 text-xs leading-relaxed text-green-900">
+                <strong className="font-semibold">
+                  Answer: {props.sampleQuestion.answerLetter}.
+                </strong>{" "}
+                {props.sampleQuestion.explanation}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-4xl px-4 pb-6">
+          <AdSlot slotId="subject_in_content" />
+        </div>
+
+        <section className="mx-auto max-w-4xl px-4 py-14 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            Ready to drill {meta.label.toLowerCase()}?
+          </h2>
+
+          <p className="mt-3 text-base text-gray-600">
+            Start a focused practice session — instant scoring, full explanations, and analytics so
+            you can watch your accuracy climb.
+          </p>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link to={props.practiceCtaHref} className="btn-primary text-base !px-6 !py-3">
+              Start Practicing Now →
+            </Link>
+            <Link to="/" className="btn-secondary text-base !px-6 !py-3">
+              ← Back to Home
+            </Link>
+          </div>
+        </section>
+      </article>
+    </>
+  );
+}

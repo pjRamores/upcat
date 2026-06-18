@@ -75,7 +75,7 @@ export interface ListBlogPostsResult {
 export async function listBlogPosts(
   db: Db,
   opts: ListBlogPostsOptions = {},
-): Promise<ListBlogPostsResult> => {
+): Promise<ListBlogPostsResult> {
   const pageSize = Math.min(BLOG_LIST_PAGE_SIZE, Math.max(1, opts.pageSize ?? BLOG_LIST_PAGE_SIZE));
   const page = Math.max(1, opts.page ?? 1);
   const filter: Filter<BlogPostDoc> = {};
@@ -88,7 +88,7 @@ export async function listBlogPosts(
   const coll = db.collection<BlogPostDoc>(BLOG_COLLECTION);
   const [docs, total] = await Promise.all([
     coll.find(filter)
-      .sort([{ publishedAt: -1, updatedAt: -1 }])
+      .sort({ publishedAt: -1, updatedAt: -1 })
       .skip((page - 1) * pageSize)
       .limit(pageSize)
       .toArray(),

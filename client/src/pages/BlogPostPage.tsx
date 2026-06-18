@@ -21,16 +21,24 @@ const SITE_URL =
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) {
+      setLoading(false);
+      setStatus(404);
+      return;
+    }
+
     let cancelled = false;
     setLoading(true);
+    setStatus(null);
+
     apiClient
-      .get<BlogPost>("/blog/${encodeURIComponent(slug)}")
+      .get<BlogPost>(`/blog/${encodeURIComponent(slug)}`)
       .then((res) => {
         if (!cancelled) {
           setPost(res.data);
@@ -41,10 +49,12 @@ export default function BlogPostPage() {
         if (cancelled) return;
         const s = (err as { response?: { status?: number } }).response?.status ?? 500;
         setStatus(s);
+        setPost(null);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
       });
+
     return () => {
       cancelled = true;
     };
@@ -63,10 +73,18 @@ export default function BlogPostPage() {
   if (status === 404 || !post) {
     return (
       <div className="mx-auto max-w-xl px-4 py-16 text-center">
-        <SEOHead title="Post not found" description="The requested blog post was not found." noIndex />
+        <SEOHead
+          title="Post not found"
+          description="The requested blog post was not found."
+          noIndex
+        />
         <h1 className="text-2xl font-semibold text-slate-900">Post not found</h1>
         <p className="mt-2 text-sm text-slate-600">It may have been moved or unpublished.</p>
-        <button onClick={() => navigate("/blog")}>
+        <button
+          type="button"
+          onClick={() => navigate("/blog")}
+          className="mt-4 rounded bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+        >
           Back to blog
         </button>
       </div>
@@ -75,6 +93,7 @@ export default function BlogPostPage() {
 
   const url = canonicalUrl(`/blog/${post.slug}`, SITE_URL);
   const readMinutes = estimateReadMinutes(post.body);
+
   const schemas = [
     breadcrumbSchema([
       { name: "Home", path: "/" },
@@ -102,49 +121,68 @@ export default function BlogPostPage() {
         ogImage={post.heroImage ?? undefined}
         structuredData={schemas}
       />
-<nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
-    <Link to="/" className="hover:text-primary-700">Home</Link>
-    {" / "}
-    <Link to="/blog" className="hover:text-primary-700">Blog</Link>
-</nav>
-<header className="mb-6">
-    <h1 className="text-3xl font-bold tracking-tight text-slate-900">{post.title}</h1>
-    <p className="mt-3 text-sm text-slate-500">
-        By {post.authorName}
-        {post.publishedAt && (
+
+      <nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
+        <Link to="/" className="hover:text-primary-700">
+          Home
+        </Link>
+        {" / "}
+        <Link to="/blog" className="hover:text-primary-700">
+          Blog
+        </Link>
+      </nav>
+
+      <header className="mb-6">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900">{post.title}</h1>
+
+        <p className="mt-3 text-sm text-slate-500">
+          By {post.authorName}
+          {post.publishedAt && (
             <>
-                {" · "}
-                <time dateTime={post.publishedAt}>
-                    {(new Date(post.publishedAt).toLocaleDateString())}
-                </time>
+              {" · "}
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString()}
+              </time>
             </>
-        )}
-    </p>
-    {readMinutes} min read
-</header>
-{post.tags.length > 0 &&
-    <ul className="mt-3 flex flex-wrap gap-2">
-        {post.tags.map((t) => (
+          )}
+          {" · "}
+          {readMinutes} min read
+        </p>
+      </header>
+
+      {post.tags.length > 0 && (
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {post.tags.map((t) => (
             <li key={t}>
-                <Link to={`/blog?tag=${encodeURIComponent(t)}`} className="rounded bg-slate-200 px-2 py-0.5 text-xs text-slate-800 hover:bg-slate-300">
-                    #{t}
-                </Link>
+              <Link
+                to={`/blog?tag=${encodeURIComponent(t)}`}
+                className="rounded bg-slate-200 px-2 py-0.5 text-xs text-slate-800 hover:bg-slate-300"
+              >
+                #{t}
+              </Link>
             </li>
-        ))}
-    </ul>
-}
-{post.heroImage && (
-    <img src={post.heroImage} alt="" className="mb-6 w-full rounded object-cover" />
-)}
-<div className="prose prose-slate max-w-none">
-    //eslint-disable-next-line react/no-danger -- renderMarkdown escapes input
-    dangerouslySetInnerHTML={{ __html: html }}
-</div>
-<div className="mt-10">
-    <AdSlot slotId="blog_in_content"/>
-</div>
-<div className="mt-10 border-t border-slate-200 pt-6 text-sm">
-    <Link to="/blog" className="text-primary-700 hover:underline">← Back to all posts</Link>
-</div>
-</article>;
+          ))}
+        </ul>
+      )}
+
+      {post.heroImage && (
+        <img src={post.heroImage} alt="" className="mb-6 w-full rounded object-cover" />
+      )}
+
+      <div
+        className="prose prose-slate max-w-none"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+
+      <div className="mt-10">
+        <AdSlot slotId="blog_in_content" />
+      </div>
+
+      <div className="mt-10 border-t border-slate-200 pt-6 text-sm">
+        <Link to="/blog" className="text-primary-700 hover:underline">
+          ← Back to all posts
+        </Link>
+      </div>
+    </article>
+  );
 }

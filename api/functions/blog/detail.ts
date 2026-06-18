@@ -1,6 +1,6 @@
-import {type{VercelRequest,VercelResponse}} from "@vercel/node";
-import {getDb} from "../src/db.js";
-import {getBlogPostBySlug} from "../src/blog.js";
+import type{VercelRequest,VercelResponse} from "@vercel/node";
+import {getDb} from "../../src/db.js";
+import {getBlogPostBySlug} from "../../src/blog.js";
 
 /**
  * GET /api/blog/:slug
