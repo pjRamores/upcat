@@ -1,166 +1,167 @@
-{
+[
+  {
     "note": "Compound import fixture with legacy multiple-choice records under questions. Passages is empty by design.",
     "questions": [
-        {
-            "subjectArea": "Language Proficiency",
-            "subtopic": "Subject-Verb Agreement",
-            "difficulty": "easy",
-            "type": "multiple_choice",
-            "questionText": "Choose the sentence with correct subject-verb agreement.",
-            "choices": {
-                "A": "The list of items are on the desk.",
-                "B": "The list of items is on the desk.",
-                "C": "The list of items were on the desk.",
-                "D": "The list of items be on the desk."
-            },
-            "correctAnswer": "B",
-            "rationale": "The subject is singular (list), so the correct verb is 'is'.",
-            "tags": [
-                "grammar",
-                "agreement",
-                "lp-alpha"
-            ]
+      {
+        "subjectArea": "Language Proficiency",
+        "subtopic": "Subject-Verb Agreement",
+        "difficulty": "easy",
+        "type": "multiple_choice",
+        "questionText": "Choose the sentence with correct subject-verb agreement.",
+        "choices": {
+          "A": "The list of items are on the desk.",
+          "B": "The list of items is on the desk.",
+          "C": "The list of items were on the desk.",
+          "D": "The list of items be on the desk."
         },
-        {
-            "subjectArea": "Language Proficiency",
-            "subtopic": "Context Clues",
-            "difficulty": "medium",
-            "type": "multiple_choice",
-            "questionText": "In the sentence, 'The professor's explanation was lucid, so everyone understood it quickly,' what does lucid most nearly mean?",
-            "choices": {
-                "A": "Confusing",
-                "B": "Lengthy",
-                "C": "Clear",
-                "D": "Technical"
-            },
-            "correctAnswer": "C",
-            "rationale": "Lucid in context means clear and easy to understand.",
-            "tags": [
-                "vocabulary",
-                "context-clues",
-                "lp-alpha"
-            ]
+        "correctAnswer": "B",
+        "rationale": "The subject is singular (list), so the correct verb is 'is'.",
+        "tags": [
+          "grammar",
+          "agreement",
+          "lp-alpha"
+        ]
+      },
+      {
+        "subjectArea": "Language Proficiency",
+        "subtopic": "Context Clues",
+        "difficulty": "medium",
+        "type": "multiple_choice",
+        "questionText": "In the sentence, 'The professor's explanation was lucid, so everyone understood it quickly,' what does lucid most nearly mean?",
+        "choices": {
+          "A": "Confusing",
+          "B": "Lengthy",
+          "C": "Clear",
+          "D": "Technical"
         },
-        {
-            "subjectArea": "Mathematics",
-            "subtopic": "Linear Equations",
-            "difficulty": "easy",
-            "type": "multiple_choice",
-            "questionText": "If 3x + 5 = 20, what is the value of x?",
-            "choices": {
-                "A": "3",
-                "B": "4",
-                "C": "5",
-                "D": "6"
-            },
-            "correctAnswer": "C",
-            "rationale": "3x = 15, so x = 5.",
-            "tags": [
-                "algebra",
-                "linear",
-                "math-alpha"
-            ]
+        "correctAnswer": "C",
+        "rationale": "Lucid in context means clear and easy to understand.",
+        "tags": [
+          "vocabulary",
+          "context-clues",
+          "lp-alpha"
+        ]
+      },
+      {
+        "subjectArea": "Mathematics",
+        "subtopic": "Linear Equations",
+        "difficulty": "easy",
+        "type": "multiple_choice",
+        "questionText": "If 3x + 5 = 20, what is the value of x?",
+        "choices": {
+          "A": "3",
+          "B": "4",
+          "C": "5",
+          "D": "6"
         },
-        {
-            "subjectArea": "Mathematics",
-            "subtopic": "Percentages",
-            "difficulty": "medium",
-            "type": "multiple_choice",
-            "questionText": "A shirt costs 800 pesos and is discounted by 15%. What is the sale price?",
-            "choices": {
-                "A": "680",
-                "B": "700",
-                "C": "720",
-                "D": "740"
-            },
-            "correctAnswer": "A",
-            "rationale": "15% of 800 is 120, and 800 - 120 = 680.",
-            "tags": [
-                "percent",
-                "word-problem",
-                "math-alpha"
-            ]
+        "correctAnswer": "C",
+        "rationale": "3x = 15, so x = 5.",
+        "tags": [
+          "algebra",
+          "linear",
+          "math-alpha"
+        ]
+      },
+      {
+        "subjectArea": "Mathematics",
+        "subtopic": "Percentages",
+        "difficulty": "medium",
+        "type": "multiple_choice",
+        "questionText": "A shirt costs 800 pesos and is discounted by 15%. What is the sale price?",
+        "choices": {
+          "A": "680",
+          "B": "700",
+          "C": "720",
+          "D": "740"
         },
-        {
-            "subjectArea": "Science",
-            "subtopic": "Newton's Second Law",
-            "difficulty": "easy",
-            "type": "multiple_choice",
-            "questionText": "If a 2-kg object is pushed with a force of 10 N, what is its acceleration?",
-            "choices": {
-                "A": "2 m/s^2",
-                "B": "5 m/s^2",
-                "C": "8 m/s^2",
-                "D": "12 m/s^2"
-            },
-            "correctAnswer": "B",
-            "rationale": "Using a = F/m, acceleration is 10/2 = 5 m/s^2.",
-            "tags": [
-                "physics",
-                "force",
-                "science-alpha"
-            ]
-        }
+        "correctAnswer": "A",
+        "rationale": "15% of 800 is 120, and 800 - 120 = 680.",
+        "tags": [
+          "percent",
+          "word-problem",
+          "math-alpha"
+        ]
+      },
+      {
+        "subjectArea": "Science",
+        "subtopic": "Newton's Second Law",
+        "difficulty": "easy",
+        "type": "multiple_choice",
+        "questionText": "If a 2-kg object is pushed with a force of 10 N, what is its acceleration?",
+        "choices": {
+          "A": "2 m/s^2",
+          "B": "5 m/s^2",
+          "C": "8 m/s^2",
+          "D": "12 m/s^2"
+        },
+        "correctAnswer": "B",
+        "rationale": "Using a = F/m, acceleration is 10/2 = 5 m/s^2.",
+        "tags": [
+          "physics",
+          "force",
+          "science-alpha"
+        ]
+      }
     ]
-}
-{
+  },
+  {
     "subjectArea": "Science",
     "subtopic": "Cell Biology",
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionText": "Which organelle is primarily responsible for producing ATP in eukaryotic cells?",
     "choices": {
-        "A": "Nucleus",
-        "B": "Mitochondrion",
-        "C": "Golgi apparatus",
-        "D": "Ribosome"
+      "A": "Nucleus",
+      "B": "Mitochondrion",
+      "C": "Golgi apparatus",
+      "D": "Ribosome"
     },
     "correctAnswer": "B",
     "rationale": "Mitochondria carry out cellular respiration and generate ATP.",
     "tags": [
-        "biology",
-        "cell",
-        "science-alpha"
+      "biology",
+      "cell",
+      "science-alpha"
     ]
-},
-{
+  },
+  {
     "subjectArea": "Reading Comprehension",
     "subtopic": "Main Idea",
     "difficulty": "easy",
     "type": "multiple_choice",
     "questionText": "Passage: Urban gardens provide fresh produce and improve neighborhood engagement. What is the main idea?",
     "choices": {
-        "A": "Urban gardens are difficult to maintain.",
-        "B": "Urban gardens have social and nutritional benefits.",
-        "C": "Only rural areas can produce vegetables.",
-        "D": "Neighborhoods should avoid shared spaces."
+      "A": "Urban gardens are difficult to maintain.",
+      "B": "Urban gardens have social and nutritional benefits.",
+      "C": "Only rural areas can produce vegetables.",
+      "D": "Neighborhoods should avoid shared spaces."
     },
     "correctAnswer": "B",
     "rationale": "The passage highlights both food access and community engagement benefits.",
     "tags": [
-        "reading",
-        "main-idea",
-        "rc-alpha"
+      "reading",
+      "main-idea",
+      "rc-alpha"
     ]
-},
-{
+  },
+  {
     "subjectArea": "Reading Comprehension",
     "subtopic": "Inference",
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionText": "Passage: Maya packed an umbrella before leaving, though the sky was clear. Which inference is best supported?",
     "choices": {
-        "A": "Maya expected possible rain later.",
-        "B": "Maya forgot what umbrellas are for.",
-        "C": "Maya dislikes sunny weather.",
-        "D": "Maya was going to the beach."
+      "A": "Maya expected possible rain later.",
+      "B": "Maya forgot what umbrellas are for.",
+      "C": "Maya dislikes sunny weather.",
+      "D": "Maya was going to the beach."
     },
     "correctAnswer": "A",
     "rationale": "Bringing an umbrella despite clear skies implies anticipation of rain.",
     "tags": [
-        "reading",
-        "inference",
-        "rc-alpha"
+      "reading",
+      "inference",
+      "rc-alpha"
     ]
-}
+  }
 ]

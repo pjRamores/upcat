@@ -1,42 +1,42 @@
 {
   "passages": [
     {
-      "_id": "p1_poem",
+      "_id": "68513e1a4b8e2a91c6f0d3b1",
       "title": "The Loom of the Night",
       "subjectArea": "Reading Comprehension",
       "source": "Original Collection",
       "content": "She sits upon the mountain's crest,\nA silent watcher in the west.\nHer hands, a blur of silver light,\nBegin to weave the looming night.\n\nA blanket of obsidian spun,\nTo cool the embers of the sun.\nWith gossamer of comet tails,\nShe patches up the astral sails.\n\nAnd when the mortals weep or mourn,\nShe takes the threads that they have torn,\nAnd knits them into shooting stars,\nTo hide the universe's scars."
     },
     {
-      "_id": "p2_article",
+      "_id": "68513e1a4b8e2a91c6f0d3b2",
       "title": "Mangrove Restoration in Visayas",
       "subjectArea": "Reading Comprehension",
       "source": "Mock Science & Environment Digest",
       "content": "Coastal erosion and severe typhoons have long plagued the Visayas region. In response, a massive mangrove restoration project was launched in 2021. Mangroves act as natural buffers against storm surges, their complex root systems dissipating wave energy. Beyond protection, they serve as critical nurseries for marine life, boosting local fishery yields.\n\nHowever, initial efforts saw mixed results due to improper species selection. The table below details the survival rates of three species planted in the Panay area after two years.\n\n| Species | Planted | Survived | Growth Rate (cm/year) |\n|---|---|---|---|\n| Rhizophora | 5,000 | 4,200 | 15 |\n| Avicennia | 3,000 | 1,800 | 25 |\n| Sonneratia | 2,000 | 1,500 | 20 |\n\nThe project learned that planting Avicennia in the seaward zones, despite its lower survival rate here, is essential due to its high resistance to salinity and inundation. Community involvement has been the true linchpin. Local fisherfolk, who initially viewed the mangroves as obstacles to boat navigation, are now the primary caretakers, realizing that the temporary inconvenience is far outweighed by long-term ecological and economic benefits."
     },
     {
-      "_id": "p3_paired",
+      "_id": "68513e1a4b8e2a91c6f0d3b3",
       "title": "The Digital Divide: Two Perspectives on AI in Education",
       "subjectArea": "Reading Comprehension",
       "source": "Original Editorials",
       "content": "Passage 3A: Speech by a Technology Advocate\nThe integration of artificial intelligence in Philippine classrooms is not merely a luxury; it is an imperative. As the global economy shifts toward automation, our students must be digitally fluent. AI-driven adaptive learning software allows for personalized education, tailoring lessons to a student's pace and identifying knowledge gaps in real time. This level of efficiency cannot be achieved by a single teacher managing a class of fifty. Opponents argue that technology diminishes the human element, but we must ask: isn't preparing our youth for the realities of the 21st century the most profoundly human service we can offer?\n\nPassage 3B: Essay by a Veteran Educator\nWe are rushing headlong into a digitized classroom, blinded by the shiny promise of efficiency. While AI can certainly deliver facts and grade multiple-choice tests, education is not simply data transfer. It is character formation. A machine cannot detect the nuance of a student's sudden silence, nor can it inspire a child through genuine empathy. Furthermore, framing AI as an educational panacea ignores the glaring infrastructural deficits in our rural schools. We are at risk of widening the digital divide, creating a two-tiered system where the privileged converse with algorithms, while the marginalized remain disconnected."
     },
     {
-      "_id": "p4_story",
+      "_id": "68513e1a4b8e2a91c6f0d3b4",
       "title": "The Approaching Storm",
       "subjectArea": "Reading Comprehension",
       "source": "Original Short Story",
       "content": "The radio crackled with static, a telltale sign that Signal No. 3 was imminent. Lolo Tasyo did not flinch; his eyes, calloused not just by age but by countless tempests, simply surveyed the tin roof of their modest home. \"Hurry, Nene,\" he instructed his granddaughter, handing her a bundle of thick nylon ropes. \"The wind is like a hungry dog. If you give it an edge to bite, it will tear the whole roof off.\"\n\nNene nodded, her hands trembling as she tied the ropes to the sturdy concrete pillars, anchoring the corrugated sheets. She had always dreaded the monsoons, but watching her grandfather move with methodical calm offered a strange comfort. He wasn't fighting the storm; he was preparing to endure it. \"We don't conquer the rain, Nene,\" Lolo Tasyo murmured, pulling a knot tight. \"We just make sure our foundation is stronger than its anger.\""
     },
     {
-      "_id": "p5_procedure",
+      "_id": "68513e1a4b8e2a91c6f0d3b5",
       "title": "How to Weave a Traditional Banig",
       "subjectArea": "Reading Comprehension",
       "source": "Cultural Heritage Guide",
       "content": "The traditional Filipino banig (sleeping mat) is a testament to patience and artistry. While materials vary by region, the fundamental procedure remains consistent.\n\nStep 1: Harvesting. Mature leaves are carefully cut to avoid damaging the main plant.\nStep 2: Stripping and Sun-drying. The thorny edges are removed, and the leaves are stripped into uniform widths. They are laid out in the sun for two to three days until they turn a light brown hue.\nStep 3: Dyeing. The dried strips are boiled in pots with vibrant chemical or natural dyes to create colors like magenta, green, and yellow.\nStep 4: Flattening. Once dyed and dried again, the strips are flattened using a piece of smooth hardwood.\nStep 5: Weaving. The artisan weaves the strips using intricate geometric patterns.\n\n| Mat Size | Prep Time | Weaving Time | Total Time |\n|---|---|---|---|\n| Single | 3 days | 2 days | 5 days |\n| Double | 3 days | 4 days | 7 days |\n| Family | 4 days | 6 days | 10 days |\n\nThe meticulous process ensures that the banig is not only functional but also a durable family heirloom, mitigating the effects of hot tropical nights through its breathable weave. This craft is entirely reliant on human hands; no machine can replicate the tight, custom tension of an expert weaver."
     },
     {
-      "_id": "p6_editorial",
+      "_id": "68513e1a4b8e2a91c6f0d3b6",
       "title": "The Cost of Moving Forward",
       "subjectArea": "Reading Comprehension",
       "source": "Opinion Section, Mock Daily",
@@ -49,7 +49,7 @@
       "subtopic": "Main Idea",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 1,
       "questionText": "What is the central theme of 'The Loom of the Night'?",
       "choices": {
@@ -75,7 +75,7 @@
       "subtopic": "Figures of Speech",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 2,
       "questionText": "The phrase 'A blanket of obsidian spun' is an example of which figure of speech?",
       "choices": {
@@ -101,7 +101,7 @@
       "subtopic": "Tone",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 3,
       "questionText": "Which word best describes the tone of the poem?",
       "choices": {
@@ -127,7 +127,7 @@
       "subtopic": "Inference",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 4,
       "questionText": "Based on the third stanza, what do the 'torn threads' symbolize?",
       "choices": {
@@ -153,7 +153,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 5,
       "questionText": "In the context of the poem, what does the word 'gossamer' most likely mean?",
       "choices": {
@@ -179,7 +179,7 @@
       "subtopic": "Point of View",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 6,
       "questionText": "From which point of view is the poem written?",
       "choices": {
@@ -205,7 +205,7 @@
       "subtopic": "Drawing Conclusions",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 7,
       "questionText": "What conclusion can be drawn about the relationship between the weaver and humanity?",
       "choices": {
@@ -231,7 +231,7 @@
       "subtopic": "Literary Criticism",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 8,
       "questionText": "How does the author use the imagery of weaving to develop the poem's theme?",
       "choices": {
@@ -257,7 +257,7 @@
       "subtopic": "Title Selection",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 9,
       "questionText": "Which alternative title best captures the essence of the poem?",
       "choices": {
@@ -283,7 +283,7 @@
       "subtopic": "Implied Meaning",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p1_poem",
+      "passageId": "68513e1a4b8e2a91c6f0d3b1",
       "questionNumber": 10,
       "questionText": "What is the implied meaning of 'hide the universe's scars'?",
       "choices": {
@@ -309,7 +309,7 @@
       "subtopic": "Main Idea",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 11,
       "questionText": "What is the main topic of the article?",
       "choices": {
@@ -335,7 +335,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 12,
       "questionText": "According to the table, which mangrove species had the highest number of surviving plants?",
       "choices": {
@@ -361,7 +361,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 13,
       "questionText": "If an NGO decides to plant an additional 1,000 Rhizophora using the exact same survival rate shown in the table, how many of these new mangroves are expected to survive?",
       "choices": {
@@ -387,7 +387,7 @@
       "subtopic": "Inference",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 14,
       "questionText": "What can be inferred about the Avicennia species based on the text and the table?",
       "choices": {
@@ -413,7 +413,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 15,
       "questionText": "In the context of the passage, what does the word 'inundation' mean?",
       "choices": {
@@ -439,7 +439,7 @@
       "subtopic": "Author's Purpose",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 16,
       "questionText": "Which best describes the author's primary purpose in the final paragraph?",
       "choices": {
@@ -465,7 +465,7 @@
       "subtopic": "Logic and Assumptions",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 17,
       "questionText": "Which of the following is an underlying assumption made by the author regarding the local fisherfolk?",
       "choices": {
@@ -491,7 +491,7 @@
       "subtopic": "Supporting Details",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 18,
       "questionText": "According to the passage, how do mangroves physically protect coastal areas from storm surges?",
       "choices": {
@@ -517,7 +517,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 19,
       "questionText": "Based on the table, if an Avicennia and a Sonneratia are planted at the exact same time and both survive, how much taller in centimeters will the Avicennia be than the Sonneratia after exactly 4 years of growth?",
       "choices": {
@@ -543,7 +543,7 @@
       "subtopic": "Skimming and Scanning",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p2_article",
+      "passageId": "68513e1a4b8e2a91c6f0d3b2",
       "questionNumber": 20,
       "questionText": "In which paragraph does the author discuss the impact of mangroves on local fishery yields?",
       "choices": {
@@ -569,7 +569,7 @@
       "subtopic": "Main Idea",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 21,
       "questionText": "What is the central claim of Passage 3A?",
       "choices": {
@@ -595,7 +595,7 @@
       "subtopic": "Main Idea",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 22,
       "questionText": "What is the primary concern raised by the author of Passage 3B?",
       "choices": {
@@ -621,7 +621,7 @@
       "subtopic": "Synthesize and Compare",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 23,
       "questionText": "How would the author of Passage 3B most likely respond to the claim in Passage 3A that AI provides 'efficiency cannot be achieved by a single teacher'?",
       "choices": {
@@ -647,7 +647,7 @@
       "subtopic": "Synthesize and Compare",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 24,
       "questionText": "On which of the following points do both authors implicitly agree?",
       "choices": {
@@ -673,7 +673,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 25,
       "questionText": "In Passage 3B, the word 'panacea' most nearly means:",
       "choices": {
@@ -699,7 +699,7 @@
       "subtopic": "Logic and Argument Structure",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 26,
       "questionText": "How does the author of Passage 3A structure their argument against opponents of AI?",
       "choices": {
@@ -725,7 +725,7 @@
       "subtopic": "Fact vs Opinion",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 27,
       "questionText": "Which of the following statements from Passage 3A represents a subjective opinion rather than an objective fact?",
       "choices": {
@@ -751,7 +751,7 @@
       "subtopic": "Tone",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 28,
       "questionText": "The tone of Passage 3B can best be described as:",
       "choices": {
@@ -777,7 +777,7 @@
       "subtopic": "Point of View",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 29,
       "questionText": "From whose perspective is Passage 3B written?",
       "choices": {
@@ -803,7 +803,7 @@
       "subtopic": "Inference",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 30,
       "questionText": "Based on Passage 3B, what does the author imply will happen if AI is implemented without addressing 'infrastructural deficits'?",
       "choices": {
@@ -829,7 +829,7 @@
       "subtopic": "Drawing Conclusions",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 31,
       "questionText": "If a school board read both passages, what unified conclusion might they reasonably draw to balance both perspectives?",
       "choices": {
@@ -855,7 +855,7 @@
       "subtopic": "Logic and Assumptions",
       "difficulty": "very_hard",
       "type": "passage_based",
-      "passageId": "p3_paired",
+      "passageId": "68513e1a4b8e2a91c6f0d3b3",
       "questionNumber": 32,
       "questionText": "Which logical assumption is essential for the argument in Passage 3A to hold true?",
       "choices": {
@@ -881,7 +881,7 @@
       "subtopic": "Main Idea",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 33,
       "questionText": "What is the primary event occurring in the story?",
       "choices": {
@@ -907,7 +907,7 @@
       "subtopic": "Figures of Speech",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 34,
       "questionText": "The phrase 'The wind is like a hungry dog' is an example of which literary device?",
       "choices": {
@@ -933,7 +933,7 @@
       "subtopic": "Implied Meaning",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 35,
       "questionText": "What does Lolo Tasyo mean when he says, 'We don't conquer the rain... We just make sure our foundation is stronger than its anger'?",
       "choices": {
@@ -959,7 +959,7 @@
       "subtopic": "Tone",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 36,
       "questionText": "How would you describe Lolo Tasyo's demeanor throughout the passage?",
       "choices": {
@@ -985,7 +985,7 @@
       "subtopic": "Literary Criticism",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 37,
       "questionText": "How does the author use the contrast between Nene and Lolo Tasyo to enhance the story's theme?",
       "choices": {
@@ -1011,7 +1011,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 38,
       "questionText": "In the passage, the word 'calloused' is used to describe Lolo Tasyo's eyes. In this context, what does 'calloused' imply?",
       "choices": {
@@ -1037,7 +1037,7 @@
       "subtopic": "Drawing Conclusions",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 39,
       "questionText": "Lolo Tasyo and Nene are securing the roof. If Lolo Tasyo uses 4 nylon ropes per concrete pillar, and their house has 6 pillars, and each rope requires 2 sturdy knots, how many knots did Lolo Tasyo and Nene tie in total to secure the entire roof?",
       "choices": {
@@ -1063,7 +1063,7 @@
       "subtopic": "Skimming and Scanning",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 40,
       "questionText": "What material is Lolo Tasyo's roof made of?",
       "choices": {
@@ -1089,7 +1089,7 @@
       "subtopic": "Title Selection",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 41,
       "questionText": "Which alternate title emphasizes the story's core message rather than its plot?",
       "choices": {
@@ -1115,7 +1115,7 @@
       "subtopic": "Author's Purpose",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p4_story",
+      "passageId": "68513e1a4b8e2a91c6f0d3b4",
       "questionNumber": 42,
       "questionText": "What is the author's primary purpose in writing this narrative?",
       "choices": {
@@ -1141,7 +1141,7 @@
       "subtopic": "Skimming and Scanning",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 43,
       "questionText": "According to the procedure, what must be done to the leaves immediately after the thorny edges are removed?",
       "choices": {
@@ -1167,7 +1167,7 @@
       "subtopic": "Inference",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 44,
       "questionText": "Why must the leaves be 'carefully cut' in Step 1?",
       "choices": {
@@ -1193,7 +1193,7 @@
       "subtopic": "Main Idea",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 45,
       "questionText": "What is the primary message of the final paragraph regarding the banig?",
       "choices": {
@@ -1219,7 +1219,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 46,
       "questionText": "A local cooperative receives an order for 2 Single mats and 1 Family mat. Assuming they have 3 weavers and each weaver works on exactly one mat from start to finish (prep and weaving), how many total days of labor (the sum of all individual days worked by the 3 weavers) will it take to fulfill this order based on the table?",
       "choices": {
@@ -1245,7 +1245,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 47,
       "questionText": "In the final paragraph, what does 'mitigating' mean?",
       "choices": {
@@ -1271,7 +1271,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 48,
       "questionText": "According to the table, how much longer does it take to weave a Family mat compared to prepping it?",
       "choices": {
@@ -1297,7 +1297,7 @@
       "subtopic": "Fact vs Opinion",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 49,
       "questionText": "Which of the following statements from the passage is an opinion?",
       "choices": {
@@ -1323,7 +1323,7 @@
       "subtopic": "Drawing Conclusions",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p5_procedure",
+      "passageId": "68513e1a4b8e2a91c6f0d3b5",
       "questionNumber": 50,
       "questionText": "What conclusion can be drawn about the relationship between the size of the mat and its production process?",
       "choices": {
@@ -1349,7 +1349,7 @@
       "subtopic": "Main Idea",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 51,
       "questionText": "What is the central claim of the editorial?",
       "choices": {
@@ -1375,7 +1375,7 @@
       "subtopic": "Tone",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 52,
       "questionText": "What is the author's attitude toward traditional jeepney drivers?",
       "choices": {
@@ -1401,7 +1401,7 @@
       "subtopic": "Logic and Argument Structure",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 53,
       "questionText": "Which paragraph contains the author's concession to the opposing argument?",
       "choices": {
@@ -1427,7 +1427,7 @@
       "subtopic": "Analyze Logic",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 54,
       "questionText": "Which piece of evidence does the author use to support the claim that the financial burden on operators is 'staggering'?",
       "choices": {
@@ -1453,7 +1453,7 @@
       "subtopic": "Analyze Logic",
       "difficulty": "very_hard",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 55,
       "questionText": "An operator wants to purchase a modern jeepney costing exactly 2,500,000 pesos. The government provides the 160,000-peso subsidy which is deducted from the principal. If the bank requires the operator to pay a 10% downpayment on the remaining balance out of pocket, how much is the required downpayment?",
       "choices": {
@@ -1479,7 +1479,7 @@
       "subtopic": "Interpreting Embedded Data",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 56,
       "questionText": "What does the 'tiny coin' given by the 'giant government official' in the editorial cartoon symbolize?",
       "choices": {
@@ -1505,7 +1505,7 @@
       "subtopic": "Vocabulary in Context",
       "difficulty": "easy",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 57,
       "questionText": "In the first paragraph, what does 'ubiquitous' mean?",
       "choices": {
@@ -1531,7 +1531,7 @@
       "subtopic": "Inference",
       "difficulty": "hard",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 58,
       "questionText": "What does the author imply will happen if the modernization program proceeds without a 'commercially viable transition plan'?",
       "choices": {
@@ -1557,7 +1557,7 @@
       "subtopic": "Logic and Assumptions",
       "difficulty": "very_hard",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 59,
       "questionText": "The argument that the modernization program is 'punishing the poor for a systemic failure' relies on which underlying assumption?",
       "choices": {
@@ -1583,7 +1583,7 @@
       "subtopic": "Topic Sentence / Summary",
       "difficulty": "medium",
       "type": "passage_based",
-      "passageId": "p6_editorial",
+      "passageId": "68513e1a4b8e2a91c6f0d3b6",
       "questionNumber": 60,
       "questionText": "Which sentence from the final paragraph functions as its main conclusion?",
       "choices": {
