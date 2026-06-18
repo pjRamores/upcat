@@ -9,10 +9,10 @@
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ObjectId } from "mongodb";
-import { requireAdmin } from "../../../../../src/auth.js";
-import { getDb } from "../../../../../src/db.js";
-import { logActivity } from "../../../../../src/activityLog.js";
-import { syncQuestionSetPublishedCounts } from "../../../../../src/questionSetSync.js";
+import { requireAdmin } from "../../../src/auth.js";
+import { getDb } from "../../../src/db.js";
+import { logActivity } from "../../../src/activityLog.js";
+import { syncQuestionSetPublishedCounts } from "../../../src/questionSetSync.js";
 import { validateQuestionPayload } from "./index.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

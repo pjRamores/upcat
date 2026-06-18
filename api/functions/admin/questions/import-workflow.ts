@@ -301,14 +301,17 @@ async function confirmImport(req: VercelRequest, res: VercelResponse, adminId: O
     : [];
 
   for (const p of passageDocs) {
-    if (!p.id || !ObjectId.isValid(String(p.id))) continue;
+    if (!p._id || !ObjectId.isValid(String(p._id))) {
+        console.log("warn", "Skipping invalid passage in import batch", { passage: p });
+        continue;
+    }
 
-    const passageOid = new ObjectId(String(p.id));
+    const passageId = new ObjectId(String(p._id));
     await db.collection("passages").updateOne(
-      { _id: passageOid },
+      { _id: passageId },
       {
         $setOnInsert: {
-          _id: passageOid,
+          _id: passageId,
           title: String(p.title ?? ""),
           content: String(p.content ?? ""),
           source: String(p.source ?? ""),
