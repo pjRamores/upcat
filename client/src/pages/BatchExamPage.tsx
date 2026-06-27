@@ -525,8 +525,8 @@ export default function BatchExamPage() {
                                 {submitting || submitBlocking ? (
                                     <span className="inline-flex items-center gap-2">
                                         <Spinner className="h-4 w-4 text-white" />
-                                            Submitting...
-                                        </span>
+                                        Submitting...
+                                    </span>
                                 ) : (
                                     "Submit"
                                 )}
@@ -536,194 +536,187 @@ export default function BatchExamPage() {
                 </div>
             )}
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <section>
-          <div className="mb-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Subject {currentBatchIdx + 1} of {subjectBatches.length}
-                </p>
-                <h1 className="text-lg font-semibold text-slate-900">{currentSubjectName}</h1>
-              </div>
-              <div className="text-right">
-                <p className="text-xs text-slate-500">Time remaining</p>
-                <p
-                  className={`text-2xl font-bold ${
-                    remainingSeconds <= 30 ? "text-rose-600" : "text-slate-900"
-                  }`}
-                >
-                  {formatSeconds(remainingSeconds)}
-                </p>
-              </div>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+                <section>
+                    <div className="mb-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                        <div className="flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                    Subject {currentBatchIdx + 1} of {subjectBatches.length}
+                                </p>
+                                <h1 className="text-lg font-semibold text-slate-900">{currentSubjectName}</h1>
+                            </div>
+                            <div className="text-right">
+                                <p className="text-xs text-slate-500">Time remaining</p>
+                                <p className={`text-2xl font-bold ${remainingSeconds <= 30 ? "text-rose-600" : "text-slate-900"}`}>
+                                    {formatSeconds(remainingSeconds)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                        {isPaused && (
+                            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm">
+                                <span className="text-sm font-semibold text-slate-500">Exam paused</span>
+                            </div>
+                        )}
+                        {!currentQuestion || !currentState ? (
+                            <div className="flex min-h-[300px] items-center justify-center">
+                                <Spinner/>
+                            </div>
+                        ) : (
+                            <QuestionCard
+                                state={currentState}
+                                question={currentQuestion}
+                                questionPosition={indexInBatch + 1}
+                                questionCount={currentBatch.indices.length}
+                                onSelectAnswer={selectAnswer}
+                                onToggleFlag={toggleFlag}
+                                reviewDisabled={isPaused}
+                            />
+                        )}
+                    </div>
+                </section>
+
+                <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <h2 className="text-sm font-semibold text-slate-900">Navigator</h2>
+                    <p className="mt-1 text-xs text-slate-500">Showing active subject only.</p>
+
+                    <div className="mt-4">
+                        <div className="rounded-lg border border-slate-200 p-3">
+                            <div className="mb-2 flex items-center justify-between">
+                                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                    {currentSubjectName}
+                                </span>
+                                <span className="text-[11px] font-medium text-primary-700">Current</span>
+                            </div>
+
+                            <div className="grid grid-cols-5 gap-2">
+                                {currentBatch.indices.map((qIdx, positionInBatch) => {
+                                    const st = states[qIdx];
+                                    const answered = Boolean(st?.answer);
+                                    const visited = Boolean(st?.visited);
+                                    const flagged = Boolean(st?.flagged);
+                                    const active = qIdx === currentIndex;
+                                    const colorClass = active
+                                        ? "bg-primary-600 text-white"
+                                        : answered
+                                            ? "bg-emerald-100 text-emerald-700"
+                                            : visited
+                                                ? "bg-sky-100 text-sky-700"
+                                                : "bg-slate-100 text-slate-400";
+                                    return (
+                                        <button
+                                            key={qIdx}
+                                            type="button"
+                                            disabled={isPaused}
+                                            onClick={() => setCurrent(qIdx)}
+                                            className={`relative h-8 rounded-md text-xs font-semibold ${colorClass} disabled:cursor-not-allowed disabled:opacity-60`}
+                                            title={
+                                                flagged
+                                                    ? `Question ${positionInBatch + 1} — marked for review`
+                                                    : `Question ${positionInBatch + 1}`
+                                            }
+                                        >
+                                            {positionInBatch + 1}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500">
+                        <span>Current</span>
+                        <span>Answered</span>
+                        <span>Visited</span>
+                        <span>Not visited</span>
+                        <span>For review</span>
+                    </div>
+
+                    <div className="mt-4 space-y-2">
+                        <div className="grid grid-cols-2 gap-2">
+                            <button
+                                type="button"
+                                onClick={goPrevInSubject}
+                                disabled={!canGoPrevInSubject || isPaused}
+                                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Previous
+                            </button>
+                            <button
+                                type="button"
+                                onClick={goNextInSubject}
+                                disabled={!canGoNextInSubject || isPaused}
+                                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Next
+                            </button>
+                        </div>
+
+                        {!isPaused ? (
+                            <button
+                                type="button"
+                                onClick={() => void handlePause()}
+                                disabled={pauseInFlight}
+                                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Pause
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={() => void handleResume()}
+                                disabled={pauseInFlight}
+                                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Resume
+                            </button>
+                        )}
+
+                        <button
+                            type="button"
+                            onClick={() => void handlePauseAndExit()}
+                            disabled={pauseInFlight}
+                            className="w-full rounded-md bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            Exit
+                        </button>
+
+                        {!isLastBatch && (
+                            <button
+                                type="button"
+                                onClick={() => setConfirmProceed(true)}
+                                disabled={isPaused}
+                                className="w-full rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Proceed to {SUBJECT_META[nextBatch?.subject ?? currentBatch.subject]?.label}
+                            </button>
+                        )}
+
+                        <button
+                            type="button"
+                            onClick={() => setConfirmSubmit(true)}
+                            disabled={submitting || submitBlocking || isPaused}
+                            className="w-full rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            {submitting || submitBlocking ? "Submitting..." : "Submit Now"}
+                        </button>
+                    </div>
+
+                    <div className="mt-4 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
+                        <p>Total questions: {totalQuestions}</p>
+                        <p>Current subject questions: {currentBatch.indices.length}</p>
+                        <p>
+                            Answered in this subject:{" "}
+                            {currentBatch.indices.filter((idx) => Boolean(states[idx]?.answer)).length}
+                        </p>
+                    </div>
+                </aside>
             </div>
-          </div>
-
-          <div className="relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            {isPaused && (
-              <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm">
-                <span className="text-sm font-semibold text-slate-500">Exam paused</span>
-              </div>
-            )}
-
-            {!currentQuestion || !currentState ? (
-              <div className="flex min-h-[300px] items-center justify-center">
-                <Spinner />
-              </div>
-            ) : (
-              <QuestionCard
-                state={currentState}
-                question={currentQuestion}
-                questionPosition={indexInBatch + 1}
-                questionCount={currentBatch.indices.length}
-                onSelectAnswer={selectAnswer}
-                onToggleFlag={toggleFlag}
-                reviewDisabled={isPaused}
-              />
-            )}
-          </div>
-        </section>
-
-        <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-          <h2 className="text-sm font-semibold text-slate-900">Navigator</h2>
-          <p className="mt-1 text-xs text-slate-500">Showing active subject only.</p>
-
-          <div className="mt-4">
-            <div className="rounded-lg border border-slate-200 p-3">
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  {currentSubjectName}
-                </span>
-                <span className="text-[11px] font-medium text-primary-700">Current</span>
-              </div>
-
-              <div className="grid grid-cols-5 gap-2">
-                {currentBatch.indices.map((qIdx, positionInBatch) => {
-                  const st = states[qIdx];
-                  const answered = Boolean(st?.answer);
-                  const visited = Boolean(st?.visited);
-                  const flagged = Boolean(st?.flagged);
-                  const active = qIdx === currentIndex;
-
-                  const colorClass = active
-                    ? "bg-primary-600 text-white"
-                    : answered
-                      ? "bg-emerald-100 text-emerald-700"
-                      : visited
-                        ? "bg-sky-100 text-sky-700"
-                        : "bg-slate-100 text-slate-400";
-
-                  return (
-                    <button
-                      key={qIdx}
-                      type="button"
-                      disabled={isPaused}
-                      onClick={() => setCurrent(qIdx)}
-                      className={`relative h-8 rounded-md text-xs font-semibold ${colorClass} disabled:cursor-not-allowed disabled:opacity-60`}
-                      title={
-                        flagged
-                          ? `Question ${positionInBatch + 1} — marked for review`
-                          : `Question ${positionInBatch + 1}`
-                      }
-                    >
-                      {positionInBatch + 1}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500">
-            <span>Current</span>
-            <span>Answered</span>
-            <span>Visited</span>
-            <span>Not visited</span>
-            <span>For review</span>
-          </div>
-
-          <div className="mt-4 space-y-2">
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={goPrevInSubject}
-                disabled={!canGoPrevInSubject || isPaused}
-                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                onClick={goNextInSubject}
-                disabled={!canGoNextInSubject || isPaused}
-                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Next
-              </button>
-            </div>
-
-            {!isPaused ? (
-              <button
-                type="button"
-                onClick={() => void handlePause()}
-                disabled={pauseInFlight}
-                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Pause
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => void handleResume()}
-                disabled={pauseInFlight}
-                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Resume
-              </button>
-            )}
-
-            <button
-              type="button"
-              onClick={() => void handlePauseAndExit()}
-              disabled={pauseInFlight}
-              className="w-full rounded-md bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Exit
-            </button>
-
-            {!isLastBatch && (
-              <button
-                type="button"
-                onClick={() => setConfirmProceed(true)}
-                disabled={isPaused}
-                className="w-full rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Proceed to {SUBJECT_META[nextBatch?.subject ?? currentBatch.subject]?.label}
-              </button>
-            )}
-
-            <button
-              type="button"
-              onClick={() => setConfirmSubmit(true)}
-              disabled={submitting || submitBlocking || isPaused}
-              className="w-full rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {submitting || submitBlocking ? "Submitting..." : "Submit Now"}
-            </button>
-          </div>
-
-          <div className="mt-4 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
-            <p>Total questions: {totalQuestions}</p>
-            <p>Current subject questions: {currentBatch.indices.length}</p>
-            <p>
-              Answered in this subject:{" "}
-              {currentBatch.indices.filter((idx) => Boolean(states[idx]?.answer)).length}
-            </p>
-          </div>
-        </aside>
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
 
 function formatSeconds(total: number): string {
@@ -734,71 +727,72 @@ function formatSeconds(total: number): string {
 }
 
 function QuestionCard({
-  state,
-  question,
-  questionPosition,
-  questionCount,
-  onSelectAnswer,
-  onToggleFlag,
-  reviewDisabled,
-}: {
-  state: QuestionState;
-  question: LoadedQuestion;
-  questionPosition: number;
-  questionCount: number;
-  onSelectAnswer: (letter: AnswerLetter) => void;
-  onToggleFlag: () => void;
-  reviewDisabled: boolean;
+                        state,
+                        question,
+                        questionPosition,
+                        questionCount,
+                        onSelectAnswer,
+                        onToggleFlag,
+                        reviewDisabled,
+                    }: {
+    state: QuestionState;
+    question: LoadedQuestion;
+    questionPosition: number;
+    questionCount: number;
+    onSelectAnswer: (letter: AnswerLetter) => void;
+    onToggleFlag: () => void;
+    reviewDisabled: boolean;
 }) {
-  return (
-    <div className="space-y-4">
-      <div className="text-sm text-slate-500">
-        Question {questionPosition} of {questionCount}
-      </div>
+    const choice = question.choices ?? [];
+    return (
+        <div className="space-y-4">
+            <div className="text-sm text-slate-500">
+                Question {questionPosition} of {questionCount}
+            </div>
 
-      <div className="text-base font-medium text-slate-900">
-        <MathText>{String((question as any).questionText ?? "")}</MathText>
-      </div>
+            <div className="text-base font-medium text-slate-900">
+                <MathText>{String((question as any).questionText ?? "")}</MathText>
+            </div>
 
-      {(question as any).passage && (
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
-          {/* <Seo> */}
-            <MathText>{String((question as any).passage?.content ?? "")}</MathText>
-          {/* </Seo> */}
+            {(question as any).passage && (
+                <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
+                    {/* <Seo> */}
+                    <MathText>{String((question as any).passage?.content ?? "")}</MathText>
+                    {/* </Seo> */}
+                </div>
+            )}
+
+            <div className="space-y-2">
+                {((question as any).choices ?? []).map((choice: { label: string; text: string }) => (
+                    <button
+                        key={choice.label}
+                        type="button"
+                        disabled={reviewDisabled}
+                        onClick={() => onSelectAnswer(choice.label as AnswerLetter)}
+                        className={`block w-full rounded-lg border px-4 py-3 text-left text-sm ${
+                            state.answer === choice.label
+                                ? "border-primary-500 bg-primary-50 text-primary-900"
+                                : "border-slate-200 bg-white text-slate-800 hover:bg-slate-50"
+                        } disabled:cursor-not-allowed disabled:opacity-60`}
+                    >
+                        <span className="font-semibold">{choice.label}.</span>{" "}
+                        <MathText>{choice.text}</MathText>
+                    </button>
+                ))}
+            </div>
+
+            <div className="flex items-center justify-between">
+                <button
+                    type="button"
+                    onClick={onToggleFlag}
+                    disabled={reviewDisabled}
+                    className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                    {state.flagged ? "Unmark review" : "Mark for review"}
+                </button>
+
+                <AdSlot slotId="mock_exam_sidebar" />
+            </div>
         </div>
-      )}
-
-      <div className="space-y-2">
-        {((question as any).choices ?? []).map((choice: { label: string; text: string }) => (
-          <button
-            key={choice.label}
-            type="button"
-            disabled={reviewDisabled}
-            onClick={() => onSelectAnswer(choice.label as AnswerLetter)}
-            className={`block w-full rounded-lg border px-4 py-3 text-left text-sm ${
-              state.answer === choice.label
-                ? "border-primary-500 bg-primary-50 text-primary-900"
-                : "border-slate-200 bg-white text-slate-800 hover:bg-slate-50"
-            } disabled:cursor-not-allowed disabled:opacity-60`}
-          >
-            <span className="font-semibold">{choice.label}.</span>{" "}
-            <MathText>{choice.text}</MathText>
-          </button>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={onToggleFlag}
-          disabled={reviewDisabled}
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {state.flagged ? "Unmark review" : "Mark for review"}
-        </button>
-
-        <AdSlot slotId="mock_exam_sidebar" />
-      </div>
-    </div>
-  );
+    );
 }
