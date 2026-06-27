@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {flushSync } from "react-dom";
+import {flushSync} from "react-dom";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {SUBJECT_META, type SubjectArea} from "@upcat/shared";
 import MathText from "@/components/MathText";
@@ -44,109 +44,108 @@ function loadBatchRuntime(sessionId: string): BatchRuntime | null {
 }
 
 function persistBatchRuntime(sessionId: string, runtime: BatchRuntime): void {
-  if (typeof window === "undefined") return;
-  const key = runtimeKey(sessionId);
-  const serialized = JSON.stringify(runtime);
-  sessionStorage.setItem(key, serialized);
-  localStorage.setItem(key, serialized);
+    if (typeof window === "undefined") return;
+    const key = runtimeKey(sessionId);
+    const serialized = JSON.stringify(runtime);
+    sessionStorage.setItem(key, serialized);
+    localStorage.setItem(key, serialized);
 }
 
 function clearBatchRuntime(sessionId: string): void {
-  if (typeof window === "undefined") return;
-  const key = runtimeKey(sessionId);
-  sessionStorage.removeItem(key);
-  localStorage.removeItem(key);
+    if (typeof window === "undefined") return;
+    const key = runtimeKey(sessionId);
+    sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
 }
 
 function deriveSpentByBatchFromElapsedSeconds(
-  batches: SubjectBatch[],
-  elapsedSeconds: number,
+    batches: SubjectBatch[],
+    elapsedSeconds: number,
 ): Record<number, number> {
-  const safeElapsed = Math.max(0, Math.floor(elapsedSeconds));
-  let remaining = safeElapsed;
-  const spent: Record<number, number> = {};
+    const safeElapsed = Math.max(0, Math.floor(elapsedSeconds));
+    let remaining = safeElapsed;
+    const spent: Record<number, number> = {};
 
-  for (let i = 0; i < batches.length; i++) {
-    const batch = batches[i];
-    if (!batch) continue;
-    const allotted = Math.max(0, Math.round(batch.timeLimitMinutes * 60));
-    const used = Math.min(allotted, Math.max(0, remaining));
-    spent[i] = used;
-    remaining -= used;
-  }
+    for (let i = 0; i < batches.length; i++) {
+        const batch = batches[i];
+        if (!batch) continue;
+        const allotted = Math.max(0, Math.round(batch.timeLimitMinutes * 60));
+        const used = Math.min(allotted, Math.max(0, remaining));
+        spent[i] = used;
+        remaining -= used;
+    }
 
-  return spent;
+    return spent;
 }
 
 function deriveCurrentBatchIndexFromElapsedSeconds(
-  batches: SubjectBatch[],
-  elapsedSeconds: number,
+    batches: SubjectBatch[],
+    elapsedSeconds: number,
 ): number {
-  const safeElapsed = Math.max(0, Math.floor(elapsedSeconds));
-  let consumed = 0;
+    const safeElapsed = Math.max(0, Math.floor(elapsedSeconds));
+    let consumed = 0;
 
-  for (let i = 0; i < batches.length; i++) {
-    const batch = batches[i];
-    if (!batch) continue;
-    const allotted = Math.max(0, Math.round(batch.timeLimitMinutes * 60));
-    consumed += allotted;
-    if (safeElapsed < consumed) return i;
-  }
+    for (let i = 0; i < batches.length; i++) {
+        const batch = batches[i];
+        if (!batch) continue;
+        const allotted = Math.max(0, Math.round(batch.timeLimitMinutes * 60));
+        consumed += allotted;
+        if (safeElapsed < consumed) return i;
+    }
 
-  return Math.max(0, batches.length - 1);
+    return Math.max(0, batches.length - 1);
 }
 
 export default function BatchExamPage() {
-  const { sessionId } = useParams<{ sessionId: string }>();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const addToast = useToastStore((s) => s.addToast);
+    const { sessionId } = useParams<{ sessionId: string }>();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const addToast = useToastStore((s) => s.addToast);
 
-  const {
-    init,
-    reset,
-    totalQuestions,
-    timeLimit,
-    startedAt,
-    states,
-    currentIndex,
-    setCurrent,
-    selectAnswer,
-    toggleFlag,
-    tick,
-    submit,
-    loaded,
-    loading,
-    submitting,
-    error,
-    timerExtensionMs,
-    isPaused,
-    pausedAt,
-    pauseSession,
-    resumeSession,
-    ensureLoaded,
-  } = useExamStore();
+    const {
+        init,
+        reset,
+        totalQuestions,
+        timeLimit,
+        startedAt,
+        states,
+        currentIndex,
+        setCurrent,
+        selectAnswer,
+        toggleFlag,
+        tick,
+        submit,
+        loaded,
+        loading,
+        submitting,
+        error,
+        timerExtensionMs,
+        isPaused,
+        pausedAt,
+        pauseSession,
+        resumeSession,
+        ensureLoaded,
+    } = useExamStore();
 
-  const [confirmSubmit, setConfirmSubmit] = useState(false);
-  const [confirmProceed, setConfirmProceed] = useState(false);
-  const [showTimeoutDialog, setShowTimeoutDialog] = useState(false);
-  const [timeoutTargetBatch, setTimeoutTargetBatch] = useState<number | null>(null);
-  const [currentBatchIdx, setCurrentBatchIdx] = useState(0);
-  const [spentByBatch, setSpentByBatch] = useState<Record<number, number>>({});
-  const [submitBlocking, setSubmitBlocking] = useState(false);
-  const [pauseInFlight, setPauseInFlight] = useState(false);
+    const [confirmSubmit, setConfirmSubmit] = useState(false);
+    const [confirmProceed, setConfirmProceed] = useState(false);
+    const [showTimeoutDialog, setShowTimeoutDialog] = useState(false);
+    const [timeoutTargetBatch, setTimeoutTargetBatch] = useState<number | null>(null);
+    const [currentBatchIdx, setCurrentBatchIdx] = useState(0);
+    const [spentByBatch, setSpentByBatch] = useState<Record<number, number>>({});
+    const [submitBlocking, setSubmitBlocking] = useState(false);
+    const [pauseInFlight, setPauseInFlight] = useState(false);
 
-  const submitInFlight = useRef(false);
-  const pauseInFlightRef = useRef(false);
-  const timeoutHandledBatchRef = useRef<number | null>(null);
-  const handleResumeRef = useRef<() => Promise<void>>(async () => {});
-
-  const shouldAutoResume = useMemo(
-    () => new URLSearchParams(location.search).get("resume") === "1",
-    [location.search],
-  );
-
-  const hydratedFromPersistedRuntimeRef = useRef(false);
+    const submitInFlight = useRef(false);
+    const pauseInFlightRef = useRef(false);
+    const timeoutHandledBatchRef = useRef<number | null>(null);
+    const handleResumeRef = useRef<() => Promise<void>>(async () => {
+    });
+    const shouldAutoResume = useMemo(
+        () => new URLSearchParams(location.search).get("resume") === "1",
+        [location.search],
+    );
+    const hydratedFromPersistedRuntimeRef = useRef(false);
 
   useEffect(() => {
     if (!sessionId) return;
