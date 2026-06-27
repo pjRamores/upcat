@@ -97,7 +97,7 @@ function deriveCurrentBatchIndexFromElapsedSeconds(
 }
 
 export default function BatchExamPage() {
-    const { sessionId } = useParams<{ sessionId: string }>();
+    const {sessionId} = useParams<{ sessionId: string }>();
     const location = useLocation();
     const navigate = useNavigate();
     const addToast = useToastStore((s) => s.addToast);
@@ -134,11 +134,11 @@ export default function BatchExamPage() {
     const [currentBatchIdx, setCurrentBatchIdx] = useState(0);
     const [spentByBatch, setSpentByBatch] = useState<Record<number, number>>({});
     const [submitBlocking, setSubmitBlocking] = useState(false);
-    const [pauseInFlight, setPauseInFlight] = useState(false);
 
     const submitInFlight = useRef(false);
+    const [pauseInFlight, setPauseInFlight] = useState(false);
     const pauseInFlightRef = useRef(false);
-    const timeoutHandledBatchRef = useRef<number | null>(null);
+//     const timeoutHandledBatchRef = useRef<number | null>(null);
     const handleResumeRef = useRef<() => Promise<void>>(async () => {
     });
     const shouldAutoResume = useMemo(
@@ -147,20 +147,20 @@ export default function BatchExamPage() {
     );
     const hydratedFromPersistedRuntimeRef = useRef(false);
 
-  useEffect(() => {
-    if (!sessionId) return;
-    void init(sessionId);
-  }, [sessionId, init]);
+    useEffect(() => {
+        if (!sessionId) return;
+        void init(sessionId);
+    }, [sessionId, init]);
 
   const subjectBatches: SubjectBatch[] = useMemo(() => {
     const grouped = new Map<SubjectArea, number[]>();
 
     for (let i = 0; i < states.length; i++) {
-      const s = states[i];
-      if (!s) continue;
-      const existing = grouped.get(s.subjectArea);
-      if (existing) existing.push(i);
-      else grouped.set(s.subjectArea, [i]);
+        const s = states[i];
+        if (!s) continue;
+        const existing = grouped.get(s.subjectArea);
+        if (existing) existing.push(i);
+        else grouped.set(s.subjectArea, [i]);
     }
 
     const totalCount = Math.max(1, states.length);
@@ -183,127 +183,127 @@ export default function BatchExamPage() {
   const currentBatch = subjectBatches[currentBatchIdx] ?? null;
   const isLastBatch = currentBatch ? currentBatchIdx === subjectBatches.length - 1 : false;
 
-  useEffect(() => {
-    if (!sessionId) return;
-    const runtime = loadBatchRuntime(sessionId);
-    if (!runtime) return;
-    hydratedFromPersistedRuntimeRef.current = true;
-    setCurrentBatchIdx(runtime.currentBatchIdx);
-    setSpentByBatch(runtime.spentByBatch ?? {});
-  }, [sessionId]);
+    useEffect(() => {
+        if (!sessionId) return;
+        const runtime = loadBatchRuntime(sessionId);
+        if (!runtime) return;
+        hydratedFromPersistedRuntimeRef.current = true;
+        setCurrentBatchIdx(runtime.currentBatchIdx);
+        setSpentByBatch(runtime.spentByBatch ?? {});
+    }, [sessionId]);
 
-  const effectiveElapsedSeconds = useMemo(() => {
-    if (!startedAt) return 0;
+    const effectiveElapsedSeconds = useMemo(() => {
+        if (!startedAt) return 0;
 
-    const elapsed = Math.floor((Date.now() - startedAt) / 1000);
-    let pausedExtension = Math.round(Math.max(0, timerExtensionMs) / 1000);
+        const elapsed = Math.floor((Date.now() - startedAt) / 1000);
+        let pausedExtension = Math.round(Math.max(0, timerExtensionMs) / 1000);
 
-    if (isPaused && pausedAt) {
-      pausedExtension += Math.round(Math.max(0, Date.now() - pausedAt) / 1000);
-    }
+        if (isPaused && pausedAt) {
+            pausedExtension += Math.round(Math.max(0, Date.now() - pausedAt) / 1000);
+        }
 
-    return Math.max(0, elapsed - pausedExtension);
-  }, [startedAt, timerExtensionMs, isPaused, pausedAt]);
+        return Math.max(0, elapsed - pausedExtension);
+    }, [startedAt, timerExtensionMs, isPaused, pausedAt]);
 
-  useEffect(() => {
-    if (hydratedFromPersistedRuntimeRef.current) return;
-    if (subjectBatches.length === 0 || Object.keys(spentByBatch).length > 0) return;
+    useEffect(() => {
+        if (hydratedFromPersistedRuntimeRef.current) return;
+        if (subjectBatches.length === 0 || Object.keys(spentByBatch).length > 0) return;
 
-    const derivedSpent = deriveSpentByBatchFromElapsedSeconds(
-      subjectBatches,
-      effectiveElapsedSeconds,
-    );
-    if (Object.keys(derivedSpent).length === 0) return;
+        const derivedSpent = deriveSpentByBatchFromElapsedSeconds(
+            subjectBatches,
+            effectiveElapsedSeconds,
+        );
+        if (Object.keys(derivedSpent).length === 0) return;
 
-    setSpentByBatch(derivedSpent);
-    setCurrentBatchIdx(
-      deriveCurrentBatchIndexFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds),
-    );
-  }, [subjectBatches, spentByBatch, effectiveElapsedSeconds]);
+        setSpentByBatch(derivedSpent);
+        setCurrentBatchIdx(
+            deriveCurrentBatchIndexFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds),
+        );
+    }, [subjectBatches, spentByBatch, effectiveElapsedSeconds]);
 
-  useEffect(() => {
-    if (subjectBatches.length === 0) return;
-    setCurrentBatchIdx((prev) => Math.min(Math.max(prev, 0), subjectBatches.length - 1));
-  }, [subjectBatches.length]);
+    useEffect(() => {
+        if (subjectBatches.length === 0) return;
+        setCurrentBatchIdx((prev) => Math.min(Math.max(prev, 0), subjectBatches.length - 1));
+    }, [subjectBatches.length]);
 
-  useEffect(() => {
-    if (!sessionId) return;
-    if (Object.keys(spentByBatch).length === 0) return;
-    persistBatchRuntime(sessionId, { currentBatchIdx, spentByBatch });
-  }, [sessionId, currentBatchIdx, spentByBatch]);
+    useEffect(() => {
+        if (!sessionId) return;
+        if (Object.keys(spentByBatch).length === 0) return;
+        persistBatchRuntime(sessionId, { currentBatchIdx, spentByBatch });
+    }, [sessionId, currentBatchIdx, spentByBatch]);
 
-  useEffect(() => {
-    if (!currentBatch) return;
+    useEffect(() => {
+        if (!currentBatch) return;
 
-    const idxInside = currentBatch.indices.indexOf(currentIndex);
-    if (idxInside >= 0) return;
+        const idxInside = currentBatch.indices.indexOf(currentIndex);
+        if (idxInside >= 0) return;
 
-    const batchFromCurrentIndex = subjectBatches.findIndex((b) =>
-      b.indices.includes(currentIndex),
-    );
+        const batchFromCurrentIndex = subjectBatches.findIndex((b) =>
+            b.indices.includes(currentIndex),
+        );
 
-    if (batchFromCurrentIndex >= 0 && batchFromCurrentIndex !== currentBatchIdx) {
-      setCurrentBatchIdx(batchFromCurrentIndex);
-      return;
-    }
+        if (batchFromCurrentIndex >= 0 && batchFromCurrentIndex !== currentBatchIdx) {
+            setCurrentBatchIdx(batchFromCurrentIndex);
+            return;
+        }
 
-    const first = currentBatch.indices;
-    if (typeof first === "number") setCurrent(first);
-  }, [currentBatch, currentBatchIdx, currentIndex, setCurrent, subjectBatches]);
+        const first = currentBatch.indices;
+        if (typeof first === "number") setCurrent(first);
+    }, [currentBatch, currentBatchIdx, currentIndex, setCurrent, subjectBatches]);
 
-  useEffect(() => {
-    if (!currentBatch) return;
+    useEffect(() => {
+        if (!currentBatch) return;
 
-    const currentPos = currentBatch.indices.indexOf(currentIndex);
-    if (currentPos < 0) return;
+        const currentPos = currentBatch.indices.indexOf(currentIndex);
+        if (currentPos < 0) return;
 
-    const prev = currentBatch.indices[currentPos - 1];
-    const next = currentBatch.indices[currentPos + 1];
+        const prev = currentBatch.indices[currentPos - 1];
+        const next = currentBatch.indices[currentPos + 1];
 
-    if (typeof prev === "number") void ensureLoaded(prev);
-    if (typeof next === "number") void ensureLoaded(next);
-  }, [currentBatch, currentIndex, ensureLoaded]);
+        if (typeof prev === "number") void ensureLoaded(prev);
+        if (typeof next === "number") void ensureLoaded(next);
+    }, [currentBatch, currentIndex, ensureLoaded]);
 
-  useEffect(() => {
-    if (!currentBatch || isPaused || submitBlocking) return;
+    useEffect(() => {
+        if (!currentBatch || isPaused || submitBlocking) return;
 
-    const id = window.setInterval(() => {
-      tick(1);
-      setSpentByBatch((prev) => ({
-        ...prev,
-        [currentBatchIdx]: (prev[currentBatchIdx] ?? 0) + 1,
-      }));
-    }, 1000);
+        const id = window.setInterval(() => {
+            tick(1);
+            setSpentByBatch((prev) => ({
+                ...prev,
+                [currentBatchIdx]: (prev[currentBatchIdx] ?? 0) + 1,
+            }));
+        }, 1000);
 
-    return () => window.clearInterval(id);
-  }, [currentBatch, currentBatchIdx, isPaused, submitBlocking, tick]);
+        return () => window.clearInterval(id);
+    }, [currentBatch, currentBatchIdx, isPaused, submitBlocking, tick]);
 
-  const remainingSeconds = useMemo(() => {
-    if (!currentBatch) return 0;
-    const allotted = Math.round(currentBatch.timeLimitMinutes * 60);
-    const spent = spentByBatch[currentBatchIdx] ?? 0;
-    return Math.max(0, allotted - spent);
-  }, [currentBatch, currentBatchIdx, spentByBatch]);
+    const remainingSeconds = useMemo(() => {
+        if (!currentBatch) return 0;
+        const allotted = Math.round(currentBatch.timeLimitMinutes * 60);
+        const spent = spentByBatch[currentBatchIdx] ?? 0;
+        return Math.max(0, allotted - spent);
+    }, [currentBatch, currentBatchIdx, spentByBatch]);
 
-  useEffect(() => {
-    if (!currentBatch || isPaused || remainingSeconds > 0) return;
-    if (timeoutHandledBatchRef.current === currentBatchIdx) return;
+    useEffect(() => {
+        if (!currentBatch || isPaused || remainingSeconds > 0) return;
+        if (timeoutHandledBatchRef.current === currentBatchIdx) return;
 
-    timeoutHandledBatchRef.current = currentBatchIdx;
-    setTimeoutTargetBatch(currentBatchIdx);
-    setShowTimeoutDialog(true);
-  }, [currentBatch, currentBatchIdx, isPaused, remainingSeconds]);
+        timeoutHandledBatchRef.current = currentBatchIdx;
+        setTimeoutTargetBatch(currentBatchIdx);
+        setShowTimeoutDialog(true);
+    }, [currentBatch, currentBatchIdx, isPaused, remainingSeconds]);
 
-  const doSubmit = useCallback(async () => {
-    if (!sessionId || submitInFlight.current) return;
+    const doSubmit = useCallback(async () => {
+        if (!sessionId || submitInFlight.current) return;
 
-    submitInFlight.current = true;
-    flushSync(() => {
-      setSubmitBlocking(true);
-      setConfirmSubmit(false);
-      setShowTimeoutDialog(false);
-      setConfirmProceed(false);
-    });
+        submitInFlight.current = true;
+            flushSync(() => {
+            setSubmitBlocking(true);
+            setConfirmSubmit(false);
+            setShowTimeoutDialog(false);
+            setConfirmProceed(false);
+        });
 
     try {
       await submit();
