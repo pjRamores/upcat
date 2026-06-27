@@ -107,6 +107,7 @@ export default function BatchExamPage() {
         reset,
         totalQuestions,
         timeLimit,
+        subjectTimeLimits,
         startedAt,
         states,
         currentIndex,
@@ -166,6 +167,16 @@ export default function BatchExamPage() {
         const totalSeconds = Math.max(0, Math.round(timeLimit * 60));
 
         return Array.from(grouped.entries()).map(([subject, indices]) => {
+            //
+            //
+            const configuredMinutes = Number(subjectTimeLimits?.[subject] ?? 0);
+            if (Number.isFinite(configuredMinutes) && configuredMinutes > 0) {
+                return {
+                    subject,
+                    indices,
+                    timeLimitMinutes: Math.max(1, Math.ceil(configuredMinutes)),
+                };
+            }
             const subjectSeconds = Math.max(60, Math.round((indices.length / totalCount) * totalSeconds));
             return {
                 subject,
@@ -173,7 +184,7 @@ export default function BatchExamPage() {
                 timeLimitMinutes: Math.max(1, Math.ceil(subjectSeconds / 60)),
             };
         });
-    }, [states, timeLimit]);
+    }, [states, timeLimit, subjectTimeLimits]);
 
     const currentBatch = subjectBatches[currentBatchIdx] ?? null;
     const isLastBatch = currentBatch ? currentBatchIdx === subjectBatches.length - 1 : false;

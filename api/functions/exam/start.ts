@@ -38,12 +38,9 @@ type QuestionSamplingDoc = {
   correctAnswer?: "A" | "B" | "C" | "D";
 };
 
-function normalizeExamConfigFromSet(setConfig: QuestionSetConfigDoc): {
-  distribution: Record<SubjectArea, number>;
-  totalQuestions: number;
-  totalTimeLimit: number;
-} {
+function normalizeExamConfigFromSet(setConfig: QuestionSetConfigDoc) {
   const distribution: Record<SubjectArea, number> = {} as Record<SubjectArea, number>;
+  const subjectTimeLimits: Record<SubjectArea, number> = {} as Record<SubjectArea, number>;
   let totalQuestions = 0;
   let totalTimeLimit = 0;
 
@@ -51,19 +48,15 @@ function normalizeExamConfigFromSet(setConfig: QuestionSetConfigDoc): {
     const cfg = setConfig.distribution?.[subject] ?? { questions: 0, timeLimit: 0 };
     const questions = Number(cfg.questions ?? 0);
     const timeLimitForSubject = Number(cfg.timeLimit ?? 0);
+    const normalizedTimeLimit = Math.max(0, Number.isFinite(timeLimitForSubject) ? Math.floor(timeLimitForSubject) : 0);
 
-    distribution[subject] = Math.max(
-      0,
-      Number.isFinite(questions) ? Math.floor(questions) : 0,
-    );
+    distribution[subject] = Math.max(0, Number.isFinite(questions) ? Math.floor(questions) : 0);
+    subjectTimeLimits[subject] = normalizedTimeLimit;
     totalQuestions += distribution[subject];
-    totalTimeLimit += Math.max(
-      0,
-      Number.isFinite(timeLimitForSubject) ? Math.floor(timeLimitForSubject) : 0,
-    );
+    totalTimeLimit += normalizedTimeLimit;
   }
 
-  return { distribution, totalQuestions, totalTimeLimit };
+  return { distribution, subjectTimeLimits, totalQuestions, totalTimeLimit };
 }
 
 function compareQuestionOrder(a: QuestionSamplingDoc, b: QuestionSamplingDoc): number {
@@ -148,7 +141,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const userId = new ObjectId(payload.userId);
 
   const questionSet = await pickQuestionSetForUser(db, userId);
-  const { distribution, totalQuestions, totalTimeLimit } = normalizeExamConfigFromSet(questionSet);
+  const { distribution, subjectTimeLimits, totalQuestions, totalTimeLimit } = normalizeExamConfigFromSet(questionSet);
 
   if (totalQuestions <= 0 || totalTimeLimit <= 0) {
     return res.status(400).json({
@@ -168,6 +161,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     setId: questionSet.setId,
     totalQuestions,
     distribution,
+    subjectTimeLimits,
     difficultyMix,
     timeLimit: totalTimeLimit,
   };

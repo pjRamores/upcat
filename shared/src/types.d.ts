@@ -465,6 +465,7 @@ export type ExamQuestion = Omit<Question, "correctAnswer" | "rationale">;
 export interface SessionConfig {
     totalQuestions: number;
     distribution: Record<SubjectArea, number>;
+    subjectTimeLimits?: Record<SubjectArea, number>;
     difficultyMix: {
         easy: number;
         medium: number;

@@ -195,6 +195,7 @@ export default async function handler(
         _id: session._id.toString(),
         status: session.status,
         timeLimit: session.config?.timeLimit ?? 0,
+        subjectTimeLimits: session.config?.subjectTimeLimits ?? null,
         startedAt: toIso(session.startedAt) || null,
         timerExtensionMs,
         isPaused: Boolean(pausedAtMs),

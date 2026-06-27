@@ -788,6 +788,8 @@ export type ExamQuestion = Omit<Question, "correctAnswer" | "rationale">;
 export interface SessionConfig {
     totalQuestions: number;
     distribution: Record<SubjectArea, number>;
+    /** Admin-configured time per subject (minutes). Optional for legacy sessions. */
+    subjectTimeLimits?: Record<SubjectArea, number>;
     difficultyMix: {
         easy: number;
         medium: number;

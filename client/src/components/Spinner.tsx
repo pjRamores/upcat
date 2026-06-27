@@ -17,7 +17,7 @@ export default function Spinner({className = "h-5 w-5"}: { className?: string })
             <path
                 className="opacity-75"
                 fill="currentColor"
-                d="M4.12a8.8 0.018-8v0c5.373 0.0 5.373 0.12h4z"
+                d="M4 12a8 8 0 018-8v0c5.373 0 0 5.373 0 12h4z"
             />
         </svg>
     );

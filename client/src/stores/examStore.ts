@@ -31,6 +31,7 @@ interface ExamState {
   sessionId: string | null;
   totalQuestions: number;
   timeLimit: number;
+  subjectTimeLimits: Record<SubjectArea, number> | null; // admin-configured minutes per subject
   startedAt: number | null;
   timerExtensionMs: number;
   isPaused: boolean;
@@ -70,6 +71,7 @@ interface PersistedExamRuntime {
   sessionId: string | null;
   totalQuestions: number;
   timeLimit: number;
+  subjectTimeLimits?: Record<SubjectArea, number> | null;
   startedAt: number | null;
   currentIndex: number;
   states: QuestionState[];
@@ -109,6 +111,7 @@ function persistFromStore(get: () => ExamState): void {
     sessionId: s.sessionId,
     totalQuestions: s.totalQuestions,
     timeLimit: s.timeLimit,
+    subjectTimeLimits: s.subjectTimeLimits,
     startedAt: s.startedAt,
     currentIndex: s.currentIndex,
     states: s.states,
@@ -155,6 +158,7 @@ type QuestionsPagePayload = {
       _id: string;
       status: string;
       timeLimit: number;
+      subjectTimeLimits?: Record<SubjectArea, number> | null;
       startedAt: string | null;
       timerExtensionMs?: number;
       isPaused?: boolean;
@@ -169,6 +173,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
   sessionId: persistedRuntime?.sessionId ?? null,
   totalQuestions: persistedRuntime?.totalQuestions ?? 0,
   timeLimit: persistedRuntime?.timeLimit ?? 0,
+  subjectTimeLimits: persistedRuntime?.subjectTimeLimits ?? null,
   startedAt: persistedRuntime?.startedAt ?? null,
   timerExtensionMs: persistedRuntime?.timerExtensionMs ?? 0,
   isPaused: persistedRuntime?.isPaused ?? false,
@@ -185,6 +190,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
       sessionId: null,
       totalQuestions: 0,
       timeLimit: 0,
+      subjectTimeLimits: null,
       startedAt: null,
       timerExtensionMs: 0,
       isPaused: false,
@@ -208,6 +214,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
         sessionId,
         totalQuestions: cached.totalQuestions,
         timeLimit: cached.timeLimit,
+        subjectTimeLimits: cached.subjectTimeLimits ?? null,
         startedAt: cached.startedAt,
         timerExtensionMs: cached.timerExtensionMs ?? 0,
         isPaused: Boolean(cached.isPaused),
@@ -312,6 +319,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
         states,
         totalQuestions: payload.totalQuestions,
         timeLimit: payload.session.timeLimit,
+        subjectTimeLimits: payload.session.subjectTimeLimits ?? cached?.subjectTimeLimits ?? null,
         startedAt: payload.session.startedAt
           ? new Date(payload.session.startedAt).getTime()
           : Date.now(),
