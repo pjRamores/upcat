@@ -731,14 +731,14 @@ export default function BatchExamPage() {
 }
 
 function QuestionCard({
-                        state,
-                        question,
-                        questionPosition,
-                        questionCount,
-                        onSelectAnswer,
-                        onToggleFlag,
-                        reviewDisabled,
-                    }: {
+                          state,
+                          question,
+                          questionPosition,
+                          questionCount,
+                          onSelectAnswer,
+                          onToggleFlag,
+                          reviewDisabled,
+                      }: {
     state: QuestionState;
     question: LoadedQuestion;
     questionPosition: number;
@@ -750,7 +750,7 @@ function QuestionCard({
     const choices = question.choices ?? [];
     return (
         <div>
-            <div className="mb-2 filex items-start justify-between">
+            <div className="mb-2 flex items-start justify-between">
                 <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
                     Question {questionPosition} of {questionCount}
                 </p>
@@ -765,15 +765,15 @@ function QuestionCard({
                 >
                     {state.flagged ? (
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            className="h-5 w-5">
+                             className="h-5 w-5">
                             <path
-                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
                         </svg>
                     ) : (
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                            stroke="currentColor" className="h-5 w-5">
+                             stroke="currentColor" className="h-5 w-5">
                             <path strokeLinecap="round" strokeLinejoin="round"
-                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
                         </svg>
                     )}
                 </button>
@@ -787,12 +787,13 @@ function QuestionCard({
                     <summary className="cursor-pointer font-medium text-slate-700">
                         Passage: {question.passage.title}
                     </summary>
+                    <p className="mt-2 whitespace-pre-wrap text-slate-700">{question.passage.content}</p>
                 </details>
             ) : null}
 
             <div className="space-y-2">
                 {(["A", "B", "C", "D"] as const).map((label) => {
-                    const found = choices.find((c) => c.label == label);
+                    const found = choices.find((c) => c.label === label);
                     const text = found?.text ?? "";
                     const selected = state.answer === label;
                     return (
@@ -806,6 +807,8 @@ function QuestionCard({
                                     : "border-slate-200 bg-white hover:border-slate-300"
                             }`}
                         >
+                            <span className="mr-2 inline-block w-5 font-semibold">{label}.</span>
+                            <MathText>{text}</MathText>
                         </button>
                     );
                 })}
@@ -814,10 +817,9 @@ function QuestionCard({
     );
 }
 
-function formatSeconds(total: number): string {
-    const safe = Math.max(0, Math.floor(total));
-    const minutes = Math.floor(safe / 60);
-    const seconds = safe % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+function formatSeconds(totalSeconds: number): string {
+    const safe = Math.max(0, Math.floor(totalSeconds));
+    const mins = Math.floor(safe / 60);
+    const secs = safe % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
-
