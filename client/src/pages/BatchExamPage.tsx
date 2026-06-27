@@ -404,7 +404,7 @@ export default function BatchExamPage() {
                 >
                     Back to Dashboard
                 </button>
-                </div>
+            </div>
         );
     }
 
@@ -426,76 +426,79 @@ export default function BatchExamPage() {
 
     return (
         <div className="mx-auto max-w-7xl px-4 py-8">
-            <Seo title={`Mock Exam — ${currentSubjectName}`} noindex />
+            <Seo title={`Mock Exam — ${currentSubjectName}`} noindex/>
 
             {submitBlocking && (
-                <div className="fixed inset-0 z- flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
+                <div
+                    className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
                     <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4 shadow-xl">
-                      <Spinner className="h-5 w-5" />
-                      <span className="text-sm font-semibold text-slate-800">Submitting exam...</span>
+                        <Spinner className="h-5 w-5"/>
+                        <span className="text-sm font-semibold text-slate-800">Submitting exam...</span>
                     </div>
                 </div>
             )}
 
-        {showTimeoutDialog && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-                <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-                    <h2 className="text-lg font-semibold text-slate-900">Time is up</h2>
-                    <p className="mt-2 text-sm text-slate-600">
-                      {timeoutTargetBatch !== null
-                        ? `The allotted time for ${timeoutSubjectLabel} has ended.`
-                        : "The allotted time for this subject has ended."}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowTimeoutDialog(false);
-                        if (isLastBatch) {
-                          void doSubmit();
-                        } else {
-                          moveToNextSubject();
-                        }
-                      }}
-                    >
-                        OK
-                    </button>
+            {showTimeoutDialog && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                        <h2 className="text-lg font-semibold text-slate-900">Time is up</h2>
+                        <p className="mt-2 text-sm text-slate-600">
+                          {timeoutTargetBatch !== null
+                            ? `The allotted time for ${timeoutSubjectLabel} has ended.`
+                            : "The allotted time for this subject has ended."}
+                        </p>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setShowTimeoutDialog(false);
+                                if (isLastBatch) {
+                                  void doSubmit();
+                                } else {
+                                  moveToNextSubject();
+                                }
+                            }}
+                            className="mt-5 w-full rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700"
+                        >
+                            OK
+                        </button>
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
 
-        {confirmProceed && nextBatch && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-                  <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+            {confirmProceed && nextBatch && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
                         <h2 className="text-lg font-semibold text-slate-900">
                             Proceed to {SUBJECT_META[nextBatch.subject]?.label}?
                         </h2>
                         <p className="mt-2 text-sm text-slate-600">
                               You are about to move on to the next subject. Once you proceed, you{" "}
-                              <strong>cannot go back</strong> to <strong>{currentSubjectName}</strong>. The timer
-                              will reset to the allotted time for {SUBJECT_META[nextBatch.subject]?.label}.
+                              <strong>cannot go back</strong> to{" "}
+                              <strong>{currentSubjectName}</strong>. The timer will reset to the
+                              allotted time for {SUBJECT_META[nextBatch.subject]?.label}.
                         </p>
                         <div className="mt-5 flex gap-3">
-                              <button
+                            <button
                                 type="button"
                                 onClick={() => setConfirmProceed(false)}
                                 className="flex-1 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                              >
+                            >
                                 Stay here
-                          </button>
-                          <button
+                            </button>
+                            <button
                                 type="button"
                                 onClick={() => {
                                   setConfirmProceed(false);
                                   moveToNextSubject();
                                 }}
                                 className="flex-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700"
-                          >
+                            >
                                 Proceed
-                          </button>
+                            </button>
                         </div>
-                  </div>
-            </div>
-        )}
+                    </div>
+                </div>
+            )}
 
       {confirmSubmit && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
