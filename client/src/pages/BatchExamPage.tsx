@@ -137,8 +137,7 @@ export default function BatchExamPage() {
 
     const submitInFlight = useRef(false);
     const [pauseInFlight, setPauseInFlight] = useState(false);
-    const pauseInFlightRef = useRef(false);
-//     const timeoutHandledBatchRef = useRef<number | null>(null);
+    const pauseInFlightRef = useRef(false); //     const timeoutHandledBatchRef = useRef<number | null>(null);
     const handleResumeRef = useRef<() => Promise<void>>(async () => {
     });
     const shouldAutoResume = useMemo(
@@ -152,36 +151,36 @@ export default function BatchExamPage() {
         void init(sessionId);
     }, [sessionId, init]);
 
-  const subjectBatches: SubjectBatch[] = useMemo(() => {
-    const grouped = new Map<SubjectArea, number[]>();
+    const subjectBatches: SubjectBatch[] = useMemo(() => {
+        const grouped = new Map<SubjectArea, number[]>();
 
-    for (let i = 0; i < states.length; i++) {
-        const s = states[i];
-        if (!s) continue;
-        const existing = grouped.get(s.subjectArea);
-        if (existing) existing.push(i);
-        else grouped.set(s.subjectArea, [i]);
-    }
+        for (let i = 0; i < states.length; i++) {
+            const s = states[i];
+            if (!s) continue;
+            const existing = grouped.get(s.subjectArea);
+            if (existing) existing.push(i);
+            else grouped.set(s.subjectArea, [i]);
+        }
 
-    const totalCount = Math.max(1, states.length);
-    const totalSeconds = Math.max(0, Math.round(timeLimit * 60));
+        const totalCount = Math.max(1, states.length);
+        const totalSeconds = Math.max(0, Math.round(timeLimit * 60));
 
-    return Array.from(grouped.entries()).map(([subject, indices]) => {
-      const subjectSeconds = Math.max(
-        60,
-        Math.round((indices.length / totalCount) * totalSeconds),
-      );
+        return Array.from(grouped.entries()).map(([subject, indices]) => {
+            const subjectSeconds = Math.max(
+                60,
+                Math.round((indices.length / totalCount) * totalSeconds),
+            );
 
-      return {
-        subject,
-        indices,
-        timeLimitMinutes: Math.max(1, Math.ceil(subjectSeconds / 60)),
-      };
-    });
-  }, [states, timeLimit]);
+            return {
+                subject,
+                indices,
+                timeLimitMinutes: Math.max(1, Math.ceil(subjectSeconds / 60)),
+            };
+        });
+    }, [states, timeLimit]);
 
-  const currentBatch = subjectBatches[currentBatchIdx] ?? null;
-  const isLastBatch = currentBatch ? currentBatchIdx === subjectBatches.length - 1 : false;
+    const currentBatch = subjectBatches[currentBatchIdx] ?? null;
+    const isLastBatch = currentBatch ? currentBatchIdx === subjectBatches.length - 1 : false;
 
     useEffect(() => {
         if (!sessionId) return;
@@ -287,9 +286,9 @@ export default function BatchExamPage() {
 
     useEffect(() => {
         if (!currentBatch || isPaused || remainingSeconds > 0) return;
-        if (timeoutHandledBatchRef.current === currentBatchIdx) return;
+//         if (timeoutHandledBatchRef.current === currentBatchIdx) return;
 
-        timeoutHandledBatchRef.current = currentBatchIdx;
+//         timeoutHandledBatchRef.current = currentBatchIdx;
         setTimeoutTargetBatch(currentBatchIdx);
         setShowTimeoutDialog(true);
     }, [currentBatch, currentBatchIdx, isPaused, remainingSeconds]);
