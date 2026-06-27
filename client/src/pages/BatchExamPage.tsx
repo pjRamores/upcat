@@ -233,12 +233,11 @@ export default function BatchExamPage() {
         const idxInside = currentBatch.indices.indexOf(currentIndex);
         if (idxInside >= 0) return;
         const batchFromCurrentIndex = subjectBatches.findIndex((b) => b.indices.includes(currentIndex));
-
         if (batchFromCurrentIndex >= 0 && batchFromCurrentIndex !== currentBatchIdx) {
             setCurrentBatchIdx(batchFromCurrentIndex);
             return;
         }
-        const first = currentBatch.indices;
+        const first = currentBatch.indices[0];
         if (typeof first === "number") setCurrent(first);
     }, [currentBatch, currentBatchIdx, currentIndex, setCurrent, subjectBatches]);
 
@@ -298,7 +297,7 @@ export default function BatchExamPage() {
             clearBatchRuntime(sessionId);
             addToast("success", "Exam submitted!");
             reset();
-            navigate(`/results/${sessionId}`, { replace: true });
+            navigate(`/results/${sessionId}`, {replace: true});
         } catch {
             addToast("error", "Submission failed. Please try again.");
             submitInFlight.current = false;
@@ -308,14 +307,12 @@ export default function BatchExamPage() {
 
     const moveToNextSubject = useCallback(() => {
         if (!currentBatch || isLastBatch) return;
-
         const next = currentBatchIdx + 1;
         const nextBatch = subjectBatches[next];
         if (!nextBatch || nextBatch.indices.length === 0) return;
-
         const firstNextIndex = nextBatch.indices[0];
         if (typeof firstNextIndex !== "number") return;
-
+        //
         setSpentByBatch((prev) => ({...prev, [next]: 0}));
         setCurrentBatchIdx(next);
         setCurrent(firstNextIndex);
@@ -323,10 +320,8 @@ export default function BatchExamPage() {
 
     const handlePause = useCallback(async (): Promise<boolean> => {
         if (pauseInFlightRef.current) return false;
-
         pauseInFlightRef.current = true;
         setPauseInFlight(true);
-
         try {
             if (!isPaused) await pauseSession();
             addToast("info", "Exam paused.");
@@ -342,10 +337,8 @@ export default function BatchExamPage() {
 
     const handleResume = useCallback(async () => {
         if (pauseInFlightRef.current) return;
-
         pauseInFlightRef.current = true;
         setPauseInFlight(true);
-
         try {
             await resumeSession();
             addToast("success", "Exam resumed.");
@@ -394,110 +387,115 @@ export default function BatchExamPage() {
     if (loading) {
         return (
             <div className="flex min-h-[60vh] items-center justify-center">
-                <Spinner />
+                <Spinner/>
             </div>
         );
     }
 
-  if (error) {
-    return (
-      <div className="mx-auto max-w-xl px-4 py-16 text-center">
-        <h1 className="text-2xl font-semibold text-slate-900">Exam unavailable</h1>
-        <p className="mt-2 text-sm text-slate-600">{error}</p>
-        <button type="button" onClick={() => navigate("/dashboard")}>
-          Back to dashboard
-        </button>
-      </div>
-    );
-  }
+    if (error) {
+        return (
+            <div className="mx-auto max-w-xl px-4 py-16 text-center">
+                <h1 className="text-2xl font-semibold text-slate-900">Exam unavailable</h1>
+                <p className="mt-2 text-sm text-slate-600">{error}</p>
+                <button
+                    type="button"
+                    onClick={() => navigate("/dashboard")}
+                    className="mt-6 rounded-md bg-primary-600 px-5 py-2 text-sm font-semibold text-white hover:bg-primary-700"
+                >
+                    Back to Dashboard
+                </button>
+                </div>
+        );
+    }
 
-  if (!currentBatch) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }
-
-  const nextBatch = !isLastBatch ? subjectBatches[currentBatchIdx + 1] : null;
-  const currentSubjectName = SUBJECT_META[currentBatch.subject]?.label ?? currentBatch.subject;
-  const timeoutSubject = timeoutTargetBatch !== null ? subjectBatches[timeoutTargetBatch] : null;
-  const timeoutSubjectLabel = timeoutSubject
-    ? SUBJECT_META[timeoutSubject.subject]?.label ?? timeoutSubject.subject
-    : "this subject";
-
-  return (
-    <div className="mx-auto max-w-7xl px-4 py-8">
-      <Seo title={`Mock Exam — ${currentSubjectName}`} noindex />
-
-      {submitBlocking && (
-        <div className="fixed inset-0 z- flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
-          <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4 shadow-xl">
-            <Spinner className="h-5 w-5" />
-            <span className="text-sm font-semibold text-slate-800">Submitting exam...</span>
-          </div>
-        </div>
-      )}
-
-      {showTimeoutDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-            <h2 className="text-lg font-semibold text-slate-900">Time is up</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              {timeoutTargetBatch !== null
-                ? `The allotted time for ${timeoutSubjectLabel} has ended.`
-                : "The allotted time for this subject has ended."}
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                setShowTimeoutDialog(false);
-                if (isLastBatch) {
-                  void doSubmit();
-                } else {
-                  moveToNextSubject();
-                }
-              }}
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
-
-      {confirmProceed && nextBatch && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-            <h2 className="text-lg font-semibold text-slate-900">
-              Proceed to {SUBJECT_META[nextBatch.subject]?.label}?
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              You are about to move on to the next subject. Once you proceed, you{" "}
-              <strong>cannot go back</strong> to <strong>{currentSubjectName}</strong>. The timer
-              will reset to the allotted time for {SUBJECT_META[nextBatch.subject]?.label}.
-            </p>
-            <div className="mt-5 flex gap-3">
-              <button
-                type="button"
-                onClick={() => setConfirmProceed(false)}
-                className="flex-1 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-              >
-                Stay here
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setConfirmProceed(false);
-                  moveToNextSubject();
-                }}
-                className="flex-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700"
-              >
-                Proceed
-              </button>
+    if (!currentBatch) {
+        return (
+            <div className="flex min-h-[60vh] items-center justify-center">
+                <Spinner/>
             </div>
-          </div>
-        </div>
-      )}
+        );
+    }
+
+    const nextBatch = !isLastBatch ? subjectBatches[currentBatchIdx + 1] : null;
+    const currentSubjectName = SUBJECT_META[currentBatch.subject]?.label ?? currentBatch.subject;
+    const timeoutSubject =
+        timeoutTargetBatch !== null ? subjectBatches[timeoutTargetBatch] : null;
+    const timeoutSubjectLabel = timeoutSubject
+        ? (SUBJECT_META[timeoutSubject.subject]?.label ?? timeoutSubject.subject)
+        : "this subject";
+
+    return (
+        <div className="mx-auto max-w-7xl px-4 py-8">
+            <Seo title={`Mock Exam — ${currentSubjectName}`} noindex />
+
+            {submitBlocking && (
+                <div className="fixed inset-0 z- flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
+                    <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4 shadow-xl">
+                      <Spinner className="h-5 w-5" />
+                      <span className="text-sm font-semibold text-slate-800">Submitting exam...</span>
+                    </div>
+                </div>
+            )}
+
+        {showTimeoutDialog && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+                <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                    <h2 className="text-lg font-semibold text-slate-900">Time is up</h2>
+                    <p className="mt-2 text-sm text-slate-600">
+                      {timeoutTargetBatch !== null
+                        ? `The allotted time for ${timeoutSubjectLabel} has ended.`
+                        : "The allotted time for this subject has ended."}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowTimeoutDialog(false);
+                        if (isLastBatch) {
+                          void doSubmit();
+                        } else {
+                          moveToNextSubject();
+                        }
+                      }}
+                    >
+                        OK
+                    </button>
+                </div>
+            </div>
+        )}
+
+        {confirmProceed && nextBatch && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+                  <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                        <h2 className="text-lg font-semibold text-slate-900">
+                            Proceed to {SUBJECT_META[nextBatch.subject]?.label}?
+                        </h2>
+                        <p className="mt-2 text-sm text-slate-600">
+                              You are about to move on to the next subject. Once you proceed, you{" "}
+                              <strong>cannot go back</strong> to <strong>{currentSubjectName}</strong>. The timer
+                              will reset to the allotted time for {SUBJECT_META[nextBatch.subject]?.label}.
+                        </p>
+                        <div className="mt-5 flex gap-3">
+                              <button
+                                type="button"
+                                onClick={() => setConfirmProceed(false)}
+                                className="flex-1 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                              >
+                                Stay here
+                          </button>
+                          <button
+                                type="button"
+                                onClick={() => {
+                                  setConfirmProceed(false);
+                                  moveToNextSubject();
+                                }}
+                                className="flex-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700"
+                          >
+                                Proceed
+                          </button>
+                        </div>
+                  </div>
+            </div>
+        )}
 
       {confirmSubmit && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
