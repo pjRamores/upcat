@@ -619,13 +619,13 @@ export default function BatchExamPage() {
                                             {positionInBatch + 1}
                                             {flagged && (
                                                 <span
-                                                    className="absolut -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-amber-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                     className="h-2.5 w-2.5">
-                                  <path
-                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
-                                </svg>
-                              </span>
+                                                    className="absolute -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-amber-400">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                   className="h-2.5 w-2.5">
+                                <path
+                                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                              </svg>
+                            </span>
                                             )}
                                         </button>
                                     );
@@ -638,7 +638,7 @@ export default function BatchExamPage() {
                         <span className="flex items-center gap-1"><span
                             className="inline-block h-3 w-3 rounded-sm bg-primary-600"/>Current</span>
                         <span className="flex items-center gap-1"><span
-                            className="inline-block h-3 w-3 rounded-sm bg-emeral-100 ring-1 ring-emerald-300"/>Answered</span>
+                            className="inline-block h-3 w-3 rounded-sm bg-emerald-100 ring-1 ring-emerald-300"/>Answered</span>
                         <span className="flex items-center gap-1"><span
                             className="inline-block h-3 w-3 rounded-sm bg-sky-100 ring-1 ring-sky-300"/>Visited</span>
                         <span className="flex items-center gap-1"><span
@@ -719,23 +719,15 @@ export default function BatchExamPage() {
 
                     <div className="mt-4 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
                         <p>Total questions: {totalQuestions}</p>
-                        <p>Current subject questions: {currentBatch.indices.length}</p>
-                        <p>
-                            Answered in this subject:{" "}
-                            {currentBatch.indices.filter((idx) => Boolean(states[idx]?.answer)).length}
-                        </p>
+                        <p>Overall exam time: {Math.max(0, Math.round(timeLimit))} min</p>
+                        <p>Started: {startedAt ? "Yes" : "No"}</p>
                     </div>
+
+                    <AdSlot slotId="mock_exam_sidebar" className="mt-4"/>
                 </aside>
             </div>
         </div>
     );
-}
-
-function formatSeconds(total: number): string {
-  const safe = Math.max(0, Math.floor(total));
-  const minutes = Math.floor(safe / 60);
-  const seconds = safe % 60;
-  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 function QuestionCard({
@@ -755,56 +747,77 @@ function QuestionCard({
     onToggleFlag: () => void;
     reviewDisabled: boolean;
 }) {
-    const choice = question.choices ?? [];
+    const choices = question.choices ?? [];
     return (
-        <div className="space-y-4">
-            <div className="text-sm text-slate-500">
-                Question {questionPosition} of {questionCount}
-            </div>
-
-            <div className="text-base font-medium text-slate-900">
-                <MathText>{String((question as any).questionText ?? "")}</MathText>
-            </div>
-
-            {(question as any).passage && (
-                <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
-                    {/* <Seo> */}
-                    <MathText>{String((question as any).passage?.content ?? "")}</MathText>
-                    {/* </Seo> */}
-                </div>
-            )}
-
-            <div className="space-y-2">
-                {((question as any).choices ?? []).map((choice: { label: string; text: string }) => (
-                    <button
-                        key={choice.label}
-                        type="button"
-                        disabled={reviewDisabled}
-                        onClick={() => onSelectAnswer(choice.label as AnswerLetter)}
-                        className={`block w-full rounded-lg border px-4 py-3 text-left text-sm ${
-                            state.answer === choice.label
-                                ? "border-primary-500 bg-primary-50 text-primary-900"
-                                : "border-slate-200 bg-white text-slate-800 hover:bg-slate-50"
-                        } disabled:cursor-not-allowed disabled:opacity-60`}
-                    >
-                        <span className="font-semibold">{choice.label}.</span>{" "}
-                        <MathText>{choice.text}</MathText>
-                    </button>
-                ))}
-            </div>
-
-            <div className="flex items-center justify-between">
+        <div>
+            <div className="mb-2 filex items-start justify-between">
+                <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                    Question {questionPosition} of {questionCount}
+                </p>
                 <button
                     type="button"
                     onClick={onToggleFlag}
                     disabled={reviewDisabled}
-                    className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
+                    title={state.flagged ? "Marked for review" : "Mark for review"}
+                    className={`ml-2 shrink-0 rounded p-1 transition disabled:cursor-not-allowed disabled:opacity-50 ${
+                        state.flagged ? "text-amber-500 hover:text-amber-600" : "text-slate-400 hover:text-slate-600"
+                    }`}
                 >
-                    {state.flagged ? "Unmark review" : "Mark for review"}
+                    {state.flagged ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            className="h-5 w-5">
+                            <path
+                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                        </svg>
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                            stroke="currentColor" className="h-5 w-5">
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                        </svg>
+                    )}
                 </button>
+            </div>
+            <p className="mb-4 whitespace-pre-wrap text-base font-medium text-slate-900">
+                <MathText>{question.questionText}</MathText>
+            </p>
 
-                <AdSlot slotId="mock_exam_sidebar" />
+            {question.passage ? (
+                <details className="mb-4 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm">
+                    <summary className="cursor-pointer font-medium text-slate-700">
+                        Passage: {question.passage.title}
+                    </summary>
+                </details>
+            ) : null}
+
+            <div className="space-y-2">
+                {(["A", "B", "C", "D"] as const).map((label) => {
+                    const found = choices.find((c) => c.label == label);
+                    const text = found?.text ?? "";
+                    const selected = state.answer === label;
+                    return (
+                        <button
+                            key={label}
+                            type="button"
+                            onClick={() => onSelectAnswer(label)}
+                            className={`block w-full rounded-md border px-4 py-2 text-left text-sm transition ${
+                                selected
+                                    ? "border-primary-500 bg-primary-50 ring-2 ring-primary-200"
+                                    : "border-slate-200 bg-white hover:border-slate-300"
+                            }`}
+                        >
+                        </button>
+                    );
+                })}
             </div>
         </div>
     );
 }
+
+function formatSeconds(total: number): string {
+    const safe = Math.max(0, Math.floor(total));
+    const minutes = Math.floor(safe / 60);
+    const seconds = safe % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
