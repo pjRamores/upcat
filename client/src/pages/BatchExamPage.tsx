@@ -166,7 +166,7 @@ export default function BatchExamPage() {
         const totalSeconds = Math.max(0, Math.round(timeLimit * 60));
 
         return Array.from(grouped.entries()).map(([subject, indices]) => {
-            const subjectSeconds = Math.max(60, Math.round((indices.length / totalCount) * totalSeconds),);
+            const subjectSeconds = Math.max(60, Math.round((indices.length / totalCount) * totalSeconds));
             return {
                 subject,
                 indices,
@@ -189,7 +189,6 @@ export default function BatchExamPage() {
 
     const effectiveElapsedSeconds = useMemo(() => {
         if (!startedAt) return 0;
-
         const elapsed = Math.floor((Date.now() - startedAt) / 1000);
         let pausedExtension = Math.round(Math.max(0, timerExtensionMs) / 1000);
         //
@@ -197,7 +196,6 @@ export default function BatchExamPage() {
         if (isPaused && pausedAt) {
             pausedExtension += Math.round(Math.max(0, Date.now() - pausedAt) / 1000);
         }
-
         return Math.max(0, elapsed - pausedExtension);
     }, [startedAt, timerExtensionMs, isPaused, pausedAt]);
 
@@ -232,19 +230,14 @@ export default function BatchExamPage() {
 
     useEffect(() => {
         if (!currentBatch) return;
-
         const idxInside = currentBatch.indices.indexOf(currentIndex);
         if (idxInside >= 0) return;
-
-        const batchFromCurrentIndex = subjectBatches.findIndex((b) =>
-            b.indices.includes(currentIndex),
-        );
+        const batchFromCurrentIndex = subjectBatches.findIndex((b) => b.indices.includes(currentIndex));
 
         if (batchFromCurrentIndex >= 0 && batchFromCurrentIndex !== currentBatchIdx) {
             setCurrentBatchIdx(batchFromCurrentIndex);
             return;
         }
-
         const first = currentBatch.indices;
         if (typeof first === "number") setCurrent(first);
     }, [currentBatch, currentBatchIdx, currentIndex, setCurrent, subjectBatches]);
@@ -258,13 +251,16 @@ export default function BatchExamPage() {
         const prev = currentBatch.indices[currentPos - 1];
         const next = currentBatch.indices[currentPos + 1];
 
-        if (typeof prev === "number") void ensureLoaded(prev);
-        if (typeof next === "number") void ensureLoaded(next);
+        if (typeof prev === "number") {
+            void ensureLoaded(prev);
+        }
+        if (typeof next === "number") {
+            void ensureLoaded(next);
+        }
     }, [currentBatch, currentIndex, ensureLoaded]);
 
     useEffect(() => {
         if (!currentBatch || isPaused || submitBlocking) return;
-
         const id = window.setInterval(() => {
             tick(1);
             setSpentByBatch((prev) => ({
@@ -272,7 +268,6 @@ export default function BatchExamPage() {
                 [currentBatchIdx]: (prev[currentBatchIdx] ?? 0) + 1,
             }));
         }, 1000);
-
         return () => window.clearInterval(id);
     }, [currentBatch, currentBatchIdx, isPaused, submitBlocking, tick]);
 
@@ -284,132 +279,125 @@ export default function BatchExamPage() {
     }, [currentBatch, currentBatchIdx, spentByBatch]);
 
     useEffect(() => {
-        if (!currentBatch || isPaused || remainingSeconds > 0) return;
-//         if (timeoutHandledBatchRef.current === currentBatchIdx) return;
-
-//         timeoutHandledBatchRef.current = currentBatchIdx;
-        setTimeoutTargetBatch(currentBatchIdx);
+        if (!currentBatch || isPaused || remainingSeconds > 0 || showTimeoutDialog) return; //         if (timeoutHandledBatchRef.current === currentBatchIdx) return;
+        setTimeoutTargetBatch(currentBatchIdx);  //         timeoutHandledBatchRef.current = currentBatchIdx;
         setShowTimeoutDialog(true);
-    }, [currentBatch, currentBatchIdx, isPaused, remainingSeconds]);
+    }, [currentBatch, currentBatchIdx, isPaused, remainingSeconds, showTimeoutDialog]);
 
     const doSubmit = useCallback(async () => {
         if (!sessionId || submitInFlight.current) return;
-
         submitInFlight.current = true;
-            flushSync(() => {
+        flushSync(() => {
             setSubmitBlocking(true);
             setConfirmSubmit(false);
             setShowTimeoutDialog(false);
             setConfirmProceed(false);
         });
+        try {
+            await submit();
+            clearBatchRuntime(sessionId);
+            addToast("success", "Exam submitted!");
+            reset();
+            navigate(`/results/${sessionId}`, { replace: true });
+        } catch {
+            addToast("error", "Submission failed. Please try again.");
+            submitInFlight.current = false;
+            setSubmitBlocking(false);
+        }
+    }, [sessionId, submit, addToast, reset, navigate]);
 
-    try {
-      await submit();
-      clearBatchRuntime(sessionId);
-      addToast("success", "Exam submitted!");
-      reset();
-      navigate(`/results/${sessionId}`, { replace: true });
-    } catch {
-      addToast("error", "Submission failed. Please try again.");
-      setSubmitBlocking(false);
-    } finally {
-      submitInFlight.current = false;
+    const moveToNextSubject = useCallback(() => {
+        if (!currentBatch || isLastBatch) return;
+
+        const next = currentBatchIdx + 1;
+        const nextBatch = subjectBatches[next];
+        if (!nextBatch || nextBatch.indices.length === 0) return;
+
+        const firstNextIndex = nextBatch.indices[0];
+        if (typeof firstNextIndex !== "number") return;
+
+        setSpentByBatch((prev) => ({...prev, [next]: 0}));
+        setCurrentBatchIdx(next);
+        setCurrent(firstNextIndex);
+    }, [currentBatch, isLastBatch, currentBatchIdx, subjectBatches, setCurrent]);
+
+    const handlePause = useCallback(async (): Promise<boolean> => {
+        if (pauseInFlightRef.current) return false;
+
+        pauseInFlightRef.current = true;
+        setPauseInFlight(true);
+
+        try {
+            if (!isPaused) await pauseSession();
+            addToast("info", "Exam paused.");
+            return true;
+        } catch {
+            addToast("error", "Could not pause exam.");
+            return false;
+        } finally {
+            pauseInFlightRef.current = false;
+            setPauseInFlight(false);
+        }
+    }, [isPaused, pauseSession, addToast]);
+
+    const handleResume = useCallback(async () => {
+        if (pauseInFlightRef.current) return;
+
+        pauseInFlightRef.current = true;
+        setPauseInFlight(true);
+
+        try {
+            await resumeSession();
+            addToast("success", "Exam resumed.");
+        } catch {
+            addToast("error", "Could not resume exam.");
+        } finally {
+            pauseInFlightRef.current = false;
+            setPauseInFlight(false);
+        }
+    }, [resumeSession, addToast]);
+
+    useEffect(() => {
+        handleResumeRef.current = handleResume;
+    }, [handleResume]);
+
+    const handlePauseAndExit = useCallback(async () => {
+        const ok = await handlePause();
+        if (!ok) return;
+        navigate("/dashboard");
+    }, [handlePause, navigate]);
+
+    useEffect(() => {
+        if (!shouldAutoResume || !isPaused) return;
+        void handleResumeRef.current();
+    }, [shouldAutoResume, isPaused]);
+
+    const currentState = states[currentIndex] ?? null;
+    const currentQuestion = currentState ? loaded[currentState.questionId] : null;
+    const indexInBatch = currentBatch ? currentBatch.indices.indexOf(currentIndex) : -1;
+
+    const canGoPrevInSubject = indexInBatch > 0;
+    const canGoNextInSubject = currentBatch ? indexInBatch >= 0 && indexInBatch < currentBatch.indices.length - 1 : false;
+
+    function goPrevInSubject() {
+        if (!currentBatch || !canGoPrevInSubject) return;
+        const target = currentBatch.indices[indexInBatch - 1];
+        if (typeof target === "number") setCurrent(target);
     }
-  }, [sessionId, submit, addToast, reset, navigate]);
 
-  const moveToNextSubject = useCallback(() => {
-    if (!currentBatch || isLastBatch) return;
-
-    const next = currentBatchIdx + 1;
-    const nextBatch = subjectBatches[next];
-    if (!nextBatch || nextBatch.indices.length === 0) return;
-
-    const firstNextIndex = nextBatch.indices[0];
-    if (typeof firstNextIndex !== "number") return;
-
-    setSpentByBatch((prev) => ({...prev, [next]: 0}));
-    setCurrentBatchIdx(next);
-    setCurrent(firstNextIndex);
-  }, [currentBatch, isLastBatch, currentBatchIdx, subjectBatches, setCurrent]);
-
-  const handlePause = useCallback(async (): Promise<boolean> => {
-    if (pauseInFlightRef.current) return false;
-
-    pauseInFlightRef.current = true;
-    setPauseInFlight(true);
-
-    try {
-      if (!isPaused) await pauseSession();
-      addToast("info", "Exam paused.");
-      return true;
-    } catch {
-      addToast("error", "Could not pause exam.");
-      return false;
-    } finally {
-      pauseInFlightRef.current = false;
-      setPauseInFlight(false);
+    function goNextInSubject() {
+        if (!currentBatch || !canGoNextInSubject) return;
+        const target = currentBatch.indices[indexInBatch + 1];
+        if (typeof target === "number") setCurrent(target);
     }
-  }, [isPaused, pauseSession, addToast]);
 
-  const handleResume = useCallback(async () => {
-    if (pauseInFlightRef.current) return;
-
-    pauseInFlightRef.current = true;
-    setPauseInFlight(true);
-
-    try {
-      await resumeSession();
-      addToast("success", "Exam resumed.");
-    } catch {
-      addToast("error", "Could not resume exam.");
-    } finally {
-      pauseInFlightRef.current = false;
-      setPauseInFlight(false);
+    if (loading) {
+        return (
+            <div className="flex min-h-[60vh] items-center justify-center">
+                <Spinner />
+            </div>
+        );
     }
-  }, [resumeSession, addToast]);
-
-  useEffect(() => {
-    handleResumeRef.current = handleResume;
-  }, [handleResume]);
-
-  const handlePauseAndExit = useCallback(async () => {
-    const ok = await handlePause();
-    if (!ok) return;
-    navigate("/dashboard");
-  }, [handlePause, navigate]);
-
-  useEffect(() => {
-    if (!shouldAutoResume || !isPaused) return;
-    void handleResumeRef.current();
-  }, [shouldAutoResume, isPaused]);
-
-  const currentState = states[currentIndex] ?? null;
-  const currentQuestion = currentState ? loaded[currentState.questionId] : null;
-  const indexInBatch = currentBatch ? currentBatch.indices.indexOf(currentIndex) : -1;
-
-  const canGoPrevInSubject = indexInBatch > 0;
-  const canGoNextInSubject =
-    currentBatch ? indexInBatch >= 0 && indexInBatch < currentBatch.indices.length - 1 : false;
-
-  function goPrevInSubject() {
-    if (!currentBatch || !canGoPrevInSubject) return;
-    const target = currentBatch.indices[indexInBatch - 1];
-    if (typeof target === "number") setCurrent(target);
-  }
-
-  function goNextInSubject() {
-    if (!currentBatch || !canGoNextInSubject) return;
-    const target = currentBatch.indices[indexInBatch + 1];
-    if (typeof target === "number") setCurrent(target);
-  }
-
-  if (loading) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }
 
   if (error) {
     return (
