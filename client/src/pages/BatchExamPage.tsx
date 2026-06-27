@@ -1,51 +1,46 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { flushSync } from "react-dom";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { SUBJECT_META, type SubjectArea } from "@upcat/shared";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {flushSync } from "react-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {SUBJECT_META, type SubjectArea} from "@upcat/shared";
 import MathText from "@/components/MathText";
 import Seo from "@/components/Seo";
 import AdSlot from "@/components/AdSlot";
 import Spinner from "@/components/Spinner";
-import {
-  type AnswerLetter,
-  type LoadedQuestion,
-  type QuestionState,
-  useExamStore,
-} from "@/stores/examStore";
-import { useToastStore } from "@/stores/toastStore";
+import {type AnswerLetter, type LoadedQuestion, type QuestionState, useExamStore} from "@/stores/examStore";
+import {useToastStore} from "@/stores/toastStore";
 
 interface SubjectBatch {
-  subject: SubjectArea;
-  indices: number[];
-  timeLimitMinutes: number;
+    subject: SubjectArea;
+    indices: number[];
+    timeLimitMinutes: number;
 }
 
 interface BatchRuntime {
-  currentBatchIdx: number;
-  spentByBatch: Record<number, number>;
+    currentBatchIdx: number;
+    spentByBatch: Record<number, number>;
 }
 
 const BATCH_RUNTIME_PREFIX = "upcat_exam_batch_runtime_v1";
 
 function runtimeKey(sessionId: string): string {
-  return `${BATCH_RUNTIME_PREFIX}:${sessionId}`;
+    return `${BATCH_RUNTIME_PREFIX}:${sessionId}`;
 }
 
 function loadBatchRuntime(sessionId: string): BatchRuntime | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const key = runtimeKey(sessionId);
-    const raw = sessionStorage.getItem(key) ?? localStorage.getItem(key);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as BatchRuntime;
-    if (!parsed || typeof parsed !== "object") return null;
-    return {
-      currentBatchIdx: Number.isFinite(parsed.currentBatchIdx) ? parsed.currentBatchIdx : 0,
-      spentByBatch: parsed.spentByBatch ?? {},
-    };
-  } catch {
-    return null;
-  }
+    if (typeof window === "undefined") return null;
+    try {
+        const key = runtimeKey(sessionId);
+        const raw = sessionStorage.getItem(key) ?? localStorage.getItem(key);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw) as BatchRuntime;
+        if (!parsed || typeof parsed !== "object") return null;
+        return {
+            currentBatchIdx: Number.isFinite(parsed.currentBatchIdx) ? parsed.currentBatchIdx : 0,
+            spentByBatch: parsed.spentByBatch ?? {},
+        };
+    } catch {
+        return null;
+    }
 }
 
 function persistBatchRuntime(sessionId: string, runtime: BatchRuntime): void {
