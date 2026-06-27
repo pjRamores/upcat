@@ -558,7 +558,7 @@ export default function BatchExamPage() {
                     <div className={`relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm`}>
                         {isPaused && (
                             <div
-                                className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm">
+                                className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl backdrop-blur-sm bg-white/60">
                                 <span className="text-sm font-semibold text-slate-500">Exam paused</span>
                             </div>
                         )}
@@ -578,8 +578,9 @@ export default function BatchExamPage() {
                             />
                         )}
                     </div>
-                </section>
 
+
+                </section>
 
                 <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                     <h2 className="text-sm font-semibold text-slate-900">Navigator</h2>
@@ -589,8 +590,7 @@ export default function BatchExamPage() {
                         <div className="rounded-lg border border-slate-200 p-3">
                             <div className="mb-2 flex items-center justify-between">
                                 <span
-                                    className="text-xs font-semibold uppercase tracking-wide text-slate-500">{currentSubjectName}
-                                </span>
+                                    className="text-xs font-semibold uppercase tracking-wide text-slate-500">{currentSubjectName}</span>
                                 <span className="text-[11px] font-medium text-primary-700">Current</span>
                             </div>
                             <div className="grid grid-cols-5 gap-2">
@@ -617,6 +617,16 @@ export default function BatchExamPage() {
                                             title={flagged ? `Question ${positionInBatch + 1} — marked for review` : `Question ${positionInBatch + 1}`}
                                         >
                                             {positionInBatch + 1}
+                                            {flagged && (
+                                                <span
+                                                    className="absolut -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-amber-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                     className="h-2.5 w-2.5">
+                                  <path
+                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 0 0 1 11.186 0Z"/>
+                                </svg>
+                              </span>
+                                            )}
                                         </button>
                                     );
                                 })}
@@ -625,11 +635,16 @@ export default function BatchExamPage() {
                     </div>
 
                     <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500">
-                        <span>Current</span>
-                        <span>Answered</span>
-                        <span>Visited</span>
-                        <span>Not visited</span>
-                        <span>For review</span>
+                        <span className="flex items-center gap-1"><span
+                            className="inline-block h-3 w-3 rounded-sm bg-primary-600"/>Current</span>
+                        <span className="flex items-center gap-1"><span
+                            className="inline-block h-3 w-3 rounded-sm bg-emeral-100 ring-1 ring-emerald-300"/>Answered</span>
+                        <span className="flex items-center gap-1"><span
+                            className="inline-block h-3 w-3 rounded-sm bg-sky-100 ring-1 ring-sky-300"/>Visited</span>
+                        <span className="flex items-center gap-1"><span
+                            className="inline-block h-3 w-3 rounded-sm bg-slate-100 ring-1 ring-slate-300"/>Not visited</span>
+                        <span className="flex items-center gap-1"><span
+                            className="inline-block h-3 w-3 rounded-full bg-amber-400"/>For review</span>
                     </div>
 
                     <div className="mt-4 space-y-2">
