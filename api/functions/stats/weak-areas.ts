@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ObjectId } from "mongodb";
-import { extractToken } from "../src/auth.js";
+import { extractToken } from "../../src/auth.js";
 import { getDb } from "../../src/db.js";
 import { loadCompletedSessions, loadQuestionMeta } from "../../src/statsHelpers.js";
 import type { SubjectArea } from "@upcat/shared";

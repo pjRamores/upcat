@@ -57,6 +57,8 @@ interface ExamState {
 }
 
 const PAGE_SIZE = 25;
+const ANSWER_BULK_TiMEOUt_MS = 45_000;
+const EXAM_SUBMIT_TIMEOUT_MS = 120_000;
 const EXAM_RUNTIME_KEY = "upcat_exam_runtime_v1";
 const PERSIST_INTERVAL_MS = 5_000;
 const PERSIST_DEBOUNCE_MS = 250;
@@ -146,6 +148,21 @@ function isTransientSyncError(error: unknown): boolean {
   return status >= 500;
 }
 
+type QuestionsPagePayload = {
+    questions: LoadedQuestion[];
+    totalQuestions: number;
+    session: {
+      _id: string;
+      status: string;
+      timeLimit: number;
+      startedAt: string | null;
+      timerExtensionMs?: number;
+      isPaused?: boolean;
+      pausedAt?: string | null;
+    };
+    totalPages?: number;
+};
+
 const persistedRuntime = loadPersistedRuntime();
 
 export const useExamStore = create<ExamState>((set, get) => ({
@@ -207,19 +224,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
         `${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=1&limit=${PAGE_SIZE}`,
       );
 
-      const payload = data.data as {
-        questions: LoadedQuestion[];
-        totalQuestions: number;
-        session: {
-          id: string;
-          status: string;
-          timeLimit: number;
-          startedAt: string | null;
-          timerExtensionMs?: number;
-          isPaused?: boolean;
-          pausedAt?: string | null;
-        };
-      };
+      const payload = data.data as QuestionsPagePayload;
 
       const states: QuestionState[] = Array.from(
         { length: payload.totalQuestions },
@@ -236,8 +241,29 @@ export const useExamStore = create<ExamState>((set, get) => ({
         }),
       );
 
+      const allQuestions = [...payload.questions];
+      const totalPages = Math.max(
+        1,
+        Number.isFinite(Number(payload.totalPages))
+          ? Number(payload.totalPages)
+          : Math.ceil(payload.totalQuestions / PAGE_SIZE),
+      );
+
+      if (totalPages > 1) {
+        const pageRequests: Array<Promise<{ data: { data: QuestionsPagePayload } }>> = [];
+        for (let page = 2; page <= totalPages; page++) {
+            pageRequests.push(
+                apiClient.get(`${API_ROUTES.EXAM.QUESTIONS(sessionId)}?page=${page}&limit=${PAGE_SIZE}`),
+            );
+        }
+        const pageResponses = await Promise.all(pageRequests);
+        for (const response of pageResponses) {
+            allQuestions.push(...(response.data.data.questions ?? []));
+        }
+      }
+
       const loaded: Record<string, LoadedQuestion> = {};
-      for (const q of payload.questions) {
+      for (const q of allQuestions) {
         loaded[q._id] = q;
         const s = states[q.orderIndex];
         if (s) {
@@ -274,7 +300,7 @@ export const useExamStore = create<ExamState>((set, get) => ({
         }
       }
 
-      if (states) states.visited = true;
+      if (states[0]) states[0].visited = true;
 
       const restoredIndex =
         cached?.sessionId === sessionId
@@ -418,13 +444,19 @@ export const useExamStore = create<ExamState>((set, get) => ({
     if (dirty.length === 0) return 0;
 
     try {
-      const { data } = await apiClient.post(API_ROUTES.EXAM.ANSWER_BULK(sessionId), {
-        answers: dirty.map((d) => ({
-          questionId: d.questionId,
-          answer: d.answer,
-          timeSpent: d.timeSpent,
-        })),
-      });
+      const { data } = await apiClient.post(
+        API_ROUTES.EXAM.ANSWER_BULK(sessionId), 
+        {
+            answers: dirty.map((d) => ({
+                questionId: d.questionId,
+                answer: d.answer,
+                timeSpent: d.timeSpent,
+            })),
+        },
+        { 
+            timeout: ANSWER_BULK_TiMEOUt_MS 
+        }
+      );
 
       const dirtyIds = new Set(dirty.map((d) => d.questionId));
       set((s) => ({
@@ -542,10 +574,15 @@ export const useExamStore = create<ExamState>((set, get) => ({
       ];
 
       await get().flushDirty();
-
-      const { data } = await apiClient.post(API_ROUTES.EXAM.SUBMIT(sessionId), {
-        flaggedQuestionIds,
-      });
+      const {data} = await apiClient.post(
+        API_ROUTES.EXAM.SUBMIT(sessionId),
+        {
+            flaggedQuestionIds,
+        },
+        {
+            timeout: EXAM_SUBMIT_TIMEOUT_MS,
+        },
+      );
 
       const gamification = data?.data?.gamification;
       if (gamification && sessionId) {

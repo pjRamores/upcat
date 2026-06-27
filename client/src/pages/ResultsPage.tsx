@@ -55,7 +55,7 @@ export default function ResultsPage() {
         if (cancelled) return;
 
         setSession(data.data.session);
-        setQuestions(data.data.questions ?? []);
+        (data.data.questions ?? []);
 
         try {
           const key = `upcat.gamification.${sessionId}`;

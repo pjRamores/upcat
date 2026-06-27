@@ -152,7 +152,7 @@ export default async function handler(
 
       return {
         _id: doc._id.toString(),
-        setID: String(doc.setID ?? doc.setId ?? doc.setid ?? "set-default"),
+        setId: String(doc.setID ?? doc.setId ?? doc.setid ?? "set-default"),
         subjectArea: doc.subjectArea,
         subtopic: doc.subtopic,
         difficulty: doc.difficulty,
