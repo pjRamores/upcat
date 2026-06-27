@@ -166,11 +166,7 @@ export default function BatchExamPage() {
         const totalSeconds = Math.max(0, Math.round(timeLimit * 60));
 
         return Array.from(grouped.entries()).map(([subject, indices]) => {
-            const subjectSeconds = Math.max(
-                60,
-                Math.round((indices.length / totalCount) * totalSeconds),
-            );
-
+            const subjectSeconds = Math.max(60, Math.round((indices.length / totalCount) * totalSeconds),);
             return {
                 subject,
                 indices,
@@ -196,7 +192,8 @@ export default function BatchExamPage() {
 
         const elapsed = Math.floor((Date.now() - startedAt) / 1000);
         let pausedExtension = Math.round(Math.max(0, timerExtensionMs) / 1000);
-
+        //
+        //
         if (isPaused && pausedAt) {
             pausedExtension += Math.round(Math.max(0, Date.now() - pausedAt) / 1000);
         }
@@ -205,19 +202,18 @@ export default function BatchExamPage() {
     }, [startedAt, timerExtensionMs, isPaused, pausedAt]);
 
     useEffect(() => {
+        //
+        //
+        //
+        //
         if (hydratedFromPersistedRuntimeRef.current) return;
         if (subjectBatches.length === 0 || Object.keys(spentByBatch).length > 0) return;
 
-        const derivedSpent = deriveSpentByBatchFromElapsedSeconds(
-            subjectBatches,
-            effectiveElapsedSeconds,
-        );
+        const derivedSpent = deriveSpentByBatchFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds);
         if (Object.keys(derivedSpent).length === 0) return;
 
         setSpentByBatch(derivedSpent);
-        setCurrentBatchIdx(
-            deriveCurrentBatchIndexFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds),
-        );
+        setCurrentBatchIdx(deriveCurrentBatchIndexFromElapsedSeconds(subjectBatches, effectiveElapsedSeconds));
     }, [subjectBatches, spentByBatch, effectiveElapsedSeconds]);
 
     useEffect(() => {
@@ -227,8 +223,11 @@ export default function BatchExamPage() {
 
     useEffect(() => {
         if (!sessionId) return;
+        //
+        //
+        //
         if (Object.keys(spentByBatch).length === 0) return;
-        persistBatchRuntime(sessionId, { currentBatchIdx, spentByBatch });
+        persistBatchRuntime(sessionId, {currentBatchIdx, spentByBatch});
     }, [sessionId, currentBatchIdx, spentByBatch]);
 
     useEffect(() => {
