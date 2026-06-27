@@ -555,9 +555,10 @@ export default function BatchExamPage() {
                         </div>
                     </div>
 
-                    <div className="relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <div className={`relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm`}>
                         {isPaused && (
-                            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm">
+                            <div
+                                className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm">
                                 <span className="text-sm font-semibold text-slate-500">Exam paused</span>
                             </div>
                         )}
@@ -579,6 +580,7 @@ export default function BatchExamPage() {
                     </div>
                 </section>
 
+
                 <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                     <h2 className="text-sm font-semibold text-slate-900">Navigator</h2>
                     <p className="mt-1 text-xs text-slate-500">Showing active subject only.</p>
@@ -586,12 +588,11 @@ export default function BatchExamPage() {
                     <div className="mt-4">
                         <div className="rounded-lg border border-slate-200 p-3">
                             <div className="mb-2 flex items-center justify-between">
-                                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                    {currentSubjectName}
+                                <span
+                                    className="text-xs font-semibold uppercase tracking-wide text-slate-500">{currentSubjectName}
                                 </span>
                                 <span className="text-[11px] font-medium text-primary-700">Current</span>
                             </div>
-
                             <div className="grid grid-cols-5 gap-2">
                                 {currentBatch.indices.map((qIdx, positionInBatch) => {
                                     const st = states[qIdx];
@@ -613,11 +614,7 @@ export default function BatchExamPage() {
                                             disabled={isPaused}
                                             onClick={() => setCurrent(qIdx)}
                                             className={`relative h-8 rounded-md text-xs font-semibold ${colorClass} disabled:cursor-not-allowed disabled:opacity-60`}
-                                            title={
-                                                flagged
-                                                    ? `Question ${positionInBatch + 1} — marked for review`
-                                                    : `Question ${positionInBatch + 1}`
-                                            }
+                                            title={flagged ? `Question ${positionInBatch + 1} — marked for review` : `Question ${positionInBatch + 1}`}
                                         >
                                             {positionInBatch + 1}
                                         </button>
