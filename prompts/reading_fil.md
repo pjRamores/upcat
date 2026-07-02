@@ -4,26 +4,32 @@ Create an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and expla
 
 The deliverable MUST be a single, cleanly formatted PDF-ready document.
 
-GOAL
+GOAL  
 Produce 1 complete mock exam that covers the full scope of the UPCAT-style FILIPINO READING COMPREHENSION subtest.
+
+LANGUAGE REQUIREMENT
+- ALL passages, questions, answer choices, instructions, titles, rationales, explanations, and any other exam content MUST be written entirely in Filipino.
+- Do NOT write any part of the exam in English, except for required JSON keys if applicable.
+- The language used should be natural, grammatically correct, clear, and appropriate for Philippine SHS learners.
+- If a source title or proper noun is originally in English, it may remain in English only when necessary, but the surrounding text must still be in Filipino.
+- The exam must assess reading comprehension in Filipino, so the reading selections themselves must also be in Filipino.
 
 IMPORTANT CONSTRAINTS
 - Write 100% original questions (no copying/rephrasing from UPCAT, review books, or online banks).
 - Use clear, unambiguous wording; one best answer only.
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
 - Difficulty mix:
-  - 20% easy
-  - 45% medium
-  - 25% hard
-  - 10% very hard
+    - 20% easy
+    - 45% medium
+    - 25% hard
+    - 10% very hard
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
 - Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
 - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
 - Include at least 5 word problems.
 
-EXAM BLUEPRINT (EDITABLE DEFAULT)
+EXAM BLUEPRINT (EDITABLE DEFAULT)  
 Create a “Full-Length” 50-item and 40-minute mock exam (use 4-6 passages of varying length; include at least 1 paired passage set)
-
 
 SCOPE + OBJECTIVES (YOU MUST COVER ALL)
 
@@ -63,31 +69,31 @@ Interpretive and Analytical Reading Skills
 - make valid inferences
 - use skimming and scanning strategies effectively
 
-COVERAGE REQUIREMENTS
+COVERAGE REQUIREMENTS  
 All objectives listed above must be represented in the exam and assessed multiple times across 4–6 passages of varying length, including at least one paired-passage set. The item set should combine literal, inferential, analytical, and evaluative reading tasks to ensure comprehensive coverage of the subtest.
 
-OUTPUT FORMAT
-Return ONLY valid JSON.
+OUTPUT FORMAT  
+Return ONLY valid JSON.  
 Do not include markdown code fences, comments, explanations, or additional text outside the JSON output.
 
 IMPORTANT JSON TEXT FORMATTING RULES
 - Text fields inside the JSON MAY contain Markdown syntax.
 - Markdown is allowed in:
-  - questionText
-  - rationale
-  - instructions
-  - explanations
-  - notes
+    - questionText
+    - rationale
+    - instructions
+    - explanations
+    - notes
 - You MAY use:
-  - LaTeX math notation
-  - bullet lists
-  - numbered lists
-  - bold and italic formatting
-  - line breaks using `\n`
-  - tables in Markdown format
+    - LaTeX math notation
+    - bullet lists
+    - numbered lists
+    - bold and italic formatting
+    - line breaks using `\n`
+    - tables in Markdown format
 - Mathematical expressions may use:
-  - Inline LaTeX: `$x^2 + y^2 = z^2$`
-  - Block LaTeX: `$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$`
+    - Inline LaTeX: `$x^2 + y^2 = z^2$`
+    - Block LaTeX: `$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$`
 - Ensure Markdown content is properly escaped for valid JSON.
 - Do not wrap the entire JSON output in Markdown code fences.
 
@@ -97,39 +103,39 @@ SAMPLE JSON STRUCTURE
   "passages" : [
     {
       "_id": "aaaaaaaaaaaaaaaaaaaaaaaa",
-      "title": "The Rise of Urban Farming",
+      "title": "Pag-usbong ng Pagsasakang Panglungsod",
       "subjectArea": "Reading Comprehension",
-      "source": "PhilStar Lifestyle, March 2026",
-      "content": "Urban farming has gained momentum in cities worldwide as residents seek fresher produce and more sustainable food systems. Rooftop gardens, vertical farms, and community plots are transforming underutilized spaces into productive green areas. Beyond food supply, these initiatives improve air quality, reduce urban heat islands, and foster community cohesion. Critics argue that urban farms rarely produce enough to meaningfully supplement a city's food supply and that the resources invested - water, lighting, and labour - may exceed the benefits. Proponents counter that the movement's value lies not only in yield but also in education, mental health benefits, and reduced food miles. Municipal governments in Manila, Singapore, and New York have bugun subsidizing urban agriculture programs, signalling a policy shift toward integrating food production into city planning."
+      "source": "PhilStar Lifestyle, Marso 2026",
+      "content": "Lumalawak ang pagsasakang panglungsod sa iba’t ibang lungsod habang naghahanap ang mga mamamayan ng mas sariwang ani at mas napapanatiling sistema ng pagkain. Ang mga hardin sa bubong, patayong taniman, at mga plot ng komunidad ay nagiging produktibong luntiang espasyo mula sa dating hindi napapansing mga lugar. Bukod sa suplay ng pagkain, nakatutulong ang mga inisyatibang ito sa pagpapabuti ng kalidad ng hangin, pagbawas ng init sa lungsod, at pagpapatibay ng ugnayan sa komunidad. May mga kritiko na nagsasabing hindi sapat ang ani ng mga urban farm upang makadagdag nang malaki sa suplay ng pagkain ng isang lungsod at maaaring mas mataas pa ang gastos sa tubig, ilaw, at paggawa kaysa sa benepisyo. Tinutugon naman ng mga tagasuporta na ang halaga ng kilusan ay hindi lamang nasusukat sa dami ng ani kundi pati sa edukasyon, benepisyo sa kalusugang pangkaisipan, at pagbawas ng food miles. Nagsimula nang maglaan ng subsidyo ang ilang pamahalaang lungsod sa Maynila, Singapore, at New York para sa mga programang pang-agrikultura sa lungsod, na nagpapakita ng pagbabago sa patakaran tungo sa pagsasama ng produksiyon ng pagkain sa pagpaplanong panglungsod."
     }
   ],
   "questions" : [
     {
       "subjectArea": "Reading Comprehension",
-      "subtopic": "Author's Purpose",
+      "subtopic": "Layunin ng May-akda",
       "difficulty": "medium",
       "type": "passage_based",
       "passageId": "aaaaaaaaaaaaaaaaaaaaaaaa",
-      "questionText": "Which best describes the author's purpose in presenting both critics' and proponents' views on urban farming?",
+      "questionText": "Alin ang pinakamahusay na naglalarawan sa layunin ng may-akda sa paglalahad ng pananaw ng mga kritiko at tagasuporta tungkol sa pagsasakang panglungsod?",
       "choices": {
-        "A": "To persuade readers that urban farming is impractical.",
-        "B": "To provide a balanced overview of the debate surrounding urban farming.",
-        "C": "To argue that municipal governments should defund urban agriculture programs.",
-        "D": "To show that critics of urban farming are wrong."
+        "A": "Upang hikayatin ang mambabasa na isiping hindi praktikal ang urban farming.",
+        "B": "Upang magbigay ng balanseng paglalahad ng usapin tungkol sa urban farming.",
+        "C": "Upang igiit na dapat itigil ng mga pamahalaang lungsod ang pagpopondo sa urban agriculture.",
+        "D": "Upang patunayang mali ang lahat ng kritiko ng urban farming."
       },
       "correctAnswer": "B",
-      "rationale": "The passage presents arguments from both critics and proponents without taking a one-sided stance, indicating the author's intent to offer a balanced perspective",
+      "rationale": "Inilahad sa teksto ang panig ng mga kritiko at tagasuporta nang hindi tahasang kumakampi sa iisang panig, kaya malinaw na layunin ng may-akda ang magbigay ng balanseng pagtalakay.",
       "tags": [
-        "reading",
-        "author-purpose",
-        "passage-based"
+        "pagbasa",
+        "layunin-ng-may-akda",
+        "batay-sa-passage"
       ]
     }
   ]
 }
 ```
 
-REQUIRED JSON STRUCTURE
+REQUIRED JSON STRUCTURE  
 Return a JSON array containing exactly 50 question objects.
 
 Each question object MUST follow this structure:
@@ -138,29 +144,29 @@ Each question object MUST follow this structure:
   "passages": [
     {
       "_id": "objectId",
-      "title": "string",
+      "title": "string in Filipino",
       "subjectArea": "Reading Comprehension",
       "source": "string",
-      "content": "string"
+      "content": "string in Filipino"
     }
   ],
   "questions": [
     {
       "subjectArea": "Reading Comprehension",
-      "subtopic": "string",
+      "subtopic": "string in Filipino",
       "difficulty": "easy | medium | hard | very_hard",
       "type": "passage_based",
       "passageId": "_id of the associated passage",
       "questionNumber": 1,
-      "questionText": "string",
+      "questionText": "string in Filipino",
       "choices": {
-        "A": "string",
-        "B": "string",
-        "C": "string",
-        "D": "string"
+        "A": "string in Filipino",
+        "B": "string in Filipino",
+        "C": "string in Filipino",
+        "D": "string in Filipino"
       },
       "correctAnswer": "A | B | C | D",
-      "rationale": "Concise but complete explanation or step-by-step solution",
+      "rationale": "Concise but complete explanation or step-by-step solution in Filipino",
       "objectives": [
         "Objective text from the required objective list"
       ],
@@ -178,20 +184,20 @@ RULES FOR JSON GENERATION
 - Escape special characters properly.
 - Use double quotes for all keys and string values.
 - Do not include trailing commas.
-- The JSON array must contain exactly 60 items.
+- The JSON array must contain exactly 50 items.
 - Every item must include:
-  - subjectArea
-  - subtopic
-  - difficulty
-  - type
-  - questionNumber
-  - questionText
-  - choices
-  - correctAnswer
-  - rationale
-  - objectives
-  - tags
-  - isWordProblem
+    - subjectArea
+    - subtopic
+    - difficulty
+    - type
+    - questionNumber
+    - questionText
+    - choices
+    - correctAnswer
+    - rationale
+    - objectives
+    - tags
+    - isWordProblem
 - questionNumber values must be unique and sequential from 1 to 50.
 - Every question must have exactly one correct answer.
 - Ensure correct answers are randomly distributed among A-D.
@@ -199,6 +205,7 @@ RULES FOR JSON GENERATION
 - Include at least 5 word problems where "isWordProblem" is true.
 - Ensure distractors are plausible and not obviously wrong.
 - Ensure the requested difficulty distribution is satisfied.
+- All human-readable exam content must be in Filipino.
 
 QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check that the JSON parses successfully without errors.
@@ -207,6 +214,7 @@ QUALITY CONTROL (DO THIS BEFORE FINALIZING)
 - Check answer consistency.
 - Check objective coverage completeness.
 - Check that Markdown syntax does not break JSON formatting.
+- Check that all passages, questions, choices, and rationales are written in Filipino.
 
 FINAL OUTPUT REQUIREMENT
 - Return ONLY the final JSON array.
