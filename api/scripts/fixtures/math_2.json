@@ -1,0 +1,1469 @@
+[
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Sets and Venn Diagrams",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "In a survey of 100 incoming university freshmen, 65 registered for a Mathematics course, 45 registered for a Science course, and 20 registered for both. How many students registered for neither of these courses?",
+    "choices": {
+      "A": "10",
+      "B": "15",
+      "C": "20",
+      "D": "30"
+    },
+    "correctAnswer": "A",
+    "rationale": "Using the Principle of Inclusion-Exclusion, the number of students taking Mathematics or Science is given by:\n\n $$n(M \u222a S) = n(M) + n(S) - n(M \u2229 S)$$\n\n \n\n $$n(M \u222a S) = 65 + 45 - 20 = 90$$\n\n \nThe number of students taking neither course is:\n\n $$100 - 90 = 10$$\n\n ",
+    "objectives": [
+      "Perform operations on integers, fractions, decimals, and sets.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "sets",
+      "arithmetic",
+      "easy"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Algebraic Expressions",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "If $x = -2$ and $y = 3$, evaluate the expression $\\frac{4x^2 - 2y}{x + y}$.",
+    "choices": {
+      "A": "10",
+      "B": "-10",
+      "C": "22",
+      "D": "-22"
+    },
+    "correctAnswer": "A",
+    "rationale": "Substitute $x = -2$ and $y = 3$ into the given expression:\n$$\\frac{4(-2)^2 - 2(3)}{(-2) + 3} = \\frac{4(4) - 6}{1} = \\frac{16 - 6}{1} = 10$$",
+    "objectives": [
+      "Simplify and evaluate algebraic expressions."
+    ],
+    "tags": [
+      "algebra",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Arithmetic",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "Evaluate the expression: $3 + 4 \\times 2 - (8 \\div 2)$",
+    "choices": {
+      "A": "7",
+      "B": "10",
+      "C": "3",
+      "D": "5"
+    },
+    "correctAnswer": "A",
+    "rationale": "Using the order of operations (PEMDAS/GEMDAS): First, solve the parentheses $(8 \\div 2) = 4$. Next, perform multiplication $4 \\times 2 = 8$. Finally, addition and subtraction from left to right: $3 + 8 - 4 = 11 - 4 = 7$.",
+    "objectives": [
+      "Apply order of operations, ratios, proportions, and percentages"
+    ],
+    "tags": [
+      "arithmetic",
+      "order of operations",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Ratios and Proportions",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "The ratio of the measures of the three angles of a triangle is $2:3:5$. What is the measure of the largest angle?",
+    "choices": {
+      "A": "36\u00b0",
+      "B": "54\u00b0",
+      "C": "90\u00b0",
+      "D": "100\u00b0"
+    },
+    "correctAnswer": "C",
+    "rationale": "Let the three angles be $2x$, $3x$, and $5x$. The sum of angles in a triangle is $180\u00b0$:\n\n $$2x + 3x + 5x = 180$$\n\n \n\n $$10x = 180 \\implies x = 18$$\n\n \nThe largest angle is $5x = 5(18) = 90\u00b0$.",
+    "objectives": [
+      "Apply order of operations, ratios, proportions, and percentages.",
+      "Analyze geometric figures, angles, triangles, polygons, and circles."
+    ],
+    "tags": [
+      "arithmetic",
+      "geometry",
+      "easy"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Exponent Laws",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "Simplify the expression: $\\left(\\frac{2x^3y^{-2}}{z^4}\\right)^{-2}$.",
+    "choices": {
+      "A": "\\frac{z^8y^4}{4x^6}",
+      "B": "\\frac{z^8}{4x^6y^4}",
+      "C": "\\frac{4x^6z^8}{y^4}",
+      "D": "\\frac{z^6y^4}{2x^5}"
+    },
+    "correctAnswer": "A",
+    "rationale": "Apply the negative exponent by inverting the fraction and changing the exponent sign to positive:\n$$\\left(\\frac{z^4}{2x^3y^{-2}}\\right)^2 = \\frac{z^8}{4x^6y^{-4}} = \\frac{z^8y^4}{4x^6}\n\n $$",
+    "objectives": [
+      "Apply laws of exponents and factoring techniques."
+    ],
+    "tags": [
+      "algebra",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Arithmetic",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 6,
+    "questionText": "The product of two positive integers is $120$. If their Greatest Common Divisor (GCD) is $2$, what is their Least Common Multiple (LCM)?",
+    "choices": {
+      "A": "120",
+      "B": "240",
+      "C": "60",
+      "D": "30"
+    },
+    "correctAnswer": "C",
+    "rationale": "For any two positive integers $a$ and $b$, the relationship between their GCD and LCM is given by $\\text{GCD}(a,b) \\times \\text{LCM}(a,b) = a \\times b$. We have $2 \\times \\text{LCM} = 120$, so $\\text{LCM} = 60$.",
+    "objectives": [
+      "Determine factors, multiples, and divisibility"
+    ],
+    "tags": [
+      "arithmetic",
+      "LCM",
+      "GCD",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Angles and Lines",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "Two angles are supplementary. If one angle measures $15\u00b0$ more than twice the other angle, what is the measure of the smaller angle?",
+    "choices": {
+      "A": "35\u00b0",
+      "B": "55\u00b0",
+      "C": "65\u00b0",
+      "D": "125\u00b0"
+    },
+    "correctAnswer": "B",
+    "rationale": "Let the smaller angle be $x$. The larger angle is $2x + 15$. Since they are supplementary, their sum is $180\u00b0$:\n\n$$x + (2x + 15) = 180$$\n\n\n\n$$3x + 15 = 180 \\implies 3x = 165 \\implies x = 55\u00b0$$\n\n",
+    "objectives": [
+      "Analyze geometric figures, angles, triangles, polygons, and circles.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "geometry",
+      "easy"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Linear Inequalities",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "Find the solution set for the inequality: $5 - 3x \\le 17$.",
+    "choices": {
+      "A": "$x \\le -4$",
+      "B": "$x \\ge -4$",
+      "C": "$x \\le 4$",
+      "D": "$x \\ge 4$"
+    },
+    "correctAnswer": "B",
+    "rationale": "Subtract 5 from both sides:\n$$-3x \\le 12$$\nDivide by -3 and reverse the inequality sign:\n\n$$x \\ge -4$$\n\n",
+    "objectives": [
+      "Solve and graph linear, polynomial, rational, and absolute value inequalities."
+    ],
+    "tags": [
+      "inequalities",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logic",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "Given the conditional statement: \"If a polygon is a square, then it has four equal sides.\" Which of the following is the contrapositive statement?",
+    "choices": {
+      "A": "If a polygon does not have four equal sides, then it is not a square.",
+      "B": "If a polygon has four equal sides, then it is a square.",
+      "C": "If a polygon is not a square, then it does not have four equal sides.",
+      "D": "A polygon is a square if and only if it has four equal sides."
+    },
+    "correctAnswer": "A",
+    "rationale": "The contrapositive of a conditional statement $p \\implies q$ is $\\neg q \\implies \\neg p$. Therefore, \"If it does not have four equal sides, then it is not a square\" is the contrapositive.",
+    "objectives": [
+      "Analyze propositions and logical statements."
+    ],
+    "tags": [
+      "logic",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Basic Statistics",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "The scores of seven students on a quiz are 8, 15, 12, 10, 15, 7, and 14. Find the median score.",
+    "choices": {
+      "A": "11",
+      "B": "12",
+      "C": "13",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "rationale": "First, arrange the scores in ascending order: 7, 8, 10, 12, 14, 15, 15. The median is the middle value (the 4th value), which is 12.",
+    "objectives": [
+      "Interpret graphs and compute measures of central tendency."
+    ],
+    "tags": [
+      "statistics",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Trigonometric Measures",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "Convert an angle of $\\frac{5\\pi}{6}$ radians into degrees.",
+    "choices": {
+      "A": "120\u00b0",
+      "B": "135\u00b0",
+      "C": "150\u00b0",
+      "D": "210\u00b0"
+    },
+    "correctAnswer": "C",
+    "rationale": "To convert radians to degrees, multiply by $\\frac{180\u00b0}{\\pi}$:\n$$\\frac{5\\pi}{6} \\times \\frac{180\u00b0}{\\pi} = 5 \\times 30\u00b0 = 150\u00b0$$",
+    "objectives": [
+      "Use degree/radian measures, special angles, and the unit circle."
+    ],
+    "tags": [
+      "trigonometry",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Counting Principles",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "A canteen offers a lunch meal combo containing 1 main dish, 1 side dish, and 1 drink. If there are 4 choices of main dishes, 3 choices of side dishes, and 5 choices of drinks, how many unique meal combinations can be formed?",
+    "choices": {
+      "A": "12",
+      "B": "20",
+      "C": "60",
+      "D": "120"
+    },
+    "correctAnswer": "C",
+    "rationale": "By the Fundamental Counting Principle, the total number of unique combinations is the product of the number of choices for each item:\n\n$$4 \\times 3 \\times 5 = 60$$\n\n",
+    "objectives": [
+      "Solve problems involving probability, counting principles, permutations, and combinations."
+    ],
+    "tags": [
+      "statistics",
+      "easy"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Number Classification",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "Which of the following numbers is irrational?",
+    "choices": {
+      "A": "0.333...",
+      "B": "\\sqrt{0.49}",
+      "C": "\\frac{22}{7}",
+      "D": "\\sqrt{8}"
+    },
+    "correctAnswer": "D",
+    "rationale": "$0.333... = \\frac{1}{3}$ (rational); $\\sqrt{0.49} = 0.7 = \\frac{7}{10}$ (rational); $\\frac{22}{7}$ is a ratio of integers (rational). $\\sqrt{8} = 2\\sqrt{2}$, and since $\\sqrt{2}$ is non-repeating and non-terminating, $\\sqrt{8}$ is irrational.",
+    "objectives": [
+      "Classify real and imaginary numbers."
+    ],
+    "tags": [
+      "arithmetic",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Perimeter and Area",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "If the radius of a circle is doubled, by what factor does its area increase?",
+    "choices": {
+      "A": "2",
+      "B": "4",
+      "C": "8",
+      "D": "16"
+    },
+    "correctAnswer": "B",
+    "rationale": "The area of a circle is $A = \\pi r^2$. If the new radius is $r' = 2r$, then the new area is:\n\n$$A' = \\pi (2r)^2 = 4\\pi r^2 = 4A$$\n\nHence, the area increases by a factor of 4.",
+    "objectives": [
+      "Compute perimeter, area, volume, and surface area."
+    ],
+    "tags": [
+      "geometry",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Quadratic Equations",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "What are the roots of the quadratic equation $2x^2 - 5x - 3 = 0$?",
+    "choices": {
+      "A": "$x = 3$ and $x = -\\frac{1}{2}$",
+      "B": "$x = -3$ and $x = \\frac{1}{2}$",
+      "C": "$x = 1$ and $x = -\\frac{3}{2}$",
+      "D": "$x = -1$ and $x = \\frac{3}{2}$"
+    },
+    "correctAnswer": "A",
+    "rationale": "Factor the quadratic trinomial by grouping or inspection:\n\n$$2x^2 - 6x + x - 3 = 0$$\n\n\n\n$$2x(x - 3) + 1(x - 3) = 0$$\n\n$$(2x + 1)(x - 3) = 0$$\nSetting each factor to zero yields $x = -\\frac{1}{2}$ and $x = 3$.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logarithmic Equations",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Find the value of $x$ that satisfies the equation: $\\log_2(x) + \\log_2(x - 2) = 3$.",
+    "choices": {
+      "A": "4",
+      "B": "-2",
+      "C": "4 and -2",
+      "D": "8"
+    },
+    "correctAnswer": "A",
+    "rationale": "Using properties of logarithms, combine the terms:\n$$\\log_2(x(x - 2)) = 3$$\nConvert to exponential form:\n\n$$x(x - 2) = 2^3 \\implies x^2 - 2x = 8 \\implies x^2 - 2x - 8 = 0$$\n\nFactor the equation:\n$$(x - 4)(x + 2) = 0$$\nThis gives $x = 4$ or $x = -2$. Since the domain of a logarithm must be positive ($x > 0$ and $x - 2 > 0$), $x = -2$ is extraneous. Thus, $x = 4$.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Functions and Domain",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "What is the domain of the real-valued function $f(x) = \\frac{\\sqrt{x + 3}}{x - 2}$?",
+    "choices": {
+      "A": "$[-3, \\infty)$",
+      "B": "$(-3, 2) \\cup (2, \\infty)$",
+      "C": "$[-3, 2) \\cup (2, \\infty)$",
+      "D": "$(2, \\infty)$"
+    },
+    "correctAnswer": "C",
+    "rationale": "For $f(x)$ to be defined for real numbers, two conditions must be met:\n1) The term under the square root must be non-negative: $x + 3 \\ge 0 \\implies x \\ge -3$.\n2) The denominator cannot be zero: $x - 2 \\neq 0 \\implies x \\neq 2$.\nCombining these yields $[-3, 2) \\cup (2, \\infty)$.",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Coordinate Geometry",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "Find the equation of the line passing through the point $(3, -1)$ and perpendicular to the line $2x - 3y = 6$.",
+    "choices": {
+      "A": "3x + 2y = 7",
+      "B": "3x - 2y = 11",
+      "C": "2x + 3y = 3",
+      "D": "3x + 2y = 11"
+    },
+    "correctAnswer": "A",
+    "rationale": "Convert the given line's equation to slope-intercept form to find its slope: $3y = 2x - 6 \\implies y = \\frac{2}{3}x - 2$, so $m_1 = \\frac{2}{3}$.\nA perpendicular line has a slope that is the negative reciprocal: $m_2 = -\\frac{3}{2}$.\nUsing point-slope form with $(3, -1)$:\n\n$$y - (-1) = -\\frac{3}{2}(x - 3) \\implies 2(y + 1) = -3(x - 3)$$\n\n\n\n$$2y + 2 = -3x + 9 \\implies 3x + 2y = 7$$\n\n",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "coordinate_geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Sequences and Series",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "The 3rd term of an arithmetic sequence is 11 and the 8th term is 31. Find the 20th term of this sequence.",
+    "choices": {
+      "A": "75",
+      "B": "79",
+      "C": "83",
+      "D": "87"
+    },
+    "correctAnswer": "B",
+    "rationale": "The formula for the $n$-th term of an arithmetic sequence is $a_n = a_1 + (n - 1)d$.\n\n$$a_3 = a_1 + 2d = 11$$\n\n\n\n$$a_8 = a_1 + 7d = 31$$\n\nSubtracting the first equation from the second:\n\n$$5d = 20 \\implies d = 4$$\n\nSubstitute $d = 4$ into $a_1 + 2(4) = 11 \\implies a_1 = 3$.\nThe 20th term is:\n\n$$a_{20} = 3 + (20 - 1)4 = 3 + 19(4) = 3 + 76 = 79$$\n\n",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Polynomial Inequalities",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "Solve the quadratic inequality: $x^2 - 4x - 12 < 0$.",
+    "choices": {
+      "A": "x < -2 or x > 6",
+      "B": "-6 < x < 2",
+      "C": "-2 < x < 6",
+      "D": "x < -6 or x > 2"
+    },
+    "correctAnswer": "C",
+    "rationale": "Factor the quadratic expression:\n$$(x - 6)(x + 2) < 0$$\nThe critical points are $x = 6$ and $x = -2$. Testing intervals $(-\\infty, -2)$, $(-2, 6)$, and $(6, \\infty)$:\n- For $x = 0$ in $(-2, 6)$, $(0 - 6)(0 + 2) = -12 < 0$, which is true.\nTherefore, the solution set is $-2 < x < 6$.",
+    "objectives": [
+      "Solve and graph linear, polynomial, rational, and absolute value inequalities."
+    ],
+    "tags": [
+      "inequalities",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Absolute Value Inequalities",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "Find all real values of $x$ satisfying the inequality $|2x - 5| \\ge 7$.",
+    "choices": {
+      "A": "-1 \\le x \\le 6",
+      "B": "x \\le -1$ or $x \\ge 6",
+      "C": "x \\le -6$ or $x \\ge 1",
+      "D": "-6 \\le x \\le 1"
+    },
+    "correctAnswer": "B",
+    "rationale": "The absolute value inequality $|2x - 5| \\ge 7$ splits into two separate cases:\n1) $2x - 5 \\ge 7 \\implies 2x \\ge 12 \\implies x \\ge 6$\n2) $2x - 5 \\le -7 \\implies 2x \\le -2 \\implies x \\le -1$\nCombining these gives $x \\le -1$ or $x \\ge 6$.",
+    "objectives": [
+      "Solve and graph linear, polynomial, rational, and absolute value inequalities."
+    ],
+    "tags": [
+      "inequalities",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Circles",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "What is the center and radius of the circle defined by the equation $x^2 + y^2 - 6x + 8y + 9 = 0$?",
+    "choices": {
+      "A": "Center (3, -4), Radius 4",
+      "B": "Center (-3, 4), Radius 4",
+      "C": "Center (3, -4), Radius 16",
+      "D": "Center (-3, 4), Radius 16"
+    },
+    "correctAnswer": "A",
+    "rationale": "Complete the square for both $x$ and $y$:\n$$(x^2 - 6x + 9) + (y^2 + 8y + 16) = -9 + 9 + 16$$\n$$(x - 3)^2 + (y + 4)^2 = 16$$\nThe standard equation of a circle is $(x - h)^2 + (y - k)^2 = r^2$. Thus, the center $(h, k)$ is $(3, -4)$ and the radius $r = \\sqrt{16} = 4$.",
+    "objectives": [
+      "Analyze geometric figures, angles, triangles, polygons, and circles.",
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "geometry",
+      "coordinate_geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Volume and Surface Area",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "A solid right circular cylinder has a radius of 3 cm and a height of 10 cm. If it is melted down and recast into a solid cone with a radius of 5 cm, what will be the height of the new cone?",
+    "choices": {
+      "A": "3.6 cm",
+      "B": "10.8 cm",
+      "C": "12.0 cm",
+      "D": "18.0 cm"
+    },
+    "correctAnswer": "B",
+    "rationale": "The volume of the cylinder is:\n$$V_{\\text{cylinder}} = \\pi r_1^2 h_1 = \\pi (3)^2 (10) = 90\\pi \\text{ cm}^3$$\nThe volume of the cone is:\n$$V_{\\text{cone}} = \\frac{1}{3}\\pi r_2^2 h_2 = \\frac{1}{3}\\pi (5)^2 h_2 = \\frac{25\\pi}{3}h_2$$\nSince the volumes are equal:\n$$90\\pi = \\frac{25\\pi}{3}h_2 \\implies 270 = 25h_2 \\implies h_2 = \\frac{270}{25} = 10.8 \\text{ cm}$$",
+    "objectives": [
+      "Compute perimeter, area, volume, and surface area.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "geometry",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Similarity and Congruence",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "In $\\triangle ABC$, a line segment $DE$ is drawn parallel to $BC$ such that $D$ lies on $AB$ and $E$ lies on $AC$. If $AD = 4$ cm, $DB = 6$ cm, and the area of $\\triangle ADE$ is 16 $\\text{cm}^2$, what is the area of quadrilateral $BDEC$?",
+    "choices": {
+      "A": "24 $\\text{cm}^2$",
+      "B": "36 $\\text{cm}^2$",
+      "C": "84 $\\text{cm}^2$",
+      "D": "100 $\\text{cm}^2$"
+    },
+    "correctAnswer": "C",
+    "rationale": "Since $DE \\parallel BC$, $\\triangle ADE \\sim \\triangle ABC$. The ratio of their corresponding sides is:\n$$\\frac{AD}{AB} = \\frac{4}{4 + 6} = \\frac{4}{10} = \\frac{2}{5}$$\nThe ratio of their areas is the square of the scale factor:\n$$\\frac{\\text{Area}(\\triangle ADE)}{\\text{Area}(\\triangle ABC)} = \\left(\\frac{2}{5}\\right)^2 = \\frac{4}{25}$$\n$$\\frac{16}{\\text{Area}(\\triangle ABC)} = \\frac{4}{25} \\implies \\text{Area}(\\triangle ABC) = \\frac{16 \\times 25}{4} = 100 \\text{ cm}^2$$\nThe area of quadrilateral $BDEC$ is the area of $\\triangle ABC$ minus the area of $\\triangle ADE$:\n$$\\text{Area}(BDEC) = 100 - 16 = 84 \\text{ cm}^2$$",
+    "objectives": [
+      "Analyze geometric figures, angles, triangles, polygons, and circles.",
+      "Apply congruence, similarity, and measurement conversions."
+    ],
+    "tags": [
+      "geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Trigonometric Identities",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "Simplify the expression: $(\\csc \\theta - \\cot \\theta)(\\csc \\theta + \\cot \\theta)$.",
+    "choices": {
+      "A": "-1",
+      "B": "1",
+      "C": "\\tan^2 \\theta",
+      "D": "\\csc^2 \\theta"
+    },
+    "correctAnswer": "B",
+    "rationale": "Expand the difference of squares product:\n$$(\\csc \\theta - \\cot \\theta)(\\csc \\theta + \\cot \\theta) = \\csc^2 \\theta - \\cot^2 \\theta$$\nUsing the fundamental Pythagorean trigonometric identity $1 + \\cot^2 \\theta = \\csc^2 \\theta$, we have:\n$$\\csc^2 \\theta - \\cot^2 \\theta = 1$$",
+    "objectives": [
+      "Evaluate trigonometric functions and identities."
+    ],
+    "tags": [
+      "trigonometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Probability",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "A box contains 5 red balls and 7 blue balls. If two balls are drawn at random one after another without replacement, what is the probability that both balls drawn are red?",
+    "choices": {
+      "A": "\\frac{25}{144}",
+      "B": "\\frac{5}{33}",
+      "C": "\\frac{5}{14}",
+      "D": "\\frac{10}{33}"
+    },
+    "correctAnswer": "B",
+    "rationale": "The probability that the first ball is red is $\\frac{5}{12}$. After drawing a red ball without replacement, 4 red balls and 11 total balls remain. The probability that the second ball is red is $\\frac{4}{11}$.\nThe combined probability is:\n$$P(\\text{Both Red}) = \\frac{5}{12} \\times \\frac{4}{11} = \\frac{20}{132} = \\frac{5}{33}$$",
+    "objectives": [
+      "Solve problems involving probability, counting principles, permutations, and combinations.",
+      "Apply conditional probability concepts."
+    ],
+    "tags": [
+      "statistics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Permutations and Combinations",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "A committee of 4 members is to be selected from a pool of 6 men and 4 women. How many unique committees can be formed if the committee must contain exactly 2 men and 2 women?",
+    "choices": {
+      "A": "90",
+      "B": "210",
+      "C": "15",
+      "D": "60"
+    },
+    "correctAnswer": "A",
+    "rationale": "Select 2 men out of 6: $\\binom{6}{2} = \\frac{6 \\times 5}{2} = 15$.\nSelect 2 women out of 4: $\\binom{4}{2} = \\frac{4 \\times 3}{2} = 6$.\nBy the Fundamental Counting Principle, multiply the combinations together:\n$$15 \\times 6 = 90$$",
+    "objectives": [
+      "Solve problems involving probability, counting principles, permutations, and combinations."
+    ],
+    "tags": [
+      "statistics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logic",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "Which of the following propositions is logically equivalent to the statement $\\neg (p \\lor \\neg q)$?",
+    "choices": {
+      "A": "\\neg p \\land q",
+      "B": "\\neg p \\lor q",
+      "C": "\\neg p \\land \\neg q",
+      "D": "p \\land \\neg q"
+    },
+    "correctAnswer": "A",
+    "rationale": "Apply De Morgan's Laws to distribute the negation over the disjunction:\n$$\\neg (p \\lor \\neg q) \\equiv \\neg p \\land \\neg(\\neg q) \\equiv \\neg p \\land q$$",
+    "objectives": [
+      "Construct truth tables and determine logical equivalences."
+    ],
+    "tags": [
+      "logic",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Factoring Techniques",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "Factor completely the algebraic expression: $x^3 - 4x^2 - 9x + 36$.",
+    "choices": {
+      "A": "(x - 4)(x - 3)(x + 3)",
+      "B": "(x - 4)(x - 3)^2",
+      "C": "(x + 4)(x - 3)(x + 3)",
+      "D": "(x - 4)(x^2 + 9)"
+    },
+    "correctAnswer": "A",
+    "rationale": "Group the terms to factor by grouping:\n$$(x^3 - 4x^2) - (9x - 36) = x^2(x - 4) - 9(x - 4)$$\nFactor out the common binomial $(x - 4)$:\n$$(x^2 - 9)(x - 4)$$\nFactor the difference of squares $(x^2 - 9)$:\n$$(x - 3)(x + 3)(x - 4)$$",
+    "objectives": [
+      "Apply laws of exponents and factoring techniques."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Ratios and Percentages",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "An item is sold for \u20b13,400 after a 15% discount has been applied to its original retail price. What was the original price of the item?",
+    "choices": {
+      "A": "\u20b13,910",
+      "B": "\u20b14,000",
+      "C": "\u20b14,250",
+      "D": "\u20b14,500"
+    },
+    "correctAnswer": "B",
+    "rationale": "Let $P$ be the original price. After a 15% discount, the customer pays 85% of the original price:\n$$0.85P = 3400$$\n$$P = \\frac{3400}{0.85} = \\frac{340000}{85} = 4000$$",
+    "objectives": [
+      "Apply order of operations, ratios, proportions, and percentages.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "arithmetic",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Algebra",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "Given the system of equations $2x + y = 7$ and $x - y = 2$, what is the product of $x$ and $y$?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "rationale": "Add the two equations: $(2x + y) + (x - y) = 7 + 2 \\implies 3x = 9 \\implies x = 3$. Substitute $x=3$ into the second equation: $3 - y = 2 \\implies y = 1$. The product $x \times y = 3 \times 1 = 3$.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations"
+    ],
+    "tags": [
+      "algebra",
+      "systems of equations",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Triangles and Polygons",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "What is the measure of each interior angle of a regular octagon?",
+    "choices": {
+      "A": "108\u00b0",
+      "B": "120\u00b0",
+      "C": "135\u00b0",
+      "D": "144\u00b0"
+    },
+    "correctAnswer": "C",
+    "rationale": "The sum of the interior angles of an $n$-sided polygon is given by $(n - 2) \\times 180\u00b0$. For an octagon ($n = 8$):\n$$\\text{Sum} = (8 - 2) \\times 180\u00b0 = 6 \\times 180\u00b0 = 1080\u00b0$$\nFor a regular octagon, each interior angle is equal:\n$$\\text{Interior Angle} = \\frac{1080\u00b0}{8} = 135\u00b0$$",
+    "objectives": [
+      "Analyze geometric figures, angles, triangles, polygons, and circles."
+    ],
+    "tags": [
+      "geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Algebra",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "Solve for $x$: $\\frac{2x+1}{3} = \\frac{x-2}{2}$",
+    "choices": {
+      "A": "-6",
+      "B": "-8",
+      "C": "4",
+      "D": "8"
+    },
+    "correctAnswer": "B",
+    "rationale": "Cross-multiply to get $2(2x + 1) = 3(x - 2)$. This simplifies to $4x + 2 = 3x - 6$. Subtracting $3x$ from both sides gives $x + 2 = -6$. Subtracting 2 gives $x = -8$.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations"
+    ],
+    "tags": [
+      "algebra",
+      "rational equations",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Special Angles",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "Evaluate the exact value of $\\sin(225\u00b0) \\cos(135\u00b0)$.",
+    "choices": {
+      "A": "-\\frac{1}{2}",
+      "B": "\\frac{1}{2}",
+      "C": "-\\frac{\\sqrt{2}}{2}",
+      "D": "\\frac{\\sqrt{3}}{2}"
+    },
+    "correctAnswer": "B",
+    "rationale": "$225\u00b0$ is in Quadrant III, where sine is negative. The reference angle is $225\u00b0 - 180\u00b0 = 45\u00b0$, so $\\sin(225\u00b0) = -\\sin(45\u00b0) = -\\frac{\\sqrt{2}}{2}$.\n$135\u00b0$ is in Quadrant II, where cosine is negative. The reference angle is $180\u00b0 - 135\u00b0 = 45\u00b0$, so $\\cos(135\u00b0) = -\\cos(45\u00b0) = -\\frac{\\sqrt{2}}{2}$.\nTheir product is:\n$$\\left(-\\frac{\\sqrt{2}}{2}\\right) \\times \\left(-\\frac{\\sqrt{2}}{2}\\right) = \\frac{2}{4} = \\frac{1}{2}\n\n$$",
+    "objectives": [
+      "Use degree/radian measures, special angles, and the unit circle."
+    ],
+    "tags": [
+      "trigonometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Sine and Cosine Laws",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "In $\\triangle ABC$, side $a = 5$, side $b = 8$, and the included angle $\\angle C = 60\u00b0$. Find the length of side $c$.",
+    "choices": {
+      "A": "7",
+      "B": "\\sqrt{129}",
+      "C": "\\sqrt{39}",
+      "D": "9"
+    },
+    "correctAnswer": "A",
+    "rationale": "Use the Law of Cosines:\n$$\n\nc^2 = a^2 + b^2 - 2ab \\cos C$$\n\n$$c^2 = 5^2 + 8^2 - 2(5)(8) \\cos(60\u00b0)$$\n\n\n\n$$c^2 = 25 + 64 - 80\\left(\\frac{1}{2}\\right) = 89 - 40 = 49$$\n\n\n\n$$c = \\sqrt{49} = 7$$\n\n",
+    "objectives": [
+      "Apply sine and cosine laws."
+    ],
+    "tags": [
+      "trigonometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Complex Numbers",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "Simplify the expression $\\frac{5}{2 - i}$ into the standard complex form $a + bi$.",
+    "choices": {
+      "A": "2 - i",
+      "B": "2 + i",
+      "C": "4 + 2i",
+      "D": "10 + 5i"
+    },
+    "correctAnswer": "B",
+    "rationale": "Multiply the numerator and denominator by the conjugate of the denominator ($2 + i$):\n$$\\frac{5}{2 - i} \\times \\frac{2 + i}{2 + i} = \\frac{5(2 + i)}{4 - i^2} = \\frac{5(2 + i)}{4 - (-1)} = \\frac{5(2 + i)}{5} = 2 + i$$",
+    "objectives": [
+      "Classify real and imaginary numbers."
+    ],
+    "tags": [
+      "arithmetic",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Linear Programming / Systems",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "A bakery makes two types of bread: Pandesal and Ensaymada. Each batch of Pandesal requires 2 kg of flour, and each batch of Ensaymada requires 3 kg of flour. The bakery has a maximum of 30 kg of flour available per day. If $x$ represents the number of Pandesal batches and $y$ represents Ensaymada batches, which inequality represents this constraint?",
+    "choices": {
+      "A": "2x + 3y \\le 30",
+      "B": "3x + 2y \\le 30",
+      "C": "2x + 3y \\ge 30",
+      "D": "2x + 3y < 30"
+    },
+    "correctAnswer": "A",
+    "rationale": "Each batch of Pandesal uses 2 kg, so $x$ batches use $2x$ kg. Each batch of Ensaymada uses 3 kg, so $y$ batches use $3y$ kg. The total flour used is $2x + 3y$. Since the maximum flour available is 30 kg, the total must be less than or equal to 30: $2x + 3y \\le 30$.",
+    "objectives": [
+      "Solve and graph linear, polynomial, rational, and absolute value inequalities.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "inequalities",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logarithm Properties",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "If $\\log_b 2 = x$ and $\\log_b 3 = y$, express $\\log_b 18$ in terms of $x$ and $y$.",
+    "choices": {
+      "A": "x + 2y",
+      "B": "2x + y",
+      "C": "x + y^2",
+      "D": "x^2y"
+    },
+    "correctAnswer": "A",
+    "rationale": "Express 18 in terms of its prime factors: $18 = 2 \\times 9 = 2 \\times 3^2$.\nUsing the product and power rules of logarithms:\n$$\\log_b 18 = \\log_b (2 \\times 3^2) = \\log_b 2 + \\log_b (3^2) = \\log_b 2 + 2\\log_b 3$$\nSubstituting $x$ and $y$ gives $x + 2y$.",
+    "objectives": [
+      "Simplify and evaluate algebraic expressions.",
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Arithmetic Mean / Rates",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "The average score of 12 students in a class is 85. When 3 more students take the test, the new average becomes 82. What is the average score of the 3 students who took the test later?",
+    "choices": {
+      "A": "70",
+      "B": "73",
+      "C": "76",
+      "D": "80"
+    },
+    "correctAnswer": "A",
+    "rationale": "The total score of the first 12 students is $12 \\times 85 = 1020$.\nThe total number of students now is $12 + 3 = 15$. The total score of all 15 students is $15 \\times 82 = 1230$.\nThe sum of the scores of the 3 new students is $1230 - 1020 = 210$.\nTheir average score is $\\frac{210}{3} = 70$.",
+    "objectives": [
+      "Interpret graphs and compute measures of central tendency.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "statistics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Matrices / Systems",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "For what value of $k$ will the system of linear equations have infinitely many solutions?\n$$\\begin{cases} 3x - 2y = 7 \\\\ 9x - 6y = 2k + 1 \\end{cases}\n\n$$",
+    "choices": {
+      "A": "3",
+      "B": "10",
+      "C": "7",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "rationale": "For a system of linear equations to have infinitely many solutions, the two equations must be dependent (multiples of each other). Looking at the coefficients of $x$ and $y$, the second equation is exactly 3 times the first equation:\n$$\n\n3 \\times (3x - 2y) = 3 \\times 7 \\implies 9x - 6y = 21$$\nTherefore, the constant terms must also match:\n\n$$2k + 1 = 21 \\implies 2k = 20 \\implies k = 10$$\n\n",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Geometric Series",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "Find the sum of the infinite geometric series: $12 + 4 + \\frac{4}{3} + \\frac{4}{9} + \\dots$",
+    "choices": {
+      "A": "16",
+      "B": "18",
+      "C": "24",
+      "D": "36"
+    },
+    "correctAnswer": "B",
+    "rationale": "The first term is $a_1 = 12$. The common ratio $r$ is $\\frac{4}{12} = \\frac{1}{3}$. Since $|r| < 1$, we can use the infinite geometric series sum formula:\n\n$$S = \\frac{a_1}{1 - r} = \\frac{12}{1 - \\frac{1}{3}} = \\frac{12}{\\frac{2}{3}} = 12 \\times \\frac{3}{2} = 18$$\n\n",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Polynomial Remainder",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "When the polynomial $P(x) = 2x^3 - kx^2 + 4x - 5$ is divided by $x - 2$, the remainder is 7. Find the value of $k$.",
+    "choices": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "correctAnswer": "C",
+    "rationale": "According to the Remainder Theorem, the remainder when $P(x)$ is divided by $x - 2$ is equal to $P(2)$:\n\n$$P(2) = 2(2)^3 - k(2)^2 + 4(2) - 5 = 7$$\n\n\n\n$$2(8) - 4k + 8 - 5 = 7$$\n\n\n\n$$16 - 4k + 3 = 7 \\implies 19 - 4k = 7$$\n\n$$-4k = -12 \\implies k = 3$$",
+    "objectives": [
+      "Simplify and evaluate algebraic expressions."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Geometry / Circles",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "An arc of a circle subtends a central angle of $120\u00b0$. If the radius of the circle is 6 cm, what is the length of the arc?",
+    "choices": {
+      "A": "2\\pi \\text{ cm}",
+      "B": "4\\pi \\text{ cm}",
+      "C": "6\\pi \\text{ cm}",
+      "D": "12\\pi \\text{ cm}"
+    },
+    "correctAnswer": "B",
+    "rationale": "The formula for the arc length is $s = \\frac{\\theta}{360\u00b0} \\times 2\\pi r$. Given $\\theta = 120\u00b0$ and $r = 6\\text{ cm}$:\n\n$$s = \\frac{120\u00b0}{360\u00b0} \\times 2\\pi(6) = \\frac{1}{3} \\times 12\\pi = 4\\pi \\text{ cm}$$\n\n",
+    "objectives": [
+      "Analyze geometric figures, angles, triangles, polygons, and circles."
+    ],
+    "tags": [
+      "geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Probability / Counting",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "Two fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers showing on top is a prime number?",
+    "choices": {
+      "A": "\\frac{5}{12}",
+      "B": "\\frac{7}{18}",
+      "C": "\\frac{1}{2}",
+      "D": "\\frac{4}{9}"
+    },
+    "correctAnswer": "A",
+    "rationale": "The total number of outcomes when rolling two dice is $6 \\times 6 = 36$. The possible sums range from 2 to 12. The prime sums are 2, 3, 5, 7, and 11.\nLet's list the outcomes for each prime sum:\n- Sum = 2: (1,1) $\\rightarrow$ 1 outcome\n- Sum = 3: (1,2), (2,1) $\\rightarrow$ 2 outcomes\n- Sum = 5: (1,4), (2,3), (3,2), (4,1) $\\rightarrow$ 4 outcomes\n- Sum = 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) $\\rightarrow$ 6 outcomes\n- Sum = 11: (5,6), (6,5) $\\rightarrow$ 2 outcomes\nTotal successful outcomes = $1 + 2 + 4 + 6 + 2 = 15$.\nProbability = $\\frac{15}{36} = \\frac{5}{12}$.",
+    "objectives": [
+      "Solve problems involving probability, counting principles, permutations, and combinations."
+    ],
+    "tags": [
+      "statistics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Rational Expressions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "Simplify the following rational expression completely: $\\frac{x^2 - 9}{2x^2 - 5x - 3}$.",
+    "choices": {
+      "A": "\\frac{x + 3}{2x + 1}",
+      "B": "\\frac{x - 3}{2x - 1}",
+      "C": "\\frac{x + 3}{2x - 1}",
+      "D": "\\frac{x - 3}{2x + 1}"
+    },
+    "correctAnswer": "A",
+    "rationale": "Factor both the numerator and the denominator:\n- Numerator: $x^2 - 9 = (x - 3)(x + 3)$\n- Denominator: $2x^2 - 5x - 3 = (2x + 1)(x - 3)$\nCancel the common factor $(x - 3)$ from both numerator and denominator:\n$$\\frac{(x - 3)(x + 3)}{(2x + 1)(x - 3)} = \\frac{x + 3}{2x + 1}\n\n$$",
+    "objectives": [
+      "Apply laws of exponents and factoring techniques."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Work Problems",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "Pipe A can fill a water tank in 4 hours, while Pipe B can empty the same tank in 6 hours. If both pipes are opened at the same time when the tank is completely empty, how long will it take to fill the tank to full capacity?",
+    "choices": {
+      "A": "2 hours",
+      "B": "5 hours",
+      "C": "10 hours",
+      "D": "12 hours"
+    },
+    "correctAnswer": "D",
+    "rationale": "Let $t$ be the total time in hours to fill the tank. Pipe A's filling rate is $+\\frac{1}{4}$ tank per hour, and Pipe B's emptying rate is $-\\frac{1}{6}$ tank per hour. Together, their combined rate satisfies:\n$$\n\n\\frac{1}{4} - \\frac{1}{6} = \\frac{1}{t}\n\n$$\nFind a common denominator for the left side (12):\n$$\n\n\\frac{3}{12} - \\frac{2}{12} = \\frac{1}{12} = \\frac{1}{t} \\implies t = 12 \\text{ hours}\n\n$$",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Conic Sections",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "Identify the type of conic section represented by the equation $4x^2 - 9y^2 + 16x + 54y - 29 = 0$.",
+    "choices": {
+      "A": "Circle",
+      "B": "Parabola",
+      "C": "Ellipse",
+      "D": "Hyperbola"
+    },
+    "correctAnswer": "D",
+    "rationale": "In a general second-degree equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, we can determine the type of conic section by inspecting the coefficients of the squared terms ($x^2$ and $y^2$). Here, $A = 4$ and $C = -9$. Because $A$ and $C$ have opposite signs ($AC < 0$), the equation represents a hyperbola.",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "coordinate_geometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logarithmic Equations",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "Solve for $x$: $3^{2x - 1} = 27^{x + 2}$.",
+    "choices": {
+      "A": "-7",
+      "B": "-5",
+      "C": "-3",
+      "D": "5"
+    },
+    "correctAnswer": "A",
+    "rationale": "Express 27 as a power of 3: $27 = 3^3$.\n$$\n\n3^{2x - 1} = (3^3)^{x + 2}\n\n$$\n$$\n\n3^{2x - 1} = 3^{3x + 6}\n\n$$\nSince the bases are equal, equate the exponents:\n$$\n\n2x - 1 = 3x + 6$$\n$$-1 - 6 = 3x - 2x \\implies x = -7$$",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations.",
+      "Apply laws of exponents and factoring techniques."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Absolute Value Equations",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "Find the sum of all real solutions to the equation $|3x - 4| = 11$.",
+    "choices": {
+      "A": "\\frac{8}{3}",
+      "B": "5",
+      "C": "-\\frac{7}{3}",
+      "D": "4"
+    },
+    "correctAnswer": "A",
+    "rationale": "The absolute value equation splits into two cases:\n1) $3x - 4 = 11 \\implies 3x = 15 \\implies x_1 = 5$\n2) $3x - 4 = -11 \\implies 3x = -7 \\implies x_2 = -\\frac{7}{3}$\nSum of the solutions = $5 + \\left(-\\frac{7}{3}\\right) = \\frac{15 - 7}{3} = \\frac{8}{3}$.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Mixture Problems",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "How many liters of a 20% acid solution must be mixed with 6 liters of a 50% acid solution to produce a 30% acid solution?",
+    "choices": {
+      "A": "8 liters",
+      "B": "10 liters",
+      "C": "12 liters",
+      "D": "15 liters"
+    },
+    "correctAnswer": "C",
+    "rationale": "Let $x$ be the number of liters of the 20% solution. Write an equation tracking the total amount of pure acid:\n\n$$0.20(x) + 0.50(6) = 0.30(x + 6)$$\n\n\n\n$$0.2x + 3 = 0.3x + 1.8$$\n\n\n\n$$3 - 1.8 = 0.3x - 0.2x$$\n\n\n\n$$1.2 = 0.1x \\implies x = 12 \\text{ liters}$$\n\n",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations.",
+      "Solve word problems using algebraic models."
+    ],
+    "tags": [
+      "algebra",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Rational Inequalities",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "Find the complete solution set for the rational inequality: $\\frac{x - 3}{x + 5} \\le 0$.",
+    "choices": {
+      "A": "[-5, 3]",
+      "B": "(-5, 3]",
+      "C": "(-\\infty, -5) \\cup [3, \\infty)",
+      "D": "(-5, 3)"
+    },
+    "correctAnswer": "B",
+    "rationale": "The critical values where the expression is zero or undefined are $x = 3$ (numerator zero) and $x = -5$ (denominator zero). Note that $x$ cannot be $-5$ because division by zero is undefined.\nTest the intervals defined by these critical values:\n- $(-\\infty, -5)$: Choose $x = -6 \\implies \\frac{-6-3}{-6+5} = \\frac{-9}{-1} = 9 > 0$ (False)\n- $(-5, 3]$: Choose $x = 0 \\implies \\frac{0-3}{0+5} = -\\frac{3}{5} \\le 0$ (True)\n- $[3, \\infty)$: Choose $x = 4 \\implies \\frac{4-3}{4+5} = \\frac{1}{9} > 0$ (False)\nTherefore, the solution interval includes 3 but excludes $-5$, written as $(-5, 3]$.",
+    "objectives": [
+      "Solve and graph linear, polynomial, rational, and absolute value inequalities."
+    ],
+    "tags": [
+      "inequalities",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Systems of Non-linear Equations",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "Find all real solutions $(x, y)$ to the system of equations:\n$$\\begin{cases} x^2 + y^2 = 25 \\\\ x - y = 1 \\end{cases}\n\n$$",
+    "choices": {
+      "A": "(4, 3) and (-3, -4)",
+      "B": "(4, 3) and (3, 4)",
+      "C": "(5, 4) and (-4, -5)",
+      "D": "(4, 3) only"
+    },
+    "correctAnswer": "A",
+    "rationale": "From the second equation, express $x$ in terms of $y$: $x = y + 1$.\nSubstitute this into the first equation:\n$$\n\n(y + 1)^2 + y^2 = 25$$\n\n$$y^2 + 2y + 1 + y^2 = 25 \\implies 2y^2 + 2y - 24 = 0$$\n\n\nDivide the whole equation by 2:\n\n$$y^2 + y - 12 = 0 \\implies (y + 4)(y - 3) = 0$$\n\nThus, $y = -4$ or $y = 3$.\n- If $y = 3$, $x = 3 + 1 = 4 \\implies (4, 3)$\n- If $y = -4$, $x = -4 + 1 = -3 \\implies (-3, -4)$\nBoth points satisfy both original equations.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations.",
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Combinatorics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "How many distinct 7-letter arrangements can be made using all the letters of the word \"ALGEBRA\"?",
+    "choices": {
+      "A": "2520",
+      "B": "5040",
+      "C": "1260",
+      "D": "720"
+    },
+    "correctAnswer": "A",
+    "rationale": "The word \"ALGEBRA\" has 7 letters in total, where the letter 'A' appears 2 times, and all other letters (L, G, E, B, R) appear once.\nThe number of distinct permutations of a multiset is given by $\\frac{n!}{n_1! n_2! \\dots n_k!}$:\n$$\n\n\\text{Permutations} = \\frac{7!}{2!} = \\frac{5040}{2} = 2520$$",
+    "objectives": [
+      "Solve problems involving probability, counting principles, permutations, and combinations."
+    ],
+    "tags": [
+      "statistics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Functions and Inverses",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "Find the inverse function $f^{-1}(x)$ of the one-to-one function $f(x) = \\frac{2x + 3}{5x - 4}$.",
+    "choices": {
+      "A": "f^{-1}(x) = \\frac{4x + 3}{5x - 2}",
+      "B": "f^{-1}(x) = \\frac{4x - 3}{5x + 2}",
+      "C": "f^{-1}(x) = \\frac{5x - 4}{2x + 3}",
+      "D": "f^{-1}(x) = \\frac{2x - 4}{5x + 3}"
+    },
+    "correctAnswer": "A",
+    "rationale": "To find the inverse, set $y = f(x)$, then interchange $x$ and $y$, and solve for $y$:\n\n$$x = \\frac{2y + 3}{5y - 4}$$\n\nMultiply both sides by $(5y - 4)$:\n\n$$x(5y - 4) = 2y + 3 \\implies 5xy - 4x = 2y + 3$$\n\nGroup all terms containing $y$ on one side:\n\n$$5xy - 2y = 4x + 3$$\n\nFactor out $y$:\n\n$$y(5x - 2) = 4x + 3 \\implies y = \\frac{4x + 3}{5x - 2}$$\n\nTherefore, $f^{-1}(x) = \\frac{4x + 3}{5x - 2}$.",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Trigonometry / Double Angle",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "Given that $\\sin \\theta = \\frac{3}{5}$ and $\\theta$ lies in Quadrant II, find the exact value of $\\cos(2\\theta)$.",
+    "choices": {
+      "A": "\\frac{7}{25}",
+      "B": "-\\frac{7}{25}",
+      "C": "\\frac{24}{25}",
+      "D": "-\\frac{24}{25}"
+    },
+    "correctAnswer": "A",
+    "rationale": "Use the double-angle identity for cosine that only requires $\\sin \\theta$:\n$$\\cos(2\\theta) = 1 - 2\\sin^2 \\theta$$\nNotice that the quadrant of $\\theta$ does not affect the result here because the sine value is squared:\n$$\\cos(2\\theta) = 1 - 2\\left(\\frac{3}{5}\\right)^2 = 1 - 2\\left(\\frac{9}{25}\\right) = 1 - \\frac{18}{25} = \\frac{7}{25}\n\n$$",
+    "objectives": [
+      "Evaluate trigonometric functions and identities."
+    ],
+    "tags": [
+      "trigonometry",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Geometry / Circles and Inscription",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "A square is inscribed inside a circle of radius $R$. What is the area of the region inside the circle but outside the square?",
+    "choices": {
+      "A": "R^2(\\pi - 2)",
+      "B": "R^2(\\pi - 4)",
+      "C": "2R^2(\\pi - 1)",
+      "D": "R^2\\left(\\pi - \\frac{1}{2}\\right)"
+    },
+    "correctAnswer": "A",
+    "rationale": "The area of the circle is $A_{\\text{circle}} = \\pi R^2$.\nThe diagonal of the inscribed square is equal to the diameter of the circle, which is $2R$. Let $s$ be the side length of the square. By the Pythagorean theorem:\n$$\n\ns^2 + s^2 = (2R)^2 \\implies 2s^2 = 4R^2 \\implies s^2 = 2R^2$$\nSince $s^2$ is the area of the square, $A_{\\text{square}} = 2R^2$.\nThe area of the region outside the square but inside the circle is:\n$$\\text{Area} = A_{\\text{circle}} - A_{\\text{square}} = \\pi R^2 - 2R^2 = R^2(\\pi - 2)\n\n$$",
+    "objectives": [
+      "Compute perimeter, area, volume, and surface area.",
+      "Analyze geometric figures, angles, triangles, polygons, and circles."
+    ],
+    "tags": [
+      "geometry",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Logarithmic System",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "Solve for $x$ in the equation: $x^{\\log_x(10)} + 10^{\\log_{10}(x)} = 20$.",
+    "choices": {
+      "A": "10",
+      "B": "1",
+      "C": "2",
+      "D": "No real solution"
+    },
+    "correctAnswer": "A",
+    "rationale": "Apply the fundamental identity of logarithms: $b^{\\log_b(a)} = a$.\n- First term: $x^{\\log_x(10)} = 10$ (for $x > 0, x \\neq 1$).\n- Second term: $10^{\\log_{10}(x)} = x$ (for $x > 0$).\nSubstitute these simplifications back into the original equation:\n$$\n\n 10 + x = 20 \\implies x = 10$$\nChecking conditions: $10 > 0$ and $10 \\neq 1$, so $x = 10$ is a valid solution.",
+    "objectives": [
+      "Solve linear, quadratic, logarithmic, radical, and rational equations."
+    ],
+    "tags": [
+      "algebra",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Properties of Integers / Divisibility",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "What is the remainder when $3^{100}$ is divided by 7?",
+    "choices": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "correctAnswer": "D",
+    "rationale": "We can find a pattern in the remainders of powers of 3 modulo 7:\n- $3^1 \\equiv 3 \\pmod 7$\n- $3^2 \\equiv 2 \\pmod 7$\n- $3^3 = 27 \\equiv 6 \\pmod 7$\n- $3^4 = 81 \\equiv 4 \\pmod 7$\n- $3^5 = 243 \\u2261 5 \\pmod 7$\n- $3^6 = 729 \\equiv 1 \\pmod 7$\nThe remainders repeat every 6 powers (Fermat's Little Theorem also states $3^6 \\equiv 1 \\pmod 7$).\nDivide the exponent 100 by 6:\n\n $$100 = 6 \\times 16 + 4$$\n\n \nTherefore:\n\n $$3^{100} \\equiv 3^4 \\equiv 4 \\pmod 7$$\n\n \nThe remainder is 4.",
+    "objectives": [
+      "Determine factors, multiples, and divisibility."
+    ],
+    "tags": [
+      "arithmetic",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Advanced Geometry",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "A sphere is perfectly inscribed inside a right circular cone with a base radius of 6 cm and a height of 8 cm. What is the radius of the inscribed sphere?",
+    "choices": {
+      "A": "2 cm",
+      "B": "3 cm",
+      "C": "2.5 cm",
+      "D": "1.5 cm"
+    },
+    "correctAnswer": "B",
+    "rationale": "Consider a 2D cross-section passing vertically through the vertex of the cone and the center of the sphere. This forms an isosceles triangle with base equal to the diameter of the cone's base ($2 \\times 6 = 12\\text{ cm}$) and height equal to the height of the cone ($8\\text{ cm}$).\\nThe slant height $L$ of the cone can be found using the Pythagorean theorem:\\n\\n $$L = \\sqrt{6^2 + 8^2} = 10 \\text{ cm}$$\\n\\n \\nThe cross-section of the sphere is a circle inscribed inside this triangle (the incircle of the triangle).\\nThe radius $r$ of the incircle is given by $r = \\frac{\\text{Area}}{\\text{Semiperimeter}}$.\\n- $\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} \\times 12 \\times 8 = 48$\\n- $\\text{Semiperimeter } s = \\frac{10 + 10 + 12}{2} = 16$\\n\\n $$r = \\frac{48}{16} = 3 \\text{ cm}$$\\n\\n ",
+    "objectives": [
+      "Compute perimeter, area, volume, and surface area.",
+      "Analyze geometric figures, angles, triangles, polygons, and circles."
+    ],
+    "tags": [
+      "geometry",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Mathematics",
+    "subtopic": "Advanced Sequences / Series",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "Find the value of the following telescoping infinite series sum:\n$$\\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 3n + 2}\n\n $$",
+    "choices": {
+      "A": "\\frac{1}{2}",
+      "B": "1",
+      "C": "\\frac{3}{4}",
+      "D": "\\frac{2}{3}"
+    },
+    "correctAnswer": "A",
+    "rationale": "Factor the denominator: $n^2 + 3n + 2 = (n + 1)(n + 2)$.\\nUse partial fraction decomposition:\\n$$\\n\\n \\frac{1}{(n+1)(n+2)} = \\frac{A}{n+1} + \\frac{B}{n+2}\\n\\n $$\\n$$\\n\\n 1 = A(n + 2) + B(n + 1)\\n\\n $$\\n- For $n = -1 \\implies A = 1$\\n- For $n = -2 \\implies B = -1$\\nSo the general term is $\\frac{1}{n+1} - \\frac{1}{n+2}$. Expand the series as a telescoping sum:\\n$$\\n\\n S = \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\left(\\frac{1}{4} - \\frac{1}{5}\\right) + \\dots$$\\nAll inner terms cancel out, leaving only the first term:\\n\\n $$S = \\frac{1}{2}$$\\n\\n ",
+    "objectives": [
+      "Analyze functions, sequences, series, and coordinate geometry."
+    ],
+    "tags": [
+      "algebra",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  }
+]

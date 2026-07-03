@@ -1,0 +1,1934 @@
+[
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Synonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "Which word is the closest synonym to **serene**?",
+    "choices": {
+      "A": "Tranquil",
+      "B": "Agitated",
+      "C": "Gloomy",
+      "D": "Frantic"
+    },
+    "correctAnswer": "A",
+    "rationale": "Serene means calm and peaceful, which is synonymous with tranquil. The other options are antonyms or unrelated.",
+    "objectives": [
+      "Vocabulary: synonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "synonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Subject-Verb Agreement",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "Choose the sentence that is grammatically correct.",
+    "choices": {
+      "A": "The list of items are on the table.",
+      "B": "The list of items is on the table.",
+      "C": "The list of items were on the table.",
+      "D": "The list of items have been on the table."
+    },
+    "correctAnswer": "B",
+    "rationale": "The subject is 'list', which is singular. The phrase 'of items' is a prepositional phrase and does not affect the verb. Therefore, the singular verb 'is' is correct.",
+    "objectives": [
+      "Grammar and Composition: subject-verb agreement"
+    ],
+    "tags": [
+      "grammar",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Commas",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "Which sentence uses commas correctly?",
+    "choices": {
+      "A": "After the long trip we finally arrived at our destination.",
+      "B": "After the long trip, we finally arrived at our destination.",
+      "C": "After, the long trip we finally arrived at our destination.",
+      "D": "After the long trip we, finally arrived at our destination."
+    },
+    "correctAnswer": "B",
+    "rationale": "A comma is needed after an introductory prepositional phrase like 'After the long trip' to separate it from the main clause.",
+    "objectives": [
+      "Punctuation and Mechanics: commas"
+    ],
+    "tags": [
+      "punctuation",
+      "commas"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Balarila",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "Alin sa mga sumusunod na pangungusap ang wasto ang pagkakagamit ng pangatnig?",
+    "choices": {
+      "A": "Gusto kong manood ng sine at kumain ng pizza.",
+      "B": "Gusto kong manood ng sine pero kumain ng pizza.",
+      "C": "Gusto kong manood ng sine ngunit kumain ng pizza.",
+      "D": "Gusto kong manood ng sine o kumain ng pizza."
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang pangatnig na 'at' ay ginagamit upang mag-ugnay ng dalawang magkatulad na kaisipan o aksyon. Ang 'gustong manood' at 'kumain' ay parehong nais gawin, kaya ang 'at' ang angkop.",
+    "objectives": [
+      "Filipino: balarilang Filipino"
+    ],
+    "tags": [
+      "filipino",
+      "balarila",
+      "pangatnig"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Contextual Word Meanings",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "In the sentence, 'The new policy will **affect** the way we process applications,' the word affect means:",
+    "choices": {
+      "A": "To produce a change in",
+      "B": "A result or outcome",
+      "C": "To pretend or fake",
+      "D": "To have an emotional response"
+    },
+    "correctAnswer": "A",
+    "rationale": "In this context, 'affect' is used as a verb meaning to influence or produce a change in something. The other options are either the noun 'effect' or other definitions of 'affect'.",
+    "objectives": [
+      "Vocabulary: contextual word meanings"
+    ],
+    "tags": [
+      "vocabulary",
+      "context-clues"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Run-on Sentences",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 6,
+    "questionText": "Identify the run-on sentence below.",
+    "choices": {
+      "A": "I like to read books, and I enjoy writing stories.",
+      "B": "I like to read books I enjoy writing stories.",
+      "C": "I like to read books; I enjoy writing stories.",
+      "D": "I like to read books, but I enjoy writing stories more."
+    },
+    "correctAnswer": "B",
+    "rationale": "A run-on sentence occurs when two independent clauses are joined without proper punctuation or conjunction. 'I like to read books' and 'I enjoy writing stories' are both independent clauses that need a conjunction or punctuation.",
+    "objectives": [
+      "Sentence Structure: run-on sentences"
+    ],
+    "tags": [
+      "sentence-structure",
+      "run-on-sentences"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction / Word Choice: Commonly Confused Words",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "Choose the word that correctly completes the sentence: 'The professor's comments were very _____ and helped me understand the topic better.'",
+    "choices": {
+      "A": "illusive",
+      "B": "elusive",
+      "C": "allusive",
+      "D": "illusory"
+    },
+    "correctAnswer": "C",
+    "rationale": "Allusive means containing or making indirect references; in this context, it suggests the comments were insightful and referential. 'Elusive' means hard to find, 'illusive' means deceptive, and 'illusory' means based on illusion.",
+    "objectives": [
+      "Diction / Word Choice: commonly confused words correctly"
+    ],
+    "tags": [
+      "diction",
+      "commonly-confused-words"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Tayutay",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "Anong uri ng tayutay ang ginamit sa sumusunod na pahayag: 'Ang kanyang mga ngiti ay sinag ng araw sa aking madilim na mundo.'?",
+    "choices": {
+      "A": "Pagtutulad",
+      "B": "Pagwawangis",
+      "C": "Personipikasyon",
+      "D": "Hayperbole"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang pagwawangis ay isang tayutay kung saan ang isang bagay ay inihahambing sa pamamagitan ng paggamit ng mga salitang 'ay' o 'kung' upang ipakita ang pagkakatulad. Dito, ang 'ngiti' ay inihalintulad sa 'sinag ng araw'.",
+    "objectives": [
+      "Filipino: tayutay"
+    ],
+    "tags": [
+      "filipino",
+      "tayutay"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Pronoun-Antecedent Agreement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "Select the sentence with correct pronoun-antecedent agreement.",
+    "choices": {
+      "A": "Every student must bring their own book.",
+      "B": "Every student must bring his or her own book.",
+      "C": "Every student must bring his own book.",
+      "D": "Every student must bring her own book."
+    },
+    "correctAnswer": "B",
+    "rationale": "The singular indefinite pronoun 'Every student' requires a singular pronoun. While 'their' is commonly used in informal contexts, 'his or her' is traditionally considered more grammatically correct and gender-neutral.",
+    "objectives": [
+      "Grammar and Composition: pronoun-antecedent agreement"
+    ],
+    "tags": [
+      "grammar",
+      "pronoun-antecedent-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Idiomatic Expressions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "What does the idiom 'to let the cat out of the bag' mean?",
+    "choices": {
+      "A": "To reveal a secret",
+      "B": "To make a mistake",
+      "C": "To get into trouble",
+      "D": "To free an animal"
+    },
+    "correctAnswer": "A",
+    "rationale": "The idiom 'to let the cat out of the bag' means to accidentally or carelessly reveal a secret.",
+    "objectives": [
+      "Vocabulary: idiomatic expressions"
+    ],
+    "tags": [
+      "vocabulary",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "Identify the error in the sentence: 'Neither the teacher nor the students was aware of the change in schedule.'",
+    "choices": {
+      "A": "Neither",
+      "B": "nor",
+      "C": "was",
+      "D": "in"
+    },
+    "correctAnswer": "C",
+    "rationale": "When subjects are joined by 'neither...nor', the verb agrees with the subject closer to it. The subject closer to the verb is 'students', which is plural, so the verb should be 'were', not 'was'.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: identify grammatical and stylistic errors"
+    ],
+    "tags": [
+      "error-identification",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Clarity and Concision",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "Which revision best improves the clarity of the sentence? 'The reason why he was late was because of the traffic.'",
+    "choices": {
+      "A": "The reason he was late was because of the traffic.",
+      "B": "He was late because of the traffic.",
+      "C": "The reason why he was late was the traffic.",
+      "D": "He was late due to the fact that there was traffic."
+    },
+    "correctAnswer": "B",
+    "rationale": "The original sentence is wordy and redundant ('reason why' and 'was because'). Option B is the most concise and clear revision.",
+    "objectives": [
+      "Sentence Structure: clarity",
+      "Sentence Structure: concision"
+    ],
+    "tags": [
+      "sentence-structure",
+      "clarity",
+      "concision"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Parallelism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "Choose the sentence that demonstrates correct parallelism.",
+    "choices": {
+      "A": "She likes swimming, to run, and biking.",
+      "B": "She likes to swim, run, and biking.",
+      "C": "She likes swimming, running, and biking.",
+      "D": "She likes to swim, to run, and biking."
+    },
+    "correctAnswer": "C",
+    "rationale": "Parallelism requires items in a series to have the same grammatical form. Option C uses all gerunds ('swimming', 'running', 'biking'), making it parallel. The other options mix infinitives and gerunds.",
+    "objectives": [
+      "Grammar and Composition: parallelism"
+    ],
+    "tags": [
+      "grammar",
+      "parallelism"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Talasalitaan",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "Ano ang kahulugan ng salitang 'nagpupumilit' sa pangungusap: 'Siya ay nagpupumilit na makapasa sa pagsusulit.'?",
+    "choices": {
+      "A": "Nag-aalala",
+      "B": "Nagsisikap",
+      "C": "Nagtataka",
+      "D": "Nagdududa"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang 'nagpupumilit' ay nangangahulugang nagsisikap o nagpupunyagi upang makamit ang isang bagay, sa konteksto, ang makapasa sa pagsusulit.",
+    "objectives": [
+      "Filipino: talasalitaan"
+    ],
+    "tags": [
+      "filipino",
+      "talasalitaan"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Apostrophes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "Which sentence correctly uses an apostrophe?",
+    "choices": {
+      "A": "The childrens' toys were scattered on the floor.",
+      "B": "The children's toys were scattered on the floor.",
+      "C": "The childrens toys were scattered on the floor.",
+      "D": "The childrens' toy's were scattered on the floor."
+    },
+    "correctAnswer": "B",
+    "rationale": "The plural noun 'children' is already plural, so to form the possessive, add an apostrophe and 's' ('children's'). Option A incorrectly uses a plural possessive form for an irregular plural.",
+    "objectives": [
+      "Punctuation and Mechanics: apostrophes"
+    ],
+    "tags": [
+      "punctuation",
+      "apostrophes"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Antonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Which word is the antonym of **ephemeral**?",
+    "choices": {
+      "A": "Temporary",
+      "B": "Fleeting",
+      "C": "Permanent",
+      "D": "Brief"
+    },
+    "correctAnswer": "C",
+    "rationale": "Ephemeral means lasting for a very short time. The antonym is 'permanent', which means lasting forever or for a long time.",
+    "objectives": [
+      "Vocabulary: antonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "antonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Verb Tenses",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "Which sentence is in the present perfect tense?",
+    "choices": {
+      "A": "She will go to the market.",
+      "B": "She has gone to the market.",
+      "C": "She went to the market.",
+      "D": "She goes to the market."
+    },
+    "correctAnswer": "B",
+    "rationale": "The present perfect tense is formed with 'has/have' + past participle. 'Has gone' is the present perfect form.",
+    "objectives": [
+      "Grammar and Composition: verb tenses"
+    ],
+    "tags": [
+      "grammar",
+      "verb-tenses"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Pag-unawa sa Binasa",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "Basahin ang talata: 'Ang kagubatan ay tahanan ng iba't ibang hayop at halaman. Ngunit dahil sa labis na pagtotroso, maraming puno ang nawawala. Ito ay nagdudulot ng pagbaha at pagguho ng lupa.' Ano ang pangunahing sanhi ng pagbaha ayon sa talata?",
+    "choices": {
+      "A": "Ang labis na pagtotroso",
+      "B": "Ang pagdami ng hayop",
+      "C": "Ang pagguho ng lupa",
+      "D": "Ang pagtatanim ng puno"
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang talata ay nagsasaad na ang labis na pagtotroso ay nagiging sanhi ng pagkawala ng mga puno, na nagdudulot naman ng pagbaha at pagguho ng lupa.",
+    "objectives": [
+      "Filipino: pag-unawa sa binasa"
+    ],
+    "tags": [
+      "filipino",
+      "reading-comprehension"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Coordination and Subordination",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "Which sentence correctly uses subordination to show a cause-and-effect relationship?",
+    "choices": {
+      "A": "It rained, and we cancelled the picnic.",
+      "B": "It rained, so we cancelled the picnic.",
+      "C": "Because it rained, we cancelled the picnic.",
+      "D": "It rained, but we cancelled the picnic."
+    },
+    "correctAnswer": "C",
+    "rationale": "Subordination uses a subordinate conjunction (like 'because') to show the relationship between a dependent clause and an independent clause. Option C correctly uses 'Because' to show cause and effect.",
+    "objectives": [
+      "Sentence Structure: coordination and subordination"
+    ],
+    "tags": [
+      "sentence-structure",
+      "coordination",
+      "subordination"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction / Word Choice: Appropriate Tone and Usage",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "Which word is most appropriate to complete the sentence for a formal report? 'The committee _____ the proposed budget.'",
+    "choices": {
+      "A": "looked at",
+      "B": "checked out",
+      "C": "scrutinized",
+      "D": "saw"
+    },
+    "correctAnswer": "C",
+    "rationale": "In a formal report, 'scrutinized' is the most appropriate and precise word, meaning to examine carefully. The other options are too informal or vague.",
+    "objectives": [
+      "Diction / Word Choice: appropriate tone and usage"
+    ],
+    "tags": [
+      "diction",
+      "tone"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Spelling",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "Choose the correct spelling of the word meaning 'a person who is excessively concerned with minor details and rules'.",
+    "choices": {
+      "A": "Pedicantic",
+      "B": "Pedantic",
+      "C": "Pedentic",
+      "D": "Pidantic"
+    },
+    "correctAnswer": "B",
+    "rationale": "The correct spelling is 'pedantic'. The other options are common misspellings.",
+    "objectives": [
+      "Vocabulary: spelling"
+    ],
+    "tags": [
+      "vocabulary",
+      "spelling"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Active and Passive Voice",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "Which sentence is in the active voice?",
+    "choices": {
+      "A": "The ball was thrown by the boy.",
+      "B": "The boy threw the ball.",
+      "C": "The ball was being thrown by the boy.",
+      "D": "The ball has been thrown by the boy."
+    },
+    "correctAnswer": "B",
+    "rationale": "In the active voice, the subject performs the action. In 'The boy threw the ball,' 'the boy' is the subject performing the action of throwing.",
+    "objectives": [
+      "Grammar and Composition: active and passive voice"
+    ],
+    "tags": [
+      "grammar",
+      "active-voice",
+      "passive-voice"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Sawikain at Idyomatikong Pahayag",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "Ano ang kahulugan ng sawikaing 'ang bayaning nasusugatan, nag-iibayo ang tapang'?",
+    "choices": {
+      "A": "Ang taong nasasaktan ay lalong nagiging matapang.",
+      "B": "Ang isang bayani ay hindi dapat nasasaktan.",
+      "C": "Ang sugat ay nagpapahina ng tapang.",
+      "D": "Ang mga bayani ay laging nasusugatan."
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang sawikain ay nangangahulugang ang isang taong nakakaranas ng pagsubok o sakit ay lalong nagiging matapang at matatag.",
+    "objectives": [
+      "Filipino: sawikain at idyomatikong pahayag"
+    ],
+    "tags": [
+      "filipino",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Semicolons",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "Which sentence correctly uses a semicolon?",
+    "choices": {
+      "A": "I have a big test tomorrow; I can't go out tonight.",
+      "B": "I have a big test tomorrow, I can't go out tonight.",
+      "C": "I have a big test tomorrow; and I can't go out tonight.",
+      "D": "I have a big test tomorrow: I can't go out tonight."
+    },
+    "correctAnswer": "A",
+    "rationale": "A semicolon is used to join two closely related independent clauses without a conjunction. Option A correctly does this. Option B is a comma splice, Option C misuses the semicolon with a conjunction, and Option D misuses a colon.",
+    "objectives": [
+      "Punctuation and Mechanics: semicolons"
+    ],
+    "tags": [
+      "punctuation",
+      "semicolons"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Homonyms",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "Which pair of words are homonyms?",
+    "choices": {
+      "A": "Flour and flower",
+      "B": "Happy and joyful",
+      "C": "Big and small",
+      "D": "Run and walk"
+    },
+    "correctAnswer": "A",
+    "rationale": "Homonyms are words that sound alike but have different meanings and spellings. 'Flour' and 'flower' are classic examples.",
+    "objectives": [
+      "Vocabulary: homonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "homonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "Choose the best revision for the sentence: 'The data shows that the economy is improving.'",
+    "choices": {
+      "A": "The data show that the economy is improving.",
+      "B": "The data are showing that the economy is improving.",
+      "C": "The data have shown that the economy is improving.",
+      "D": "The data shows that the economy improves."
+    },
+    "correctAnswer": "A",
+    "rationale": "The word 'data' is the plural form of 'datum'. While it is often used informally as a singular noun, in formal and academic writing, it is treated as plural and takes a plural verb. 'The data show' is the most grammatically precise revision.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: choose the best revision for correctness, clarity, and style"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Sentence Fragments",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "Which of the following is a sentence fragment?",
+    "choices": {
+      "A": "Running through the park, she felt free.",
+      "B": "Although he studied hard for the exam.",
+      "C": "They decided to go to the mall.",
+      "D": "The book on the table is mine."
+    },
+    "correctAnswer": "B",
+    "rationale": "A sentence fragment is an incomplete sentence that cannot stand alone. 'Although he studied hard for the exam' is a dependent clause and needs an independent clause to form a complete sentence.",
+    "objectives": [
+      "Sentence Structure: sentence fragments"
+    ],
+    "tags": [
+      "sentence-structure",
+      "fragments"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Prepositions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "Choose the correct preposition to complete the sentence: 'She is interested _____ learning a new language.'",
+    "choices": {
+      "A": "at",
+      "B": "in",
+      "C": "on",
+      "D": "for"
+    },
+    "correctAnswer": "B",
+    "rationale": "The correct preposition to use with 'interested' is 'in'. The phrase is 'interested in' + gerund (verb+ing).",
+    "objectives": [
+      "Grammar and Composition: prepositions"
+    ],
+    "tags": [
+      "grammar",
+      "prepositions"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Pagsusuri ng Talata",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "Basahin ang talata: 'Sa kabila ng makabagong teknolohiya, nananatiling mahalaga ang tradisyunal na paraan ng komunikasyon. Ang personal na pakikipag-usap ay nagbibigay ng mas malalim na ugnayan at pag-unawa sa pagitan ng mga tao. Hindi ito kayang pantayan ng anumang gadget.' Ano ang pangunahing ideya ng talata?",
+    "choices": {
+      "A": "Ang teknolohiya ay mas mahalaga kaysa personal na pakikipag-usap.",
+      "B": "Ang personal na pakikipag-usap ay may natatanging halaga na hindi kayang palitan ng teknolohiya.",
+      "C": "Ang makabagong teknolohiya ay nagpapalala ng komunikasyon.",
+      "D": "Dapat nang kalimutan ang tradisyunal na komunikasyon."
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang talata ay nagbibigay-diin na kahit may teknolohiya, ang personal na pakikipag-usap ay may mahalagang papel na hindi matutumbasan ng anumang gadget.",
+    "objectives": [
+      "Filipino: pagsusuri ng talata"
+    ],
+    "tags": [
+      "filipino",
+      "paragraph-analysis"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Parts of Speech",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "In the sentence, 'The happy children played outside,' the word 'happy' is what part of speech?",
+    "choices": {
+      "A": "Noun",
+      "B": "Verb",
+      "C": "Adjective",
+      "D": "Adverb"
+    },
+    "correctAnswer": "C",
+    "rationale": "'Happy' describes the noun 'children', so it functions as an adjective.",
+    "objectives": [
+      "Grammar and Composition: parts of speech"
+    ],
+    "tags": [
+      "grammar",
+      "parts-of-speech"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Prefixes and Suffixes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "In the word 'unpredictable', the prefix 'un-' means:",
+    "choices": {
+      "A": "Before",
+      "B": "Not",
+      "C": "Again",
+      "D": "Against"
+    },
+    "correctAnswer": "B",
+    "rationale": "The prefix 'un-' means 'not' or 'opposite of'. In 'unpredictable', it means 'not predictable'.",
+    "objectives": [
+      "Vocabulary: basic etymology"
+    ],
+    "tags": [
+      "vocabulary",
+      "prefixes",
+      "suffixes"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Capitalization",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "Which sentence uses capitalization correctly?",
+    "choices": {
+      "A": "I visited my uncle in the province of Cebu.",
+      "B": "I visited my Uncle in the province of cebu.",
+      "C": "I visited my uncle in the Province of Cebu.",
+      "D": "I visited my Uncle in the Province of cebu."
+    },
+    "correctAnswer": "A",
+    "rationale": "Proper nouns like 'Cebu' are capitalized. Common nouns like 'uncle' are not capitalized unless used as a title before a name. 'Province' is a common noun and is not typically capitalized.",
+    "objectives": [
+      "Punctuation and Mechanics: capitalization"
+    ],
+    "tags": [
+      "punctuation",
+      "capitalization"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Modifiers",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "Identify the dangling modifier in the sentence: 'Walking through the park, the flowers were beautiful.'",
+    "choices": {
+      "A": "Walking through the park",
+      "B": "the flowers",
+      "C": "were beautiful",
+      "D": "through the park"
+    },
+    "correctAnswer": "A",
+    "rationale": "The phrase 'Walking through the park' is a dangling modifier because it does not clearly refer to a subject. It seems to modify 'the flowers', but flowers cannot walk through a park. The sentence needs a clear subject to modify.",
+    "objectives": [
+      "Grammar and Composition: modifiers"
+    ],
+    "tags": [
+      "grammar",
+      "modifiers"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Analogies",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "Book : Author :: Painting : ?",
+    "choices": {
+      "A": "Museum",
+      "B": "Brush",
+      "C": "Artist",
+      "D": "Color"
+    },
+    "correctAnswer": "C",
+    "rationale": "A book is created by an author. Similarly, a painting is created by an artist.",
+    "objectives": [
+      "Vocabulary: analogies"
+    ],
+    "tags": [
+      "vocabulary",
+      "analogies"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Wastong Gamit ng Wikang Filipino sa Iba't Ibang Konteksto",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "Alin sa mga sumusunod na pangungusap ang angkop gamitin sa isang pormal na sulatin?",
+    "choices": {
+      "A": "Ang problema ay kailangan nating solusyunan agad.",
+      "B": "Kailangan nating ayusin ang problema agad-agad.",
+      "C": "Dapat nating bigyan ng agarang aksyon ang suliraning ito.",
+      "D": "Kailangan na nating gawan ng paraan ang problemang ito."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang 'Dapat nating bigyan ng agarang aksyon ang suliraning ito' ay mas pormal ang tono at angkop gamitin sa mga pormal na sulatin o komunikasyon.",
+    "objectives": [
+      "Filipino: wastong gamit ng wikang Filipino sa iba’t ibang konteksto"
+    ],
+    "tags": [
+      "filipino",
+      "formal-usage"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Clarity",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "Which sentence is the clearest?",
+    "choices": {
+      "A": "The man who was walking the dog was wearing a hat.",
+      "B": "The man was wearing a hat who was walking the dog.",
+      "C": "The man wearing a hat was walking the dog.",
+      "D": "The man was walking the dog wearing a hat."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C is the clearest and most concise. It places the modifier 'wearing a hat' directly next to the noun it modifies ('The man'), avoiding ambiguity.",
+    "objectives": [
+      "Sentence Structure: clarity"
+    ],
+    "tags": [
+      "sentence-structure",
+      "clarity"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Conjunctions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "Which conjunction correctly completes the sentence? 'I wanted to go to the concert, _____ I didn't have enough money.'",
+    "choices": {
+      "A": "and",
+      "B": "but",
+      "C": "for",
+      "D": "so"
+    },
+    "correctAnswer": "B",
+    "rationale": "The sentence presents a contrast between wanting to go and not having enough money. 'But' is the conjunction used to show contrast.",
+    "objectives": [
+      "Grammar and Composition: conjunctions"
+    ],
+    "tags": [
+      "grammar",
+      "conjunctions"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "Identify the error in the sentence: 'The committee members, who have been meeting for weeks, finally reached a consensus on the new policy, but it was not what they had originally anticipated.'",
+    "choices": {
+      "A": "who have been meeting for weeks",
+      "B": "finally reached",
+      "C": "consensus on",
+      "D": "No error"
+    },
+    "correctAnswer": "D",
+    "rationale": "The sentence is grammatically correct. The relative clause 'who have been meeting for weeks' correctly modifies 'members', the verb 'reached' agrees, and the preposition 'on' is used correctly. 'Consensus on' is a standard phrase.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: identify grammatical and stylistic errors"
+    ],
+    "tags": [
+      "error-identification",
+      "sentence-analysis"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Contextual Word Meanings",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "In the sentence, 'The new evidence **corroborates** the witness's story,' what does corroborates most nearly mean?",
+    "choices": {
+      "A": "Contradicts",
+      "B": "Supports",
+      "C": "Complicates",
+      "D": "Explains"
+    },
+    "correctAnswer": "B",
+    "rationale": "Corroborate means to confirm or give support to a statement, theory, or finding. In this context, it means the evidence supports the witness's story.",
+    "objectives": [
+      "Vocabulary: contextual word meanings"
+    ],
+    "tags": [
+      "vocabulary",
+      "context-clues"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Pronoun-Antecedent Agreement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "Select the sentence with correct pronoun-antecedent agreement.",
+    "choices": {
+      "A": "Everyone should bring their own lunch.",
+      "B": "Everyone should bring his or her own lunch.",
+      "C": "Everyone should bring his own lunch.",
+      "D": "Everyone should bring her own lunch."
+    },
+    "correctAnswer": "B",
+    "rationale": "The indefinite pronoun 'Everyone' is singular and requires a singular pronoun. While 'their' is commonly used in informal speech, 'his or her' is considered more formally correct and gender-neutral.",
+    "objectives": [
+      "Grammar and Composition: pronoun-antecedent agreement"
+    ],
+    "tags": [
+      "grammar",
+      "pronoun-antecedent-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Commas",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "Which sentence correctly uses commas to separate items in a series?",
+    "choices": {
+      "A": "I need to buy eggs, milk and bread.",
+      "B": "I need to buy eggs, milk, and bread.",
+      "C": "I need to buy eggs milk and bread.",
+      "D": "I need to buy eggs, milk, and, bread."
+    },
+    "correctAnswer": "B",
+    "rationale": "Commas should be used to separate items in a series, including a comma before the conjunction (the Oxford comma). Option B correctly places commas between each item.",
+    "objectives": [
+      "Punctuation and Mechanics: commas"
+    ],
+    "tags": [
+      "punctuation",
+      "commas"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Balarila",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "Alin sa mga sumusunod ang tamang anyo ng pandiwa sa pangungusap? 'Siya ay _____ sa parke kahapon.'",
+    "choices": {
+      "A": "lumakad",
+      "B": "naglakad",
+      "C": "lumalakad",
+      "D": "naglalakad"
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang 'lumakad' ay ang tamang anyo ng pandiwa sa aspektong pangnagdaan (past tense) para sa pandiwang 'lakad'. Ang 'naglakad' ay nagpapahiwatig ng may ginawang aksyon para sa iba, at 'lumalakad' at 'naglalakad' ay nasa aspektong pangkasalukuyan.",
+    "objectives": [
+      "Filipino: balarilang Filipino"
+    ],
+    "tags": [
+      "filipino",
+      "balarila",
+      "pandiwa"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Synonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "Which word is a synonym for **benevolent**?",
+    "choices": {
+      "A": "Kind",
+      "B": "Cruel",
+      "C": "Indifferent",
+      "D": "Mean"
+    },
+    "correctAnswer": "A",
+    "rationale": "Benevolent means well-meaning and kindly. 'Kind' is the closest synonym.",
+    "objectives": [
+      "Vocabulary: synonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "synonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Subject-Verb Agreement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "Choose the sentence that is grammatically correct.",
+    "choices": {
+      "A": "The team of players are practicing for the game.",
+      "B": "The team of players is practicing for the game.",
+      "C": "The team of players were practicing for the game.",
+      "D": "The team of players have been practicing for the game."
+    },
+    "correctAnswer": "B",
+    "rationale": "The subject is 'team', which is a collective noun and can be singular or plural. In American English, 'team' is usually treated as singular, so the singular verb 'is' is correct. The phrase 'of players' is a prepositional phrase and does not affect the verb.",
+    "objectives": [
+      "Grammar and Composition: subject-verb agreement"
+    ],
+    "tags": [
+      "grammar",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Run-on Sentences",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "Which of the following is a run-on sentence?",
+    "choices": {
+      "A": "I love to read books, and I also enjoy writing.",
+      "B": "I love to read books I also enjoy writing.",
+      "C": "I love to read books; I also enjoy writing.",
+      "D": "I love to read books, but I also enjoy writing."
+    },
+    "correctAnswer": "B",
+    "rationale": "A run-on sentence occurs when two independent clauses are joined without proper punctuation or a conjunction. Option B has no punctuation or conjunction between 'books' and 'I'.",
+    "objectives": [
+      "Sentence Structure: run-on sentences"
+    ],
+    "tags": [
+      "sentence-structure",
+      "run-on-sentences"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction / Word Choice: Commonly Confused Words",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "Choose the correct word to complete the sentence: 'The _____ of the story was unexpected.'",
+    "choices": {
+      "A": "climax",
+      "B": "climatic",
+      "C": "climacteric",
+      "D": "clime"
+    },
+    "correctAnswer": "A",
+    "rationale": "'Climax' refers to the most intense, exciting, or important point of something, especially a story. The other options are unrelated.",
+    "objectives": [
+      "Diction / Word Choice: commonly confused words correctly"
+    ],
+    "tags": [
+      "diction",
+      "commonly-confused-words"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Tayutay",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "Anong uri ng tayutay ang ginamit sa pahayag: 'Dumating siya na parang bagyo, bigla at mapangwasak.'?",
+    "choices": {
+      "A": "Pagtutulad",
+      "B": "Pagwawangis",
+      "C": "Personipikasyon",
+      "D": "Eupemismo"
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang pagtutulad (simile) ay gumagamit ng mga salitang 'parang', 'tulad', o 'kagaya' upang ihambing ang dalawang magkaibang bagay. Dito, ang pagdating ng isang tao ay inihambing sa isang bagyo gamit ang 'parang'.",
+    "objectives": [
+      "Filipino: tayutay"
+    ],
+    "tags": [
+      "filipino",
+      "tayutay"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Verb Tenses",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "Which sentence uses the past perfect tense correctly?",
+    "choices": {
+      "A": "She had went to the store before it closed.",
+      "B": "She had gone to the store before it closed.",
+      "C": "She has gone to the store before it closed.",
+      "D": "She had go to the store before it closed."
+    },
+    "correctAnswer": "B",
+    "rationale": "The past perfect tense is formed with 'had' + past participle. The past participle of 'go' is 'gone', so 'had gone' is correct.",
+    "objectives": [
+      "Grammar and Composition: verb tenses"
+    ],
+    "tags": [
+      "grammar",
+      "verb-tenses"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Idiomatic Expressions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "What does the idiom 'to be in hot water' mean?",
+    "choices": {
+      "A": "To be in trouble",
+      "B": "To be very thirsty",
+      "C": "To be in a hot place",
+      "D": "To be bathing"
+    },
+    "correctAnswer": "A",
+    "rationale": "The idiom 'to be in hot water' means to be in trouble or facing difficulty.",
+    "objectives": [
+      "Vocabulary: idiomatic expressions"
+    ],
+    "tags": [
+      "vocabulary",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "Identify the error in the sentence: 'The artist, along with his assistants, are preparing the exhibit for the opening.'",
+    "choices": {
+      "A": "along with",
+      "B": "are",
+      "C": "preparing",
+      "D": "for the opening"
+    },
+    "correctAnswer": "B",
+    "rationale": "The subject is 'The artist', which is singular. The phrase 'along with his assistants' is a parenthetical phrase and does not change the number of the subject. Therefore, the verb should be 'is', not 'are'.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: identify grammatical and stylistic errors"
+    ],
+    "tags": [
+      "error-identification",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Coordination and Subordination",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "Which sentence correctly combines the two clauses using subordination? 'The sun set. We decided to go home.'",
+    "choices": {
+      "A": "The sun set, and we decided to go home.",
+      "B": "We decided to go home, for the sun set.",
+      "C": "After the sun set, we decided to go home.",
+      "D": "We decided to go home, so the sun set."
+    },
+    "correctAnswer": "C",
+    "rationale": "Subordination involves making one clause dependent on another. Option C uses 'After' to create a subordinate clause ('After the sun set') and an independent clause ('we decided to go home'), correctly showing the temporal relationship.",
+    "objectives": [
+      "Sentence Structure: coordination and subordination"
+    ],
+    "tags": [
+      "sentence-structure",
+      "coordination",
+      "subordination"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Capitalization",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "Which sentence uses capitalization correctly?",
+    "choices": {
+      "A": "My favorite subject is history, but I also like Science.",
+      "B": "My favorite subject is History, but I also like Science.",
+      "C": "My favorite subject is history, but I also like science.",
+      "D": "My favorite subject is History, but I also like science."
+    },
+    "correctAnswer": "C",
+    "rationale": "School subjects are not capitalized unless they are language subjects (e.g., English, Spanish) or when they are used as proper nouns. Therefore, 'history' and 'science' should be lowercase.",
+    "objectives": [
+      "Punctuation and Mechanics: capitalization"
+    ],
+    "tags": [
+      "punctuation",
+      "capitalization"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Antonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "Which word is the antonym of **innocuous**?",
+    "choices": {
+      "A": "Harmless",
+      "B": "Safe",
+      "C": "Harmful",
+      "D": "Benign"
+    },
+    "correctAnswer": "C",
+    "rationale": "Innocuous means harmless or not harmful. The antonym is 'harmful'.",
+    "objectives": [
+      "Vocabulary: antonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "antonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Active and Passive Voice",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "Which sentence is in the passive voice?",
+    "choices": {
+      "A": "The chef prepared a delicious meal.",
+      "B": "A delicious meal was prepared by the chef.",
+      "C": "The chef is preparing a delicious meal.",
+      "D": "The chef prepares a delicious meal."
+    },
+    "correctAnswer": "B",
+    "rationale": "In the passive voice, the subject receives the action. 'A delicious meal' is the subject being acted upon (prepared). The agent ('by the chef') is optional.",
+    "objectives": [
+      "Grammar and Composition: active and passive voice"
+    ],
+    "tags": [
+      "grammar",
+      "active-voice",
+      "passive-voice"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Sawikain at Idyomatikong Pahayag",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "Ano ang kahulugan ng sawikaing 'nagsusunog ng kilay'?",
+    "choices": {
+      "A": "Nag-aaral nang mabuti",
+      "B": "Nag-aaksaya ng oras",
+      "C": "Nagtatrabaho nang mabagal",
+      "D": "Nagpapagod ng sarili"
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang 'nagsusunog ng kilay' ay isang idyoma na nangangahulugang nag-aaral nang mabuti o nagpupuyat sa pag-aaral.",
+    "objectives": [
+      "Filipino: sawikain at idyomatikong pahayag"
+    ],
+    "tags": [
+      "filipino",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Parts of Speech",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "In the sentence, 'The dog ran quickly,' the word 'quickly' is what part of speech?",
+    "choices": {
+      "A": "Noun",
+      "B": "Verb",
+      "C": "Adjective",
+      "D": "Adverb"
+    },
+    "correctAnswer": "D",
+    "rationale": "'Quickly' modifies the verb 'ran', describing how the dog ran. It is an adverb.",
+    "objectives": [
+      "Grammar and Composition: parts of speech"
+    ],
+    "tags": [
+      "grammar",
+      "parts-of-speech"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Prefixes and Suffixes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "In the word 'reappear', the prefix 're-' means:",
+    "choices": {
+      "A": "Again",
+      "B": "Not",
+      "C": "Before",
+      "D": "Against"
+    },
+    "correctAnswer": "A",
+    "rationale": "The prefix 're-' means 'again' or 'back'. In 'reappear', it means 'appear again'.",
+    "objectives": [
+      "Vocabulary: basic etymology"
+    ],
+    "tags": [
+      "vocabulary",
+      "prefixes",
+      "suffixes"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Sentence Fragments",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "Which of the following is a complete sentence?",
+    "choices": {
+      "A": "Because she was tired.",
+      "B": "After the rain stopped.",
+      "C": "She went to the store.",
+      "D": "Running through the field."
+    },
+    "correctAnswer": "C",
+    "rationale": "A complete sentence must have a subject and a predicate and express a complete thought. 'She went to the store' has a subject ('She') and a predicate ('went to the store') and is a complete thought.",
+    "objectives": [
+      "Sentence Structure: sentence fragments"
+    ],
+    "tags": [
+      "sentence-structure",
+      "fragments"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Prepositions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "Choose the correct preposition to complete the sentence: 'He is good _____ math.'",
+    "choices": {
+      "A": "at",
+      "B": "in",
+      "C": "on",
+      "D": "with"
+    },
+    "correctAnswer": "A",
+    "rationale": "The correct preposition to use with 'good' when referring to a skill or subject is 'at'. 'He is good at math' is the standard phrase.",
+    "objectives": [
+      "Grammar and Composition: prepositions"
+    ],
+    "tags": [
+      "grammar",
+      "prepositions"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Pag-unawa sa Binasa",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "Basahin ang talata: 'Ang pagbabasa ay isang mahalagang kasanayan na nagbubukas ng pinto sa kaalaman. Sa pamamagitan nito, natututo tayo ng mga bagong bagay at lumalawak ang ating pang-unawa sa mundo.' Ayon sa talata, ano ang isang benepisyo ng pagbabasa?",
+    "choices": {
+      "A": "Nagpapayaman ito sa ating pananalapi.",
+      "B": "Nakapagpapabuti ito ng ating kalusugan.",
+      "C": "Nagpapalawak ito ng ating pang-unawa.",
+      "D": "Nakapagpapabilis ito ng ating pagtakbo."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang talata ay nagsasaad na ang pagbabasa ay 'lumalawak ang ating pang-unawa sa mundo', kaya ang pagpapalawak ng pang-unawa ay isang benepisyo.",
+    "objectives": [
+      "Filipino: pag-unawa sa binasa"
+    ],
+    "tags": [
+      "filipino",
+      "reading-comprehension"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Modifiers",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 61,
+    "questionText": "Choose the sentence with the correctly placed modifier.",
+    "choices": {
+      "A": "I saw a dog walking down the street with a broken leg.",
+      "B": "Walking down the street, I saw a dog with a broken leg.",
+      "C": "Walking down the street, a dog with a broken leg was seen.",
+      "D": "A dog was seen walking down the street with a broken leg."
+    },
+    "correctAnswer": "B",
+    "rationale": "Option B correctly places the participial phrase 'Walking down the street' next to the noun it modifies ('I'). In the other options, the placement is ambiguous or creates a dangling modifier.",
+    "objectives": [
+      "Grammar and Composition: modifiers"
+    ],
+    "tags": [
+      "grammar",
+      "modifiers"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Analogies",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 62,
+    "questionText": "Doctor : Patient :: Teacher : ?",
+    "choices": {
+      "A": "School",
+      "B": "Classroom",
+      "C": "Student",
+      "D": "Lesson"
+    },
+    "correctAnswer": "C",
+    "rationale": "A doctor treats a patient. A teacher teaches a student. The relationship is one of professional to the person they serve.",
+    "objectives": [
+      "Vocabulary: analogies"
+    ],
+    "tags": [
+      "vocabulary",
+      "analogies"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Apostrophes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 63,
+    "questionText": "Which sentence correctly uses an apostrophe to show possession?",
+    "choices": {
+      "A": "The dogs' bone was buried in the yard.",
+      "B": "The dog's bone was buried in the yard.",
+      "C": "The dogs bone was buried in the yard.",
+      "D": "The dog's bone's were buried in the yard."
+    },
+    "correctAnswer": "B",
+    "rationale": "To show that one dog owns the bone, use an apostrophe + 's' ('dog's'). Option A would be correct if there were multiple dogs owning one bone.",
+    "objectives": [
+      "Punctuation and Mechanics: apostrophes"
+    ],
+    "tags": [
+      "punctuation",
+      "apostrophes"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction / Word Choice: Appropriate Tone and Usage",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 64,
+    "questionText": "Which word is the most appropriate to describe a person who is careful and meticulous?",
+    "choices": {
+      "A": "Lazy",
+      "B": "Careless",
+      "C": "Fastidious",
+      "D": "Sloppy"
+    },
+    "correctAnswer": "C",
+    "rationale": "Fastidious means very attentive to and concerned about accuracy and detail. It is the most appropriate word for a careful and meticulous person.",
+    "objectives": [
+      "Diction / Word Choice: appropriate tone and usage"
+    ],
+    "tags": [
+      "diction",
+      "tone"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Talasalitaan",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 65,
+    "questionText": "Ano ang kahulugan ng salitang 'mapagkunwari'?",
+    "choices": {
+      "A": "Matapat",
+      "B": "Mapanlinlang",
+      "C": "Mapagbigay",
+      "D": "Masipag"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang 'mapagkunwari' ay nangangahulugang mapanlinlang o nagkukunwari, hindi tunay ang kilos o damdamin.",
+    "objectives": [
+      "Filipino: talasalitaan"
+    ],
+    "tags": [
+      "filipino",
+      "talasalitaan"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 66,
+    "questionText": "Choose the best revision for the sentence: 'Having finished the test, the papers were collected by the teacher.'",
+    "choices": {
+      "A": "Having finished the test, the teacher collected the papers.",
+      "B": "Having finished the test, the papers were collected.",
+      "C": "The papers were collected by the teacher having finished the test.",
+      "D": "The papers, having finished the test, were collected by the teacher."
+    },
+    "correctAnswer": "A",
+    "rationale": "The original sentence has a dangling modifier. 'Having finished the test' must modify the person who finished the test, which is the teacher, not the papers. Option A correctly places the modifier with the subject.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: choose the best revision for correctness, clarity, and style"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "modifiers"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Parallelism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 67,
+    "questionText": "Which sentence demonstrates correct parallelism?",
+    "choices": {
+      "A": "He likes to swim, to jog, and running.",
+      "B": "He likes swimming, jogging, and to run.",
+      "C": "He likes to swim, jog, and run.",
+      "D": "He likes swimming, to jog, and running."
+    },
+    "correctAnswer": "C",
+    "rationale": "Parallelism requires items in a series to be in the same grammatical form. Option C uses all infinitives ('to swim', 'jog', 'run'), making it parallel.",
+    "objectives": [
+      "Grammar and Composition: parallelism"
+    ],
+    "tags": [
+      "grammar",
+      "parallelism"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Spelling",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 68,
+    "questionText": "Choose the correct spelling of the word meaning 'a feeling of intense happiness or joy'.",
+    "choices": {
+      "A": "Euphoria",
+      "B": "Euforia",
+      "C": "Euporia",
+      "D": "Euphorea"
+    },
+    "correctAnswer": "A",
+    "rationale": "The correct spelling is 'euphoria'. The other options are common misspellings.",
+    "objectives": [
+      "Vocabulary: spelling"
+    ],
+    "tags": [
+      "vocabulary",
+      "spelling"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Conjunctions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 69,
+    "questionText": "Which conjunction correctly completes the sentence? 'She studied hard, _____ she passed the exam.'",
+    "choices": {
+      "A": "but",
+      "B": "so",
+      "C": "or",
+      "D": "for"
+    },
+    "correctAnswer": "B",
+    "rationale": "The sentence shows a cause-and-effect relationship: studying hard led to passing the exam. 'So' is the conjunction used to show a result.",
+    "objectives": [
+      "Grammar and Composition: conjunctions"
+    ],
+    "tags": [
+      "grammar",
+      "conjunctions"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation and Mechanics: Semicolons",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 70,
+    "questionText": "Which sentence correctly uses a semicolon?",
+    "choices": {
+      "A": "He went to the store; and bought some milk.",
+      "B": "He went to the store; he bought some milk.",
+      "C": "He went to the store; to buy some milk.",
+      "D": "He went to the store; because he needed milk."
+    },
+    "correctAnswer": "B",
+    "rationale": "A semicolon is used to join two closely related independent clauses. Option B has two independent clauses: 'He went to the store' and 'he bought some milk'. The others have dependent clauses or fragments.",
+    "objectives": [
+      "Punctuation and Mechanics: semicolons"
+    ],
+    "tags": [
+      "punctuation",
+      "semicolons"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Homonyms",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 71,
+    "questionText": "Which pair of words are homonyms?",
+    "choices": {
+      "A": "Right and write",
+      "B": "Large and small",
+      "C": "Slow and fast",
+      "D": "Happy and sad"
+    },
+    "correctAnswer": "A",
+    "rationale": "Homonyms are words that sound the same but have different meanings and spellings. 'Right' and 'write' are classic examples.",
+    "objectives": [
+      "Vocabulary: homonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "homonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Pagsusuri ng Talata",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 72,
+    "questionText": "Basahin ang talata: 'Ang wika ay isang buhay na organismo. Ito ay patuloy na nagbabago at umaangkop sa pangangailangan ng mga taong gumagamit nito. Ang paggamit ng mga salitang balbal ay isang patunay ng pagbabagong ito.' Anong konklusyon ang maaaring makuha mula sa talata?",
+    "choices": {
+      "A": "Ang wika ay dapat manatiling tradisyonal.",
+      "B": "Ang pagbabago ng wika ay natural at kinakailangan.",
+      "C": "Ang mga salitang balbal ay masama sa wika.",
+      "D": "Ang wika ay hindi dapat gamitin ng mga kabataan."
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang talata ay nagsasaad na ang wika ay patuloy na nagbabago at umaangkop, at ang paggamit ng balbal ay patunay nito. Kaya, ang pagbabago ng wika ay natural at kinakailangan.",
+    "objectives": [
+      "Filipino: pagsusuri ng talata"
+    ],
+    "tags": [
+      "filipino",
+      "paragraph-analysis"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Clarity and Concision",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 73,
+    "questionText": "Which revision best improves the clarity and concision of the sentence? 'The reason why she resigned was due to the fact that she was offered a better position.'",
+    "choices": {
+      "A": "She resigned due to the fact that she was offered a better position.",
+      "B": "She resigned because she was offered a better position.",
+      "C": "The reason she resigned was because of a better position.",
+      "D": "She resigned for the reason of a better position."
+    },
+    "correctAnswer": "B",
+    "rationale": "Option B is the most concise and clear. It eliminates the redundancy of 'the reason why' and 'due to the fact that' by using the simpler conjunction 'because'.",
+    "objectives": [
+      "Sentence Structure: clarity",
+      "Sentence Structure: concision"
+    ],
+    "tags": [
+      "sentence-structure",
+      "clarity",
+      "concision"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction / Word Choice: Precise Vocabulary in Context",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 74,
+    "questionText": "Choose the word that best completes the sentence: 'The scientist's _____ research led to a groundbreaking discovery.'",
+    "choices": {
+      "A": "slipshod",
+      "B": "meticulous",
+      "C": "lackadaisical",
+      "D": "cursory"
+    },
+    "correctAnswer": "B",
+    "rationale": "'Meticulous' means showing great attention to detail, which is the quality that would lead to a groundbreaking discovery. The other options imply carelessness or superficiality.",
+    "objectives": [
+      "Diction / Word Choice: precise vocabulary in context"
+    ],
+    "tags": [
+      "diction",
+      "vocabulary-in-context"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification / Sentence Improvement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 75,
+    "questionText": "Identify the error in the sentence: 'Everyone in the class, including the teacher, are excited for the field trip.'",
+    "choices": {
+      "A": "Everyone",
+      "B": "including",
+      "C": "are",
+      "D": "for"
+    },
+    "correctAnswer": "C",
+    "rationale": "The subject is 'Everyone', which is singular. The phrase 'including the teacher' is a parenthetical and does not change the subject. Therefore, the verb should be 'is', not 'are'.",
+    "objectives": [
+      "Error Identification / Sentence Improvement: identify grammatical and stylistic errors"
+    ],
+    "tags": [
+      "error-identification",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary: Contextual Word Meanings",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 76,
+    "questionText": "In the sentence, 'The manager's **acerbic** comments made the employees feel uncomfortable,' what does acerbic most nearly mean?",
+    "choices": {
+      "A": "Harsh",
+      "B": "Encouraging",
+      "C": "Playful",
+      "D": "Confusing"
+    },
+    "correctAnswer": "A",
+    "rationale": "Acerbic means sharp and forthright, often in a way that is harsh or critical. In this context, it describes comments that are unpleasant and make people uncomfortable.",
+    "objectives": [
+      "Vocabulary: contextual word meanings"
+    ],
+    "tags": [
+      "vocabulary",
+      "context-clues"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino: Wastong Gamit ng Wikang Filipino sa Iba't Ibang Konteksto",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 77,
+    "questionText": "Alin sa mga sumusunod ang wastong gamit ng 'ng' at 'nang'?",
+    "choices": {
+      "A": "Kumain ako ng maraming prutas.",
+      "B": "Kumain ako nang maraming prutas.",
+      "C": "Kumain ako ng maaga.",
+      "D": "Kumain ako nang maaga."
+    },
+    "correctAnswer": "A",
+    "rationale": "Ang 'ng' ay ginagamit bilang pang-ukol na nagpapakita ng pag-aari o bilang pananda ng tuwirang layon. Sa pangungusap, ang 'maraming prutas' ang tuwirang layon ng pandiwang 'kumain', kaya 'ng' ang wastong gamit. Ang 'nang' ay ginagamit bilang pang-abay na naglalarawan sa pandiwa.",
+    "objectives": [
+      "Filipino: wastong gamit ng wikang Filipino sa iba’t ibang konteksto"
+    ],
+    "tags": [
+      "filipino",
+      "grammar-usage"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Subject-Verb Agreement",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 78,
+    "questionText": "Choose the sentence with correct subject-verb agreement.",
+    "choices": {
+      "A": "Not only the students but also the teacher are excited.",
+      "B": "Not only the students but also the teacher is excited.",
+      "C": "Not only the teacher but also the students is excited.",
+      "D": "Not only the teacher but also the students are excited."
+    },
+    "correctAnswer": "B",
+    "rationale": "When using 'not only...but also', the verb agrees with the subject closest to it. In option B, 'teacher' is singular and closest to the verb, so 'is' is correct. In option D, 'students' is plural and closest, so 'are' would be correct, but the question asks for the correct sentence among all.",
+    "objectives": [
+      "Grammar and Composition: subject-verb agreement"
+    ],
+    "tags": [
+      "grammar",
+      "subject-verb-agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure: Clarity",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 79,
+    "questionText": "Which sentence is the clearest?",
+    "choices": {
+      "A": "The girl talked to the boy with the red hat.",
+      "B": "The girl with the red hat talked to the boy.",
+      "C": "The girl talked to the boy who had the red hat.",
+      "D": "The girl talked to the boy and he had a red hat."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C is the clearest because it uses a relative clause ('who had the red hat') to clearly specify which boy the girl talked to, avoiding ambiguity. Option A could imply the girl had the red hat.",
+    "objectives": [
+      "Sentence Structure: clarity"
+    ],
+    "tags": [
+      "sentence-structure",
+      "clarity"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Grammar: Verb Tenses",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 80,
+    "questionText": "Which sentence uses the future perfect tense correctly?",
+    "choices": {
+      "A": "She will have finished the project by tomorrow.",
+      "B": "She will finish the project by tomorrow.",
+      "C": "She has finished the project by tomorrow.",
+      "D": "She had finished the project by tomorrow."
+    },
+    "correctAnswer": "A",
+    "rationale": "The future perfect tense is formed with 'will have' + past participle. It describes an action that will be completed before a specific future time. 'Will have finished' is the correct future perfect form.",
+    "objectives": [
+      "Grammar and Composition: verb tenses"
+    ],
+    "tags": [
+      "grammar",
+      "verb-tenses"
+    ],
+    "isWordProblem": false
+  }
+]

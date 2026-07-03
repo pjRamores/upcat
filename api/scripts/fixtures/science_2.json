@@ -260,7 +260,7 @@
       "A": "Bryophytes",
       "B": "Pteridophytes",
       "C": "Gymnosperms",
-      "D": "Angiosperms",
+      "D": "Angiosperms"
     },
     "correctAnswer": "B",
     "rationale": "Pteridophytes are vascular, seedless plants. Ferns are classic examples; they have fronds and reproduce via spores formed in structures called sori. Bryophytes are non-vascular (mosses). Gymnosperms are vascular but produce naked seeds (conifers). Angiosperms produce seeds enclosed within fruits/flowers.",
@@ -438,7 +438,7 @@
       "D": "14"
     },
     "correctAnswer": "C",
-    "rationale": "The initial concentration $[H_3O^+] = 1.0 \times 10^{-3}\text{ M}$, which corresponds to an initial pH of $3$ ($-\log[1.0 \times 10^{-3}] = 3$). Diluting the solution to 10 times its original volume drops the concentration of the acid by a factor of 10. The new hydronium concentration is $1.0 \times 10^{-4}\text{ M}$. Taking the negative logarithm gives a final pH of $4$.",
+    "rationale": "The initial concentration $[H_3O^+] = 1.0 \times 10^{-3}\text{ M}$, which corresponds to an initial pH of $3$ ($-\\log[1.0 \times 10^{-3}] = 3$). Diluting the solution to 10 times its original volume drops the concentration of the acid by a factor of 10. The new hydronium concentration is $1.0 \times 10^{-4}\text{ M}$. Taking the negative logarithm gives a final pH of $4$.",
     "objectives": [
       "acids and bases"
     ],
@@ -480,7 +480,7 @@
     "difficulty": "hard",
     "type": "multiple_choice",
     "questionNumber": 20,
-    "questionText": "The Gibbs free energy change ($\n\Delta G$) determines the spontaneity of a chemical process at constant temperature and pressure according to the relationship $\Delta G = \Delta H - T\Delta S$. For a particular chemical reaction, the enthalpy change is positive ($\Delta H > 0$) and the entropy change is positive ($\Delta S > 0$). Under what conditions will this reaction be spontaneous?",
+    "questionText": "The Gibbs free energy change ($\n\\Delta G$) determines the spontaneity of a chemical process at constant temperature and pressure according to the relationship $\\Delta G = \\Delta H - T\\Delta S$. For a particular chemical reaction, the enthalpy change is positive ($\\Delta H > 0$) and the entropy change is positive ($\\Delta S > 0$). Under what conditions will this reaction be spontaneous?",
     "choices": {
       "A": "The reaction will be spontaneous at all temperatures.",
       "B": "The reaction will be spontaneous only at high temperatures.",
@@ -488,7 +488,7 @@
       "D": "The reaction will never be spontaneous at any temperature."
     },
     "correctAnswer": "B",
-    "rationale": "For spontaneity, $\Delta G$ must be negative ($\Delta G < 0$). Here, $\Delta H$ is positive (unfavorable) and $\Delta S$ is positive (favorable). In the equation $\Delta G = \Delta H - T\Delta S$, the negative term $-T\Delta S$ grows larger in magnitude as the temperature $T$ increases. Therefore, at high temperatures, $T\Delta S$ will exceed $\Delta H$, driving $\Delta G$ below zero and making the reaction spontaneous.",
+    "rationale": "For spontaneity, $\\Delta G$ must be negative ($\\Delta G < 0$). Here, $\\Delta H$ is positive (unfavorable) and $\\Delta S$ is positive (favorable). In the equation $\\Delta G = \\Delta H - T\\Delta S$, the negative term $-T\\Delta S$ grows larger in magnitude as the temperature $T$ increases. Therefore, at high temperatures, $T\\Delta S$ will exceed $\\Delta H$, driving $\\Delta G$ below zero and making the reaction spontaneous.",
     "objectives": [
       "thermodynamics"
     ],
@@ -860,7 +860,7 @@
       "A": "Independent variable: growth rate of corn; Controlled variable: concentration of fertilizer",
       "B": "Independent variable: concentration of fertilizer; Controlled variable: amount of sunlight and water given to each plant",
       "C": "Independent variable: type of soil used; Controlled variable: final height of the corn stalks",
-      "D": "Independent variable: amount of water; Controlled variable: concentration of fertilizer",
+      "D": "Independent variable: amount of water; Controlled variable: concentration of fertilizer"
     },
     "correctAnswer": "B",
     "rationale": "The independent variable is the factor intentionally manipulated by the experimenter (fertilizer concentration). The dependent variable is what is measured in response (growth rate). Controlled variables are all other factors that must be kept constant across test groups (sunlight, water, soil type) to ensure any observed changes are due solely to the independent variable.",
@@ -988,7 +988,7 @@
       "D": "80.0 meters"
     },
     "correctAnswer": "C",
-    "rationale": "We can use the kinematic equation that relates velocity, acceleration, and distance without explicitly using time: $v_f^2 = v_i^2 + 2ax$. Given that $v_i = 0$ (starts from rest), $v_f = 20.0\text{ m/s}$, and $a = 4.0\text{ m/s}^2$, we plug in the numbers:\n$20^2 = 0^2 + 2(4)x \Rightarrow 400 = 8x \Rightarrow x = \frac{400}{8} = 50\text{ meters}$.",
+    "rationale": "We can use the kinematic equation that relates velocity, acceleration, and distance without explicitly using time: $v_f^2 = v_i^2 + 2ax$. Given that $v_i = 0$ (starts from rest), $v_f = 20.0\text{ m/s}$, and $a = 4.0\text{ m/s}^2$, we plug in the numbers:\n$20^2 = 0^2 + 2(4)x \\Rightarrow 400 = 8x \\Rightarrow x = \frac{400}{8} = 50\text{ meters}$.",
     "objectives": [
       "motion"
     ],
@@ -1063,7 +1063,7 @@
       "D": "4.0 m/s"
     },
     "correctAnswer": "C",
-    "rationale": "This is a perfectly inelastic collision, where momentum is conserved: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Substitute the given values: $(3.0)(4.0) + (2.0)(0) = (3.0 + 2.0)v_f \Rightarrow 12 = 5v_f \Rightarrow v_f = \frac{12}{5} = 2.4\text{ m/s}$.",
+    "rationale": "This is a perfectly inelastic collision, where momentum is conserved: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Substitute the given values: $(3.0)(4.0) + (2.0)(0) = (3.0 + 2.0)v_f \\Rightarrow 12 = 5v_f \\Rightarrow v_f = \frac{12}{5} = 2.4\text{ m/s}$.",
     "objectives": [
       "momentum"
     ],
@@ -1138,7 +1138,7 @@
       "D": "The pressure decreases by $1.0 \times 10^5\text{ Pa}$ due to buoyancy."
     },
     "correctAnswer": "B",
-    "rationale": "The gauge pressure added by the water column is calculated using $\Delta P = \rho gh$. Plugging in the values: $\Delta P = (1000\text{ kg/m}^3) \times (10\text{ m/s}^2) \times (20\text{ m}) = 200,000\text{ Pa} = 2.0 \times 10^5\text{ Pa}$. Thus, the total pressure increases by this amount relative to the surface pressure.",
+    "rationale": "The gauge pressure added by the water column is calculated using $\\Delta P = \rho gh$. Plugging in the values: $\\Delta P = (1000\text{ kg/m}^3) \times (10\text{ m/s}^2) \times (20\text{ m}) = 200,000\text{ Pa} = 2.0 \times 10^5\text{ Pa}$. Thus, the total pressure increases by this amount relative to the surface pressure.",
     "objectives": [
       "pressure"
     ],
@@ -1163,7 +1163,7 @@
       "D": "Because gravity stops pulling downward on moving objects."
     },
     "correctAnswer": "A",
-    "rationale": "Static friction acts on an object before it moves, and its maximum value must be overcome to start motion. Kinetic friction acts once the object is sliding. For almost all material interfaces, the coefficient of kinetic friction ($\mu_k$) is smaller than the coefficient of static friction ($\mu_s$), meaning less force is needed to maintain motion than to start it.",
+    "rationale": "Static friction acts on an object before it moves, and its maximum value must be overcome to start motion. Kinetic friction acts once the object is sliding. For almost all material interfaces, the coefficient of kinetic friction ($\\mu_k$) is smaller than the coefficient of static friction ($\\mu_s$), meaning less force is needed to maintain motion than to start it.",
     "objectives": [
       "friction"
     ],
@@ -1180,7 +1180,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 48,
-    "questionText": "A simple electrical circuit consists of a ideal $12\text{-V}$ DC voltage source connected in series with two resistors, whose resistances are $2.0\text{ }\Omega$ and $4.0\text{ }\Omega$ respectively. What is the total electric current flowing out of the power source?",
+    "questionText": "A simple electrical circuit consists of a ideal $12\text{-V}$ DC voltage source connected in series with two resistors, whose resistances are $2.0\text{ }\\Omega$ and $4.0\text{ }\\Omega$ respectively. What is the total electric current flowing out of the power source?",
     "choices": {
       "A": "2.0 Amperes",
       "B": "3.0 Amperes",
@@ -1188,7 +1188,7 @@
       "D": "8.0 Amperes"
     },
     "correctAnswer": "A",
-    "rationale": "For a series circuit, the total equivalent resistance is the sum of the individual resistances: $R_{\text{eq}} = R_1 + R_2 = 2.0\text{ }\Omega + 4.0\text{ }\Omega = 6.0\text{ }\Omega$. Using Ohm's Law ($V = IR$), we solve for current: $I = \frac{V}{R_{\text{eq}}} = \frac{12\text{ V}}{6.0\text{ }\Omega} = 2.0\text{ Amperes}$.",
+    "rationale": "For a series circuit, the total equivalent resistance is the sum of the individual resistances: $R_{\text{eq}} = R_1 + R_2 = 2.0\text{ }\\Omega + 4.0\text{ }\\Omega = 6.0\text{ }\\Omega$. Using Ohm's Law ($V = IR$), we solve for current: $I = \frac{V}{R_{\text{eq}}} = \frac{12\text{ V}}{6.0\text{ }\\Omega} = 2.0\text{ Amperes}$.",
     "objectives": [
       "electricity"
     ],
@@ -1238,7 +1238,7 @@
       "D": "The wavelength quadruples in size."
     },
     "correctAnswer": "C",
-    "rationale": "The wave speed on a string is determined solely by the properties of the medium (tension and linear density). Since the tension is constant, the wave speed ($v$) stays constant. Based on the wave equation $v = f\lambda$, frequency ($f$) and wavelength ($\lambda$) are inversely proportional. Doubling the frequency requires the wavelength to be cut in half.",
+    "rationale": "The wave speed on a string is determined solely by the properties of the medium (tension and linear density). Since the tension is constant, the wave speed ($v$) stays constant. Based on the wave equation $v = f\\lambda$, frequency ($f$) and wavelength ($\\lambda$) are inversely proportional. Doubling the frequency requires the wavelength to be cut in half.",
     "objectives": [
       "waves"
     ],
@@ -1263,7 +1263,7 @@
       "D": "30.0 cm"
     },
     "correctAnswer": "B",
-    "rationale": "We use the thin lens equation: $\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}$. Given $f = 10\text{ cm}$ and $d_o = 30\text{ cm}$, we substitute to solve for image distance $d_i$:\n$\frac{1}{10} = \frac{1}{30} + \frac{1}{d_i} \Rightarrow \frac{1}{d_i} = \frac{1}{10} - \frac{1}{30} = \frac{3}{30} - \frac{1}{30} = \frac{2}{30} \Rightarrow d_i = \frac{30}{2} = 15\text{ cm}$.",
+    "rationale": "We use the thin lens equation: $\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}$. Given $f = 10\text{ cm}$ and $d_o = 30\text{ cm}$, we substitute to solve for image distance $d_i$:\n$\frac{1}{10} = \frac{1}{30} + \frac{1}{d_i} \\Rightarrow \frac{1}{d_i} = \frac{1}{10} - \frac{1}{30} = \frac{3}{30} - \frac{1}{30} = \frac{2}{30} \\Rightarrow d_i = \frac{30}{2} = 15\text{ cm}$.",
     "objectives": [
       "optics"
     ],
@@ -1430,7 +1430,7 @@
     "difficulty": "very_hard",
     "type": "multiple_choice",
     "questionNumber": 58,
-    "questionText": "A projectile is launched from flat ground with an initial velocity $v_0$ at an elevation angle of exactly $45^\circ$ above the horizontal. If air resistance is assumed to be negligible, what is the ratio of the projectile's maximum vertical height ($H$) to its total horizontal range ($R$)?",
+    "questionText": "A projectile is launched from flat ground with an initial velocity $v_0$ at an elevation angle of exactly $45^\\circ$ above the horizontal. If air resistance is assumed to be negligible, what is the ratio of the projectile's maximum vertical height ($H$) to its total horizontal range ($R$)?",
     "choices": {
       "A": "1:1",
       "B": "1:2",
@@ -1438,7 +1438,7 @@
       "D": "1:8"
     },
     "correctAnswer": "C",
-    "rationale": "The formula for maximum height is $H = \frac{v_0^2 \sin^2\theta}{2g}$ and the formula for horizontal range is $R = \frac{v_0^2 \sin(2\theta)}{g}$. Taking their ratio gives $\frac{H}{R} = \frac{\sin^2\theta}{2 \sin(2\theta)} = \frac{\sin^2\theta}{4 \sin\theta \cos\theta} = \frac{\tan\theta}{4}$. For a launch angle of $\theta = 45^\circ$, $\tan(45^\circ) = 1$, so $\frac{H}{R} = \frac{1}{4}$. Thus, the ratio is 1:4.",
+    "rationale": "The formula for maximum height is $H = \frac{v_0^2 \\sin^2\theta}{2g}$ and the formula for horizontal range is $R = \frac{v_0^2 \\sin(2\theta)}{g}$. Taking their ratio gives $\frac{H}{R} = \frac{\\sin^2\theta}{2 \\sin(2\theta)} = \frac{\\sin^2\theta}{4 \\sin\theta \\cos\theta} = \frac{\tan\theta}{4}$. For a launch angle of $\theta = 45^\\circ$, $\tan(45^\\circ) = 1$, so $\frac{H}{R} = \frac{1}{4}$. Thus, the ratio is 1:4.",
     "objectives": [
       "motion"
     ],
@@ -1455,7 +1455,7 @@
     "difficulty": "very_hard",
     "type": "multiple_choice",
     "questionNumber": 59,
-    "questionText": "Two point charges, $Q_1 = +2.0\text{ }\mu\text{C}$ and $Q_2 = +8.0\text{ }\mu\text{C}$, are fixed at a distance of $30\text{ cm}$ apart along a straight horizontal line. A third positive point charge, $q$, is placed somewhere on the line segment connecting them. At what distance from $Q_1$ should charge $q$ be positioned so that the net electrostatic force acting on it is exactly zero?",
+    "questionText": "Two point charges, $Q_1 = +2.0\text{ }\\mu\text{C}$ and $Q_2 = +8.0\text{ }\\mu\text{C}$, are fixed at a distance of $30\text{ cm}$ apart along a straight horizontal line. A third positive point charge, $q$, is placed somewhere on the line segment connecting them. At what distance from $Q_1$ should charge $q$ be positioned so that the net electrostatic force acting on it is exactly zero?",
     "choices": {
       "A": "10 cm",
       "B": "15 cm",
@@ -1463,7 +1463,7 @@
       "D": "25 cm"
     },
     "correctAnswer": "A",
-    "rationale": "By Coulomb's Law, the force from $Q_1$ is $F_1 = \frac{kQ_1q}{x^2}$ and from $Q_2$ is $F_2 = \frac{kQ_2q}{(30-x)^2}$. Set them equal for a net force of zero:\n$\frac{k(2)q}{x^2} = \frac{k(8)q}{(30-x)^2} \Rightarrow \frac{2}{x^2} = \frac{8}{(30-x)^2} \Rightarrow \frac{1}{x^2} = \frac{4}{(30-x)^2}$. Take the square root of both sides:\n$\frac{1}{x} = \frac{2}{30-x} \Rightarrow 30 - x = 2x \Rightarrow 30 = 3x \Rightarrow x = 10\text{ cm}$.",
+    "rationale": "By Coulomb's Law, the force from $Q_1$ is $F_1 = \frac{kQ_1q}{x^2}$ and from $Q_2$ is $F_2 = \frac{kQ_2q}{(30-x)^2}$. Set them equal for a net force of zero:\n$\frac{k(2)q}{x^2} = \frac{k(8)q}{(30-x)^2} \\Rightarrow \frac{2}{x^2} = \frac{8}{(30-x)^2} \\Rightarrow \frac{1}{x^2} = \frac{4}{(30-x)^2}$. Take the square root of both sides:\n$\frac{1}{x} = \frac{2}{30-x} \\Rightarrow 30 - x = 2x \\Rightarrow 30 = 3x \\Rightarrow x = 10\text{ cm}$.",
     "objectives": [
       "electricity"
     ],
