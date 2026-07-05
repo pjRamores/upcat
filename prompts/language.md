@@ -216,3 +216,5 @@ FINAL OUTPUT REQUIREMENT
 - No markdown code fences.
 - No commentary.
 - No additional explanations outside the JSON.
+- If there is any conflict between pretty formatting and JSON validity, prioritize JSON validity.
+- The output must be directly copy-pasteable into a .json file and parse successfully.

@@ -12,8 +12,8 @@ IMPORTANT CONSTRAINTS
 - Use clear, unambiguous wording; one best answer only.
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
 - Difficulty mix:
-    - 22% easy
-    - 42% medium
+    - 20% easy
+    - 44% medium
     - 28% hard
     - 8% very hard
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
@@ -216,3 +216,5 @@ FINAL OUTPUT REQUIREMENT
 - No markdown code fences.
 - No commentary.
 - No additional explanations outside the JSON.
+- If there is any conflict between pretty formatting and JSON validity, prioritize JSON validity.
+- The output must be directly copy-pasteable into a .json file and parse successfully.
