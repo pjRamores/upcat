@@ -88,7 +88,7 @@
       "D": "1/4"
     },
     "correctAnswer": "B",
-    "rationale": "This follows a standard Mendelian dihybrid cross ($RrTt \times RrTt$). The phenotypic ratio for independent assortment is 9:3:3:1. The categories represent: 9 Tall Red ($R\\_T\\_$), 3 Tall White ($rrT\\_$), 3 Short Red ($R\\_tt$), and 1 Short White ($rrtt$). Therefore, the proportion of tall plants with white petals is 3/16.",
+    "rationale": "This follows a standard Mendelian dihybrid cross ($RrTt \\times RrTt$). The phenotypic ratio for independent assortment is 9:3:3:1. The categories represent: 9 Tall Red ($R\\_T\\_$), 3 Tall White ($rrT\\_$), 3 Short Red ($R\\_tt$), and 1 Short White ($rrtt$). Therefore, the proportion of tall plants with white petals is 3/16.",
     "objectives": [
       "genetics and heredity"
     ],
@@ -130,7 +130,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 6,
-    "questionText": "An ecological study evaluates a pristine tropical rainforest ecosystem. If the total net primary productivity (NPP) of the primary producers (plants) is measured at $20,000\text{ kcal/m}^2\text{/year}$, approximately how much energy would typically be incorporated into the biomass of the secondary consumers (carnivores that eat herbivores) per square meter per year within this community?",
+    "questionText": "An ecological study evaluates a pristine tropical rainforest ecosystem. If the total net primary productivity (NPP) of the primary producers (plants) is measured at $20,000\\text{ kcal/m}^2\\text{/year}$, approximately how much energy would typically be incorporated into the biomass of the secondary consumers (carnivores that eat herbivores) per square meter per year within this community?",
     "choices": {
       "A": "20,000 kcal",
       "B": "2,000 kcal",
@@ -138,7 +138,7 @@
       "D": "20 kcal"
     },
     "correctAnswer": "C",
-    "rationale": "Lindeman's Rule of Trophic Efficiency states that approximately 10% of the energy available at one trophic level is transferred and incorporated into the next higher level. Primary producers ($20,000\text{ kcal}$) → Primary consumers/herbivores (10% of $20,000 = 2,000\text{ kcal}$) → Secondary consumers/carnivores (10% of $2,000 = 200\text{ kcal}$).",
+    "rationale": "Lindeman's Rule of Trophic Efficiency states that approximately 10% of the energy available at one trophic level is transferred and incorporated into the next higher level. Primary producers ($20,000\\text{ kcal}$) → Primary consumers/herbivores (10% of $20,000 = 2,000\\text{ kcal}$) → Secondary consumers/carnivores (10% of $2,000 = 200\\text{ kcal}$).",
     "objectives": [
       "ecology"
     ],
@@ -380,7 +380,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 16,
-    "questionText": "Consider the following unbalanced chemical equation representing the combustion of liquid ethanol:\n$$\text{C}*2\text{H}*5\text{OH}(l) + \text{O}*2(g) \rightarrow \text{CO}*2(g) + \text{H}*2\text{O}(g)$$\nWhen this chemical equation is completely balanced with the lowest possible whole-number coefficients, what is the stoichiometric coefficient in front of oxygen gas ($\text{O}_2$)?",
+    "questionText": "Consider the following unbalanced chemical equation representing the combustion of liquid ethanol:\n$$\\text{C}*2\\text{H}*5\\text{OH}(l) + \\text{O}*2(g) \\rightarrow \\text{CO}*2(g) + \\text{H}*2\\text{O}(g)$$\nWhen this chemical equation is completely balanced with the lowest possible whole-number coefficients, what is the stoichiometric coefficient in front of oxygen gas ($\\text{O}_2$)?",
     "choices": {
       "A": "2",
       "B": "3",
@@ -388,7 +388,7 @@
       "D": "7"
     },
     "correctAnswer": "B",
-    "rationale": "Let's balance the atoms sequentially. Carbon: 2 carbons on the left mean we need a coefficient of 2 for $\text{CO}_2$ ($2\text{CO}_2$). Hydrogen: 6 hydrogens on the left mean we need a coefficient of 3 for $\text{H}_2\text{O}$ ($3\text{H}_2\text{O}$). Now count the oxygen atoms on the right: $(2 \times 2) + (3 \times 1) = 7$ oxygen atoms. On the left side, ethanol supplies 1 oxygen atom. The remaining 6 oxygen atoms must come from the $\text{O}_2$ gas, which means we need $3\text{O}_2$. The balanced equation is $\text{C}_2\text{H}_5\text{OH} + 3\text{O}_2 \rightarrow 2\text{CO}_2 + 3\text{H}_2\text{O}$.",
+    "rationale": "Let's balance the atoms sequentially. Carbon: 2 carbons on the left mean we need a coefficient of 2 for $\\text{CO}_2$ ($2\\text{CO}_2$). Hydrogen: 6 hydrogens on the left mean we need a coefficient of 3 for $\\text{H}_2\\text{O}$ ($3\\text{H}_2\\text{O}$). Now count the oxygen atoms on the right: $(2 \\times 2) + (3 \\times 1) = 7$ oxygen atoms. On the left side, ethanol supplies 1 oxygen atom. The remaining 6 oxygen atoms must come from the $\\text{O}_2$ gas, which means we need $3\\text{O}_2$. The balanced equation is $\\text{C}_2\\text{H}_5\\text{OH} + 3\\text{O}_2 \\rightarrow 2\\text{CO}_2 + 3\\text{H}_2\\text{O}$.",
     "objectives": [
       "chemical reactions"
     ],
@@ -405,7 +405,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 17,
-    "questionText": "A student prepares a standard laboratory solution by dissolving exactly $11.7\text{ g}$ of sodium chloride ($\text{NaCl}$, molar mass = $58.5\text{ g/mol}$) into enough distilled water to yield a final solution volume of exactly $500\text{ mL}$. What is the molarity ($M$) of this solution?",
+    "questionText": "A student prepares a standard laboratory solution by dissolving exactly $11.7\\text{ g}$ of sodium chloride ($\\text{NaCl}$, molar mass = $58.5\\text{ g/mol}$) into enough distilled water to yield a final solution volume of exactly $500\\text{ mL}$. What is the molarity ($M$) of this solution?",
     "choices": {
       "A": "0.10 M",
       "B": "0.20 M",
@@ -413,7 +413,7 @@
       "D": "2.34 M"
     },
     "correctAnswer": "C",
-    "rationale": "First, calculate the number of moles of solute: $\text{moles of NaCl} = \frac{11.7\text{ g}}{58.5\text{ g/mol}} = 0.20\text{ moles}$. Next, convert the volume of the solution from milliliters to liters: $500\text{ mL} = 0.50\text{ L}$. Molarity is defined as moles of solute divided by liters of solution: $\text{Molarity} = \frac{0.20\text{ moles}}{0.50\text{ L}} = 0.40\text{ M}$.",
+    "rationale": "First, calculate the number of moles of solute: $\\text{moles of NaCl} = \\frac{11.7\\text{ g}}{58.5\\text{ g/mol}} = 0.20\\text{ moles}$. Next, convert the volume of the solution from milliliters to liters: $500\\text{ mL} = 0.50\\text{ L}$. Molarity is defined as moles of solute divided by liters of solution: $\\text{Molarity} = \\frac{0.20\\text{ moles}}{0.50\\text{ L}} = 0.40\\text{ M}$.",
     "objectives": [
       "solutions"
     ],
@@ -430,7 +430,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 18,
-    "questionText": "An aqueous solution of a strong monoprotic acid is measured to have a hydronium ion concentration $[H_3O^+]$ of $1.0 \times 10^{-3}\text{ M}$. If this solution is diluted with pure water to exactly 10 times its original volume, what will be the pH of the newly formed solution?",
+    "questionText": "An aqueous solution of a strong monoprotic acid is measured to have a hydronium ion concentration $[H_3O^+]$ of $1.0 \\times 10^{-3}\\text{ M}$. If this solution is diluted with pure water to exactly 10 times its original volume, what will be the pH of the newly formed solution?",
     "choices": {
       "A": "2",
       "B": "3",
@@ -438,7 +438,7 @@
       "D": "14"
     },
     "correctAnswer": "C",
-    "rationale": "The initial concentration $[H_3O^+] = 1.0 \times 10^{-3}\text{ M}$, which corresponds to an initial pH of $3$ ($-\\log[1.0 \times 10^{-3}] = 3$). Diluting the solution to 10 times its original volume drops the concentration of the acid by a factor of 10. The new hydronium concentration is $1.0 \times 10^{-4}\text{ M}$. Taking the negative logarithm gives a final pH of $4$.",
+    "rationale": "The initial concentration $[H_3O^+] = 1.0 \\times 10^{-3}\\text{ M}$, which corresponds to an initial pH of $3$ ($-\\log[1.0 \\times 10^{-3}] = 3$). Diluting the solution to 10 times its original volume drops the concentration of the acid by a factor of 10. The new hydronium concentration is $1.0 \\times 10^{-4}\\text{ M}$. Taking the negative logarithm gives a final pH of $4$.",
     "objectives": [
       "acids and bases"
     ],
@@ -455,7 +455,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 19,
-    "questionText": "An ideal gas is confined in a rigid container with a fixed, unchangeable volume. If the absolute temperature of the gas is precisely doubled from $300\text{ K}$ to $600\text{ K}$, what will happen to the pressure exerted by the gas against the walls of the container?",
+    "questionText": "An ideal gas is confined in a rigid container with a fixed, unchangeable volume. If the absolute temperature of the gas is precisely doubled from $300\\text{ K}$ to $600\\text{ K}$, what will happen to the pressure exerted by the gas against the walls of the container?",
     "choices": {
       "A": "The pressure will drop to one-half of its original value.",
       "B": "The pressure will remain exactly the same.",
@@ -463,7 +463,7 @@
       "D": "The pressure will quadruple in magnitude."
     },
     "correctAnswer": "C",
-    "rationale": "According to Gay-Lussac's Law, the pressure of a given mass of gas is directly proportional to its absolute temperature when the volume is held constant ($\frac{P_1}{T_1} = \frac{P_2}{T_2}$). If the absolute temperature in Kelvin is doubled, the pressure must also double.",
+    "rationale": "According to Gay-Lussac's Law, the pressure of a given mass of gas is directly proportional to its absolute temperature when the volume is held constant ($\\frac{P_1}{T_1} = \\frac{P_2}{T_2}$). If the absolute temperature in Kelvin is doubled, the pressure must also double.",
     "objectives": [
       "gas laws"
     ],
@@ -538,7 +538,7 @@
       "D": "Inner Core"
     },
     "correctAnswer": "C",
-    "rationale": "The Earth's outer core is a fluid layer about $2,260\text{ km}$ thick, composed mainly of iron and nickel. Convection currents within this liquid metal outer core, driven by heat loss and Earth's rotation, generate the planet's magnetic field via the dynamo mechanism. The inner core is solid due to intense pressure.",
+    "rationale": "The Earth's outer core is a fluid layer about $2,260\\text{ km}$ thick, composed mainly of iron and nickel. Convection currents within this liquid metal outer core, driven by heat loss and Earth's rotation, generate the planet's magnetic field via the dynamo mechanism. The inner core is solid due to intense pressure.",
     "objectives": [
       "Earth\u2019s structure"
     ],
@@ -763,7 +763,7 @@
       "D": "Albedo"
     },
     "correctAnswer": "C",
-    "rationale": "Eccentricity measures the variation in the shape of Earth's orbit around the Sun from nearly circular to mildly elliptical over a cycle of roughly $100,000\text{ years}$. Obliquity is the change in the tilt of Earth's axis, and precession is the wobbling of Earth's rotational axis. Albedo is the reflectivity of Earth's surface.",
+    "rationale": "Eccentricity measures the variation in the shape of Earth's orbit around the Sun from nearly circular to mildly elliptical over a cycle of roughly $100,000\\text{ years}$. Obliquity is the change in the tilt of Earth's axis, and precession is the wobbling of Earth's rotational axis. Albedo is the reflectivity of Earth's surface.",
     "objectives": [
       "climate"
     ],
@@ -830,7 +830,7 @@
     "difficulty": "easy",
     "type": "multiple_choice",
     "questionNumber": 34,
-    "questionText": "A physics laboratory group measures the mass of a metal cylinder four separate times using an electronic balance. They record the following data values: $25.12\text{ g}$, $25.13\text{ g}$, $25.11\text{ g}$, and $25.12\text{ g}$. The actual true mass of the cylinder is officially certified to be $30.00\text{ g}$. How would you describe the measurements taken by the students?",
+    "questionText": "A physics laboratory group measures the mass of a metal cylinder four separate times using an electronic balance. They record the following data values: $25.12\\text{ g}$, $25.13\\text{ g}$, $25.11\\text{ g}$, and $25.12\\text{ g}$. The actual true mass of the cylinder is officially certified to be $30.00\\text{ g}$. How would you describe the measurements taken by the students?",
     "choices": {
       "A": "Highly precise and highly accurate",
       "B": "Highly precise but inaccurate",
@@ -838,7 +838,7 @@
       "D": "Inaccurate and imprecise"
     },
     "correctAnswer": "B",
-    "rationale": "Precision refers to the repeatability or closeness of a set of measurements to each other. Because the values ($25.12, 25.13, 25.11, 25.12$) are very close together, they are precise. Accuracy refers to how close a measurement is to the true value ($30.00\text{ g}$). Since the measured values are far from $30.00\text{ g}$, they are inaccurate.",
+    "rationale": "Precision refers to the repeatability or closeness of a set of measurements to each other. Because the values ($25.12, 25.13, 25.11, 25.12$) are very close together, they are precise. Accuracy refers to how close a measurement is to the true value ($30.00\\text{ g}$). Since the measured values are far from $30.00\\text{ g}$, they are inaccurate.",
     "objectives": [
       "measurement"
     ],
@@ -980,7 +980,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 40,
-    "questionText": "An automobile starts completely from rest and accelerates uniformly in a straight line along a horizontal highway at a rate of $4.0\text{ m/s}^2$. How far will the automobile have traveled by the time it reaches a final velocity of $20.0\text{ m/s}$?",
+    "questionText": "An automobile starts completely from rest and accelerates uniformly in a straight line along a horizontal highway at a rate of $4.0\\text{ m/s}^2$. How far will the automobile have traveled by the time it reaches a final velocity of $20.0\\text{ m/s}$?",
     "choices": {
       "A": "5.0 meters",
       "B": "25.0 meters",
@@ -988,7 +988,7 @@
       "D": "80.0 meters"
     },
     "correctAnswer": "C",
-    "rationale": "We can use the kinematic equation that relates velocity, acceleration, and distance without explicitly using time: $v_f^2 = v_i^2 + 2ax$. Given that $v_i = 0$ (starts from rest), $v_f = 20.0\text{ m/s}$, and $a = 4.0\text{ m/s}^2$, we plug in the numbers:\n$20^2 = 0^2 + 2(4)x \\Rightarrow 400 = 8x \\Rightarrow x = \frac{400}{8} = 50\text{ meters}$.",
+    "rationale": "We can use the kinematic equation that relates velocity, acceleration, and distance without explicitly using time: $v_f^2 = v_i^2 + 2ax$. Given that $v_i = 0$ (starts from rest), $v_f = 20.0\\text{ m/s}$, and $a = 4.0\\text{ m/s}^2$, we plug in the numbers:\n$20^2 = 0^2 + 2(4)x \\rightarrow 400 = 8x \\rightarrow x = \\frac{400}{8} = 50\\text{ meters}$.",
     "objectives": [
       "motion"
     ],
@@ -1030,7 +1030,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 42,
-    "questionText": "A $2.0\text{-kg}$ block is released from rest at the top of a frictionless inclined ramp that stands at a vertical height of $5.0\text{ meters}$ above the ground. Using $g = 10\text{ m/s}^2$ for the acceleration due to gravity, what will be the kinetic energy of the block when it reaches the bottom of the ramp?",
+    "questionText": "A $2.0\\text{-kg}$ block is released from rest at the top of a frictionless inclined ramp that stands at a vertical height of $5.0\\text{ meters}$ above the ground. Using $g = 10\\text{ m/s}^2$ for the acceleration due to gravity, what will be the kinetic energy of the block when it reaches the bottom of the ramp?",
     "choices": {
       "A": "10 Joules",
       "B": "20 Joules",
@@ -1038,7 +1038,7 @@
       "D": "100 Joules"
     },
     "correctAnswer": "D",
-    "rationale": "By the Law of Conservation of Energy, since there is no friction, the total mechanical energy is conserved. The gravitational potential energy at the top of the ramp converts completely into kinetic energy at the bottom. $\text{Potential Energy (top)} = mgh = (2.0\text{ kg}) \times (10\text{ m/s}^2) \times (5.0\text{ m}) = 100\text{ Joules}$. Therefore, the kinetic energy at the bottom is $100\text{ Joules}$.",
+    "rationale": "By the Law of Conservation of Energy, since there is no friction, the total mechanical energy is conserved. The gravitational potential energy at the top of the ramp converts completely into kinetic energy at the bottom. $\\text{Potential Energy (top)} = mgh = (2.0\\text{ kg}) \\times (10\\text{ m/s}^2) \\times (5.0\\text{ m}) = 100\\text{ Joules}$. Therefore, the kinetic energy at the bottom is $100\\text{ Joules}$.",
     "objectives": [
       "energy"
     ],
@@ -1055,7 +1055,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 43,
-    "questionText": "A $3.0\text{-kg}$ toy cart moving to the right with a velocity of $4.0\text{ m/s}$ collides head-on with a $2.0\text{-kg}$ toy cart that is completely stationary ($v = 0$). After the collision, the two carts lock together and move forward as a single combined unit. What is the final velocity of the combined carts immediately after impact?",
+    "questionText": "A $3.0\\text{-kg}$ toy cart moving to the right with a velocity of $4.0\\text{ m/s}$ collides head-on with a $2.0\\text{-kg}$ toy cart that is completely stationary ($v = 0$). After the collision, the two carts lock together and move forward as a single combined unit. What is the final velocity of the combined carts immediately after impact?",
     "choices": {
       "A": "1.2 m/s",
       "B": "2.0 m/s",
@@ -1063,7 +1063,7 @@
       "D": "4.0 m/s"
     },
     "correctAnswer": "C",
-    "rationale": "This is a perfectly inelastic collision, where momentum is conserved: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Substitute the given values: $(3.0)(4.0) + (2.0)(0) = (3.0 + 2.0)v_f \\Rightarrow 12 = 5v_f \\Rightarrow v_f = \frac{12}{5} = 2.4\text{ m/s}$.",
+    "rationale": "This is a perfectly inelastic collision, where momentum is conserved: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Substitute the given values: $(3.0)(4.0) + (2.0)(0) = (3.0 + 2.0)v_f \\rightarrow 12 = 5v_f \\rightarrow v_f = \\frac{12}{5} = 2.4\\text{ m/s}$.",
     "objectives": [
       "momentum"
     ],
@@ -1105,7 +1105,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 45,
-    "questionText": "Archimedes' Principle describes the buoyant force acting on objects submerged in fluid. An object is placed into a large tank filled with water. If the object floats with exactly 30% of its volume submerged beneath the water's surface, what is the density of the object? (Assume the density of water is $1.00\text{ g/cm}^3$).",
+    "questionText": "Archimedes' Principle describes the buoyant force acting on objects submerged in fluid. An object is placed into a large tank filled with water. If the object floats with exactly 30% of its volume submerged beneath the water's surface, what is the density of the object? (Assume the density of water is $1.00\\text{ g/cm}^3$).",
     "choices": {
       "A": "0.30 g/cm³",
       "B": "0.70 g/cm³",
@@ -1113,7 +1113,7 @@
       "D": "1.30 g/cm³"
     },
     "correctAnswer": "A",
-    "rationale": "For a floating object, the fraction of the object submerged is equal to the ratio of the density of the object to the density of the fluid: $\text{Fraction submerged} = \frac{\rho*{\text{object}}}{\rho*{\text{fluid}}}$. Here, $0.30 = \frac{\rho*{\text{object}}}{1.00\text{ g/cm}^3}$, which means $\rho*{\text{object}} = 0.30\text{ g/cm}^3$.",
+    "rationale": "For a floating object, the fraction of the object submerged is equal to the ratio of the density of the object to the density of the fluid: $\\text{Fraction submerged} = \\frac{\rho*{\\text{object}}}{\rho*{\\text{fluid}}}$. Here, $0.30 = \\frac{\rho*{\\text{object}}}{1.00\\text{ g/cm}^3}$, which means $\rho*{\\text{object}} = 0.30\\text{ g/cm}^3$.",
     "objectives": [
       "fluid mechanics"
     ],
@@ -1130,15 +1130,15 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 46,
-    "questionText": "Hydrostatic pressure inside a fluid depends on depth. If a scuba diver descends from the surface of a freshwater lake down to a depth of exactly $20\text{ meters}$, what happens to the total hydrostatic pressure exerted on the diver compared to the pressure at the surface? (Take the density of water as $1000\text{ kg/m}^3$, $g = 10\text{ m/s}^2$, and atmospheric pressure $P*{\text{atm}} = 1.0 \times 10^5\text{ Pa}$).",
+    "questionText": "Hydrostatic pressure inside a fluid depends on depth. If a scuba diver descends from the surface of a freshwater lake down to a depth of exactly $20\\text{ meters}$, what happens to the total hydrostatic pressure exerted on the diver compared to the pressure at the surface? (Take the density of water as $1000\\text{ kg/m}^3$, $g = 10\\text{ m/s}^2$, and atmospheric pressure $P*{\\text{atm}} = 1.0 \\times 10^5\\text{ Pa}$).",
     "choices": {
       "A": "The hydrostatic pressure drops to zero.",
-      "B": "The pressure increases by exactly $2.0 \times 10^5\text{ Pa}$.",
+      "B": "The pressure increases by exactly $2.0 \\times 10^5\\text{ Pa}$.",
       "C": "The pressure stays constant because water is incompressible.",
-      "D": "The pressure decreases by $1.0 \times 10^5\text{ Pa}$ due to buoyancy."
+      "D": "The pressure decreases by $1.0 \\times 10^5\\text{ Pa}$ due to buoyancy."
     },
     "correctAnswer": "B",
-    "rationale": "The gauge pressure added by the water column is calculated using $\\Delta P = \rho gh$. Plugging in the values: $\\Delta P = (1000\text{ kg/m}^3) \times (10\text{ m/s}^2) \times (20\text{ m}) = 200,000\text{ Pa} = 2.0 \times 10^5\text{ Pa}$. Thus, the total pressure increases by this amount relative to the surface pressure.",
+    "rationale": "The gauge pressure added by the water column is calculated using $\\Delta P = \rho gh$. Plugging in the values: $\\Delta P = (1000\\text{ kg/m}^3) \\times (10\\text{ m/s}^2) \\times (20\\text{ m}) = 200,000\\text{ Pa} = 2.0 \\times 10^5\\text{ Pa}$. Thus, the total pressure increases by this amount relative to the surface pressure.",
     "objectives": [
       "pressure"
     ],
@@ -1155,7 +1155,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 47,
-    "questionText": "A heavy wooden crate rests on a rough horizontal concrete floor. A worker applies a gradually increasing horizontal pushing force to the crate. The crate remains completely stationary until the pushing force reaches $150\text{ N}$, at which point the crate breaks free and begins to slide. Why does it require less force to keep the crate moving at a constant velocity once it is already sliding?",
+    "questionText": "A heavy wooden crate rests on a rough horizontal concrete floor. A worker applies a gradually increasing horizontal pushing force to the crate. The crate remains completely stationary until the pushing force reaches $150\\text{ N}$, at which point the crate breaks free and begins to slide. Why does it require less force to keep the crate moving at a constant velocity once it is already sliding?",
     "choices": {
       "A": "Because the coefficient of kinetic friction is typically less than the coefficient of maximum static friction.",
       "B": "Because sliding eliminates the normal force acting on the crate.",
@@ -1180,7 +1180,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 48,
-    "questionText": "A simple electrical circuit consists of a ideal $12\text{-V}$ DC voltage source connected in series with two resistors, whose resistances are $2.0\text{ }\\Omega$ and $4.0\text{ }\\Omega$ respectively. What is the total electric current flowing out of the power source?",
+    "questionText": "A simple electrical circuit consists of a ideal $12\\text{-V}$ DC voltage source connected in series with two resistors, whose resistances are $2.0\\text{ }\\Omega$ and $4.0\\text{ }\\Omega$ respectively. What is the total electric current flowing out of the power source?",
     "choices": {
       "A": "2.0 Amperes",
       "B": "3.0 Amperes",
@@ -1188,7 +1188,7 @@
       "D": "8.0 Amperes"
     },
     "correctAnswer": "A",
-    "rationale": "For a series circuit, the total equivalent resistance is the sum of the individual resistances: $R_{\text{eq}} = R_1 + R_2 = 2.0\text{ }\\Omega + 4.0\text{ }\\Omega = 6.0\text{ }\\Omega$. Using Ohm's Law ($V = IR$), we solve for current: $I = \frac{V}{R_{\text{eq}}} = \frac{12\text{ V}}{6.0\text{ }\\Omega} = 2.0\text{ Amperes}$.",
+    "rationale": "For a series circuit, the total equivalent resistance is the sum of the individual resistances: $R_{\\text{eq}} = R_1 + R_2 = 2.0\\text{ }\\Omega + 4.0\\text{ }\\Omega = 6.0\\text{ }\\Omega$. Using Ohm's Law ($V = IR$), we solve for current: $I = \\frac{V}{R_{\\text{eq}}} = \\frac{12\\text{ V}}{6.0\\text{ }\\Omega} = 2.0\\text{ Amperes}$.",
     "objectives": [
       "electricity"
     ],
@@ -1213,7 +1213,7 @@
       "D": "In a straight line with zero deflection"
     },
     "correctAnswer": "A",
-    "rationale": "Using the Right-Hand Rule for magnetic force on a moving positive charge ($F = qv \times B$): point your fingers/index in the direction of the velocity vector (left to right), curl them in the direction of the magnetic field (into the page). Your thumb points in the direction of the resulting force, which is upward toward the top of the page.",
+    "rationale": "Using the Right-Hand Rule for magnetic force on a moving positive charge ($F = qv \\times B$): point your fingers/index in the direction of the velocity vector (left to right), curl them in the direction of the magnetic field (into the page). Your thumb points in the direction of the resulting force, which is upward toward the top of the page.",
     "objectives": [
       "magnetism"
     ],
@@ -1255,7 +1255,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 51,
-    "questionText": "An object is placed at a distance of $30\text{ cm}$ in front of a thin converging (convex) lens. If the focal length of this lens is exactly $10\text{ cm}$, at what distance behind the lens will the real image be focused?",
+    "questionText": "An object is placed at a distance of $30\\text{ cm}$ in front of a thin converging (convex) lens. If the focal length of this lens is exactly $10\\text{ cm}$, at what distance behind the lens will the real image be focused?",
     "choices": {
       "A": "7.5 cm",
       "B": "15.0 cm",
@@ -1263,7 +1263,7 @@
       "D": "30.0 cm"
     },
     "correctAnswer": "B",
-    "rationale": "We use the thin lens equation: $\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}$. Given $f = 10\text{ cm}$ and $d_o = 30\text{ cm}$, we substitute to solve for image distance $d_i$:\n$\frac{1}{10} = \frac{1}{30} + \frac{1}{d_i} \\Rightarrow \frac{1}{d_i} = \frac{1}{10} - \frac{1}{30} = \frac{3}{30} - \frac{1}{30} = \frac{2}{30} \\Rightarrow d_i = \frac{30}{2} = 15\text{ cm}$.",
+    "rationale": "We use the thin lens equation: $\\frac{1}{f} = \\frac{1}{d_o} + \\frac{1}{d_i}$. Given $f = 10\\text{ cm}$ and $d_o = 30\\text{ cm}$, we substitute to solve for image distance $d_i$:\n$\\frac{1}{10} = \\frac{1}{30} + \\frac{1}{d_i} \\rightarrow \\frac{1}{d_i} = \\frac{1}{10} - \\frac{1}{30} = \\frac{3}{30} - \\frac{1}{30} = \\frac{2}{30} \\rightarrow d_i = \\frac{30}{2} = 15\\text{ cm}$.",
     "objectives": [
       "optics"
     ],
@@ -1280,7 +1280,7 @@
     "difficulty": "medium",
     "type": "multiple_choice",
     "questionNumber": 52,
-    "questionText": "A toy model airplane travels in a horizontal circular path of radius $2.0\text{ meters}$ at a constant speed of $4.0\text{ m/s}$. What is the magnitude of the centripetal acceleration experienced by the model airplane?",
+    "questionText": "A toy model airplane travels in a horizontal circular path of radius $2.0\\text{ meters}$ at a constant speed of $4.0\\text{ m/s}$. What is the magnitude of the centripetal acceleration experienced by the model airplane?",
     "choices": {
       "A": "2.0 m/s\u00b2",
       "B": "4.0 m/s\u00b2",
@@ -1288,7 +1288,7 @@
       "D": "16.0 m/s\u00b2"
     },
     "correctAnswer": "C",
-    "rationale": "Centripetal acceleration is given by the formula $a_c = \frac{v^2}{r}$. Substituting the given values: $a_c = \frac{4.0^2}{2.0} = \frac{16.0}{2.0} = 8.0\text{ m/s}^2$.",
+    "rationale": "Centripetal acceleration is given by the formula $a_c = \\frac{v^2}{r}$. Substituting the given values: $a_c = \\frac{4.0^2}{2.0} = \\frac{16.0}{2.0} = 8.0\\text{ m/s}^2$.",
     "objectives": [
       "circular motion"
     ],
@@ -1438,7 +1438,7 @@
       "D": "1:8"
     },
     "correctAnswer": "C",
-    "rationale": "The formula for maximum height is $H = \frac{v_0^2 \\sin^2\theta}{2g}$ and the formula for horizontal range is $R = \frac{v_0^2 \\sin(2\theta)}{g}$. Taking their ratio gives $\frac{H}{R} = \frac{\\sin^2\theta}{2 \\sin(2\theta)} = \frac{\\sin^2\theta}{4 \\sin\theta \\cos\theta} = \frac{\tan\theta}{4}$. For a launch angle of $\theta = 45^\\circ$, $\tan(45^\\circ) = 1$, so $\frac{H}{R} = \frac{1}{4}$. Thus, the ratio is 1:4.",
+    "rationale": "The formula for maximum height is $H = \\frac{v_0^2 \\sin^2\theta}{2g}$ and the formula for horizontal range is $R = \\frac{v_0^2 \\sin(2\theta)}{g}$. Taking their ratio gives $\\frac{H}{R} = \\frac{\\sin^2\theta}{2 \\sin(2\theta)} = \\frac{\\sin^2\theta}{4 \\sin\theta \\cos\theta} = \\frac{\tan\theta}{4}$. For a launch angle of $\theta = 45^\\circ$, $\tan(45^\\circ) = 1$, so $\\frac{H}{R} = \\frac{1}{4}$. Thus, the ratio is 1:4.",
     "objectives": [
       "motion"
     ],
@@ -1455,7 +1455,7 @@
     "difficulty": "very_hard",
     "type": "multiple_choice",
     "questionNumber": 59,
-    "questionText": "Two point charges, $Q_1 = +2.0\text{ }\\mu\text{C}$ and $Q_2 = +8.0\text{ }\\mu\text{C}$, are fixed at a distance of $30\text{ cm}$ apart along a straight horizontal line. A third positive point charge, $q$, is placed somewhere on the line segment connecting them. At what distance from $Q_1$ should charge $q$ be positioned so that the net electrostatic force acting on it is exactly zero?",
+    "questionText": "Two point charges, $Q_1 = +2.0\\text{ }\\mu\\text{C}$ and $Q_2 = +8.0\\text{ }\\mu\\text{C}$, are fixed at a distance of $30\\text{ cm}$ apart along a straight horizontal line. A third positive point charge, $q$, is placed somewhere on the line segment connecting them. At what distance from $Q_1$ should charge $q$ be positioned so that the net electrostatic force acting on it is exactly zero?",
     "choices": {
       "A": "10 cm",
       "B": "15 cm",
@@ -1463,7 +1463,7 @@
       "D": "25 cm"
     },
     "correctAnswer": "A",
-    "rationale": "By Coulomb's Law, the force from $Q_1$ is $F_1 = \frac{kQ_1q}{x^2}$ and from $Q_2$ is $F_2 = \frac{kQ_2q}{(30-x)^2}$. Set them equal for a net force of zero:\n$\frac{k(2)q}{x^2} = \frac{k(8)q}{(30-x)^2} \\Rightarrow \frac{2}{x^2} = \frac{8}{(30-x)^2} \\Rightarrow \frac{1}{x^2} = \frac{4}{(30-x)^2}$. Take the square root of both sides:\n$\frac{1}{x} = \frac{2}{30-x} \\Rightarrow 30 - x = 2x \\Rightarrow 30 = 3x \\Rightarrow x = 10\text{ cm}$.",
+    "rationale": "By Coulomb's Law, the force from $Q_1$ is $F_1 = \\frac{kQ_1q}{x^2}$ and from $Q_2$ is $F_2 = \\frac{kQ_2q}{(30-x)^2}$. Set them equal for a net force of zero:\n$\\frac{k(2)q}{x^2} = \\frac{k(8)q}{(30-x)^2} \\rightarrow \\frac{2}{x^2} = \\frac{8}{(30-x)^2} \\rightarrow \\frac{1}{x^2} = \\frac{4}{(30-x)^2}$. Take the square root of both sides:\n$\\frac{1}{x} = \\frac{2}{30-x} \\rightarrow 30 - x = 2x \\rightarrow 30 = 3x \\rightarrow x = 10\\text{ cm}$.",
     "objectives": [
       "electricity"
     ],

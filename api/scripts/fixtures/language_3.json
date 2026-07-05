@@ -1,0 +1,2004 @@
+[
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Balarilang Filipino",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "Alin sa mga sumusunod ang wastong pangungusap?",
+    "choices": {
+      "A": "Si Maria at si Juan ay magkapatid.",
+      "B": "Si Maria at Juan ay magkapatid.",
+      "C": "Maria at si Juan ay magkapatid.",
+      "D": "Maria at Juan ay magkapatid."
+    },
+    "correctAnswer": "D",
+    "rationale": "Ang wastong gamit ay hindi dapat magsama ng 'si' at walang 'si' sa isang hanay. Kapag dalawang pangalan na walang titulo, hindi ginagamit ang 'si'. Ang opsyon D ay wasto dahil pareho walang 'si' sina Maria at Juan.",
+    "objectives": [
+      "balarilang Filipino",
+      "wastong gamit ng wikang Filipino sa iba't ibang konteksto"
+    ],
+    "tags": [
+      "filipino-grammar",
+      "sentence-construction"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Subject-Verb Agreement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "Choose the sentence with correct subject-verb agreement.",
+    "choices": {
+      "A": "Either the students or the teacher have the keys.",
+      "B": "Either the students or the teacher has the keys.",
+      "C": "Either the teacher or the students has the keys.",
+      "D": "Either the teacher or the students was the keys."
+    },
+    "correctAnswer": "B",
+    "rationale": "In 'either...or' constructions, the verb agrees with the subject closest to it. Since 'teacher' (singular) is closest to the verb, we use 'has' (singular).",
+    "objectives": [
+      "subject-verb agreement",
+      "English grammar"
+    ],
+    "tags": [
+      "grammar",
+      "agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Analogies",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "SCULPTOR : STATUE :: AUTHOR : ________",
+    "choices": {
+      "A": "novel",
+      "B": "pen",
+      "C": "library",
+      "D": "editor"
+    },
+    "correctAnswer": "A",
+    "rationale": "A sculptor creates a statue; an author creates a novel. Both relationships show creator to creation.",
+    "objectives": [
+      "analogies",
+      "vocabulary"
+    ],
+    "tags": [
+      "analogies",
+      "relationships"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Sawikain",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "Ano ang kahulugan ng sawikain: **\"Nagsusunog ng kilay\"**?",
+    "choices": {
+      "A": "Nakatulog nang maaga",
+      "B": "Nag-aaral nang husto",
+      "C": "Nagluluto ng masarap na pagkain",
+      "D": "Nagtatanim ng gulay"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang sawikain na 'nagsusunog ng kilay' ay nangangahulugang nag-aaral o nagtatrabaho nang husto at masipag.",
+    "objectives": [
+      "sawikain at idyomatikong pahayag",
+      "talasalitaan"
+    ],
+    "tags": [
+      "idiomatic-expressions",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation - Commas",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "In which sentence are the commas used correctly?",
+    "choices": {
+      "A": "The conference scheduled for May 15 2024 will be held in Manila.",
+      "B": "The conference scheduled for May 15, 2024 will be held in Manila.",
+      "C": "The conference scheduled for May 15, 2024, will be held in Manila.",
+      "D": "The conference scheduled for May, 15, 2024 will be held in Manila."
+    },
+    "correctAnswer": "C",
+    "rationale": "When a full date appears in a sentence, commas should be placed both after the day and after the year. Option C correctly places commas after '15' and after '2024'.",
+    "objectives": [
+      "commas",
+      "punctuation"
+    ],
+    "tags": [
+      "punctuation",
+      "commas"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Synonyms",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 72,
+    "questionText": "Which word is closest in meaning to INTRANSIGENT?",
+    "choices": {
+      "A": "Flexible",
+      "B": "Stubborn",
+      "C": "Temporary",
+      "D": "Peaceful"
+    },
+    "correctAnswer": "B",
+    "rationale": "Intransigent means unwilling to change one's views or compromise; stubbornly uncompromising. The closest synonym is 'stubborn'. 'Flexible' is an antonym.",
+    "objectives": [
+      "synonyms",
+      "Vocabulary"
+    ],
+    "tags": [
+      "synonyms",
+      "advanced-vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Tayutay",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "Anong uri ng tayutay ang ginamit sa pahayag: **\"Ang kanyang ngiti ay umaabot hanggang tainga.\"**",
+    "choices": {
+      "A": "Simile",
+      "B": "Metapora",
+      "C": "Hyperbole",
+      "D": "Personipikasyon"
+    },
+    "correctAnswer": "C",
+    "rationale": "Hyperbole o eksaherasyon ang ginamit dahil ang ngiti ay hindi talaga umaabot sa tainga; ito ay pinasobra upang ipakita na napakalaki ng ngiti.",
+    "objectives": [
+      "tayutay",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "tayutay",
+      "figurative-language"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure - Fragments",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "Identify the sentence fragment.",
+    "choices": {
+      "A": "Running quickly through the park.",
+      "B": "She runs quickly through the park.",
+      "C": "The runner, who runs quickly through the park.",
+      "D": "Both A and C"
+    },
+    "correctAnswer": "D",
+    "rationale": "Both A and C are fragments. A lacks a subject and complete verb structure. C is a dependent clause that cannot stand alone. B is the only complete sentence.",
+    "objectives": [
+      "sentence fragments",
+      "sentence structure"
+    ],
+    "tags": [
+      "fragments",
+      "sentence-structure"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Pronoun-Antecedent Agreement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "Choose the sentence with correct pronoun-antecedent agreement.",
+    "choices": {
+      "A": "Everyone should bring their own lunch.",
+      "B": "Everyone should bring his or her own lunch.",
+      "C": "Everyone should bring its own lunch.",
+      "D": "Everyone should bring our own lunch."
+    },
+    "correctAnswer": "B",
+    "rationale": "\"Everyone\" is a singular indefinite pronoun and requires a singular pronoun. While 'their' is increasingly accepted in informal usage, 'his or her' is the traditionally correct singular form in formal writing.",
+    "objectives": [
+      "pronoun-antecedent agreement",
+      "English grammar"
+    ],
+    "tags": [
+      "pronouns",
+      "agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Pag-unawa sa Binasa",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "Basahin ang sumusunod:\n\n**\"Ang edukasyon ay susi sa pag-unlad ng bansa. Sa pamamagitan nito, ang mga kabataan ay nagiging handa sa hamon ng kinabukasan at nakakatulong sa pagpapaunlad ng ekonomiya.\"**\n\nAno ang pangunahing ideya ng talata?",
+    "choices": {
+      "A": "Ang ekonomiya ay umuunlad.",
+      "B": "Ang kabataan ay may hamon sa buhay.",
+      "C": "Ang edukasyon ay mahalaga sa pag-unlad.",
+      "D": "Ang bansa ay nangangailangan ng tulong."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang pangunahing ideya ng talata ay nakatuon sa kahalagahan ng edukasyon sa pag-unlad ng bansa, tulad ng sinalaysay sa unang pangungusap at sinusuportahan ng mga kasunod na pangungusap.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "reading-comprehension",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Context Clues",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "In the sentence, \"The teacher's explanation was so **abstruse** that even the brightest students struggled to understand it,\" what does **abstruse** most likely mean?",
+    "choices": {
+      "A": "Simple",
+      "B": "Difficult to understand",
+      "C": "Interesting",
+      "D": "Lengthy"
+    },
+    "correctAnswer": "B",
+    "rationale": "Context clues indicate that 'abstruse' means difficult to understand, as evidenced by the fact that even bright students struggled with it.",
+    "objectives": [
+      "contextual word meanings",
+      "vocabulary"
+    ],
+    "tags": [
+      "context-clues",
+      "vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Verb Tenses",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "Select the sentence that correctly uses verb tenses to show the sequence of events.",
+    "choices": {
+      "A": "By the time I arrived, the meeting already started.",
+      "B": "By the time I arrived, the meeting has already started.",
+      "C": "By the time I arrived, the meeting had already started.",
+      "D": "By the time I arrive, the meeting had already started."
+    },
+    "correctAnswer": "C",
+    "rationale": "The past perfect tense (had started) is used to show an action that was completed before another past action (arrived). This correctly shows the sequence: the meeting started first, then I arrived.",
+    "objectives": [
+      "verb tenses",
+      "English grammar"
+    ],
+    "tags": [
+      "verb-tenses",
+      "grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Talasalitaan",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "Ano ang kasingkahulugan ng salitang **\"masigasig\"**?",
+    "choices": {
+      "A": "Tamad",
+      "B": "Masipag",
+      "C": "Mahinhin",
+      "D": "Maingay"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang 'masigasig' ay nangangahulugang masipag, masigla, at puno ng sigasig sa paggawa.",
+    "objectives": [
+      "talasalitaan",
+      "synonyms"
+    ],
+    "tags": [
+      "vocabulary",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "Identify the error in the following sentence:\n\n**\"Neither the manager nor the employees was aware of the policy change.\"**",
+    "choices": {
+      "A": "Incorrect use of 'neither...nor'",
+      "B": "Incorrect verb agreement",
+      "C": "Incorrect capitalization",
+      "D": "No error"
+    },
+    "correctAnswer": "B",
+    "rationale": "The verb should be 'were' not 'was' because in a 'neither...nor' construction, the verb agrees with the nearest subject, which is 'employees' (plural).",
+    "objectives": [
+      "identify grammatical and stylistic errors",
+      "subject-verb agreement"
+    ],
+    "tags": [
+      "error-identification",
+      "agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Analogies",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "INSURGENT : REBELLION :: APOSTATE : ________",
+    "choices": {
+      "A": "faith",
+      "B": "conversion",
+      "C": "defection",
+      "D": "church"
+    },
+    "correctAnswer": "C",
+    "rationale": "An insurgent participates in rebellion; an apostate participates in defection (abandoning one's religious or political beliefs). Both show the relationship between a person and the act of breaking away.",
+    "objectives": [
+      "analogies",
+      "vocabulary"
+    ],
+    "tags": [
+      "analogies",
+      "advanced-vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Balarilang Filipino",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Piliin ang tamang panlapi na gagamitin upang makumpleto ang pangungusap:\n\n**\"____takbo siya nang mabilis upang makahabol sa bus.\"**",
+    "choices": {
+      "A": "Nag",
+      "B": "Nang",
+      "C": "Mag",
+      "D": "Tuma"
+    },
+    "correctAnswer": "D",
+    "rationale": "Ang tamang sagot ay 'Tumakbo' - ang unlaping 'tuma-' ay ginagamit sa perpektibo ng mga pandiwang nagsisimula sa katinig tulad ng 'takbo'.",
+    "objectives": [
+      "balarilang Filipino",
+      "prefixes and suffixes"
+    ],
+    "tags": [
+      "filipino-grammar",
+      "affixes"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation - Semicolons",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "Choose the sentence that correctly uses a semicolon.",
+    "choices": {
+      "A": "The rain stopped; and the sun came out.",
+      "B": "The rain stopped; the sun came out.",
+      "C": "The rain stopped, the sun came out.",
+      "D": "The rain stopped: the sun came out."
+    },
+    "correctAnswer": "B",
+    "rationale": "A semicolon is correctly used to join two independent clauses without a conjunction. Option B properly uses the semicolon between two complete sentences that are closely related.",
+    "objectives": [
+      "semicolons",
+      "punctuation"
+    ],
+    "tags": [
+      "punctuation",
+      "semicolons"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Parallelism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "Which sentence demonstrates correct parallel structure?",
+    "choices": {
+      "A": "She enjoys reading, to write, and painting.",
+      "B": "She enjoys reading, writing, and to paint.",
+      "C": "She enjoys reading, writing, and painting.",
+      "D": "She enjoys to read, writing, and painting."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C maintains parallel structure by using three gerunds (reading, writing, painting) in the same form. The other options mix gerunds with infinitives, breaking parallelism.",
+    "objectives": [
+      "parallelism",
+      "sentence structure"
+    ],
+    "tags": [
+      "parallelism",
+      "grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Sawikain",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "Ano ang tamang paggamit ng sawikain na **\"butas ang bulsa\"**?",
+    "choices": {
+      "A": "May sira ang kanyang damit.",
+      "B": "Walang pera o mahirap.",
+      "C": "Masayang tao.",
+      "D": "Mabilis tumakbo."
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang sawikain na 'butas ang bulsa' ay tumutukoy sa taong walang pera o mahirap sa buhay.",
+    "objectives": [
+      "sawikain at idyomatikong pahayag",
+      "idiomatic expressions"
+    ],
+    "tags": [
+      "idioms",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Antonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "What is the antonym of **ephemeral**?",
+    "choices": {
+      "A": "Temporary",
+      "B": "Permanent",
+      "C": "Quick",
+      "D": "Delicate"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ephemeral means lasting for a very short time, so its antonym is permanent, which means lasting indefinitely.",
+    "objectives": [
+      "antonyms",
+      "vocabulary"
+    ],
+    "tags": [
+      "antonyms",
+      "vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Improvement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "Choose the best revision of the following sentence:\n\n**\"Being that it was raining, we stayed indoors.\"**",
+    "choices": {
+      "A": "Being it was raining, we stayed indoors.",
+      "B": "Since it was raining, we stayed indoors.",
+      "C": "It being raining, we stayed indoors.",
+      "D": "Because it being raining, we stayed indoors."
+    },
+    "correctAnswer": "B",
+    "rationale": "'Being that' is nonstandard. The correct subordinating conjunction is 'since' or 'because'. Option B provides the clearest and most correct revision.",
+    "objectives": [
+      "choose the best revision for correctness, clarity, and style",
+      "conjunctions"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "clarity"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Tayutay",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "Anong tayutay ang makikita sa pahayag: **\"O Kamatayan, nasaan na ang iyong pangil?\"**",
+    "choices": {
+      "A": "Simile",
+      "B": "Apostrophe",
+      "C": "Hyperbole",
+      "D": "Onomatopoeia"
+    },
+    "correctAnswer": "B",
+    "rationale": "Apostrophe ang tayutay na ginamit dahil ang mananalita ay direktang kumakausap sa isang bagay na walang buhay (kamatayan) na para bang ito ay buhay at makakarinig.",
+    "objectives": [
+      "tayutay",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "tayutay",
+      "figurative-language"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Parts of Speech",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "In the sentence \"The **rapidly** changing technology affects our daily lives,\" what part of speech is the word **rapidly**?",
+    "choices": {
+      "A": "Adjective",
+      "B": "Adverb",
+      "C": "Verb",
+      "D": "Noun"
+    },
+    "correctAnswer": "B",
+    "rationale": "\"Rapidly\" is an adverb modifying the verb \"changing.\" It tells how the technology is changing.",
+    "objectives": [
+      "parts of speech",
+      "modifiers"
+    ],
+    "tags": [
+      "parts-of-speech",
+      "adverbs"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Word Problem - Reading Comprehension",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "A school librarian needs to arrange books on a shelf. She has 45 fiction books, 30 non-fiction books, and 25 reference books. She wants to display them in groups where each group contains the same number of books of each type. What is the greatest number of groups she can create?\n\nBased on this problem, which phrase best describes the librarian's organizational goal?",
+    "choices": {
+      "A": "Minimizing the total number of books",
+      "B": "Creating equal distribution across maximum groups",
+      "C": "Separating fiction from non-fiction",
+      "D": "Maximizing books per group"
+    },
+    "correctAnswer": "B",
+    "rationale": "The problem states that the librarian wants groups with the same number of each type of book, which describes creating equal distribution. The question asks for the greatest number of groups, which means maximum groups.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "contextual word meanings"
+    ],
+    "tags": [
+      "word-problem",
+      "comprehension"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction - Word Choice",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "Which word best completes the sentence with appropriate formality for academic writing?\n\n**\"The research findings ________ the hypothesis proposed by earlier studies.\"**",
+    "choices": {
+      "A": "back up",
+      "B": "corroborate",
+      "C": "go along with",
+      "D": "match"
+    },
+    "correctAnswer": "B",
+    "rationale": "\"Corroborate\" is the most formal and precise term for academic writing. The other options are too informal or less precise for scholarly discourse.",
+    "objectives": [
+      "precise vocabulary in context",
+      "appropriate tone and usage"
+    ],
+    "tags": [
+      "diction",
+      "word-choice"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Pag-unawa sa Binasa",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "Basahin ang sumusunod:\n\n**\"Bagamat maraming pagsubok ang kinaharap ng bansa sa nakaraang taon, patuloy pa rin ang pag-asa ng mga mamamayan. Ang bayanihan at pakikipagkapatiran ay nananatiling matatag sa kabila ng mga hamon.\"**\n\nAno ang tono ng talata?",
+    "choices": {
+      "A": "Malungkot at walang pag-asa",
+      "B": "Galit at nanunuya",
+      "C": "Optimistiko at positibo",
+      "D": "Walang kinikilingan"
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang tono ng talata ay optimistiko dahil sa kabila ng mga pagsubok, binibigyang-diin pa rin ang pag-asa at matatag na bayanihan ng mga mamamayan.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "tone",
+      "reading-comprehension"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Active and Passive Voice",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "Which sentence uses the active voice?",
+    "choices": {
+      "A": "The ball was thrown by the pitcher.",
+      "B": "The game was won by the home team.",
+      "C": "The pitcher threw the ball.",
+      "D": "The trophy was awarded to the champions."
+    },
+    "correctAnswer": "C",
+    "rationale": "In active voice, the subject performs the action. Option C has 'the pitcher' (subject) performing the action of throwing. All other options are in passive voice where the subject receives the action.",
+    "objectives": [
+      "active and passive voice",
+      "English grammar"
+    ],
+    "tags": [
+      "voice",
+      "grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Homonyms",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "Choose the sentence that correctly uses the word **their**.",
+    "choices": {
+      "A": "The students put their books on the desk.",
+      "B": "They're going to their house over their.",
+      "C": "Their is no reason to worry.",
+      "D": "We will meet their at noon."
+    },
+    "correctAnswer": "A",
+    "rationale": "\"Their\" is a possessive pronoun meaning 'belonging to them.' Option A correctly uses it to show that the books belong to the students. Other options confuse 'their,' 'they're,' and 'there.'",
+    "objectives": [
+      "homonyms",
+      "commonly confused words correctly"
+    ],
+    "tags": [
+      "homonyms",
+      "usage"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation - Apostrophes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "In which sentence are apostrophes used correctly?",
+    "choices": {
+      "A": "The childrens' toys are scattered everywhere.",
+      "B": "The children's toys are scattered everywhere.",
+      "C": "The childrens toys are scattered everywhere.",
+      "D": "The children's toy's are scattered everywhere."
+    },
+    "correctAnswer": "B",
+    "rationale": "\"Children\" is already plural, so to make it possessive, we add apostrophe-s ('s), not s-apostrophe (s'). Option B correctly shows possession for an irregular plural noun.",
+    "objectives": [
+      "apostrophes",
+      "punctuation"
+    ],
+    "tags": [
+      "apostrophes",
+      "possession"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Talasalitaan",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "Ano ang salitang-ugat ng **\"kinakain\"**?",
+    "choices": {
+      "A": "Kinain",
+      "B": "Kain",
+      "C": "Kakain",
+      "D": "Kumain"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang salitang-ugat ng 'kinakain' ay 'kain.' Ang 'ki-' at '-in' ay mga panlapi (inuulit na unlapi at hulapi) na idinadagdag sa ugat.",
+    "objectives": [
+      "talasalitaan",
+      "balarilang Filipino"
+    ],
+    "tags": [
+      "root-words",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure - Run-on Sentences",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "Identify the run-on sentence.",
+    "choices": {
+      "A": "The sun set, and the stars appeared.",
+      "B": "The sun set; the stars appeared.",
+      "C": "The sun set the stars appeared.",
+      "D": "The sun set. The stars appeared."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C is a run-on sentence (specifically a fused sentence) because two independent clauses are joined without proper punctuation or conjunction. All other options correctly separate or join the clauses.",
+    "objectives": [
+      "run-on sentences",
+      "sentence structure"
+    ],
+    "tags": [
+      "run-on",
+      "sentence-structure"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "Identify the error in the following sentence:\n\n**\"The committee, along with the chairperson, have decided to postpone the meeting until next week.\"**",
+    "choices": {
+      "A": "Incorrect use of comma",
+      "B": "Incorrect verb form",
+      "C": "Incorrect preposition",
+      "D": "No error"
+    },
+    "correctAnswer": "B",
+    "rationale": "The verb should be 'has' not 'have.' When a phrase like 'along with' separates the subject from the verb, the verb agrees with the main subject ('committee'), which is singular. Intervening phrases do not affect subject-verb agreement.",
+    "objectives": [
+      "identify grammatical and stylistic errors",
+      "subject-verb agreement"
+    ],
+    "tags": [
+      "error-identification",
+      "advanced-grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Context Clues",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "In the passage, \"The politician's speech was filled with **platitudes** that offered no real solutions, merely repeating commonly heard phrases that everyone had heard countless times before,\" what does **platitudes** mean?",
+    "choices": {
+      "A": "Innovative ideas",
+      "B": "Trite, overused remarks",
+      "C": "Complex arguments",
+      "D": "Controversial statements"
+    },
+    "correctAnswer": "B",
+    "rationale": "Context clues 'commonly heard phrases' and 'everyone had heard countless times' indicate that platitudes are trite, overused remarks lacking originality.",
+    "objectives": [
+      "contextual word meanings",
+      "vocabulary"
+    ],
+    "tags": [
+      "context-clues",
+      "advanced-vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Balarilang Filipino",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "Piliin ang pangungusap na gumagamit ng **pokus sa sanhi**.",
+    "choices": {
+      "A": "Binasa ng bata ang libro.",
+      "B": "Binuksan ni Ana ang pinto.",
+      "C": "Ikinagalit ni Pedro ang pangyayari.",
+      "D": "Binigyan ng guro ang estudyante ng award."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang pokus sa sanhi ay ginagamit kapag ang sanhi o dahilan ng kilos ay binibigyang-diin. Ang 'ikinagalit' ay nagpapakita ng sanhi (ang pangyayari) kung bakit nagalit si Pedro.",
+    "objectives": [
+      "balarilang Filipino",
+      "wastong gamit ng wikang Filipino sa iba't ibang konteksto"
+    ],
+    "tags": [
+      "filipino-grammar",
+      "focus"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Modifiers",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "Choose the sentence without a misplaced modifier.",
+    "choices": {
+      "A": "She served sandwiches to the children on paper plates.",
+      "B": "Walking down the street, the trees were beautiful.",
+      "C": "I saw a dog running through the park with brown spots.",
+      "D": "The teacher distributed the exams to the students that were printed yesterday."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C clearly places the modifier 'with brown spots' near 'dog,' correctly indicating that the dog has brown spots. All other options have misplaced modifiers that create ambiguity or illogical meaning.",
+    "objectives": [
+      "modifiers",
+      "clarity"
+    ],
+    "tags": [
+      "modifiers",
+      "sentence-structure"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Analogies",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "AMELIORATE : WORSEN :: COALESCE : ________",
+    "choices": {
+      "A": "unite",
+      "B": "fragment",
+      "C": "combine",
+      "D": "merge"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ameliorate (improve) is the opposite of worsen; coalesce (come together) is the opposite of fragment (break apart). This is an antonym analogy.",
+    "objectives": [
+      "analogies",
+      "vocabulary"
+    ],
+    "tags": [
+      "analogies",
+      "antonyms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Sawikain",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "Aling pangungusap ang gumagamit nang wasto ng sawikain **\"bahag ang buntot\"**?",
+    "choices": {
+      "A": "Mataas ang lipad niya ngayon dahil sa kanyang tagumpay.",
+      "B": "Tumakbo siya palayo nang bahag ang buntot dahil sa takot.",
+      "C": "Malakas ang loob niyang harapin ang problema.",
+      "D": "Masaya siya dahil nanalo sa paligsahan."
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang 'bahag ang buntot' ay nangangahulugang takot o duwag. Ang opsyon B ay tumutukoy sa pagtakbo dahil sa takot, na wasto ang gamit ng sawikain.",
+    "objectives": [
+      "sawikain at idyomatikong pahayag",
+      "wastong gamit ng wikang Filipino sa iba't ibang konteksto"
+    ],
+    "tags": [
+      "idioms",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Improvement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "Which revision best improves the following sentence for concision and clarity?\n\n**\"Due to the fact that the weather was bad, the game was canceled by the officials.\"**",
+    "choices": {
+      "A": "Because the weather was bad, the officials canceled the game.",
+      "B": "The game was canceled by the officials due to the weather being bad.",
+      "C": "Due to bad weather conditions, cancellation of the game was done by officials.",
+      "D": "The fact that weather was bad resulted in the game being canceled by officials."
+    },
+    "correctAnswer": "A",
+    "rationale": "Option A improves concision by replacing 'due to the fact that' with 'because,' and uses active voice ('officials canceled') instead of passive voice. It is the clearest and most concise revision.",
+    "objectives": [
+      "choose the best revision for correctness, clarity, and style",
+      "concision",
+      "clarity"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "concision"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Prepositions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "Choose the sentence with the correct preposition.",
+    "choices": {
+      "A": "She is good in mathematics.",
+      "B": "She is good at mathematics.",
+      "C": "She is good for mathematics.",
+      "D": "She is good with mathematics."
+    },
+    "correctAnswer": "B",
+    "rationale": "The correct idiom is 'good at' when referring to skill or ability in a subject or activity. 'Good at mathematics' is the standard expression.",
+    "objectives": [
+      "prepositions",
+      "idiomatic expressions"
+    ],
+    "tags": [
+      "prepositions",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Capitalization",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "In which sentence is capitalization used correctly?",
+    "choices": {
+      "A": "My Uncle works at the University of the Philippines.",
+      "B": "My uncle works at the University Of The Philippines.",
+      "C": "My uncle works at the University of the Philippines.",
+      "D": "My Uncle works at the university of the philippines."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C correctly capitalizes the proper noun (University of the Philippines) while keeping 'uncle' lowercase (since it's not used as a name) and properly capitalizing only the main words in the university's name, keeping articles and prepositions lowercase.",
+    "objectives": [
+      "capitalization",
+      "punctuation and mechanics"
+    ],
+    "tags": [
+      "capitalization",
+      "mechanics"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Pag-unawa sa Binasa",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "Basahin ang talata:\n\n**\"Ang globalisasyon ay nagdulot ng mabilis na pagbabago sa ating lipunan. Bagama't nagbukas ito ng mga oportunidad sa kalakalan at teknolohiya, hindi maikakaila na may mga negatibong epekto rin ito sa lokal na kultura at ekonomiya ng mga maliit na negosyo.\"**\n\nAno ang pinakaangkop na konklusyon base sa talata?",
+    "choices": {
+      "A": "Ang globalisasyon ay lubos na makakasama sa lahat.",
+      "B": "Ang globalisasyon ay may positibo at negatibong aspeto.",
+      "C": "Ang globalisasyon ay dapat labanan ng lahat.",
+      "D": "Ang globalisasyon ay walang epekto sa kultura."
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang talata ay binabalanse ang positibo (oportunidad) at negatibo (epekto sa kultura at maliliit na negosyo) na aspeto ng globalisasyon, kaya ang B ang pinakaangkop na konklusyon.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "reading-comprehension",
+      "inference"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Spelling",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "Choose the correctly spelled word.",
+    "choices": {
+      "A": "Occassion",
+      "B": "Ocassion",
+      "C": "Occasion",
+      "D": "Ocasion"
+    },
+    "correctAnswer": "C",
+    "rationale": "The correct spelling is 'occasion' with two c's and one s. This is a commonly misspelled word.",
+    "objectives": [
+      "spelling",
+      "vocabulary"
+    ],
+    "tags": [
+      "spelling",
+      "mechanics"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Tayutay",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "Anong tayutay ang ginamit sa pahayag: **\"Ang kanyang puso ay bato.\"**",
+    "choices": {
+      "A": "Simile",
+      "B": "Metapora",
+      "C": "Personipikasyon",
+      "D": "Aliterasyon"
+    },
+    "correctAnswer": "B",
+    "rationale": "Metapora ang ginamit dahil direktang inihahambing ang puso sa bato nang walang paggamit ng 'tulad,' 'gaya,' o 'para.' Ang ibig sabihin ay ang taong ito ay walang damdamin o malupit.",
+    "objectives": [
+      "tayutay",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "tayutay",
+      "metaphor"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Conjunctions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "Choose the sentence that correctly uses a correlative conjunction.",
+    "choices": {
+      "A": "Neither the teacher or the students understood the problem.",
+      "B": "Not only the teacher but also the students understood the problem.",
+      "C": "Either the teacher nor the students understood the problem.",
+      "D": "Both the teacher or the students understood the problem."
+    },
+    "correctAnswer": "B",
+    "rationale": "Correlative conjunctions must be used in pairs: neither/nor, either/or, not only/but also, both/and. Option B correctly uses 'not only...but also.'",
+    "objectives": [
+      "conjunctions",
+      "English grammar"
+    ],
+    "tags": [
+      "conjunctions",
+      "correlatives"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Word Problem - Context Analysis",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "A researcher conducted a survey among 240 respondents. Of these, 60% were female, and among the female respondents, 75% agreed with the proposal. Among male respondents, only 50% agreed. \n\nWhich statement best describes the **overall consensus** based on these statistics?",
+    "choices": {
+      "A": "There is overwhelming support for the proposal.",
+      "B": "There is majority support with gender-based variation.",
+      "C": "Males and females equally support the proposal.",
+      "D": "There is no clear consensus on the proposal."
+    },
+    "correctAnswer": "B",
+    "rationale": "Female = 144 (75% agree = 108), Male = 96 (50% agree = 48). Total agreeing = 156/240 = 65%, which is majority support. However, there's significant variation between genders (75% vs 50%), making B the most accurate description.",
+    "objectives": [
+      "contextual word meanings",
+      "pag-unawa sa binasa"
+    ],
+    "tags": [
+      "word-problem",
+      "analysis"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction - Commonly Confused Words",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "Choose the sentence that correctly uses **affect** or **effect**.",
+    "choices": {
+      "A": "The new policy will effect everyone in the company.",
+      "B": "The new policy will affect everyone in the company.",
+      "C": "The affect of the new policy is significant.",
+      "D": "We must affect change in our organization."
+    },
+    "correctAnswer": "B",
+    "rationale": "'Affect' is typically a verb meaning to influence; 'effect' is typically a noun meaning result. Option B correctly uses 'affect' as a verb meaning the policy will influence everyone.",
+    "objectives": [
+      "commonly confused words correctly",
+      "diction"
+    ],
+    "tags": [
+      "word-choice",
+      "commonly-confused"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Balarilang Filipino",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "Anong uri ng pangngalan ang **\"kabayanihan\"**?",
+    "choices": {
+      "A": "Pantangi",
+      "B": "Pambalana",
+      "C": "Basal",
+      "D": "Lansakan"
+    },
+    "correctAnswer": "D",
+    "rationale": "Ang 'kabayanihan' ay pangngalang lansakan dahil ito ay naglalarawan ng katangian, kalidad, o konsepto. Ito ay hango sa pang-uring 'bayani' na ginawang pangngalan sa pamamagitan ng panlapi.",
+    "objectives": [
+      "balarilang Filipino",
+      "parts of speech"
+    ],
+    "tags": [
+      "filipino-grammar",
+      "nouns"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "Identify the error in the following sentence:\n\n**\"Between you and I, this is the best solution.\"**",
+    "choices": {
+      "A": "Incorrect pronoun case",
+      "B": "Incorrect verb tense",
+      "C": "Incorrect preposition",
+      "D": "No error"
+    },
+    "correctAnswer": "A",
+    "rationale": "The correct pronoun after the preposition 'between' should be 'me' (objective case), not 'I' (subjective case). The sentence should read 'Between you and me.'",
+    "objectives": [
+      "identify grammatical and stylistic errors",
+      "parts of speech"
+    ],
+    "tags": [
+      "error-identification",
+      "pronouns"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Etymology",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "The word **benevolent** comes from Latin roots meaning:",
+    "choices": {
+      "A": "good + willing",
+      "B": "well + wishing",
+      "C": "kind + hearted",
+      "D": "generous + giving"
+    },
+    "correctAnswer": "B",
+    "rationale": "Benevolent comes from Latin 'bene' (well) and 'volent' (wishing). Together they form the meaning 'well-wishing' or 'kindly.'",
+    "objectives": [
+      "basic etymology",
+      "vocabulary"
+    ],
+    "tags": [
+      "etymology",
+      "word-origins"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure - Coordination and Subordination",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "Which sentence best demonstrates effective subordination?",
+    "choices": {
+      "A": "The rain stopped and we went outside.",
+      "B": "The rain stopped, so we went outside.",
+      "C": "After the rain stopped, we went outside.",
+      "D": "The rain stopped; we went outside."
+    },
+    "correctAnswer": "C",
+    "rationale": "Option C uses subordination effectively by making one clause dependent (After the rain stopped) and the other independent (we went outside), showing clear cause-and-effect relationship. The other options use coordination, which treats both clauses equally.",
+    "objectives": [
+      "coordination and subordination",
+      "sentence structure"
+    ],
+    "tags": [
+      "subordination",
+      "sentence-structure"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Talasalitaan",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "Ano ang kahulugan ng salitang **\"mapagpakumbaba\"**?",
+    "choices": {
+      "A": "Mayabang at hambog",
+      "B": "Mabait at matulungin",
+      "C": "Hindi nagyayabang, mababa ang tingin sa sarili",
+      "D": "Matapang at malakas"
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang 'mapagpakumbaba' ay nangangahulugang hindi nagyayabang, may pagkilala sa sariling limitasyon, at mababa ang tingin sa sarili sa mabuting paraan (humble).",
+    "objectives": [
+      "talasalitaan",
+      "vocabulary"
+    ],
+    "tags": [
+      "vocabulary",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Parts of Speech",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "In the sentence, \"The committee will meet **tomorrow** to discuss the **urgent** matter,\" what parts of speech are the underlined words?",
+    "choices": {
+      "A": "Noun, adjective",
+      "B": "Adverb, adjective",
+      "C": "Adjective, adverb",
+      "D": "Adverb, adverb"
+    },
+    "correctAnswer": "B",
+    "rationale": "'Tomorrow' is an adverb of time modifying 'will meet,' telling when. 'Urgent' is an adjective modifying 'matter,' describing what kind of matter.",
+    "objectives": [
+      "parts of speech",
+      "modifiers"
+    ],
+    "tags": [
+      "parts-of-speech",
+      "grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Antonyms",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "What is the antonym of **exacerbate**?",
+    "choices": {
+      "A": "Worsen",
+      "B": "Intensify",
+      "C": "Alleviate",
+      "D": "Complicate"
+    },
+    "correctAnswer": "C",
+    "rationale": "Exacerbate means to make worse or more severe. Alleviate, meaning to make better or less severe, is its antonym.",
+    "objectives": [
+      "antonyms",
+      "vocabulary"
+    ],
+    "tags": [
+      "antonyms",
+      "vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Improvement",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "Which revision best improves the following passage for clarity and concision?\n\n**\"In the event that you are not able to attend the meeting, it would be appreciated if you could send a representative in your place to attend for you.\"**",
+    "choices": {
+      "A": "In the event that you cannot attend, please send a representative.",
+      "B": "If you are unable to attend the meeting, please send a representative.",
+      "C": "Should you not be able to attend, we would appreciate a representative being sent.",
+      "D": "If you cannot attend, please send a representative."
+    },
+    "correctAnswer": "D",
+    "rationale": "Option D is the most concise while maintaining all necessary information. It eliminates wordiness ('in the event that,' 'it would be appreciated,' 'in your place to attend for you') while keeping the message clear.",
+    "objectives": [
+      "choose the best revision for correctness, clarity, and style",
+      "concision"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "concision"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Pag-unawa sa Binasa",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "Basahin ang pangungusap:\n\n**\"Hindi lamang sa paaralan natututunan ang tunay na kaalaman kundi pati na rin sa karanasan sa buhay.\"**\n\nAno ang ipinahihiwatig ng pahayag?",
+    "choices": {
+      "A": "Ang paaralan ay hindi mahalaga.",
+      "B": "Ang karanasan ay mas mahalaga kaysa pag-aaral.",
+      "C": "Parehong mahalaga ang paaralan at karanasan sa pag-aaral.",
+      "D": "Ang kaalaman ay matatagpuan lamang sa karanasan."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang pahayag ay nagpapahiwatig na ang kaalaman ay natututunan sa dalawang paraan: sa paaralan at sa karanasan. Ang salitang 'hindi lamang...kundi pati' ay nagpapakita na parehong mahalaga ang dalawa.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "reading-comprehension",
+      "inference"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Verb Tenses",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "Choose the sentence that uses the present perfect tense correctly.",
+    "choices": {
+      "A": "I am living here since 2020.",
+      "B": "I have lived here since 2020.",
+      "C": "I lived here since 2020.",
+      "D": "I was living here since 2020."
+    },
+    "correctAnswer": "B",
+    "rationale": "The present perfect tense (have lived) is used with 'since' to indicate an action that started in the past and continues to the present. Option B correctly uses this construction.",
+    "objectives": [
+      "verb tenses",
+      "English grammar"
+    ],
+    "tags": [
+      "verb-tenses",
+      "present-perfect"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Synonyms",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "Which word has the closest meaning to **obfuscate**?",
+    "choices": {
+      "A": "Clarify",
+      "B": "Confuse",
+      "C": "Simplify",
+      "D": "Explain"
+    },
+    "correctAnswer": "B",
+    "rationale": "Obfuscate means to make something unclear, confusing, or difficult to understand. Confuse is the closest synonym.",
+    "objectives": [
+      "synonyms",
+      "vocabulary"
+    ],
+    "tags": [
+      "synonyms",
+      "advanced-vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Sawikain",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "Kumpletuhin ang sawikain: **\"Ang hindi lumingon sa pinanggalingan ay __________.\"**",
+    "choices": {
+      "A": "hindi marunong magmahal",
+      "B": "hindi makararating sa paroroonan",
+      "C": "walang kinabukasan",
+      "D": "walang pag-asa"
+    },
+    "correctAnswer": "B",
+    "rationale": "Ang kumpletong sawikain ay 'Ang hindi lumingon sa pinanggalingan ay hindi makararating sa paroroonan.' Ito ay nangangahulugang dapat pahalagahan ang ating pinagmulan upang matagumpay sa hinaharap.",
+    "objectives": [
+      "sawikain at idyomatikong pahayag",
+      "talasalitaan"
+    ],
+    "tags": [
+      "idioms",
+      "filipino"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation - Commas",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "Which sentence correctly uses commas with non-restrictive clauses?",
+    "choices": {
+      "A": "My sister who lives in Manila is a doctor.",
+      "B": "My sister, who lives in Manila is a doctor.",
+      "C": "My sister who lives in Manila, is a doctor.",
+      "D": "My sister, who lives in Manila, is a doctor."
+    },
+    "correctAnswer": "D",
+    "rationale": "A non-restrictive (non-essential) clause provides additional information and should be set off by commas on both sides. If you have only one sister, 'who lives in Manila' is additional information, requiring commas before and after the clause.",
+    "objectives": [
+      "commas",
+      "punctuation"
+    ],
+    "tags": [
+      "commas",
+      "clauses"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Word Problem - Language Analysis",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "A publishing company reviewed 180 manuscripts last month. They accepted 45 for publication, rejected 90 outright, and requested revisions for the remainder. \n\nWhich phrase best describes the company's **disposition** toward the manuscripts?",
+    "choices": {
+      "A": "Predominantly accepting",
+      "B": "Evenly balanced across categories",
+      "C": "Majority rejection with moderate consideration",
+      "D": "Exclusively selective"
+    },
+    "correctAnswer": "C",
+    "rationale": "Rejected = 90 (50%), Accepted = 45 (25%), Revisions = 45 (25%). The majority (50%) were rejected, with moderate consideration shown by combining accepted and revision-requested (50% total). Option C best captures this disposition.",
+    "objectives": [
+      "contextual word meanings",
+      "precise vocabulary in context"
+    ],
+    "tags": [
+      "word-problem",
+      "diction"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Active and Passive Voice",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 61,
+    "questionText": "Which sentence should be revised from passive to active voice for better clarity?",
+    "choices": {
+      "A": "The experiment was conducted by the research team.",
+      "B": "Mistakes were made during the process.",
+      "C": "The building was designed by a famous architect.",
+      "D": "All of the above"
+    },
+    "correctAnswer": "B",
+    "rationale": "Option B is the best candidate for revision because it uses passive voice to avoid identifying who made the mistakes, which reduces clarity and accountability. The active voice 'Someone made mistakes' or 'We made mistakes' would be clearer.",
+    "objectives": [
+      "active and passive voice",
+      "clarity"
+    ],
+    "tags": [
+      "voice",
+      "clarity"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Tayutay",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 62,
+    "questionText": "Anong tayutay ang ginamit sa pahayag: **\"Ang hangin ay humahagibis sa mga puno.\"**",
+    "choices": {
+      "A": "Metapora",
+      "B": "Personipikasyon",
+      "C": "Hyperbole",
+      "D": "Simile"
+    },
+    "correctAnswer": "B",
+    "rationale": "Personipikasyon ang ginamit dahil ang hangin ay binigyan ng katangiang pang-tao (humahagibis), na para bang ito ay may buhay at kusang kumikilos.",
+    "objectives": [
+      "tayutay",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "tayutay",
+      "personification"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Error Identification",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 63,
+    "questionText": "Identify the error in the following sentence:\n\n**\"Each of the students have submitted their assignments on time.\"**",
+    "choices": {
+      "A": "Incorrect verb agreement",
+      "B": "Incorrect pronoun case",
+      "C": "Incorrect preposition",
+      "D": "No error"
+    },
+    "correctAnswer": "A",
+    "rationale": "'Each' is singular, so the verb should be 'has' not 'have.' The sentence should read: 'Each of the students has submitted their assignments on time.'",
+    "objectives": [
+      "identify grammatical and stylistic errors",
+      "subject-verb agreement"
+    ],
+    "tags": [
+      "error-identification",
+      "agreement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Context Clues",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 64,
+    "questionText": "In the sentence, \"The storm caused **havoc** in the city, destroying buildings and flooding streets,\" what does **havoc** most likely mean?",
+    "choices": {
+      "A": "Peace",
+      "B": "Destruction",
+      "C": "Beauty",
+      "D": "Celebration"
+    },
+    "correctAnswer": "B",
+    "rationale": "Context clues like 'destroying buildings' and 'flooding streets' indicate that havoc means widespread destruction or damage.",
+    "objectives": [
+      "contextual word meanings",
+      "vocabulary"
+    ],
+    "tags": [
+      "context-clues",
+      "vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Diction - Word Choice",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 65,
+    "questionText": "Which word best completes the sentence with appropriate academic tone?\n\n**\"The data ________ a significant correlation between the two variables.\"**",
+    "choices": {
+      "A": "shows",
+      "B": "demonstrates",
+      "C": "proves",
+      "D": "indicates"
+    },
+    "correctAnswer": "D",
+    "rationale": "'Indicates' is the most appropriate for academic writing when discussing data correlation because it suggests evidence without overstating certainty. 'Proves' is too strong; 'demonstrates' is acceptable but 'indicates' is more precise for correlational data.",
+    "objectives": [
+      "precise vocabulary in context",
+      "appropriate tone and usage"
+    ],
+    "tags": [
+      "diction",
+      "academic-writing"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Balarilang Filipino",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 66,
+    "questionText": "Alin sa mga sumusunod ang nagsasaad ng **aspektong kontemplatibo**?",
+    "choices": {
+      "A": "Kumakain ako ng almusal.",
+      "B": "Kumain ako ng almusal.",
+      "C": "Kakain ako ng almusal.",
+      "D": "Kumakain sana ako ng almusal."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang aspektong kontemplatibo ay tumutukoy sa kilos na mangyayari pa lamang o hindi pa nagsisimula. Ang 'kakain' ay nagpapakita ng kilos na gagawin pa sa hinaharap.",
+    "objectives": [
+      "balarilang Filipino",
+      "verb tenses"
+    ],
+    "tags": [
+      "filipino-grammar",
+      "aspects"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Structure - Clarity",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 67,
+    "questionText": "Which revision most improves the clarity of the following sentence?\n\n**\"The proposal that was submitted by the team that won the competition was approved by the committee that oversees projects.\"**",
+    "choices": {
+      "A": "The winning team's proposal was approved by the project committee.",
+      "B": "The proposal submitted by the winning team was approved by the committee.",
+      "C": "The competition-winning team submitted a proposal that the project-overseeing committee approved.",
+      "D": "The committee approved the proposal from the team that won."
+    },
+    "correctAnswer": "A",
+    "rationale": "Option A eliminates excessive relative clauses and uses possessive form ('winning team's proposal') and simplifies the committee description ('project committee'), making it the most concise and clear.",
+    "objectives": [
+      "clarity",
+      "sentence structure",
+      "concision"
+    ],
+    "tags": [
+      "clarity",
+      "sentence-improvement"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Analogies",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 68,
+    "questionText": "DOCTOR : HOSPITAL :: JUDGE : ________",
+    "choices": {
+      "A": "law",
+      "B": "courtroom",
+      "C": "gavel",
+      "D": "justice"
+    },
+    "correctAnswer": "B",
+    "rationale": "A doctor works in a hospital; a judge works in a courtroom. Both show the relationship between a professional and their workplace.",
+    "objectives": [
+      "analogies",
+      "vocabulary"
+    ],
+    "tags": [
+      "analogies",
+      "relationships"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Pronoun-Antecedent Agreement",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 69,
+    "questionText": "Choose the sentence with correct pronoun-antecedent agreement.",
+    "choices": {
+      "A": "The team celebrated their victory enthusiastically.",
+      "B": "The team celebrated its victory enthusiastically.",
+      "C": "The team celebrated his victory enthusiastically.",
+      "D": "The team celebrated her victory enthusiastically."
+    },
+    "correctAnswer": "B",
+    "rationale": "When 'team' is treated as a single unit, it takes a singular pronoun 'its.' However, if emphasis is on individual members, 'their' would be acceptable. In formal writing, 'its' is preferred for collective nouns acting as a unit.",
+    "objectives": [
+      "pronoun-antecedent agreement",
+      "English grammar"
+    ],
+    "tags": [
+      "pronouns",
+      "collective-nouns"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Pag-unawa sa Binasa",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 70,
+    "questionText": "Basahin ang talata:\n\n**\"Ang pagbabago ng klima ay isa sa pinakamalaking hamon na kinakaharap ng mundo ngayon. Kung hindi tayo kikilos ngayon, ang susunod na henerasyon ay magdurusa sa mga kahihinatnan ng ating kapabayaan.\"**\n\nAno ang layunin ng may-akda?",
+    "choices": {
+      "A": "Magbigay ng impormasyon tungkol sa klima",
+      "B": "Mang-aliw sa mga mambabasa",
+      "C": "Magturo ng agham",
+      "D": "Manghikayat na kumilos laban sa pagbabago ng klima"
+    },
+    "correctAnswer": "D",
+    "rationale": "Ang layunin ng may-akda ay manghikayat o magpataw sa mga mambabasa na kumilos ngayon laban sa pagbabago ng klima, tulad ng makikita sa urgency ng mensahe at warning tungkol sa hinaharap.",
+    "objectives": [
+      "pag-unawa sa binasa",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "reading-comprehension",
+      "author-purpose"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Word Problem - Interpretation",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 71,
+    "questionText": "A company conducted employee satisfaction surveys over three years:\n- Year 1: 65% satisfied\n- Year 2: 70% satisfied  \n- Year 3: 68% satisfied\n\nWhich phrase most accurately describes the **trend** in employee satisfaction?",
+    "choices": {
+      "A": "Consistent improvement",
+      "B": "Overall increase with slight recent decline",
+      "C": "Steady deterioration",
+      "D": "No significant change"
+    },
+    "correctAnswer": "B",
+    "rationale": "Satisfaction increased from Year 1 to Year 2 (65% to 70%), showing improvement, but declined slightly in Year 3 (68%). This pattern is best described as 'overall increase with slight recent decline.'",
+    "objectives": [
+      "contextual word meanings",
+      "precise vocabulary in context"
+    ],
+    "tags": [
+      "word-problem",
+      "interpretation"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Punctuation - Semicolons",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 72,
+    "questionText": "Choose the sentence that correctly uses semicolons in a series with internal commas.",
+    "choices": {
+      "A": "The conference included speakers from Manila, Philippines, Tokyo, Japan, and Seoul, Korea.",
+      "B": "The conference included speakers from Manila, Philippines; Tokyo, Japan; and Seoul, Korea.",
+      "C": "The conference included speakers from Manila; Philippines, Tokyo; Japan, and Seoul; Korea.",
+      "D": "The conference included speakers from: Manila, Philippines; Tokyo, Japan; Seoul, Korea."
+    },
+    "correctAnswer": "B",
+    "rationale": "When items in a series contain internal commas, semicolons should be used to separate the major items. Option B correctly uses semicolons to separate the city-country pairs.",
+    "objectives": [
+      "semicolons",
+      "punctuation"
+    ],
+    "tags": [
+      "semicolons",
+      "complex-lists"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Spelling",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 73,
+    "questionText": "Choose the correctly spelled word.",
+    "choices": {
+      "A": "Accomodate",
+      "B": "Accommodate",
+      "C": "Acommodate",
+      "D": "Acomodate"
+    },
+    "correctAnswer": "B",
+    "rationale": "The correct spelling is 'accommodate' with two c's and two m's. This is a commonly misspelled word.",
+    "objectives": [
+      "spelling",
+      "vocabulary"
+    ],
+    "tags": [
+      "spelling",
+      "mechanics"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Prepositions",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 74,
+    "questionText": "Choose the sentence with the correct idiomatic use of prepositions.",
+    "choices": {
+      "A": "She is angry at her brother for breaking her phone.",
+      "B": "She is angry on her brother for breaking her phone.",
+      "C": "She is angry with her brother for breaking her phone.",
+      "D": "She is angry to her brother for breaking her phone."
+    },
+    "correctAnswer": "C",
+    "rationale": "The correct idiom is 'angry with' (a person) or 'angry about/at' (a situation/thing). Since the anger is directed at her brother (a person), 'angry with' is the most appropriate.",
+    "objectives": [
+      "prepositions",
+      "idiomatic expressions"
+    ],
+    "tags": [
+      "prepositions",
+      "idioms"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Filipino - Sawikain",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 75,
+    "questionText": "Alin sa mga sumusunod ang HINDI wastong interpretasyon ng sawikain **\"Ang taong nagigipit, sa patalim kumakapit\"**?",
+    "choices": {
+      "A": "Ang tao sa desperasyon ay handang gumawa ng mapanganib na desisyon.",
+      "B": "Sa oras ng pangangailangan, kahit delikado ay susubukan.",
+      "C": "Ang mahirap ay laging lumalaban nang marahas.",
+      "D": "Sa matinding problema, kahit mapanganib na solusyon ay isasaalang-alang."
+    },
+    "correctAnswer": "C",
+    "rationale": "Ang opsyon C ay hindi wastong interpretasyon. Ang sawikain ay tumutukoy sa desperasyon at paggawa ng mapanganib na desisyon sa oras ng pangangailangan, hindi tungkol sa pagiging marahas ng mahirap.",
+    "objectives": [
+      "sawikain at idyomatikong pahayag",
+      "pagsusuri ng talata"
+    ],
+    "tags": [
+      "idioms",
+      "interpretation"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Sentence Improvement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 76,
+    "questionText": "Choose the best revision of the following sentence:\n\n**\"The reason why I was late is because the traffic was heavy.\"**",
+    "choices": {
+      "A": "The reason I was late is because of heavy traffic.",
+      "B": "I was late because the traffic was heavy.",
+      "C": "The reason why I was late was the heavy traffic.",
+      "D": "The reason I was late is due to the fact that traffic was heavy."
+    },
+    "correctAnswer": "B",
+    "rationale": "'The reason...is because' is redundant. Option B eliminates the redundancy and provides the clearest, most concise statement.",
+    "objectives": [
+      "choose the best revision for correctness, clarity, and style",
+      "correction of common grammatical errors"
+    ],
+    "tags": [
+      "sentence-improvement",
+      "redundancy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Conjunctions",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 77,
+    "questionText": "Which conjunction best completes the sentence?\n\n**\"Study hard, ________ you will fail the exam.\"**",
+    "choices": {
+      "A": "and",
+      "B": "or",
+      "C": "but",
+      "D": "so"
+    },
+    "correctAnswer": "B",
+    "rationale": "'Or' is the correct conjunction showing an alternative or consequence. The sentence presents two options: study hard or face failure.",
+    "objectives": [
+      "conjunctions",
+      "English grammar"
+    ],
+    "tags": [
+      "conjunctions",
+      "grammar"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Vocabulary - Context Clues",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 78,
+    "questionText": "In the passage, \"The scientist's **recondite** research in quantum physics was so specialized that even her colleagues in other physics fields found it impenetrable,\" what does **recondite** mean?",
+    "choices": {
+      "A": "Simple and straightforward",
+      "B": "Obscure and difficult to understand",
+      "C": "Popular and widely known",
+      "D": "Practical and applicable"
+    },
+    "correctAnswer": "B",
+    "rationale": "Context clues 'so specialized' and 'colleagues...found it impenetrable' indicate that recondite means obscure and difficult to understand, dealing with very specialized or hidden knowledge.",
+    "objectives": [
+      "contextual word meanings",
+      "vocabulary"
+    ],
+    "tags": [
+      "context-clues",
+      "advanced-vocabulary"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "Word Problem - Communication Analysis",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 79,
+    "questionText": "A school newsletter reaches 850 families. The principal wants to communicate an urgent policy change. Email reaches 70% of families immediately, text messages reach 85%, and physical letters reach 100% but take three days. \n\nIf the principal uses both email and text (assuming 10% overlap), which phrase best describes the **immediacy** of the combined approach?",
+    "choices": {
+      "A": "Complete immediate coverage",
+      "B": "Majority immediate reach with gaps",
+      "C": "Minimal immediate impact",
+      "D": "Delayed but comprehensive"
+    },
+    "correctAnswer": "B",
+    "rationale": "Email (70%) + Text (85%) - Overlap (10%) = 145% - 10% = approximately 90-95% immediate reach. This represents majority coverage but still leaves 5-10% unreached immediately, best described as 'majority immediate reach with gaps.'",
+    "objectives": [
+      "contextual word meanings",
+      "pag-unawa sa binasa"
+    ],
+    "tags": [
+      "word-problem",
+      "communication"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Language Proficiency",
+    "subtopic": "English Grammar - Parallelism",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 80,
+    "questionText": "Which sentence demonstrates the most sophisticated use of parallel structure?",
+    "choices": {
+      "A": "The organization values innovation, collaboration, and being dedicated.",
+      "B": "The organization values innovation, collaboration, and dedication.",
+      "C": "The organization values to innovate, collaborating, and dedication.",
+      "D": "The organization values being innovative, to collaborate, and dedication."
+    },
+    "correctAnswer": "B",
+    "rationale": "Option B maintains perfect parallel structure using three abstract nouns (innovation, collaboration, dedication). This is the most sophisticated because all three elements are in the same grammatical form and represent equivalent concepts.",
+    "objectives": [
+      "parallelism",
+      "sentence structure"
+    ],
+    "tags": [
+      "parallelism",
+      "advanced-grammar"
+    ],
+    "isWordProblem": false
+  }
+]

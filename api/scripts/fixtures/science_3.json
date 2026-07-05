@@ -1,0 +1,1504 @@
+[
+  {
+    "subjectArea": "Science",
+    "subtopic": "Cell Biology",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "Which of the following organelles contains hydrolytic enzymes responsible for the breakdown of cellular waste and plays a crucial role in apoptosis (programmed cell death)?",
+    "choices": {
+      "A": "Ribosome",
+      "B": "Golgi apparatus",
+      "C": "Lysosome",
+      "D": "Endoplasmic reticulum"
+    },
+    "correctAnswer": "C",
+    "rationale": "Lysosomes are membrane-bound organelles that contain digestive enzymes (hydrolytic enzymes). They break down excess or worn-out cell parts and are responsible for apoptosis.",
+    "objectives": [
+      "cell structure and function"
+    ],
+    "tags": [
+      "Biology",
+      "Cell Biology",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biomolecules",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "Hemoglobin is a complex protein consisting of four distinct polypeptide chains that interact to form a functional oxygen-carrying molecule. Which level of protein structure does this multiple-subunit arrangement represent?",
+    "choices": {
+      "A": "Primary structure",
+      "B": "Secondary structure",
+      "C": "Tertiary structure",
+      "D": "Quaternary structure"
+    },
+    "correctAnswer": "D",
+    "rationale": "Quaternary structure refers to the structure formed by the interaction of multiple polypeptide chains (subunits). Primary is the amino acid sequence, secondary includes alpha-helices and beta-sheets, and tertiary is the 3D folding of a single chain.",
+    "objectives": [
+      "biomolecules"
+    ],
+    "tags": [
+      "Biology",
+      "Biomolecules",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Metabolism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "During aerobic cellular respiration, oxygen serves an essential function in the electron transport chain (ETC). What would immediately occur if a cell is deprived of oxygen?",
+    "choices": {
+      "A": "Glycolysis would completely halt, preventing any ATP production.",
+      "B": "Electrons would back up in the ETC, halting the regeneration of $NAD^+$ and $FAD$.",
+      "C": "The Krebs cycle would accelerate to compensate for the loss of ATP.",
+      "D": "Water production would increase due to an alternative electron acceptor."
+    },
+    "correctAnswer": "B",
+    "rationale": "Oxygen acts as the final electron acceptor in the electron transport chain. Without it, electrons cannot proceed, causing a backup that stops the regeneration of $NAD^+$ and $FAD$, which halts the Krebs cycle.",
+    "objectives": [
+      "metabolism"
+    ],
+    "tags": [
+      "Biology",
+      "Metabolism",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "In pea plants, tall height (T) is dominant to short height (t), and purple flowers (P) are dominant to white flowers (p). If a plant heterozygous for both traits (TtPp) is crossed with a short plant with white flowers (ttpp), what is the probability of producing a short plant with purple flowers?",
+    "choices": {
+      "A": "25%",
+      "B": "50%",
+      "C": "75%",
+      "D": "100%"
+    },
+    "correctAnswer": "A",
+    "rationale": "This is a test cross (TtPp x ttpp). The probability of inheriting 'tt' from Tt x tt is 1/2. The probability of inheriting 'Pp' from Pp x pp is 1/2. The combined probability is $(1/2) \\times (1/2) = 1/4$, or 25%.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "Biology",
+      "Genetics",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Evolution",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "According to Charles Darwin's theory of natural selection, which of the following is an essential prerequisite for evolution to occur within a population?",
+    "choices": {
+      "A": "All individuals must reproduce at the exact same rate.",
+      "B": "The population must have unlimited resources to ensure survival.",
+      "C": "There must be genetic variation among the individuals in the population.",
+      "D": "Individuals must consciously mutate to adapt to their environment."
+    },
+    "correctAnswer": "C",
+    "rationale": "Natural selection requires inherited genetic variation so that individuals with advantageous traits are more likely to survive and reproduce, passing those traits to the next generation.",
+    "objectives": [
+      "evolution"
+    ],
+    "tags": [
+      "Biology",
+      "Evolution",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Ecology",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 6,
+    "questionText": "In a terrestrial ecosystem, the primary producers contain 10,000 Joules of stored energy. According to the 10% rule of energy transfer in food chains, approximately how much energy will be available to a secondary consumer?",
+    "choices": {
+      "A": "1,000 J",
+      "B": "100 J",
+      "C": "10 J",
+      "D": "1 J"
+    },
+    "correctAnswer": "B",
+    "rationale": "Only about 10% of energy is transferred from one trophic level to the next. Primary producers = 10,000 J. Primary consumers get 10% of 10,000 = 1,000 J. Secondary consumers get 10% of 1,000 = 100 J.",
+    "objectives": [
+      "ecology"
+    ],
+    "tags": [
+      "Biology",
+      "Ecology",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Reproduction",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "In the human female menstrual cycle, ovulation is triggered by a sudden physiological spike in a specific hormone. Which hormone is responsible for this event, and from which gland is it secreted?",
+    "choices": {
+      "A": "Progesterone; corpus luteum",
+      "B": "Estrogen; ovaries",
+      "C": "Luteinizing hormone (LH); anterior pituitary",
+      "D": "Follicle-stimulating hormone (FSH); hypothalamus"
+    },
+    "correctAnswer": "C",
+    "rationale": "The LH surge, stimulated by high estrogen levels, triggers the release of the mature egg from the follicle (ovulation). Luteinizing hormone is secreted by the anterior pituitary gland.",
+    "objectives": [
+      "reproduction"
+    ],
+    "tags": [
+      "Biology",
+      "Reproduction",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Taxonomy",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "The scientific name of the domestic dog is *Canis lupus familiaris*. According to the binomial nomenclature system, what taxonomic rank does the word *Canis* represent?",
+    "choices": {
+      "A": "Species",
+      "B": "Genus",
+      "C": "Family",
+      "D": "Order"
+    },
+    "correctAnswer": "B",
+    "rationale": "In binomial nomenclature, the first word indicates the genus (capitalized) and the second word indicates the species epithet. Therefore, *Canis* is the genus.",
+    "objectives": [
+      "taxonomy and classification"
+    ],
+    "tags": [
+      "Biology",
+      "Taxonomy",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biodiversity",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "Sea otters feed on sea urchins, which in turn feed on kelp. When sea otters were hunted to near extinction in certain regions, the sea urchin population exploded, leading to the destruction of kelp forests. In this ecosystem, the sea otter is best described as a:",
+    "choices": {
+      "A": "Pioneer species",
+      "B": "Indicator species",
+      "C": "Invasive species",
+      "D": "Keystone species"
+    },
+    "correctAnswer": "D",
+    "rationale": "A keystone species has a disproportionately large effect on its natural environment relative to its abundance. Sea otters maintain the balance of the kelp forest ecosystem by keeping the sea urchin population in check.",
+    "objectives": [
+      "biodiversity"
+    ],
+    "tags": [
+      "Biology",
+      "Biodiversity",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Viruses",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "Bacteriophages can undergo two different types of replication cycles. In which cycle does the viral genome integrate into the host cell's DNA, remaining dormant and replicating along with the host cell without immediately destroying it?",
+    "choices": {
+      "A": "Lytic cycle",
+      "B": "Retroviral cycle",
+      "C": "Lysogenic cycle",
+      "D": "Prion cycle"
+    },
+    "correctAnswer": "C",
+    "rationale": "In the lysogenic cycle, the viral DNA integrates into the host genome (becoming a prophage) and is replicated along with the host's DNA without destroying the host cell immediately. In contrast, the lytic cycle results in rapid host cell death.",
+    "objectives": [
+      "viruses"
+    ],
+    "tags": [
+      "Biology",
+      "Viruses",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Plant Groups",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "Which of the following characteristics accurately distinguishes angiosperms from gymnosperms?",
+    "choices": {
+      "A": "The presence of vascular tissues (xylem and phloem).",
+      "B": "The production of seeds for reproduction.",
+      "C": "The enclosure of seeds within a fruit.",
+      "D": "The presence of true roots, stems, and leaves."
+    },
+    "correctAnswer": "C",
+    "rationale": "Both angiosperms and gymnosperms are vascular plants that produce seeds (have true roots, stems, and leaves). However, angiosperms produce flowers and enclose their seeds within a fruit, while gymnosperms have 'naked' seeds (often in cones).",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "Biology",
+      "Botany",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Animal Groups",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "All members of the phylum Chordata exhibit four hallmark morphological characteristics at some point during their embryonic or adult development. Which of the following is NOT one of these defining features?",
+    "choices": {
+      "A": "A dorsal, hollow nerve cord",
+      "B": "Pharyngeal slits or clefts",
+      "C": "A post-anal tail",
+      "D": "A ventral, multi-chambered heart"
+    },
+    "correctAnswer": "D",
+    "rationale": "The four hallmarks of chordates are a notochord, a dorsal hollow nerve cord, pharyngeal slits, and a post-anal tail. While many vertebrates (a subphylum of Chordata) have a ventral heart, it is not a defining characteristic of all chordates (e.g., lancelets lack a true heart).",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "Biology",
+      "Zoology",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Cell Division",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "During meiosis, the process of crossing over contributes significantly to genetic diversity in offspring. In which specific stage of cell division does this physical exchange of genetic material occur?",
+    "choices": {
+      "A": "Prophase I",
+      "B": "Metaphase I",
+      "C": "Prophase II",
+      "D": "Anaphase II"
+    },
+    "correctAnswer": "A",
+    "rationale": "Crossing over, the exchange of homologous genetic material between non-sister chromatids, occurs exclusively during Prophase I of meiosis.",
+    "objectives": [
+      "reproduction"
+    ],
+    "tags": [
+      "Biology",
+      "Genetics",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "In a population of 1,000 individuals in Hardy-Weinberg equilibrium, the frequency of the recessive phenotype for a certain trait is 0.16. How many individuals in this population are expected to be heterozygous carriers of the trait?",
+    "choices": {
+      "A": "160",
+      "B": "360",
+      "C": "480",
+      "D": "840"
+    },
+    "correctAnswer": "C",
+    "rationale": "The recessive phenotype frequency is $q^2 = 0.16$. Therefore, $q = \\sqrt{0.16} = 0.4$. Since $p + q = 1$, $p = 0.6$. The frequency of heterozygotes is $2pq = 2(0.6)(0.4) = 0.48$. In a population of 1,000, the expected number is $0.48 \\times 1000 = 480$.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "Biology",
+      "Genetics",
+      "Very Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Matter",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "Properties of matter can be classified as intensive or extensive. Which of the following sets contains ONLY intensive properties?",
+    "choices": {
+      "A": "Density, boiling point, color",
+      "B": "Mass, volume, energy",
+      "C": "Temperature, weight, length",
+      "D": "Density, mass, refractive index"
+    },
+    "correctAnswer": "A",
+    "rationale": "Intensive properties do not depend on the amount of substance present. Density, boiling point, and color are all intensive. Mass, volume, weight, and length are extensive properties because they change depending on how much matter is present.",
+    "objectives": [
+      "matter and its properties"
+    ],
+    "tags": [
+      "Chemistry",
+      "Matter",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Bonding",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Using the Valence Shell Electron Pair Repulsion (VSEPR) theory, what is the predicted molecular geometry of a molecule with a central atom bonded to three other atoms and having one lone pair of electrons (e.g., $NH_3$)?",
+    "choices": {
+      "A": "Trigonal planar",
+      "B": "Tetrahedral",
+      "C": "Trigonal pyramidal",
+      "D": "Bent"
+    },
+    "correctAnswer": "C",
+    "rationale": "A molecule with 3 bonding pairs and 1 lone pair on the central atom has a steric number of 4. While its electron geometry is tetrahedral, the lone pair repels the bonding pairs downward, resulting in a trigonal pyramidal molecular geometry.",
+    "objectives": [
+      "chemical bonding"
+    ],
+    "tags": [
+      "Chemistry",
+      "Bonding",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Nomenclature",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "What is the correct IUPAC name for the transition metal compound $Fe_2O_3$?",
+    "choices": {
+      "A": "Iron(II) oxide",
+      "B": "Diiron trioxide",
+      "C": "Iron(III) oxide",
+      "D": "Ferrous oxide"
+    },
+    "correctAnswer": "C",
+    "rationale": "Oxygen typically has a -2 oxidation state. Three oxygen atoms yield a total -6 charge. To balance this, the two iron atoms must have a combined +6 charge, meaning each iron is +3. Using IUPAC nomenclature for transition metals, it is named Iron(III) oxide.",
+    "objectives": [
+      "compounds and chemical nomenclature"
+    ],
+    "tags": [
+      "Chemistry",
+      "Nomenclature",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Reactions",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "Consider the balanced equation: $N_2(g) + 3H_2(g) \\rightarrow 2NH_3(g)$. If 1.0 mole of $N_2$ reacts with 2.0 moles of $H_2$, which is the limiting reactant and how many moles of $NH_3$ are theoretically produced?",
+    "choices": {
+      "A": "$N_2$ is limiting; 2.0 moles of $NH_3$ are produced.",
+      "B": "$H_2$ is limiting; 2.0 moles of $NH_3$ are produced.",
+      "C": "$N_2$ is limiting; 1.0 mole of $NH_3$ is produced.",
+      "D": "$H_2$ is limiting; 1.33 moles of $NH_3$ are produced."
+    },
+    "correctAnswer": "D",
+    "rationale": "1.0 mole of $N_2$ requires 3.0 moles of $H_2$. Since only 2.0 moles of $H_2$ are available, $H_2$ is the limiting reactant. The moles of $NH_3$ produced = $2.0 \\text{ moles } H_2 \\times (2 \\text{ moles } NH_3 / 3 \\text{ moles } H_2) = 4/3 \\approx 1.33 \\text{ moles}$.",
+    "objectives": [
+      "chemical reactions"
+    ],
+    "tags": [
+      "Chemistry",
+      "Stoichiometry",
+      "Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solutions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "A student dissolves 29.22 grams of sodium chloride ($NaCl$, molar mass = 58.44 g/mol) in enough water to make exactly 500 mL of solution. What is the molarity of the resulting solution?",
+    "choices": {
+      "A": "1.00 M",
+      "B": "0.50 M",
+      "C": "1.50 M",
+      "D": "2.00 M"
+    },
+    "correctAnswer": "A",
+    "rationale": "Moles of NaCl = $29.22 \\text{ g} / 58.44 \\text{ g/mol} = 0.50 \\text{ moles}$. Volume in liters = $500 \\text{ mL} = 0.50 \\text{ L}$. Molarity = moles / liters = $0.50 / 0.50 = 1.00 \\text{ M}$.",
+    "objectives": [
+      "solutions"
+    ],
+    "tags": [
+      "Chemistry",
+      "Solutions",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Acids and Bases",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "According to the Brønsted-Lowry theory, an acid-base reaction involves the transfer of a proton. In the equilibrium reaction $NH_3(aq) + H_2O(l) \\rightleftharpoons NH_4^+(aq) + OH^-(aq)$, which chemical species function as the Brønsted-Lowry bases?",
+    "choices": {
+      "A": "$NH_3$ and $H_2O$",
+      "B": "$H_2O$ and $NH_4^+$",
+      "C": "$NH_3$ and $OH^-$",
+      "D": "$H_2O$ and $OH^-$"
+    },
+    "correctAnswer": "C",
+    "rationale": "A Brønsted-Lowry base is a proton acceptor. In the forward reaction, $NH_3$ accepts a proton to become $NH_4^+$. In the reverse reaction, $OH^-$ accepts a proton to become $H_2O$. Thus, $NH_3$ and $OH^-$ are the bases.",
+    "objectives": [
+      "acids and bases"
+    ],
+    "tags": [
+      "Chemistry",
+      "Acids/Bases",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Gas Laws",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "A weather balloon has a volume of 4.0 liters at a temperature of 300 K and a pressure of 1.0 atm. If it rises to an altitude where the temperature is 600 K and the pressure is 2.0 atm, what will be the new volume of the balloon?",
+    "choices": {
+      "A": "2.0 L",
+      "B": "8.0 L",
+      "C": "16.0 L",
+      "D": "4.0 L"
+    },
+    "correctAnswer": "D",
+    "rationale": "Using the combined gas law: $(P_1 V_1)/T_1 = (P_2 V_2)/T_2$. Rearranging for $V_2 = V_1 \\times (P_1/P_2) \\times (T_2/T_1) = 4.0 \\text{ L} \\times (1.0/2.0) \\times (600/300) = 4.0 \\times 0.5 \\times 2 = 4.0 \\text{ L}$.",
+    "objectives": [
+      "gas laws"
+    ],
+    "tags": [
+      "Chemistry",
+      "Gas Laws",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Thermodynamics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "A specific chemical reaction has a positive enthalpy change ($\\Delta H > 0$) and a positive entropy change ($\\Delta S > 0$). Under what temperature conditions will this reaction be spontaneous?",
+    "choices": {
+      "A": "It will be spontaneous at all temperatures.",
+      "B": "It will never be spontaneous at any temperature.",
+      "C": "It will be spontaneous only at high temperatures.",
+      "D": "It will be spontaneous only at low temperatures."
+    },
+    "correctAnswer": "C",
+    "rationale": "Spontaneity is determined by Gibbs Free Energy: $\\Delta G = \\Delta H - T\\Delta S$. For the reaction to be spontaneous, $\\Delta G$ must be negative. Since both $\\Delta H$ and $\\Delta S$ are positive, a high temperature (large $T$) is required so that the $T\\Delta S$ term exceeds $\\Delta H$.",
+    "objectives": [
+      "thermodynamics"
+    ],
+    "tags": [
+      "Chemistry",
+      "Thermodynamics",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Organic Chemistry",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "In organic chemistry, molecules are categorized by functional groups that dictate their chemical reactivity. Which of the following functional groups is characteristic of alcohols?",
+    "choices": {
+      "A": "$-OH$",
+      "B": "$-COOH$",
+      "C": "$-CHO$",
+      "D": "$-NH_2$"
+    },
+    "correctAnswer": "A",
+    "rationale": "Alcohols are characterized by the hydroxyl group ($-OH$). $-COOH$ is for carboxylic acids, $-CHO$ is for aldehydes, and $-NH_2$ is for amines.",
+    "objectives": [
+      "organic chemistry"
+    ],
+    "tags": [
+      "Chemistry",
+      "Organic Chemistry",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Organic Chemistry",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "Butane ($C_4H_{10}$) and isobutane (2-methylpropane, $C_4H_{10}$) have the exact same molecular formula but different structural arrangements of their carbon skeletons. These two compounds are best described as:",
+    "choices": {
+      "A": "Geometric isomers",
+      "B": "Enantiomers",
+      "C": "Structural (constitutional) isomers",
+      "D": "Isotopes"
+    },
+    "correctAnswer": "C",
+    "rationale": "Compounds with the same molecular formula but a different bonding connectivity are structural (or constitutional) isomers. Geometric isomers involve distinct spatial arrangements around double bonds, while isotopes are atoms with different neutron counts.",
+    "objectives": [
+      "organic chemistry"
+    ],
+    "tags": [
+      "Chemistry",
+      "Organic Chemistry",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Matter and its properties",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "Carbon-12 and Carbon-14 are both naturally occurring isotopes of the element carbon. How do these two isotopes structurally differ at the atomic level?",
+    "choices": {
+      "A": "Carbon-14 has two more protons than Carbon-12.",
+      "B": "Carbon-14 has two more electrons than Carbon-12.",
+      "C": "Carbon-14 has two more neutrons than Carbon-12.",
+      "D": "Carbon-14 has a different electron configuration than Carbon-12."
+    },
+    "correctAnswer": "C",
+    "rationale": "Isotopes are atoms of the same element (same number of protons and electrons in a neutral state) but with different numbers of neutrons. Carbon-14 has 8 neutrons, while Carbon-12 has 6 neutrons.",
+    "objectives": [
+      "matter and its properties"
+    ],
+    "tags": [
+      "Chemistry",
+      "Atomic Structure",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Reactions",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "In the following redox reaction occurring in an acidic medium: $MnO_4^- + Fe^{2+} + H^+ \\rightarrow Mn^{2+} + Fe^{3+} + H_2O$, what is the correct stoichiometric coefficient of $Fe^{2+}$ when the equation is properly balanced using the smallest possible whole numbers?",
+    "choices": {
+      "A": "1",
+      "B": "3",
+      "C": "5",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "rationale": "In the reaction, Manganese (Mn) goes from +7 in $MnO_4^-$ to +2 in $Mn^{2+}$, requiring a gain of 5 electrons. Iron (Fe) goes from +2 to +3, giving up 1 electron. To balance the electrons transferred, 5 $Fe^{2+}$ ions are needed for every 1 $MnO_4^-$ ion. The full balanced equation is $MnO_4^- + 5Fe^{2+} + 8H^+ \\rightarrow Mn^{2+} + 5Fe^{3+} + 4H_2O$.",
+    "objectives": [
+      "chemical reactions"
+    ],
+    "tags": [
+      "Chemistry",
+      "Redox",
+      "Very Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Thermodynamics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "How much heat energy is required to raise the temperature of 50.0 grams of liquid water from $20.0^\\circ C$ to $50.0^\\circ C$? (Assume the specific heat capacity of water is $4.18 \\, J/g\\cdot^\\circ C$).",
+    "choices": {
+      "A": "1,500 J",
+      "B": "4,180 J",
+      "C": "6,270 J",
+      "D": "10,450 J"
+    },
+    "correctAnswer": "C",
+    "rationale": "Heat energy ($q$) is calculated using the formula $q = mc\\Delta T$. Mass $m = 50.0 \\text{ g}$, $c = 4.18 \\text{ J/g}^\\circ\\text{C}$, and $\\Delta T = 50.0 - 20.0 = 30.0^\\circ\\text{C}$. Thus, $q = 50.0 \\times 4.18 \\times 30.0 = 1500 \\times 4.18 = 6,270 \\text{ J}$.",
+    "objectives": [
+      "thermodynamics"
+    ],
+    "tags": [
+      "Chemistry",
+      "Calorimetry",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Bonding",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "Intermolecular forces significantly affect the physical properties of substances. Arrange the following compounds in order of INCREASING boiling point: $CH_4$, $H_2O$, $H_2S$, $HF$.",
+    "choices": {
+      "A": "$CH_4 < H_2S < HF < H_2O$",
+      "B": "$CH_4 < H_2S < H_2O < HF$",
+      "C": "$H_2S < CH_4 < HF < H_2O$",
+      "D": "$CH_4 < HF < H_2S < H_2O$"
+    },
+    "correctAnswer": "A",
+    "rationale": "$CH_4$ is nonpolar with only weak London dispersion forces, so it has the lowest boiling point. $H_2S$ is polar but lacks hydrogen bonding. Both $HF$ and $H_2O$ exhibit strong hydrogen bonding, but $H_2O$ can form two hydrogen bonds per molecule compared to $HF$'s one, making water's boiling point higher. Order: $CH_4 < H_2S < HF < H_2O$.",
+    "objectives": [
+      "chemical bonding"
+    ],
+    "tags": [
+      "Chemistry",
+      "Intermolecular Forces",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth Structure",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "Earth's core is structurally divided into a solid inner core and a liquid outer core. What is the primary chemical composition of these core layers?",
+    "choices": {
+      "A": "Silicon and oxygen",
+      "B": "Magnesium and aluminum",
+      "C": "Iron and nickel",
+      "D": "Basalt and granite"
+    },
+    "correctAnswer": "C",
+    "rationale": "The Earth's core is primarily composed of an iron-nickel alloy. The crust and mantle are mostly composed of silicate rocks (silicon and oxygen).",
+    "objectives": [
+      "Earth’s structure"
+    ],
+    "tags": [
+      "Earth Science",
+      "Earth Structure",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Origin of Earth",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "The most widely accepted model for the formation of our solar system suggests that the Sun and the planets condensed from a vast, spinning cloud of interstellar gas and dust. What is the name of this scientific model?",
+    "choices": {
+      "A": "Nebular Hypothesis",
+      "B": "Big Bang Theory",
+      "C": "Planetesimal Theory",
+      "D": "Protoplanet Theory"
+    },
+    "correctAnswer": "A",
+    "rationale": "The Nebular Hypothesis describes the formation of the solar system from a nebula, a giant spinning cloud of gas and dust. The Big Bang Theory describes the origin of the entire universe, not just the solar system.",
+    "objectives": [
+      "origin of Earth"
+    ],
+    "tags": [
+      "Earth Science",
+      "Origin of Earth",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth Processes",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "Weathering breaks down rocks on the Earth's surface. Which of the following is a clear example of chemical weathering, as opposed to physical (mechanical) weathering?",
+    "choices": {
+      "A": "Water freezing in a rock crevice and expanding to split the rock apart.",
+      "B": "Plant roots growing deep into rock fractures and expanding them.",
+      "C": "Wind forcefully blowing sand against a rock formation, wearing it down.",
+      "D": "Rainwater reacting with exposed limestone to form soluble calcium bicarbonate."
+    },
+    "correctAnswer": "D",
+    "rationale": "Chemical weathering involves the chemical alteration of the rock's minerals (e.g., rainwater dissolving limestone). Options A (frost wedging), B (root wedging), and C (abrasion) are purely physical processes.",
+    "objectives": [
+      "Earth processes",
+      "geology"
+    ],
+    "tags": [
+      "Earth Science",
+      "Geology",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Plate Tectonics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "The massive Himalayan mountain range was formed, and continues to grow in elevation, primarily as a result of which type of tectonic plate boundary interaction?",
+    "choices": {
+      "A": "Divergent boundary between two continental plates",
+      "B": "Convergent boundary between an oceanic and a continental plate",
+      "C": "Convergent boundary between two continental plates",
+      "D": "Transform boundary between two continental plates"
+    },
+    "correctAnswer": "C",
+    "rationale": "The Himalayas are the result of the collision between the Indian Plate and the Eurasian Plate, both of which are continental plates. Because neither plate readily subducts due to low density, the crust buckles and pushes upward, forming massive mountain ranges.",
+    "objectives": [
+      "plate tectonics"
+    ],
+    "tags": [
+      "Earth Science",
+      "Tectonics",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earthquakes",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "During a massive earthquake, seismographs located on the exact opposite side of the Earth from the epicenter do not record any direct S-waves. What does this 'S-wave shadow zone' definitively indicate about Earth's interior?",
+    "choices": {
+      "A": "The mantle is composed of extremely dense solid rock.",
+      "B": "The inner core is rapidly rotating.",
+      "C": "S-waves increase in frequency as they travel through the mantle.",
+      "D": "The outer core is in a liquid state."
+    },
+    "correctAnswer": "D",
+    "rationale": "Secondary waves (S-waves) are transverse seismic waves that can only travel through solid materials. Their inability to pass through the Earth's outer core proves that the outer core must be liquid.",
+    "objectives": [
+      "earthquakes"
+    ],
+    "tags": [
+      "Earth Science",
+      "Seismology",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Volcanoes",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "The viscosity of ascending magma heavily influences the explosiveness of a volcanic eruption. Which of the following magma compositions and conditions would most likely result in a highly explosive volcanic eruption?",
+    "choices": {
+      "A": "Magma with low silica content and high temperature",
+      "B": "Magma with high silica content and high temperature",
+      "C": "Magma with high silica content and low temperature",
+      "D": "Magma with low silica content and low temperature"
+    },
+    "correctAnswer": "C",
+    "rationale": "High silica content and low temperatures both increase a magma's viscosity. Highly viscous (thick) magma traps escaping volcanic gases, building massive pressure that ultimately leads to violent, explosive eruptions.",
+    "objectives": [
+      "volcanoes"
+    ],
+    "tags": [
+      "Earth Science",
+      "Volcanoes",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Rocks and Rock Cycle",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "During regional metamorphism, extreme directional pressure can cause mineral grains within a rock to align in parallel, creating a distinct banded or layered appearance. What is this structural rock feature called?",
+    "choices": {
+      "A": "Stratification",
+      "B": "Cleavage",
+      "C": "Foliation",
+      "D": "Crystallization"
+    },
+    "correctAnswer": "C",
+    "rationale": "Foliation is the term used to describe the banded or layered appearance in metamorphic rocks (like gneiss or schist) caused by the alignment of minerals under directed pressure. Stratification refers to layers in sedimentary rocks.",
+    "objectives": [
+      "rocks and the rock cycle",
+      "geology"
+    ],
+    "tags": [
+      "Earth Science",
+      "Rocks",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fossils",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "An index fossil is extremely useful to geologists for relative dating of sedimentary rock layers. Which pair of characteristics must an organism possess for its remains to make an ideal index fossil?",
+    "choices": {
+      "A": "Found only in one specific geographic area and lived for a very long geological time span.",
+      "B": "Very rare globally and lived during multiple, overlapping geological eras.",
+      "C": "Possessed soft body parts that readily decay upon death.",
+      "D": "Widely distributed geographically and lived for a short, distinct geological time span."
+    },
+    "correctAnswer": "D",
+    "rationale": "To accurately date a specific rock layer globally, the organism must have been widespread (found in many places) but only survived for a brief period in Earth's history, meaning rocks containing it were deposited during that specific short time window.",
+    "objectives": [
+      "fossils"
+    ],
+    "tags": [
+      "Earth Science",
+      "Paleontology",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Atmosphere",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "The Earth's atmosphere is divided into several layers based on specific temperature gradients. In which atmospheric layer is the protective ozone layer, which absorbs harmful ultraviolet (UV) radiation, primarily located?",
+    "choices": {
+      "A": "Stratosphere",
+      "B": "Troposphere",
+      "C": "Mesosphere",
+      "D": "Thermosphere"
+    },
+    "correctAnswer": "A",
+    "rationale": "The ozone layer is concentrated in the lower portion of the stratosphere, approximately 15 to 35 kilometers above Earth's surface.",
+    "objectives": [
+      "atmosphere"
+    ],
+    "tags": [
+      "Earth Science",
+      "Atmosphere",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Climate",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "The Coriolis effect deflects moving air masses due to Earth's rotation. In the Northern Hemisphere, how does the Coriolis effect specifically influence the path of a surface wind attempting to blow straight southward toward the equator?",
+    "choices": {
+      "A": "It deflects the wind to the west, creating the Northeast Trade Winds.",
+      "B": "It deflects the wind to the east, creating the Westerlies.",
+      "C": "It does not deflect the wind, creating a calm zone known as the Doldrums.",
+      "D": "It deflects the wind vertically, creating high-pressure atmospheric blocking zones."
+    },
+    "correctAnswer": "A",
+    "rationale": "In the Northern Hemisphere, the Coriolis effect deflects moving objects to their right. For a wind moving south (toward the equator), 'right' is to the west. This creates winds blowing from the northeast to the southwest, known as the Northeast Trade Winds.",
+    "objectives": [
+      "climate"
+    ],
+    "tags": [
+      "Earth Science",
+      "Climate",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Geologic History",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "A geologist analyzes an igneous rock sample and finds that it contains only 12.5% of its original radioactive parent isotope, while the remaining 87.5% has decayed into a stable daughter isotope. If the half-life of this parent isotope is 700 million years, how old is the rock?",
+    "choices": {
+      "A": "700 million years",
+      "B": "1.4 billion years",
+      "C": "2.1 billion years",
+      "D": "2.8 billion years"
+    },
+    "correctAnswer": "C",
+    "rationale": "After 1 half-life, 50% of the parent remains. After 2 half-lives, 25% remains. After 3 half-lives, 12.5% remains (1/8 of the original). Since 3 half-lives have passed, the age is $3 \\times 700 \\text{ million years} = 2,100 \\text{ million years}$, or 2.1 billion years.",
+    "objectives": [
+      "geologic history"
+    ],
+    "tags": [
+      "Earth Science",
+      "Radiometric Dating",
+      "Very Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solar System",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "When comparing the Terrestrial (inner) planets to the Jovian (outer) planets in our solar system, which of the following statements is true?",
+    "choices": {
+      "A": "Terrestrial planets have a lower average density than Jovian planets.",
+      "B": "Jovian planets are smaller in mass and have rocky, solid surfaces.",
+      "C": "Terrestrial planets have shorter orbital periods of revolution around the Sun.",
+      "D": "Jovian planets have fewer moons and no planetary ring systems."
+    },
+    "correctAnswer": "C",
+    "rationale": "Terrestrial planets (Mercury, Venus, Earth, Mars) are closer to the Sun and thus travel shorter distances at higher speeds, resulting in much shorter orbital periods. They are also smaller, denser, and rocky compared to the large, gaseous Jovian planets.",
+    "objectives": [
+      "the solar system"
+    ],
+    "tags": [
+      "General Science",
+      "Astronomy",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Measurement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "In a physics lab, a student calculates the density of a metal block. The mass is accurately recorded as 45.32 g, and the volume is measured as 14.1 mL. Keeping the rules of significant figures in mind, what is the correct density to report?",
+    "choices": {
+      "A": "$3.214184 \\, g/mL$",
+      "B": "$3.2142 \\, g/mL$",
+      "C": "$3.21 \\, g/mL$",
+      "D": "$3.2 \\, g/mL$"
+    },
+    "correctAnswer": "C",
+    "rationale": "In multiplication and division, the result must be reported with the same number of significant figures as the measurement with the fewest significant figures. Mass (45.32 g) has 4 sig figs, and volume (14.1 mL) has 3 sig figs. The answer ($3.21418...$) must be rounded to 3 sig figs, giving $3.21 \\text{ g/mL}$.",
+    "objectives": [
+      "measurement"
+    ],
+    "tags": [
+      "General Science",
+      "Measurement",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Scientific Method",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "In an agricultural experiment to test the effect of different colors of light on plant growth, all test plants are given the exact same amount of water, soil type, and duration of light exposure. What is the independent variable in this experiment?",
+    "choices": {
+      "A": "The final height of the plants",
+      "B": "The amount of water provided",
+      "C": "The color of the light",
+      "D": "The type of soil used"
+    },
+    "correctAnswer": "C",
+    "rationale": "The independent variable is the condition that the experimenter intentionally changes or manipulates to observe its effect. In this case, it is the color of the light. The plant growth is the dependent variable.",
+    "objectives": [
+      "the scientific method"
+    ],
+    "tags": [
+      "General Science",
+      "Scientific Method",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Astronomy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "The Hertzsprung-Russell (H-R) diagram is a fundamental scatterplot tool in astronomy used to classify stars and understand stellar evolution. Which two properties of stars are primarily plotted against each other on this diagram?",
+    "choices": {
+      "A": "Mass and distance from Earth",
+      "B": "Age and physical radius",
+      "C": "Core density and apparent magnitude",
+      "D": "Luminosity (absolute magnitude) and surface temperature"
+    },
+    "correctAnswer": "D",
+    "rationale": "The H-R diagram plots a star's luminosity (intrinsic brightness or absolute magnitude) on the y-axis against its surface temperature (or stellar classification/color) on the x-axis.",
+    "objectives": [
+      "astronomy"
+    ],
+    "tags": [
+      "General Science",
+      "Astronomy",
+      "Medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Meteorology",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "The El Niño-Southern Oscillation (ENSO) phenomenon significantly disrupts global weather patterns. During a strong El Niño event, what specific ocean-atmosphere change occurs in the tropical Pacific Ocean?",
+    "choices": {
+      "A": "The equatorial trade winds weaken, allowing warm surface water to move eastward toward South America.",
+      "B": "The trade winds strengthen immensely, causing unusually cold water to upwell off the coast of Peru.",
+      "C": "Ocean surface temperatures drop dramatically near the equator, forming persistent high-pressure systems.",
+      "D": "The oceanic thermocline rises uniformly, completely blocking regular deep-ocean currents."
+    },
+    "correctAnswer": "A",
+    "rationale": "Normally, trade winds push warm surface water to the western Pacific. During El Niño, these trade winds weaken or reverse, causing warm water to accumulate in the central and eastern Pacific (near South America), altering global climate patterns.",
+    "objectives": [
+      "meteorology"
+    ],
+    "tags": [
+      "General Science",
+      "Meteorology",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Principles of Light",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "The sky appears blue during a clear day primarily due to a phenomenon known as Rayleigh scattering. Which statement correctly explains the underlying physics of this visual phenomenon?",
+    "choices": {
+      "A": "Nitrogen and oxygen molecules absorb low-energy red light and emit high-energy blue light.",
+      "B": "The atmosphere acts as a giant prism, refracting sunlight so that only the blue band reaches the surface.",
+      "C": "Light reflecting off the Earth's expansive oceans illuminates the lower atmosphere in a blue hue.",
+      "D": "Shorter wavelengths of visible light (blue) are scattered more efficiently by atmospheric gases than longer wavelengths (red)."
+    },
+    "correctAnswer": "D",
+    "rationale": "Rayleigh scattering dictates that the scattering of light by particles much smaller than the wavelength of light is inversely proportional to the fourth power of the wavelength. Thus, shorter (blue) wavelengths scatter much more heavily in the atmosphere than longer (red) wavelengths.",
+    "objectives": [
+      "principles of light"
+    ],
+    "tags": [
+      "General Science",
+      "Optics",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Motion",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "When analyzing the kinematics of a moving vehicle on a standard velocity-time graph, what physical quantity does the area under the curve represent?",
+    "choices": {
+      "A": "The initial velocity of the vehicle",
+      "B": "The instantaneous acceleration of the vehicle",
+      "C": "The total displacement of the vehicle",
+      "D": "The net force acting upon the vehicle"
+    },
+    "correctAnswer": "C",
+    "rationale": "In a velocity-time graph, the y-axis is velocity ($v = \\Delta x/\\Delta t$) and the x-axis is time ($t$). The area under the curve is the product of velocity and time ($v \\times t$), which equals displacement ($\\Delta x$).",
+    "objectives": [
+      "motion"
+    ],
+    "tags": [
+      "Physics",
+      "Kinematics",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Forces",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "A 50 kg passenger is standing on a mechanical scale inside an elevator. If the elevator is accelerating upward at a rate of $2.0 \\, m/s^2$, what is the normal force (apparent weight) recorded by the scale? (Assume $g = 9.8 \\, m/s^2$)",
+    "choices": {
+      "A": "390 N",
+      "B": "490 N",
+      "C": "590 N",
+      "D": "690 N"
+    },
+    "correctAnswer": "C",
+    "rationale": "Using Newton's Second Law: $F_{net} = ma$. The forces acting on the passenger are Normal Force ($N$) up and Weight ($mg$) down. Therefore, $N - mg = ma$. Rearranging gives $N = m(g + a) = 50 \\times (9.8 + 2.0) = 50 \\times 11.8 = 590 \\text{ N}$.",
+    "objectives": [
+      "forces"
+    ],
+    "tags": [
+      "Physics",
+      "Dynamics",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Energy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "A 2.0 kg metal block is dropped from rest from a height of 5.0 meters above the ground. Neglecting air resistance, what is the kinetic energy of the block at the exact moment before it hits the ground? (Use $g = 9.8 \\, m/s^2$)",
+    "choices": {
+      "A": "10 J",
+      "B": "49 J",
+      "C": "98 J",
+      "D": "196 J"
+    },
+    "correctAnswer": "C",
+    "rationale": "By the Law of Conservation of Energy, the initial potential energy ($PE$) is entirely converted to kinetic energy ($KE$) right before impact. $PE = mgh = 2.0 \\text{ kg} \\times 9.8 \\text{ m/s}^2 \\times 5.0 \\text{ m} = 98 \\text{ Joules}$. Thus, $KE = 98 \\text{ J}$.",
+    "objectives": [
+      "energy"
+    ],
+    "tags": [
+      "Physics",
+      "Work and Energy",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Momentum",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "A 1,000 kg car traveling east at $20 \\, m/s$ collides head-on with a 2,000 kg truck traveling west at $10 \\, m/s$. If the two vehicles lock together and crumple upon impact (a perfectly inelastic collision), what is their final velocity immediately after the collision?",
+    "choices": {
+      "A": "$0 \\, m/s$",
+      "B": "$10 \\, m/s$ east",
+      "C": "$10 \\, m/s$ west",
+      "D": "$15 \\, m/s$ east"
+    },
+    "correctAnswer": "A",
+    "rationale": "Momentum is conserved: $p_{initial} = p_{final}$. Defining east as positive and west as negative: $p_{initial} = m_{car}v_{car} + m_{truck}v_{truck} = (1000)(20) + (2000)(-10) = 20,000 - 20,000 = 0$. Since total momentum is 0, the final velocity of the locked mass is $0 \\, m/s$.",
+    "objectives": [
+      "momentum"
+    ],
+    "tags": [
+      "Physics",
+      "Momentum",
+      "Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Vectors and Scalars",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "A motorboat heads directly north across a river at a speed of $8 \\, m/s$. However, the river has a strong eastward current flowing at $6 \\, m/s$. Relative to an observer on the shore, what is the magnitude of the boat's resultant velocity vector?",
+    "choices": {
+      "A": "2 m/s",
+      "B": "10 m/s",
+      "C": "14 m/s",
+      "D": "48 m/s"
+    },
+    "correctAnswer": "B",
+    "rationale": "The velocities are perpendicular to each other, forming a right triangle. The resultant velocity is the hypotenuse, found using the Pythagorean theorem: $v = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10 \\text{ m/s}$.",
+    "objectives": [
+      "vectors and scalars"
+    ],
+    "tags": [
+      "Physics",
+      "Vectors",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fluid Mechanics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "A solid cube with a side length of $0.1 \\, m$ is completely submerged in fresh water (density = $1,000 \\, kg/m^3$). If the actual mass of the cube is $2.0 \\, kg$, what is the net vertical force acting on the cube? (Use $g = 9.8 \\, m/s^2$)",
+    "choices": {
+      "A": "$9.8 \\, N$ downward",
+      "B": "$9.8 \\, N$ upward",
+      "C": "$19.6 \\, N$ downward",
+      "D": "$0 \\, N$ (it floats in equilibrium)"
+    },
+    "correctAnswer": "A",
+    "rationale": "Volume of the cube = $(0.1)^3 = 0.001 \\text{ m}^3$. Buoyant force ($F_B$) = fluid density $\\times$ Volume $\\times g = 1000 \\times 0.001 \\times 9.8 = 9.8 \\text{ N}$ upward. The gravitational force (Weight) = $mg = 2.0 \\times 9.8 = 19.6 \\text{ N}$ downward. Net force = $19.6 \\text{ N}$ down - $9.8 \\text{ N}$ up = $9.8 \\text{ N}$ downward.",
+    "objectives": [
+      "fluid mechanics"
+    ],
+    "tags": [
+      "Physics",
+      "Fluids",
+      "Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Pressure",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "In an enclosed hydraulic lift system used to raise vehicles, a downward force of 100 N is applied to a small input piston with a cross-sectional area of $0.05 \\, m^2$. What is the resulting upward force exerted by the larger output piston if its area is $0.5 \\, m^2$?",
+    "choices": {
+      "A": "10 N",
+      "B": "100 N",
+      "C": "500 N",
+      "D": "1,000 N"
+    },
+    "correctAnswer": "D",
+    "rationale": "According to Pascal's Principle, pressure applied to an enclosed fluid is transmitted undiminished. $P_1 = P_2$, so $F_1 / A_1 = F_2 / A_2$. Plugging in the values: $100 / 0.05 = F_2 / 0.5$. $2,000 = F_2 / 0.5$. $F_2 = 2,000 \\times 0.5 = 1,000 \\text{ N}$.",
+    "objectives": [
+      "pressure"
+    ],
+    "tags": [
+      "Physics",
+      "Pressure",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Friction",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "A 10 kg heavy box rests on a flat, horizontal warehouse floor. The coefficient of static friction ($\\mu_s$) between the box and the floor is 0.40. What is the minimum horizontal force required to overcome friction and just start moving the box? (Use $g = 9.8 \\, m/s^2$)",
+    "choices": {
+      "A": "39.2 N",
+      "B": "4.0 N",
+      "C": "98.0 N",
+      "D": "392.0 N"
+    },
+    "correctAnswer": "A",
+    "rationale": "The maximum force of static friction is given by $f_s = \\mu_s N$. On a flat surface, the normal force $N = mg = 10 \\text{ kg} \\times 9.8 \\text{ m/s}^2 = 98 \\text{ N}$. The required force is $f_s = 0.40 \\times 98 \\text{ N} = 39.2 \\text{ N}$.",
+    "objectives": [
+      "friction"
+    ],
+    "tags": [
+      "Physics",
+      "Friction",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "In a direct current (DC) circuit, three resistors with resistances of $2 \\, \\Omega$, $3 \\, \\Omega$, and $6 \\, \\Omega$ are wired in parallel. This entire parallel cluster is then connected in series with a $4 \\, \\Omega$ resistor. What is the total equivalent resistance of the complete circuit?",
+    "choices": {
+      "A": "$1 \\, \\Omega$",
+      "B": "$11 \\, \\Omega$",
+      "C": "$5 \\, \\Omega$",
+      "D": "$15 \\, \\Omega$"
+    },
+    "correctAnswer": "C",
+    "rationale": "First, calculate the equivalent resistance of the parallel cluster ($R_p$): $1/R_p = 1/2 + 1/3 + 1/6 = 3/6 + 2/6 + 1/6 = 6/6 = 1 \\, \\Omega$. The parallel cluster ($1 \\, \\Omega$) is in series with a $4 \\, \\Omega$ resistor. Total equivalent resistance = $1 + 4 = 5 \\, \\Omega$.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "Physics",
+      "Circuits",
+      "Very Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Magnetism",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "An electron is shot horizontally due east through a uniform magnetic field that is directed vertically downward into the ground. According to the electromagnetic force laws (Lorentz force), in which direction will the initial magnetic force act on the electron?",
+    "choices": {
+      "A": "North",
+      "B": "Upward",
+      "C": "West",
+      "D": "South"
+    },
+    "correctAnswer": "D",
+    "rationale": "Using the right-hand rule for moving charges: point your fingers in the direction of velocity (east) and curl them in the direction of the magnetic field (down). Your thumb points North. However, because an electron has a negative charge, the force is in the exact opposite direction: South.",
+    "objectives": [
+      "magnetism"
+    ],
+    "tags": [
+      "Physics",
+      "Magnetism",
+      "Hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Waves",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "Which of the following statements correctly distinguishes mechanical sound waves from electromagnetic light waves?",
+    "choices": {
+      "A": "Sound waves are transverse, while light waves are longitudinal.",
+      "B": "Sound waves travel much faster than light waves in air.",
+      "C": "Sound waves require a material medium to travel, while light waves can travel through a vacuum.",
+      "D": "Sound waves are electromagnetic, while light waves are purely mechanical."
+    },
+    "correctAnswer": "C",
+    "rationale": "Sound is a mechanical, longitudinal wave that requires a medium (solid, liquid, or gas) to propagate. Light is an electromagnetic, transverse wave that can travel through empty space (a vacuum).",
+    "objectives": [
+      "waves"
+    ],
+    "tags": [
+      "Physics",
+      "Waves",
+      "Easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Optics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "An illuminated object is placed 20 cm in front of a thin converging (convex) lens that has a focal length of 10 cm. Where will the image be formed, and what type of image will it be?",
+    "choices": {
+      "A": "20 cm on the opposite side of the lens; real and inverted",
+      "B": "10 cm on the same side of the lens; virtual and upright",
+      "C": "20 cm on the same side of the lens; virtual and upright",
+      "D": "10 cm on the opposite side of the lens; real and inverted"
+    },
+    "correctAnswer": "A",
+    "rationale": "Using the thin lens equation: $1/f = 1/d_o + 1/d_i$. Substituting values: $1/10 = 1/20 + 1/d_i$. Therefore, $1/d_i = 1/10 - 1/20 = 2/20 - 1/20 = 1/20$. The image distance $d_i$ is +20 cm. A positive $d_i$ indicates a real, inverted image formed on the opposite side of the lens.",
+    "objectives": [
+      "optics"
+    ],
+    "tags": [
+      "Physics",
+      "Optics",
+      "Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Circular Motion",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "A 1,000 kg racecar travels around a flat, unbanked circular racetrack with a radius of 50 meters at a constant tangential speed of $20 \\, m/s$. What is the magnitude of the centripetal force required to keep the car in this circular motion?",
+    "choices": {
+      "A": "400 N",
+      "B": "10,000 N",
+      "C": "40,000 N",
+      "D": "8,000 N"
+    },
+    "correctAnswer": "D",
+    "rationale": "Centripetal force is calculated using the equation $F_c = mv^2 / r$. Plugging in the values: $F_c = (1000)(20)^2 / 50 = (1000)(400) / 50 = 400,000 / 50 = 8,000 \\text{ N}$.",
+    "objectives": [
+      "circular motion"
+    ],
+    "tags": [
+      "Physics",
+      "Circular Motion",
+      "Medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Energy",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "A mechanic pushes a 50 kg crate horizontally across a rough concrete floor with a constant applied force of 200 N over a distance of 10 meters. The dynamic frictional force opposing the motion is constant at 150 N. By how much does the kinetic energy of the crate increase during this 10-meter push?",
+    "choices": {
+      "A": "500 J",
+      "B": "1,500 J",
+      "C": "2,000 J",
+      "D": "3,500 J"
+    },
+    "correctAnswer": "A",
+    "rationale": "By the Work-Energy Theorem, the change in kinetic energy is equal to the net work done on the object. The net force $F_{net} = 200 \\text{ N (applied)} - 150 \\text{ N (friction)} = 50 \\text{ N}$. The net work done is $W_{net} = F_{net} \\times d = 50 \\text{ N} \\times 10 \\text{ m} = 500 \\text{ Joules}$. Thus, kinetic energy increases by 500 J.",
+    "objectives": [
+      "energy"
+    ],
+    "tags": [
+      "Physics",
+      "Work and Energy",
+      "Hard"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "Two capacitors, $C_1 = 4 \\, \\mu F$ and $C_2 = 12 \\, \\mu F$, are connected in series across a 24 V DC battery. What is the electrical charge stored on capacitor $C_1$?",
+    "choices": {
+      "A": "$72 \\, \\mu C$",
+      "B": "$18 \\, \\mu C$",
+      "C": "$96 \\, \\mu C$",
+      "D": "$384 \\, \\mu C$"
+    },
+    "correctAnswer": "A",
+    "rationale": "First, find the equivalent capacitance ($C_{eq}$) of the series circuit: $1/C_{eq} = 1/4 + 1/12 = 3/12 + 1/12 = 4/12$, so $C_{eq} = 3 \\, \\mu F$. The total charge supplied by the battery is $Q = C_{eq}V = 3 \\, \\mu F \\times 24 \\text{ V} = 72 \\, \\mu C$. In a series circuit, every capacitor stores the same charge as the total charge. Therefore, the charge on $C_1$ is $72 \\, \\mu C$.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "Physics",
+      "Capacitors",
+      "Very Hard"
+    ],
+    "isWordProblem": true
+  }
+]
