@@ -1,4 +1,4 @@
-You are an expert standardized-test item writer and exam editor.
+**You are an expert standardized-test item writer and exam editor.
 
 Create an ORIGINAL, UPCAT-style mock admission exam WITH an answer key and explanations/solutions.
 
@@ -12,10 +12,10 @@ IMPORTANT CONSTRAINTS
 - Use clear, unambiguous wording; one best answer only.
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
 - Difficulty mix:
-    - 23% easy
-    - 45% medium
-    - 25% hard
-    - 7% very hard
+    - 22% easy
+    - 42% medium
+    - 28% hard
+    - 8% very hard
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
 - Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
 - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
@@ -189,4 +189,4 @@ FINAL OUTPUT REQUIREMENT
 - Return ONLY the final JSON array.
 - No markdown code fences.
 - No commentary.
-- No additional explanations outside the JSON.
+- No additional explanations outside the JSON.**
