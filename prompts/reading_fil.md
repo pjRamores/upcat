@@ -20,9 +20,9 @@ IMPORTANT CONSTRAINTS
 - Multiple-choice format: 4 options (A-D) for every item unless specified otherwise.
 - Difficulty mix:
     - 10% easy
-    - 47% medium
-    - 30% hard
-    - 13% very hard
+    - 40% medium
+    - 35% hard
+    - 15% very hard
 - Avoid culture/region-specific trivia; keep content fair and accessible to Philippine SHS learners.
 - Avoid requiring external references (e.g., specific laws, obscure facts). Provide any needed constants or data in question.
 - Keep computations reasonable under time pressure; prefer elegant setups over long arithmetic.
