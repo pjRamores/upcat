@@ -1,0 +1,1505 @@
+[
+  {
+    "subjectArea": "Science",
+    "subtopic": "Cell Biology",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 1,
+    "questionText": "Which organelle is responsible for packaging and modifying proteins before they are sent to their final destinations?",
+    "choices": {
+      "A": "Endoplasmic reticulum",
+      "B": "Golgi apparatus",
+      "C": "Lysosome",
+      "D": "Peroxisome"
+    },
+    "correctAnswer": "B",
+    "rationale": "The Golgi apparatus receives proteins from the ER, modifies them (e.g., adding carbohydrates), packages them into vesicles, and sorts them for delivery to specific locations inside or outside the cell.",
+    "objectives": [
+      "cell structure and function"
+    ],
+    "tags": [
+      "biology",
+      "cell organelles",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Bonding",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 2,
+    "questionText": "A compound is formed between an element with an electronegativity of 0.9 and another with an electronegativity of 3.5. What type of bond is most likely to form?",
+    "choices": {
+      "A": "Nonpolar covalent",
+      "B": "Polar covalent",
+      "C": "Ionic",
+      "D": "Metallic"
+    },
+    "correctAnswer": "C",
+    "rationale": "The electronegativity difference is $3.5 - 0.9 = 2.6$, which is greater than 1.7. Large electronegativity differences (typically > 1.7) result in ionic bonding, where one atom transfers electrons to another.",
+    "objectives": [
+      "chemical bonding"
+    ],
+    "tags": [
+      "chemistry",
+      "bonding",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Motion",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 3,
+    "questionText": "A car accelerates uniformly from rest to 20 m/s in 5 seconds. What is the car's acceleration?",
+    "choices": {
+      "A": "2 m/s²",
+      "B": "4 m/s²",
+      "C": "5 m/s²",
+      "D": "10 m/s²"
+    },
+    "correctAnswer": "B",
+    "rationale": "Using $a = \\frac{v_f - v_i}{t} = \\frac{20 - 0}{5} = 4$ m/s². The car's acceleration is 4 m/s².",
+    "objectives": [
+      "motion"
+    ],
+    "tags": [
+      "physics",
+      "kinematics",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 4,
+    "questionText": "In a dihybrid cross between two organisms heterozygous for both traits (AaBb × AaBb), what is the probability of obtaining offspring with the genotype AABb?",
+    "choices": {
+      "A": "1/16",
+      "B": "2/16",
+      "C": "3/16",
+      "D": "4/16"
+    },
+    "correctAnswer": "B",
+    "rationale": "For the A gene: AA probability = 1/4. For the B gene: Bb probability = 1/2. Combined probability = $(1/4) \\times (1/2) = 1/8 = 2/16$.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "biology",
+      "genetics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Plate Tectonics",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 5,
+    "questionText": "What type of plate boundary is characterized by two plates moving away from each other?",
+    "choices": {
+      "A": "Convergent boundary",
+      "B": "Divergent boundary",
+      "C": "Transform boundary",
+      "D": "Subduction zone"
+    },
+    "correctAnswer": "B",
+    "rationale": "A divergent boundary occurs where two tectonic plates move away from each other, creating new crust as magma rises from below. Mid-ocean ridges are classic examples.",
+    "objectives": [
+      "plate tectonics"
+    ],
+    "tags": [
+      "earth science",
+      "plate tectonics",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biomolecules",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 6,
+    "questionText": "Which biomolecule consists of amino acids linked by peptide bonds?",
+    "choices": {
+      "A": "Carbohydrate",
+      "B": "Lipid",
+      "C": "Protein",
+      "D": "Nucleic acid"
+    },
+    "correctAnswer": "C",
+    "rationale": "Proteins are polymers of amino acids joined together by peptide bonds (formed between the carboxyl group of one amino acid and the amino group of another).",
+    "objectives": [
+      "biomolecules"
+    ],
+    "tags": [
+      "biology",
+      "biochemistry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Gas Laws",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 7,
+    "questionText": "A gas occupies 2.0 L at 300 K. If the temperature is increased to 600 K at constant pressure, what will be the new volume?",
+    "choices": {
+      "A": "1.0 L",
+      "B": "2.0 L",
+      "C": "4.0 L",
+      "D": "8.0 L"
+    },
+    "correctAnswer": "C",
+    "rationale": "Using Charles's Law: $\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$. Thus $\\frac{2.0}{300} = \\frac{V_2}{600}$, so $V_2 = \\frac{2.0 \\times 600}{300} = 4.0$ L.",
+    "objectives": [
+      "gas laws"
+    ],
+    "tags": [
+      "chemistry",
+      "gas laws",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 8,
+    "questionText": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is the equivalent resistance?",
+    "choices": {
+      "A": "0.5 Ω",
+      "B": "1 Ω",
+      "C": "1.5 Ω",
+      "D": "11 Ω"
+    },
+    "correctAnswer": "B",
+    "rationale": "For parallel resistors: $\\frac{1}{R_{eq}} = \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3 + 2 + 1}{6} = \\frac{6}{6} = 1$. Therefore, $R_{eq} = 1$ Ω.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "physics",
+      "circuits",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Ecology",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 9,
+    "questionText": "Organisms that produce their own food through photosynthesis are called:",
+    "choices": {
+      "A": "Consumers",
+      "B": "Decomposers",
+      "C": "Producers",
+      "D": "Heterotrophs"
+    },
+    "correctAnswer": "C",
+    "rationale": "Producers (autotrophs) create their own food from inorganic materials using energy from sunlight (photosynthesis) or chemical reactions (chemosynthesis).",
+    "objectives": [
+      "ecology"
+    ],
+    "tags": [
+      "biology",
+      "ecology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Reactions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 10,
+    "questionText": "In the reaction: $2H_2 + O_2 \\rightarrow 2H_2O$, if 4 moles of $H_2$ react completely, how many moles of water are produced?",
+    "choices": {
+      "A": "2 moles",
+      "B": "4 moles",
+      "C": "6 moles",
+      "D": "8 moles"
+    },
+    "correctAnswer": "B",
+    "rationale": "The stoichiometric ratio is 2:2 (or 1:1) between $H_2$ and $H_2O$. Therefore, 4 moles of $H_2$ produce 4 moles of $H_2O$.",
+    "objectives": [
+      "chemical reactions"
+    ],
+    "tags": [
+      "chemistry",
+      "stoichiometry",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Waves",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 11,
+    "questionText": "A wave has a frequency of 50 Hz and a wavelength of 4 m. What is its speed?",
+    "choices": {
+      "A": "12.5 m/s",
+      "B": "50 m/s",
+      "C": "200 m/s",
+      "D": "400 m/s"
+    },
+    "correctAnswer": "C",
+    "rationale": "Wave speed $v = f \\lambda = 50 \\times 4 = 200$ m/s.",
+    "objectives": [
+      "waves"
+    ],
+    "tags": [
+      "physics",
+      "waves",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Rock Cycle",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 12,
+    "questionText": "Limestone that has undergone high heat and pressure transforms into which type of rock?",
+    "choices": {
+      "A": "Sandstone",
+      "B": "Marble",
+      "C": "Shale",
+      "D": "Granite"
+    },
+    "correctAnswer": "B",
+    "rationale": "Marble is a metamorphic rock formed from the metamorphism of limestone (a sedimentary rock composed primarily of calcite). Heat and pressure cause recrystallization of the calcite.",
+    "objectives": [
+      "rocks and the rock cycle"
+    ],
+    "tags": [
+      "earth science",
+      "rocks",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Evolution",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 13,
+    "questionText": "Which mechanism of evolution involves random changes in allele frequencies, especially in small populations?",
+    "choices": {
+      "A": "Natural selection",
+      "B": "Gene flow",
+      "C": "Genetic drift",
+      "D": "Mutation"
+    },
+    "correctAnswer": "C",
+    "rationale": "Genetic drift refers to random fluctuations in allele frequencies due to chance events. It has a stronger effect in small populations.",
+    "objectives": [
+      "evolution"
+    ],
+    "tags": [
+      "biology",
+      "evolution",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Acids and Bases",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 14,
+    "questionText": "What is the pH of a solution with a hydrogen ion concentration of $1 \\times 10^{-5}$ M?",
+    "choices": {
+      "A": "3",
+      "B": "5",
+      "C": "9",
+      "D": "11"
+    },
+    "correctAnswer": "B",
+    "rationale": "pH is calculated as $pH = -\\log[H^+] = -\\log(1 \\times 10^{-5}) = 5$.",
+    "objectives": [
+      "acids and bases"
+    ],
+    "tags": [
+      "chemistry",
+      "pH",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Energy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 15,
+    "questionText": "A 5 kg object is lifted to a height of 10 m. Taking $g = 10$ m/s², what is the gravitational potential energy gained?",
+    "choices": {
+      "A": "50 J",
+      "B": "100 J",
+      "C": "250 J",
+      "D": "500 J"
+    },
+    "correctAnswer": "D",
+    "rationale": "Gravitational potential energy $PE = mgh = 5 \\times 10 \\times 10 = 500$ J.",
+    "objectives": [
+      "energy"
+    ],
+    "tags": [
+      "physics",
+      "energy",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Volcanoes",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 16,
+    "questionText": "Which type of volcanic eruption is characterized by highly viscous magma and explosive activity?",
+    "choices": {
+      "A": "Effusive basaltic eruption",
+      "B": "Shield volcano eruption",
+      "C": "Plinian eruption",
+      "D": "Fissure eruption"
+    },
+    "correctAnswer": "C",
+    "rationale": "Plinian eruptions are the most explosive type, associated with high-viscosity, gas-rich magma (typically rhyolitic or dacitic). They produce tall eruption columns and pyroclastic flows.",
+    "objectives": [
+      "volcanoes"
+    ],
+    "tags": [
+      "earth science",
+      "volcanoes",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Metabolism",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 17,
+    "questionText": "Which process occurs in the mitochondria and produces the majority of ATP in aerobic respiration?",
+    "choices": {
+      "A": "Glycolysis",
+      "B": "Fermentation",
+      "C": "Electron transport chain",
+      "D": "Calvin cycle"
+    },
+    "correctAnswer": "C",
+    "rationale": "The electron transport chain (and chemiosmosis) in the inner mitochondrial membrane produces approximately 32-34 ATP molecules per glucose, which is the majority of ATP from aerobic respiration.",
+    "objectives": [
+      "metabolism"
+    ],
+    "tags": [
+      "biology",
+      "cellular respiration",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solutions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 18,
+    "questionText": "If 20 g of salt is dissolved in 80 g of water, what is the mass percent concentration of the salt solution?",
+    "choices": {
+      "A": "10%",
+      "B": "20%",
+      "C": "25%",
+      "D": "40%"
+    },
+    "correctAnswer": "B",
+    "rationale": "Mass percent = $\\frac{\\text{mass of solute}}{\\text{mass of solution}} \\times 100\\% = \\frac{20}{20 + 80} \\times 100\\% = \\frac{20}{100} \\times 100\\% = 20\\%$.",
+    "objectives": [
+      "solutions"
+    ],
+    "tags": [
+      "chemistry",
+      "solutions",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Forces",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 19,
+    "questionText": "A 10 kg box is pushed across a floor with a force of 50 N. If the frictional force is 20 N, what is the net force acting on the box?",
+    "choices": {
+      "A": "20 N",
+      "B": "30 N",
+      "C": "50 N",
+      "D": "70 N"
+    },
+    "correctAnswer": "B",
+    "rationale": "Net force = Applied force - Frictional force = $50 - 20 = 30$ N in the direction of motion.",
+    "objectives": [
+      "forces",
+      "friction"
+    ],
+    "tags": [
+      "physics",
+      "forces",
+      "medium"
+    ],
+    "isWordProblem": true
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earthquakes",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 20,
+    "questionText": "Which type of seismic wave travels fastest and arrives first at a seismic station?",
+    "choices": {
+      "A": "Love waves",
+      "B": "Rayleigh waves",
+      "C": "S-waves (secondary waves)",
+      "D": "P-waves (primary waves)"
+    },
+    "correctAnswer": "D",
+    "rationale": "P-waves (primary/compressional waves) travel fastest through the Earth and are the first to be detected by seismographs. They can travel through solids, liquids, and gases.",
+    "objectives": [
+      "earthquakes"
+    ],
+    "tags": [
+      "earth science",
+      "seismology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Reproduction",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 21,
+    "questionText": "Which type of cell division produces gametes with half the chromosome number of the parent cell?",
+    "choices": {
+      "A": "Mitosis",
+      "B": "Meiosis",
+      "C": "Binary fission",
+      "D": "Budding"
+    },
+    "correctAnswer": "B",
+    "rationale": "Meiosis is a type of cell division that reduces the chromosome number by half, producing four haploid gametes (sex cells) from one diploid parent cell.",
+    "objectives": [
+      "reproduction"
+    ],
+    "tags": [
+      "biology",
+      "cell division",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Nomenclature",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 22,
+    "questionText": "What is the correct chemical name for $CaCO_3$?",
+    "choices": {
+      "A": "Calcium carbide",
+      "B": "Calcium carbonate",
+      "C": "Calcium chloride",
+      "D": "Calcium oxide"
+    },
+    "correctAnswer": "B",
+    "rationale": "$CaCO_3$ is calcium carbonate. The $CO_3^{2-}$ ion is the carbonate polyatomic ion.",
+    "objectives": [
+      "compounds and chemical nomenclature"
+    ],
+    "tags": [
+      "chemistry",
+      "nomenclature",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Optics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 23,
+    "questionText": "A concave mirror with a focal length of 10 cm has an object placed 30 cm in front of it. Where is the image formed?",
+    "choices": {
+      "A": "10 cm",
+      "B": "15 cm",
+      "C": "20 cm",
+      "D": "30 cm"
+    },
+    "correctAnswer": "B",
+    "rationale": "Using the mirror equation: $\\frac{1}{f} = \\frac{1}{d_o} + \\frac{1}{d_i}$. Thus $\\frac{1}{10} = \\frac{1}{30} + \\frac{1}{d_i}$, so $\\frac{1}{d_i} = \\frac{1}{10} - \\frac{1}{30} = \\frac{3-1}{30} = \\frac{2}{30}$. Therefore $d_i = 15$ cm.",
+    "objectives": [
+      "optics"
+    ],
+    "tags": [
+      "physics",
+      "optics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Atmosphere",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 24,
+    "questionText": "In which layer of the atmosphere does most weather occur?",
+    "choices": {
+      "A": "Troposphere",
+      "B": "Stratosphere",
+      "C": "Mesosphere",
+      "D": "Thermosphere"
+    },
+    "correctAnswer": "A",
+    "rationale": "The troposphere is the lowest layer of the atmosphere (0-12 km altitude) and contains about 80% of the atmosphere's mass and nearly all weather phenomena.",
+    "objectives": [
+      "atmosphere"
+    ],
+    "tags": [
+      "earth science",
+      "atmosphere",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Taxonomy",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 25,
+    "questionText": "In the hierarchical classification system, which level is the most specific?",
+    "choices": {
+      "A": "Family",
+      "B": "Genus",
+      "C": "Species",
+      "D": "Order"
+    },
+    "correctAnswer": "C",
+    "rationale": "The hierarchical order from most general to most specific is: Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species. Species is the most specific taxonomic level.",
+    "objectives": [
+      "taxonomy and classification"
+    ],
+    "tags": [
+      "biology",
+      "taxonomy",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Organic Chemistry",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 26,
+    "questionText": "Which functional group characterizes alcohols?",
+    "choices": {
+      "A": "Carbonyl group (-C=O)",
+      "B": "Hydroxyl group (-OH)",
+      "C": "Carboxyl group (-COOH)",
+      "D": "Amino group (-NH₂)"
+    },
+    "correctAnswer": "B",
+    "rationale": "Alcohols contain one or more hydroxyl (-OH) groups bonded to carbon atoms. Examples include methanol ($CH_3OH$) and ethanol ($C_2H_5OH$).",
+    "objectives": [
+      "organic chemistry"
+    ],
+    "tags": [
+      "chemistry",
+      "organic",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Momentum",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 27,
+    "questionText": "A 2 kg object moving at 5 m/s collides with a stationary 3 kg object. If they stick together after the collision, what is their combined velocity?",
+    "choices": {
+      "A": "1 m/s",
+      "B": "2 m/s",
+      "C": "3 m/s",
+      "D": "5 m/s"
+    },
+    "correctAnswer": "B",
+    "rationale": "Using conservation of momentum: $m_1v_1 + m_2v_2 = (m_1 + m_2)v_f$. Thus $(2)(5) + (3)(0) = (2+3)v_f$, so $10 = 5v_f$ and $v_f = 2$ m/s.",
+    "objectives": [
+      "momentum"
+    ],
+    "tags": [
+      "physics",
+      "momentum",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solar System",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 28,
+    "questionText": "Which planet in our solar system has the shortest orbital period?",
+    "choices": {
+      "A": "Venus",
+      "B": "Earth",
+      "C": "Mercury",
+      "D": "Mars"
+    },
+    "correctAnswer": "C",
+    "rationale": "Mercury is the closest planet to the Sun and therefore has the shortest orbital period (about 88 Earth days). Kepler's third law states that orbital period increases with distance from the Sun.",
+    "objectives": [
+      "the solar system"
+    ],
+    "tags": [
+      "earth science",
+      "astronomy",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Viruses",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 29,
+    "questionText": "What is the genetic material found in viruses?",
+    "choices": {
+      "A": "Only DNA",
+      "B": "Only RNA",
+      "C": "Either DNA or RNA",
+      "D": "Both DNA and RNA simultaneously"
+    },
+    "correctAnswer": "C",
+    "rationale": "Viruses can contain either DNA or RNA as their genetic material, but not both simultaneously. Some viruses are DNA viruses (e.g., herpesvirus) while others are RNA viruses (e.g., influenza, HIV).",
+    "objectives": [
+      "viruses"
+    ],
+    "tags": [
+      "biology",
+      "microbiology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Matter and Properties",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 30,
+    "questionText": "Which of the following is an intensive property?",
+    "choices": {
+      "A": "Mass",
+      "B": "Volume",
+      "C": "Density",
+      "D": "Length"
+    },
+    "correctAnswer": "C",
+    "rationale": "Intensive properties do not depend on the amount of substance present. Density is intensive because it remains constant regardless of sample size. Mass, volume, and length are extensive properties.",
+    "objectives": [
+      "matter and its properties"
+    ],
+    "tags": [
+      "chemistry",
+      "properties",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fluid Mechanics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 31,
+    "questionText": "An object with a volume of 0.002 m³ is completely submerged in water (density = 1000 kg/m³). What is the buoyant force acting on it? (Use $g = 10$ m/s²)",
+    "choices": {
+      "A": "2 N",
+      "B": "20 N",
+      "C": "200 N",
+      "D": "2000 N"
+    },
+    "correctAnswer": "B",
+    "rationale": "Buoyant force $F_b = \\rho Vg = (1000)(0.002)(10) = 20$ N. This is the weight of the displaced fluid.",
+    "objectives": [
+      "fluid mechanics"
+    ],
+    "tags": [
+      "physics",
+      "fluids",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Fossils",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 32,
+    "questionText": "Which type of fossil forms when minerals gradually replace the original organic material?",
+    "choices": {
+      "A": "Cast",
+      "B": "Mold",
+      "C": "Petrified fossil",
+      "D": "Trace fossil"
+    },
+    "correctAnswer": "C",
+    "rationale": "Petrification (or permineralization) occurs when groundwater deposits minerals that gradually replace the original organic material, turning it to stone while preserving the structure.",
+    "objectives": [
+      "fossils"
+    ],
+    "tags": [
+      "earth science",
+      "paleontology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Biodiversity",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 33,
+    "questionText": "Which term describes the variety of life forms in a particular ecosystem or on Earth as a whole?",
+    "choices": {
+      "A": "Evolution",
+      "B": "Biodiversity",
+      "C": "Speciation",
+      "D": "Succession"
+    },
+    "correctAnswer": "B",
+    "rationale": "Biodiversity refers to the variety and variability of living organisms, encompassing diversity at the genetic, species, and ecosystem levels.",
+    "objectives": [
+      "biodiversity"
+    ],
+    "tags": [
+      "biology",
+      "ecology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Thermodynamics",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 34,
+    "questionText": "Which law of thermodynamics states that energy cannot be created or destroyed, only transformed?",
+    "choices": {
+      "A": "Zeroth law",
+      "B": "First law",
+      "C": "Second law",
+      "D": "Third law"
+    },
+    "correctAnswer": "B",
+    "rationale": "The first law of thermodynamics is the law of conservation of energy. It states that the total energy of an isolated system remains constant; energy can change forms but cannot be created or destroyed.",
+    "objectives": [
+      "thermodynamics"
+    ],
+    "tags": [
+      "chemistry",
+      "thermodynamics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Magnetism",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 35,
+    "questionText": "Which of the following materials is ferromagnetic?",
+    "choices": {
+      "A": "Copper",
+      "B": "Aluminum",
+      "C": "Iron",
+      "D": "Wood"
+    },
+    "correctAnswer": "C",
+    "rationale": "Iron is ferromagnetic, meaning it can be strongly magnetized and retains magnetization. Copper and aluminum are weakly magnetic (diamagnetic and paramagnetic, respectively), and wood is non-magnetic.",
+    "objectives": [
+      "magnetism"
+    ],
+    "tags": [
+      "physics",
+      "magnetism",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Climate",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 36,
+    "questionText": "Which greenhouse gas has the highest global warming potential per molecule over a 100-year period?",
+    "choices": {
+      "A": "Carbon dioxide ($CO_2$)",
+      "B": "Methane ($CH_4$)",
+      "C": "Nitrous oxide ($N_2O$)",
+      "D": "Water vapor ($H_2O$)"
+    },
+    "correctAnswer": "C",
+    "rationale": "Nitrous oxide ($N_2O$) has a global warming potential about 265-298 times that of $CO_2$ over 100 years. While methane is more potent than $CO_2$ (~28-36x), $N_2O$ is more potent than methane.",
+    "objectives": [
+      "climate"
+    ],
+    "tags": [
+      "earth science",
+      "climate",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Plant Groups",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 37,
+    "questionText": "Which group of plants produces seeds enclosed within fruits?",
+    "choices": {
+      "A": "Bryophytes",
+      "B": "Ferns",
+      "C": "Gymnosperms",
+      "D": "Angiosperms"
+    },
+    "correctAnswer": "D",
+    "rationale": "Angiosperms (flowering plants) produce seeds that are enclosed within fruits developed from the ovary. This distinguishes them from gymnosperms, which have naked seeds.",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "biology",
+      "botany",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Scientific Method",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 38,
+    "questionText": "In an experiment testing the effect of fertilizer amount on plant growth, which variable should remain constant?",
+    "choices": {
+      "A": "Amount of fertilizer",
+      "B": "Plant height",
+      "C": "Type of plant and environmental conditions",
+      "D": "Growth rate"
+    },
+    "correctAnswer": "C",
+    "rationale": "In a controlled experiment, all variables except the independent variable (amount of fertilizer) should be kept constant. Type of plant, light, water, temperature, etc., are controlled variables.",
+    "objectives": [
+      "the scientific method"
+    ],
+    "tags": [
+      "general science",
+      "methodology",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Pressure",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 39,
+    "questionText": "A force of 100 N is applied perpendicular to a surface area of 0.5 m². What is the pressure exerted?",
+    "choices": {
+      "A": "50 Pa",
+      "B": "100 Pa",
+      "C": "200 Pa",
+      "D": "500 Pa"
+    },
+    "correctAnswer": "C",
+    "rationale": "Pressure $P = \\frac{F}{A} = \\frac{100}{0.5} = 200$ Pa (Pascals).",
+    "objectives": [
+      "pressure"
+    ],
+    "tags": [
+      "physics",
+      "pressure",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth Processes",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 40,
+    "questionText": "Which process is primarily responsible for the formation of U-shaped valleys?",
+    "choices": {
+      "A": "River erosion",
+      "B": "Wind erosion",
+      "C": "Glacial erosion",
+      "D": "Chemical weathering"
+    },
+    "correctAnswer": "C",
+    "rationale": "Glacial erosion creates U-shaped valleys as glaciers move through existing V-shaped river valleys, widening and deepening them through abrasion and plucking.",
+    "objectives": [
+      "Earth processes"
+    ],
+    "tags": [
+      "earth science",
+      "geology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Animal Groups",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 41,
+    "questionText": "Which phylum includes animals with jointed appendages and an exoskeleton?",
+    "choices": {
+      "A": "Mollusca",
+      "B": "Arthropoda",
+      "C": "Chordata",
+      "D": "Echinodermata"
+    },
+    "correctAnswer": "B",
+    "rationale": "Arthropods (phylum Arthropoda) are characterized by jointed appendages, segmented bodies, and a chitinous exoskeleton. This includes insects, spiders, crustaceans, and myriapods.",
+    "objectives": [
+      "characteristics of major plant and animal groups"
+    ],
+    "tags": [
+      "biology",
+      "zoology",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Measurement",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 42,
+    "questionText": "How many significant figures are in the measurement 0.00450?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "B",
+    "rationale": "Leading zeros are not significant. The significant figures are 4, 5, and the trailing 0 (which is significant because it comes after the decimal point and after non-zero digits). Therefore, there are 3 significant figures.",
+    "objectives": [
+      "measurement"
+    ],
+    "tags": [
+      "general science",
+      "measurement",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Circular Motion",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 43,
+    "questionText": "A ball is whirled in a horizontal circle at constant speed. What is the direction of the centripetal force?",
+    "choices": {
+      "A": "Tangent to the circle",
+      "B": "Away from the center",
+      "C": "Toward the center",
+      "D": "Perpendicular to the plane of motion"
+    },
+    "correctAnswer": "C",
+    "rationale": "Centripetal force always points toward the center of the circular path. It's responsible for changing the direction of velocity, keeping the object in circular motion.",
+    "objectives": [
+      "circular motion"
+    ],
+    "tags": [
+      "physics",
+      "circular motion",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Geologic History",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 44,
+    "questionText": "During which geologic era did the first mammals appear?",
+    "choices": {
+      "A": "Paleozoic",
+      "B": "Mesozoic",
+      "C": "Cenozoic",
+      "D": "Precambrian"
+    },
+    "correctAnswer": "B",
+    "rationale": "The first mammals appeared during the Mesozoic Era (specifically in the Triassic period, about 225 million years ago), though they were small and insignificant compared to dinosaurs. Mammals diversified and became dominant in the Cenozoic.",
+    "objectives": [
+      "geologic history"
+    ],
+    "tags": [
+      "earth science",
+      "paleontology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Cell Biology",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "questionNumber": 45,
+    "questionText": "Which structure is found in plant cells but NOT in animal cells?",
+    "choices": {
+      "A": "Mitochondria",
+      "B": "Ribosomes",
+      "C": "Cell wall",
+      "D": "Endoplasmic reticulum"
+    },
+    "correctAnswer": "C",
+    "rationale": "Plant cells have a rigid cell wall (made of cellulose) outside the cell membrane, which provides structural support. Animal cells lack a cell wall. Both have mitochondria, ribosomes, and endoplasmic reticulum.",
+    "objectives": [
+      "cell structure and function"
+    ],
+    "tags": [
+      "biology",
+      "cell structure",
+      "easy"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Astronomy",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 46,
+    "questionText": "What is the primary factor that determines a star's color?",
+    "choices": {
+      "A": "Its distance from Earth",
+      "B": "Its surface temperature",
+      "C": "Its age",
+      "D": "Its chemical composition"
+    },
+    "correctAnswer": "B",
+    "rationale": "A star's color is primarily determined by its surface temperature. Hotter stars appear blue or white (>10,000 K), while cooler stars appear red or orange (<6,000 K). This follows Wien's displacement law.",
+    "objectives": [
+      "astronomy"
+    ],
+    "tags": [
+      "general science",
+      "astronomy",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Vectors",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 47,
+    "questionText": "Two forces of 3 N and 4 N act perpendicular to each other on an object. What is the magnitude of the resultant force?",
+    "choices": {
+      "A": "1 N",
+      "B": "5 N",
+      "C": "7 N",
+      "D": "12 N"
+    },
+    "correctAnswer": "B",
+    "rationale": "For perpendicular vectors, use Pythagorean theorem: $F_R = \\sqrt{F_1^2 + F_2^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$ N.",
+    "objectives": [
+      "vectors and scalars"
+    ],
+    "tags": [
+      "physics",
+      "vectors",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Origin of Earth",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 48,
+    "questionText": "According to the nebular hypothesis, how did Earth and other planets form?",
+    "choices": {
+      "A": "From the collision of two large asteroids",
+      "B": "From the gravitational collapse of a rotating disk of gas and dust",
+      "C": "From material ejected by a supernova explosion",
+      "D": "From the cooling and solidification of the Sun's corona"
+    },
+    "correctAnswer": "B",
+    "rationale": "The nebular hypothesis states that the solar system formed from a rotating cloud (nebula) of gas and dust that collapsed under gravity. The Sun formed at the center, and planets formed from the remaining disk material through accretion.",
+    "objectives": [
+      "origin of Earth"
+    ],
+    "tags": [
+      "earth science",
+      "planetary science",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Genetics",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 49,
+    "questionText": "A woman with blood type A (genotype $I^Ai$) and a man with blood type B (genotype $I^Bi$) have children. What is the probability that their child will have blood type O?",
+    "choices": {
+      "A": "0%",
+      "B": "25%",
+      "C": "50%",
+      "D": "75%"
+    },
+    "correctAnswer": "B",
+    "rationale": "The cross is $I^Ai \\times I^Bi$. Possible offspring genotypes: $I^AI^B$ (AB), $I^Ai$ (A), $I^Bi$ (B), and $ii$ (O). Each has a probability of 1/4, so type O has a 25% chance.",
+    "objectives": [
+      "genetics and heredity"
+    ],
+    "tags": [
+      "biology",
+      "genetics",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Chemical Reactions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 50,
+    "questionText": "Which type of chemical reaction is represented by: $AB + CD \\rightarrow AD + CB$?",
+    "choices": {
+      "A": "Synthesis",
+      "B": "Decomposition",
+      "C": "Single displacement",
+      "D": "Double displacement"
+    },
+    "correctAnswer": "D",
+    "rationale": "This is a double displacement (or double replacement) reaction, where the cations and anions of two compounds exchange places to form two new compounds.",
+    "objectives": [
+      "chemical reactions"
+    ],
+    "tags": [
+      "chemistry",
+      "reactions",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Principles of Light",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 51,
+    "questionText": "When light passes from air into water, which property changes?",
+    "choices": {
+      "A": "Frequency",
+      "B": "Wavelength and speed",
+      "C": "Frequency and wavelength",
+      "D": "None of the above"
+    },
+    "correctAnswer": "B",
+    "rationale": "When light enters a denser medium, its speed decreases and wavelength decreases, but frequency remains constant. This is why light refracts (bends) at the interface.",
+    "objectives": [
+      "principles of light"
+    ],
+    "tags": [
+      "general science",
+      "optics",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Earth's Structure",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 52,
+    "questionText": "Which layer of Earth is primarily composed of liquid iron and nickel and is responsible for generating the planet's magnetic field?",
+    "choices": {
+      "A": "Inner core",
+      "B": "Outer core",
+      "C": "Mantle",
+      "D": "Crust"
+    },
+    "correctAnswer": "B",
+    "rationale": "The outer core is a liquid layer composed mainly of iron and nickel. The convective motion of this electrically conductive fluid generates Earth's magnetic field through the dynamo effect.",
+    "objectives": [
+      "Earth's structure"
+    ],
+    "tags": [
+      "earth science",
+      "geophysics",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Ecology",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 53,
+    "questionText": "In a food chain where 10,000 kJ of energy is available at the producer level, approximately how much energy is available to tertiary consumers (third trophic level above producers)?",
+    "choices": {
+      "A": "10 kJ",
+      "B": "100 kJ",
+      "C": "1000 kJ",
+      "D": "3000 kJ"
+    },
+    "correctAnswer": "A",
+    "rationale": "Following the 10% rule (approximately 10% of energy is transferred between trophic levels): Producers (10,000 kJ) → Primary consumers (1,000 kJ) → Secondary consumers (100 kJ) → Tertiary consumers (10 kJ).",
+    "objectives": [
+      "ecology"
+    ],
+    "tags": [
+      "biology",
+      "ecology",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Solutions",
+    "difficulty": "medium",
+    "type": "multiple_choice",
+    "questionNumber": 54,
+    "questionText": "What happens to the solubility of most solid solutes in water as temperature increases?",
+    "choices": {
+      "A": "It decreases",
+      "B": "It increases",
+      "C": "It remains constant",
+      "D": "It first increases then decreases"
+    },
+    "correctAnswer": "B",
+    "rationale": "For most solid solutes, solubility in water increases with increasing temperature because the dissolution process is typically endothermic, and higher temperatures provide more energy to break solute-solute interactions.",
+    "objectives": [
+      "solutions"
+    ],
+    "tags": [
+      "chemistry",
+      "solutions",
+      "medium"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Meteorology",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 55,
+    "questionText": "Which type of clouds are associated with thunderstorms and can produce heavy precipitation?",
+    "choices": {
+      "A": "Cirrus",
+      "B": "Stratus",
+      "C": "Cumulus",
+      "D": "Cumulonimbus"
+    },
+    "correctAnswer": "D",
+    "rationale": "Cumulonimbus clouds are towering vertical clouds associated with severe weather including thunderstorms, heavy rain, hail, lightning, and sometimes tornadoes. They can extend through multiple atmospheric layers.",
+    "objectives": [
+      "meteorology"
+    ],
+    "tags": [
+      "general science",
+      "meteorology",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Thermodynamics",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 56,
+    "questionText": "A heat engine absorbs 1000 J of heat from a hot reservoir and exhausts 700 J to a cold reservoir. What is the efficiency of this engine?",
+    "choices": {
+      "A": "20%",
+      "B": "30%",
+      "C": "40%",
+      "D": "70%"
+    },
+    "correctAnswer": "B",
+    "rationale": "Efficiency $= \\frac{W_{out}}{Q_{in}} = \\frac{Q_{in} - Q_{out}}{Q_{in}} = \\frac{1000 - 700}{1000} = \\frac{300}{1000} = 0.30 = 30\\%$.",
+    "objectives": [
+      "thermodynamics"
+    ],
+    "tags": [
+      "chemistry",
+      "physics",
+      "thermodynamics",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Evolution",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 57,
+    "questionText": "A population is in Hardy-Weinberg equilibrium for a gene with two alleles, A and a. If the frequency of the A allele is 0.6, what is the expected frequency of heterozygotes (Aa)?",
+    "choices": {
+      "A": "0.16",
+      "B": "0.24",
+      "C": "0.36",
+      "D": "0.48"
+    },
+    "correctAnswer": "D",
+    "rationale": "If $p = 0.6$ (frequency of A), then $q = 1 - 0.6 = 0.4$ (frequency of a). The frequency of heterozygotes is $2pq = 2(0.6)(0.4) = 0.48$.",
+    "objectives": [
+      "evolution",
+      "genetics and heredity"
+    ],
+    "tags": [
+      "biology",
+      "population genetics",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Waves",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 58,
+    "questionText": "A standing wave is formed on a string with nodes at both ends. If the string is 2 m long and vibrates in its third harmonic, what is the wavelength?",
+    "choices": {
+      "A": "0.67 m",
+      "B": "1.0 m",
+      "C": "1.33 m",
+      "D": "2.0 m"
+    },
+    "correctAnswer": "C",
+    "rationale": "For the third harmonic, there are 3 half-wavelengths along the string: $L = \\frac{3\\lambda}{2}$. Thus $\\lambda = \\frac{2L}{3} = \\frac{2(2)}{3} = \\frac{4}{3} \\approx 1.33$ m.",
+    "objectives": [
+      "waves"
+    ],
+    "tags": [
+      "physics",
+      "waves",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Organic Chemistry",
+    "difficulty": "hard",
+    "type": "multiple_choice",
+    "questionNumber": 59,
+    "questionText": "What type of organic compound is formed when a carboxylic acid reacts with an alcohol?",
+    "choices": {
+      "A": "Ketone",
+      "B": "Ester",
+      "C": "Aldehyde",
+      "D": "Ether"
+    },
+    "correctAnswer": "B",
+    "rationale": "The reaction between a carboxylic acid and an alcohol (in the presence of an acid catalyst) is called esterification, producing an ester and water.",
+    "objectives": [
+      "organic chemistry"
+    ],
+    "tags": [
+      "chemistry",
+      "organic",
+      "hard"
+    ],
+    "isWordProblem": false
+  },
+  {
+    "subjectArea": "Science",
+    "subtopic": "Electricity",
+    "difficulty": "very_hard",
+    "type": "multiple_choice",
+    "questionNumber": 60,
+    "questionText": "A battery with an EMF of 12 V and internal resistance of 0.5 Ω is connected to a 5.5 Ω external resistor. What is the terminal voltage of the battery?",
+    "choices": {
+      "A": "10 V",
+      "B": "11 V",
+      "C": "11.5 V",
+      "D": "12 V"
+    },
+    "correctAnswer": "B",
+    "rationale": "Total resistance $R_{total} = 0.5 + 5.5 = 6$ Ω. Current $I = \\frac{12}{6} = 2$ A. Voltage drop across internal resistance: $V_r = IR_{internal} = 2(0.5) = 1$ V. Terminal voltage $V_t = EMF - V_r = 12 - 1 = 11$ V.",
+    "objectives": [
+      "electricity"
+    ],
+    "tags": [
+      "physics",
+      "circuits",
+      "very_hard"
+    ],
+    "isWordProblem": false
+  }
+]

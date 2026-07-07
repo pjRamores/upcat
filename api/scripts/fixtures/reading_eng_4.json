@@ -1,0 +1,1328 @@
+{
+  "passages": [
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "title": "The Shifting Landscape of Philippine Energy",
+      "subjectArea": "Reading Comprehension",
+      "source": "Philippine Energy Journal, February 2024",
+      "content": "The Philippines stands at a critical juncture in its energy transition. For decades, the nation has relied heavily on imported fossil fuels, making it vulnerable to global price volatility and contributing significantly to carbon emissions. Recent government initiatives have sought to pivot toward renewable sources, capitalizing on the country's geographic advantages: abundant sunlight, consistent wind patterns along coastal regions, and geothermal reserves.\n\nAccording to the Department of Energy, renewable energy accounted for 22% of the country's power generation in 2023, a modest increase from 19% in 2020. The following table illustrates the breakdown:\n\n| Energy Source | 2020 (%) | 2023 (%) | Target 2030 (%) |\n|---------------|----------|----------|------------------|\n| Coal          | 58       | 56       | 40               |\n| Natural Gas   | 19       | 18       | 15               |\n| Renewable     | 19       | 22       | 35               |\n| Oil           | 4        | 4        | 10               |\n\nDespite these gains, formidable obstacles remain. Infrastructure development for solar and wind farms requires substantial upfront investment, and intermittency issues—solar panels produce no power at night, wind turbines depend on weather—necessitate improved battery storage technology. Critics also point to the displacement of communities near proposed dam sites for hydroelectric projects, raising ethical questions about who bears the cost of progress.\n\nNevertheless, proponents argue that the long-term economic and environmental benefits outweigh initial hurdles. Renewable energy promises energy independence, job creation in emerging sectors, and alignment with international climate commitments. As one energy analyst noted, \"The question is not whether we should transition, but how swiftly and equitably we can manage it.\""
+    },
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "title": "The Weaver's Gift",
+      "subjectArea": "Reading Comprehension",
+      "source": "Original Fiction",
+      "content": "Lola Cora's fingers moved with the rhythm of memory, each thread a story, each pattern a whispered incantation against forgetting. In the dim light of dawn, she worked the loom her grandmother had built from narra wood—now darkened by decades of palm oil and devotion. Her granddaughter, Maya, sixteen and impatient, watched from the doorway, phone glowing in her hand like a firefly trapped in glass.\n\n\"Why do you still do this?\" Maya's voice carried the particular disdain youth reserves for tradition. \"You could buy fabric at the market for a tenth of the time.\"\n\nLola Cora did not pause. \"Come closer, *apo*. Tell me what you see.\"\n\nReluctantly, Maya approached. The emerging textile showed geometric mountains in indigo and crimson, rivers of gold thread winding between them. \"It's… pretty, I guess.\"\n\n\"Pretty.\" The old woman smiled, though her eyes held a sadness Maya couldn't name. \"Your great-great-grandmother wove this pattern when the Americans came. Each mountain is a village that resisted. Each river, a path our people took to safety. When I weave, I am not making cloth. I am keeping us alive.\"\n\nMaya's phone buzzed—a notification, a summons to elsewhere. But her hand, for once, did not reach for it. Instead, she sat beside her grandmother, watching the shuttle pass through the warp, and began to understand that some things cannot be bought, only inherited."
+    },
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "title": "Rethinking Assessment: Beyond Standardized Testing",
+      "subjectArea": "Reading Comprehension",
+      "source": "Education Forum Philippines, January 2024",
+      "content": "The obsession with standardized testing has created a generation of students who excel at memorization but falter when confronted with novel problems. Our current assessment paradigm—inherited from early 20th-century industrial models—treats education as a factory process: input curriculum, administer uniform test, measure output. This approach fails to account for the multifaceted nature of human intelligence and the diverse ways students demonstrate understanding.\n\nConsider the PISA results, where the Philippines consistently ranks near the bottom in reading, mathematics, and science. Rather than reflecting student capability, these outcomes reveal systemic issues: overcrowded classrooms, inadequate resources, and a pedagogical culture that prioritizes test preparation over genuine learning. Teachers, pressured to raise scores, resort to rote drills, sacrificing creativity and critical thinking in the process.\n\nAlternative assessment models exist and have shown promise. Portfolio-based evaluation allows students to compile evidence of learning over time, showcasing growth and reflection. Project-based assessments engage students in real-world problem-solving, requiring them to synthesize knowledge across disciplines. Finland, frequently cited for educational excellence, employs minimal standardized testing, instead trusting teacher judgment and emphasizing holistic development.\n\nOpponents argue that standardized tests provide objective data for comparison and accountability. Without them, they claim, schools could inflate grades or lower standards. However, this argument assumes that the only valid measure of learning is one that can be quantified and ranked. It ignores the fact that standardized tests themselves are culturally biased, often privileging students from affluent backgrounds with access to test-preparation resources.\n\nThe path forward requires courage: we must de-emphasize high-stakes testing and invest in teacher training, smaller class sizes, and diverse assessment methods. Only then can we cultivate students who are not merely test-takers but critical thinkers, creative problem-solvers, and engaged citizens."
+    },
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "title": "Passage A: The Case for Digital Responsibility Laws",
+      "subjectArea": "Reading Comprehension",
+      "source": "Tech Policy Review, March 2024",
+      "content": "Social media platforms have become the public squares of the 21st century, yet they operate with virtually no accountability for the harms they facilitate. Misinformation spreads unchecked, extremist content radicalizes vulnerable users, and algorithmic amplification prioritizes engagement over truth. The consequences are tangible: electoral interference, mental health crises among adolescents, and the erosion of shared reality.\n\nRegulation is not censorship; it is a necessary safeguard. We regulate food safety, automobile manufacturing, and pharmaceutical distribution because unregulated markets have historically failed to protect public welfare. Why should digital platforms be exempt? Countries like Germany have implemented laws requiring platforms to remove illegal content within 24 hours or face substantial fines. Australia has mandated that tech companies pay news organizations for content shared on their platforms. These measures do not stifle innovation—they establish baseline standards of corporate responsibility.\n\nCritics invoke free speech concerns, but this is a red herring. Free speech protects individuals from government censorship, not corporations from regulation. Moreover, platforms already moderate content based on their own opaque policies; regulation would simply make these processes transparent and accountable. The choice is clear: we can continue to allow a handful of corporations to shape public discourse without oversight, or we can assert democratic control over the digital spaces we inhabit."
+    },
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "title": "Passage B: Innovation Cannot Thrive Under Excessive Regulation",
+      "subjectArea": "Reading Comprehension",
+      "source": "Tech Policy Review, March 2024",
+      "content": "The call for stringent social media regulation, however well-intentioned, threatens to stifle innovation and concentrate power in the hands of governments ill-equipped to understand rapidly evolving technology. History offers cautionary tales: regulatory frameworks designed for one era often become impediments in the next. Overly prescriptive laws risk freezing current platforms in place, preventing the emergence of better alternatives.\n\nConsider the European Union's General Data Protection Regulation (GDPR). While aimed at protecting privacy, it has inadvertently advantaged large incumbents who can afford compliance costs, making it nearly impossible for startups to compete. The result is less innovation, not more accountability. Similarly, content moderation mandates presume that determining truth is straightforward, ignoring the nuanced, context-dependent nature of speech. Who decides what constitutes misinformation? Government bureaucrats? Platform employees? Either option is fraught with potential for abuse.\n\nFurthermore, the problems attributed to social media—polarization, misinformation—predate these platforms. They reflect deeper societal issues: declining trust in institutions, inadequate media literacy education, and economic inequality. Regulation addresses symptoms, not root causes. Instead of restricting platforms, we should empower users through education and promote competition that allows people to choose services aligned with their values.\n\nThe impulse to regulate is understandable, but premature regulation often does more harm than good. We need careful, evidence-based policy that preserves the openness and dynamism that made the internet a transformative force, not knee-jerk laws that grant governments sweeping powers over digital communication."
+    },
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "title": "The Monkey and the Turtle: A Philippine Fable",
+      "subjectArea": "Reading Comprehension",
+      "source": "Philippine Folk Literature Collection",
+      "content": "Long ago, when the world was young and animals could speak, Monkey and Turtle found a banana tree uprooted by a storm, floating down the river. \"Let us divide it,\" said Turtle, always practical. \"You take the top with the leaves, and I will take the bottom with the roots.\"\n\nMonkey, who thought himself clever, agreed immediately. \"What a foolish turtle!\" he laughed to himself. \"I have the part with fruit, and he has only roots and dirt!\"\n\nEach planted their portion. Monkey's leafy top, lacking roots, withered and died within days. Turtle's rooted section, though it bore no fruit at first, grew strong and tall. Seasons passed, and Turtle's tree flourished, heavy with golden bananas.\n\nWhen the fruit ripened, Turtle, unable to climb, called to Monkey. \"Friend, will you gather bananas for us to share? You can climb, and I cannot.\"\n\nMonkey scrambled up the tree and began eating greedily, throwing only peels down to Turtle. \"These are mine!\" he shouted. \"You gave me the useless part—you deserve nothing!\"\n\nTurtle, patient and clever, said nothing. He gathered sharp shells and placed them around the base of the tree. When Monkey finally descended, bloated and sleepy, he stepped on the shells and howled in pain. \"Why did you hurt me?\" he cried.\n\n\"I did not hurt you,\" replied Turtle calmly. \"Your own greed brought you down. You forgot that the roots I chose feed the tree that fed you. Next time, remember: those who take without giving will always fall.\"\n\nAnd from that day forward, Monkey was more careful in his dealings with others, though he never quite learned to share his bananas willingly."
+    }
+  ],
+  "questions": [
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Data Interpretation",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 1,
+      "questionText": "According to the table in Passage 1, which energy source showed the greatest percentage increase from 2020 to 2023?",
+      "choices": {
+        "A": "Coal",
+        "B": "Natural Gas",
+        "C": "Renewable",
+        "D": "Oil"
+      },
+      "correctAnswer": "C",
+      "rationale": "Renewable energy increased from 19% to 22%, a gain of 3 percentage points. This is the largest absolute increase among all sources shown. Coal decreased by 2 points, Natural Gas decreased by 1 point, and Oil remained constant.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data"
+      ],
+      "tags": [
+        "data-interpretation",
+        "easy"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 2,
+      "questionText": "What is the central claim of Passage 1?",
+      "choices": {
+        "A": "The Philippines should immediately abandon all fossil fuel use.",
+        "B": "Renewable energy transition in the Philippines faces both promise and significant challenges.",
+        "C": "Battery storage technology is the only solution to renewable energy problems.",
+        "D": "The Department of Energy has failed in its mission to promote renewables."
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage presents both the potential of renewable energy (geographic advantages, environmental benefits) and obstacles (infrastructure costs, intermittency, community displacement), indicating a balanced view of promise and challenges. Options A, C, and D are too extreme or narrow.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 3,
+      "questionText": "Based on the passage, which of the following can be reasonably inferred about the 2030 energy targets?",
+      "choices": {
+        "A": "They are easily achievable given current trends.",
+        "B": "They represent an ambitious but necessary shift requiring significant policy intervention.",
+        "C": "They have already been abandoned by the Department of Energy.",
+        "D": "They prioritize oil production over renewable sources."
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage mentions 'formidable obstacles' and substantial infrastructure needs, suggesting the targets are ambitious. The analyst's quote about managing the transition 'swiftly and equitably' implies intentional effort will be needed. The table shows renewables must jump from 22% to 35%, coal must drop from 56% to 40%—significant changes requiring intervention.",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "inference",
+        "hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 4,
+      "questionText": "The primary purpose of including the energy analyst's quote at the end of the passage is to:",
+      "choices": {
+        "A": "Dismiss the concerns of critics entirely",
+        "B": "Frame the transition as inevitable and urgent despite challenges",
+        "C": "Argue that renewable energy is too expensive",
+        "D": "Suggest that no action should be taken"
+      },
+      "correctAnswer": "B",
+      "rationale": "The quote 'The question is not whether we should transition, but how swiftly and equitably we can manage it' treats the transition as a given ('not whether') and emphasizes the urgency and manner of implementation, aligning with option B.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Supporting Details",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 5,
+      "questionText": "According to Passage 1, which of the following is NOT mentioned as an advantage of renewable energy?",
+      "choices": {
+        "A": "Energy independence",
+        "B": "Job creation",
+        "C": "Lower electricity bills for consumers",
+        "D": "Alignment with climate commitments"
+      },
+      "correctAnswer": "C",
+      "rationale": "The passage explicitly mentions energy independence, job creation, and climate commitments as benefits. Lower electricity bills are never mentioned in the passage.",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "supporting-details",
+        "easy"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone and Attitude",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 6,
+      "questionText": "The tone of Maya's initial question, \"Why do you still do this?\" can best be described as:",
+      "choices": {
+        "A": "Curious and respectful",
+        "B": "Dismissive and impatient",
+        "C": "Angry and hostile",
+        "D": "Supportive and encouraging"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage explicitly states Maya's voice 'carried the particular disdain youth reserves for tradition' and describes her as 'impatient,' indicating dismissiveness rather than genuine curiosity or respect.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "tone",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Figurative Language",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 7,
+      "questionText": "The phrase 'phone glowing in her hand like a firefly trapped in glass' is an example of:",
+      "choices": {
+        "A": "Personification, emphasizing the phone's human-like qualities",
+        "B": "Simile, comparing the phone's glow to a trapped firefly",
+        "C": "Metaphor, stating the phone is literally a firefly",
+        "D": "Hyperbole, exaggerating the brightness of the phone"
+      },
+      "correctAnswer": "B",
+      "rationale": "The phrase uses 'like' to make an explicit comparison between the phone's glow and a firefly trapped in glass, which is the definition of a simile. The comparison also suggests confinement and artificiality.",
+      "objectives": [
+        "identify and interpret figures of speech"
+      ],
+      "tags": [
+        "figurative-language",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Theme and Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 8,
+      "questionText": "What does the weaving symbolize in the story?",
+      "choices": {
+        "A": "An outdated skill that should be abandoned",
+        "B": "The preservation of cultural memory and resistance",
+        "C": "A way to earn money in rural communities",
+        "D": "The superiority of traditional methods over modern ones"
+      },
+      "correctAnswer": "B",
+      "rationale": "Lola Cora explicitly states that the patterns represent villages that resisted and paths to safety, and that weaving is 'keeping us alive'—preserving cultural memory. The phrase 'each thread a story' reinforces this interpretation.",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "symbolism",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Character Development",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 9,
+      "questionText": "How does Maya's perspective shift by the end of the passage?",
+      "choices": {
+        "A": "She becomes completely uninterested in technology.",
+        "B": "She begins to recognize the value and meaning in her grandmother's work.",
+        "C": "She decides to become a professional weaver.",
+        "D": "She remains unchanged in her dismissive attitude."
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage concludes with Maya not reaching for her buzzing phone and instead sitting beside her grandmother, 'began to understand that some things cannot be bought, only inherited'—indicating a shift toward appreciating the tradition's value.",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "character-analysis",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Context Clues",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 10,
+      "questionText": "In context, the word *apo* most likely means:",
+      "choices": {
+        "A": "Friend",
+        "B": "Stranger",
+        "C": "Grandchild",
+        "D": "Student"
+      },
+      "correctAnswer": "C",
+      "rationale": "Lola Cora uses *apo* when addressing Maya, who is identified as her granddaughter. The term is a Filipino/Ilocano word for grandchild, discernible from context.",
+      "objectives": [
+        "determine the meaning of words and phrases in context",
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "easy"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Point of View",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 11,
+      "questionText": "From whose point of view is the story primarily narrated?",
+      "choices": {
+        "A": "First-person from Maya's perspective",
+        "B": "First-person from Lola Cora's perspective",
+        "C": "Third-person omniscient",
+        "D": "Second-person addressing the reader directly"
+      },
+      "correctAnswer": "C",
+      "rationale": "The narrator has access to both characters' thoughts ('What a foolish turtle!' he laughed to himself' is not present but the narrator describes 'a sadness Maya couldn't name'), indicating third-person omniscient narration.",
+      "objectives": [
+        "identify the author's point of view"
+      ],
+      "tags": [
+        "point-of-view",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Argument Structure",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 12,
+      "questionText": "Which of the following best represents the author's line of reasoning in Passage 3?",
+      "choices": {
+        "A": "Standardized testing is perfect → therefore we should not change it",
+        "B": "Current testing is flawed → alternative models exist and work → we should adopt them",
+        "C": "Students are lazy → therefore they perform poorly on tests",
+        "D": "Teachers are incompetent → therefore alternative assessment will fail"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage follows a clear argumentative structure: identifying problems with standardized testing, presenting evidence of alternatives (Finland, portfolio assessment), and advocating for change. This matches option B's logical flow.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-structure",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 13,
+      "questionText": "What is the main argument of Passage 3?",
+      "choices": {
+        "A": "Standardized testing should be completely eliminated from all schools.",
+        "B": "The current emphasis on standardized testing hinders genuine learning and should be replaced with more holistic assessment methods.",
+        "C": "Filipino students perform poorly because they are less intelligent than students in other countries.",
+        "D": "Teachers should have no accountability for student performance."
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage critiques the 'obsession' with standardized testing, argues it fails to measure true learning, and advocates for 'diverse assessment methods' and de-emphasizing 'high-stakes testing'—not complete elimination, but reform.",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 14,
+      "questionText": "Which statement from Passage 3 is a FACT rather than an opinion?",
+      "choices": {
+        "A": "The obsession with standardized testing has created a generation of students who excel at memorization but falter when confronted with novel problems.",
+        "B": "The Philippines consistently ranks near the bottom in PISA results in reading, mathematics, and science.",
+        "C": "Standardized tests are culturally biased.",
+        "D": "We must de-emphasize high-stakes testing."
+      },
+      "correctAnswer": "B",
+      "rationale": "Option B is verifiable data about PISA rankings. Options A, C, and D are interpretations, value judgments, or recommendations (opinions), even if well-supported.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-vs-opinion",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Context Clues",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 15,
+      "questionText": "In context, the word 'pedagogical' most nearly means:",
+      "choices": {
+        "A": "Political",
+        "B": "Related to teaching methods",
+        "C": "Economic",
+        "D": "Technological"
+      },
+      "correctAnswer": "B",
+      "rationale": "The phrase 'pedagogical culture that prioritizes test preparation' is discussing teaching practices. 'Pedagogical' relates to the methods and practice of teaching.",
+      "objectives": [
+        "determine the meaning of words and phrases in context",
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Tone",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 16,
+      "questionText": "The author's tone in Passage 3 can best be described as:",
+      "choices": {
+        "A": "Neutral and detached",
+        "B": "Humorous and lighthearted",
+        "C": "Critical and reformist",
+        "D": "Resigned and pessimistic"
+      },
+      "correctAnswer": "C",
+      "rationale": "The author criticizes the current system ('obsession,' 'fails to account'), presents alternatives, and calls for change ('requires courage,' 'must de-emphasize'), indicating a critical but constructive, reformist tone.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "tone",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 17,
+      "questionText": "The author implies that standardized tests are culturally biased primarily because they:",
+      "choices": {
+        "A": "Are written in English rather than Filipino",
+        "B": "Favor students with access to test-preparation resources, which correlates with affluence",
+        "C": "Include questions about Philippine history",
+        "D": "Are too difficult for all students"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage states: 'standardized tests themselves are culturally biased, often privileging students from affluent backgrounds with access to test-preparation resources.' This directly links bias to resource access and socioeconomic status.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "very-hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesis and Comparison",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 18,
+      "questionText": "What is the primary point of disagreement between Passage A and Passage B?",
+      "choices": {
+        "A": "Whether social media platforms exist",
+        "B": "Whether government regulation of social media is beneficial or harmful",
+        "C": "Whether misinformation spreads online",
+        "D": "Whether free speech should be protected"
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage A argues for regulation as necessary accountability; Passage B argues regulation will stifle innovation and grant excessive government power. Both acknowledge problems but disagree fundamentally on whether regulation is the solution.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "paired-passages",
+        "synthesis",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Argument Analysis",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 19,
+      "questionText": "Passage A uses the analogy to food safety and pharmaceutical regulation primarily to:",
+      "choices": {
+        "A": "Suggest that social media platforms should sell food and medicine",
+        "B": "Argue that just as other industries are regulated for public welfare, so too should digital platforms be",
+        "C": "Claim that social media is more dangerous than contaminated food",
+        "D": "Distract from the main argument about free speech"
+      },
+      "correctAnswer": "B",
+      "rationale": "The analogy is used to establish precedent: if we regulate industries that affect public welfare, consistency demands we regulate platforms that also affect public welfare. This is a classic argument from analogy.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "argument-analysis",
+        "very-hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Context Clues",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 20,
+      "questionText": "In Passage A, the phrase 'red herring' most nearly means:",
+      "choices": {
+        "A": "A type of fish commonly eaten in the Philippines",
+        "B": "A distraction or misleading argument",
+        "C": "A communist symbol",
+        "D": "An important piece of evidence"
+      },
+      "correctAnswer": "B",
+      "rationale": "'Red herring' is an idiom meaning a misleading or distracting argument. The author uses it to dismiss the free speech objection as irrelevant to the main point.",
+      "objectives": [
+        "determine the meaning of words and phrases in context"
+      ],
+      "tags": [
+        "vocabulary",
+        "idiom",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Evidence and Support",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 21,
+      "questionText": "Which piece of evidence does Passage B use to support its claim that regulation can harm innovation?",
+      "choices": {
+        "A": "The example of Germany's content removal laws",
+        "B": "The example of GDPR compliance costs advantaging large companies over startups",
+        "C": "The example of Australia's news payment mandate",
+        "D": "The example of electoral interference"
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage B explicitly states that GDPR 'has inadvertently advantaged large incumbents who can afford compliance costs, making it nearly impossible for startups to compete,' using this as evidence that regulation can stifle innovation.",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "evidence",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesis",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 22,
+      "questionText": "Both passages would likely agree with which of the following statements?",
+      "choices": {
+        "A": "Social media platforms have no negative effects on society.",
+        "B": "Problems such as misinformation and polarization exist in contemporary society.",
+        "C": "Government regulation is always beneficial.",
+        "D": "Social media should be banned entirely."
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage A discusses misinformation and mental health crises; Passage B acknowledges 'polarization, misinformation' as real problems (though it attributes them to deeper causes). Both recognize these issues exist, even if they disagree on solutions.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesis",
+        "paired-passages",
+        "very-hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Assumptions",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 23,
+      "questionText": "Which underlying assumption does Passage B rely on?",
+      "choices": {
+        "A": "All government intervention in markets is inherently harmful.",
+        "B": "Market competition and user choice are sufficient to address platform-related harms.",
+        "C": "Social media companies are always acting in the public interest.",
+        "D": "Misinformation does not exist on social media platforms."
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage B concludes by advocating for 'competition that allows people to choose services aligned with their values' and 'empowering users'—assuming market mechanisms can solve problems without regulation.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "assumptions",
+        "very-hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 24,
+      "questionText": "The primary purpose of Passage A is to:",
+      "choices": {
+        "A": "Entertain readers with stories about social media",
+        "B": "Persuade readers that social media regulation is necessary",
+        "C": "Provide neutral information about different types of regulations",
+        "D": "Discourage people from using social media"
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage A presents arguments, evidence (Germany, Australia examples), and rebuttals to opposition, all structured to convince readers that regulation is needed. The concluding sentence explicitly frames a choice in favor of regulation.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 25,
+      "questionText": "According to Passage B, what is the primary cause of problems like polarization and misinformation?",
+      "choices": {
+        "A": "Social media platforms themselves",
+        "B": "Lack of government regulation",
+        "C": "Deeper societal issues such as declining institutional trust and inadequate media literacy",
+        "D": "Too much freedom of speech"
+      },
+      "correctAnswer": "C",
+      "rationale": "Passage B explicitly states: 'the problems attributed to social media—polarization, misinformation—predate these platforms. They reflect deeper societal issues: declining trust in institutions, inadequate media literacy education, and economic inequality.'",
+      "objectives": [
+        "recognize supporting details and textual evidence",
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Theme and Moral",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 26,
+      "questionText": "What is the moral lesson of the fable in Passage 6?",
+      "choices": {
+        "A": "Always choose the part of the tree with fruit.",
+        "B": "Greed and selfishness ultimately lead to negative consequences.",
+        "C": "Turtles are smarter than monkeys.",
+        "D": "Never share anything with others."
+      },
+      "correctAnswer": "B",
+      "rationale": "Turtle explicitly states the moral: 'Your own greed brought you down. You forgot that the roots I chose feed the tree that fed you. Next time, remember: those who take without giving will always fall.' This directly points to greed and selfishness as the problem.",
+      "objectives": [
+        "identify the main idea or central claim",
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "theme",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Character Analysis",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 27,
+      "questionText": "Which character trait best describes Monkey in the fable?",
+      "choices": {
+        "A": "Generous and kind",
+        "B": "Patient and wise",
+        "C": "Greedy and short-sighted",
+        "D": "Humble and grateful"
+      },
+      "correctAnswer": "C",
+      "rationale": "Monkey thinks himself clever but chooses poorly (short-sighted), eats all the fruit instead of sharing (greedy), and fails to recognize Turtle's contribution. The text describes him as eating 'greedily.'",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "character-analysis",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Elements",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 28,
+      "questionText": "The sharp shells placed by Turtle serve as:",
+      "choices": {
+        "A": "A symbol of natural beauty",
+        "B": "A plot device that delivers poetic justice",
+        "C": "An irrelevant detail",
+        "D": "Evidence that Turtle is violent"
+      },
+      "correctAnswer": "B",
+      "rationale": "The shells are a deliberate consequence Turtle creates for Monkey's greed. Monkey's own actions (climbing down after eating) cause his pain, making it poetic justice—the punishment fits the crime and emerges from the wrongdoer's own behavior.",
+      "objectives": [
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-elements",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 29,
+      "questionText": "What can be inferred about Turtle's character based on his choice of the rooted section?",
+      "choices": {
+        "A": "He was foolish and made a poor decision.",
+        "B": "He was thinking long-term and understood the value of foundations.",
+        "C": "He was afraid of climbing trees.",
+        "D": "He wanted to trick Monkey into taking the better part."
+      },
+      "correctAnswer": "B",
+      "rationale": "Turtle is described as 'always practical' and chooses the part that, while unpromising initially, grows into a productive tree. This demonstrates long-term thinking and understanding of fundamentals (roots → growth).",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "inference",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 30,
+      "questionText": "Which alternative title would be most appropriate for this fable?",
+      "choices": {
+        "A": "The Wise Investment",
+        "B": "How to Grow Banana Trees",
+        "C": "The Friendship of Forest Animals",
+        "D": "Why Monkeys Eat Bananas"
+      },
+      "correctAnswer": "A",
+      "rationale": "The fable is about Turtle's wise choice (investment in roots rather than immediate gratification) and the consequences of Monkey's poor choice. 'The Wise Investment' captures this metaphorical meaning better than the literal alternatives.",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "easy"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 31,
+      "questionText": "Which statement best expresses the main idea of 'The Weaver's Gift'?",
+      "choices": {
+        "A": "Young people should abandon technology completely.",
+        "B": "Traditional crafts preserve cultural memory and connect generations in ways modern conveniences cannot.",
+        "C": "Weaving is a more profitable skill than using smartphones.",
+        "D": "All elderly people are wiser than young people."
+      },
+      "correctAnswer": "B",
+      "rationale": "The story centers on how Lola Cora's weaving carries cultural memory and historical resistance, and how Maya comes to appreciate this intergenerational knowledge ('some things cannot be bought, only inherited').",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Supporting Details",
+      "difficulty": "easy",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 32,
+      "questionText": "According to Passage 3, Finland's educational approach is characterized by:",
+      "choices": {
+        "A": "Heavy reliance on standardized testing",
+        "B": "Minimal standardized testing and emphasis on holistic development",
+        "C": "Complete absence of any assessment",
+        "D": "Focusing only on mathematics and science"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage explicitly states: 'Finland, frequently cited for educational excellence, employs minimal standardized testing, instead trusting teacher judgment and emphasizing holistic development.'",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "supporting-details",
+        "easy"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 33,
+      "questionText": "Based on the table and passage content, which conclusion about the energy transition is MOST supported?",
+      "choices": {
+        "A": "Oil will become the dominant energy source by 2030.",
+        "B": "The shift from coal to renewables will require dramatic changes given the current pace of progress.",
+        "C": "Natural gas production will increase significantly.",
+        "D": "All energy targets will be easily met without additional intervention."
+      },
+      "correctAnswer": "B",
+      "rationale": "From 2020-2023 (3 years), renewables increased only 3 percentage points. To reach 35% by 2030 requires 13 more percentage points in 7 years—a faster pace. Coal must drop 16 points in the same period. The passage mentions 'formidable obstacles,' supporting the need for dramatic changes.",
+      "objectives": [
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data",
+        "make inferences and derive implied meaning",
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "data-interpretation",
+        "inference",
+        "very-hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Context Clues",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 34,
+      "questionText": "In the passage, 'intermittency' most likely refers to:",
+      "choices": {
+        "A": "The high cost of renewable energy",
+        "B": "The irregular or non-continuous nature of renewable energy production",
+        "C": "The political debate surrounding energy policy",
+        "D": "The geographic distribution of energy sources"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage explains intermittency immediately: 'solar panels produce no power at night, wind turbines depend on weather.' This describes irregular, non-continuous production.",
+      "objectives": [
+        "determine the meaning of words and phrases in context",
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "context-clues",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Attitude",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 35,
+      "questionText": "The author of Passage A would likely respond to Passage B's concern about government power by arguing that:",
+      "choices": {
+        "A": "Government power is always preferable to corporate power",
+        "B": "Regulation creates transparency and accountability that currently opaque corporate policies lack",
+        "C": "Social media companies should have unlimited power",
+        "D": "Free speech does not matter"
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage A addresses this directly: 'platforms already moderate content based on their own opaque policies; regulation would simply make these processes transparent and accountable.' This counters the 'excessive government power' concern by reframing regulation as increasing transparency.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages",
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "synthesis",
+        "paired-passages",
+        "hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Argument Structure",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 36,
+      "questionText": "What rhetorical strategy does Passage B employ when it states 'Who decides what constitutes misinformation?'?",
+      "choices": {
+        "A": "Providing statistical evidence",
+        "B": "Using a rhetorical question to highlight practical difficulties",
+        "C": "Making a personal attack on regulators",
+        "D": "Offering a concrete solution"
+      },
+      "correctAnswer": "B",
+      "rationale": "The question is not meant to be answered literally but to make readers consider the difficulty of determining truth, thereby weakening the pro-regulation position. This is a classic rhetorical question strategy.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions"
+      ],
+      "tags": [
+        "rhetorical-strategy",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Fact vs Opinion",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 37,
+      "questionText": "Which of the following from Passage A is presented as a FACT?",
+      "choices": {
+        "A": "Social media platforms have become the public squares of the 21st century.",
+        "B": "Germany has implemented laws requiring platforms to remove illegal content within 24 hours or face fines.",
+        "C": "Regulation is not censorship; it is a necessary safeguard.",
+        "D": "The choice is clear."
+      },
+      "correctAnswer": "B",
+      "rationale": "Option B is a verifiable statement about German law. Options A, C, and D are interpretations or value judgments (opinions), even if based on facts.",
+      "objectives": [
+        "distinguish fact from opinion"
+      ],
+      "tags": [
+        "fact-vs-opinion",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Tone",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 38,
+      "questionText": "The tone of the fable's narrator can best be described as:",
+      "choices": {
+        "A": "Angry and condemning",
+        "B": "Humorous and mocking",
+        "C": "Neutral and instructive",
+        "D": "Sad and melancholic"
+      },
+      "correctAnswer": "C",
+      "rationale": "The narrator presents the story objectively, allowing the events and Turtle's statement to convey the lesson. The tone is didactic (instructive) but not judgmental or emotional, typical of fable narration.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "tone",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Device",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 39,
+      "questionText": "The banana tree in the fable can be interpreted as a symbol of:",
+      "choices": {
+        "A": "Nature's random distribution of resources",
+        "B": "Opportunities that require wisdom and patience to fully realize",
+        "C": "The inevitability of conflict between species",
+        "D": "The superiority of plant life over animals"
+      },
+      "correctAnswer": "B",
+      "rationale": "The tree represents an opportunity that both animals encounter. Turtle's wise choice (roots = foundation) requires patience (waiting for growth) but yields fruit. Monkey's shortsighted choice yields nothing. The tree thus symbolizes opportunities that require wisdom to exploit properly.",
+      "objectives": [
+        "identify and interpret figures of speech",
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "symbolism",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesis",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 40,
+      "questionText": "Which statement represents a point of agreement between Passages A and B?",
+      "choices": {
+        "A": "Perfect regulation is impossible to achieve.",
+        "B": "Current platform moderation is entirely satisfactory.",
+        "C": "Speech and content moderation involve complex, context-dependent judgments.",
+        "D": "Government should have unlimited power over online content."
+      },
+      "correctAnswer": "C",
+      "rationale": "Passage A notes that platforms 'already moderate content based on their own opaque policies.' Passage B states 'determining truth is... nuanced, context-dependent.' Both acknowledge the complexity of content moderation, though they disagree on who should do it and how.",
+      "objectives": [
+        "synthesize and compare ideas, especially in paired passages"
+      ],
+      "tags": [
+        "synthesis",
+        "paired-passages",
+        "very-hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Supporting Details",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 41,
+      "questionText": "According to the passage, the loom was made from:",
+      "choices": {
+        "A": "Bamboo",
+        "B": "Pine wood",
+        "C": "Narra wood",
+        "D": "Metal"
+      },
+      "correctAnswer": "C",
+      "rationale": "The passage explicitly states: 'the loom her grandmother had built from narra wood—now darkened by decades of palm oil and devotion.'",
+      "objectives": [
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "supporting-details",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Inference",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 42,
+      "questionText": "The phrase 'a sadness Maya couldn't name' suggests that:",
+      "choices": {
+        "A": "Lola Cora is angry at Maya",
+        "B": "Lola Cora understands the cultural loss Maya represents but doesn't explicitly express it",
+        "C": "Maya is intentionally trying to hurt her grandmother",
+        "D": "The weaving is making Lola Cora physically ill"
+      },
+      "correctAnswer": "B",
+      "rationale": "The 'sadness' occurs when Maya calls the weaving 'pretty,' showing superficial understanding. Lola Cora recognizes that Maya doesn't grasp the deeper cultural significance—a generational disconnect that saddens her but she doesn't articulate directly.",
+      "objectives": [
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "inference",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Argument Structure",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 43,
+      "questionText": "The author uses the Philippines' PISA rankings primarily to:",
+      "choices": {
+        "A": "Prove that Filipino students are unintelligent",
+        "B": "Illustrate that poor test performance reflects systemic issues rather than student capability",
+        "C": "Argue that international tests should be banned",
+        "D": "Show that other countries have no educational problems"
+      },
+      "correctAnswer": "B",
+      "rationale": "Immediately after mentioning PISA rankings, the author states: 'Rather than reflecting student capability, these outcomes reveal systemic issues: overcrowded classrooms, inadequate resources...' This frames the data as evidence of system failure, not student failure.",
+      "objectives": [
+        "analyze logic and argument structure, including claims, reasons, and assumptions",
+        "recognize supporting details and textual evidence"
+      ],
+      "tags": [
+        "argument-structure",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Context Clues",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d3",
+      "questionNumber": 44,
+      "questionText": "In context, 'holistic' most nearly means:",
+      "choices": {
+        "A": "Religious or spiritual",
+        "B": "Considering the whole person or system rather than just parts",
+        "C": "Alternative or unconventional",
+        "D": "Expensive and exclusive"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage contrasts holistic development with narrow test-focused approaches, and earlier mentions 'multifaceted nature of human intelligence.' 'Holistic' in education refers to considering the complete development of a student.",
+      "objectives": [
+        "determine the meaning of words and phrases in context",
+        "use context clues to determine meaning"
+      ],
+      "tags": [
+        "vocabulary",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Author's Purpose",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 45,
+      "questionText": "The primary purpose of Passage B is to:",
+      "choices": {
+        "A": "Entertain readers with stories about startups",
+        "B": "Argue against hasty or excessive regulation of social media platforms",
+        "C": "Prove that social media has no problems whatsoever",
+        "D": "Promote specific technology companies"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage warns against 'stringent regulation,' uses GDPR as a cautionary example, and concludes by warning against 'premature regulation' and 'knee-jerk laws.' The purpose is clearly argumentative against excessive regulation.",
+      "objectives": [
+        "determine tone, purpose, and author's attitude"
+      ],
+      "tags": [
+        "author-purpose",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Literary Analysis",
+      "difficulty": "hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d6",
+      "questionNumber": 46,
+      "questionText": "The final sentence ('And from that day forward...') suggests that:",
+      "choices": {
+        "A": "Monkey learned his lesson completely and became perfectly generous",
+        "B": "Monkey learned some caution but retained his fundamental character flaw",
+        "C": "Monkey never interacted with Turtle again",
+        "D": "Turtle and Monkey became best friends"
+      },
+      "correctAnswer": "B",
+      "rationale": "The passage states Monkey 'was more careful in his dealings' (showing some learning) 'though he never quite learned to share his bananas willingly' (showing the limitation of his growth). This indicates partial, not complete, character change.",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "apply literary and textual criticism at an appropriate level"
+      ],
+      "tags": [
+        "literary-analysis",
+        "character-development",
+        "hard"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Main Idea",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d4",
+      "questionNumber": 47,
+      "questionText": "Which best summarizes Passage A's central argument?",
+      "choices": {
+        "A": "Social media is inherently evil and should be banned.",
+        "B": "Democratic societies must establish regulatory frameworks to ensure social media platforms serve public welfare rather than purely corporate interests.",
+        "C": "All speech online should be censored by government officials.",
+        "D": "Technology companies are perfect and need no oversight."
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage A argues for regulation (frameworks), emphasizes public welfare vs. corporate profit, and frames it as democratic accountability ('assert democratic control'). This matches option B. The passage explicitly rejects censorship (option C) and acknowledges platforms aren't currently perfect (option D).",
+      "objectives": [
+        "identify the main idea or central claim"
+      ],
+      "tags": [
+        "main-idea",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Title Selection",
+      "difficulty": "medium",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d2",
+      "questionNumber": 48,
+      "questionText": "Which alternative title would best capture the story's central theme?",
+      "choices": {
+        "A": "Learning to Weave",
+        "B": "Technology vs. Tradition",
+        "C": "Threads of Memory: Inheritance Beyond Purchase",
+        "D": "The Angry Grandmother"
+      },
+      "correctAnswer": "C",
+      "rationale": "The story's final line is 'some things cannot be bought, only inherited,' which speaks to intergenerational transmission of cultural knowledge. Option C captures this theme elegantly. Option B oversimplifies to opposition rather than integration; the story isn't about technology being bad but about recognizing what it cannot replace.",
+      "objectives": [
+        "choose an appropriate title for a selection"
+      ],
+      "tags": [
+        "title",
+        "medium"
+      ],
+      "isWordProblem": false
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Conclusions",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "questionNumber": 49,
+      "questionText": "Which conclusion can be most reliably drawn from both the table data and the passage text?",
+      "choices": {
+        "A": "The Philippines will definitely achieve its 2030 energy targets.",
+        "B": "Coal will remain the largest single energy source through 2030 unless significant policy changes accelerate the transition.",
+        "C": "Renewable energy is impossible to implement in the Philippines.",
+        "D": "All fossil fuels will be eliminated by 2025."
+      },
+      "correctAnswer": "B",
+      "rationale": "The table shows coal at 56% in 2023, target of 40% in 2030—still the largest. The passage discusses 'formidable obstacles' and the need for 'substantial investment,' suggesting current trajectories may not meet targets without change. Option B is cautious and supported. Options A and D make unsupported definitive claims; option C contradicts the passage's acknowledgment of progress and potential.",
+      "objectives": [
+        "draw conclusions based on the text",
+        "interpret a short embedded informational element such as a table, graph, or similar text-based data",
+        "make inferences and derive implied meaning"
+      ],
+      "tags": [
+        "conclusions",
+        "data-interpretation",
+        "very-hard"
+      ],
+      "isWordProblem": true
+    },
+    {
+      "subjectArea": "Reading Comprehension",
+      "subtopic": "Synthesis and Application",
+      "difficulty": "very_hard",
+      "type": "passage_based",
+      "passageId": "65f1a2b3c4d5e6f7a8b9c0d5",
+      "questionNumber": 50,
+      "questionText": "If a new social media platform emerged that allowed users complete control over their content moderation preferences and algorithmic feeds, Passage B would likely view this development as:",
+      "choices": {
+        "A": "Dangerous and requiring immediate government intervention",
+        "B": "An example of market-based innovation addressing concerns without regulation",
+        "C": "Irrelevant to the broader debate",
+        "D": "Proof that all current platforms should be shut down"
+      },
+      "correctAnswer": "B",
+      "rationale": "Passage B advocates for 'competition that allows people to choose services aligned with their values' and 'empowering users' rather than regulation. A platform offering user control exemplifies this market-based solution approach that Passage B favors.",
+      "objectives": [
+        "make inferences and derive implied meaning",
+        "synthesize and compare ideas, especially in paired passages",
+        "draw conclusions based on the text"
+      ],
+      "tags": [
+        "synthesis",
+        "application",
+        "very-hard"
+      ],
+      "isWordProblem": true
+    }
+  ]
+}
