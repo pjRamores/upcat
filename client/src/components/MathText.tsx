@@ -155,7 +155,7 @@ function normalizeSource(input: string): string {
         // Treat \P inside \text{...} as a peso marker from imported fixtures.
         .replace(/\\text\{\\\\P\}/g, "\\text{₱}")
         // Double-escaped commands (e.g. \\frac, \\begin) -> single backslash.
-        .replace(/\\\\([a-zA-Z]+)/g, "\$1")
+        .replace(/\\\\([a-zA-Z]+)/g, "\\$1")
         // Double-escaped braces (e.g. \\{1,2\\} -> \{1,2\}).
         .replace(/\\\\([{}])/g, "\\$1")
         // Double-escaped symbols (e.g. \\% -> \%).
@@ -163,11 +163,11 @@ function normalizeSource(input: string): string {
 
     // 3. Convert alternate math delimiters to $ / $$ for remark-math.
     out = out
-        .replace(/\\\{(\s\S*)\\\\/g, "$$$1$$")
-        .replace(/\\\{(\s\S*)\\\\/g, "$$$1$");
+        .replace(/\\\[([\s\S]*?)\\\\]/g, "$$$1$$")
+        .replace(/\\\(([\s\S]*?)\\\\/g, "$$$1$");
 
     // 3b. Repair inline math whose outer $ delimiters were dropped, leaving
-    //     raw LaTeX outside math spans (e.g. `x \le -1s` or `$x \ge 6`). Without
+    //     raw LaTeX outside math spans (e.g. `x \le -1$` or `$x \ge 6`). Without
     //     this, remark-math would treat the plain text between the two inner
     //     `$` as math and leak the surrounding `\le`/`\ge` as literal text.
     if (hasMathDelimiters(out) && hasRawLatexOutsideMath(out)) {
@@ -178,7 +178,7 @@ function normalizeSource(input: string): string {
     //    (common for answer choices such as `360^\circ` or `\{-1, 3\}`).
     const outTrimmed = out.trim();
     if (!hasMathDelimiters(out)) {
-        if (/^\\\{[\s\S]*\\\}/.test(outTrimmed) || looksLikeStandaloneMath(outTrimmed)) {
+        if (/^\\\{[\s\S]*\\\}$/.test(outTrimmed) || looksLikeStandaloneMath(outTrimmed)) {
             return out.replace(outTrimmed, `$${outTrimmed}$`);
         }
     }
