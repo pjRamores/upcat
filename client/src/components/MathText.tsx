@@ -1,5 +1,5 @@
-import { Fragment, type ReactNode } from "react";
-import ReactMarkdown, { type Components } from "react-markdown";
+import {Fragment, type ReactNode} from "react";
+import ReactMarkdown, {type Components} from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
@@ -10,8 +10,8 @@ import "katex/dist/katex.min.css";
  * Render admin-authored content that may combine GitHub-Flavored Markdown
  * (bold, italic, code, lists, links, tables, strikethrough, blockquotes,
  * headings) with LaTeX math delimited by:
- *     $$...$$    block math
- *     $...$      inline math
+ *   $$...$$   block math
+ *   $...$     inline math
  *
  * Math is parsed by remark-math and rendered with KaTeX (rehype-katex).
  * A normalization pass first repairs double-escaped payloads produced by
@@ -21,9 +21,13 @@ import "katex/dist/katex.min.css";
  * not introduce block margins and the output stays on one line.
  */
 export default function MathText({
-	children,
-	className,
-	inline = false,
+                                    children,
+                                    className,
+                                    inline = false,
+                                }: {
+    children: string;
+    className?: string;
+    inline?: boolean;
 }) {
 	const source = normalizeSource(children ?? "");
 	const components = inline ? INLINE_COMPONENTS : BLOCK_COMPONENTS;
@@ -45,13 +49,18 @@ export default function MathText({
 	);
 }
 
-// Markdown element styling
+// --- Markdown element styling --------------------------------------------
 function isFencedCode(className: string | undefined): boolean {
-	return typeof className === "string" && /\blanguage-\./.test(className);
+	return typeof className === "string" && /\blanguage-./.test(className);
 }
 const BASE_COMPONENTS: Components = {
     a: ({node: _node, ...props}) => (
-        <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary-600 underline hover:text-primary-700" />
+        <a
+            {...props}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-600 underline hover:text-primary-700"
+        />
     ),
     strong: ({node: _node, ...props}) => <strong className="font-bold text-gray-900" {...props} />,
     em: ({node: _node, ...props}) => <em className="italic" {...props} />,
@@ -94,7 +103,7 @@ const BASE_COMPONENTS: Components = {
     h4: ({node: _node, ...props}) => <h4 className="mb-2 text-base font-semibold" {...props} />,
     hr: ({node: _node, ...props}) => <hr className="my-4 border-gray-200" {...props} />,
     img: ({node: _node, ...props}) => (
-        // eslint-disable-next-line jsx-ally/alt-text
+        // eslint-disable-next-line jsx-a11y/alt-text
         <img className="my-2 h-auto max-w-full rounded" loading="lazy" {...props} />
     ),
     table: ({node: _node, ...props}) => (
