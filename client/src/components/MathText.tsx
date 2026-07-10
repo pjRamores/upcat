@@ -163,11 +163,11 @@ function normalizeSource(input: string): string {
 
     // 3. Convert alternate math delimiters to $ / $$ for remark-math.
     out = out
-        .replace(/\\\[([\s\S]*?)\\\\]/g, "$$$1$$")
-        .replace(/\\\(([\s\S]*?)\\\\/g, "$$$1$");
+        .replace(/\\\[([\s\S]*?)\\\]/g, "$$$1$$")
+        .replace(/\\\(([\s\S]*?)\\\)/g, "$$$1$");
 
     // 3b. Repair inline math whose outer $ delimiters were dropped, leaving
-    //     raw LaTeX outside math spans (e.g. `x \le -1$` or `$x \ge 6`). Without
+    //     raw LaTeX outside math spans (e.g. `x \le -1$ or $x \ge 6`). Without
     //     this, remark-math would treat the plain text between the two inner
     //     `$` as math and leak the surrounding `\le`/`\ge` as literal text.
     if (hasMathDelimiters(out) && hasRawLatexOutsideMath(out)) {
